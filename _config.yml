@@ -1,0 +1,36 @@
+
+exclude:
+  - "/vendor/"
+
+keep_files:
+  - "CNAME"
+  - ".git"
+  - ".gitignore"
+
+
+# Site settings
+title: Airspace
+subtitle: "A free HTML5 agency template"
+# Base URL of site. It should always start with a slash,
+# and never end with a slash. Set it to a blank value if hosting at the
+# root of your server.
+# baseurl: "/" # the subpath of your site
+url: "http://luminousrubyist.github.io" # the base hostname & protocol for your site
+baseurl: "/airspace"
+cover: "/assets/cover.png"
+logo: "/assets/logo.png"
+
+# Build settings
+markdown: kramdown
+highlightjs_theme: "monokai_sublime"
+
+# Google analytics
+# ga_tracking_id: "UA-XXXX-1"
+
+# Category descriptions (for archive pages)
+descriptions:
+  - cat: jekyll
+    desc: "Posts describing Jekyll setup techniques."
+
+  - cat: dummy
+    desc: "Just some placeholder posts, lorem ipsum and the rest."
