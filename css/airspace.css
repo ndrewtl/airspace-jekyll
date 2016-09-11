@@ -1,3 +1,11 @@
+/*
+ * This is the main css file that ships with the airspace theme.
+ * In airspace, it is called style.css
+ * However, style.css now holds additional styles for this jekyll port. (Not written by ThemeFisher)
+ * The original style.css is now called airspace.css
+ * 
+ */
+
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600);
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
 @import url(http://fonts.googleapis.com/css?family=Volkhov:400italic);
