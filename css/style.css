@@ -54,7 +54,7 @@ a:active {
   color: #666;
 }
 /*--
-	Header Start 
+	Header Start
 --*/
 header {
   background: #fff;
@@ -83,10 +83,10 @@ font header .navbar-default .navbar-nav li a:hover {
   color: #000;
 }
 /*---------------------------------------------
-					Index Start 
+					Index Start
 -----------------------------------------------*/
 /*--
-	Slider Start 
+	Slider Start
 --*/
 #slider {
   background: url("../img/slider-bg.jpg") no-repeat;
@@ -127,7 +127,7 @@ font header .navbar-default .navbar-nav li a:hover {
   letter-spacing: 3px;
 }
 /*--
-	wrapper Start 
+	wrapper Start
 --*/
 #intro {
   padding: 100px 0;
@@ -152,7 +152,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-top: 20px;
 }
 /*--
-	service Start 
+	service Start
 --*/
 #service {
   text-align: center;
@@ -178,7 +178,7 @@ font header .navbar-default .navbar-nav li a:hover {
   line-height: 1.8;
 }
 /*--
-	call-to-action Start 
+	call-to-action Start
 --*/
 #call-to-action {
   background: url("../img/call-to-action-bg.jpg") no-repeat;
@@ -220,7 +220,7 @@ font header .navbar-default .navbar-nav li a:hover {
   margin-top: 30px;
 }
 /*--
-	Feature Start 
+	Feature Start
 --*/
 #feature {
   background: url("../img/featue-bg.jpg");
@@ -259,7 +259,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding: 10px 20px;
 }
 /*--
-	content Start 
+	content Start
 --*/
 #testimonial {
   padding: 100px 0;
@@ -334,7 +334,7 @@ font header .navbar-default .navbar-nav li a:hover {
   border: 0px;
 }
 /*--
-	features Start 
+	features Start
 --*/
 #clients-logo-section {
   padding-top: 30px;
@@ -344,13 +344,13 @@ font header .navbar-default .navbar-nav li a:hover {
   padding: 0px 50px;
 }
 /*---------------------------------------------
-					Work Start 
+					Work Start
 -----------------------------------------------*/
 /*--
-	Slider-work Start 
+	Slider-work Start
 --*/
 #global-header {
-  background: url("../img/slider-bg2.jpg") no-repeat;
+  background: url("../img/slider-bg.jpg") no-repeat;
   background-size: cover;
   padding-top: 150px;
   padding-bottom: 107px;
@@ -390,7 +390,7 @@ font header .navbar-default .navbar-nav li a:hover {
   word-spacing: 3px;
 }
 /*--
-	portfolio-work Start 
+	portfolio-work Start
 --*/
 #portfolio-work {
   overflow: hidden;
@@ -526,7 +526,7 @@ font header .navbar-default .navbar-nav li a:hover {
   display: none;
 }
 /*--
-	wrapper-work Start 
+	wrapper-work Start
 --*/
 #wrapper-work {
   overflow: hidden;
@@ -576,7 +576,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-right: 80px;
 }
 /*--
-	features-work Start 
+	features-work Start
 --*/
 #features-work {
   padding-top: 50px;
@@ -589,17 +589,17 @@ font header .navbar-default .navbar-nav li a:hover {
   padding: 40px 0px;
 }
 /*---------------------------------------------
-					Work Close 
+					Work Close
 -----------------------------------------------*/
 /*=============================================*/
 /*---------------------------------------------
-					 Contact Start 
+					 Contact Start
 -----------------------------------------------*/
 /*--
-	slider-contact Start 
+	slider-contact Start
 --*/
 #slider-contact {
-  background: url("../img/slider-bg2.jpg") no-repeat;
+  background: url("../img/slider-bg.jpg") no-repeat;
   background-size: cover;
   padding-top: 150px;
   padding-bottom: 107px;
@@ -639,7 +639,7 @@ font header .navbar-default .navbar-nav li a:hover {
   word-spacing: 3px;
 }
 /*--
-	contact-form Start 
+	contact-form Start
 --*/
 #contact-form {
   padding-top: 70px;
@@ -677,7 +677,7 @@ font header .navbar-default .navbar-nav li a:hover {
   font-size: 18px;
 }
 /*--
-	wrapper-contact Start 
+	wrapper-contact Start
 --*/
 .address-block li {
   margin-bottom: 20px;
@@ -729,7 +729,7 @@ font header .navbar-default .navbar-nav li a:hover {
   display: block;
 }
 /*--
-	features-contact Start 
+	features-contact Start
 --*/
 #features-contact {
   padding-top: 50px;
@@ -742,7 +742,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding: 40px 0px;
 }
 /*---------------------------------------------
-					Contact Close 
+					Contact Close
 -----------------------------------------------*/
 /*--------- Heading------------*/
 .heading {
@@ -763,7 +763,7 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 /*---------------------------*/
 /*--
-	footer Start 
+	footer Start
 --*/
 footer {
   background: #F5F5F5;
