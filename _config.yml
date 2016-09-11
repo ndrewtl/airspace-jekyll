@@ -22,7 +22,6 @@ logo: "/assets/logo.png"
 
 # Build settings
 markdown: kramdown
-highlightjs_theme: "monokai_sublime"
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
