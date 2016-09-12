@@ -9,4 +9,4 @@ Terms and Conditions for Free Templates - from https://www.themefisher.com/licen
 7- You are most welcome to share our templates with your clients/friends, but please share our license with them so that they can be aware of our copyrights.
 8- You can convert our templates on any CMS (like WordPress, Joomla etc.) for your client and personal purposes but cannot resell these templates after the CMS conversion.
 
-This project is not associated with ThemeFisher. All design credit to the original authors of this template.
+This jekyll port is not associated with ThemeFisher. All design credit to the original authors of this template.
