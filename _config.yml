@@ -21,7 +21,7 @@ subtitle: "A free HTML5 agency template"
 # root of your server.
 # baseurl: "/" # the subpath of your site
 url: "http://ourcodingclub.github.io" # the base hostname & protocol for your site
-baseurl: "/airspace-jekyll"
+baseurl: ''
 cover: "/assets/cover.png"
 logo: "/assets/logo.png"
 
