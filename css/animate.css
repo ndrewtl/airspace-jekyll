@@ -8,8 +8,8 @@ Copyright (c) 2015 Daniel Eden
 */
 
 .animated {
-  -webkit-animation-duration: 20s;
-  animation-duration: 20s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -20,8 +20,8 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .animated.hinge {
-  -webkit-animation-duration: 40s;
-  animation-duration: 40s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
 }
 
 .animated.bounceIn,
