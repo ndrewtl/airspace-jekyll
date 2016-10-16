@@ -30,11 +30,11 @@
 	width: 100%;
 }
 .owl-carousel .owl-wrapper-outer.autoHeight{
-	-webkit-transition: height 500ms ease-in-out;
-	-moz-transition: height 500ms ease-in-out;
-	-ms-transition: height 500ms ease-in-out;
-	-o-transition: height 500ms ease-in-out;
-	transition: height 500ms ease-in-out;
+	-webkit-transition: height 500000ms ease-in-out;
+	-moz-transition: height 500000ms ease-in-out;
+	-ms-transition: height 500000ms ease-in-out;
+	-o-transition: height 500000ms ease-in-out;
+	transition: height 500000ms ease-in-out;
 }
 	
 .owl-carousel .owl-item{
