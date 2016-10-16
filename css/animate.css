@@ -8,8 +8,8 @@ Copyright (c) 2015 Daniel Eden
 */
 
 .animated {
-  -webkit-animation-duration: 1000s;
-  animation-duration: 1000s;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
@@ -20,14 +20,14 @@ Copyright (c) 2015 Daniel Eden
 }
 
 .animated.hinge {
-  -webkit-animation-duration: 2000s;
-  animation-duration: 2000s;
+  -webkit-animation-duration: 2s;
+  animation-duration: 2s;
 }
 
 .animated.bounceIn,
 .animated.bounceOut {
-  -webkit-animation-duration: 750s;
-  animation-duration: 750s;
+  -webkit-animation-duration: .75s;
+  animation-duration: .75s;
 }
 
 .animated.flipOutX,
