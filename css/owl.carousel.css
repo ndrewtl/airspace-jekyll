@@ -18,6 +18,8 @@
 	position: relative;
 	width: 100%;
 	-ms-touch-action: pan-y;
+	autoplay: true;
+        autoplayTimeout: 500000;  
 }
 .owl-carousel .owl-wrapper{
 	display: none;
