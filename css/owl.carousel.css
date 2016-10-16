@@ -18,6 +18,7 @@
 	position: relative;
 	width: 100%;
 	-ms-touch-action: pan-y;
+	slideSpeed: 5000ms;
 }
 .owl-carousel .owl-wrapper{
 	display: none;
@@ -51,6 +52,7 @@
 	-ms-: 1000ms;
 	user-select: none;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	slideSpeed: 5000ms;
 }
 
 /* mouse grab icon */
