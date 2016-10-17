@@ -4,6 +4,7 @@ title: Preparing to launch Coding Club
 subtitle: Websites, grant applications and promotion!
 date: 2016-10-17 21:11:27
 author: Gergana
+meta: "Prep and organisation"
 ---
 
 Over the summer, we have been preparing to launch Coding Club - lots of excitement and a long to do list! We are all looking forward to Coding Club - our vision of a supportive peer-to-peer learning community becoming a reality!
