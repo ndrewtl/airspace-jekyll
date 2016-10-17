@@ -14,4 +14,5 @@ I'm looking forward to being reunited with the rest of the Coding Club team back
 
 Our first workshop is scheduled for mid-November - if you would like to join, please email <b>ourcodingclub@gmail.com</b> - we have set up <b><a href="http://doodle.com/poll/ivksm77z6pfeupin">a doodle poll</a></b> to figure out what will be the optimal time for the workshops to take place - please vote! You can also join our mailing list - we will be sending notifications with our weekly themes - you can join in for the workshops that interest you and thus develop the skills most relevant to you!
 
+<img src="img/poster.png" width="759">
 ![Poster]({{ site.url }}/img/poster.png =759x1076)
