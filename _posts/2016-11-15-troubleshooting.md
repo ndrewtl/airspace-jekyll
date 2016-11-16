@@ -54,9 +54,7 @@ Here we have compiled a list of mistakes we often make. Do you think we have for
 
 5. <b>Data not in the right format.</b> In our first tutorial we created a data frame and plotted species richness - if we had chosen a data matrix instead, though, that plot would have looked way different (and wrong). We use matrices when the variables are all the same type (all text, all numerical) and of the same length (so same number of rows). Data frames for when we have multiple variables of different types, and vectors for a series of numbers. If your results/plots make you feel suspicious, it's good to go back to your data and check - did it import right into R (here is how to check), and is it in the right format?
 
-<div class="block">
-          <center><img src="{{ site.baseurl }}/img/wrong.png" alt="Img"></center>
-        </div>
+<center><img src="{{ site.baseurl }}/img/wrong.png" alt="Img"></center>
 Figure 1. An unfortunate looking barplot - because in matrices all variables are of the same type, here R expects taxa_f - the names of the different taxa - to have a numerical value, and lumps all the species richness values together in the second bar.
 
 
@@ -64,17 +62,11 @@ Figure 1. An unfortunate looking barplot - because in matrices all variables are
 
 7. <b>R crashed!</b> If you've overloaded R, it can make a dramatic exit (bomb image and all), or sometimes it stops responding and you have to terminate the session. That is why it's very important to save your scripts often, but it's better to save them as new files, e.g. Edi_biodiv_16thNov.R, instead of overwriting the same file - that way if you want to revert back to old code or use some part of it, it's easy to find it. This is the most basic type of version control - we will learn more about version control in future tutorials.
 
-<div class="block">
-          <center><img src="{{ site.baseurl }}/img/bomb.png" alt="Img"></center>
-        </div>
-
+<center><img src="{{ site.baseurl }}/img/bomb.png" alt="Img"></center>
 
 8. <b>I am stuck in a loop of pluses!</b> If the number of opening and closing brackets don't match up, R thinks there is more code coming, that is why in the console it is prompting you to add more code - every time you press enter, a new + appears. Press <i>Escape</i> on your keyboard to get back to the normal `>` prompt in the console and check your code to find your error.
 
-<div class="block">
-          <center><img src="{{ site.baseurl }}/img/pluses.png" alt="Img"></center>
-        </div>
-
+<center><img src="{{ site.baseurl }}/img/pluses.png" alt="Img"></center>
 
 9. <b>The cursor in the script file changed from | to _ and now text gets overwritten when I type.<b> This happens when you accidentally press <i>Insert</i> on your keyboard and as a result when you add new text, the old text after it get written over. Press <i>Insert</i> again to go back to normal.
 
