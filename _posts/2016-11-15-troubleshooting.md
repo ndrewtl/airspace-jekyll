@@ -59,33 +59,36 @@ Here we have compiled a list of mistakes we often make. Do you think we have for
         </div>
 Figure 1. An unfortunate looking barplot - because in matrices all variables are of the same type, here R expects taxa_f - the names of the different taxa - to have a numerical value, and lumps all the species richness values together in the second bar.
 
+
 6. <b>Wrong data distribution used in models.</b> There are several reasons why models won't converge, including the use in inappropriate distribution type - usually we choose between normal (gaussian), binomial, Poisson, or Quasipoisson distributions - we will learn more about when to use each of them in our workshops on modelling.
 
-6. <b>R crashed!</b> If you've overloaded R, it can make a dramatic exit (bomb image and all), or sometimes it stops responding and you have to terminate the session. That is why it's very important to save your scripts often, but it's better to save them as new files, e.g. Edi_biodiv_16thNov.R, instead of overwriting the same file - that way if you want to revert back to old code or use some part of it, it's easy to find it. This is the most basic type of version control - we will learn more about version control in future tutorials.
+7. <b>R crashed!</b> If you've overloaded R, it can make a dramatic exit (bomb image and all), or sometimes it stops responding and you have to terminate the session. That is why it's very important to save your scripts often, but it's better to save them as new files, e.g. Edi_biodiv_16thNov.R, instead of overwriting the same file - that way if you want to revert back to old code or use some part of it, it's easy to find it. This is the most basic type of version control - we will learn more about version control in future tutorials.
 
 <div class="block">
           <center><img src="{{ site.baseurl }}/img/bomb.png" alt="Img"></center>
         </div>
 
-7. <b>I am stuck in a loop of pluses!</b> If the number of opening and closing brackets don't match up, R thinks there is more code coming, that is why in the console it is prompting you to add more code - every time you press enter, a new + appears. Press <i>Escape</i> on your keyboard to get back to the normal `>` prompt in the console and check your code to find your error.
+
+8. <b>I am stuck in a loop of pluses!</b> If the number of opening and closing brackets don't match up, R thinks there is more code coming, that is why in the console it is prompting you to add more code - every time you press enter, a new + appears. Press <i>Escape</i> on your keyboard to get back to the normal `>` prompt in the console and check your code to find your error.
 
 <div class="block">
           <center><img src="{{ site.baseurl }}/img/pluses.png" alt="Img"></center>
         </div>
 
-8. <b>The cursor in the script file changed from | to _ and now text gets overwritten when I type.<b> This happens when you accidentally press <i>Insert</i> on your keyboard and as a result when you add new text, the old text after it get written over. Press <i>Insert</i> again to go back to normal.
+
+9. <b>The cursor in the script file changed from | to _ and now text gets overwritten when I type.<b> This happens when you accidentally press <i>Insert</i> on your keyboard and as a result when you add new text, the old text after it get written over. Press <i>Insert</i> again to go back to normal.
 
 <a name="help"></a>
 
 ### 3. Find help online
 
-Copying and googling the error message is always a good start - chances are someone has already encountered that problem and has asked about it online. If the error message is very long, try paraphrasing based on what you think the problem might be. There are several really useful online forums and websites where people ask for and receive help, such as <a href="http://stackoverflow.com ">Stackoverflow</a> and <a href="https://www.r-bloggers.com/">Rbloggers</a>.
+<b>Copying and googling the error message is always a good start</b> - chances are someone has already encountered that problem and has asked about it online. If the error message is very long, try paraphrasing based on what you think the problem might be. There are several really useful online forums and websites where people ask for and receive help, such as <a href="http://stackoverflow.com ">Stackoverflow</a> and <a href="https://www.r-bloggers.com/">Rbloggers</a>.
 
-For "how to ..." type queries, a google search will often result in tutorials, and there might be Youtube videos as well.
+<b>For "how to ..." type queries, a google search will often result in tutorials, and there might be Youtube videos as well.</b>
 
-Finally, we are currently compiling a "Useful links" list of helpful websites and tutorials - we will be adding it soon, so keen an eye out!
+Finally, we are currently compiling a <b>"Useful links" list of helpful websites and tutorials</b> - we will be adding it soon, so keen an eye out! We are also very happy to answer any stats/programming questions you might have - feel free to contact us on ourcodingclub@gmail.com!
 
-Of course, R won't always tell you if you are doing something wrong - sometimes your code is correct, but you are doing the wrong type of analysis for your data. Nevertheless, making sure you avoid the common but oh so easy mistakes is a great point to start on - even the most complex of tests can be brought down by a missing comma.
+<b>Of course, R won't always tell you if you are doing something wrong - sometimes your code is correct, but you are doing the wrong type of analysis for your data. Nevertheless, making sure you avoid the common but oh so easy mistakes is a great point to start on - even the most complex of tests can be brought down by a missing comma.</b>
 
 ### Tutorial outcomes:
 
