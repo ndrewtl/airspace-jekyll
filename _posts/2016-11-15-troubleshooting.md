@@ -1,8 +1,8 @@
 ---
 layout: post
 title: Troubleshooting and how to find help
-subtitle: Importing and exploring data, making graphs!
-date: 2016-11-13 17:11:27
+subtitle: How to avoid common mistakes in R
+date: 2016-11-15 17:11:27
 author: Gergana
 meta: "RBasics"
 ---
