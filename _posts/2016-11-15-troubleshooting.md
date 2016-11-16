@@ -55,8 +55,8 @@ Here we have compiled a list of mistakes we often make. Do you think we have for
 5. <b>Data not in the right format.</b> In our first tutorial we created a data frame and plotted species richness - if we had chosen a data matrix instead, though, that plot would have looked way different (and wrong). We use matrices when the variables are all the same type (all text, all numerical) and of the same length (so same number of rows). Data frames for when we have multiple variables of different types, and vectors for a series of numbers. If your results/plots make you feel suspicious, it's good to go back to your data and check - did it import right into R (here is how to check), and is it in the right format?
 
 <center><img src="{{ site.baseurl }}/img/wrong.png" alt="Img"></center>
-Figure 1. An unfortunate looking barplot - because in matrices all variables are of the same type, here R expects taxa_f - the names of the different taxa - to have a numerical value, and lumps all the species richness values together in the second bar.
 
+Figure 1. An unfortunate looking barplot - because in matrices all variables are of the same type, here R expects taxa_f - the names of the different taxa - to have a numerical value, and lumps all the species richness values together in the second bar.
 
 6. <b>Wrong data distribution used in models.</b> There are several reasons why models won't converge, including the use in inappropriate distribution type - usually we choose between normal (gaussian), binomial, Poisson, or Quasipoisson distributions - we will learn more about when to use each of them in our workshops on modelling.
 
@@ -68,7 +68,7 @@ Figure 1. An unfortunate looking barplot - because in matrices all variables are
 
 <center><img src="{{ site.baseurl }}/img/pluses.png" alt="Img"></center>
 
-9. <b>The cursor in the script file changed from | to _ and now text gets overwritten when I type.<b> This happens when you accidentally press <i>Insert</i> on your keyboard and as a result when you add new text, the old text after it get written over. Press <i>Insert</i> again to go back to normal.
+9. <b>The cursor in the script file changed from | to _ and now text gets overwritten when I type.</b> This happens when you accidentally press <i>Insert</i> on your keyboard and as a result when you add new text, the old text after it get written over. Press <i>Insert</i> again to go back to normal.
 
 <a name="help"></a>
 
