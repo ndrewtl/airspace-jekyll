@@ -63,7 +63,7 @@ Figure 1. An unfortunate looking barplot - because in matrices all variables are
 <center><img src="{{ site.baseurl }}/img/bomb.png" alt="Img"></center>
 
 
-<b> - I am stuck in a loop of pluses!</b> If the number of opening and closing brackets don't match up, R thinks there is more code coming, that is why in the console it is prompting you to add more code - every time you press enter, a new + appears. Press <i>Escape</i> on your keyboard to get back to the normal `>` prompt in the console and check your code to find your error.
+<b> - I am stuck in a loop of pluses!</b> If the numbers of opening and closing brackets don't match up, R thinks there is more code coming, that is why in the console it is prompting you to add more code - every time you press enter, a new + appears. Press <i>Escape</i> on your keyboard to get back to the normal `>` prompt in the console and check your code to find your error.
 
 
 <center><img src="{{ site.baseurl }}/img/pluses.png" alt="Img"></center>
