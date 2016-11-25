@@ -27,10 +27,6 @@ logo: "/assets/logo.png"
 
 # Build settings
 markdown: kramdown
-markdown: redcarpet
-redcarpet:
-  extensions:
-    - lax_spacing
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
