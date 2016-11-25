@@ -27,6 +27,10 @@ logo: "/assets/logo.png"
 
 # Build settings
 markdown: kramdown
+markdown: redcarpet
+redcarpet:
+  extensions:
+    - lax_spacing
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
@@ -38,8 +42,3 @@ descriptions:
 
   - cat: dummy
     desc: "Just some placeholder posts, lorem ipsum and the rest."
-
-markdown: redcarpet
-redcarpet:
-  extensions:
-    - lax_spacing
