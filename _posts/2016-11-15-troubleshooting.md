@@ -87,7 +87,9 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Use
 
 <a name="practice"></a>
 
-### 4. Practice! Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?
+### 4. Practice! 
+
+<b>Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?</b>
 
 ### Tutorial outcomes:
 
