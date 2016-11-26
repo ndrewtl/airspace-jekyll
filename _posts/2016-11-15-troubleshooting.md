@@ -18,6 +18,8 @@ meta: "RBasics"
 
 #### <a href="#help">3. Learn how to find help online</a>
 
+#### <a href="#practice">4. Practice by fixing errors in an example script</a>
+
 In <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html">our first tutorial</a> we learned how to import data into RStudio, conduct a simple analysis (calculate species richness) and plot the results. Here, we will build upon that knowledge by getting to grips with common coding errors and how to avoid them - you might have seen some of these error messages already, but after completing this tutorial, we hope they won't make an appearance too often on your RStudio screens.
 
 <a name="id"></a>
@@ -82,6 +84,10 @@ Figure 1. An unfortunate looking barplot - because in matrices all variables are
 We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Useful links" list of helpful websites and tutorials</b></a> where you can find additional help. We are very happy to answer any stats/programming questions you might have - feel free to contact us on ourcodingclub@gmail.com!
 
 <b>Of course, R won't always tell you if you are doing something wrong - sometimes your code is correct, but you are doing the wrong type of analysis for your data. Nevertheless, making sure you avoid the common but oh so easy mistakes is a great point to start on - even the most complex of tests can be brought down by a missing comma.</b>
+
+<a name="practice"></a>
+
+### 4. Practice! Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?
 
 ### Tutorial outcomes:
 
