@@ -1,7 +1,7 @@
-# _Airspace_ for Jekyll
-![screenshot](screenshots/home.png "Description goes here")
+# Coding Club website
 
-This Jekyll theme is a port of ThemeFisher's Airspace template. It is released under ThemeFisher's free license, which requires attribution.
+## Coding Club is a peer-to-peer learning community based at the University of Edinburgh - you can find our website at https://ourcodingclub.github.io/
 
-## Usage
-To start your project, [fork this respository](https://github.com/luminousrubyist/airspace-jekyll/fork), put in your content, and go!
+## Our materials are free to share and we welcome feedback at ourcodingclub@gmail.com
+
+### More information on the datasets we use is available in the workshop-specific repositories.
