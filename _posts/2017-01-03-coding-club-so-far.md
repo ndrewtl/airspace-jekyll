@@ -13,7 +13,7 @@ meta: "Prep and organisation"
 We've been pairing up coding knowledge with cookies (of course!) - a year ago, I certainly wouldn't have thought I'd be decorating cookies with "Yay R!"; now I'm entertained by the fact that I piped a pipe on a cookie.
 
 Last semester we organised three workshops, led by myself and John Godlee with excellent help from Sandra Angers-Blondin, Haydn Thomas and Pedro Silva de Miranda. So far we've focused on data exploration and visualisation, troubleshooting in R, and writing
-reproducible code with Markdown - we are looking forward to tackling mixed effects models, maps, Shiny applications, Github and more in 2017! All of the materials from our workshops are freely available online (https://ourcodingclub.github.io/tutorials/), so everyone can go through the different tasks in their own time as well. If you are going through the tutorials remotely, we are very happy to answer questions at ourcodingclub@gmail.com.
+reproducible code with Markdown - we are looking forward to tackling mixed effects models, maps, Shiny applications, Github and more in 2017! All of the materials from our workshops are freely available online (https://ourcodingclub.github.io/tutorials/), so everyone can go through the different tasks in their own time as well. If you are going through the tutorials remotely, we are very happy to answer questions at <b>ourcodingclub@gmail.com.</b>
 
 <center><img src="https://lh3.googleusercontent.com/MnXtHIhvF3-iXkJ0ujcMC12tNTQrRxfTqCtdkiJb5WAAdLAeW41clasjTOOvmwJ63wezgvZRX1nfQUA=w1919-h859-rw" alt="Workshops" style="width: 800px;"/></center>
 
