@@ -115,6 +115,7 @@ Data points represent raw data with a linear model fit and 95% confidence interv
     xlab("\nYear"))
 ```
 
+
 #### Let's make more plots, again using our customised theme
 
 <b>Filter the data to include only UK populations.</b>
@@ -131,6 +132,7 @@ corn.bunting <- filter(LPI.UK, Common.Name == "Corn bunting")
 reed.bunting <- filter(LPI.UK, Common.Name == "Reed bunting")
 meadow.pipit <- filter(LPI.UK, Common.Name == "Meadow pipit")
 ```
+
 
 #### Making the plots
 
