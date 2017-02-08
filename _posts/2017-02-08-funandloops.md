@@ -208,4 +208,4 @@ for (i in 1:length(Sp_list)) {                                    # For every it
 
 The files will be saved in your working directory - to find out where that is, run the code `getwd()` and to set a new working directory, run the code `setwd("Insert file path here")`, or click `Session/Set Working directory/Choose Working Directory` from the RStudio menu.
 
-You can now write functions and loops - congrats! Feel free to contact us with any questions at ourcodingclub@gmail.com.
+#### You can now write functions and loops - congrats! Feel free to contact us with any questions at ourcodingclub@gmail.com.
