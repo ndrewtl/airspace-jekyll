@@ -98,9 +98,8 @@ theme_my_own <- function(){
 ```
 
 <img src="{{ site.baseurl }}/img/gg_scatter3.png" alt="Img" style="width: 600px;"/>
-
-Figure 1. Population trends of Griffon vulture in Croatia and Italy from 1970 to 2014. 
-Data points represent raw data with a linear model fit and 95% confidence intervals.
+<p>Figure 1. Population trends of Griffon vulture in Croatia and Italy from 1970 to 2014. 
+Data points represent raw data with a linear model fit and 95% confidence intervals.</p>
 
 <b>Now we can make the same plot, but this time instead of all the code, we can just add `+ theme_my_own()`. Try changing the colours we use in the plot - where it says `"#EE7600", "#00868B"`, you need to add in the code for colours of your choice. TIP: Check out our <a href="">data visualisation tutorial</a> that includes instructions on how to install Colourpicker - Colourpicker is an addin for RStudio that saves you time from googling colour codes.</b>
 
@@ -172,8 +171,7 @@ ggsave(panel, file="Pop_trend_panel.png", width=10, height=8)
 ```
 
 <center><img src="{{ site.baseurl }}/img/Pop_trend_panel.png" alt="Img" style="width: 1000px;"/></center>
-
-Figure 2. Population trends of four bird species from 1970 to 2014 based on the Living Planet Index database. Data points represent raw data with a linear model fit and 95% confidence intervals.
+<p>Figure 2. Population trends of four bird species from 1970 to 2014 based on the Living Planet Index database. Data points represent raw data with a linear model fit and 95% confidence intervals.</p>
 
 <a name="loop"></a>
 
