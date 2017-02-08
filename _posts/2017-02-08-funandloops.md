@@ -97,8 +97,9 @@ theme_my_own <- function(){
 }
 ```
 
-<center><img src="{{ site.baseurl }}/img/gg_scatter3.png" alt="Img" style="width: 500px;"/>
-Figure 1. Population trends of Griffon vulture in Croatia and Italy from 1970 to 2014. Data points represent raw data with a linear model fit and 95% confidence intervals.</center>
+<img src="{{ site.baseurl }}/img/gg_scatter3.png" alt="Img" style="width: 600px;"/>
+Figure 1. Population trends of Griffon vulture in Croatia and Italy from 1970 to 2014. 
+Data points represent raw data with a linear model fit and 95% confidence intervals.
 
 <b>Now we can make the same plot, but this time instead of all the code, we can just add `+ theme_my_own()`. Try changing the colours we use in the plot - where it says `"#EE7600", "#00868B"`, you need to add in the code for colours of your choice. TIP: Check out our <a href="">data visualisation tutorial</a> that includes instructions on how to install Colourpicker - Colourpicker is an addin for RStudio that saves you time from googling colour codes.</b>
 
