@@ -101,7 +101,7 @@ theme_my_own <- function(){
 }
 ```
 
-<b>Now we can make the same plot, but this time instead of all the code, we can just add `+ theme_my_own()`. Try changing the colours we use in the plot - where it says `"#EE7600", "#00868B"`, you need to add in the code for colours of your choice. TIP: Check out our <a href="">data visualisation tutorial</a> that includes instructions on how to install Colourpicker - Colourpicker is an addin for RStudio that saves you time googling colour codes.</b>
+<b>Now we can make the same plot, but this time instead of all the code, we can just add `+ theme_my_own()`. Try changing the colours we use in the plot - where it says `"#EE7600", "#00868B"`, you need to add in the code for colours of your choice. TIP: Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html#colourpicker">data visualisation tutorial</a> that includes instructions on how to install Colourpicker - Colourpicker is an addin for RStudio that saves you time googling colour codes.</b>
 
 ```r
 (vulture_scatter <- ggplot(vultureITCR, aes (x=year, y=abundance, colour=Country.list)) +
