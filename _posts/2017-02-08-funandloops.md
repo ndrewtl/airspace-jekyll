@@ -162,6 +162,7 @@ meadow.pipit <- filter(LPI.UK, Common.Name == "Meadow pipit")
     labs(y = "Abundance\n", x="", title="Meadow pipit"))
 ```
 
+
 #### Now arrange all 4 plots in a panel and save the file
 
 ```r
