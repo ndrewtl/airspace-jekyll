@@ -188,6 +188,7 @@ That wasn't too bad, but you are still repeating lots of code, and here you have
 Sp_list <- list(house.sparrow, great.tit, corn.bunting, meadow.pipit)
 ```
 
+
 #### Writing the loop
 
 ```r
