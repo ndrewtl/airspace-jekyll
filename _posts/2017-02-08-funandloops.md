@@ -74,6 +74,7 @@ vultureITCR <- filter(vulture, Country.list == c("Croatia", "Italy"))
           legend.text = element_text(size=12, face="italic"),                  # Setting the font for the legend text
           legend.title = element_blank(),                                      # Removing the legend title
           legend.position=c(0.9, 0.9)))               # Setting the position for the legend - 0 is left/bottom, 1 is top/right
+```
 
 <b>Here we are using the `theme_bw()` theme but we are making lots of modifications to it. We tend to make the same modifications to it, so lets turn them into a function! To start writing a function, you first designate an object to it - what will your function be called? Since we are making a personalised theme for `ggplot2`, here I've called my function `theme_my_own`. To tell R that you are writing a function, you use `function()` and then in the commands that you want your function to include go between the `{}`.</b>
 
