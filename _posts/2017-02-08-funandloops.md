@@ -98,6 +98,7 @@ theme_my_own <- function(){
 ```
 
 <img src="{{ site.baseurl }}/img/gg_scatter3.png" alt="Img" style="width: 600px;"/>
+
 Figure 1. Population trends of Griffon vulture in Croatia and Italy from 1970 to 2014. 
 Data points represent raw data with a linear model fit and 95% confidence intervals.
 
