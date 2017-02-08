@@ -170,8 +170,9 @@ panel <- grid.arrange(house.sparrow_scatter, great.tit_scatter, corn.bunting_sca
 ggsave(panel, file="Pop_trend_panel.png", width=10, height=8)
 ```
 
-<center><img src="{{ site.baseurl }}/img/Pop_trend_panel.png" alt="Img" style="width: 1000px;"/>
-Figure 1. Population trends of four bird species from 1970 to 2014 based on the Living Planet Index database. Data points represent raw data with a linear model fit and 95% confidence intervals.</center>
+<center><img src="{{ site.baseurl }}/img/Pop_trend_panel.png" alt="Img" style="width: 1000px;"/></center>
+
+Figure 2. Population trends of four bird species from 1970 to 2014 based on the Living Planet Index database. Data points represent raw data with a linear model fit and 95% confidence intervals.
 
 <a name="loop"></a>
 
@@ -187,7 +188,7 @@ That wasn't too bad, but you are still repeating lots of code, and here you have
 Sp_list <- list(house.sparrow, great.tit, corn.bunting, meadow.pipit)
 ```
 
-# Writing the loop
+#### Writing the loop
 
 ```r
 for (i in 1:length(Sp_list)) {                                    # For every item along the length of Sp_list we want R to perform the following functions
