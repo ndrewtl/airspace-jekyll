@@ -8,7 +8,7 @@ meta: "Tutorials"
 ---
 <div class="block">
 	<center>
-		<img src="{{ site.baseurl }}/img/tutheaderloops.png" alt="Img">
+		<img src="{{ site.baseurl }}/img/tutheaderloop.png" alt="Img">
 	</center>
 </div>
 
