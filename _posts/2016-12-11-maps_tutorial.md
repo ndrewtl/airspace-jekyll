@@ -45,16 +45,16 @@ setwd()
 
 ## Why use R for spatial data?
 
-##### __Less clicking__
+##### __Less clicking:__
   - Most conventional GIS software use a Graphical User Interface (GUI) which makes them easier to fumble through when you don't know what you're doing, but point and click interfaces become very laborious when performing analyses for the _n_ th time or when you really know your way around the software. R runs using a Command Line Interface, so while there may be more of a learning curve to begin with, it's pretty sweet once you know what to do.
 
-##### __Reproducible analyses with new data__
+##### __Reproducible analyses with new data:__
   - Imagine you have a data project where you are given new data every week, which you want compare using maps. Using a GUI, you would have to repeat your analyses step by step, every time your data came in, being careful to maintain formatting between maps. Using the command line in R, you only have to plug in the new data to the script and the maps will look the same every time.
 
-##### __Free__
+##### __Free:__
   - While ArcGIS and SuperGIS cost money to use, R packages are free and probably always will be.
 
-##### __A range of GIS packages for different applications__
+##### __A range of GIS packages for different applications:__
   - Using the R package system you can find the right GIS application for your project, and you can adapt and hack the packages already there to create something specific for your project.
 
 <a name="download"></a>
