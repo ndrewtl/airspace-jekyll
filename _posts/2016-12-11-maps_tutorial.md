@@ -199,16 +199,20 @@ Now you should have a map that looks something like this:
 <a name="shp"></a>
 
 ## Using shapefiles
-A shapefile is a data format developed by [ESRI](http://www.esri.com) used to hold information on spatial objects. Despite the name, a shapefile consists of a few different files:
+Shapefiles are a data format developed by [ESRI](http://www.esri.com) used to hold information on spatial objects. Despite the name, a shapefile consists of a few different files:
 
 Mandatory files:
-- .shp, The main file containing the geometry data
-- .shp, An index file
-- .dbf, An attribute file holding information on each object
+
+.shp, The main file containing the geometry data
+
+.shx, An index file
+
+.dbf, An attribute file holding information on each object
 
 Additional files:
-- .prj, A file containing information on the Co-ordinate Reference system
-- .shp.xml, a file containing object metadata, citations for data, etc.
+
+.prj, A file containing information on the Co-ordinate Reference system
+.shp.xml, a file containing object metadata, citations for data, etc.
 And many more!
 
 We are going to use a shapefile of the World's Freshwater Ecoregions provided by [The Nature Conservancy](http://www.feow.org) to investigate the range of the Brown Trout in Europe using data from the [GBIF database](http://www.gbif.org).
