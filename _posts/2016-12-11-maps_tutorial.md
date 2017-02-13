@@ -171,7 +171,7 @@ Now to download the map data from `ggmap`:
 Map_penguin <- get_map(location = bbox, source = "stamen", maptype = "terrain")
 ```
 
-We can check that the map is correct by plotting the `Map` object:
+We can check that the map is correct by plotting the `Map_penguin` object:
 
 ```r
 ggmap(Map_penguin)
@@ -201,19 +201,21 @@ Now you should have a map that looks something like this:
 ## Using shapefiles
 Shapefiles are a data format developed by [ESRI](http://www.esri.com) used to hold information on spatial objects. Despite the name, a shapefile consists of a few different files:
 
-Mandatory files:
+__Mandatory files:__
 
-.shp, The main file containing the geometry data
+.shp = The main file containing the geometry data
 
-.shx, An index file
+.shx = An index file
 
-.dbf, An attribute file holding information on each object
+.dbf = An attribute file holding information on each object
 
-Additional files:
+__Additional files:__
 
-.prj, A file containing information on the Co-ordinate Reference system
-.shp.xml, a file containing object metadata, citations for data, etc.
-And many more!
+.prj = A file containing information on the Co-ordinate Reference system
+
+.shp.xml = a file containing object metadata, citations for data, etc.
+
+__And many more!__
 
 We are going to use a shapefile of the World's Freshwater Ecoregions provided by [The Nature Conservancy](http://www.feow.org) to investigate the range of the Brown Trout in Europe using data from the [GBIF database](http://www.gbif.org).
 
