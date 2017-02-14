@@ -269,6 +269,8 @@ Now you should have a map that looks something like this:
   </tr>
 </table>
 
+![Img]({{ site.baseurl }}/img/Map_collage.png)
+
 <a name="shp"></a>
 
 ## Using shapefiles
