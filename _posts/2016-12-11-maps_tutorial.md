@@ -196,7 +196,7 @@ Now you should have a map that looks something like this:
 
 ![Img]({{ site.baseurl }}/img/Birds_ggmap.jpg)
 
-ggmap can access a whole load of different map types. Have a go at redoing the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`:
+#### ggmap can access a whole load of different map types. Have a go at redoing the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`:
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
