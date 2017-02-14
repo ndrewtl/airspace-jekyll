@@ -2,7 +2,7 @@
 layout: post
 title: Spatial Data and Maps
 subtitle: Using R as a GIS software tool and creating informative maps
-date: 2016-11-25T16:00:00.000Z
+date: 2017-02-14T16:00:00.000Z
 author: John
 meta: Maps_1
 ---
