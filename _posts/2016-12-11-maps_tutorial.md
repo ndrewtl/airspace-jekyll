@@ -207,9 +207,9 @@ Now you should have a map that looks something like this:
 <table class="tg">
   <tr>
     <th class="tg-031e">`source =`</th>
-    <th class="tg-031e">__google__</th>
-    <th class="tg-yw4l">__stamen__</th>
-    <th class="tg-yw4l">__osm__</th>
+    <th class="tg-031e"><b>google</b></th>
+    <th class="tg-yw4l"><b>stamen</b></th>
+    <th class="tg-yw4l"><b>osm</b></th>
   </tr>
   <tr>
     <td class="tg-031e" rowspan="11">`maptype =` </td>
