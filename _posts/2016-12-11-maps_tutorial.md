@@ -153,7 +153,7 @@ ggplot(pc_trim, aes(x = decimallongitude, y = decimallatitude, group = scientifi
 
 Now to make a map out of our graph using `ggmap`, which pulls map tiles from various online sources, including google maps and open street maps.
 
-First make a bounding box, to tell `ggmap` where to download map tiles from. The bounding box must be in the form of a vector, with decimal latitude and longitude values in this order `lowerleftlon, lowerleftlat, upperrightlon, upperrightlat`, which we can extract from our data frame using the following code:
+First make a bounding box (`bbox`), to tell `ggmap` where to download map tiles from. The bounding box must be in the form of a vector, with decimal latitude and longitude values in this order `lowerleftlon, lowerleftlat, upperrightlon, upperrightlat`, which we can extract from our data frame using the following code:
 
 ```r
 bbox <- c(min(pc_trim$decimallongitude) - 2,
@@ -195,6 +195,72 @@ ggmap(Map_penguin) +
 Now you should have a map that looks something like this:
 
 ![Img]({{ site.baseurl }}/img/Birds_ggmap.jpg)
+
+ggmap can access a whole load of different map types. Have a go at redoing the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`:
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e">`source =`</th>
+    <th class="tg-031e">`maptype =`</th>
+  </tr>
+  <tr>
+    <td class="tg-031e" rowspan="4">google</td>
+    <td class="tg-031e">satellite</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">terrain</td>
+  </tr>
+  <tr>
+    <td class="tg-031e">roadmap</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">hybrid</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l" rowspan="11">stamen</td>
+    <td class="tg-yw4l">terrain</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">terrain-background</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">terrain-labels</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">terrain-lines</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">toner</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">toner-background</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">toner-hybrid</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">toner-labels</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">toner-lines</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">toner-lite</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">watercolor</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l">osm</td>
+    <td class="tg-yw4l">&lt;empty&gt;</td>
+  </tr>
+</table>
 
 <a name="shp"></a>
 
