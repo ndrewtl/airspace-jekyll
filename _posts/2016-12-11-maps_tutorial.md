@@ -243,31 +243,32 @@ Now you should have a map that looks something like this:
     <td class="tg-yw4l"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">terrain-labels</td>
+    <td class="tg-yw4l"><br></td>
     <td class="tg-yw4l">toner-hybrid</td>
     <td class="tg-yw4l"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">terrain-lines</td>
+    <td class="tg-yw4l"><br></td>
     <td class="tg-yw4l">toner-labels</td>
     <td class="tg-yw4l"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">toner</td>
+    <td class="tg-yw4l"><br></td>
     <td class="tg-yw4l">toner-lines</td>
     <td class="tg-yw4l"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">toner-background</td>
+    <td class="tg-yw4l"><br></td>
     <td class="tg-yw4l">toner-lite</td>
     <td class="tg-yw4l"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l">toner-hybrid</td>
+    <td class="tg-yw4l"><br></td>
     <td class="tg-yw4l">watercolor</td>
     <td class="tg-yw4l"></td>
   </tr>
 </table>
+
 <a name="shp"></a>
 
 ## Using shapefiles
