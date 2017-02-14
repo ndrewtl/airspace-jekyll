@@ -207,61 +207,67 @@ Now you should have a map that looks something like this:
 <table class="tg">
   <tr>
     <th class="tg-031e">`source =`</th>
-    <th class="tg-031e">`maptype =`</th>
+    <th class="tg-031e">__google__</th>
+    <th class="tg-yw4l">__stamen__</th>
+    <th class="tg-yw4l">__osm__</th>
   </tr>
   <tr>
-    <td class="tg-031e" rowspan="4">google</td>
+    <td class="tg-031e" rowspan="11">`maptype =` </td>
     <td class="tg-031e">satellite</td>
+    <td class="tg-yw4l">terrain</td>
+    <td class="tg-yw4l">&lt;empty&gt;</td>
   </tr>
   <tr>
     <td class="tg-031e">terrain</td>
+    <td class="tg-yw4l">terrain-background</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-031e">roadmap</td>
+    <td class="tg-yw4l">terrain-labels</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-yw4l">hybrid</td>
+    <td class="tg-yw4l">terrain-lines</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
-    <td class="tg-yw4l" rowspan="11">stamen</td>
     <td class="tg-yw4l">terrain</td>
+    <td class="tg-yw4l">toner</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-yw4l">terrain-background</td>
+    <td class="tg-yw4l">toner-background</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-yw4l">terrain-labels</td>
+    <td class="tg-yw4l">toner-hybrid</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-yw4l">terrain-lines</td>
+    <td class="tg-yw4l">toner-labels</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-yw4l">toner</td>
+    <td class="tg-yw4l">toner-lines</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-yw4l">toner-background</td>
+    <td class="tg-yw4l">toner-lite</td>
+    <td class="tg-yw4l"></td>
   </tr>
   <tr>
     <td class="tg-yw4l">toner-hybrid</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l">toner-labels</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l">toner-lines</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l">toner-lite</td>
-  </tr>
-  <tr>
     <td class="tg-yw4l">watercolor</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l">osm</td>
-    <td class="tg-yw4l">&lt;empty&gt;</td>
+    <td class="tg-yw4l"></td>
   </tr>
 </table>
-
 <a name="shp"></a>
 
 ## Using shapefiles
