@@ -78,15 +78,15 @@ At the time of writing, `ggmap` needs to be compiled from source to maintain som
 
 The easiest way to think about map data is to first imagine a graph displaying whatever data you want, but with the x and y axes denoting longitude and latitude:
 
-![Img]({{ site.baseurl }}/img/Trout_Europe_Plot.jpg)
+![Img]({{ site.baseurl }}/img/Trout_Europe_Plot.jpeg)
 
 Then it's a simple case of adding a background map to your image to place the data points in the real world. In this case, the map was pulled from google maps using the `ggmap` package.
 
-![Img]({{ site.baseurl }}/img/Trout_Europe_Map.jpg)
+![Img]({{ site.baseurl }}/img/Trout_Europe_Map.jpeg)
 
 That was a simple example, and maps can incorporate more complex elements like polygons and lines:
 
-![Img]({{ site.baseurl }}/img/Polygon_Line_Map.jpg)
+![Img]({{ site.baseurl }}/img/Polygon_Line_Map.jpeg)
 
 <a name="create"></a>
 
