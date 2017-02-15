@@ -331,13 +331,13 @@ Now to read in the shapefiles. `readOGR()` converts a shapefile into a spatial o
 shpData_FEOW <- readOGR(dsn = "FEOW-TNC", layer = "FEOWv1_TNC")
 ```
 
-Now we have to check that the shapefile has the right Co-ordinate Reference System (CRS) to be read by `ggmap`:
+Now we have to check that the shapefile has the right Co-ordinate Reference System (CRS) to be read by `ggmap`. A CRS specifies how the coordinates of the 2D map displayed on the computer screen are related to the real globe, which is roughly spherical. There are lot's of different CRSs, used for maps at different scales, or of different parts of the globe (e.g. the poles) and it is important to keep them consistent amongst all the elements of your map:
 
 ```r
 proj4string(shpData_FEOW)
 ```
 
-To transform the CRS to the correct one we can use `spTransform` by specifying the correct CRS for `ggmap` (`+proj=longlat +datum=WGS84`), then restructure the object into a data frame ready for plotting using `fortify()`:
+To transform the CRS to the correct one we can use `spTransform` by specifying the correct CRS for `ggmap` which is EPSG:WGS84 (`+proj=longlat +datum=WGS84`), then restructure the object into a data frame ready for plotting using `fortify()`:
 
 ```r
 shpData_FEOW <- spTransform(shpData_FEOW, CRS("+proj=longlat +datum=WGS84"))
