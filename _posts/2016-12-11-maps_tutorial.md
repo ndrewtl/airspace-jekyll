@@ -337,7 +337,7 @@ Now we have to check that the shapefile has the right Co-ordinate Reference Syst
 proj4string(shpData_FEOW)
 ```
 
-To transform the CRS to the correct one we can use `spTransform` by specifying the correct CRS for `ggmap` which is EPSG:WGS84 (`+proj=longlat +datum=WGS84`), then restructure the object into a data frame ready for plotting using `fortify()`:
+To transform the CRS to the correct one we can use `spTransform` by specifying the correct CRS for `ggmap` which is [EPSG:WGS84](http://spatialreference.org/ref/epsg/wgs-84/) (`+proj=longlat +datum=WGS84`), then restructure the object into a data frame ready for plotting using `fortify()`:
 
 ```r
 shpData_FEOW <- spTransform(shpData_FEOW, CRS("+proj=longlat +datum=WGS84"))
