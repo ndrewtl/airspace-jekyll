@@ -114,13 +114,12 @@ penguin_trim <- penguin %>% select(one_of(vars))
 
 # Combine the dataframes
 pc_trim <- bind_rows(vulture_trim, penguin_trim)
-names(pc_trim)
-str(pc_trim)
+str(pc_trim) # Check column names and content
 # Check that species names are consistent
 unique(pc_trim$scientificname)
   # Needs cleaning up
 
-# Clean up "scientificname"
+# Clean up "scientificname" to make names consistent
 pc_trim$scientificname <- pc_trim$scientificname %>%
                             recode("Gyps rueppellii (A. E. Brehm, 1852)" = "Gyps rueppellii",
                               "Gyps rueppellii subsp. erlangeri Salvadori, 1908" = "Gyps rueppellii",
@@ -132,7 +131,7 @@ unique(pc_trim$scientificname)
   # Done
 ```
 
-Now we can make a preliminary plot to make sure the data looks right. Like I said before, a map is just a graph with longitude and latitude as the x and y axes:
+Now we can make a preliminary plot to make sure the data looks right. Remember, a map is just a graph with longitude and latitude as the x and y axes:
 
 ```r
 ggplot(pc_trim, aes(x = decimallongitude, y = decimallatitude, group = scientificname)) +
@@ -187,7 +186,7 @@ ggmap(Map_penguin) +
              data = pc_trim,
              alpha = 0.6,                     # `alpha=` sets the transparency of `geom_point()`, from 0 (transparent) to 1 (opaque)
              size = 2) +                      # `size=` sets the diameter of `geom_point()`
-  scale_colour_manual(values=c("red", "blue")) +
+  scale_colour_manual(values=c("red", "blue")) +  # `scale_colour_manual()` sets the geom_point colours to specific values
   xlab(expression("Decimal Longitude ("*degree*")")) +  # Wrapping label in `expression()` and using *degree* lets us add a degree symbol
   ylab(expression("Decimal Latitude ("*degree*")"))
 ```
