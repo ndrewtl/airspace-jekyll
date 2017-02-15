@@ -68,8 +68,16 @@ install.packages("readr") # Read in files
 install.packages("dplyr") # Formatting data
 install.packages("rgdal") # Manipulate map data
 install.packages("devtools")
+
+library(readr)
+library(dplyr)
+library(rgdal)
+library(devtools)
   devtools::install_github("dkahle/ggmap") # Plot map data, download map tiles from online sources
+    library(ggmap)
 ```
+
+
 At the time of writing, `ggmap` needs to be compiled from source to maintain some functionality, hence `  devtools::install_github("dkahle/ggmap")`, but this might change in the future.
 
 <a name="map_data"></a>
