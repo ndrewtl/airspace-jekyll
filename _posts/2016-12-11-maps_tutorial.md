@@ -97,8 +97,8 @@ For this part of the tutorial we are going to create a map showing the spatial e
 First, import the data we need, `Gyps_rueppellii_GBIF.csv` and `Spheniscus_dermersus_GBIF.csv`:
 
 ```r
-vulture <- read.csv(Gyps_rueppellii_GBIF.csv)
-penguin <- read.csv(Spheniscus_demersus_GBIF.csv)
+vulture <- read.csv("Gyps_rueppellii_GBIF.csv", sep="\t")
+penguin <- read.csv("Spheniscus_dermersus_GBIF.csv", sep="\t")
 ```
 
 Now onto cleaning up the data using `dplyr`. If you are keen to learn more about using the `dplyr` package, check out our [tutorial on data formatting and manipulation](https://ourcodingclub.github.io/2017/01/16/piping.html).
