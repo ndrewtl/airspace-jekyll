@@ -35,9 +35,9 @@ Here is a brief summary of the data distributions you might encounter most often
 
 <a name="distributions"></a>
 
-#### Gaussian - Continuous data (normal distribution and homoscedasticity provided)
-#### Poisson - Count abundance data (integer values, zero-inflated data, left-skewed data)
-#### Binomial - Binary variables (TRUE / FALSE, 0/1, presence / absence data)
+#### __Gaussian__ - Continuous data (normal distribution and homoscedasticity provided)
+#### __Poisson__ - Count abundance data (integer values, zero-inflated data, left-skewed data)
+#### __Binomial__ - Binary variables (TRUE / FALSE, 0/1, presence / absence data)
 
 Choosing the right distribution for your analysis is an important step about which you should think carefully - it could be frustrating to spend tons of time running models, plotting their results and writing them up only to realise that all along you should have used e.g. a Poisson distribution instead of a Gaussian one.
 
