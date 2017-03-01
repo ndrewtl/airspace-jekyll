@@ -27,7 +27,7 @@ As you are setting out to answer your research questions, often you might want t
 
 A slightly more complicated model might look like: `skylark.m <- lm(abundance ~ treatment + farm.area, family = poisson, data = skylarks)` - here you are modelling `abundance`, the response variable, as a function of `treatment` (e.g. a categorical variable describing different types of farms) and `farm.area` (i.e. the size of each farm on which abundance data were collected) - those are your explanatory variables. The `family` argument refers to the distribution of the data, in this case `abundance` represents count zero-inflated data, for which a Poisson distribution is suitable. The `data` argument refers to the dataframe from which the variables we are studying come.
 
-We will talk more about different data distributions later, until then, go to <a href = "INSERT LINK">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial.
+We will talk more about different data distributions later, until then, __go to <a href = "https://github.com/ourcodingclub/CC-8-Modelling">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial.__
 
 Here is a brief summary of the data distributions you might encounter most often.
 
