@@ -35,11 +35,9 @@ Here is a brief summary of the data distributions you might encounter most often
 
 <a name="distributions"></a>
 
-|   Family   |               Suitability                                                      |
-|:-----------|:-------------------------------------------------------------------------------|
-| Gaussian   | Continuous data (normal distribution and homoscedasticity provided)            |
-| Poisson    | Count abundance data (integer values, zero-inflated data, left-skewed data)    |
-| Binomial   | Binary variables (TRUE / FALSE, 0/1, presence / absence data)                  |
+#### Gaussian - Continuous data (normal distribution and homoscedasticity provided)
+#### Poisson - Count abundance data (integer values, zero-inflated data, left-skewed data)
+#### Binomial - Binary variables (TRUE / FALSE, 0/1, presence / absence data)
 
 Choosing the right distribution for your analysis is an important step about which you should think carefully - it could be frustrating to spend tons of time running models, plotting their results and writing them up only to realise that all along you should have used e.g. a Poisson distribution instead of a Gaussian one.
 
@@ -82,7 +80,7 @@ apples$spacing2 <- as.factor(apples$spacing)
   labs(x = "Spacing (m)", y = "Yield (kg)"))
 ```
 
-<center><img src="{{ site.baseurl }}/img/apples2.png" alt="Img" style="width: 600px;"/></center>
+<center><img src="{{ site.baseurl }}/img/apples2.png" alt="Img" style="width: 700px;"/></center>
 
 From our boxplot we can see that yield is pretty similar across the different spacing distances - even though there is a trend towards higher yield at higher spacing, the error bars almost completely overlap. From looking at this boxplot alone, one might image our hypothesis of higher yield at higher spacing not being supported. Let's run a model to explicitly test this.
 
@@ -92,7 +90,7 @@ summary(apples.m)
 ```
 Check out the summary output of our model:
 
-<center><img src="{{ site.baseurl }}/img/output.png" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/output.png" alt="Img" style="width: 800px;"/></center>
 
 Turns out that yield does significantly differ between the three spacing categories - we can reject the null hypothesis of no effect of spacing on apple yield. It looks like apple yield is indeed higher when the distance between trees is higher - this is in line with our original ecological thoughts - the further away trees are from one another, the less they are limiting each others growth. But let's take a look at a few other things from the summary output. Notice how because `spacing2` is a factor, you get results for `spacing210`, `spacing214`. If you are looking for the `spacing26` category, that is the intercept - R just picks the first category in an alphabetical order and makes that one the intercept. You also get a `Multiple R-squared` value, and an `Adjusted R-squared` value. These values refer to how much of the variation in the `yield` variable is explained by our predictor `spacing2` - the values go from 0 to 1, with 1 meaning that our model variables explain 100% of the variation in the examined variable. `R-squared` values tend to increase as you add more terms to your model, but you also need to account for overfitting - the `Adjusted R-squared` value takes into account how many terms your model has, and how many data points are available in the response variable. From looking at our `R-squared` values, this is not a great model, which makes sense - imagine all the other things that could have an impact on yield that we have not studied - fertilisation levels, weather conditions, water availability, etc.
 
@@ -135,7 +133,7 @@ shag$year <- as.numeric(shag$year)
 shag.hist <- ggplot(shag, aes(pop)) + geom_histogram() + theme.clean()
 ```
 
-<center><img src="{{ site.baseurl }}/img/poisson2.png" alt="Img" style="width: 600px;"/></center>
+<center><img src="{{ site.baseurl }}/img/poisson2.png" alt="Img" style="width: 700px;"/></center>
 
 Our `pop` variable represents count abundance data, i.e. integer values (whole European Shags!), so a Poisson distribution is appropriate. Often count abundance data are zero-inflated and skewed towards the right - here our data are not like that, but if they were, a Poisson distribution would still have been appropriate.
 
@@ -155,7 +153,7 @@ From the summary of our model we can see that European Shag abundance varies sig
     labs(x = " ", y = "European Shag abundance"))
 ```
 
-<center><img src="{{ site.baseurl }}/img/shag.png" alt="Img" style="width: 600px;"/></center>
+<center><img src="{{ site.baseurl }}/img/shag.png" alt="Img" style="width: 700px;"/></center>
 
 __Figure 1. European shag abundance on the Isle of May, Scotland, between 1970 and 2006.__ Points represent raw data and model fit represents a generalised linear model with 95% confidence intervals.
 
