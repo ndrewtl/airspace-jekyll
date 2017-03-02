@@ -384,8 +384,9 @@ Map_FEOW +
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
 
+
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
-#### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
 
-#### https://www.surveymonkey.co.uk/r/NMD3N5K
+#### <a href="https://www.surveymonkey.co.uk/r/NMD3N5K
+">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
