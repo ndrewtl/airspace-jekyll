@@ -99,5 +99,7 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Use
 
 #### 3. If you can't figure out a solution yourself, you know where to find help
 
-We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
+#### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
+
+#### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
 https://www.surveymonkey.co.uk/r/6CQF3J7
