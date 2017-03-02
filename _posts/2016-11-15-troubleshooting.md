@@ -98,3 +98,6 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Use
 #### 2. You can solve common mistakes in R
 
 #### 3. If you can't figure out a solution yourself, you know where to find help
+
+We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
+https://www.surveymonkey.co.uk/r/6CQF3J7
