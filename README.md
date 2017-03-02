@@ -5,3 +5,13 @@ This Jekyll theme is a port of ThemeFisher's Airspace template. It is released u
 
 ## Usage
 To start your project, [fork this respository](https://github.com/luminousrubyist/airspace-jekyll/fork), put in your content, and go!
+
+## Examples
+Here are some projects that have used this Jekyll Theme:
+
+* [DKAN Open Data Catalog](http://getdkan.com)
+* [BOYUAN Open Source 博辕开源](https://boyuanitsm.github.io)
+* [Campus VC](https://mrchildneo.github.io/mrchildneo/)
+* [Mãos de amar](https://www.maosdeamar.com.br/)
+* [ATK Team](http://www.atksec.com/)
+* [Coding Club] (https://ourcodingclub.github.io/)
