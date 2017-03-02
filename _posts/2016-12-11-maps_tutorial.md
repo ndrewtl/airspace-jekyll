@@ -380,3 +380,6 @@ Map_FEOW +
 ```
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
+
+#### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
+https://www.surveymonkey.co.uk/r/NMD3N5K
