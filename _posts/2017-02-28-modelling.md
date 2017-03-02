@@ -186,4 +186,4 @@ Check out the summary output - looks like the probability of a pine tree endurin
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
 #### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
-#### https://www.surveymonkey.co.uk/r/NNRS98G
+#### [https://www.surveymonkey.co.uk/r/NNRS98G](https://www.surveymonkey.co.uk/r/NNRS98G)
