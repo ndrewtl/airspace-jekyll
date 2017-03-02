@@ -177,3 +177,6 @@ Check out the summary output - looks like the probability of a pine tree endurin
 <a href = "http://data.princeton.edu/R/linearModels.html"> General and generalised linear models, by Germán Rodríguez. </a>
 
 <a href = "http://tutorials.iq.harvard.edu/R/Rstatistics/Rstatistics.html"> Regression modelling in R, by Harvard University. </a>
+
+#### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
+https://www.surveymonkey.co.uk/r/NNRS98G
