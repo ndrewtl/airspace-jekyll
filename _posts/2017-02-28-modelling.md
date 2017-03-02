@@ -178,7 +178,10 @@ Check out the summary output - looks like the probability of a pine tree endurin
 
 <a href = "http://tutorials.iq.harvard.edu/R/Rstatistics/Rstatistics.html"> Regression modelling in R, by Harvard University. </a>
 
+<hr>
+<hr>
+
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
 #### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
-https://www.surveymonkey.co.uk/r/NNRS98G
+#### https://www.surveymonkey.co.uk/r/NNRS98G
