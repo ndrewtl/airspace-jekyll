@@ -211,6 +211,8 @@ The files will be saved in your working directory - to find out where that is, r
 <hr>
 <hr>
 
+#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+
 #### You can now write functions and loops - congrats! Feel free to contact us with any questions at ourcodingclub@gmail.com.
 
 #### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
