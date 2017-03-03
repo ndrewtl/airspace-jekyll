@@ -29,7 +29,7 @@ logo: "/assets/logo.png"
 markdown: kramdown
 
 # Google analytics
-# ga_tracking_id: "UA-XXXX-1"
+google_analytics: UA-92956541-1
 
 # Category descriptions (for archive pages)
 descriptions:
