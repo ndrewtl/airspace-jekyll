@@ -14,3 +14,4 @@ Here are some projects that have used this Jekyll Theme:
 * [ATK Team](http://www.atksec.com/)
 * [Coding Club](https://ourcodingclub.github.io/)
 * [Dev Empathy Book Club](http://www.devempathybook.club/)
+* [DKAN Open Data Catalog](http://getdkan.com) (modified version of this theme)
