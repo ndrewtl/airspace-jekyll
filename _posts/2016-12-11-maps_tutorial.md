@@ -38,7 +38,7 @@ meta: Maps_1
 Open up a new R Script where you will be adding the code for your maps. All the resources for this tutorial, including some helpful cheatsheets can be downloaded from [this repository](https://github.com/ourcodingclub/CC-6-Maps) Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the actual folder path), or clicking `Session/Set Working Directory/Choose Directory` from the RStudio menu.
 
 ```r
-setwd("<PATH TO FOLDER")
+setwd("PATH_TO_FOLDER")
 ```
 
 <a name="why"></a>
