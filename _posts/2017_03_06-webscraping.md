@@ -2,7 +2,7 @@
 layout: post
 title: Web Scraping
 subtitle: Retrieving useful information from web pages
-date: 2016-11-24 16:00:00
+date: 2017_03_06 11:00:00
 author: John
 meta: "Webscraping"
 ---
