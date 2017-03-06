@@ -393,5 +393,4 @@ A full .R script for this tutorial along with some helpful cheatsheets and data 
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
-#### <a href="https://www.surveymonkey.co.uk/r/S9R5G2T
-">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
+#### [We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!](https://www.surveymonkey.co.uk/r/S9R5G2T)
