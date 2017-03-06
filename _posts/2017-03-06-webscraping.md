@@ -151,6 +151,9 @@ species_name <- species_line %>%
   gsub("^\\s+|\\s+$", "", .)  # Remove whitespace and replace with nothing
 species_name
 ```
+
+For more information on using pipes, [follow our data manipulation tutorial](https://ourcodingclub.github.io/2017/01/16/piping.html).
+
 `gsub()` works in the following way:
 
 ```r
