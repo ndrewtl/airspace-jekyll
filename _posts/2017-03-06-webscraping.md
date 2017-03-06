@@ -6,6 +6,7 @@ date: 2017_03_06 11:00:00
 author: John
 meta: "Webscraping"
 ---
+
 <div class="block">
 	<center>
 		<img src="{{ site.baseurl }}/img/tutheader_webscraping.png" alt="Img">
