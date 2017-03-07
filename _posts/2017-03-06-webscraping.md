@@ -55,7 +55,7 @@ setwd("<PATH TO FOLDER>")
 
 ## Download the relevant packages
 
-``` r
+```r
 install.packages("rvest") # To import a html file
 install.packages("dplyr") # To use pipes
 
