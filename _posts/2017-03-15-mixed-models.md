@@ -90,8 +90,7 @@ ggplot(dragons, aes(x = bodyLength, y = testScore)) +
   geom_smooth(method = "lm") 
 ```
 
-<center><img src="/img/mm-2.png" width="600"></center>
-
+<center><img src="{{ site.baseurl }}/img/mm-2.png" alt="Img" style="width: 800px;"/></center>
 
 Ok, so both from the linear model and from the plot it seems like bigger dragons do better in our intelligence test. That seems a bit odd, size shouldn't really affect the test scores.
 
@@ -107,14 +106,14 @@ plot(basic.lm, which = 1)  # not perfect...
 ## the bigger the sample size, the less of a trend you'd expect to see
 ```
 
-<center><img src="/img/mm-3.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-3.png" alt="Img" style="width: 800px;"/></center>
 
 Have a quick look at the qqplot too - points should ideally fall onto the diagonal dashed line:
 
 ```r
 plot(basic.lm, which = 2)  # a bit off at the extremes, but that's often the case; again doesn't look too bad
 ```
-<center><img src="/img/mm-4.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-4.png" alt="Img" style="width: 800px;"/></center>
 
 However, what about observation independence? Are our data independent?
 
@@ -125,7 +124,7 @@ Have a look at the data to see if above is true:
 ```r
 boxplot(testScore ~ mountainRange, data = dragons)  # certainly looks like something is going on here
 ```
-<center><img src="/img/mm-5.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-5.png" alt="Img" style="width: 800px;"/></center>
 
 We could also plot it colouring points by mountain range:
 
@@ -135,7 +134,7 @@ ggplot(dragons, aes(x = bodyLength, y = testScore, colour = mountainRange)) +
   theme_classic() +
     theme(legend.position = "none")
 ```
-<center><img src="/img/mm-6.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-6.png" alt="Img" style="width: 800px;"/></center>
 
 From the above plots it looks like our mountain ranges vary both in the dragon body length and in their test scores. This confirms that our observations from within each of the ranges **aren't independent**. We can't ignore that.
 
@@ -152,7 +151,7 @@ Lets have a quick look at the data split by mountain range.  We use the `facet_w
 ggplot(aes(bodyLength, testScore), data = dragons) + geom_point() + 
 facet_wrap(~ mountainRange) + xlab("length") + ylab("test score")
 ```
-<center><img src="/img/mm-7.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-7.png" alt="Img" style="width: 800px;"/></center>
 
 That's eight analyses. Oh wait, we also have different sites, which similarly to mountain ranges aren't independent... So we could run an analysis for each site in each range separately.
 
@@ -236,7 +235,7 @@ As always, it's good practice to have a look at the plots to check our assumptio
 ```r
 plot(mixed.lmer)  # looks alright, no paterns evident
 ```
-<center><img src="/img/mm-8.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-8.png" alt="Img" style="width: 800px;"/></center>
 
 and "`qqplot`":
 
@@ -244,7 +243,7 @@ and "`qqplot`":
 qqnorm(resid(mixed.lmer))
 qqline(resid(mixed.lmer))  # points fall nicely onto the line - good!
 ```
-<center><img src="/img/mm-9.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-9.png" alt="Img" style="width: 800px;"/></center>
 
 Let's go back to the summary and look at our results again.
 
@@ -336,7 +335,7 @@ ggplot(dragons, aes(x = bodyLength, y = testScore, colour = site)) +
   geom_line(data = cbind(dragons, pred = predict(mixed.lmer2)), aes(y = pred)) +
   theme(legend.position = "none")
 ```
-<center><img src="/img/mm-10.png" width="600"></center>
+<center><img src="{{ site.baseurl }}/img/mm-10.png" alt="Img" style="width: 800px;"/></center>
 
 
 
@@ -368,7 +367,7 @@ stargazer(mixed.lmer2, type = "text",
           star.cutoffs = c(0.05, 0.01, 0.001),
           digit.separator = "")
 ```
-<center><img src="/img/mm-tab.png" width="400"></center>
+<center><img src="{{ site.baseurl }}/img/mm-tab.png" alt="Img" style="width: 600px;"/></center>
 
 ##### Dot-and-Whisker plots
 If you are looking for **a way to create plots of your results** check out `dotwhisker` and this [tutorial](https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html){:target="_blank"}.
