@@ -53,7 +53,7 @@ You don't need to worry about the distributions of your **predictor** variables.
 ```r
 hist(dragons$testScore)  # seems close to normal distribution - good!
 ```
-<center><img src="{{ site.baseurl }}/img/mm1.png" alt="Img" style="width: 800px;"/></center>
+<center><img src="{{ site.baseurl }}/img/mm-1.png" alt="Img" style="width: 800px;"/></center>
 
 
 It is good practice to **standardise** your explanatory variables before proceeding, so that they have a mean of zero and standard deviation of one. It ensures that the estimated coefficients are all on the same scale, making it easier to compare effect sizes (and it improves model convergence). You can use ``scale()`` to do that:
