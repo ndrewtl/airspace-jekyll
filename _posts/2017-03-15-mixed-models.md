@@ -233,11 +233,15 @@ If we specifically chose eight particular mountain ranges a priori and we were i
 
 Further reading for the keen: 
 
-- [Is it a fixed or random effect?](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/){:target="_blank"}
-- A useful way to think about fixed *vs*. random effects is in terms of partitioning the variation and estimating random effects with **partial pooling**. The description [here](http://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode){:target="_blank"} is the most accessible one I could find for now and you can find more opinions in the comments of under the previous link too (search for *pooling* and *shrinkage* too if you are very keen).
-- [How many terms? On model complexity](https://dynamicecology.wordpress.com/2015/02/05/how-many-terms-in-your-model-before-statistical-machismo/){:target="_blank"}
-- [More on model complexity](https://dynamicecology.wordpress.com/2014/12/02/why-are-your-statistical-models-more-complex-these-days/){:target="_blank"}
-- Have a look at some of the fixed and random effects definitions gathered by Gelman in [this paper](http://www.stat.columbia.edu/~gelman/research/published/AOS259.pdf){:target="_blank"} (you can also find them [here](http://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode/4702#4702){:target="_blank"} if you can't access the paper).
+[Is it a fixed or random effect?](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/){:target="_blank"}
+
+A useful way to think about fixed *vs*. random effects is in terms of partitioning the variation and estimating random effects with **partial pooling**. The description [here](http://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode){:target="_blank"} is the most accessible one I could find for now and you can find more opinions in the comments of under the previous link too (search for *pooling* and *shrinkage* too if you are very keen).
+
+[How many terms? On model complexity](https://dynamicecology.wordpress.com/2015/02/05/how-many-terms-in-your-model-before-statistical-machismo/){:target="_blank"}
+
+[More on model complexity](https://dynamicecology.wordpress.com/2014/12/02/why-are-your-statistical-models-more-complex-these-days/){:target="_blank"}
+
+Have a look at some of the fixed and random effects definitions gathered by Gelman in [this paper](http://www.stat.columbia.edu/~gelman/research/published/AOS259.pdf){:target="_blank"} (you can also find them [here](http://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode/4702#4702){:target="_blank"} if you can't access the paper).
 
 
 #### Let's fit our first mixed model
