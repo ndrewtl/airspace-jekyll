@@ -241,7 +241,7 @@ If we specifically chose eight particular mountain ranges a priori and we were i
 - Have a look at some of the fixed and random effects definitions gathered by Gelman in [this paper](http://www.stat.columbia.edu/~gelman/research/published/AOS259.pdf){:target="_blank"} (you can also find them [here](http://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode/4702#4702){:target="_blank"} if you can't access the paper).
 
 
-#### Let's fit our first mixed model
+### Let's fit our first mixed model
 <a name="first"></a>
 
 Alright! Still with me? We have a response variable, the test score, and we are attempting to **explain part of the variation** in score through fitting body length as a fixed effect. But the response variable has some **residual variation** (*i.e.* unexplained variation) associated with mountain ranges. By using random effects we are modeling that unexplained variation through **variance**.
@@ -336,7 +336,7 @@ Now it's obvious that we have 24 samples (8 mountain ranges x 3 sites) and not j
 
 **To sum up:** for **nested random effects** the factor appears **ONLY** within a particular level of another factor (each site belongs to a specific mountain range and only to that range); for **crossed effects** a given factor appears in more than one level of another factor (dragons appearing within more than one mountain range). **Or you can just remember that if your random effects aren't nested then they are crossed!**
 
-#### Our second mixed model
+### Our second mixed model
 <a name="second"></a>
 
 Based on the above, using following specification would be **<u>wrong</u>**:
@@ -509,16 +509,12 @@ The model selection process recommended by Zuur is a top-down strategy and goes 
 
 **Well done for getting through this!** As you probably gather mixed effects models can be a bit tricky and often there isn't much consensus on the best way to tackle something within them. The coding bit is actually the (relatively) easy part here. Be mindful of what you are doing, prepare the data well and things should be alright.
 
-I haven't gone into details of intercepts *vs.* slopes or interactions, which you might well need to deal with your data and questions properly. If people find this useful I will consider setting some time aside for *Part 2*.
-
-I hope that you found the tutorial useful - please let me know if you have any questions.
-
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
 
-#### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
+### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
 #### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
 #### [add survey link]
