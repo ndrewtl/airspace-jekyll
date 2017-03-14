@@ -25,7 +25,7 @@ To get all you need for this session, __go to <a href = "https://github.com/ourc
 
 Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bCpZQuj){:target="_blank"} and the **data** from [here](http://gkhajduk.d.pr/9GPn/3nbbPoK6){:target="_blank"}. I might update this tutorial in the future, if I do the latest version will be [on my website](https://gkhajduk.github.io/2017-03-09-mixed-models/){:target="_blank"}.
 
-##Tutorial Sections:
+## Tutorial Sections:
 
 ### <a href="#one"> 1. What is mixed effects modelling and why does it matter?</a>
 ### <a href="#two"> 2. Explore the data</a>
