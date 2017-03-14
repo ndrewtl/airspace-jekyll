@@ -33,22 +33,22 @@ Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bC
 ### <a href="#four"> 4. Run multiple analyses</a>
 ### <a href="#five"> 5. Modify the current model</a>
 ### <a href="#six"> 6. Mixed effects models</a>
-#### <a href="#FERE"> Fixed and Random effects</a>
-#### <a href="#first"> Let’s fit our first mixed model</a>
-#### <a href="#types"> Types of random effects</a>
+#### <a href="#FERE"> --Fixed and Random effects</a>
+#### <a href="#first"> --Let’s fit our first mixed model</a>
+#### <a href="#types"> --Types of random effects</a>
 ##### <a href="#crossed"> Crossed random effects</a>
 ##### <a href="#nested"> Nested random effects</a>
 ##### <a href="#implicit"> Implicit vs. explicit nesting</a>
-#### <a href="#second"> Our second mixed model</a>
-#### <a href="#presenting"> Presenting your model results</a>
+#### <a href="#second"> --Our second mixed model</a>
+#### <a href="#presenting"> --Presenting your model results</a>
 ##### <a href="#tables"> Tables</a>
 ##### <a href="#dot"> Dot-and-Whisker plots</a>
 ##### <a href="#processing"> Further processing</a>
-#### <a href="#extra"> EXTRA: P-values and model selection</a>
+#### <a href="#extra"> --EXTRA: P-values and model selection</a>
 ##### <a href="#fixedstr"> Fixed effects structure</a>
 ##### <a href="#randomstr"> Random effects structure</a>
 ##### <a href="#selection"> The entire model selection</a>
-### <a href="#end"> THE END </a>
+### <a href="#end"> 7. THE END </a>
 
 
 ### What is mixed effects modelling and why does it matter?
