@@ -512,6 +512,9 @@ I haven't gone into details of intercepts *vs.* slopes or interactions, which yo
 
 I hope that you found the tutorial useful - please let me know if you have any questions.
 
+<hr>
+<hr>
+
 #### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
