@@ -367,7 +367,7 @@ stargazer(mixed.lmer2, type = "text",
           star.cutoffs = c(0.05, 0.01, 0.001),
           digit.separator = "")
 ```
-<center><img src="{{ site.baseurl }}/img/mm-tab.png" alt="Img" style="width: 600px;"/></center>
+<center><img src="{{ site.baseurl }}/img/mm-tab.png" alt="Img" style="width: 400px;"/></center>
 
 ##### Dot-and-Whisker plots
 If you are looking for **a way to create plots of your results** check out `dotwhisker` and this [tutorial](https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html){:target="_blank"}.
