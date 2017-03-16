@@ -470,7 +470,7 @@ Notice that we have fitted our models with `REML = FALSE`.
 
 **REML** stands for **restricted (or "residual") maximum likelihood** and it is the default parameter estimation criterion for linear mixed models. As you probably guessed, **ML** stands for  **maximum likelihood** - you can set  `REML = FALSE` in your call to `lmer` to use ML estimates. However, **ML estimates are known to be bias** and with REML being usually less bias, **REML estimates of variance components are generally preferred.** This is why in our previous models we skipped setting `REML` - we just left it as default (i.e. `REML = TRUE`).
 
-**REML** assumes that the fixed effect structure is correct. You **should use maximum likelihood when comparing models with different fixed effects**, as **ML** doesn't rely on the coefficients of the fixed effects - and that's why we are refitting our full and reduced models above with the addition of `REML = FALSE` in the call. 
+**REML** assumes that the fixed effects structure is correct. You **should use maximum likelihood when comparing models with different fixed effects**, as **ML** doesn't rely on the coefficients of the fixed effects - and that's why we are refitting our full and reduced models above with the addition of `REML = FALSE` in the call. 
 
 Even though you **use ML to compare models** you should **report parameter estimates from your final "best" REML model**, as ML may underestimate variance of the random effects.
 
