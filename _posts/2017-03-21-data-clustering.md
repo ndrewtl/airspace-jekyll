@@ -85,7 +85,7 @@ Each species has a `SppID` number and a code, which is in the `Species.code` col
 
 ```r
 # Load the dataframe containing all sites NeoTropTree has in Bolivia.
-sites <- read.csv("sites_bolivia.csv", sep=",", head=TRUE)
+sites <- read_csv("sites_bolivia.csv", sep=",", head=TRUE)
 head(sites)
 dim(sites)
 ```
