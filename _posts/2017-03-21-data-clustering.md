@@ -24,36 +24,36 @@ meta: "Tutorials"
 
 #### <a href="#Mapping"> 5. Map cluster groups in geographic space </a>
 
-3.2 - Linkage Methods
-3.2.1 - Single-linkage method (single dendogram)
-3.2.2 - Single-linkage method (concensus dendogram)
-3.2.3 - Complete-linkage method
-3.2.4 - Clustering using Ward's minimum variance
-
 <a name="Introduction"></a>
+
+To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial.__ 
+
 ### Get acquainted with data clustering
 
-Hierarchical data clustering is one of the most used analytical methods in ecology, as they are great tools for looking for discontinuities (like gaps in your data), gradients and meaningful ecological units in the environment. It is a great way to start looking for patterns in continuous ecological data (e.g. abundance, frequency, occurrence).
+<b>Hierarchical data clustering allows you to explore your data and look for discontinuities (e.g. gaps in your data), gradients and meaningful ecological units (e.g. groups or subgroups of species). It is a great way to start looking for patterns in ecological data (e.g. abundance, frequency, occurrence), and is one of the most used analytical methods in ecology. Your research questions are the limit. As an example, you can look at algae distribution along a ocean depth gradient, or you can look at the distribution of bats along an elevation gradient, or you can even determine which are the main biogeographic realms in the world, or you can study how fish communities are distributed along water basins and see if rapid streams and waterfalls are limiting their dispersal.</b>
 
-Let us imagine the following: you are an ecologist working with tropical forests in the Neotropics and you want to understand how these different forests, with different sets of tree species forming them,
-are related to one another and if you can split them into ecologically meaningful sub-groups that can be used as a grouping variable (a categorical variable) in future analyses. You might be interested in basic questions such as: How many ecologically meaningful floristic units are present in the Neotropics? Which ones are more similar to each other? How many species do they share? How are these units distributed in geographic space? Does each unit occupy a certain portion of the geographic space, without blending other units, or is the distribution of units in space mixed?
+Let's imagine the following: you are an ecologist working on tropical forests in the Neotropics and you want to understand how these forests, formed by different sets of trees, are related to one another. You might want to split them into ecologically meaningful sub-groups that can then be used as a grouping variable (a categorical variable) in future analyses. You might be interested in questions such as: How many ecologically meaningful floristic units are present in the Neotropics? Which ones are more similar to each other? How many species do they share? How are these units distributed in geographic space? Does each unit occupy a certain portion of the geographic space, without blending into other units, or is the spatial distribution of units mixed?
 
-By answering these questions, you can start asking more complex questions such as: "What could possibly be the environmental drivers of the patterns I have observed in my data?", "Is climate one of these
-drivers?", "How will these tree groups respond to climate change?", "Are these floristic units related to climate?", "In such a broad scale (the Neotropics), are there biogeographic and environmental barriers separating these units?", "Do you get clear splits from one group to the other in geographic space or do you get a gradient of floristic turnover across the border of two of these floristic units?"
+You can then build your next set of research questions based on the answers you got from the data clustering. What are the environmental drivers of the patterns in my data? Is climate one of these drivers? How will these tree groups respond to climate change? Are these floristic units related to climate? In such a big region (the Neotropics), are there biogeographic and environmental barriers separating these units? Do you get clear splits from one group to another or do you get a gradient of floristic turnover across the border of two of these floristic units?
 
-To answer these questions, you can construct a dataset which consists of tree species occurrence records for a multitude of sites in the Neotropics and perform a series of Hierarchical clustering analyses. These analysis will be able to give us a clear answer to our first set of questions and will be able to give you enough material to guide and support you through the analyses you'll run in order to answer our second set of questions.
+<b>To answer these questions, you can construct a dataset which consists of tree species occurrence records for a multitude of sites in the Neotropics and perform a series of Hierarchical clustering analyses.</b>
 
-Hierarchical data clustering is an indispensable tool for researchers starting to explore new biological/ecological data. Your research questions are the limit. As an example, you can look at algae distribution along a ocean depth gradient, or you can look at the distribution of bats along an elevation gradient, or you can even determine which are the main biogeographic realms in the world by using a biodiversity group of your choice, or you can study how the fish community is distributed along a basin and see if the rapid streams and waterfalls in there are limiting their dispersal.
+### Hierarchical clustering will give you a lot of insight on how your biodiversity data are organized and will help you to disentangle different patterns and the scales at which they can be observed. It is a great, easy to use and explore, set of methods that gives you a lot of freedom to investigate your research questions. 
 
-### Hierarchical clustering will give you a lot of insight on how your biodiversity data is organized and it will help you to disentangle different patterns and the scales on which they can be observed. It is a great, easy to use and explore, set of methods that gives you a lot of freedom to investigate your research questions. These methods are a great way to start unravelling what your data has to show.
+### Hierarchical agglomerative data clustering
+Hierarchical agglomerative data clustering is part of a broader category commonly referred to as "data clustering". 
 
-Before we begin, what is hierarchical agglomerative data clustering? These set of methods are a part of a broader category commonly referred to as "data clustering". Within this category, there are sequential and simultaneous methods, agglomerative and divisive methods, monothetic and polythetic methods, and hierarchical an non-hierarchical methods. What does hierarchical mean? It means that your groups will be organized in ranks according to how similar they are. You'll have sub-groups forming larger groups till all your observations are included in your cluster. Non-hierarchical clustering methods do not include that option.The terms agglomerative and divisive are related to how your data is being grouped. Agglomerative is a bottom to top approach, it means that the clustering will begin by putting similar observations together, forming subgroups till all your observations are included. Divisive is the exact opposite, your set of observations will be considered as whole group and the algorithm will divide your data into progressively smaller chunks till each observation forms a sub-group on its own.
+#### <b>Hierarchical agglomerative data clustering methods</b>:
+- <b>Sequential and simultaneous</b> - refers to how the clustering is conducted. If it's through an algorithm that is repeated till all data have been clustered, it's sequential. If the algorithm clusters all your data together at the same time, it's simultaneous.
+- <b>Agglomerative and divisive</b> - refers to how your data are being grouped. Agglomerative is a bottom up approach, meaning that the clustering will begin by putting similar observations together, gradually forming subgroups till all your observations are included. Divisive is the exact opposite, your set of observations will be considered as whole group and the algorithm will divide your data into progressively smaller chunks till each observation forms a sub-group on its own.
+- <b>Monothetic and polythetic</b> -  refers to the amount of descriptors being employed to cluster your data into subgroups. If it uses just one descriptor on every step, it's monothetic; if it uses more than one, it's polythetic.
+- <b>Hierarchical and non-hierarchical</b> - hierarchical means that your groups will be organized in ranks according to how similar they are. You'll have sub-groups forming larger groups till all your observations are included in your cluster. Non-hierarchical clustering methods do not include that option.
 
-Sequential and simultaneous refers how the clustering is conducted. If it's through an algorithm that is repeated till all data has been clustered, it's sequential. If the algorithm clusters all your data together at the same time, it's simultaneous. Monothetic and polythetic refers to the amount of descriptors being employed to cluster your data into subgroups. If it uses just one descriptor on every step, it's monothetic; if it uses more than one, it's polythetic. We will not be giving further attention to these other categories today.
+### In sum, hierarchical agglomerative clustering methods group your observations in increasingly large subgroups till all observations are included. The subgroups formed by the clustering are ordered in ranks according to their level of similarity.
 
-### In sum, hierarchical agglomerative clustering methods will group your observations in increasingly large subgroups till all observations are included and the subgroups it forms are disposed in ranks according to their level of similarity. If you didn't understand it completely, don't worry, it will be easier to understand once you do some clusters and look at the results.
+### Create a new R script file and start working your way through the tutorial. We find having the tutorial on half of your screen, and RStudio on the other half, useful for following along and seeing what the results of each code chunk are. 
 
-# For today's session, we'll be working with four different packages. Please install them and load their libraries:
+For today's session, we'll be working with four different packages. Please install them and load their libraries:
 
 ```r
 install.packages("recluster")
@@ -69,11 +69,11 @@ library(stats)
 library(cluster)
 ```
 
-# Now it is time to load the data frames we'll be using in today's session, but before that, let's discuss where these data came from and what we plan do with it.
+# Now it is time to load the data we'll be using, but before that, let's discuss where these data came from and what we plan do with them.
 
-As you have probably realized by now, I work with tropical trees and forests in the Neotropics, and today I have decided to give you a quick tour through some of the amazing forests and floristic formations we have in there. Today's destination is Bolivia, a large country in Tropical South America with just about ten million people living in it, and most of these people live in four gigantic cities: La Paz, Sucre, Cochabamba and Santa Cruz de La Sierra. This means most of Bolivia's diversity is located away from human settlements and is, therefore, more protected from human impact. Biogeographycally, Bolivia is where all main Tropical South American biomes converge. These makes this country one of the most interesting and exciting places to study (and visit) in South America.
+As you might have realised by now, I work on tropical trees and forests in the Neotropics, and today I have decided to give you a quick tour through some of the amazing forests and floristic formations we have there. Today's destination is Bolivia, a large country in Tropical South America with just about ten million people living in it. Most of these people live in four gigantic cities: La Paz, Sucre, Cochabamba and Santa Cruz de La Sierra. As a result, most of Bolivia's diversity is located away from human settlements and is, therefore, relatively protected from human impact. Biogeographically, Bolivia is where all main Tropical South American biomes converge. These makes this country one of the most interesting and exciting places to study (and visit) in South America.
 
-<b>The data we'll be using today comes from a dataset called NeoTropTree. NeoTropTree has been developed by Professor Ary Oliveira-Filho (Federal University of Minas Gerais - Brazil. http://prof.icb.ufmg.br/treeatlan/) and it consists of circular sites, with a 10km diameter, for which he has gathered information on tree species composition by reviewing the literature (published and unpublished - e.g. masters dissertations and PhD theses), compiling species check-lists and by studying herbaria species records. Each site has been assigned to an specific vegetation type in order for them to be ecologically meaningful units. NeoTropTree is a very compreehensive and well kept dataset, which makes it very valuable and reliable when doing science. Professor Oliveira-Filho has kindly agreed to us using a tiny portion of it today, so make the most out of it.</b>
+<b>The data we'll be using today come from a dataset called NeoTropTree. NeoTropTree has been developed by <a href="http://prof.icb.ufmg.br/treeatlan/">Professor Ary Oliveira-Filho (Federal University of Minas Gerais - Brazil)</a>. NeoTropTree is a large database containing records on tree species composition, gathered by reviewing the literature (published and unpublished - e.g. masters dissertations and PhD theses), compiling species check-lists, and studying herbarium records. Each site within the database has been assigned to a specific vegetation type (an ecologically meaningful unit). NeoTropTree is a very comprehensive and well kept dataset, which makes it very valuable and reliable when doing science. Professor Oliveira-Filho has kindly agreed to us using a tiny portion of it for this tutorial.</b>
 
 ```r
 # Loading the dataframes we'll be working with:
@@ -83,7 +83,7 @@ head(spp)
 dim(spp)
 ```
 
-You can see here that each species has a `SppID` number and a code, which is in the `Species.code` column. These two columns will be of major importance to us later on. We have 3369 tree species registered for Bolivia in NeoTropTree.
+You can see here that each species has a `SppID` number and a code, which is in the `Species.code` column. These two columns will be of major importance to us later on. There are 3369 tree species registered for Bolivia in NeoTropTree.
 
 ```r
 # Load the dataframe containing all sites NeoTropTree has in Bolivia.
@@ -92,8 +92,7 @@ dim(sites)
 head(sites)
 ```
 
-As you can see, each site has an AreaID, an Area Code, in here you can also find information on locality, vegetation type, geographic coordinates and elevation. You can also see that the sites are classified
-in Phytogeographic Domains. This is important because the `AreaCode` column, to which we'll be referring to very often, is based on these `Domains` - the first three letters of an area code corresponds to the `Domain` on which the site is located. With that said: sites beginning with Amz, are a part of the Amazon Domain; And stand for the Andes; Cer stands for Cerrado (South American savannas); Cha stands for Chaco woodlands, which is a mainly subtropical, shrubby, mostly deciduous and dry floristic formation. Pay attention to this, as this will be very important when looking for sub-groups in our dataset.
+As you can see, each site has an AreaID, an Area Code, information on locality, vegetation type, geographic coordinates and elevation. You can also see that the sites are classified in Phytogeographic Domains. This is important because the `AreaCode` column, to which we'll be referring very often, is based on these `Domains` - the first three letters of an area code correspond to the `Domain` on which the site is located. <b>Sites beginning with Amz, are a part of the Amazon Domain; And stand for the Andes; Cer stands for Cerrado (South American savannas); Cha stands for Chaco woodlands, which is a mainly subtropical, shrubby, mostly deciduous and dry floristic formation. Pay attention to this, as this will be very important when looking for sub-groups in our dataset.</b>
 
 <b>Now it's time for us to load the correspondence matrix, a matrix indicating what species are present on which site, information that is vital to us in order to make a presence and abscence matrix.</b>
 
@@ -105,11 +104,11 @@ dim(sppxsites)
 head(sppxsites)
 ```
 
-Please note that you only have two columns in here - SppID and AreaID. For each occurrence record in a given site, a row was created. This means that the number of rows is the number of occurrence records we have in our dataset and that is 42015. Now that we have loaded all the information we needed, it is time to start doing some analysis and to learn more about hierarchical data clustering.
+Please note that you only have two columns in here - `SppID` and `AreaID`.The number of rows is the number of occurrence records in our dataset - 42015. 
 
-# Making a presence and abscence matrix through a loop function
+# Making a presence and absence matrix through a loop function
 
-How does the method knows which observations are more similar than the others? Simple. You will provide it with a pairwise distance matrix. This is a quadratic (number of rows is equal to the number of columns) matrix filled out with distance values taken for each pair of sites in the dataset. This is simple enough. However, there are different ways of calculating these pairwise distances and the most suitable method for you will largely depend on the kind of data you are working with.
+How does the method know which observations are more similar to one another than others? Simple. You will provide it with a pairwise distance matrix. This is a quadratic (number of rows is equal to the number of columns) matrix containing the distance values taken for each pair of sites in the dataset. There are different ways of calculating these pairwise distances and the most suitable method for you will largely depend on the kind of data you are working with.
 
 Right now, what we need to do is use the data frames we have and create a presence and absence matrix with sites in the rows and species in the columns. As it is standard, "1" means species present in a site and "0" means the species does not occur in a site. No matter what distance metric you'll use, the pairwise distance matrix that will be used when clustering your data will always be constructed based on this table. Of course, if you have species abundance, than you'll be working with an abundance matrix.
 
@@ -180,6 +179,11 @@ Distance metrics are a very broad topic that deserves a tutorial on it's own and
 
 <a name="Linkage"></a>
 # Linkage Methods
+
+3.2.1 - Single-linkage method (single dendogram)
+3.2.2 - Single-linkage method (concensus dendogram)
+3.2.3 - Complete-linkage method
+3.2.4 - Clustering using Ward's minimum variance
 
 Linkage methods? What are linkage methods? Why don't we take a look at the linkage methods that are available to us first?
 
