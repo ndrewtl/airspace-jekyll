@@ -104,15 +104,13 @@ head(sppxsites)
 
 Please note that you only have two columns in here - `SppID` and `AreaID`.The number of rows is the number of occurrence records in our dataset - 42015. 
 
-### Making a presence and absence matrix through a loop function
+### Making a presence and absence matrix through a loop
 
 How does the method know which observations are more similar to one another than others? Simple. You will provide it with a pairwise distance matrix. This is a quadratic (number of rows is equal to the number of columns) matrix containing the distance values taken for each pair of sites in the dataset. There are different ways of calculating these pairwise distances and the most suitable method for you will largely depend on the kind of data you are working with.
 
 Right now, what we need to do is use the data frames we have and create a presence and absence matrix with sites in the rows and species in the columns. As it is standard, "1" means species present in a site and "0" means the species does not occur in a site. No matter what distance metric you'll use, the pairwise distance matrix that will be used when clustering your data will always be constructed based on this table. Of course, if you have species abundance, than you'll be working with an abundance matrix.
 
-The way we are going to build such matrix is through a loop function. Loop functions are extremely useful and are used very often in R. If you never heard about them or want to learn more about them, you can check our tutorial on <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">how to construct and use loop functions. </a>
-
-### Presence / absence matrix
+The way we are going to build such matrix is through a loop function. Loop functions are extremely useful and are used very often in R. If you never heard about them or want to learn more about them, you can check our tutorial on <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">how to use loops. </a>
 
 ```r
 # Making the species by site matrix (presence and abscence). We'll call it commat.
@@ -122,22 +120,23 @@ spp_sub <- unique(sppxsites$SppID)  # Making a vector with species in our datase
 
 # First we'll create an empty matrix with our sites in the rows and our species in the columns. The loop function will place a "1" on a given cell when the species is present in an area and will fill out the remaining cells with a "0".
 
-spp_commat <- matrix(0,length(sites_sub),length(spp_sub))
+spp_commat <- matrix(0, length(sites_sub), length(spp_sub))
 for (i in 1:nrow(spp_commat)){
-  temp_sites <- sppxsites[which(sppxsites$AreaID==sites_sub[i]),]
-  spp_commat[i,which(spp_sub%in%temp_sites$SppID)] <- 1
+  temp_sites <- sppxsites[which(sppxsites$AreaID == sites_sub[i]),]
+  spp_commat[i, which(spp_sub%in%temp_sites$SppID)] <- 1
   print(i)
 }
+
 # Now let's name our rows and columns with the codes for the sites and the codes for the species.
-rownames(spp_commat) <- as.character(sites$AreaCode[match(sites_sub,sites$AreaID)])
-colnames(spp_commat) <- as.character(spp$Species.code[match(spp_sub,spp$SppID)])
+rownames(spp_commat) <- as.character(sites$AreaCode[match(sites_sub, sites$AreaID)])
+colnames(spp_commat) <- as.character(spp$Species.code[match(spp_sub, spp$SppID)])
 dim(spp_commat)
 
 # Check if the loop function worked alright and did its job
 spp_commat[1:6,1:6]
 ```
 
-When working with large presence and absence datasets, it is good practice to remove "uniques". "Uniques" are species that only have one recorded presence in only one observation/sample. The reason behind this is that such species will only bring noise (somewhat random, hard to explain variation) to the analysis and will only blur the patterns we get. Later on, for the sake of practice, we'll compare the results we'll get with the full presence and absence matrix with the results we'll get with the same matrix without any "Uniques".
+When working with large presence / absence datasets, it is good practice to remove "uniques". "Uniques" are species that only have one recorded presence in only one observation/sample. The reason behind this is that such species will only bring noise (somewhat random, hard to explain variation) to the analysis and will only blur the patterns we get. Later on, for the sake of practice, we'll compare the results we'll get with the full presence and absence matrix with the results we'll get with the same matrix without any "Uniques".
 
 ```r
 spp_commat_trim <- spp_commat[,which(!colSums(spp_commat) == 1)]
@@ -162,7 +161,7 @@ You have to be careful when using Euclidean and Sorensen distances, as they tend
 
 This can be a bit of a stretch, but it is worthwhile mentioning that, in most cases, you'll be working with beta diversity when calculating these distance matrices. Beta diversity can be decomposed into two components: turnover and nestedness. 
 
-<b>Turnover is when you have species replacing each other along an environmental gradient or geographic space. Nestedness is when a site/sample is occupied by a fraction, a subset, of the surrounding species pool, not by new species (nestedness is commonly associated with environmental filtering). Depending on the patterns you want to look at and how big your dataset is in terms of scale, these fractions must be taken into account. Jaccard distance is defined as turnover + nestedness = 1, Simpson focus on species turnover only, so it is great for biogeographic analysis.</b>
+<b>Turnover refers to when you have species replacing each other along an environmental gradient or geographic space. Nestedness refers to when a site/sample is occupied by a fraction, a subset, of the surrounding species pool, not by new species (nestedness is commonly associated with environmental filtering). Depending on the patterns you want to look at and how big your dataset is in terms of scale, these fractions must be taken into account. Jaccard distance is defined as turnover + nestedness = 1, Simpson focus on species turnover only, so it is great for biogeographic analysis.</b>
 
 The Simpson distance metric (not Simpson's diversity index) is becoming increasingly common in ecology for the reasons described above. Since our dataset is big, not very well balanced and filled with absences, we'll be using it in our analyses today and will not pay attention to the other distance metrics. Besides, it is wise for us to focus only on species turnover, since we are working on such a broad geographic scale.
 
@@ -179,23 +178,29 @@ Distance metrics are a very broad topic that deserves a tutorial on it's own and
 <a name="Linkage"></a>
 ### Linkage Methods
 
-3.2.1 - Single-linkage method (single dendogram)
-3.2.2 - Single-linkage method (concensus dendogram)
-3.2.3 - Complete-linkage method
-3.2.4 - Clustering using Ward's minimum variance
+The linkage method is the criterion that will determine how your observations will be grouped together. Here, we'll discuss the most commonly used linkage methods in ecology: 
 
-Linkage methods? What are linkage methods? Why don't we take a look at the linkage methods that are available to us first?
+<a href="#single-den">- __Single-linkage method (single dendogram)__</a>
+
+<a href="#concensus-den">- __Single-linkage method (concensus dendogram)__</a>
+
+<a href="#complete-link">- __Complete-linkage method__</a>
+
+<a href="#ward">- __Clustering using Ward's minimum variance__</a>
+
+<a href="#average-link">- __Average linkage__</a>
+
+Run this code to check out the linkage methods that are available to us:
 
 ```r
 help(hclust)
 ```
 
-The linkage method is the criterium that will determine how your observations will be grouped together. Here, we'll discuss the four most commonly linkage methods used in ecology: "single-linkage", "complete-linkage", "average-linkage" and "ward's minimum variance". We will emphasise the average-linkage method. Explanation regarding each linkage-method will be given along with the instructions to build a cluster using it.
-
-# Making our first clusters and leaning more about linkage methods.
+## Making our first clusters and leaning more about linkage methods.
 
 The function we'll be using today `recluster.cons` - uses Simpson by default and, since we will be working with Simpson's distance metric in our tutorial, we don't have to write the `dist` argument. The `recluster.dist` function makes the pairwise distance table for you, all you have to do is select the distance metric you want.
 
+<a name="single-den"></a>
 ## Single-linkage method (single dendogram)
 
 This method is the simplest of them all. It links observations according to the shortest pairwise distance on your distance matrix. Because of this, a given observation will be linked to a group if the distance between this site and any other element within that group is the shortest one available at that step. This is not a very selective criterium and it can allow weird groups to be formed if your dataset is too big and you have a variety of equally similar observations.
@@ -223,10 +228,11 @@ The answer is simple: we will build a solution which reflects the groups we enco
 
 # Now, let's see if we can get a better solution when using different, equally valid, dendograms to come up with a solution to our clustering problem.
 
+<a name="concensus-den"></a>
 ## Single-linkage method (concensus dendogram)
 
 ```r
-bol_singlelink <- recluster.cons(spp_commat_trim, tr = 100, p = 0.5, method = "single") #note that tr=100 now
+bol_singlelink <- recluster.cons(spp_commat_trim, tr = 100, p = 0.5, method = "single")  # note now tr = 100
 bol_singlelink_cons <- bol_singlelink$cons
 write.tree(bol_singlelink_cons, "bol_singlelink_cons.tre")
 plot(bol_singlelink_cons, direction = "downwards", cex = 0.5)
@@ -236,6 +242,7 @@ Apart from a few sites changing their positions, nothing changed that much in th
 
 <b>Now we will move on to the other methods and we will always work with the solution reached through the application of the consensus criterion (p=0.5)</b>
 
+<a name="complete-link"></a>
 ## Complete-linkage method
 
 With this linkage method, a observation is only allowed to be linked to a subgroup when this individual observation is more related to the most distant pair of observations on that group. By doing so, when a
@@ -253,21 +260,22 @@ This is a great example of how important selecting a linkage method is! Look how
 The complete linkage method allows you to highlight discontinuities in your dataset. It is a great tool for delimiting groups. However, be advised that it is important for these groups to be ecologically
 meaningful and that is up to you to decide and verify. In here, you were given the phytogeographic domain on which these sites are located and how each site was classified according to its vegetation structure and other characteristics. Use that in order to verify if these groups make sense from an ecological perspective.
 
+<a name="ward"></a>
 ## Clustering using ward's minimum variance
 
 This is a special kind of linkage method as it was designed to form groups in a way that minimizes the within group sum of squares. This method is usually advisable when the groups obtained here will be used
 as the grouping variables in other analytical methods such as ANOVAs and MANOVAs.
 
 ```r
-bol_ward <- recluster.cons(spp_commat_trim, tr=100, p=0.5, method = "ward.D")
+bol_ward <- recluster.cons(spp_commat_trim, tr = 100, p = 0.5, method = "ward.D")
 bol_ward_cons <- bol_ward$cons
-plot(bol_ward_cons, direction = "downwards", cex=0.5)
+plot(bol_ward_cons, direction = "downwards", cex = 0.5)
 write.tree(bol_ward_cons, "bol_ward_cons.tre")
 ```
 
-This dendogram's topology seem to be different from the other two dendograms we produced before. How many main groups can you see in here? Considering the phytogeographic domains on which these sites are located, are these groups ecologically meaningful? Why don't you open the cluster you created with the complete linkage method and compare it with this one? How different are they? Which one would you use in order to
-perform further analysis?
+This dendogram's topology seem to be different from the other two dendograms we produced before. How many main groups can you see in here? Considering the phytogeographic domains on which these sites are located, are these groups ecologically meaningful? Why don't you open the cluster you created with the complete linkage method and compare it with this one? How different are they? Which one would you use in order to perform further analysis?
 
+<a name="ward"></a>
 ## Average linkage method (UPGMA) and an observation on "uniques" and potential biases in the dendograms
 
 Remember that I said we would investigate if there are any differences between the results you obtain with the complete presence/absence matrix and the matrix without any "uniques"? We are going to do it now. Will removing "uniques" improve the resolution within your dendograms or not? We'll discover as soon as we learn more about the Average linkage method.
@@ -467,10 +475,8 @@ Could elevation be one of the main drivers of tree species distribution there? Y
 
 To summarise, today we explored hierarchical agglomerative clustering methods, different distance metrics, and linkage methods. We also made a vector of cluster (subgroups) memberships and used that to assess how our sites are positioned in geographic space. This is an awesome start and you should be proud of it! I hope you have enjoyed it as much as I did.
 
-### For more information on hierarchical data clustering, you can have a look at chapter 4 of "Numerical Ecology with R", by Daniel Borcard, François Gillet and Pierre Legendre (2011, Springer - New York, Dordrecht, London, Heidelberg)
-
-<hr>
-<hr>
+### For more information on hierarchical data clustering, you can have a look at chapter 4 of "Numerical Ecology with R", by Daniel Borcard, François Gillet and Pierre Legendre (2011, Springer - New York,
+#Dordrecht, London, Heidelberg)
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
 
