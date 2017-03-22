@@ -216,7 +216,7 @@ write.tree(bol_singlelink_tmp, "bol_singlelink_tmp.tre")
 
 Let's open this file in Figtree and see how we can use this software to our advantage. You can quickly <a href="http://tree.bio.ed.ac.uk/software/figtree/">download Figtree for your operating system here</a> and install it on your computer. Figtree was originally designed to look at phylogenies, but we can use it to visualise dendograms (the outputs of our data clustering are called dendograms). You simply click on the document you want to open and select Figtree to open it. You can select branches and colour them to your liking with the `Colour` button. You can also zoom in with the `Zoom` button, allowing you to read the names on the tips of your dendogram and visualize your groups.
 
-# !!!!!!!!! INSERT SCREENCAP !!!!!!!!!!!!!!!!
+![Img]({{ site.baseurl }}/img/figtree_scrot.png)
 
 As you can see in the dendogram, we do not have any clearly defined groups. This is to be expected when using the single-linkage method, which is good for examining gradients in the dataset. You can still see some small groups scattered across the dendogram that are mainly formed by Amazonic (starting with Amz) and Andean (starting with And) sites.
 
