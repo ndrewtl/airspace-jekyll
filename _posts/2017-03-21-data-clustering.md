@@ -447,30 +447,28 @@ points(sites_membership$Long10[which(sites_membership$cluster_membership == "Gro
 ```
 
 Which creates this map:
+<center><img src="{{ site.baseurl }}/img/cluster_map_plot.png" alt="Img" style="width: 700px;"/> </center>
 
-![Img]({{ site.baseurl }}/img/cluster_map_plot.png)
-
-### Congratulations on completing the tutorial!!! I know the explanations were a bit long, but we needed to cover the theory before doing the clustering. Keen to practice your data clustering and spatial visualisation skills? Check out our challenges below!
+<b>Congratulations on completing the tutorial!!! I know the explanations were a bit long, but we needed to cover the theory before doing the clustering. Keen to practice your data clustering and spatial visualisation skills? Check out our challenges below!</b>
 
 ## Challenge number 1
 We mapped our sites using the `maps` package associated with R's basic `plot` function and its arguments.
 
-<b>Try recreating the above map using the `ggmap` package, which offers more choice of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a>
+<b>Try recreating the above map using the `ggmap` package, which offers more choice of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a> If you get stuck, you can find the code to complete the challenge <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial.</a>
 
-![Img]({{ site.baseurl }}/img/cluster_map_ggplot.png)
-
+<center><img src="{{ site.baseurl }}/img/cluster_map_ggplot.png" alt="Img" style="width: 700px;"/> </center>
 
 ## Challenge number 2
 
 When I look at the map we've made, I can't help but to think that we should look for simpler patterns first. It seems that there is probably a north to south or an Andean - non-Andean gradient at play in Bolivia. Could elevation be one of the main drivers of tree species distribution there? You can explore that using the knowledge you've gained today! When you take a look at the cluster we have just mapped, you can see that you have two main groups - one composed of vegetation usually found in the lowlands (groups 1 and 2) and a group with Andean vegetation and Chaco woodlands (which are usually subtropical).
 
-<b>With the help of the code above, create a vector containing these two groups (lowland and subtropical vegetation), map the sites according to these new categories, and check if elevation and temperature could be behind the observed patterns.</b>
+<b>With the help of the code above, create a vector containing these two groups (lowland and subtropical vegetation), map the sites according to these new categories, and check if elevation and temperature could be behind the observed patterns.</b> If you get stuck, you can find the code to complete the challenge <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial.</a>
 
 ## Summary
 
 In this tutorial we explored hierarchical agglomerative clustering methods, distance metrics, and linkage methods. We also made a vector of cluster (subgroups) memberships and used that to assess how our sites are positioned in geographic space. This is an awesome start and you should be proud of it! I hope you have enjoyed it as much as I did.
 
-#### For more information on hierarchical data clustering, you can have a look at chapter 4 of "Numerical Ecology with R", by Daniel Borcard, François Gillet and Pierre Legendre (2011, Springer - New York, Dordrecht, London, Heidelberg)
+<b>For more information on hierarchical data clustering, you can have a look at chapter 4 of "Numerical Ecology with R", by Daniel Borcard, François Gillet and Pierre Legendre (2011, Springer - New York, Dordrecht, London, Heidelberg)</b>
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
 
