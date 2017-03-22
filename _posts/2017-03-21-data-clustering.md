@@ -12,17 +12,17 @@ meta: "Tutorials"
 	</center>
 </div>
 
-### Tutorial Aims:
+# Tutorial Aims:
 
-#### <a href="#Introduction"> 1. Get acquainted with data clustering </a>
+### <a href="#Introduction"> 1. Get acquainted with data clustering </a>
 
-#### <a href="#Distance"> 2. Learn about different distance metrics </a>
+### <a href="#Distance"> 2. Learn about different distance metrics </a>
 
-#### <a href="#Linkage"> 3. Learn about different linkage methods </a>
+### <a href="#Linkage"> 3. Learn about different linkage methods </a>
 
-#### <a href="#Grouping"> 4. Turn groups into a grouping variable </a>
+### <a href="#Grouping"> 4. Turn groups into a grouping variable </a>
 
-#### <a href="#Mapping"> 5. Map cluster groups in geographic space </a>
+### <a href="#Mapping"> 5. Map cluster groups in geographic space </a>
 
 <a name="Introduction"></a>
 
