@@ -16,57 +16,19 @@ meta: "Tutorials"
 
 #### <a href="#Introduction"> 1. Get acquainted with data clustering </a>
 
-#### <a href="#3.1 - Distance Metrics"> 2. Learn about different distance metrics </a>
+#### <a href="#Distance"> 2. Learn about different distance metrics </a>
 
-#### <a href="#3.2 - Linkage Methods"> 3. Learn about different linkage methods </a>
+#### <a href="#Linkage"> 3. Learn about different linkage methods </a>
 
-#### <a href="#5 - Transforming your groups in a grouping variable"> 4. Turn groups into a grouping variable </a>
+#### <a href="#Grouping"> 4. Turn groups into a grouping variable </a>
 
-#### <a href="#6 - Mapping and Challenge number 1"> 5. Map cluster groups in geographic space </a>
+#### <a href="#Mapping"> 5. Map cluster groups in geographic space </a>
 
-<a name="2.1 - Presence/Abscence Matrix"></a>
-2.1 - Presence/abscence matrix
-
-<a name="3 - The Clustering Beggins"></a>
-3 - The Clustering Beggins
-
-<a name="3.1 - Distance Metrics"></a>
-3.1 - Distance Metrics
-
-<a name="3.2 - Linkage Methods"></a>
 3.2 - Linkage Methods
-
-<a name="3.2.1 - Single-linkage method (single dendogram)"></a>
 3.2.1 - Single-linkage method (single dendogram)
-
-<a name="3.2.2 - Single-linkage method (concensus dendogram)"></a>
 3.2.2 - Single-linkage method (concensus dendogram)
-
-<a name="3.2.3 - Complete-linkage method"></a>
 3.2.3 - Complete-linkage method
-
-<a name="3.2.4 - Clustering using ward's minimum variance"></a>
-3.2.4 - Clustering using ward's minimum variance
-
-<a name="3.2.5 - Average linkage method (UPGMA) and an observation on "uniques" and potential biases in the dendograms"></a>
-3.2.5 - Average linkage method (UPGMA) and an observation on "uniques" and potential biases in the dendograms"
-
-<a name="4 - Bootstrap and support values for subgroups"></a>
-4 - Bootstrap and support values for subgroups
-
-<a name="5 - Transforming your groups in a grouping variable"></a>
-5 - Transforming your groups in a grouping variable
-
-<a name="6 - Mapping and Challenge number 1"></a>
-6 - Mapping and Challenge number 1
-
-<a name="7 - Challenge number 2"></a>
-7 - Challenge number 2
-
-<a name="8 - Where it all ends"></a>
-8 - Where it all ends
-<hr>
-<hr>
+3.2.4 - Clustering using Ward's minimum variance
 
 <a name="Introduction"></a>
 ### Get acquainted with data clustering
@@ -187,8 +149,8 @@ dim(spp_commat_trim)
 # We removed 275 species from our dataset. We'll check if this makes much of a difference later on.
 ```
 
+<a name="Distance"></a>
 # The Clustering Begins
-
 ## Distance Metrics
 Firstly, why don't we take a look at which distance measures are available to us?
 
@@ -216,6 +178,7 @@ euclidian_dist <- vegdist(spp_commat_trim, method="euclidean")
 
 Distance metrics are a very broad topic that deserves a tutorial on it's own and we only covered a tiny portion of it. You should definitely study this topic some more when clustering your own data. Just keep in mind the tips we mentioned above. There is one more thing we need to know before we start clustering - linkage-methods.
 
+<a name="Linkage"></a>
 # Linkage Methods
 
 Linkage methods? What are linkage methods? Why don't we take a look at the linkage methods that are available to us first?
@@ -343,7 +306,8 @@ recluster.plot(bol_upgma_cons, bol_upgma_boot, direction = "downwards")
 
 You can see that you have some high values for a few of the groups in here. If you set the `boot` value to a higher number (100 - 1000), the support values you found will go down.
 
-# Transforming your groups by a grouping variable
+<a name="Grouping"></a>
+# Creating a grouping variable
 
 Since these are sites located in geographic space, it would be interesting to visualise the spatial distribution of the groups you recognized in your cluster. To do that, you need to create a vector linking the plant observations to the cluster they belong to.
 
@@ -383,6 +347,7 @@ create units that will summarize the variation in your data. Most ecologists wil
 
 Why don't we cut our dendogram `bol_singlelink_cons` at one of the deepest levels possible (towards the base of the dendogram). That will give us four subgroups to work with. By looking at the phytogeographic domain, it seems that we've got a group which is mainly Amazonic (group1), a small group which is partially amazonic and savannic (group2), a group which is composed mainly of savannas (group3) and a group which seems to be Andean (group 4).
 
+<a name="Mapping"></a>
 ## Let's put this on a map and see if this actually holds true.
 
 On the first line (the one with the `findMRCA` function), you'll have to cite the names of the tips at the "beginning" and "end" of your subgroups. You'll notice that I've written some site codes in here. These are the names I've got on my cluster, but this will probably change from one computer to the other, so you'll need to open the `bol_singlelink_cons` object on figtree and look for the necessary tip names yourself. My guess is that most of you will get the same tips I have placed here, but don't worry if your dendogram looks different from the one in here. Simply change the names on the code and you'll be fine.
