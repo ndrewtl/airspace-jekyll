@@ -420,6 +420,8 @@ Now we are going to map these sites in geographic space. This is a great way to 
 
 ## Visualising the results of our clustering on a map
 
+We can now create our map using the following code:
+
 ```r
 map(xlim = c(-70, -55), ylim = c(-25, -8))  # setting the lat and long limits on our map
 map.axes()
