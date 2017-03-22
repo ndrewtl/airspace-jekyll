@@ -26,13 +26,13 @@ meta: "Tutorials"
 
 <a name="Introduction"></a>
 
-To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial.__
+To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial. Alternatively you can download the repo as a zip file.__
 
 ### Get acquainted with data clustering
 
-<b>Hierarchical data clustering allows you to explore your data and look for discontinuities (e.g. gaps in your data), gradients and meaningful ecological units (e.g. groups or subgroups of species). It is a great way to start looking for patterns in ecological data (e.g. abundance, frequency, occurrence), and is one of the most used analytical methods in ecology. Your research questions are the limit. Hierarchical clustering offers insight into how your biodiversity data are organized and can help you to disentangle different patterns and the scales at which they can be observed. It is a great, easy to use set of methods that gives you a lot of freedom to investigate your research questions. As an example, you can look at algae distribution along a ocean depth gradient, or you can look at the distribution of bats along an elevation gradient, or you can even determine which are the main biogeographic realms in the world, or you can study how fish communities are distributed along water basins and see if rapid streams and waterfalls are limiting their dispersal.</b>
+<b>Hierarchical data clustering allows you to explore your data and look for discontinuities (e.g. gaps in your data), gradients and meaningful ecological units (e.g. groups or subgroups of species). It is a great way to start looking for patterns in ecological data (e.g. abundance, frequency, occurrence), and is one of the most used analytical methods in ecology. Your research questions are the limit. Hierarchical clustering offers insight into how your biodiversity data are organized and can help you to disentangle different patterns and the scales at which they can be observed. For example, you could use data clustering to understand algae distribution along a ocean depth gradient, or look at the distribution of bats along an elevation gradient, or study how fish communities are distributed along water basins and see if rapid streams and waterfalls are limiting their dispersal, or even determine which are the main biogeographic realms in the world.</b>
 
-Let's imagine the following: you are an ecologist working on tropical forests in the Neotropics and you want to understand how these forests, composed of different sets of trees, are related to one another. You might want to split them into ecologically meaningful sub-groups that can then be used as a grouping variable (a categorical variable) in future analyses. You might be interested in questions such as: How many ecologically meaningful floristic units are present in the Neotropics? Which ones are more similar to each other? How many species do they share? How are these units distributed in geographic space? Does each unit occupy a certain portion of the geographic space, without blending into other units, or is the spatial distribution of units mixed?
+Let's imagine the following: you are an ecologist working on tropical forests in the Neotropics and you want to understand how these forests, composed of different species of tree, are related to one another. You could use data clustering to split them into ecologically meaningful sub-groups that can then be used as a grouping variable (a categorical variable) in future analyses. You might be interested in questions such as: How many ecologically meaningful floristic units are present in the Neotropics? Which ones are more similar to each other? How many species do they share? How are these units distributed in geographic space? Does each unit occupy a certain portion of the geographic space, or is the spatial distribution of units mixed?
 
 You can then build your next set of research questions based on the answers you got from the data clustering. What are the environmental drivers of the patterns in my data? Is climate one of these drivers? How will these tree groups respond to climate change? Are these floristic units related to climate? In such a big region (the Neotropics), are there biogeographic and environmental barriers separating these units? Do you get clear splits from one group to another or do you get a gradient of floristic turnover across the border of two of these floristic units?
 
@@ -69,7 +69,7 @@ library(stats)
 library(cluster)
 ```
 
-As you might have realised by now, I work on tropical trees and forests in the Neotropics, and today I have decided to give you a quick tour through some of the amazing forests and floristic formations we have there. Today's destination is Bolivia, a large country in tropical South America with just about ten million people living in it. Most of these people live in four gigantic cities: La Paz, Sucre, Cochabamba and Santa Cruz de La Sierra. As a result, most of Bolivia's diversity is located away from human settlements and is, therefore, relatively protected from human impact. Biogeographically, Bolivia is where all main Tropical South American biomes converge. This makes Bolivia one of the most interesting and exciting places to study (and visit) in South America.
+As you might have realised by now, I work on tropical trees and forests in the Neotropics, and today I have decided to give you a quick tour through some of the amazing forests and floristic formations we have there. Today's destination is Bolivia, a large country in tropical South America with just about ten million people living in it. Most of these people live in four gigantic cities: La Paz, Sucre, Cochabamba and Santa Cruz de La Sierra. As a result, most of Bolivia's diversity is located away from human settlements and is, therefore, relatively protected from human impact. Biogeographically, Bolivia is where all the main Tropical South American biomes converge. This makes Bolivia one of the most interesting and exciting places to study (and visit) in South America.
 
 <b>The data we'll be using today come from a dataset called NeoTropTree which was developed by <a href="http://prof.icb.ufmg.br/treeatlan/">Professor Ary Oliveira-Filho (Federal University of Minas Gerais - Brazil)</a>. NeoTropTree is a large database containing records on forest tree species composition, gathered by reviewing the literature (published and unpublished - e.g. masters dissertations and PhD theses), compiling species check-lists, and studying herbarium records. Each site within the database has been assigned to a specific vegetation type (an ecologically meaningful unit). NeoTropTree is a very comprehensive and well kept dataset, which makes it very valuable and reliable when doing science. Professor Oliveira-Filho has kindly agreed to us using a tiny portion of it for this tutorial.</b>
 
@@ -77,8 +77,8 @@ As you might have realised by now, I work on tropical trees and forests in the N
 # Loading the dataframes we'll be working with:
 # First load the data-frame containing all species for which NeoTropTree has at least one record in Bolivia.
 spp <- read.csv("spp_bol.csv", sep=",", head=TRUE)
-head(spp)
-dim(spp)
+head(spp)  # View the first few columns
+dim(spp)  # How many rows and columns are there?
 ```
 
 Each species has a `SppID` number and a code, which is in the `Species.code` column. These two columns will be of major importance to us later on. There are 3369 tree species registered for Bolivia in NeoTropTree.
@@ -86,39 +86,38 @@ Each species has a `SppID` number and a code, which is in the `Species.code` col
 ```r
 # Load the dataframe containing all sites NeoTropTree has in Bolivia.
 sites <- read.csv("sites_bolivia.csv", sep=",", head=TRUE)
-dim(sites)
 head(sites)
+dim(sites)
 ```
 
-Each site has an AreaID, an Area Code, information on locality, vegetation type, geographic coordinates and elevation. You can also see that the sites are classified in Phytogeographic Domains. This is important because the `AreaCode` column, to which we'll be referring very often, is based on these `Domains` - the first three letters of an area code correspond to the `Domain` on which the site is located. <b>Sites beginning with Amz, are a part of the Amazon Domain; And stand for the Andes; Cer stands for Cerrado (South American savannas); Cha stands for Chaco woodlands, which is a mainly subtropical, shrubby, mostly deciduous and dry floristic formation. Pay attention to this, as this will be very important when looking for sub-groups in our dataset.</b>
+Each site has an AreaID, an Area Code, information on locality, vegetation type, geographic coordinates and elevation. You can also see that the sites are classified in Phytogeographic Domains (`Domain`). This is important because the `AreaCode` column, to which we'll be referring very often, is based on these domains - the first three letters of an area code correspond to the `Domain` on which the site is located. <b>Sites beginning with `Amz`, are a part of the Amazon Domain; `And` = Andes; `Cer` = Cerrado (South American savannas); Cha = Chaco woodlands (mainly subtropical, shrubby, mostly deciduous and dry floristic formation). Pay attention to this, as this will be very important when looking for sub-groups in our dataset.</b>
 
 <b>Now it's time for us to load the correspondence matrix, a matrix indicating what species are present on which site, information that is vital to us in order to make a presence and abscence matrix.</b>
 
 ```r
-# sppxarea matrix
-
+# Load the sppxarea matrix
 sppxsites <- read.csv("sppxsites_bol.csv", sep=",", head=TRUE)
-dim(sppxsites)
 head(sppxsites)
+dim(sppxsites)
 ```
 
 Please note that you only have two columns in here - `SppID` and `AreaID`.The number of rows is the number of occurrence records in our dataset - 42015.
 
-### Making a presence and absence matrix through a loop
+### Making a presence/absence matrix through a loop
 
-How does the method know which observations are more similar to one another than others? Simple. You will provide it with a pairwise distance matrix. This is a quadratic (number of rows is equal to the number of columns) matrix containing the distance values taken for each pair of sites in the dataset. There are different ways of calculating these pairwise distances and the most suitable method for you will largely depend on the kind of data you are working with.
+How does the chosen clustering method know which observations are more similar to one another than others? Simple. You will provide it with a pairwise distance matrix. This is a quadratic (number of rows is equal to the number of columns) matrix containing the distance values taken for each pair of sites in the dataset. There are different ways of calculating these pairwise distances and the most suitable method for you will largely depend on the kind of data you are working with.
 
-Right now, what we need to do is use the data frames we have and create a presence and absence matrix with sites in the rows and species in the columns. As it is standard, "1" means species present in a site and "0" means the species does not occur in a site. No matter what distance metric you'll use, the pairwise distance matrix that will be used when clustering your data will always be constructed based on this table. Of course, if you have species abundance, than you'll be working with an abundance matrix.
+Right now, what we need to do is use the data frames we have and create a presence and absence matrix with sites in the rows and species in the columns. As it is standard, `1` = species present in a site and `0` = the species absent in a site. No matter what distance metric you use, the pairwise distance matrix that will be used when clustering your data will always be constructed based on this table. Of course, if you have species abundance, than you'll be working with an abundance matrix.
 
-The way we are going to build such matrix is through a loop function. Loop functions are extremely useful and are used very often in R. If you never heard about them or want to learn more about them, you can check our tutorial on <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">how to use loops. </a>
+The way we are going to build such matrix is through a loop function. Loop functions are extremely useful used in many programming languages. If you want to learn more about them, you can check our tutorial on <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">how to use loops.</a>
 
 ```r
-# Making the species by site matrix (presence and abscence). We'll call it commat.
+# Making the species by site matrix (presence and abscence). We'll call it `commat`.
 
 sites_sub <- unique(sppxsites$AreaID)  # Making a vector with sites in our dataset
 spp_sub <- unique(sppxsites$SppID)  # Making a vector with species in our dataset
 
-# First we'll create an empty matrix with our sites in the rows and our species in the columns. The loop function will place a "1" on a given cell when the species is present in an area and will fill out the remaining cells with a "0".
+# First we'll create an empty matrix with our sites in the rows and our species in the columns. The loop function will place a `1` on a given cell when the species is present in an area and will fill out the remaining cells with a `0`.
 
 spp_commat <- matrix(0, length(sites_sub), length(spp_sub))
 for (i in 1:nrow(spp_commat)){
@@ -136,7 +135,7 @@ dim(spp_commat)
 spp_commat[1:6,1:6]
 ```
 
-When working with large presence / absence datasets, it is good practice to remove "uniques". "Uniques" are species that only have one recorded presence in only one observation/sample. The reason behind this is that such species will only bring noise (somewhat random, hard to explain variation) to the analysis and will only blur the patterns we get. Later on, for the sake of practice, we'll compare the results we'll get with the full presence and absence matrix with the results we'll get with the same matrix without any "Uniques".
+When working with large presence/absence datasets, it is good practice to remove "uniques". "Uniques" are species that only have one recorded presence in only one observation/sample. The reason behind this is that such species will only bring noise (somewhat random, hard to explain variation) to the analysis and will only blur the patterns we get. Later on, for the sake of practice, we'll compare the results we'll get with the full presence and absence matrix with the results we'll get with the same matrix without any "Uniques".
 
 ```r
 spp_commat_trim <- spp_commat[,which(!colSums(spp_commat) == 1)]
@@ -155,13 +154,13 @@ help("vegdist")
 help("recluster.dist")
 ```
 
-I know, these are scary, complicated and lenghty lists filled with things that you don't understand that well (or at all). Don't worry though, the most used distance metrics in hierarchical data clustering are the Euclidean distance metric, the Jaccard index, Sorensen distance, Simpson distance metric (pay attention: this is not the Simpson diversity index) and Bray-Curtis.
+I know, these are scary, complicated and lengthy lists filled with things that you may not understand that well (or at all!). Don't worry though, the most used distance metrics in hierarchical data clustering are the Euclidean distance metric, the Jaccard index, Sorensen distance, Simpson distance metric (pay attention: this is not the Simpson diversity index) and Bray-Curtis.
 
 You have to be careful when using Euclidean and Sorensen distances, as they tend to be heavily influenced by big differences in species frequencies (our case), a lot of absences in the matrix (our case), and a great amount of observations (surprise, surprise, our case). Do avoid them in case your dataset meets any of these conditions. On such occasions, use Simpson instead, as it is a distance metric that deals very well with these issues and is becoming increasingly common in ecology. Euclidean is good for continuous data in general, Sorensen as well. You can use adapted Jaccard indices for abundance and occurrence data. Bray-curtis and Morisita-Horn are used for abundance data. And similar to Jaccard, there are different Simpson equations to estimate distance based on abundance or occurrence data.
 
-This can be a bit of a stretch, but it is worthwhile mentioning that, in most cases, you'll be working with beta diversity when calculating these distance matrices. Beta diversity can be decomposed into two components: turnover and nestedness.
+This can be a bit of a stretch, but it is worthwhile mentioning that, in most cases, you'll be working with beta diversity when calculating these distance matrices. Beta diversity can be decomposed into two components: turnover and nested-ness.
 
-<b>Turnover refers to when you have species replacing each other along an environmental gradient or geographic space. Nestedness refers to when a site/sample is occupied by a fraction, a subset, of the surrounding species pool, not by new species (nestedness is commonly associated with environmental filtering). Depending on the patterns you want to look at and how big your dataset is in terms of scale, these fractions must be taken into account. Jaccard distance is defined as turnover + nestedness = 1, Simpson focus on species turnover only, so it is great for biogeographic analysis.</b>
+<b>Turnover refers to when you have species replacing each other over an environmental gradient or geographic space. Nestedness refers to when a site/sample is occupied by a fraction, a subset, of the surrounding species pool, not by new species (nestedness is commonly associated with environmental filtering). Depending on the patterns you want to look at and how big your dataset is in terms of scale, these fractions must be taken into account. Jaccard distance is defined as turnover + nestedness = 1, Simpson focus on species turnover only, so it is great for biogeographic analysis.</b>
 
 The Simpson distance metric (not Simpson's diversity index) is becoming increasingly common in ecology for the reasons described above. Since our dataset is big, not very well balanced and filled with absences, we'll be using it in our analyses today and will not pay attention to the other distance metrics. Besides, it is wise for us to focus only on species turnover, since we are working on such a broad geographic scale.
 
@@ -178,7 +177,7 @@ Distance metrics are a very broad topic that deserves a tutorial on it's own and
 <a name="Linkage"></a>
 ### Linkage Methods
 
-The linkage method is the criterion that will determine how your observations will be grouped together. Here, we'll discuss the most commonly used linkage methods in ecology: 
+The linkage method is the criterion that will determine how your observations will be grouped together. Here, we'll discuss the most commonly used linkage methods in ecology:
 
 <a href="#single-den">- __Single-linkage method (single dendogram)__</a>
 
@@ -196,7 +195,7 @@ Run this code to check out the linkage methods that are available to us:
 help(hclust)
 ```
 
-## Making our first clusters and leaning more about linkage methods.
+## Making our first clusters and learning more about linkage methods.
 
 The function we'll be using today `recluster.cons` uses the Simpson's distance metric by default and that is what we will be using in this tutorial. The `recluster.dist` function makes the pairwise distance table for you, all you have to do is select the distance metric you want.
 
@@ -218,11 +217,11 @@ Let's open this file in Figtree and see how we can use this software to our adva
 
 ![Img]({{ site.baseurl }}/img/figtree_scrot.png)
 
-As you can see in the dendogram, we do not have any clearly defined groups. This is to be expected when using the single-linkage method, which is good for examining gradients in the dataset. You can still see some small groups scattered across the dendogram that are mainly formed by Amazonic (starting with Amz) and Andean (starting with And) sites.
+As you can see in the dendogram, we do not have any clearly defined groups. This is to be expected when using the single-linkage method, which is good for examining gradients in the dataset. You can still see some small groups scattered across the dendogram that are mainly formed by Amazonic (starting with `Amz`) and Andean (starting with `And`) sites.
 
 <b>Now that we have made our first cluster (congratulations!), there is something else you need to know. We are clustering data from a big dataset by using a distance matrix that most likely has many observations that are equally similar to one another. This means that these sites/samples can be clustered together in different ways and each way would be equally correct. How can we deal with this problem?</b>
 
-The answer is simple: we will build a solution which reflects the groups we encountered across different clusters made with the same distance matrix and the same linkage method. In other words, the solution will be made through a consensus. We will establish a criterion of inclusion that will indicate the number of times a certain subgroup/branch was recovered in a pool of equally valid solutions (dendograms) to our clustering problem. This is determined through the `p` argument. The size of our solutions pool (equally possible and valid dendograms) is determined by the `tr` argument, the standard number to use here is 100. `p` can be any number ranging from 0.5 to 1 (recovered in 50% of the dendograms to recovered in 100% of the dendograms). Smaller numbers will give you a better chance of recovering sub-groups in your consensus dendogram. Numbers close to 100% will diminish that chance. The number you assign to the `p` argument largely depends on your research questions and on how stable you want your groups to be.
+The answer is simple: we will build a solution which reflects the groups we encountered across different clusters made with the same distance matrix and the same linkage method. In other words, the solution will be made through a consensus. We will establish a criterion of inclusion that will indicate the number of times a certain subgroup/branch was recovered in a pool of equally valid solutions (dendograms) to our clustering problem. This is determined through the `p` argument. `p` can be any number ranging from 0.5 to 1 (recovered in 50% of the dendograms to recovered in 100% of the dendograms). Smaller numbers will give you a better chance of recovering sub-groups in your consensus dendogram. Numbers close to 100% will diminish that chance. The number you assign to the `p` argument largely depends on your research questions and on how stable you want your groups to be. The size of our solutions pool (equally possible and valid dendograms) is determined by the `tr` argument, the standard number to use here is 100.
 
 <b>Now, let's see if we can get a better solution when using different, equally valid, dendograms to come up with a solution to our clustering problem.</b>
 
@@ -243,7 +242,7 @@ Apart from a few sites changing their positions, the dendogram doesn't look that
 <a name="complete-link"></a>
 ## Complete-linkage method
 
-Using the complete-linkage method, a observation is only allowed to be linked to a subgroup when it is more related to it than to the most distant pair of observations in that group. By doing so, when a observation is linked to a subgroup, you can assume that it is related to all observations in that group.
+Using the complete-linkage method, an observation is only allowed to be linked to a subgroup when it is more related to it than to the most distant pair of observations in that group. By doing so, when a observation is linked to a subgroup, you can assume that it is related to all observations in that group.
 
 ```r
 bol_completelink <- recluster.cons(spp_commat_trim, tr = 100, p = 0.5, method = "complete")
@@ -268,7 +267,7 @@ plot(bol_ward_cons, direction = "downwards", cex = 0.5)
 write.tree(bol_ward_cons, "bol_ward_cons.tre")
 ```
 
-This dendogram's topology ('dendrogram topology' refers the branching pattern relationship among individuals) is different from the other two dendograms we produced before. How many main groups can you see in here? Considering the phytogeographic domains in which these sites are located, are these groups ecologically meaningful? Why don't you open the cluster you created with the complete linkage method and compare it with this one? How different are they? Which one would you use in order to perform further analysis?
+This dendogram's topology ('dendogram topology' refers the branching pattern relationship among individuals) is different from the other two dendograms we produced before. How many main groups can you see in here? Considering the phytogeographic domains in which these sites are located, are these groups ecologically meaningful? Why don't you open the cluster you created with the complete linkage method and compare it with this one? How different are they? Which one would you use in order to perform further analysis?
 
 <a name="ward"></a>
 ## Average linkage method (UPGMA) and an observation on "uniques" and potential biases in the dendograms
@@ -297,9 +296,9 @@ Removing "uniques" in this particular analysis didn't change our dendogram. This
 
 # Bootstrap and support values for subgroups
 
-<b>Bootstrap is one of the main ways of calculating support values for the subgroups we have got in our dendogram. It is usually used to test significance through randomisation procedures. However, since hierarchical clustering analysis do not work with significance, here bootstrapping assesses whether you'll get the same subgroups in a dendogram even if you resample the species occurring in each site (with replacement - meaning you can repeat species and even not include some species at all. Bootstrap values range from 0 to 100 and express the proportion of times a certain subgroup was recovered during the resampling. The bigger the number, the stronger the subgroup.</b>
+<b>Bootstrapping is one of the main ways of calculating support values for the subgroups we have got in our dendogram. It is usually used to test significance through randomisation procedures. However, since hierarchical clustering analysis do not work with significance, here bootstrapping assesses whether you'll get the same subgroups in a dendogram even if you resample the species occurring in each site (with replacement - meaning you can repeat species and even not include some species at all. Bootstrap values range from 0 to 100 and express the proportion of times a certain subgroup was recovered during the resampling. The bigger the number, the stronger the subgroup.</b>
 
-However, bootstrap values tend to decrease when you have matrices with an unequal data distribution (a lot of zeros). In our case, we have many sites and groups with low species richness. During the resampling, the calculation will end up removing species that are important to define groups, bringing the support values down, since the same groups will not be recovered. So don't get frustrated by the low values we get, as bootstrapping is not useful in our case. Nevertheless, bootstrap values tend to be reliable when you have equally distributed data.
+However, bootstrap values tend to decrease when you have matrices with an unequal data distribution (a lot of zeroes). In our case, we have many sites and groups with low species richness. During the resampling, the calculation will end up removing species that are important to define groups, bringing the support values down, since the same groups will not be recovered. So don't get frustrated by the low values we get, as bootstrapping is not useful in our case. Nevertheless, bootstrap values tend to be reliable when you have equally distributed data.
 
 The `boot` argument tells the function how many randomizations you want to make before calculating the bootstrap values. The bigger the number, the longer it will take for your computer to run it. The standard number is `1000`, but that takes at least three hours till you to get results. So we are going to set it to `10` instead.
 
@@ -339,11 +338,11 @@ bol_singlelink_cons_nodi
 # We went from 216 nodes to 127 nodes in here. Impressive!
 ```
 
-This step is important because we want to create a vector with our cluster groups and if the presence of polytomies is not acknowledged now, we are going to have a hard time in the near future. Let's create the vector with the politomy-free dendrogram. We will call it `cluster memberships`. The vector can also be used to do further analysis where the cluster groups are a categorical (grouping) variable, for example mapping our sites on a map of Bolivia, or running PCAs, NMDSs, PCoAs, and more.
+This step is important because we want to create a vector with our cluster groups and if the presence of polytomies is not acknowledged now, we are going to have a hard time in the near future. Let's create the vector with the politomy-free dendogram. We will call it `cluster memberships`. The vector can also be used to do further analysis where the cluster groups are a categorical (grouping) variable, for example mapping our sites on a map of Bolivia, or running PCAs, NMDSs, PCoAs, and more.
 
-We will now determine the node that links together all sites in one of our subgroups (this will be done through the `findMRCA` function in the `phytools` package) and then we'll get all tips and internal nodes conected to the node we've selected. After that, we'll remove the internal nodes and get just the dendogram tips in our group of sites.
+We will now determine the node that links together all sites in one of our subgroups (this will be done through the `findMRCA` function in the `phytools` package) and then we'll get all tips and internal nodes connected to the node we've selected. After that, we'll remove the internal nodes and get just the dendogram tips in our group of sites.
 
-When doing this, it is standard procedure to cut a dendogram into subgroups at the same level and not at different levels (you are working with ranks, remember?). Imagine yourself placing a ruler horizontally across your dendogram on your computer screen. This is how you cut your cluster into subgroups. As for the level where you want to make the cut, it's largely up to you, but keep in mind that you want to create units that will summarize the variation in your data. Most ecologists will aim at cutting their dendograms in a way that will produce the smallest possible number of ecologically meaningful subgroups. Of course, if you must, you can cut your cluster at different rank levels, it depends on the units you want to create. But remember this: cutting groups at different rank levels might make your subsequent analyses harder to interpret.
+When doing this, it is standard procedure to cut a dendogram into subgroups at the same level and not at different levels (you are working with ranks, remember). Imagine yourself placing a ruler horizontally across your dendogram on your computer screen. This is how you cut your cluster into subgroups. As for the level where you want to make the cut, it's largely up to you, but keep in mind that you want to create units that will summarize the variation in your data. Most ecologists will aim at cutting their dendograms in a way that will produce the smallest possible number of ecologically meaningful subgroups. Of course, if you must, you can cut your cluster at different rank levels, it depends on the units you want to create. But remember this: cutting groups at different rank levels might make your subsequent analyses harder to interpret.
 
 <b>We will cut our dendogram `bol_singlelink_cons` at one of the deepest levels possible (towards the base of the dendogram). That will give us four subgroups to work with. By looking at the phytogeographic domain, it seems that we've got a group which is mainly Amazonic (group1), a small group which is partially amazonic and savannic (group2), a group which is composed mainly of savannas (group3) and a group which seems to be Andean (group 4).</b>
 
@@ -454,7 +453,9 @@ Which creates this map:
 ## Challenge number 1
 We mapped our sites using the `maps` package associated with R's basic `plot` function and its arguments.
 
-<b>Try recreating the above map using the `ggmap` package, which offers more choice of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a> If you get stuck, you can find the code to complete the challenge <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial.</a>
+<b>Try recreating the above map using the `ggmap` package, which offers more choices of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a>
+
+![Img]({{ site.baseurl }}/img/cluster_map_ggplot.png)
 
 <center><img src="{{ site.baseurl }}/img/cluster_map_ggplot.png" alt="Img" style="width: 700px;"/> </center>
 
@@ -469,6 +470,9 @@ When I look at the map we've made, I can't help but to think that we should look
 In this tutorial we explored hierarchical agglomerative clustering methods, distance metrics, and linkage methods. We also made a vector of cluster (subgroups) memberships and used that to assess how our sites are positioned in geographic space. This is an awesome start and you should be proud of it! I hope you have enjoyed it as much as I did.
 
 <b>For more information on hierarchical data clustering, you can have a look at chapter 4 of "Numerical Ecology with R", by Daniel Borcard, François Gillet and Pierre Legendre (2011, Springer - New York, Dordrecht, London, Heidelberg)</b>
+
+<hr>
+<hr>
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
 
