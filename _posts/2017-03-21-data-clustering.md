@@ -455,8 +455,6 @@ We mapped our sites using the `maps` package associated with R's basic `plot` fu
 
 <b>Try recreating the above map using the `ggmap` package, which offers more choices of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a>
 
-![Img]({{ site.baseurl }}/img/cluster_map_ggplot.png)
-
 <center><img src="{{ site.baseurl }}/img/cluster_map_ggplot.png" alt="Img" style="width: 700px;"/> </center>
 
 ## Challenge number 2
