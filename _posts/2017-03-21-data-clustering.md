@@ -446,14 +446,19 @@ points(sites_membership$Long10[which(sites_membership$cluster_membership == "Gro
        (t(col2rgb("saddlebrown"))/255,alpha = 1), bg = rgb(t(col2rgb("saddlebrown"))/255))
 ```
 
-# !!!!!!!!!! INSERT MAP !!!!!!!!!!!!!!!!!!!!!!!!
+Which creates this map:
+
+![Img]({{ site.baseurl }}/img/cluster_map_plot.png)
 
 ### Congratulations on completing the tutorial!!! I know the explanations were a bit long, but we needed to cover the theory before doing the clustering. Keen to practice your data clustering and spatial visualisation skills? Check out our challenges below!
 
 ## Challenge number 1
 We mapped our sites using the `maps` package associated with R's basic `plot` function and its arguments.
 
-<b>You can try making this map using the package `ggmap`, which offers more choice of map types and in general can make very pretty maps.</b> If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a>
+<b>Try recreating the above map using the `ggmap` package, which offers more choice of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a>
+
+![Img]({{ site.baseurl }}/img/cluster_map_ggplot.png)
+
 
 ## Challenge number 2
 
