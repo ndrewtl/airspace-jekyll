@@ -30,15 +30,13 @@ To get all you need for this session, __go to <a href = "https://github.com/ourc
 
 ### Get acquainted with data clustering
 
-<b>Hierarchical data clustering allows you to explore your data and look for discontinuities (e.g. gaps in your data), gradients and meaningful ecological units (e.g. groups or subgroups of species). It is a great way to start looking for patterns in ecological data (e.g. abundance, frequency, occurrence), and is one of the most used analytical methods in ecology. Your research questions are the limit. As an example, you can look at algae distribution along a ocean depth gradient, or you can look at the distribution of bats along an elevation gradient, or you can even determine which are the main biogeographic realms in the world, or you can study how fish communities are distributed along water basins and see if rapid streams and waterfalls are limiting their dispersal.</b>
+<b>Hierarchical data clustering allows you to explore your data and look for discontinuities (e.g. gaps in your data), gradients and meaningful ecological units (e.g. groups or subgroups of species). It is a great way to start looking for patterns in ecological data (e.g. abundance, frequency, occurrence), and is one of the most used analytical methods in ecology. Your research questions are the limit. Hierarchical clustering offers insight in how your biodiversity data are organized and can help you to disentangle different patterns and the scales at which they can be observed. It is a great, easy to use and explore, set of methods that gives you a lot of freedom to investigate your research questions. As an example, you can look at algae distribution along a ocean depth gradient, or you can look at the distribution of bats along an elevation gradient, or you can even determine which are the main biogeographic realms in the world, or you can study how fish communities are distributed along water basins and see if rapid streams and waterfalls are limiting their dispersal.</b>
 
 Let's imagine the following: you are an ecologist working on tropical forests in the Neotropics and you want to understand how these forests, formed by different sets of trees, are related to one another. You might want to split them into ecologically meaningful sub-groups that can then be used as a grouping variable (a categorical variable) in future analyses. You might be interested in questions such as: How many ecologically meaningful floristic units are present in the Neotropics? Which ones are more similar to each other? How many species do they share? How are these units distributed in geographic space? Does each unit occupy a certain portion of the geographic space, without blending into other units, or is the spatial distribution of units mixed?
 
 You can then build your next set of research questions based on the answers you got from the data clustering. What are the environmental drivers of the patterns in my data? Is climate one of these drivers? How will these tree groups respond to climate change? Are these floristic units related to climate? In such a big region (the Neotropics), are there biogeographic and environmental barriers separating these units? Do you get clear splits from one group to another or do you get a gradient of floristic turnover across the border of two of these floristic units?
 
 <b>To answer these questions, you can construct a dataset which consists of tree species occurrence records for a multitude of sites in the Neotropics and perform a series of Hierarchical clustering analyses.</b>
-
-### Hierarchical clustering will give you a lot of insight on how your biodiversity data are organized and will help you to disentangle different patterns and the scales at which they can be observed. It is a great, easy to use and explore, set of methods that gives you a lot of freedom to investigate your research questions. 
 
 ### Hierarchical agglomerative data clustering
 Hierarchical agglomerative data clustering is part of a broader category commonly referred to as "data clustering". 
@@ -49,13 +47,13 @@ Hierarchical agglomerative data clustering is part of a broader category commonl
 - __Agglomerative and divisive__ - refers to how your data are being grouped. Agglomerative is a bottom up approach, meaning that the clustering will begin by putting similar observations together, gradually forming subgroups till all your observations are included. Divisive is the exact opposite, your set of observations will be considered as whole group and the algorithm will divide your data into progressively smaller chunks till each observation forms a sub-group on its own.
 
 - __Monothetic and polythetic__ -  refers to the amount of descriptors being employed to cluster your data into subgroups. If it uses just one descriptor on every step, it's monothetic; if it uses more than one, it's polythetic.
+
 - __Hierarchical and non-hierarchical__ - hierarchical means that your groups will be organized in ranks according to how similar they are. You'll have sub-groups forming larger groups till all your observations are included in your cluster. Non-hierarchical clustering methods do not include that option.
 
-### In sum, hierarchical agglomerative clustering methods group your observations in increasingly large subgroups till all observations are included. The subgroups formed by the clustering are ordered in ranks according to their level of similarity.
+<b>In sum, hierarchical agglomerative clustering methods group your observations in increasingly large subgroups till all observations are included. The subgroups formed by the clustering are ordered in ranks according to their level of similarity.</b>
 
-### Create a new R script file and start working your way through the tutorial. We find having the tutorial on half of your screen, and RStudio on the other half, useful for following along and seeing what the results of each code chunk are. 
-
-For today's session, we'll be working with four different packages. Please install them and load their libraries:
+### Create a new R script file and start working your way through the tutorial 
+We find having the tutorial on half of your screen, and RStudio on the other half, useful for following along and seeing what the results of each code chunk are. For today's session, we'll be working with four different packages. Please install them and load their libraries:
 
 ```r
 install.packages("recluster")
@@ -71,8 +69,6 @@ library(stats)
 library(cluster)
 ```
 
-# Now it is time to load the data we'll be using, but before that, let's discuss where these data came from and what we plan do with them.
-
 As you might have realised by now, I work on tropical trees and forests in the Neotropics, and today I have decided to give you a quick tour through some of the amazing forests and floristic formations we have there. Today's destination is Bolivia, a large country in Tropical South America with just about ten million people living in it. Most of these people live in four gigantic cities: La Paz, Sucre, Cochabamba and Santa Cruz de La Sierra. As a result, most of Bolivia's diversity is located away from human settlements and is, therefore, relatively protected from human impact. Biogeographically, Bolivia is where all main Tropical South American biomes converge. These makes this country one of the most interesting and exciting places to study (and visit) in South America.
 
 <b>The data we'll be using today come from a dataset called NeoTropTree. NeoTropTree has been developed by <a href="http://prof.icb.ufmg.br/treeatlan/">Professor Ary Oliveira-Filho (Federal University of Minas Gerais - Brazil)</a>. NeoTropTree is a large database containing records on tree species composition, gathered by reviewing the literature (published and unpublished - e.g. masters dissertations and PhD theses), compiling species check-lists, and studying herbarium records. Each site within the database has been assigned to a specific vegetation type (an ecologically meaningful unit). NeoTropTree is a very comprehensive and well kept dataset, which makes it very valuable and reliable when doing science. Professor Oliveira-Filho has kindly agreed to us using a tiny portion of it for this tutorial.</b>
@@ -85,7 +81,7 @@ head(spp)
 dim(spp)
 ```
 
-You can see here that each species has a `SppID` number and a code, which is in the `Species.code` column. These two columns will be of major importance to us later on. There are 3369 tree species registered for Bolivia in NeoTropTree.
+Each species has a `SppID` number and a code, which is in the `Species.code` column. These two columns will be of major importance to us later on. There are 3369 tree species registered for Bolivia in NeoTropTree.
 
 ```r
 # Load the dataframe containing all sites NeoTropTree has in Bolivia.
@@ -94,7 +90,7 @@ dim(sites)
 head(sites)
 ```
 
-As you can see, each site has an AreaID, an Area Code, information on locality, vegetation type, geographic coordinates and elevation. You can also see that the sites are classified in Phytogeographic Domains. This is important because the `AreaCode` column, to which we'll be referring very often, is based on these `Domains` - the first three letters of an area code correspond to the `Domain` on which the site is located. <b>Sites beginning with Amz, are a part of the Amazon Domain; And stand for the Andes; Cer stands for Cerrado (South American savannas); Cha stands for Chaco woodlands, which is a mainly subtropical, shrubby, mostly deciduous and dry floristic formation. Pay attention to this, as this will be very important when looking for sub-groups in our dataset.</b>
+Each site has an AreaID, an Area Code, information on locality, vegetation type, geographic coordinates and elevation. You can also see that the sites are classified in Phytogeographic Domains. This is important because the `AreaCode` column, to which we'll be referring very often, is based on these `Domains` - the first three letters of an area code correspond to the `Domain` on which the site is located. <b>Sites beginning with Amz, are a part of the Amazon Domain; And stand for the Andes; Cer stands for Cerrado (South American savannas); Cha stands for Chaco woodlands, which is a mainly subtropical, shrubby, mostly deciduous and dry floristic formation. Pay attention to this, as this will be very important when looking for sub-groups in our dataset.</b>
 
 <b>Now it's time for us to load the correspondence matrix, a matrix indicating what species are present on which site, information that is vital to us in order to make a presence and abscence matrix.</b>
 
@@ -108,7 +104,7 @@ head(sppxsites)
 
 Please note that you only have two columns in here - `SppID` and `AreaID`.The number of rows is the number of occurrence records in our dataset - 42015. 
 
-# Making a presence and absence matrix through a loop function
+### Making a presence and absence matrix through a loop function
 
 How does the method know which observations are more similar to one another than others? Simple. You will provide it with a pairwise distance matrix. This is a quadratic (number of rows is equal to the number of columns) matrix containing the distance values taken for each pair of sites in the dataset. There are different ways of calculating these pairwise distances and the most suitable method for you will largely depend on the kind of data you are working with.
 
@@ -116,7 +112,7 @@ Right now, what we need to do is use the data frames we have and create a presen
 
 The way we are going to build such matrix is through a loop function. Loop functions are extremely useful and are used very often in R. If you never heard about them or want to learn more about them, you can check our tutorial on <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">how to construct and use loop functions. </a>
 
-# Presence / absence matrix
+### Presence / absence matrix
 
 ```r
 # Making the species by site matrix (presence and abscence). We'll call it commat.
@@ -151,9 +147,9 @@ dim(spp_commat_trim)
 ```
 
 <a name="Distance"></a>
-# The Clustering Begins
-## Distance Metrics
-Firstly, why don't we take a look at which distance measures are available to us?
+## The Clustering Begins
+### Distance Metrics
+To learn which distance measures are available to us, check out:
 
 ```r
 help("vegdist")
@@ -162,12 +158,13 @@ help("recluster.dist")
 
 I know, these are scary, complicated and lenghty lists filled with things that you don't understand that well (or at all). Don't worry though, the most used distance metrics in hierarchical data clustering are the Euclidean distance metric, the Jaccard index, Sorensen distance, Simpson distance metric (pay attention: this is not the Simpson diversity index) and Bray-Curtis.
 
-You have to be careful when using Euclidean and Sorensen distances, as they tend to be heavenly influenced by huge differences in species frequencies (our case), a lot of absences in the matrix (our case) and
-by a great amount of observations (surprise, surprise, our case). Do avoid them in case your dataset meets any of these conditions. On such occasions, use Simpson instead, as it is a distance metric that deals very well with these issues and is becoming increasingly common in ecology. Euclidean is good for continuous data in general, Sorensen as well. You get adapted Jaccard indices for abundance and occurrence data. Bray-curtis and Morisita-Horn are used for abundance data. And similar to Jaccard, there are different Simpson equations to estimate distance based on abundance or occurrence data.
+You have to be careful when using Euclidean and Sorensen distances, as they tend to be heavily influenced by big differences in species frequencies (our case), a lot of absences in the matrix (our case), and a great amount of observations (surprise, surprise, our case). Do avoid them in case your dataset meets any of these conditions. On such occasions, use Simpson instead, as it is a distance metric that deals very well with these issues and is becoming increasingly common in ecology. Euclidean is good for continuous data in general, Sorensen as well. You can use adapted Jaccard indices for abundance and occurrence data. Bray-curtis and Morisita-Horn are used for abundance data. And similar to Jaccard, there are different Simpson equations to estimate distance based on abundance or occurrence data.
 
-This can be a bit of a stretch, but it is worthwhile mentioning that, in most cases, you'll be working with beta diversity when calculating these distance matrices. Beta diversity can be decomposed into two components: turnover and nestedness. Turnover is when you have species replacing each other along a environmental gradient or geographic space and Nestedness is when a site/sample is occupied by a fraction, a subset, of the surrounding species pool, not by new species (nestedness is commonly associated with environmental filtering). Depending on the patterns you want to look at and how big your dataset is in terms of scale, these fractions must be taken into account. Jaccard distance is defined as turnover + nestedness = 1, Simpson focus on species turnover only, so it is great for biogeographic analysis.
+This can be a bit of a stretch, but it is worthwhile mentioning that, in most cases, you'll be working with beta diversity when calculating these distance matrices. Beta diversity can be decomposed into two components: turnover and nestedness. 
 
-Simpson distance metric (not Simpson's diversity index) is becoming increasingly common in ecology for the reasons described above. Since our dataset is big, not very well balanced and filled with absences, we'll be using it in our analyses today and will not pay attention to the other distance metrics. Besides, it is wise for us to focus only on species turnover, since we are working on such a broad geographic scale.
+<b>Turnover is when you have species replacing each other along an environmental gradient or geographic space. Nestedness is when a site/sample is occupied by a fraction, a subset, of the surrounding species pool, not by new species (nestedness is commonly associated with environmental filtering). Depending on the patterns you want to look at and how big your dataset is in terms of scale, these fractions must be taken into account. Jaccard distance is defined as turnover + nestedness = 1, Simpson focus on species turnover only, so it is great for biogeographic analysis.</b>
+
+The Simpson distance metric (not Simpson's diversity index) is becoming increasingly common in ecology for the reasons described above. Since our dataset is big, not very well balanced and filled with absences, we'll be using it in our analyses today and will not pay attention to the other distance metrics. Besides, it is wise for us to focus only on species turnover, since we are working on such a broad geographic scale.
 
 ```r
 # Picking a metric is difficult, but calculating it is actually simple. Simply use the recluster.dist command or the vegdist command in order to estimate such distances.
@@ -177,10 +174,10 @@ sorensen_dist <- recluster.dist(spp_commat_trim, dist="sorensen")
 euclidian_dist <- vegdist(spp_commat_trim, method="euclidean")
 ```
 
-Distance metrics are a very broad topic that deserves a tutorial on it's own and we only covered a tiny portion of it. You should definitely study this topic some more when clustering your own data. Just keep in mind the tips we mentioned above. There is one more thing we need to know before we start clustering - linkage-methods.
+Distance metrics are a very broad topic that deserves a tutorial on it's own and we only covered a tiny portion of it. You should definitely explore this topic more when clustering your own data. There is one more thing we need to know before we start clustering - linkage-methods.
 
 <a name="Linkage"></a>
-# Linkage Methods
+### Linkage Methods
 
 3.2.1 - Single-linkage method (single dendogram)
 3.2.2 - Single-linkage method (concensus dendogram)
