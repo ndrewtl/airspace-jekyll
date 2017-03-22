@@ -43,11 +43,13 @@ You can then build your next set of research questions based on the answers you 
 ### Hierarchical agglomerative data clustering
 Hierarchical agglomerative data clustering is part of a broader category commonly referred to as "data clustering". 
 
-#### <b>Hierarchical agglomerative data clustering methods</b>:
-- <b>Sequential and simultaneous</b> - refers to how the clustering is conducted. If it's through an algorithm that is repeated till all data have been clustered, it's sequential. If the algorithm clusters all your data together at the same time, it's simultaneous.
-- <b>Agglomerative and divisive</b> - refers to how your data are being grouped. Agglomerative is a bottom up approach, meaning that the clustering will begin by putting similar observations together, gradually forming subgroups till all your observations are included. Divisive is the exact opposite, your set of observations will be considered as whole group and the algorithm will divide your data into progressively smaller chunks till each observation forms a sub-group on its own.
-- <b>Monothetic and polythetic</b> -  refers to the amount of descriptors being employed to cluster your data into subgroups. If it uses just one descriptor on every step, it's monothetic; if it uses more than one, it's polythetic.
-- <b>Hierarchical and non-hierarchical</b> - hierarchical means that your groups will be organized in ranks according to how similar they are. You'll have sub-groups forming larger groups till all your observations are included in your cluster. Non-hierarchical clustering methods do not include that option.
+#### Hierarchical agglomerative data clustering methods:
+- __Sequential and simultaneous__ - refers to how the clustering is conducted. If it's through an algorithm that is repeated till all data have been clustered, it's sequential. If the algorithm clusters all your data together at the same time, it's simultaneous.
+
+- __Agglomerative and divisive__ - refers to how your data are being grouped. Agglomerative is a bottom up approach, meaning that the clustering will begin by putting similar observations together, gradually forming subgroups till all your observations are included. Divisive is the exact opposite, your set of observations will be considered as whole group and the algorithm will divide your data into progressively smaller chunks till each observation forms a sub-group on its own.
+
+- __Monothetic and polythetic__ -  refers to the amount of descriptors being employed to cluster your data into subgroups. If it uses just one descriptor on every step, it's monothetic; if it uses more than one, it's polythetic.
+- __Hierarchical and non-hierarchical__ - hierarchical means that your groups will be organized in ranks according to how similar they are. You'll have sub-groups forming larger groups till all your observations are included in your cluster. Non-hierarchical clustering methods do not include that option.
 
 ### In sum, hierarchical agglomerative clustering methods group your observations in increasingly large subgroups till all observations are included. The subgroups formed by the clustering are ordered in ranks according to their level of similarity.
 
