@@ -471,6 +471,9 @@ In this tutorial we explored hierarchical agglomerative clustering methods, dist
 
 <b>For more information on hierarchical data clustering, you can have a look at chapter 4 of "Numerical Ecology with R", by Daniel Borcard, François Gillet and Pierre Legendre (2011, Springer - New York, Dordrecht, London, Heidelberg)</b>
 
+<hr>
+<hr>
+
 #### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
