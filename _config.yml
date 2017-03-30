@@ -16,9 +16,9 @@ keep_files:
 # Site settings
 title: Vivah Kennel
 subtitle: ""
-url: "http://luminousrubyist.github.io" # the base hostname & protocol for your site
-# baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
-baseurl: "/airspace-jekyll"
+url: "http://alinebml.github.io/vivah" # the base hostname & protocol for your site
+baseurl: "/"
+
 cover: "/assets/cover.png"
 logo: "/assets/logo.png"
 
