@@ -141,8 +141,8 @@ font header .navbar-default .navbar-nav li a:hover {
   padding: 100px 0;
 }
 #intro .block h2 {
-  padding-top: 35px;
-  line-height: 27px;
+  padding-top: 0px;
+  line-height: 2px;
   margin: 0;
 }
 #intro .block p {
@@ -150,7 +150,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-top: 20px;
 }
 #intro .block img {
-  padding-left: 40px;
+  padding-left: 0px;
   width: 100%;
 }
 #intro .section-title {
