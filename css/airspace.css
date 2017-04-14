@@ -138,7 +138,10 @@ font header .navbar-default .navbar-nav li a:hover {
 	wrapper Start
 --*/
 #intro {
-  padding: 100px 0;
+  padding: 50px 0;
+}
+#next {
+  padding: 20px 0;
 }
 #intro .block h2 {
   padding-top: 0px;
@@ -158,6 +161,9 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 #intro .section-title p {
   padding-top: 20px;
+}
+#next .block-text p {
+  color: #7B7B7B;
 }
 /*--
 	service Start
@@ -197,6 +203,7 @@ font header .navbar-default .navbar-nav li a:hover {
   text-align: center;
   color: #fff;
 }
+
 #call-to-action:before {
   content: "";
   position: absolute;
