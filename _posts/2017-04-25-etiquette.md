@@ -453,6 +453,6 @@ devtools::install_github("ThinkRstat/littleboxes")
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
-#### <a href="SURVEY_MONKEY_LINK">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
+#### <a href="https://www.surveymonkey.co.uk/r/8YBXTMT">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
 
 Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html">Hadley Whickham's R Style Guide</a>.
