@@ -141,7 +141,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding: 50px 0;
 }
 #next {
-  padding: 20px 0;
+  padding: 0px 0;
 }
 #intro .block h2 {
   padding-top: 0px;
@@ -165,6 +165,19 @@ font header .navbar-default .navbar-nav li a:hover {
 #next .block-text p {
   color: #7B7B7B;
 }
+
+#intro {
+  padding: 50px 0;
+}
+#next {
+  padding: 0px 0;
+}
+
+#intro .section-title-index p {
+  padding-top: 50px;
+  font-size: 18px;
+}
+
 /*--
 	service Start
 --*/
@@ -238,7 +251,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	Feature Start
 --*/
 #feature {
-  background: url("../img/featue-bg.jpg");
+  background: url("../img/32.jpg");
   background-position: 50% 94px;
   width: 100%;
   display: block;
@@ -263,10 +276,12 @@ font header .navbar-default .navbar-nav li a:hover {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 30px;
+  color: #fff;
 }
 #feature p {
-  color: #8d8f92;
+  color: #fff;
   margin-bottom: 20px;
+  font-size: 18px;
 }
 #feature .btn-view-works {
   background: #655E7A;
@@ -474,7 +489,6 @@ font header .navbar-default .navbar-nav li a:hover {
   transition: all 0.4s ease-in-out;
 }
 #portfolio-work .block .portfolio-contant ul li {
-  float: left;
   width: 32.22%;
   overflow: hidden;
   margin: 6px;
