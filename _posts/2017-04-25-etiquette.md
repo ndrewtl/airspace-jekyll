@@ -24,7 +24,7 @@ The coding etiquette outlined in this tutorial is applicable to most analyses - 
 
 Alternatively, you can fork [the repository](https://github.com/ourcodingclub/SEECC-workshop) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html">tutorial.</a>
 
-__#### Start downloading the files from the GitHub repo now, so that the download has finished by the time you need them. We will go through the coding etiquette first, so there is no need for you to open anything from the downloaded files at this stage. You can copy across code from this tutorial into a blank script file for practice, or you can edit your own script. Alternatively, you can read through the tips shared here, then go to the tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence.</a>, and follow the tutorial whilst applying the coding etiquette outlined here.__
+__Start downloading the files from the GitHub repo now, so that the download has finished by the time you need them. We will go through the coding etiquette first, so there is no need for you to open anything from the downloaded files at this stage. You can copy across code from this tutorial into a blank script file for practice, or you can edit your own script. Alternatively, you can read through the tips shared here, then go to the tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence.</a>, and follow the tutorial whilst applying the coding etiquette outlined here.__
 
 <a name="sections"></a>
 
@@ -40,7 +40,7 @@ As with any piece of writing, it really helps to have a clear structure to your 
 
 To create sections, first you need to add a comment using the `#` symbol. Comments are incredibly useful for making sense of code and clarifying what you are doing, and why you are doing it. Once you have a comment statement, like `# Testing comments`, you can add four or more `#` or `-` to make that comment the start of a section, for example `# Testing comments ----`. In your outline you can now see this comment as your first section.
 
-####__Commenting guidelines:__
+####Commenting guidelines:
 
 __Each line of a comment should begin with the comment symbol `#` and a single space__. Comments should be concise to avoid having to scroll a lot to read them in full, and most importantly, they should be informative enough so that you and your collaborators can understand what you are doing and why you are doing it.
 
@@ -59,13 +59,13 @@ LPI_biome_summ <- LPI_long %>%
             dominant_units = names(which.max(table(units))))  # modal unit type
 ```
 
-####__Script structure:__
+####Script structure:
 
 __There are no strict rules and you can adapt the number and names of sections to your needs, but in general a script includes the following sections:__
 
-- __Introductory section__ - author statement (what does this script do?), author(s) names, contact details and date.
+__Introductory section__ - author statement (what does this script do?), author(s) names, contact details and date.
 
-- __Libraries__ - what packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for.
+__Libraries__ - what packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for.
 
 __Here are two examples, good and bad, to illustrate the aforementioned sections.__
 
@@ -90,7 +90,7 @@ library(dplyr)  # Manipulating data
 library(ggplot2)  # Visualising results
 ```
 
-- __Functions__ - are you using any functions written by you and/or others? Define them here. For example functions to remove NA values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">create your own `ggplot2` theme.</a>
+__Functions__ - are you using any functions written by you and/or others? Define them here. For example functions to remove NA values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">create your own `ggplot2` theme.</a>
 
 ```r
 # Defining functions ----
@@ -113,7 +113,7 @@ theme_LPI <- function(){
 }
 ```
 
-- __Loading data__ - what do the data represent and where do they come from? Always include the file path in your code, so that you can track down your data later. Keep the file path structure simple so that it makes sense to everyone. No spaces in folder names and concise logical folder names can minimise potential future problems. Note that you define file paths differently on Mac and Windows laptops - if, for example, a Mac user has sent you code and you can't load in the data, it might be because on a Mac you would use `"D:\Work\LPI_analysis\LPIdatabase.csv"`, whereas on a Windows, the slashes go in the other direction - `"D:/Work/LPI_analysis/LPIdatabase.csv"`. If such problems arise, you can just change the type of slashes and the code should work as normal afterwards. Be careful when you are reorganising your folders and/or deleting folders - remember to update file paths, as otherwise you will get error messages telling you `R` can't find the file anymore.
+__Loading data__ - what do the data represent and where do they come from? Always include the file path in your code, so that you can track down your data later. Keep the file path structure simple so that it makes sense to everyone. No spaces in folder names and concise logical folder names can minimise potential future problems. Note that you define file paths differently on Mac and Windows laptops - if, for example, a Mac user has sent you code and you can't load in the data, it might be because on a Mac you would use `"D:\Work\LPI_analysis\LPIdatabase.csv"`, whereas on a Windows, the slashes go in the other direction - `"D:/Work/LPI_analysis/LPIdatabase.csv"`. If such problems arise, you can just change the type of slashes and the code should work as normal afterwards. Be careful when you are reorganising your folders and/or deleting folders - remember to update file paths, as otherwise you will get error messages telling you `R` can't find the file anymore.
 
 ```r
 # Load data ----
@@ -124,7 +124,7 @@ load("puffin_GBIF.RData")
 # Alternatively, here you can add your read.csv("your_filepath")
 ```
 
-- __The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an honours dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear.
+__The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an honours dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear.
 
 ```r
 # Formatting data ----
@@ -139,7 +139,7 @@ load("puffin_GBIF.RData")
 # Mixed effects models for species B ----
 ```
 
-- __The outputs of your analysis__ - Remember to keep your file path sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph.
+__The outputs of your analysis__ - Remember to keep your file path sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph.
 
 ```r
 png(file="your_folder/filename.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
@@ -164,7 +164,7 @@ __You can also go to `Edit/Folding/Collapse all` to collapse all sections - this
 
 ### 2. Following a coding syntax etiquette
 
-#### 1. Naming files and objects.
+#### 2.1. Naming files and objects.
 
 #### "There are only two hard things in Computer Science: cache invalidation and naming things." - Phil Karlton
 
@@ -179,10 +179,14 @@ yet_another_script.R  # Bad. Took me hours to find the file when I needed it one
 ```
 
 __Object names should be concise and meaningful.__
-- Calling your data `data` might cause problems if you are doing multiple analyses at once / don't clean your environment, and you keep using the same object name. But if you need an overwrittable universal object and you don't need to keep lots of objects from each step of your analysis, sticking with the same object name might be useful.
-- Long object names are annoying to type - more letters, higher chance you'll make a typo.
-- Variable and function names should be lowercase. `MinPrecip_august` is confusing to remember, `min.precip.aug` is a bit long, but informative and easier to type.
-- Variable names should be nouns and function names should be verbs. For example, `abundance` and `richness` can be variable names within your dataset. If you write a function that calculates the Shannon Index of species richness, you can call that `calc.sp.richness`.
+
+Calling your data `data` might cause problems if you are doing multiple analyses at once / don't clean your environment, and you keep using the same object name. But if you need an overwrittable universal object and you don't need to keep lots of objects from each step of your analysis, sticking with the same object name might be useful.
+
+Long object names are annoying to type - more letters, higher chance you'll make a typo.
+
+Variable and function names should be lowercase. `MinPrecip_august` is confusing to remember, `min.precip.aug` is a bit long, but informative and easier to type.
+
+Variable names should be nouns and function names should be verbs. For example, `abundance` and `richness` can be variable names within your dataset. If you write a function that calculates the Shannon Index of species richness, you can call that `calc.sp.richness`.
 
 ##### - __Use an underscore to separate words within a script file.__ E.g. `LPI_analysis_Apr_2017.R`
 ##### - __Use a dot to separate words within objects and functions.__ E.g. `pop.change.m` for the object that stores a model examining population change, and `calc.sp.richness` for a function.
@@ -202,7 +206,8 @@ __This way it's clear what's an object and what's an external file. These are no
  calculate_avg_clicks , calculateAvgClicks  # Bad.
 ```
 
-#### 2. Spacing
+
+#### 2.2 Spacing
 
 __Place spaces around all infix operators (=, +, -, <-, etc.).__ The same rule applies when using = in function calls. Always put a space after a comma, and never before.
 
@@ -256,7 +261,8 @@ x[1,]   # Needs a space after the comma
 x[1 ,]  # Space goes after comma not before
 ```
 
-#### 3. Curly braces
+
+#### 2.3 Curly braces
 
 An opening curly brace should never go on its own line and should always be followed by a new line. A closing curly brace should always go on its own line, unless it's followed by `else`.
 __Always indent the code inside curly braces.__
@@ -292,13 +298,16 @@ It's ok to leave very short statements on the same line:
 if (y < 0 && debug) message("Y is negative")
 ```
 
-#### 4. Line length
+
+#### 2.4 Line length
 
 __The official convention is to limit your code to 80 characters per line.__ Having to continuously scroll left and right can be annoying and confusing. Also, when you publish your code on Github, the scrolly bar is all the way down, so to scroll right, you first need to scroll all the way down, scroll right, then scroll all the way up to wherever you want to be - unnecessary.
 
 __How do you know what's 80 characters though? RStudio can place a handy line in your editor as a reminder! Go to `Tools/Global Options/Code/Display/Show Margin/80 characters`.__ Sometimes it might make more sense for your code to be a bit longer than 80 characters, but in general code is easier to read if there is no need for continuous scrolling left and right, around 100 characters should work alright.
 
+
 ##### When using pipes, keep the piping operator `%>%` at the end of the line and continue your pipe on a new line.
+
 
 ```r
 # Just an example of what a pipe could look like, no need to run the code at this stage.
@@ -312,7 +321,9 @@ LPI_long <- LPI_long %>%
   ungroup(.)  # Remove any groupings you've greated in the pipe, not entirely necessary but it's better to be safe
 ```
 
+
 ##### When using `ggplot2`, keep the `+` at the end of the line and continue adding on layers on a new line.
+
 
 ```r
 # Just an example of what the code could look like, no need to run the code at this stage.
@@ -327,7 +338,7 @@ vulture_scatter <- ggplot(vultureITCR, aes (x = year, y = abundance, colour = Co
     xlab("\nYear")
 ```
 
-#### 5. Indentation
+#### 2.5 Indentation
 If a function definition runs over multiple lines, indent the second line to where the definition starts - you can check out the indentation in the `ggplot2` code above - when you click `Enter` after the `+` sign, the new line automatically gets indented.
 
 Here is a before and after of a `ggplot2` figure code:
@@ -360,7 +371,7 @@ ggplot() +
 
 <a name="tidy"></a>
 
-#### 3. Tidying up old scripts and data frames
+### 3. Tidying up old scripts and data frames
 
 It's best to start following a sensible coding etiquette from the very beginning, but realistically we are often in a hurry, we want to code quickly and even if we know we are not following best practices, we still go ahead, because we are thinking of our short-term goals - getting it done, as opposed to the more long-term goals of having a sensible and reproducible record of our analysis. As we are writing this tutorials, we are just as guilty as everyone else of having messy scripts, missing spaces around `=`, etc. But it's important to try to be consistent with your coding, and once you get into the habit of it, it hopefully won't seem "just like one extra thing to do".
 
@@ -387,7 +398,7 @@ tidy_dir(path="whatever/your/path/is", recursive = TRUE)
 # recursive	- whether to recursively look for R scripts under path
 ```
 
-####__Renaming old objects and variables__
+####Renaming old objects and variables
 
 If, like us, you find yourself having to use a script of yours from before you knew any better, you might have objects with really uninformative, unnecesarily hard to type up, names. There is an easy fix to that - just like in most text editors, you can `Find` and `Replace` words, in our case object names. You can type up the object whose name you want to change, then add the new one, and replace either individual occurrences, or all of the occasions when the object name is mentioned. You can also select lines of code and only rename the object in that part of the code - careful that you have clicked on `In selection`, as otherwise the object name will be replaced in the entire script, despite you having selected only some of the lines.
 
@@ -433,7 +444,7 @@ devtools::install_github("ThinkRstat/littleboxes")
 
 ### Applying the coding etiquette to a real analysis
 
-### Now that you have been through the coding etiquette, you can have a go at applying what you've learned by following our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence.</a>, and writing a clear, informative, well-structured script as you go along.
+#### Now that you have been through the coding etiquette, you can have a go at applying what you've learned by following our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence.</a>, and writing a clear, informative, well-structured script as you go along.
 
 <hr>
 <hr>
