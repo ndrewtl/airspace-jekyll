@@ -187,3 +187,28 @@ Check out the summary output - looks like the probability of a pine tree endurin
 
 #### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
 #### [https://www.surveymonkey.co.uk/r/NNRS98G](https://www.surveymonkey.co.uk/r/NNRS98G)
+
+<ul class="social-icons">
+	<li>
+		<h3>
+			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+		</h3>
+	</li>
+</ul>
+
+### &nbsp;&nbsp;Subscribe to our mailing list:
+<div class="container">
+	<div class="block">
+        <!-- subscribe form start -->
+		<div class="form-group">
+			<form action="https://getsimpleform.com/messages?form_api_token=de1ba2f2f947822946fb6e835437ec78" method="post">
+			<div class="form-group">
+				<input type='text' class="form-control" name='Email' placeholder="Email">
+			</div>
+			<div>
+                        	<button class="btn btn-default" type='submit'>Subscribe</button>
+                    	</div>
+                	</form>
+		</div>
+	</div>
+</div>
