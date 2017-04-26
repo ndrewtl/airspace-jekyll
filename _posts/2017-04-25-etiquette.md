@@ -455,4 +455,4 @@ devtools::install_github("ThinkRstat/littleboxes")
 
 #### <a href="SURVEY_MONKEY_LINK">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
 
-Our coding etiquette was developed with the help of Hadley Whickham's R Style Guide http://adv-r.had.co.nz/Style.html.
+Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html">Hadley Whickham's R Style Guide</a>.
