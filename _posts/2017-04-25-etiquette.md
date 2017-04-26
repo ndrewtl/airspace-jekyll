@@ -40,7 +40,7 @@ As with any piece of writing, it really helps to have a clear structure to your 
 
 To create sections, first you need to add a comment using the `#` symbol. Comments are incredibly useful for making sense of code and clarifying what you are doing, and why you are doing it. Once you have a comment statement, like `# Testing comments`, you can add four or more `#` or `-` to make that comment the start of a section, for example `# Testing comments ----`. In your outline you can now see this comment as your first section.
 
-####Commenting guidelines:
+#### Commenting guidelines:
 
 __Each line of a comment should begin with the comment symbol `#` and a single space__. Comments should be concise to avoid having to scroll a lot to read them in full, and most importantly, they should be informative enough so that you and your collaborators can understand what you are doing and why you are doing it.
 
@@ -59,7 +59,7 @@ LPI_biome_summ <- LPI_long %>%
             dominant_units = names(which.max(table(units))))  # modal unit type
 ```
 
-####Script structure:
+#### Script structure:
 
 __There are no strict rules and you can adapt the number and names of sections to your needs, but in general a script includes the following sections:__
 
@@ -398,7 +398,7 @@ tidy_dir(path="whatever/your/path/is", recursive = TRUE)
 # recursive	- whether to recursively look for R scripts under path
 ```
 
-####Renaming old objects and variables
+#### Renaming old objects and variables
 
 If, like us, you find yourself having to use a script of yours from before you knew any better, you might have objects with really uninformative, unnecesarily hard to type up, names. There is an easy fix to that - just like in most text editors, you can `Find` and `Replace` words, in our case object names. You can type up the object whose name you want to change, then add the new one, and replace either individual occurrences, or all of the occasions when the object name is mentioned. You can also select lines of code and only rename the object in that part of the code - careful that you have clicked on `In selection`, as otherwise the object name will be replaced in the entire script, despite you having selected only some of the lines.
 
