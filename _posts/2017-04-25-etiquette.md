@@ -187,7 +187,7 @@ Long object names are annoying to type - more letters = higher chance you'll mak
 Variable and function names should be lowercase. `MinPrecip_august` is confusing to remember, `min.precip.aug` is a bit long, but informative and easier to type.
 
 ##### - __Variable names should be nouns.__ E.g. `abundance` `richness`
-##### - __Funcation names should be verbs.__ E.g. `calc.sp.richness`
+##### - __Function names should be verbs.__ E.g. `calc.sp.richness`
 ##### - __Use an underscore to separate words within a script file.__ E.g. `LPI_analysis_Apr_2017.R`
 ##### - __Use a dot to separate words within objects and functions.__ E.g. `pop.change.m` for the object that stores a model examining population change, and `calc.sp.richness` for a function.
 ##### - __The preferred form for variable names is all lower case letters and words separated with dots (`variable.name`).__
