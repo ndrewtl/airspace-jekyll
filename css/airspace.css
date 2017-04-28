@@ -363,6 +363,84 @@ font header .navbar-default .navbar-nav li a:hover {
   display: inline-block;
   border: 0px;
 }
+
+
+/*--
+	content Start
+--*/
+#galery {
+  padding: 50px 0;
+}
+#galery .block h2 {
+  padding-top: 0px;
+  line-height: 2px;
+  margin: 0;
+}
+#galery .block p {
+  color: #7B7B7B;
+  padding-top: 0px;
+}
+#galery .counter-box li {
+  width: 50%;
+  float: left;
+  text-align: center;
+  margin: 30px 0 30px;
+}
+#galery .counter-box li i {
+  font-size: 35px;
+}
+#galery .counter-box li h4 {
+  font-size: 30px;
+  font-weight: bold;
+}
+#galery .counter-box li span {
+  color: #555;
+}
+#galery .galery-carousel {
+  text-align: center;
+  width: 100%;
+  margin: 0 auto;
+}
+#galery .galery-carousel img {
+  padding-bottom: 38px;
+  width: 75%;
+}
+#galery .galery-carousel p {
+  line-height: 28px;
+  font-weight: 300;
+  padding-bottom: 20px;
+}
+#galery .galery-carousel .user img {
+  padding-bottom: 0px;
+  border-radius: 500px;
+}
+#galery .galery-carousel .user p {
+  padding-bottom: 0;
+  font-size: 12px;
+  line-height: 20px;
+  color: #353241;
+}
+#galery .galery-carousel .user p span {
+  display: block;
+  color: #353241;
+  font-weight: 600;
+}
+#galery .galery-carousel .owl-carousel .owl-pagination div {
+  border: 1px solid #1D1D1D;
+  border-radius: 500px;
+  display: inline-block;
+  height: 10px;
+  margin-right: 15px;
+  width: 10px;
+}
+#galery .galery-carousel .owl-carousel .owl-pagination div.active {
+  background: #5C5C5C;
+  font-size: 30px;
+  display: inline-block;
+  border: 0px;
+}
+
+
 /*--
 	features Start
 --*/
