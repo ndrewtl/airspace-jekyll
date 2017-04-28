@@ -146,8 +146,6 @@ class(milk$Month_date)
 <\table>
 
 
-
-
 <a name="datavis"></a>
 
 ## 3. Plotting time series data 
