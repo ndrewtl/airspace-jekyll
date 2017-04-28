@@ -94,7 +94,38 @@ Play around with `date_labels`, replacing `"%Y"` with some other date marks from
 
 ## 4. Statistical analysis of time series data 
 
+#### Decomposition
+Time series data can contain multiple patterns. Have a look at a simple plot of `milk` like the one we saw earlier:
 
+```r
+ggplot(milk, aes(x = Month_date, y = milk_prod)) + 
+	geom_line() + 
+	scale_x_date(date_labels = "%Y", date_breaks = "1 year")
+```
+
+Firstly, it looks like there is a general upward trend, more milk is being produced in 1975 than in 1962. This is known as a "__smooth__" pattern, one that increases regularly over the course of the time series. We can see this pattern more clearly by plotting a loess regression through our data:
+
+```r
+ggplot(milk, aes(x = Month_date, y = milk_prod)) + 
+	geom_smooth(method = "loess", se = FALSE, span = 0.6)
+```
+
+`span` sets the number of points used to plot each local regression in the curve, the smaller the number the more points are used and the more closely the curve will fit the original data.
+
+Next, it looks like there are some peaks and troughs that occur within the same month in each year. This is a "__seasonal__" pattern. We can investigate this pattern more by plotting each year as it's own line and comparing:
+
+```r
+# Extract month and year and store in new column
+milk$year <- format(milk$Month_date, "%Y")
+milk$month_num <- format(milk$Month_date, "%m")
+
+ggplot(milk, aes(x = month_num, y = milk_prod, group = year)) + 
+	geom_line(aes(colour = year))
+```
+
+"__Cyclic__" trends are similar to seasonal trends in that they recur over time, but occur on longer time scales. It may be that the general upward trend we saw earlier may be part of a longer decadal cycle, but this is impossible to test without a longer time series.
+
+#### Forecasting
 
 <hr>
 <hr>
