@@ -1,7 +1,7 @@
 ---
 title: "Analysing time series data"
 author: "John"
-date: "2017-03-20 10:00:00"
+date: "2017-08-01 10:00:00"
 meta: Tutorials
 subtitle: "Quantifying ..."
 layout: post
@@ -19,13 +19,11 @@ layout: post
 
 #### <a href="#"> 2. </a>
 
-#### <a href="#datavis"> 3. Visualising time series analysis</a>
+#### <a href="#datavis"> 3. Visualising time series data</a>
 
 #### <a href="#stats"> 4. Statistically analysing time series data</a>
 
 # INTRO TITLE
-
-<center><img src="{{ site.baseurl }}/img/tidyverse.png" alt="Img" style="width: 1100px;"/></center>
 
 All the resources for this tutorial, including some helpful cheatsheets can be downloaded from [this repository](https://github.com/ourcodingclub/SEECC-workshop) Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the actual folder path), or clicking `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
 
@@ -59,13 +57,43 @@ load("")
 
 ## 1. Formatting time series data 
 
-The most common issue with using time series data in R is getting it into the right format that is easily readable by R and any packages you are using. A sensible format for recording time series data to be readable by most computer programs is as follows:
+The most common issue with using time series data in R is getting it into the right format that is easily readable by R and any packages you are using. A sensible format for recording time series data to be readable by most computer programs presents the largest chunk of time first (e.g. year), and gets progressively smaller, e.g.:
 
-```
+```r
 2017-01-25 18:30:25
 ```
 
-So if you can record your data in this format to begin with, things will be much easier
+If you can record your data in this format to begin with, things will be much easier. Obviously if time isn't important for your measurements, you can drop that part from your records.
+
+The data in __ is currently interpreted by R as being from the `character` class. But R also has a `Date` class, which is much easier to work with, so we can coerce the data to the `Date` class:
+
+```r
+# Check the class of milk$Month
+class(milk$Month)  # `character`
+
+# Coerce to `Date` class
+milk$Month_date <- as.Date(milk$Month)
+```
+
+
+<a name="datavis"></a>
+
+## 3. Plotting time series data 
+
+Plotting time series data with ggplot requires the use of `scale_x_date` to correctly build axis labels and allow easy customisation of axis ticks:
+
+```r
+ggplot(milk, aes(x = Month_date, y = milk_prod)) + 
+	geom_line() + 
+	scale_x_date(date_labels = "%Y", date_breaks = "1 year")
+```
+
+Play around with `date_labels`, replacing `"%Y"` with some other date marks from <a href="#date_marks">the table above</a> (i.e. `%m-%Y`). `date_breaks` can also be customised to change the axis label frequency, other options include `month`, `week` and `day`.
+
+<a name="stats"></a>
+
+## 4. Statistical analysis of time series data 
+
 
 
 <hr>
