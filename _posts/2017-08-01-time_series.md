@@ -3,7 +3,7 @@ title: "Analysing time series data"
 author: "John"
 date: "2017-08-01 10:00:00"
 meta: Tutorials
-subtitle: "Quantifying ..."
+subtitle: "Exploring "
 layout: post
 ---
 <div class="block">
@@ -60,8 +60,10 @@ load("")
 The most common issue with using time series data in R is getting it into the right format that is easily readable by R and any packages you are using. A sensible format for recording time series data to be readable by most computer programs presents the largest chunk of time first (e.g. year), and gets progressively smaller, e.g.:
 
 ```r
-2017-01-25 18:30:25
+2017-02-25
 ```
+
+
 
 If you can record your data in this format to begin with, things will be much easier. Obviously if time isn't important for your measurements, you can drop that part from your records.
 
@@ -69,11 +71,81 @@ The data in __ is currently interpreted by R as being from the `character` class
 
 ```r
 # Check the class of milk$Month
-class(milk$Month)  # `character`
+milk$Month_date_test <- as.Date(milk$Month, format = "%Y-%m-%d")
 
 # Coerce to `Date` class
 milk$Month_date <- as.Date(milk$Month)
+
+# Check it worked
+class(milk$Month_date) 
 ```
+
+`format` lets `as.Date` know what form our time data was in. The symbols `%Y`, `%m`, `%d` etc. are codes understood by many programming languages to define date types, here is an expanded table of date codes:
+
+<style type="text/css">
+.tg  {border-collapse:collapse;border-spacing:0;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+.tg .tg-yw4l{vertical-align:top}
+</style>
+<table class="tg">
+  <tr>
+    <th class="tg-031e">Name</th>
+    <th class="tg-031e">Code</th>
+    <th class="tg-yw4l">Example</th>
+  </tr>
+  <tr>
+    <td class="tg-031e">Long year</td>
+    <td class="tg-031e">%Y</td>
+    <td class="tg-yw4l">2017</td>
+  </tr> 
+  <tr>
+    <th class="tg-031e">Short year</th>
+    <th class="tg-031e">%y</th>
+    <th class="tg-yw4l">17</th>
+ <tr>
+    <th class="tg-031e">Numeric month</th>
+    <th class="tg-031e">%m</th>
+    <th class="tg-yw4l">02</th>
+  </tr> 
+  <tr>
+    <th class="tg-031e">Abbreviated month</th>
+    <th class="tg-031e">%b</th>
+    <th class="tg-yw4l">Feb</th>
+  </tr> 
+  <tr>
+    <th class="tg-031e">Full month</th>
+    <th class="tg-031e">%B</th>
+    <th class="tg-yw4l">February</th>
+  </tr> 
+  <tr>
+    <th class="tg-031e">Day</th>
+    <th class="tg-031e">%d</th>
+    <th class="tg-yw4l">25</th>
+  </tr>
+  <tr>
+    <th class="tg-031e">Abbreviated weekday</th>
+    <th class="tg-031e">%a</th>
+    <th class="tg-yw4l">Sat</th>
+  </tr> 
+  <tr>
+    <th class="tg-031e">Full weekday</th>
+    <th class="tg-031e">%A</th>
+    <th class="tg-yw4l">Saturday</th>
+  </tr>  
+  <tr>
+    <th class="tg-031e">Day of the week (1-7)</th>
+    <th class="tg-031e">%u</th>
+    <th class="tg-yw4l">6</th>
+  </tr>
+  <tr>
+    <th class="tg-031e">Day of the year</th>
+    <th class="tg-031e">%j</th>
+    <th class="tg-yw4l">56</th>
+  </tr>
+<\table>
+
+
 
 
 <a name="datavis"></a>
@@ -95,7 +167,7 @@ Play around with `date_labels`, replacing `"%Y"` with some other date marks from
 ## 4. Statistical analysis of time series data 
 
 #### Decomposition
-Time series data can contain multiple patterns. Have a look at a simple plot of `milk` like the one we saw earlier:
+Time series data can contain multiple patterns at different scales. Have a look at a simple plot of `milk` like the one we saw earlier:
 
 ```r
 ggplot(milk, aes(x = Month_date, y = milk_prod)) + 
