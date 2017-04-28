@@ -40,9 +40,13 @@ setwd("PATH_TO_FOLDER")
 Next, install (`install.packages("")`) and load (`library()`) the packages needed for this tutorial.
 
 ```r
-install.packages("readr")
+install.packages("ggplot2")
+install.packages("lubridate")
+install.packages("scales")
 
-library(RColorBrewer)
+library(ggplot2)
+library(lubridate)
+library(scales)
 ```
 
 Finally, load the `.RData` files we will be using for the tutorial.
@@ -55,7 +59,13 @@ load("")
 
 ## 1. Formatting time series data 
 
-__INSERT BODY__
+The most common issue with using time series data in R is getting it into the right format that is easily readable by R and any packages you are using. A sensible format for recording time series data to be readable by most computer programs is as follows:
+
+```
+2017-01-25 18:30:25
+```
+
+So if you can record your data in this format to begin with, things will be much easier
 
 
 <hr>
