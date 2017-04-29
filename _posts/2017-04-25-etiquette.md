@@ -445,7 +445,7 @@ devtools::install_github("ThinkRstat/littleboxes")
 
 ### Applying the coding etiquette to a real analysis
 
-#### Now that you have been through the coding etiquette, you can have a go at applying what you've learned by following our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence.</a>, and writing a clear, informative, well-structured script as you go along.
+#### Now that you have been through the coding etiquette, you can have a go at applying what you've learned by following our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence</a>, and writing a clear, informative, well-structured script as you go along.
 
 <hr>
 <hr>
