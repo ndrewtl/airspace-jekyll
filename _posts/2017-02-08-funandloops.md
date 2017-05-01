@@ -20,11 +20,11 @@ meta: "Tutorials"
 
 <a name="function"></a>
 
-<b>Note: all the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop">this repository</a>.</b>
+<b>Note: all the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop" target="_blank">this repository</a>.</b>
 
 ### Writing functions
 
-We've learned <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html">how to import our data in RStudio</a>, <a href="https://ourcodingclub.github.io/2017/01/16/piping.html">format and manipulate them</a>, <a href="https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html">write scripts and Markdown reports</a>, and <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html">how to make beautiful and informative graphs using `ggplot2`</a>. When beautifying graphs, you might have noticed how you almost always repeat the same code - you always want to make the font size a bit bigger, get rid of the grey background in the default `ggplot2` theme, etc. When you are doing the same thing over and over again, it's useful to write it as a <b>function</b>. A function in R is a pre-determined command (or set of commands), for example `sum()` is a function that adds whatever is in the brackets, i.e. `sum(1+2)` will return a value of `3`. R has lots of functions built into the `base` package R comes with, and you've been using heaps more from within all the other packages you've been installing. But you can also write your own functions to save yourself time copying and pasting and making your coding more efficient.
+We've learned <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">how to import our data in RStudio</a>, <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">format and manipulate them</a>, <a href="https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html" target="_blank">write scripts and Markdown reports</a>, and <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">how to make beautiful and informative graphs using `ggplot2`</a>. When beautifying graphs, you might have noticed how you almost always repeat the same code - you always want to make the font size a bit bigger, get rid of the grey background in the default `ggplot2` theme, etc. When you are doing the same thing over and over again, it's useful to write it as a <b>function</b>. A function in R is a pre-determined command (or set of commands), for example `sum()` is a function that adds whatever is in the brackets, i.e. `sum(1+2)` will return a value of `3`. R has lots of functions built into the `base` package R comes with, and you've been using heaps more from within all the other packages you've been installing. But you can also write your own functions to save yourself time copying and pasting and making your coding more efficient.
 
 Open RStudio, select `File/New File/R script` and start writing your script with the help of this tutorial.
 
@@ -38,7 +38,7 @@ library(ggplot2)
 library(gridExtra)
 ```
 
-We will use data from the <a href="http://www.livingplanetindex.org/home/index">Living Planet Index</a>, which you have already downloaded from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop">the repository</a> (Click on 'Clone or Download/Download ZIP' and then unzip the files). When you run `read.csv(file.choose())`, a window will pop up, from where you can navigate to the folder where you saved the `LPI_data_loops.csv` file. Note that this is a different subset of the LPI data and not the same as in the <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html">data visualisation tutorial</a>, so please download the new data file from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop">here</a>.
+We will use data from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index</a>, which you have already downloaded from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop" target="_blank">the repository</a> (Click on 'Clone or Download/Download ZIP' and then unzip the files). When you run `read.csv(file.choose())`, a window will pop up, from where you can navigate to the folder where you saved the `LPI_data_loops.csv` file. Note that this is a different subset of the LPI data and not the same as in the <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">data visualisation tutorial</a>, so please download the new data file from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop" target="_blank">here</a>.
 
 ```r
 # Import data from the Living Planet Index - population trends of vertebrate species from 1970 to 2014
@@ -101,7 +101,7 @@ theme_my_own <- function(){
 }
 ```
 
-<b>Now we can make the same plot, but this time instead of all the code, we can just add `+ theme_my_own()`. Try changing the colours we use in the plot - where it says `"#EE7600", "#00868B"`, you need to add in the code for colours of your choice. TIP: Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html#colourpicker">data visualisation tutorial</a> that includes instructions on how to install Colourpicker - Colourpicker is an addin for RStudio that saves you time googling colour codes.</b>
+<b>Now we can make the same plot, but this time instead of all the code, we can just add `+ theme_my_own()`. Try changing the colours we use in the plot - where it says `"#EE7600", "#00868B"`, you need to add in the code for colours of your choice. TIP: Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html#colourpicker" target="_blank">data visualisation tutorial</a> that includes instructions on how to install Colourpicker - Colourpicker is an addin for RStudio that saves you time googling colour codes.</b>
 
 ```r
 (vulture_scatter <- ggplot(vultureITCR, aes (x=year, y=abundance, colour=Country.list)) +
@@ -211,7 +211,7 @@ The files will be saved in your working directory - to find out where that is, r
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+#### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### You can now write functions and loops - congrats! Feel free to contact us with any questions at ourcodingclub@gmail.com.
 
@@ -221,7 +221,7 @@ The files will be saved in your working directory - to find out where that is, r
 <ul class="social-icons">
 	<li>
 		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
 		</h3>
 	</li>
 </ul>

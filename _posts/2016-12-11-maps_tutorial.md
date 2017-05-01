@@ -100,7 +100,7 @@ That was a simple example, and maps can incorporate more complex elements like p
 
 ## Creating a map using ggmap
 
-For this part of the tutorial we are going to create a map showing the spatial extent of 2 species of bird.  Rueppell's Vulture (_Gyps rueppellii_) feeds on large mammalian carrion and the African Penguin (_Spheniscus demersus_) feeds on small marine fish, it's probable that they have distinct spatial patterns, we shall see! We will use species occurence data from the <a href="http://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a>, which you have already downloaded and unzipped from [the repository](https://github.com/ourcodingclub/CC-6-Maps) for this tutorial.
+For this part of the tutorial we are going to create a map showing the spatial extent of 2 species of bird.  Rueppell's Vulture (_Gyps rueppellii_) feeds on large mammalian carrion and the African Penguin (_Spheniscus demersus_) feeds on small marine fish, it's probable that they have distinct spatial patterns, we shall see! We will use species occurence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility (GBIF)</a>, which you have already downloaded and unzipped from [the repository](https://github.com/ourcodingclub/CC-6-Maps) for this tutorial.
 
 First, import the data we need, `Gyps_rueppellii_GBIF.csv` and `Spheniscus_dermersus_GBIF.csv`:
 
@@ -382,18 +382,18 @@ Map_FEOW +
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+#### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
 
-#### <a href="https://www.surveymonkey.co.uk/r/NMD3N5K">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
+#### <a href="https://www.surveymonkey.co.uk/r/NMD3N5K" target="_blank">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
 
 <ul class="social-icons">
 	<li>
 		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
 		</h3>
 	</li>
 </ul>
