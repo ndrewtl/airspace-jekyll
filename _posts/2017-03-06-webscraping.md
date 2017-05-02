@@ -45,7 +45,7 @@ Web scraping refers to the action of extracting data from a web page using a com
 
 Open up a new R Script where you will be adding the code for this tutorial. All the resources for this tutorial, including some helpful cheatsheets, can be downloaded from [this repository](https://github.com/ourcodingclub/CC-12-Webscraping). Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the real path), or clicking `Session/ Set Working Directory/ Choose Directory` in the RStudio menu.
 
-Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-12-Webscraping) to your own Github account and then add it as a new RStudio project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync RStudio and Github and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html">tutorial.</a>
+Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-12-Webscraping) to your own Github account and then add it as a new RStudio project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync RStudio and Github and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
 
 ```r
 setwd("<PATH TO FOLDER>")
@@ -392,7 +392,7 @@ Now that you have your data frame you can start analysing it. Try to make a bar 
 
 A full .R script for this tutorial along with some helpful cheatsheets and data can be found in the [repo for this tutorial](https://github.com/ourcodingclub/CC-12-Webscraping).
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+#### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
@@ -401,7 +401,7 @@ A full .R script for this tutorial along with some helpful cheatsheets and data 
 <ul class="social-icons">
 	<li>
 		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
 		</h3>
 	</li>
 </ul>
