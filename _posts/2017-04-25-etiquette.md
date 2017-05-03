@@ -20,11 +20,11 @@ layout: post
 
 #### <a href="#tidy"> 3. Tidying up old scripts and data frames</a>
 
-The coding etiquette outlined in this tutorial is applicable to most analyses - here we will apply them to an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence.</a> You can download all the resources for the tutorial, including some helpful cheatsheets can be downloaded from [this repository](https://github.com/ourcodingclub/SEECC-workshop) Clone and download the repo as a zipfile, then unzip and set the folder as your working directory with code, or click `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
+The coding etiquette outlined in this tutorial is applicable to most analyses - here we will apply them to an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Quantifying population change and visualising species occurrence.</a> You can download all the resources for the tutorial, including some helpful cheatsheets can be downloaded from [this repository](https://github.com/ourcodingclub/SEECC-workshop) Clone and download the repo as a zipfile, then unzip and set the folder as your working directory with code, or click `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
 
-Alternatively, you can fork [the repository](https://github.com/ourcodingclub/SEECC-workshop) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html">tutorial.</a>
+Alternatively, you can fork [the repository](https://github.com/ourcodingclub/SEECC-workshop) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
 
-__Start downloading the files from the GitHub repo now, so that the download has finished by the time you need them. We will go through the coding etiquette first, so there is no need for you to open anything from the downloaded files at this stage. You can copy across code from this tutorial into a blank script file for practice, or you can edit your own script. Alternatively, you can read through the tips shared here, then go to the tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence</a>, and follow the tutorial whilst applying the coding etiquette outlined here.__
+__Start downloading the files from the GitHub repo now, so that the download has finished by the time you need them. We will go through the coding etiquette first, so there is no need for you to open anything from the downloaded files at this stage. You can copy across code from this tutorial into a blank script file for practice, or you can edit your own script. Alternatively, you can read through the tips shared here, then go to the tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Quantifying population change and visualising species occurrence</a>, and follow the tutorial whilst applying the coding etiquette outlined here.__
 
 <a name="sections"></a>
 
@@ -32,7 +32,7 @@ __Start downloading the files from the GitHub repo now, so that the download has
 
 Once you start analysing your data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial will offer tips on how to make your code easy to read, understand and use by you and everyone who might ever need to check out your code. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, as well as reduce the amount of errors arising from accidental overwriting of objects, typos when referring to objects called like `MyData_new.clean` and similar small issues that might end up causing big frustrations.
 
-As with any piece of writing, it really helps to have a clear structure to your script. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, go to `File/New file/R script`. For more information on the general `RStudio` layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html">Intro to RStudio tutorial</a>. __A clearly structured script allows both the writer and the reader to easily navigate through the code, and it means that we can easily find what we need - for example if we want to know what packages are used, we would go to the `Libraries` section.__
+As with any piece of writing, it really helps to have a clear structure to your script. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, go to `File/New file/R script`. For more information on the general `RStudio` layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. __A clearly structured script allows both the writer and the reader to easily navigate through the code, and it means that we can easily find what we need - for example if we want to know what packages are used, we would go to the `Libraries` section.__
 
 `RStudio` has a very useful feature allowing you to see an outline of your script, similar to when using `Microsoft Word`. Now that you have made a new (blank) script file, you might notice a little outline icon in the top right corner of the script. If you click on it, you will see your outline - currently it is blank since we haven't added any code, but once we start creating sections, you will see them appear here. You can then click on the section you wish to view, and you are automatically taken to that part of the script. No more endless scrolling!
 
@@ -90,7 +90,7 @@ library(dplyr)  # Manipulating data
 library(ggplot2)  # Visualising results
 ```
 
-__Functions__ - are you using any functions written by you and/or others? Define them here. For example functions to remove `NA` values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">create your own `ggplot2` theme.</a>
+__Functions__ - are you using any functions written by you and/or others? Define them here. For example functions to remove `NA` values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">create your own `ggplot2` theme.</a>
 
 ```r
 # Defining functions ----
@@ -445,23 +445,23 @@ devtools::install_github("ThinkRstat/littleboxes")
 
 ### Applying the coding etiquette to a real analysis
 
-#### Now that you have been through the coding etiquette, you can have a go at applying what you've learned by following our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html">Quantifying population change and visualising species occurrence</a>, and writing a clear, informative, well-structured script as you go along.
+#### Now that you have been through the coding etiquette, you can have a go at applying what you've learned by following our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Quantifying population change and visualising species occurrence</a>, and writing a clear, informative, well-structured script as you go along.
 
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+#### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
-#### <a href="https://www.surveymonkey.co.uk/r/8YBXTMT">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
+#### <a href="https://www.surveymonkey.co.uk/r/8YBXTMT" target="_blank">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
 
-Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html">Hadley Whickham's R Style Guide</a>.
+Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html" target="_blank">Hadley Whickham's R Style Guide</a>.
 
 <ul class="social-icons">
 	<li>
 		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
 		</h3>
 	</li>
 </ul>

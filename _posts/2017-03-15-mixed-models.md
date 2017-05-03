@@ -21,7 +21,7 @@ If you are familiar with linear models, aware of their shortcomings and happy wi
 
 Similarly, I include quite a bit of explanatory text: you might choose to just skim it for now and go through the "coding bits" of the tutorial. But it will be here to help you along when you start using mixed models with your own data and you need a bit more context.
 
-To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-Linear-mixed-models">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial.__ 
+To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-Linear-mixed-models" target="_blank">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial.__ 
 
 Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bCpZQuj){:target="_blank"} and the **data** from [here](http://gkhajduk.d.pr/9GPn/3nbbPoK6){:target="_blank"}. I might update this tutorial in the future, if I do the latest version will be [on my website](https://gkhajduk.github.io/2017-03-09-mixed-models/){:target="_blank"}.
 
@@ -516,7 +516,7 @@ The model selection process recommended by Zuur *et al.* (2009) is a top-down st
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+#### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
@@ -526,7 +526,7 @@ The model selection process recommended by Zuur *et al.* (2009) is a top-down st
 <ul class="social-icons">
 	<li>
 		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
 		</h3>
 	</li>
 </ul>

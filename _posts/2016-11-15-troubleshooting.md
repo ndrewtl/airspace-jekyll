@@ -20,7 +20,7 @@ meta: "RBasics"
 
 #### <a href="#practice">4. Practice by fixing errors in an example script</a>
 
-In <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html">our first tutorial</a> we learned how to import data into RStudio, conduct a simple analysis (calculate species richness) and plot the results. Here, we will build upon that knowledge by getting to grips with common coding errors and how to avoid them - you might have seen some of these error messages already, but after completing this tutorial, we hope they won't make an appearance too often on your RStudio screens.
+In <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">our first tutorial</a> we learned how to import data into RStudio, conduct a simple analysis (calculate species richness) and plot the results. Here, we will build upon that knowledge by getting to grips with common coding errors and how to avoid them - you might have seen some of these error messages already, but after completing this tutorial, we hope they won't make an appearance too often on your RStudio screens.
 
 <a name="id"></a>
 
@@ -38,7 +38,7 @@ In addition to keeping a record of your code, scripts are also useful for detect
 
 Here we have compiled a list of mistakes we often make. Do you think we have forgotten an error message or problem you encounter often? Please let us know at ourcodingclub@gmail.com and we will add it to our list!
 
-<b> - Your version of R or RStudio is too old (or too new).</b> If you haven't updated RStudio in a while, you might not be able to use some of the new packages coming out - when you try installing the package, you will get an error message saying that the package is not compatible with your version of RStudio - the problem is quickly fixed by a visit to the <a href="https://www.rstudio.com/products/rstudio/">RStudio website</a> from there you can get the most recent version. On the flip side, when you get the newest RStudio, packages that haven't been updated recently might not work, or your old code breaks - this occurs less often and in general, code is ever evolving and getting better and better, so it's good to keep up to date with the latest versions of both RStudio and R packages.
+<b> - Your version of R or RStudio is too old (or too new).</b> If you haven't updated RStudio in a while, you might not be able to use some of the new packages coming out - when you try installing the package, you will get an error message saying that the package is not compatible with your version of RStudio - the problem is quickly fixed by a visit to the <a href="https://www.rstudio.com/products/rstudio/" target="_blank">RStudio website</a> from there you can get the most recent version. On the flip side, when you get the newest RStudio, packages that haven't been updated recently might not work, or your old code breaks - this occurs less often and in general, code is ever evolving and getting better and better, so it's good to keep up to date with the latest versions of both RStudio and R packages.
 
 <b> - Syntax errors.</b> The easiest mistakes to make - you've forgotten a comma, opened a bracket, but haven't closed it, added an extra character by mistake. Those are usually picked up by R and you will get error messages reminding you to proof-read your code and fix them. If you can't pinpoint what's the correct way to code what you need, there are many <a href="#help">places to find help.</a>
 
@@ -47,11 +47,11 @@ Here we have compiled a list of mistakes we often make. Do you think we have for
     If you have loaded several (similar) packages from your library, they might contain different functions with the same name, and your code might break if R is confused as to which one to use - running `package::function`, e.g. `dplyr::filter` will return information on the function in the console. Note that R will try to add `()` at the end of `dplyr::filter`, delete them and run the code. 
     If you are reading up on R online, or copying and modifying code, you might be using a function from a new package without knowing - if it looks unfamiliar, googling its name with "r package" might reveal its origin. Sometimes packages depend on other packages to run - often those get installed automatically when you install the package, but sometimes you get an error message asking you to install another package, easily solved by `install.packages("newpackage")`.
 
-<b> - Function breakdown and debugging.</b> If you are running self made functions or `for` loops, you might need to go through R's traceback/debug browser - you can find help on <a href="https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio">RStudio's Debugging Support Page.</a>
+<b> - Function breakdown and debugging.</b> If you are running self made functions or `for` loops, you might need to go through R's traceback/debug browser - you can find help on <a href="https://support.rstudio.com/hc/en-us/articles/205612627-Debugging-with-RStudio" target="_blank">RStudio's Debugging Support Page.</a>
 
 <b> - Missing objects.</b> Running tests and plotting data are often hindered by R failing to find the object it's meant to analyse. When that happens, first check that your object names are correct - spelling mistakes (capital and lower case letters, wrong letters, etc.) can all make objects unrecognisable. In this code `e <- length(unique(FloweringPlants$taxonName))` I asked R to calculate species richness of flowering plants, but forgot that I called the object `Flowering.Plants`, not `FloweringPlants`. Remember that when you refer to a certain variable from an object with the dollar sign, the object comes first, the variable second - `Flowering.Plants$taxonGroup`, not `taxonGroup$Flowering.Plants`.
 
-<b> - Data not in the right format.</b> This might not necessarily result in an error message, but might lead to graphs/results that are wrong. For example, in <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html">our first tutorial</a> we created a data frame and plotted species richness - if we had chosen a data matrix instead, though, that plot would have looked way different (and wrong). We use matrices when the variables are all the same type (all text, all numerical) and of the same length (so same number of rows). Data frames for when we have multiple variables of different types, and vectors for a series of numbers. If your results/plots make you feel suspicious, it's good to go back to your data and check - did it import right into R (here is how to check), and is it in the right format?
+<b> - Data not in the right format.</b> This might not necessarily result in an error message, but might lead to graphs/results that are wrong. For example, in <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">our first tutorial</a> we created a data frame and plotted species richness - if we had chosen a data matrix instead, though, that plot would have looked way different (and wrong). We use matrices when the variables are all the same type (all text, all numerical) and of the same length (so same number of rows). Data frames for when we have multiple variables of different types, and vectors for a series of numbers. If your results/plots make you feel suspicious, it's good to go back to your data and check - did it import right into R (here is how to check), and is it in the right format?
 
 <center><img src="{{ site.baseurl }}/img/wrong.png" alt="Img"></center>
 
@@ -77,11 +77,11 @@ Figure 1. An unfortunate looking barplot - because in matrices all variables are
 
 ### 3. Learn how to find help online
 
-<b>Googling the error message (along with the function or package name) is always a good start</b> - chances are someone has already encountered that problem and has asked about it online. If the error message is very long, try paraphrasing based on what you think the problem might be. There are several really useful online forums and websites where people ask for and receive help, such as <a href="http://stackoverflow.com ">Stackoverflow</a> and <a href="https://www.r-bloggers.com/">Rbloggers</a>.
+<b>Googling the error message (along with the function or package name) is always a good start</b> - chances are someone has already encountered that problem and has asked about it online. If the error message is very long, try paraphrasing based on what you think the problem might be. There are several really useful online forums and websites where people ask for and receive help, such as <a href="http://stackoverflow.com" target="_blank">Stackoverflow</a> and <a href="https://www.r-bloggers.com/" target="_blank">Rbloggers</a>.
 
 <b>For "how to ..." type queries, a google search will often result in tutorials, and there might be Youtube videos as well.</b>
 
-We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Useful links" list of helpful websites and tutorials</b></a> where you can find additional help. We are very happy to answer any stats/programming questions you might have - feel free to contact us on ourcodingclub@gmail.com!
+We have also compiled a <a href="https://ourcodingclub.github.io/links/" target="_blank"><b>"Useful links" list of helpful websites and tutorials</b></a> where you can find additional help. We are very happy to answer any stats/programming questions you might have - feel free to contact us on ourcodingclub@gmail.com!
 
 <b>Of course, R won't always tell you if you are doing something wrong - sometimes your code is correct, but you are doing the wrong type of analysis for your data. Nevertheless, making sure you avoid the common but oh so easy mistakes is a great point to start on - even the most complex of tests can be brought down by a missing comma.</b>
 
@@ -89,7 +89,7 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Use
 
 ### 4. Practice! 
 
-<b>Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?</b>
+<b>Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics" target="_blank">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?</b>
 
 ### Tutorial outcomes:
 
@@ -102,7 +102,7 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Use
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
+#### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
@@ -112,7 +112,7 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/"><b>"Use
 <ul class="social-icons">
 	<li>
 		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
 		</h3>
 	</li>
 </ul>
