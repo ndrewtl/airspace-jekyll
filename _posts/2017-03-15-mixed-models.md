@@ -538,7 +538,7 @@ The model selection process recommended by Zuur *et al.* (2009) is a top-down st
 		<div class="form-group">
 			<form action="https://getsimpleform.com/messages?form_api_token=de1ba2f2f947822946fb6e835437ec78" method="post">
 			<div class="form-group">
-				<input type='text' class="form-control" name='Email' placeholder="Email">
+				<input type='text' class="form-control" name='Email' placeholder="Email" required/>
 			</div>
 			<div>
                         	<button class="btn btn-default" type='submit'>Subscribe</button>
