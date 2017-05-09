@@ -114,7 +114,7 @@ font header .navbar-default .navbar-nav li a:hover {
   width: 100%;
   height: 100%;
   background: linear-gradient(to left, #8b86a3, #322e40);
-  opacity: 0.8;
+  opacity: 0.5;
 }
 #slider .block {
   color: #E3E3E4;
@@ -501,9 +501,17 @@ font header .navbar-default .navbar-nav li a:hover {
   font-size: 13px;
   color: #655E7A;
 }
-#portfolio-work .block .portfolio-contant ul img {
+<!-- #portfolio-work .block .portfolio-contant ul img {
   width: 100%;
   height: auto;
+} -->
+#portfolio-work .block .portfoio-contant .main {
+with: 100%;
+height: auto;
+}
+#portfolio-work .block .portfolio-contant .logo {
+  width: 20%;
+  heigth: auto;
 }
 #portfolio-work .block .portfolio-contant .overly {
   position: absolute;
