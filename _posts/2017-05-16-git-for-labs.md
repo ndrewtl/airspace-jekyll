@@ -47,12 +47,12 @@ To get started with GitHub and version control, please get each lab member to re
 #### Register an organisational GitHub account for the lab
 Once you are logged in with your personal account, you can <a href="https://github.com/organizations/new">register an organisational GitHub account for the lab </a>. The files you put on GitHub will be public (i.e. everyone can see them & suggest changes, but only the people with access to the account can directly edit and add/remove files). You can also have a private organisational account on GitHub, which means that only lab members can see the files. GitHub offers free private organisational accounts for educational purposes, and you can apply for one using <a href="https://education.github.com/discount_requests/new"> this link.</a>
 
-<center> <img src="{{ site.baseurl }}/img/register.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/register.png" alt="Img" style="width: 1200px;"/> </center>
 
 #### Add lab members as members of the lab's organisational GitHub account
 Once all lab members are registered on GitHub and you have set up the lab's organisational account, you can add lab members to the list of people who have access to the lab's account. You can then decide what sort of privileges you grant users. Users can either be members, i.e. they can see all other members, can be granted access to repositories, and can also create new teams and repositories, or they can be owners with full administrative rights to the organization and have complete access to all repositories and teams. After the admin has sent out invitations to lab members, they will receive an email notification with a link to accept them. You can use the `Members` tab to see members, add new ones, and change their rights.
 
-<center> <img src="{{ site.baseurl }}/img/members.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/members.png" alt="Img" style="width: 1200px;"/> </center>
 
 ### Organise your lab repository
 <a name="organise"></a>
@@ -62,15 +62,15 @@ GitHub uses repositories - you can think of a repository (_aka_ a repo) as a "ma
 
 To make a repository, go to `Repositories/New repository` - choose a concise and informative name that has no spaces or funky characters in it. This can be your master repo that holds together past and ongoing research, data, scripts, manuscripts. Later on you might want to have more repositories - e.g. a repository associated with a particular project that you want to make public or a project where you are actively seeking feedback from a wide audience. For now, we will focus on organising and using the lab's main repository that holds the files for all the lab's work. With a free GitHub account, you can only create public repositories - if your application for a free private educational repository is approved, you can later change the repo from public to private.
 
-<center> <img src="{{ site.baseurl }}/img/newrepo.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/newrepo.png" alt="Img" style="width: 1200px;"/> </center>
 
 Click on `Initialise repo with a README.md file`. It's common practice for each repository to have a `README.md` file, which contains information about the project/lab group, what is the purpose of the repository, as well as any comments on licensing and data sources. Github understands several text formats, among which `.txt` and `.md`. `.md` stands for a file written in <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> - you might have used Markdown before from within `RStudio` to create neatly organised reports of your code and its outputs (you can also check out our <a href="https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html">Markdown tutorial</a>). You can also use Markdown to write plain text files, for example the file you are reading now was written in Markdown.
 
-<center> <img src="{{ site.baseurl }}/img/newrepo2.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/newrepo2.png" alt="Img" style="width: 1200px;"/> </center>
 
 You can directly edit your `README.md` file on Github by clicking on the file and then selecting `Edit this file`.
 
-<center> <img src="{{ site.baseurl }}/img/readme.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/readme.png" alt="Img" style="width: 1200px;"/> </center>
 
 #### Exercise 1: Write an informative README.md file
 You can now write the `README.md` file for your lab's repository. To make headings and subheadings, put hashtags before a line of text - the more hashtags, the smaller the heading will appear. You can make lists using `-` and numbers `1, 2, 3, etc.`. __You can discuss the information you want to include among your lab members - here are some things you might want to consider:__
@@ -88,9 +88,9 @@ You can now write the `README.md` file for your lab's repository. To make headin
 #### Exercise 3: Create folders
 Discuss among your lab what folders your repository will contain - some examples include: manuscripts, data, figures, scripts, scripts/users/personal_folder_your_name. To make a new folder, click on `Create new file` and add in the name of your new folder, e.g. `manuscripts/` before the file name, in this case a quick `README.md` file. When creating folders within your repo through GitHub's website, you always need to make at least one file associated with them, you can't just create an empty folder. Add a brief explanation of what the folder is for in the `README.md` file, scroll down and click on `Commit new file`. Add a quick message where it says `Create README.md file` in light grey text - we will cover GitHub etiquette later, but for now, when creating/editing files, it's always a good idea to change the default message to a more precise description of what was done and who did it. Stick with the default option of `Commit directly to master branch` - we will explain branches and pull requests at a later stage of the tutorial.
 
-<center> <img src="{{ site.baseurl }}/img/folder.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/folder.png" alt="Img" style="width: 1200px;"/> </center>
 
-<center> <img src="{{ site.baseurl }}/img/newfolder.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/newfolder.png" alt="Img" style="width: 1200px;"/> </center>
 
 #### Create a `github-workshop` folder within your main lab repo - this is where we will be working for the purposes of this workshop to practice using GitHub for version control and collaborative coding.
 
@@ -128,7 +128,7 @@ Naming files and objects.
 
 __Script file names should be meaningful and end in `.R`, e.g.:__
 
-```{r, eval = FALSE}
+```r
 farmland_figures_Feb2016.R  # Alright.
 
 farmland_figures_2017-02-25.R  # Some people prefer this date format.
@@ -162,7 +162,7 @@ __How do you know what's 80 characters though? RStudio can place a handy line in
 
 Here is a before and after of a `ggplot2` figure code:
 
-```{r, eval = FALSE}
+```r
 ggplot()+geom_hline(yintercept=0,linetype="dotted",colour="darkgrey")+
   geom_line(data=cwa.sub, aes(x=Season,y=Total.Concentration),size=2,alpha=0.2)+
   geom_ribbon(data=preds2, aes(x=Season, ymin=ploBT, ymax=phiBT), fill="#3cd0ea", alpha=0.3)+
@@ -206,17 +206,17 @@ We are now ready to start using our repository - first all lab members need to c
 
 __Click `Clone or download` and if you are on a Windows computer, copy the HTTPS link (that's the one that automatically appears in the box). If you have a Mac, click `Use SSH` and copy that link.__
 
-<center> <img src="{{ site.baseurl }}/img/clone.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/clone.png" alt="Img" style="width: 1200px;"/> </center>
 
 Now open RStudio, click `File/ New Project/ Version control/ Git` and paste the link you copied from Github. Select a directory on your computer - that is where the "local" copy of your repository will be (the online one being on Github).
 
 On some Macs, RStudio will fail to find Git. To fix this open the terminal and type `sudo mv /usr/bin/git /usr/bin/git-system`. Then open `RStudio/ Preferences/ Git/SVN` and change `Git executable:` to `/usr/local/bin/git`. Then restart RStudio and try again. More information can be found in the `README.txt` for the Mac git installer.
 
-<center><img src="{{ site.baseurl }}/img/project.png" alt="Img" style="width: 800px;"/></center>
+<center><img src="{{ site.baseurl }}/img/project.png" alt="Img" style="width: 1200px;"/></center>
 
 Once the files have finished copying across, you will notice that a few things about your RStudio session have changed:
 
-<center><img src="{{ site.baseurl }}/img/project2.png" alt="Img" style="width: 800px;"/></center>
+<center><img src="{{ site.baseurl }}/img/project2.png" alt="Img" style="width: 1200px;"/></center>
 
 __The working directory in the top left corner is set to your local copy of the lab's repository.__ You can load in data using `read.csv("data/your_file.csv")` - this would load a `.csv` file in a folder called `data` within your lab's repository - notice that there is no need to include the repository's name - by setting up a RStudio project, you are already within it. Similarly, when saving files, you can specify the folder where you want them saved without the repository's name.
 
