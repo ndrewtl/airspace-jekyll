@@ -37,9 +37,17 @@ Having a GitHub repo for your lab makes it easy to keep track of collaborative a
 
 ### How does GitHub work?
 
-- COMMIT PULL PUSH
-- projects
-- file histories
+__The members of the organisational's account repository each have a local copy (i.e. on their computer) of all the files in the repository. The GitHub workflow can be summaries by commit-pull-push.
+
+__Commit__ - once you've saved your files, you need to commit them - this means they are ready to go up on GitHub (the online copy of the repository).
+__Pull__ - now you need to pull, i.e. make sure you are completely up to date with the online version of the files - other people could have been working on them even if you haven't.
+__Push__ - once you are up to date, you can push your changes - at this point in time your local copy and the online copy of the files will be the same.
+
+Each file on GitHub has a history, so instead of having many files like `Dissertation_1st_May.R`, `Dissertation_2nd_May.R`, you can have only one and by exploring its history, you can see what it looked at different points in time. For example, here is the history for a script. Obviously it took me a while to calculate those model predictions!
+
+<center> <img src="{{ site.baseurl }}/img/filehistory.png" alt="Img" style="width: 1200px;"/> </center>
+
+You can embed this workflow within `RStudio` using projects and enabling version control for them - we will be doing that shortly in the tutorial.
 
 #### Get lab members to register on GitHub
 To get started with GitHub and version control, please get each lab member to register on the <a href = "https://github.com/" target="blank">Github website</a> and download and install <a href = "https://git-scm.com/downloads" target="blank">Git</a> for their operating system.
