@@ -286,6 +286,8 @@ __The data and instructions are available from <a href="https://github.com/ourco
 
  __Everyone else should go to the `RStudio` session where they have the lab's GitHub repo project open. Click on `Pull` in the `Git` tab in the top right corner - you are now up to date and have the files necessary to complete the coding challenges ahead!__
 
+### Challenges & collaborative coding
+
 #### Open the `Instructions.R` file and follow along - if you get stuck you can check out the `Answers.R` file. The file includes several challenges - split in small teams with each team tackling one challenge - once a team completes a challenge, they can commit, pull and push!
 
 __Notice that the `Instructions.R` file has different sections - you can click on `Edit/Folding/Collapse all` to see only heading titles and you can enable the outline feature as well to navigate easily to certain sections. Please run all code before the start of the challenges and then only work on your challenge, ignoring the rest!__
