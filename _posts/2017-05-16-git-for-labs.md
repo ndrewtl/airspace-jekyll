@@ -84,6 +84,29 @@ You can now write the `README.md` file for your lab's repository. To make headin
 - Will there be personal folders? Can other people look in them?
 
 #### Exercise 2: Writing a `.gitignore` file
+You might have noticed a file called `.gitignore` - in this file you specify which files you want Git to ignore when users make changes and add files. Examples include temporary Word, Excel and Powerpoint files, .Rproj files, Rhistory files etc. Go to `Create new file` and write a `.gitignore` file within the main repository for the lab (not any of the folders within it). You need to call the file `.gitignore` and then add the types of files that Git should ignore on separate lines. You can make this specific to your lab's needs, but as a start, you can copy over this code:
+
+```
+# Prevent users to commit their own RProject
+.Rproj.user
+.Rproj
+# Prevent users to commit their own .RData and .Rhistory in mutual area
+.RData
+.Rhistory
+.Rapp.history
+# Temporary files
+*~
+~$*.doc*
+~$*.xls*
+*.xlk
+~$*.ppt*
+# Prevent mac users to commit .DS_Store files
+*.DS_Store
+# Prevent users to commit the README files created by RStudio
+*README.html
+*README_cache/
+#*README_files/
+```
 
 #### Exercise 3: Create folders
 Discuss among your lab what folders your repository will contain - some examples include: manuscripts, data, figures, scripts, scripts/users/personal_folder_your_name. To make a new folder, click on `Create new file` and add in the name of your new folder, e.g. `manuscripts/` before the file name, in this case a quick `README.md` file. When creating folders within your repo through GitHub's website, you always need to make at least one file associated with them, you can't just create an empty folder. Add a brief explanation of what the folder is for in the `README.md` file, scroll down and click on `Commit new file`. Add a quick message where it says `Create README.md file` in light grey text - we will cover GitHub etiquette later, but for now, when creating/editing files, it's always a good idea to change the default message to a more precise description of what was done and who did it. Stick with the default option of `Commit directly to master branch` - we will explain branches and pull requests at a later stage of the tutorial.
@@ -225,38 +248,40 @@ __There is a `Git` tab in the top right panel of RStudio.__ We will be doing our
 __All the files that were in the repository online are now on your computer as well.__
 
 ### GitHub in action
-- explain commit-pull-push and why we do them in this order
-- informative commit messages
-- gitignore files
-- a challenge with the LPI data
-   - randomly allocate teams of 2?
-   - ggplot2 theme
-	 - saving multiple plots at once, making the folder
-- one blank script people fill in
-- create and resolve a code conflict
-- pull before committing and accidentally overwrite your work
-- accidentally delete everything & bring it back
-- forking, e.g. the PI reviews & pull requests
-- GitHub websites, hosting html files
-- size limits to repos
+__We will practice using GitHub as a lab by analysing data from the <a href="http://www.livingplanetindex.org/home/index">Living Planet Index.</a>__
 
-<br>
+#### The data and instructions are available from <a href="https://github.com/ourcodingclub/CC-12-git-for-labs">this repository.</a> To get us all started, it would be easier if one person from the lab downloads the data and instructions and then uploads them to our new `github-practice` folder within the lab's GitHub repository. Once that's done, all the other lab members can pull and then everyone will have the files.
 
-Click on `Commit` and add in your `Commit message` - aim to be concise and informative - what did you do? Once you have clicked on `Commit`, you will get a message about what changes you have made.
+#### Tasks for that person
+ __Click on `Clone or download`, `Download ZIP` and download and unzip the files from <a href="https://github.com/ourcodingclub/CC-12-git-for-labs">here.</a> Copy the files and use your file explorer to navigate to your local copy of the lab's repository - paste the files there. Now go back to the RStudio project you set up in RStudio earlier. You can now see the files you added under the `Git` tab - you need to commit-pull-push and then the data and instructions will be up online.__
 
-<center><img src="{{ site.baseurl }}/img/git3.png" alt="Img" style="width: 1200px;"/></center>
+ <center><img src="{{ site.baseurl }}/img/upload.png" alt="Img" style="width: 1000px;"/></center>
 
-You will also see a message saying that your branch is now one commit ahead of the `origin/master` branch - that is the branch that is on Github - we now need to let Github know about the changes we have made.
+ __Tick both files - you will see an `A` appear (A is for added files, if the files were modified, it would have been M, and D is for deleted files). Now click on `Commit` and write an informative commit message - it's useful to say who you are and what you've done - e.g. `Gergana added the LPI data`. Click on `Commit` - there will be a bit of loading and then you'll get a message saying your files have been added. Click on `Pull` - someone might have been working in the repo and you want to make sure you have the most recent version before you push. Once you've pulled, click on `Push` - your files are now online!__
 
-<center><img src="{{ site.baseurl }}/img/git4.png" alt="Img" style="width: 700px;"/></center>
+ #### Tasks for everyone
 
-It is good practice to always `Pull` before you `Push` - `Pull` means that you are pulling the most recent of the Github repository onto your local branch - this command is especially useful if several people are working within the same repository - imagine there was a second script examining soil pH along this elevation gradient, and your collaborator was working on it the same time as you - you wouldn't want to "overwrite" their work and cause trouble. In this case, you are the only one working on these files, but it's still good to develop the practice of pulling before you push. Once you've pulled, you'll see a message that you are already up to date, you can now push! Click on `Push`, wait for the loading to be over and then click on `Close` - that was it, you have successfully pushed your work to Github!
+ __Go to the RStudio session where you have the lab's GitHub repo project open. Click on `Pull` in the `Git` tab in the top right corner - you are now up to date and have the files necessary to complete the coding challenges ahead!__
 
-Go back to your repository on Github, where you can now see all of your files (your new plot included) online.
+#### Open the `Instructions.R` file and follow along - if you get stuck you can check out the `Answers.R` file. The file includes several challenges - split in small teams with each team tackling one challenge - once a team completes a challenge, they can commit, pull and push!
 
-<center><img src="{{ site.baseurl }}/img/git5.png" alt="Img" style="width: 1200px;"/></center>
+__Notice that the `Instructions.R` file has different sections - you can click on `Edit/Folding/Collapse all` to see only heading titles and you can enable the outline feature as well to navigate easily to certain sections. Please run all code before the start of the challenges and then only work on your challenge, ignoring the rest!__
 
-Click on your script file and then on `History` - this is where you can see the different versions of your script - obviously in real life situations you will make many changes as your work progresses - here we just have two. Thanks to Github and version control, you don't need to save hundreds of almost identical files (e.g. `Dissertation_script_25thFeb.R`, `Dissertation_script_26thFeb.R`) - you have one file and by clicking on the different commits, you can see what it looked like at different points in time.
+<center><img src="{{ site.baseurl }}/img/outline.png" alt="Img" style="width: 1000px;"/></center>
+
+Go back to your repository on Github, where you can now see all of your files (your new plots included) online. You can click on the `Instructions.R` file which should now have been modified by several people - you can click on `History` to see what everyone has done.
+
+Happy coding!
+
+### Potential problems
+
+Sometimes you will see error messages as you try to commit-pull-push. Usually the error message identifies the problem and which file it's associated with, if the message is more obscure, googling it is a good step towards solving the problem. Here are some potential problems that might arise:
+
+#### Code conflicts
+While you were working on a certain part of a script, someone else was working on it, too. When you go through commit-pull-push, GitHub will make you decide which version you want to keep. This is called a code conflict, and you can't proceed until you've resolved it.
+
+#### Pushing the wrong files
+If you accidentally push not what you intended, deleted many things (or everything!) and then pushed empty folders, you can revert your commit. You can keep reverting until you reach the point in time when everything was okay.
 
 <a name="command_line"></a>
 
