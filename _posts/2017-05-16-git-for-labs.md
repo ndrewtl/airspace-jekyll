@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Version control & code management with GitHub
-subtitle: Setting up a GitHub repository for your lab
+title: Setting up a GitHub repository for your lab
+subtitle: Version control & code management with GitHub
 date: 2017-05-15 08:00:00
 author: Gergana
 meta: "Tutorials"
