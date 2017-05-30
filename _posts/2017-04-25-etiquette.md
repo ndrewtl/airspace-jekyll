@@ -192,6 +192,10 @@ Variable and function names should be lowercase. `MinPrecip_august` is confusing
 ##### - __Use a dot to separate words within objects and functions.__ E.g. `pop.change.m` for the object that stores a model examining population change, and `calc.sp.richness` for a function.
 ##### - __The preferred form for variable names is all lower case letters and words separated with dots (`variable.name`).__
 
+#### Note that <a href="http://adv-r.had.co.nz/Style.html ">Hadley Wickham's style guide</a> advises to use underscores to separate words within objects, e.g. `variable_name`.
+
+As pointed out by one of our readers, using dots to separate words in objects names has the potential to get confused with method dispatch mechanism.
+
 __This way it's clear what's an object and what's an external file. These are not strict rules - variable names like `variable_name` are also acceptable. The most important thing is to be consistent - choose one style of variable, object and file names, and stick with it!__
 
 ```r
