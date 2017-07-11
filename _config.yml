@@ -16,7 +16,7 @@ keep_files:
 # Site settings
 title: Depth First Academy
 subtitle: "Gain greater confidence and skills"
-url: "http://depthfirstacademy.github.io" # the base hostname & protocol for your site
+url: "http://www.depthfirstacademy.com" # the base hostname & protocol for your site
 # baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
 baseurl: "/"
 cover: "/assets/cover.png"
