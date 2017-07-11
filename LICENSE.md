@@ -10,3 +10,7 @@ Terms and Conditions for Free Templates - from https://www.themefisher.com/licen
 8. You can convert our templates on any CMS (like WordPress, Joomla etc.) for your client and personal purposes but cannot resell these templates after the CMS conversion.
 
 This jekyll port is not associated with ThemeFisher. All design credit to the original authors of this template.
+
+
+Attributes:
+The logo is from parkjison of the noun project
