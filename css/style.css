@@ -3,6 +3,13 @@
  * To find the original style.css that ships with Airspace, read airspace.css
  *
  */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.spaced-list-items li:not(:first-child) {
+  margin-top: 10px;
+}
 
  .italic {
    font-style: italic;

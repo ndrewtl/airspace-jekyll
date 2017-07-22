@@ -6,6 +6,9 @@ This Jekyll theme is a port of ThemeFisher's Airspace template. It is released u
 ## Usage
 To start your project, [fork this respository](https://github.com/luminousrubyist/airspace-jekyll/fork), put in your content, and go!
 
+```bash
+bundle exec jekyll serve
+```
 ## Examples
 Here are some projects that have used this Jekyll Theme:
 * [BOYUAN Open Source 博辕开源](https://boyuanitsm.github.io)
