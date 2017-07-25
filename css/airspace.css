@@ -87,9 +87,36 @@ header .navbar-default .navbar-nav li a {
   padding: 10px 26px;
   font-size: 15px;
 }
+header .navbar-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+header .navbar-dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+header .navbar-dropdown-content a:hover {
+    background-color: #ddd;
+}
+header .dropdown:hover .navbar-dropdown-content {
+    display: block;
+}
+header .navbar-dropdown{
+    float: left;
+    overflow: hidden;
+}
 font header .navbar-default .navbar-nav li a:hover {
   color: #000;
 }
+
 /*---------------------------------------------
 					Index Start
 -----------------------------------------------*/
@@ -903,4 +930,45 @@ footer .footer-manu ul li a {
 }
 footer .footer-manu ul li a:hover {
   color: #000;
+}
+
+/*-- hoverable dropdown menu--*/
+
+.dropdownhover{
+    position: relative;
+    display: inline-block;
+}
+.dropbtn {
+    background-color: white;
+    color: #333333;
+    padding: 10px 16px;
+    font-size: 15px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdownhover-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdownhover-content a{
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdownhover-content a:hover {
+    background-color: #74A888;
+    color: #ffffff;
+}
+
+.dropdownhover:hover .dropdownhover-content {
+    display: block;
+}
+.dropdownhover:hover .dropbtn {
+    background-color: white;
 }
