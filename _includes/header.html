@@ -19,10 +19,17 @@
             </a>
           </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="dropdown collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                 <li><a href="{{ site.baseurl }}/historia">Nossa História</a></li>
-                <li><a href="{{ site.baseurl }}/caes-do-vivah">Cães do Vivah</a></li>
+                <li class="dropdownhover">
+                  <button class="dropbtn">Cães do Vivah</button>
+                    <ul class="dropdownhover-content">
+                      <li><a href="{{ site.baseurl }}/ninhadas">Ninhadas</a></li>
+                      <li><a href="{{ site.baseurl }}/golden-retriever">Golden Retriever</a></li>
+                      <li><a href="{{ site.baseurl }}/maltes">Maltês</a></li>
+                    </ul>
+                    </li>
                 <li><a href="{{ site.baseurl }}/servicos">Serviços</a></li>
                 <li><a href="https://www.instagram.com/vivahkennel/">Galeria</a></li>
                 <li><a href="{{ site.baseurl }}/eventos">Eventos</a></li>
