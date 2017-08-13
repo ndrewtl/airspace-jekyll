@@ -11,7 +11,7 @@ permalink: /
       <div class="col-md-10 col-md-offset-2">
         <div class="block">
           <h1 class="animated fadeInUp">A DIGITAL MARKETING &#38; <br> DESIGN AGENCY</h1>
-          <p class="animated fadeInUp">We love the Web and the work we do.We work closely with our </br> clients to deliver the best possible solutions for their needs</p>
+          <p class="animated fadeInUp">We love the Web and the work we do. We work closely with our clients to deliver the best possible solutions for their needs</p>
         </div>
       </div>
     </div>
@@ -147,77 +147,39 @@ permalink: /
     </div>
     <div class="row">
       <div class="col-md-6">
+        {% if site.data.funfacts.size > 0 %}
         <div class="block">
+          {% for ff in site.data.funfacts %}
           <ul class="counter-box clearfix">
             <li>
               <div class="block">
-                <i class="ion-ios-chatboxes-outline"></i>
-                <h4 class="counter">20000</h4>
-                <span>Cups Of Coffee</span>
+                <i class="{{ ff.icon }}"></i>
+                <h4 class="counter">{{ ff.counter }}</h4>
+                <span>{{ ff.text }}</span>
               </div>
             </li>
-            <li>
-              <div class="block">
-                <i class="ion-ios-glasses-outline"></i>
-                <h4 class="counter">20000</h4>
-                <span>Cups Of Coffee</span>
-              </div>
-            </li>
-            <li>
-              <div class="block">
-                <i class="ion-ios-compose-outline"></i>
-                <h4 class="counter">20000</h4>
-                <span>Cups Of Coffee</span>
-              </div>
-            </li>
-            <li>
-              <div class="block">
-                <i class="ion-ios-timer-outline"></i>
-                <h4 class="counter">20000</h4>
-                <span>Cups Of Coffee</span>
-              </div>
-            </li>
-
+            {% endfor %}
           </ul>
         </div>
+        {% endif %}
       </div>
       <div class="col-md-6">
+        {% if site.data.testimonials.size > 0 %}
         <div class="testimonial-carousel">
           <div id="testimonial-slider" class="owl-carousel">
+            {% for tm in site.data.testimonials %}
             <div>
                 <img src="img/cotation.png" alt="IMG">
-                <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
+                <p>{{ tm.testimonial }}</p>
                 <div class="user">
-                  <img src="img/item-img1.jpg" alt="Pepole">
-                  <p><span>Rose Ray</span> CEO-Themefisher</p>
+                  <img src="{{ tm.image }}" alt="Pepole">
+                  <p><span>{{ tm.name }}</span> {{ tm.title }}</p>
                 </div>
             </div>
-            <div>
-              <img src="img/cotation.png" alt="IMG">
-                <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
-                <div class="user">
-                  <img src="img/item-img1.jpg" alt="Pepole">
-                  <p><span>Rose Ray</span> CEO-Themefisher</p>
-                </div>
-            </div>
-            <div>
-              <img src="img/cotation.png" alt="IMG">
-                <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
-                <div class="user">
-                  <img src="img/item-img1.jpg" alt="Pepole">
-                  <p><span>Rose Ray</span> CEO-Themefisher</p>
-                </div>
-            </div>
-            <div>
-              <img src="img/cotation.png" alt="IMG">
-                <p>"This Company created an e-commerce site with the tools to make our business a success, with innovative ideas we feel that our site has unique elements that make us stand out from the crowd."</p>
-                <div class="user">
-                  <img src="img/item-img1.jpg" alt="Pepole">
-                  <p><span>Rose Ray</span> CEO-Themefisher</p>
-                </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
+        {% endif %}
       </div>
     </div>
   </div>
