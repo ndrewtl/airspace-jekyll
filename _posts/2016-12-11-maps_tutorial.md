@@ -86,15 +86,15 @@ At the time of writing, `ggmap` needs to be compiled from source to maintain som
 
 The easiest way to think about map data is to first imagine a graph displaying whatever data you want, but with the x and y axes denoting longitude and latitude:
 
-![Img]({{ site.baseurl }}/img/Trout_Europe_Plot.jpeg)
+<center><img src="{{ site.baseurl }}/img/Trout_Europe_Plot.jpeg" alt="Img" style="width: 700px;"/></center>
 
 Then it's a simple case of adding a background map to your image to place the data points in the real world. In this case, the map was pulled from google maps using the `ggmap` package.
 
-![Img]({{ site.baseurl }}/img/Trout_Europe_Map.jpeg)
+<center><img src="{{ site.baseurl }}/img/Trout_Europe_Map.jpeg" alt="Img" style="width: 700px;"/></center>
 
 That was a simple example, and maps can incorporate more complex elements like polygons and lines:
 
-![Img]({{ site.baseurl }}/img/Polygon_Line_Map.jpeg)
+<center><img src="{{ site.baseurl }}/img/Polygon_Line_Map.jpeg" alt="Img" style="width: 700px;"/></center>
 
 <a name="create"></a>
 
@@ -201,7 +201,7 @@ ggmap(Map_penguin) +
 
 Now you should have a map that looks something like this:
 
-![Img]({{ site.baseurl }}/img/Birds_ggmap.jpg)
+<center><img src="{{ site.baseurl }}/img/Birds_ggmap.png" alt="Img" style="width: 700px;"/></center>
 
 #### ggmap can access a whole load of different map types. Have a go at redoing the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`:
 
