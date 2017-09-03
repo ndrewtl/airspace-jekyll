@@ -276,7 +276,9 @@ Now you should have a map that looks something like this:
   </tr>
 </table>
 
-![Img]({{ site.baseurl }}/img/Map_collage.png)
+<center>
+	<img src="{{ site.baseurl }}/img/Map_collage.png" alt="Img" style="width: 700px;"/>
+</center>
 
 <a name="shp"></a>
 
