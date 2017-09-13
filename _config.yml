@@ -18,7 +18,7 @@ title: Airspace
 subtitle: "A free HTML5 agency template"
 url: "http://luminousrubyist.github.io" # the base hostname & protocol for your site
 # baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
-baseurl: "/airspace-jekyll"
+baseurl: "/orac"
 cover: "/assets/cover.png"
 logo: "/assets/logo.png"
 
@@ -30,8 +30,8 @@ markdown: kramdown
 
 # Category descriptions (for archive pages)
 descriptions:
-  - cat: jekyll
-    desc: "Posts describing Jekyll setup techniques."
+  - cat: marketing
+    desc: "Email Marketing personalization."
 
-  - cat: dummy
-    desc: "Just some placeholder posts, lorem ipsum and the rest."
+  - cat: AI
+    desc: "AI based personalization"
