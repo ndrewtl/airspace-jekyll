@@ -3,7 +3,6 @@ layout: page
 title: Our Work
 permalink: /docs/
 ---
-
     <!-- Slider Start -->
 <section id="global-header">
     <div class="container">
@@ -17,7 +16,20 @@ permalink: /docs/
         </div>
     </div>
 </section>
-    <!-- Portfolio Start 
+<section id="explain">
+  <div class="container">
+    <div class="row">
+      <div class="section-title">
+        <h2>Why ORAC is different</h2>
+      </div>
+      <p>ORAC is more than a recommendation engine, and is more than a tool for personalization. ORAC learns --by sending  slightly different messages to different users, and observing the reactions.</p>
+      <p>Such technique, a "generalized A/B testing", if conducted properly, eliminates the need to run several sequential A/B tests.</p>
+      <p>Downsides of this technique are its requirements in terms of statistical analysis skills --which is the reason why we like it.</p>
+    </div>
+  </div>
+</section>  
+    
+    <!-- Portfolio Start -->
 <section id="portfolio-work">
     <div class="container">
         <div class="row">
@@ -25,88 +37,52 @@ permalink: /docs/
             <div class="block">
               <div class="portfolio-menu">
                 <ul>
-                    <li class="filter" data-filter="all">Everything</li>
-                    <li class="filter" data-filter=".Branding">Branding</li>
-                    <li class="filter" data-filter=".Websites">Websites</li>
-                    <li class="filter" data-filter=".Graphic">Graphic</li>
-                    <li class="filter" data-filter=".design">design</li>
-                    <li class="filter" data-filter=".Video">Video</li>
+                    <li class="filter" data-filter=".Greetings">Greetings</li>
+                    <li class="filter" data-filter=".History">History</li>
+                    <li class="filter" data-filter=".Recommendations">Recommendations</li>
                 </ul>
               </div>
               <div class="portfolio-contant">
                 <ul id="portfolio-contant-active">
-                    <li class="mix Branding">
-                      <a href="#">
+                  <li class="mix Greetings">
+                  <div class="col-md-6 col-sm-12">
+                  <div class="block">
+                    <h2>Greetings</h2>
+                    <p><code>{greetings}</code><br><small> Different greetings expressions (Dear {name}, Hello...). </small></p>
+                    <p><code>{farewell}</code><br><small>Farewell expressions (Bye, Regards...) </small></p>
+                  </div>
+                  </div>
+<!--
+                  <a href="#">
                         <img src="{{ site.baseurl }}/img/portfolio/work1.jpg" alt="">
                         <div class="overly">
                           <div class="position-center">
                             <h2>Tesla Motors</h2>
                             <p>Labore et dolore magna aliqua. Ut enim ad </p>
-
                           </div>
                         </div>
                       </a>
+-->
                   </li>
-                  <li class="mix Websites">
-                    <a href="#">
-                      <img src="{{ site.baseurl }}/img/portfolio/work2.jpg" alt="">
-                      <div class="overly">
-                        <div class="position-center">
-                          <h2>Tesla Motors</h2>
-                          <p>Labore et dolore magna aliqua. Ut enim ad </p>
-
-                        </div>
-                      </div>
-                    </a>
+                  <li class="mix History">
+                  <div class="col-md-6 col-sm-12">
+                  <div class="block">
+                    <h2>History</h2>
+                    <p><code>{surf_history}</code><br><small>Array of last visited object (pages, items...). Object can be defined by the customer, e.g.</small></p>
+                    <p><code>{surf_history.items}</code><br><small>Last visited products (with name, url, image, price...)</small></p>
+                    <p><code>{surf_history.pages}</code><br><small> Visited pages (with title, url...)</small></p>
+                  </div>
+                  </div>
                   </li>
-                  <li class="mix Graphic">
-                    <a href="#">
-                      <img src="{{ site.baseurl }}/img/portfolio/work3.jpg" alt="">
-                      <div class="overly">
-                        <div class="position-center">
-                          <h2>Tesla Motors</h2>
-                          <p>Labore et dolore magna aliqua. Ut enim ad </p>
-
-                        </div>
-                      </div>
-
-                    </a>
-                  </li>
-                  <li class="mix design">
-                    <a href="#">
-                      <img src="{{ site.baseurl }}/img/portfolio/work4.jpg" alt="">
-                      <div class="overly">
-                        <div class="position-center">
-                          <h2>Tesla Motors</h2>
-                          <p>Labore et dolore magna aliqua. Ut enim ad </p>
-
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="mix Video">
-                    <a href="#">
-                      <img src="{{ site.baseurl }}/img/portfolio/work5.jpg" alt="">
-                      <div class="overly">
-                        <div class="position-center">
-                          <h2>Tesla Motors</h2>
-                          <p>Labore et dolore magna aliqua. Ut enim ad </p>
-
-                        </div>
-                      </div>
-                    </a>
-                  </li>
-                  <li class="mix Graphic">
-                    <a href="#">
-                      <img src="{{ site.baseurl }}/img/portfolio/work6.jpg" alt="">
-                      <div class="overly">
-                        <div class="position-center">
-                          <h2>Tesla Motors</h2>
-                          <p>Labore et dolore magna aliqua. Ut enim ad </p>
-
-                        </div>
-                      </div>
-                    </a>
+                  <li class="mix Recommendations">
+                  <div class="col-md-6 col-sm-12">
+                  <div class="block">
+                    <h2>Recommendations</h2>
+                    <p><code>{recommendations}</code><br><small>Array of recommended object. As for history, object are defined by the customer, e.g.</small></p>
+                    <p><code>{recommendations.items}</code><br><small>Recommended items (with .name, .url, .image, .price...)</small></p>
+                    <p><code>{recommendations.users}</code><br><small>E.g. for social networks, users you might know (with title, url...)</small></p>
+                  </div>
+                  </div>
                   </li>
                 </ul>
               </div>
@@ -115,4 +91,4 @@ permalink: /docs/
         </div>
     </div>
 </section>
--->
+
