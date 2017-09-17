@@ -21,7 +21,7 @@ meta: "Tutorials"
 
 #### <a href="#generalised"> 2. Practice generalised linear models</a>
 
-As you are setting out to answer your research questions, often you might want to know what is the effect of X on Y, how does X change with Y, etc. The answer to "What statistical analysis are you going to use?" will probably be a model of some sort. A model in its simplest forms looks like: 
+Are your data all nicely formatted and ready for analysis? You can check out our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">Data formatting and manipulation tutorial</a>, if tidying up your data is still ahead of you, but if you're done, you can now go further in your coding! As you are setting out to answer your research questions, often you might want to know what is the effect of X on Y, how does X change with Y, etc. The answer to "What statistical analysis are you going to use?" will probably be a model of some sort. A model in its simplest forms looks like: 
 
 `temp.m <- lm(soil.temp ~ elevation)` - i.e. we are trying to determine the effect of elevation on soil temperature. 
 
@@ -180,6 +180,8 @@ Check out the summary output - looks like the probability of a pine tree endurin
 
 <hr>
 <hr>
+
+<b>Now that we have covered the basics of linear modelling, we can move onto mixed effects models - check out <a href="https://ourcodingclub.github.io/2017/03/15/mixed-models.html" target="_blank">our tutorial</a> for more information!</b>
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
