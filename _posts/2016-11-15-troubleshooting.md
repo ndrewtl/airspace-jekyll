@@ -40,7 +40,7 @@ Here we have compiled a list of mistakes we often make. Do you think we have for
 
 <b> - Your version of R or RStudio is too old (or too new).</b> If you haven't updated RStudio in a while, you might not be able to use some of the new packages coming out - when you try installing the package, you will get an error message saying that the package is not compatible with your version of RStudio - the problem is quickly fixed by a visit to the <a href="https://www.rstudio.com/products/rstudio/" target="_blank">RStudio website</a> from there you can get the most recent version. On the flip side, when you get the newest RStudio, packages that haven't been updated recently might not work, or your old code breaks - this occurs less often and in general, code is ever evolving and getting better and better, so it's good to keep up to date with the latest versions of both RStudio and R packages.
 
-<b> - Syntax errors.</b> The easiest mistakes to make - you've forgotten a comma, opened a bracket, but haven't closed it, added an extra character by mistake. Those are usually picked up by R and you will get error messages reminding you to proof-read your code and fix them. If you can't pinpoint what's the correct way to code what you need, there are many <a href="#help">places to find help.</a>
+<b> - Syntax errors.</b> The easiest mistakes to make - you've forgotten a comma, opened a bracket, but haven't closed it, added an extra character by mistake. Those are usually picked up by R and you will get error messages reminding you to proof-read your code and fix them. If you can't pinpoint what's the correct way to code what you need, there are many <a href="#help">places to find help.</a> Following a <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Coding Etiquette</a> can help you keep these errors to a minimum.
 
 <b> - You're trying to use a certain function and R doesn't recognise it.
     </b> First, it's worth checking whether you have installed and loaded the package the function comes from - running the code `?function-name`, e.g. `?filter` will display a help screen with information on how you use the function, as well as the package it comes from. 
@@ -90,6 +90,9 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/" target=
 ### 4. Practice! 
 
 <b>Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics" target="_blank">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?</b>
+
+<b>Feeling ready to go one step furher? Learn how to format and manipulate data in a tidy and efficient way with our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">tidyr and dplyr tutorial!</a>Keen to make more graphs? Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation tutorial!</a></b>
+
 
 ### Tutorial outcomes:
 
