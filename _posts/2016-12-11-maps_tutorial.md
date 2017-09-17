@@ -78,7 +78,7 @@ library(devtools)
 ```
 
 
-At the time of writing, `ggmap` needs to be compiled from source to maintain some functionality, hence `  devtools::install_github("dkahle/ggmap")`, but this might change in the future.
+At the time of writing, `ggmap` needs to be compiled from source (i.e. its repository on Github) to maintain some functionality, hence `  devtools::install_github("dkahle/ggmap")`, but this might change in the future.
 
 <a name="map_data"></a>
 
@@ -383,6 +383,8 @@ Map_FEOW +
 
 <hr>
 <hr>
+
+<b>If you want to learn more about visualising biodiversity using maps, you can also complete our <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html#Flickr" target="_blank">Visualising species occurrence and making density maps tutorial!</a></b>
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
