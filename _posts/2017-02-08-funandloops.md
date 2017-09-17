@@ -53,27 +53,27 @@ LPI <- read.csv(file.choose())
 vulture <- filter(LPI_data_loops, Common.Name == "Griffon vulture / Eurasian griffon")
 vultureITCR <- filter(vulture, Country.list == c("Croatia", "Italy"))
 
-(vulture_scatter <- ggplot(vultureITCR, aes(x=year, y=abundance, colour=Country.list)) +
-    geom_point(size=2) +                                                # Changing point size
-    geom_smooth(method=lm, aes(fill=Country.list)) +                    # Adding a linear model fit and colour-coding by country
+(vulture_scatter <- ggplot(vultureITCR, aes(x = year, y = abundance, colour = Country.list)) +
+    geom_point(size = 2) +                                              # Changing point size
+    geom_smooth(method = lm, aes(fill = Country.list)) +                # Adding a linear model fit and colour-coding by country
     scale_fill_manual(values = c("#EE7600", "#00868B")) +               # Adding custom colours
     scale_colour_manual(values = c("#EE7600", "#00868B"),               # Adding custom colours
-                        labels=c("Croatia", "Italy")) +                 # Adding labels for the legend
+                        labels = c("Croatia", "Italy")) +               # Adding labels for the legend
     ylab("Griffon vulture abundance\n") +                             
     xlab("\nYear")  +
 		theme_bw() +
-    theme(axis.text.x=element_text(size=12, angle=45, vjust=1, hjust=1),       # making the years at a bit of an angle
-          axis.text.y=element_text(size=12),
-          axis.title.x=element_text(size=14, face="plain"),             
-          axis.title.y=element_text(size=14, face="plain"),             
-          panel.grid.major.x=element_blank(),                                  # Removing the background grid lines                
-          panel.grid.minor.x=element_blank(),
-          panel.grid.minor.y=element_blank(),
-          panel.grid.major.y=element_blank(),  
+    theme(axis.text.x = element_text(size = 12, angle = 45, vjust = 1, hjust = 1),       # making the years at a bit of an angle
+          axis.text.y = element_text(size = 12),
+          axis.title.x = element_text(size = 14, face = "plain"),             
+          axis.title.y = element_text(size = 14, face = "plain"),             
+          panel.grid.major.x = element_blank(),                                # Removing the background grid lines                
+          panel.grid.minor.x = element_blank(),
+          panel.grid.minor.y = element_blank(),
+          panel.grid.major.y = element_blank(),  
           plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), units = , "cm"),           # Adding a 0.5cm margin around the plot
-          legend.text = element_text(size=12, face="italic"),                  # Setting the font for the legend text
+          legend.text = element_text(size = 12, face = "italic"),              # Setting the font for the legend text
           legend.title = element_blank(),                                      # Removing the legend title
-          legend.position=c(0.9, 0.9)))               # Setting the position for the legend - 0 is left/bottom, 1 is top/right
+          legend.position = c(0.9, 0.9)))               # Setting the position for the legend - 0 is left/bottom, 1 is top/right
 ```
 
 <img src="{{ site.baseurl }}/img/gg_scatter3.png" alt="Img" style="width: 600px;"/>
@@ -85,32 +85,32 @@ Data points represent raw data with a linear model fit and 95% confidence interv
 ```r
 theme_my_own <- function(){
   theme_bw()+
-  theme(axis.text.x=element_text(size=12, angle=45, vjust=1, hjust=1),
-        axis.text.y=element_text(size=12),
-        axis.title.x=element_text(size=14, face="plain"),             
-        axis.title.y=element_text(size=14, face="plain"),             
-        panel.grid.major.x=element_blank(),                                          
-        panel.grid.minor.x=element_blank(),
-        panel.grid.minor.y=element_blank(),
-        panel.grid.major.y=element_blank(),  
+  theme(axis.text.x = element_text(size = 12, angle = 45, vjust = 1, hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title.x = element_text(size = 14, face = "plain"),             
+        axis.title.y = element_text(size = 14, face = "plain"),             
+        panel.grid.major.x = element_blank(),                                          
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),  
         plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), units = , "cm"),
-        plot.title = element_text(size=20, vjust=1, hjust=0.5),
-        legend.text = element_text(size=12, face="italic"),          
+        plot.title = element_text(size = 20, vjust = 1, hjust = 0.5),
+        legend.text = element_text(size = 12, face = "italic"),          
         legend.title = element_blank(),                              
-        legend.position=c(0.9, 0.9))
+        legend.position = c(0.9, 0.9))
 }
 ```
 
 <b>Now we can make the same plot, but this time instead of all the code, we can just add `+ theme_my_own()`. Try changing the colours we use in the plot - where it says `"#EE7600", "#00868B"`, you need to add in the code for colours of your choice. TIP: Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html#colourpicker" target="_blank">data visualisation tutorial</a> that includes instructions on how to install Colourpicker - Colourpicker is an addin for RStudio that saves you time googling colour codes.</b>
 
 ```r
-(vulture_scatter <- ggplot(vultureITCR, aes (x=year, y=abundance, colour=Country.list)) +
-    geom_point(size=2) +                                                
-    geom_smooth(method=lm, aes(fill=Country.list)) +                    
+(vulture_scatter <- ggplot(vultureITCR, aes (x = year, y = abundance, colour = Country.list)) +
+    geom_point(size = 2) +                                                
+    geom_smooth(method = lm, aes(fill = Country.list)) +                    
     theme_my_own() +                                                    # Adding our new theme!
     scale_fill_manual(values = c("#EE7600", "#00868B")) +               
     scale_colour_manual(values = c("#EE7600", "#00868B"),               
-                        labels=c("Croatia", "Italy")) +                 
+                        labels = c("Croatia", "Italy")) +                 
     ylab("Griffon vulture abundance\n") +                             
     xlab("\nYear"))
 ```
@@ -137,37 +137,37 @@ meadow.pipit <- filter(LPI.UK, Common.Name == "Meadow pipit")
 #### Making the plots:
 
 ```r
-(house.sparrow_scatter <- ggplot(house.sparrow, aes (x=year, y=abundance)) +
-    geom_point(size=2, colour="#00868B") +                                                
-    geom_smooth(method=lm, colour="#00868B", fill="#00868B") +          
+(house.sparrow_scatter <- ggplot(house.sparrow, aes (x = year, y = abundance)) +
+    geom_point(size = 2, colour = "#00868B") +                                                
+    geom_smooth(method = lm, colour = "#00868B", fill = "#00868B") +          
     theme_my_own() +
-    labs(y = "Abundance\n", x="", title="House sparrow"))
+    labs(y = "Abundance\n", x = "", title = "House sparrow"))
 
-(great.tit_scatter <- ggplot(great.tit, aes (x=year, y=abundance)) +
-    geom_point(size=2, colour="#00868B") +                                                
-    geom_smooth(method=lm, colour="#00868B", fill="#00868B") +          
+(great.tit_scatter <- ggplot(great.tit, aes (x = year, y = abundance)) +
+    geom_point(size = 2, colour = "#00868B") +                                                
+    geom_smooth(method = lm, colour = "#00868B", fill = "#00868B") +          
     theme_my_own() +
-    labs(y = "Abundance\n", x="", title="Great tit"))
+    labs(y = "Abundance\n", x = "", title = "Great tit"))
 
-(corn.bunting_scatter <- ggplot(corn.bunting, aes (x=year, y=abundance)) +
-    geom_point(size=2, colour="#00868B") +                                                
-    geom_smooth(method=lm, colour="#00868B", fill="#00868B") +          
+(corn.bunting_scatter <- ggplot(corn.bunting, aes (x = year, y = abundance)) +
+    geom_point(size = 2, colour = "#00868B") +                                                
+    geom_smooth(method = lm, colour = "#00868B", fill = "#00868B") +          
     theme_my_own() +
-    labs(y = "Abundance\n", x="", title="Corn bunting"))
+    labs(y = "Abundance\n", x = "", title = "Corn bunting"))
 
-(meadow.pipit_scatter <- ggplot(meadow.pipit, aes (x=year, y=abundance)) +
-    geom_point(size=2, colour="#00868B") +                                                
-    geom_smooth(method=lm, colour="#00868B", fill="#00868B") +          
+(meadow.pipit_scatter <- ggplot(meadow.pipit, aes (x = year, y = abundance)) +
+    geom_point(size = 2, colour = "#00868B") +                                                
+    geom_smooth(method = lm, colour = "#00868B", fill = "#00868B") +          
     theme_my_own() +
-    labs(y = "Abundance\n", x="", title="Meadow pipit"))
+    labs(y = "Abundance\n", x = "", title = "Meadow pipit"))
 ```
 
 
 #### Now arrange all 4 plots in a panel and save the file
 
 ```r
-panel <- grid.arrange(house.sparrow_scatter, great.tit_scatter, corn.bunting_scatter, meadow.pipit_scatter, ncol=2)
-ggsave(panel, file="Pop_trend_panel.png", width=10, height=8)
+panel <- grid.arrange(house.sparrow_scatter, great.tit_scatter, corn.bunting_scatter, meadow.pipit_scatter, ncol = 2)
+ggsave(panel, file = "Pop_trend_panel.png", width = 10, height = 8)
 ```
 
 <center><img src="{{ site.baseurl }}/img/Pop_trend_panel.png" alt="Img" style="width: 1000px;"/></center>
@@ -194,13 +194,13 @@ Sp_list <- list(house.sparrow, great.tit, corn.bunting, meadow.pipit)
 for (i in 1:length(Sp_list)) {                                    # For every item along the length of Sp_list we want R to perform the following functions
   data <- as.data.frame(Sp_list[i])                               # Create a dataframe for each species
   sp.name <- unique(data$Common.Name)                             # Create an object that holds the species name, so that we can title each graph
-  plot <- ggplot(data, aes (x=year, y=abundance)) +               # Make the plots and add our customised theme
-    geom_point(size=2, colour="#00868B") +                                                
-    geom_smooth(method=lm, colour="#00868B", fill="#00868B") +          
+  plot <- ggplot(data, aes (x = year, y = abundance)) +               # Make the plots and add our customised theme
+    geom_point(size = 2, colour = "#00868B") +                                                
+    geom_smooth(method = lm, colour = "#00868B", fill = "#00868B") +          
     theme_my_own() +
-    labs(y = "Abundance\n", x="", title = sp.name)
+    labs(y = "Abundance\n", x = "", title = sp.name)
 
-  ggsave(plot, file=paste(sp.name, ".pdf", sep=''), scale=2)       # save plots as .pdf, you can change it to .png if you prefer that
+  ggsave(plot, file = paste(sp.name, ".pdf", sep = ''), scale = 2)       # save plots as .pdf, you can change it to .png if you prefer that
 
   print(plot)                                                      # print plots to screen
 }
@@ -210,6 +210,8 @@ The files will be saved in your working directory - to find out where that is, r
 
 <hr>
 <hr>
+
+<b>You can also format and manipulate data using pipes from the `dplyr` package, check out <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">our tutorial</a> to find out how! And afterwards you can practice functions, loops and pipes and see the pros and cons of each through our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Working efficiently with large datasets.</a></b>
 
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
