@@ -454,6 +454,8 @@ devtools::install_github("ThinkRstat/littleboxes")
 <hr>
 <hr>
 
+<b>Another great way to keep track of your analysis is Markdown - check out <a href="https://ourcodingclub.github.io/2016/11/24/rmarkdown-1.html" target="_blank">our Markdown tutorial</a> to find out more!</b>
+
 #### Check out our <a href="https://ourcodingclub.github.io/links/" target="_blank">Useful links</a> page where you can find loads of guides and cheatsheets.
 
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
