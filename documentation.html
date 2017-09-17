@@ -4,13 +4,15 @@ title: Our Work
 permalink: /docs/
 ---
     <!-- Slider Start -->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
 <section id="global-header">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
                 <div class="block">
-                    <h1>ORAC Language.</h1>
-                    <p>How to use ORAC, in details</p>
+                    <h1>Let ORAC work for you</h1>
+                    <p>Simplicity is a form of beauty</p>
                 </div>
             </div>
         </div>
@@ -20,11 +22,47 @@ permalink: /docs/
   <div class="container">
     <div class="row">
       <div class="section-title">
-        <h2>Why ORAC is different</h2>
+        <h2>How to integrate ORAC in your system</h2>
+        <p>ORAC produces campaigns based on the information provided by the behavior of visitors on your website and/or by the past purchase of your users.</p>
       </div>
-      <p>ORAC is more than a recommendation engine, and is more than a tool for personalization. ORAC learns --by sending  slightly different messages to different users, and observing the reactions.</p>
-      <p>Such technique, a "generalized A/B testing", if conducted properly, eliminates the need to run several sequential A/B tests.</p>
-      <p>Downsides of this technique are its requirements in terms of statistical analysis skills --which is the reason why we like it.</p>
+      <h3>Online behavior</h3>
+      <p>After you have <a href="{{ site.baseurl }}/contact">contacted us</a>, we will generate the <code>KEY_ID</code> to be used in the JavaScript snippet like the one below.</p>
+<pre class="prettyprint"><code>
+&lt;!-- ORAC --&gt;
+&lt;script type=&#39;text/javascript&#39;&gt;
+  function setupORAC () {
+    window.ORACObject = 'orac';
+
+// check whether the Orac object is defined
+  if (!('orac' in window)){
+
+    // define the Analytics object
+    window.orac = function(){
+
+      // add the tasks to the queue
+      window.orac.q.push(arguments);
+
+    };
+
+    // create the queue
+      window.orac.q = window.orac.q || [
+      ['create', 'ORAC-KEY_ID', 'auto'],
+      ['send', 'surf']
+    ];
+
+    window.orac.l = new Date().getTime();
+  }
+&lt;/script&gt;
+
+&lt;script type=&#39;text/javascript&#39; src=&#39;//www.elegans-orac.io/behavior.js&#39; async&gt;&lt;/script&gt;
+&lt;!-- End ORAC --&gt;
+      </code>
+</pre>
+      <h3>Past purchase</h3>
+      <p>Another way for ORAC to produce newsletter is to receive past purchase. You give us the file in any format you prefer, we take care of feeding ORAC.</p>
+      <h3>Done!</h3>
+      <p>Once ORAC has the list of users who have authorized email, it will start testing the conversion to highly personalized messages.</p>
+      <p>A monthly is available to check performances</p>
     </div>
   </div>
 </section>  
