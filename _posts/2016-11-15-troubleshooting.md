@@ -20,13 +20,13 @@ meta: "RBasics"
 
 #### <a href="#practice">4. Practice by fixing errors in an example script</a>
 
-In <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">our first tutorial</a> we learned how to import data into RStudio, conduct a simple analysis (calculate species richness) and plot the results. Here, we will build upon that knowledge by getting to grips with common coding errors and how to avoid them - you might have seen some of these error messages already, but after completing this tutorial, we hope they won't make an appearance too often on your RStudio screens.
+In <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">our first tutorial</a> we learned how to import data into RStudio, conduct a simple analysis (calculate species richness) and plot the results. Here, we will build upon that knowledge by getting to grips with common coding errors and how to avoid them - you might have seen some of these error messages already, but after completing this tutorial, we hope they won't appear too often on your RStudio screens.
 
 <a name="id"></a>
 
 ### 1. Learn how to pick up on errors in R
 
-In addition to keeping a record of your code, scripts are also useful for detecting simple coding errors before you've even run the code. If R picks up on a character missing, a command that doesn't make sense due to spelling errors or similar, a little <i>x</i> appears next to that line of code - scanning your code for <i>x</i>'s before running it is always a good idea and it's very convenient since you know exactly on which line you made a mistake. The other way R reports errors is through messages in the console - those appear after you have ran code that is not quite right. Although the error messages look scary (the red font and words like "fatal" sure give them a bad reputation), they are actually the second best option to no errors at all - R has identified there is a problem and from the message, you can figure out what it is and solve it!
+In addition to keeping a record of your code, scripts are also useful for detecting simple coding errors before you've even run the code. If RStudio picks up on a character missing, a command that doesn't make sense due to spelling errors or similar, a little <i>x</i> appears next to that line of code - scanning your code for <i>x</i>'s before running it is always a good idea and it's very convenient since you know exactly on which line you made a mistake. The other way R reports errors is through messages in the console - those appear after you run code that is not quite right. Although the error messages look scary (the red font and words like "fatal" sure give them a bad reputation), they are actually the second best option to no errors at all - R has identified there is a problem and from the message, you can figure out what it is and solve it!
 
 <div class="block">
           <center><img src="{{ site.baseurl }}/img/xandm.png" alt="Img"></center>
@@ -40,7 +40,7 @@ Here we have compiled a list of mistakes we often make. Do you think we have for
 
 <b> - Your version of R or RStudio is too old (or too new).</b> If you haven't updated RStudio in a while, you might not be able to use some of the new packages coming out - when you try installing the package, you will get an error message saying that the package is not compatible with your version of RStudio - the problem is quickly fixed by a visit to the <a href="https://www.rstudio.com/products/rstudio/" target="_blank">RStudio website</a> from there you can get the most recent version. On the flip side, when you get the newest RStudio, packages that haven't been updated recently might not work, or your old code breaks - this occurs less often and in general, code is ever evolving and getting better and better, so it's good to keep up to date with the latest versions of both RStudio and R packages.
 
-<b> - Syntax errors.</b> The easiest mistakes to make - you've forgotten a comma, opened a bracket, but haven't closed it, added an extra character by mistake. Those are usually picked up by R and you will get error messages reminding you to proof-read your code and fix them. If you can't pinpoint what's the correct way to code what you need, there are many <a href="#help">places to find help.</a> Following a <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Coding Etiquette</a> can help you keep these errors to a minimum.
+<b> - Syntax errors.</b> The easiest mistakes to make - you've forgotten a comma, opened a bracket, but haven't closed it, added an extra character by mistake. Those are usually picked up by R and you will get error messages reminding you to proof-read your code and fix them. If you can't pinpoint the correct way to code what you need, there are many <a href="#help">places to find help.</a> Following a <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Coding Etiquette</a> can help you keep these errors to a minimum.
 
 <b> - You're trying to use a certain function and R doesn't recognise it.
     </b> First, it's worth checking whether you have installed and loaded the package the function comes from - running the code `?function-name`, e.g. `?filter` will display a help screen with information on how you use the function, as well as the package it comes from. 
@@ -55,11 +55,11 @@ Here we have compiled a list of mistakes we often make. Do you think we have for
 
 <center><img src="{{ site.baseurl }}/img/wrong.png" alt="Img"></center>
 
-Figure 1. An unfortunate looking barplot - because in matrices all variables are of the same type, here R expects taxa_f - the names of the different taxa - to have a numerical value, and lumps all the species richness values together in the second bar.
+Figure 1. An unfortunate looking barplot - because in matrices all variables are of the same type, here R expects `taxa_f` - the names of the different taxa - to have a numerical value, and lumps all the species richness values together in the second bar.
 
 <b> - Wrong data distribution used in models.</b> There are several reasons why models won't converge, including the use of inappropriate distribution type - usually we choose between normal (gaussian), binomial, Poisson, or Quasipoisson distributions - we will learn more about when to use each of them in our workshops on modelling.
 
-<b> - R crashed!</b> If you've overloaded R, it can make a dramatic exit (bomb image and all), or sometimes it stops responding and you have to terminate the session. That is why it's very important to save your scripts often, but it's better to save them as new files, e.g. Edi_biodiv_16thNov.R, instead of overwriting the same file - that way if you want to revert back to old code or use some part of it, it's easy to find it. This is the most basic type of version control - we will learn more about version control in future tutorials.
+<b> - R crashed!</b> If you've overloaded R, it can make a dramatic exit (bomb image and all), or sometimes it stops responding and you have to terminate the session. That is why it's very important to save your scripts often, but it's better to save them as new files, e.g. Edi_biodiv_16thNov.R, instead of overwriting the same file - that way if you want to revert back to old code or use some part of it, it's easy to find it. This is the most basic type of version control - we will learn more about version control in <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">future tutorials</a>.
 
 
 <center><img src="{{ site.baseurl }}/img/bomb.png" alt="Img"></center>
@@ -71,7 +71,7 @@ Figure 1. An unfortunate looking barplot - because in matrices all variables are
 <center><img src="{{ site.baseurl }}/img/pluses.png" alt="Img"></center>
 
 
-<b> - The cursor in the script file changed from | to _ and now text gets overwritten when I type.</b> This happens when you accidentally press <i>Insert</i> on your keyboard and as a result when you add new text, it gets written over. Press <i>Insert</i> again to go back to normal.
+<b> - The cursor in the script file changed from `|` to `_` and now text gets overwritten when I type.</b> This happens when you accidentally press <i>Insert</i> on your keyboard and as a result when you add new text, it gets written over. Press <i>Insert</i> again to go back to normal.
 
 <a name="help"></a>
 
@@ -91,7 +91,7 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/" target=
 
 <b>Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics" target="_blank">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?</b>
 
-<b>Feeling ready to go one step furher? Learn how to format and manipulate data in a tidy and efficient way with our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">tidyr and dplyr tutorial!</a>Keen to make more graphs? Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation tutorial!</a></b>
+<b>Feeling ready to go one step furher? Learn how to format and manipulate data in a tidy and efficient way with our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">tidyr and dplyr tutorial!</a> Keen to make more graphs? Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">data visualisation tutorial!</a></b>
 
 
 ### Tutorial outcomes:
@@ -110,7 +110,7 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/" target=
 #### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
 
 #### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
-#### [https://www.surveymonkey.co.uk/r/6CQF3J7](https://www.surveymonkey.co.uk/r/6CQF3J7)
+#### <a href="https://www.surveymonkey.co.uk/r/6CQF3J7" target="_blank">https://www.surveymonkey.co.uk/r/6CQF3J7</a>
 
 <ul class="social-icons">
 	<li>
