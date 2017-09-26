@@ -37,13 +37,19 @@ Having a GitHub repo for your lab makes it easy to keep track of collaborative a
 
 ### How does GitHub work?
 
-#### The members of the organisational's account repository each have a local copy (i.e. on their computer) of all the files in the repository. The GitHub workflow can be summaries by commit-pull-push.
+#### The members of the organisational's account repository each have a local copy (i.e. on their computer) of all the files in the repository. The GitHub workflow can be summaried by commit-pull-push.
 
-__Commit__ - once you've saved your files, you need to commit them - this means they are ready to go up on GitHub (the online copy of the repository).
 
-__Pull__ - now you need to pull, i.e. make sure you are completely up to date with the online version of the files - other people could have been working on them even if you haven't.
+### Commit
+__Once you've saved your files, you need to commit them - this means they are ready to go up on GitHub (the online copy of the repository).__
 
-__Push__ - once you are up to date, you can push your changes - at this point in time your local copy and the online copy of the files will be the same.
+
+### Pull
+__Now you need to pull, i.e. make sure you are completely up to date with the online version of the files - other people could have been working on them even if you haven't.__
+
+
+### Push
+__Once you are up to date, you can push your changes - at this point in time your local copy and the online copy of the files will be the same.__
 
 __Each file on GitHub has a history, so instead of having many files like `Dissertation_1st_May.R`, `Dissertation_2nd_May.R`, you can have only one and by exploring its history, you can see what it looked at different points in time.__
 
