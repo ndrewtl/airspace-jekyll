@@ -387,7 +387,7 @@ Map_FEOW +
 
 <h3><a href="https://www.surveymonkey.co.uk/r/F5PDDHV" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 <br>
-<h3>&nbsp; Please contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
+<h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
 <br>
 <h3>&nbsp; Related tutorials:</h3>
 {% for post in site.posts %}
