@@ -5,7 +5,7 @@ subtitle: Saving yourself lots of copying and pasting
 date: 2017-02-08 08:00:00
 author: Gergana
 meta: "Tutorials"
-tag: datavis
+tags: datavis
 ---
 <div class="block">
 	<center>
