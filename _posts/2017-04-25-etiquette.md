@@ -5,6 +5,7 @@ date: "2017-04-25 08:00:00"
 meta: Tutorials
 subtitle: Writing clear, informative and easy to use code
 layout: post
+tags: intro_to_r, github, data_manip
 ---
 <div class="block">
 	<center>

@@ -5,6 +5,7 @@ subtitle: How to avoid common mistakes in R
 date: 2016-11-15 17:11:27
 author: Gergana
 meta: "RBasics"
+tags: intro_to_r
 ---
 <div class="block">
           <center><img src="{{ site.baseurl }}/img/tutheader2.png" alt="Img"></center>

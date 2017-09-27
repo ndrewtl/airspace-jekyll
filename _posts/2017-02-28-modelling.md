@@ -5,6 +5,7 @@ subtitle: Getting comfortable with the basics of statistics modelling
 date: 2017-02-28 08:00:00
 author: Gergana
 meta: "Tutorials"
+tags: modelling
 ---
 
 <div class="block">

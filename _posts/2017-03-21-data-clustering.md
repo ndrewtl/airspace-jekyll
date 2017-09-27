@@ -5,6 +5,7 @@ subtitle: Finding patterns in your data
 date: 2017-03-21 08:40:00
 author: Pedro
 meta: "Tutorials"
+tags: data_manip, data_vis
 ---
 <div class="block">
 	<center>

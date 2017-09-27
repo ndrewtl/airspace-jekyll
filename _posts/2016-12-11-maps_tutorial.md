@@ -5,6 +5,7 @@ subtitle: Using R as a GIS software tool and creating informative maps
 date: 2016-12-11T16:00:00.000Z
 author: John
 meta: Maps_1
+tags: datavis
 ---
 
 <div class="block">
