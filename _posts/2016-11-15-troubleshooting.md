@@ -90,7 +90,9 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/" target=
 
 ### 4. Practice! 
 
-<b>Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics" target="_blank">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?</b>
+### Practice truly is the best way to learn how to avoid errors in R - to get you started, we have written a purposefully wrong script - you can download the file from this <a href="https://github.com/ourcodingclub/CC-1-RBasics" target="_blank">Github repository</a> - there you will find the data `edidiv.csv`, as well as the wrong and right script. Can you fix all the mistakes?
+
+### Get even better at avoiding mistakes by following a Coding Etiquette! <a href="https://ourcodingclub.github.io/2017/04/25/etiquette.html" target ="_blank">You can complete our Coding Etiquette tutorial here.</a>
 
 <b>Feeling ready to go one step furher? Learn how to format and manipulate data in a tidy and efficient way with our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">tidyr and dplyr tutorial!</a> Keen to make more graphs? Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">data visualisation tutorial!</a></b>
 
