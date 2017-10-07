@@ -21,11 +21,15 @@ tags: intro_to_r, github, data_manip
 
 #### <a href="#tidy"> 3. Tidying up old scripts and data frames</a>
 
-The coding etiquette outlined in this tutorial is applicable to most analyses - here we will apply them to an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Quantifying population change and visualising species occurrence.</a> You can download all the resources for the tutorial, including some helpful cheatsheets can be downloaded from [this repository](https://github.com/ourcodingclub/SEECC-workshop) Clone and download the repo as a zipfile, then unzip and set the folder as your working directory with code, or click `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
+The coding etiquette outlined in this tutorial is applicable to most analyses - here we will apply them to an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below. 
 
-Alternatively, you can fork [the repository](https://github.com/ourcodingclub/SEECC-workshop) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
+### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip and set the folder as your working directory with code, or click `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
 
-__Start downloading the files from the GitHub repo now, so that the download has finished by the time you need them. We will go through the coding etiquette first, so there is no need for you to open anything from the downloaded files at this stage. You can copy across code from this tutorial into a blank script file for practice, or you can edit your own script. Alternatively, you can read through the tips shared here, then go to the tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Quantifying population change and visualising species occurrence</a>, and follow the tutorial whilst applying the coding etiquette outlined here.__
+Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
+
+### Start downloading the files from the GitHub repo now, so that the download has finished by the time you need them. We will go through the coding etiquette first, so there is no need for you to open anything from the downloaded files at this stage. 
+
+__You can copy across code from this tutorial into a blank script file for practice, or you can edit some of your own scripts.__
 
 <a name="sections"></a>
 
@@ -35,7 +39,7 @@ Once you start analysing your data in `R`, the lines of code can quickly pile up
 
 As with any piece of writing, it really helps to have a clear structure to your script. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, go to `File/New file/R script`. For more information on the general `RStudio` layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. __A clearly structured script allows both the writer and the reader to easily navigate through the code, and it means that we can easily find what we need - for example if we want to know what packages are used, we would go to the `Libraries` section.__
 
-`RStudio` has a very useful feature allowing you to see an outline of your script, similar to when using `Microsoft Word`. Now that you have made a new (blank) script file, you might notice a little outline icon in the top right corner of the script. If you click on it, you will see your outline - currently it is blank since we haven't added any code, but once we start creating sections, you will see them appear here. You can then click on the section you wish to view, and you are automatically taken to that part of the script. No more endless scrolling!
+`RStudio` has a very useful feature allowing you to see an outline of your script, similar to when using `Microsoft Word`. Now that you have made a new (blank) script file, you might notice a little outline icon in the top right corner of the script. If you click on it, you will see your outline - currently it is blank since we haven't added any code, but once we start creating sections, you will see them appear here. You can then click on the section you wish to view, and you are automatically taken to that part of the script. No more endless scrolling! __NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio - if you want to get this feature, please update.__
 
 <center> <img src="{{ site.baseurl }}/img/outline.png" alt="Img" style="width: 800px;"/> </center>
 
@@ -49,8 +53,8 @@ If you are commenting inline with code, place  __two spaces__ after the code, fo
 
 ```r
 # Calculating summary statistics for each biome in the Living Planet Index database
-# You will do this later in the LPI tutorial, no need to run the code now, this just illustrates comments
-LPI_biome_summ <- LPI_long %>%
+# No need to copy and run this code now, this just illustrates comments
+LPI_biome_summ <- LPI2 %>%
   group_by(biome) %>%  # Group by biome
   summarise(populations = n(),   # Create columns, number of populations
             mean_study_length_years = mean(lengthyear),  # mean study length
@@ -114,12 +118,13 @@ theme_LPI <- function(){
 }
 ```
 
+If you run the code for the `ggplot2` function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message pops up asking if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will looks exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
+
 __Loading data__ - what do the data represent and where do they come from? Always include the file path in your code, so that you can track down your data later. Keep the file path structure simple so that it makes sense to everyone. No spaces in folder names and concise logical folder names can minimise potential future problems. Note that you define file paths differently on Mac and Windows laptops - if, for example, a Mac user has sent you code and you can't load in the data, it might be because on a Mac you would use `"~/Work/LPI_analysis/LPIdatabase.csv"`, whereas on a Windows, the slashes go in the other direction - `"D:\Work\LPI_analysis\LPIdatabase.csv"`. If such problems arise, you can just change the type of slashes and the code should work as normal afterwards. Be careful when you are reorganising your folders and/or deleting folders - remember to update file paths, as otherwise you will get error messages telling you `R` can't find the file anymore.
 
 ```r
 # Load data ----
 load("LPIdata_Feb2016.RData")
-load("puffin_GBIF.RData")
 # Here we are using load() and RData files because the dataset is very big
 # RData files are more compressed than .csv files
 # Alternatively, here you can add your read.csv("your_filepath")
@@ -129,15 +134,29 @@ __The different sections of your analysis__ - what is the logical workflow of yo
 
 ```r
 # Formatting data ----
-# Here you would add all your code for the formatting of your data
+# Here you would add all your code for the formatting of your data, e.g.:
+LPI2 <- gather(LPI, "year", "abundance", 9:53)  # Transforming the data from wide to long format
+LPI2$year <- parse_number(LPI2$year)  # Do you see awkward Xs before all the years? This gets rid of them.
+names(LPI2)  # Check what the different variables are called
+names(LPI2) <- tolower(names(LPI2))  # Make all variable names lower case
+
+# When manipulating data it's always good check if the variables have stayed how we want them
+# Use the str() function
+str(LPI2)
+
+# Abundance is a character variable, when it should be numeric, let's fix that
+LPI2$abundance <- as.numeric(LPI2$abundance)
 
 # Calculating summary statistics ----
+# Calculating summary statistics for each biome in the Living Planet Index database
+LPI_biome_summ <- LPI2 %>%
+  group_by(biome) %>%  # Group by biome
+  summarise(populations = n(),   # Create columns, number of populations
+            mean_study_length_years = mean(lengthyear),  # mean study length
+            dominant_sampling_method = names(which.max(table(sampling.method))),  # modal sampling method
+            dominant_units = names(which.max(table(units))))  # modal unit type
 
-# Examining the relationship between ... and ... ----
-
-# Mixed effects models for species A ----
-
-# Mixed effects models for species B ----
+# Visualising the number of populations in each biome ---- 
 ```
 
 __The outputs of your analysis__ - Remember to keep your file path sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph. It is also good practice to save image outputs in a subdirectory, e.g. `img`:
@@ -449,8 +468,6 @@ devtools::install_github("ThinkRstat/littleboxes")
 <center> <img src="{{ site.baseurl }}/img/boxes.png" alt="Img" style="width: 800px;"/> </center>
 
 ### Applying the coding etiquette to a real analysis
-
-#### Now that you have been through the coding etiquette, you can have a go at applying what you've learned by following our tutorial on <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Quantifying population change and visualising species occurrence</a>, and writing a clear, informative, well-structured script as you go along.
 
 Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html" target="_blank">Hadley Whickham's R Style Guide</a>.
 
