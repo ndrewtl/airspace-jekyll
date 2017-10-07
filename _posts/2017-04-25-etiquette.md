@@ -27,8 +27,6 @@ The coding etiquette outlined in this tutorial is applicable to most analyses - 
 
 Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
 
-### Start downloading the files from the GitHub repo now, so that the download has finished by the time you need them. We will go through the coding etiquette first, so there is no need for you to open anything from the downloaded files at this stage. 
-
 __You can copy across code from this tutorial into a blank script file for practice, or you can edit some of your own scripts.__
 
 <a name="sections"></a>
