@@ -157,11 +157,19 @@ __The outputs of your analysis__ - Remember to keep your filepath sensible not o
 
 ```r
 png(file="img/filename.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
-# The code for your graph goes here
+levels(LPI2$biome) # lists out all the biomes
+barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() + #use of ggplot2 package
+  		theme_classic() +
+  		ylab("Number of populations") +
+  		xlab("Biome")
 dev.off()  # This tells R you are done with the plotting and it can save the file
 
 pdf(file="img/filename.png",  width = 13.33, height = 26.66)  # pdf() uses inches
-# The code for your graph goes here
+levels(LPI2$biome) # lists out all the biomes
+barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() + #use of ggplot2 package
+  		theme_classic() +
+  		ylab("Number of populations") +
+  		xlab("Biome")
 dev.off()
 ```
 
@@ -207,8 +215,6 @@ Variable and function names should be lowercase. `MinPrecip_august` is confusing
 ##### - __The preferred form for variable names is all lower case letters and words separated with dots (`variable.name`).__
 
 #### Note that <a href="http://adv-r.had.co.nz/Style.html ">Hadley Wickham's style guide</a> advises to use underscores to separate words within objects, e.g. `variable_name`.
-
-As pointed out by one of our readers, using dots to separate words in objects names has the potential to get confused with method dispatch mechanism.
 
 __This way it's clear what's an object and what's an external file. These are not strict rules - variable names like `variable_name` are also acceptable. The most important thing is to be consistent - choose one style of variable, object and file names, and stick with it!__
 
