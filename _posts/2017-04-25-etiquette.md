@@ -141,8 +141,6 @@ LPI2$abundance <- as.numeric(LPI2$abundance)
 LPI_biome_summ <- LPI2 %>% # use of pipe operator
   group_by(biome) %>%  # Group by biome
   summarise(populations = n(),   # Create columns, number of populations
-            mean_study_length_years = mean(lengthyear),  # mean study length
-            dominant_sampling_method = names(which.max(table(sampling.method))),  # modal sampling method
             dominant_units = names(which.max(table(units))))  # modal unit type
 
 # Visualising the number of populations in each biome ---- 
