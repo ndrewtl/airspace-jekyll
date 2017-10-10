@@ -157,16 +157,14 @@ __The outputs of your analysis__ - Remember to keep your filepath sensible not o
 
 ```r
 png(file="img/filename.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
-levels(LPI2$biome) # lists out all the biomes
-barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() + #use of ggplot2 package
+barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
   		theme_classic() +
   		ylab("Number of populations") +
   		xlab("Biome")
 dev.off()  # This tells R you are done with the plotting and it can save the file
 
 pdf(file="img/filename.png",  width = 13.33, height = 26.66)  # pdf() uses inches
-levels(LPI2$biome) # lists out all the biomes
-barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() + #use of ggplot2 package
+barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
   		theme_classic() +
   		ylab("Number of populations") +
   		xlab("Biome")
