@@ -21,6 +21,8 @@ tags: intro_to_r, github, data_manip
 
 #### <a href="#tidy"> 3. Tidying up old scripts and data frames</a>
 
+When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read, understand and use for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce errors arising from accidental overwriting of objects, typos when referring to objects with complicated names (e.g. `MyData_new.clean`), and similar small issues that might end up causing big frustrations.
+
 The coding etiquette outlined in this tutorial is applicable to most analyses - here we will apply them to an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below. 
 
 ### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip and set the folder as your working directory with code, or click `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
@@ -33,52 +35,31 @@ __You can copy across code from this tutorial into a blank script file for pract
 
 ### 1. Organising scripts into sections
 
-Once you start analysing your data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial will offer tips on how to make your code easy to read, understand and use by you and everyone who might ever need to check out your code. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, as well as reduce the amount of errors arising from accidental overwriting of objects, typos when referring to objects called like `MyData_new.clean` and similar small issues that might end up causing big frustrations.
-
-As with any piece of writing, it really helps to have a clear structure to your script. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, go to `File/New file/R script`. For more information on the general `RStudio` layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. __A clearly structured script allows both the writer and the reader to easily navigate through the code, and it means that we can easily find what we need - for example if we want to know what packages are used, we would go to the `Libraries` section.__
+As with any piece of writing, it really helps to have a clear structure to your script. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, open RStudio and go to `File/New file/R script`. For more information on the general RStudio layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. A clearly structured script allows both the writer and the reader to easily navigate through the code to find the desired section. 
 
 `RStudio` has a very useful feature allowing you to see an outline of your script, similar to when using `Microsoft Word`. Now that you have made a new (blank) script file, you might notice a little outline icon in the top right corner of the script. If you click on it, you will see your outline - currently it is blank since we haven't added any code, but once we start creating sections, you will see them appear here. You can then click on the section you wish to view, and you are automatically taken to that part of the script. No more endless scrolling! __NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio - if you want to get this feature, please update.__
 
 <center> <img src="{{ site.baseurl }}/img/outline.png" alt="Img" style="width: 800px;"/> </center>
 
-To create sections, first you need to add a comment using the `#` symbol. Comments are incredibly useful for making sense of code and clarifying what you are doing, and why you are doing it. Once you have a comment statement, like `# Testing comments`, you can add four or more `#` or `-` to make that comment the start of a section, for example `# Testing comments ----`. In your outline you will see this comment as your first section.
-
-#### Commenting guidelines:
-
-__Each line of a comment should begin with the comment symbol `#` and a single space__. Comments should be concise to avoid having to scroll a lot to read them in full, and most importantly, they should be informative enough so that you and your collaborators can understand what you are doing and why you are doing it.
-
-If you are commenting inline with code, place  __two spaces__ after the code, followed by `#`, a __single space__ and then your text, e.g. `summary(model)<space><space>#<space>comment`.
-
-```r
-# Calculating summary statistics for each biome in the Living Planet Index database
-# No need to copy and run this code now, this just illustrates comments
-LPI_biome_summ <- LPI2 %>%
-  group_by(biome) %>%  # Group by biome
-  summarise(populations = n(),   # Create columns, number of populations
-            mean_study_length_years = mean(lengthyear),  # mean study length
-            max_lat = max(decimal_latitude),  # max latitude
-            min_lat = min(decimal_latitude),  # max longitude
-            dominant_sampling_method = names(which.max(table(sampling_method))),  # modal sampling method
-            dominant_units = names(which.max(table(units))))  # modal unit type
-```
+To create sections, first you need to add a comment using the `#` symbol. Comments are incredibly useful for making sense of code and clarifying what you are doing, and why you are doing it. Once you have a comment statement, like `# Testing comments`, you can add four or more `#` or `-` to make that comment the start of a section (e.g. `# Testing comments ----`). In your outline you will see this comment as your first section.
 
 #### Script structure:
 
 __There are no strict rules and you can adapt the number and names of sections to your needs, but in general a script includes the following sections:__
 
-__Introductory section__ - author statement (what does this script do?), author(s) names, contact details and date.
+__Introductory section__ - Author statement (what does this script do?), author(s) names, contact details and date.
 
-__Libraries__ - what packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for.
+__Libraries__ - What packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for.
 
-__Here are two examples, good and bad, to illustrate the aforementioned sections.__
+__Here are two examples, good and bad, to illustrate these first two sections.__
 
-__A not particularly useful start of a script:__
+__A not particularly useful script intro:__
 
 ```r
 # My analysis
 ```
 
-__A more informative start of a script:__
+__A more informative script intro:__
 
 ```r
 # Analysing vertebrate population change based on the Living Planet Index
@@ -93,7 +74,7 @@ library(dplyr)  # Manipulating data
 library(ggplot2)  # Visualising results
 ```
 
-__Functions__ - are you using any functions written by you and/or others? Define them here. For example functions to remove `NA` values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">create your own `ggplot2` theme.</a>
+__Functions__ - Are you using any functions written by you and/or others? Define them here. For example functions to remove `NA` values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">create your own `ggplot2` theme.</a>
 
 ```r
 # Defining functions ----
@@ -118,17 +99,27 @@ theme_LPI <- function(){
 
 If you run the code for the `ggplot2` function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message pops up asking if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will looks exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
 
-__Loading data__ - what do the data represent and where do they come from? Always include the file path in your code, so that you can track down your data later. Keep the file path structure simple so that it makes sense to everyone. No spaces in folder names and concise logical folder names can minimise potential future problems. Note that you define file paths differently on Mac and Windows laptops - if, for example, a Mac user has sent you code and you can't load in the data, it might be because on a Mac you would use `"~/Work/LPI_analysis/LPIdatabase.csv"`, whereas on a Windows, the slashes go in the other direction - `"D:\Work\LPI_analysis\LPIdatabase.csv"`. If such problems arise, you can just change the type of slashes and the code should work as normal afterwards. Be careful when you are reorganising your folders and/or deleting folders - remember to update file paths, as otherwise you will get error messages telling you `R` can't find the file anymore.
+__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. See below for some examples of how to set the working directory for both Windows and Mac/Linux:
+
+```r
+# Set the working directory on Windows ----
+setwd("D:/Work/LPI_analysis")
+
+# Set the working directory on Mac/Linux ----
+setwd("~/Work/LPI_analysis")
+```
+
+__Loading data__ - what data are you using and where is it stored?  An example section where data is loaded:
 
 ```r
 # Load data ----
 load("LPIdata_Feb2016.RData")
-# Here we are using load() and RData files because the dataset is very big
-# RData files are more compressed than .csv files
-# Alternatively, here you can add your read.csv("your_filepath")
+# Here we are using `load()` and RData files because the dataset is very big
+# RData files are more compressed than `.csv` files
+# Alternatively, here you can add your own .csv file using `read.csv("your_filepath")`
 ```
 
-__The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an honours dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear.
+__The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an undergraduate dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear.
 
 ```r
 # Formatting data ----
@@ -157,7 +148,7 @@ LPI_biome_summ <- LPI2 %>%
 # Visualising the number of populations in each biome ---- 
 ```
 
-__The outputs of your analysis__ - Remember to keep your file path sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph. It is also good practice to save image outputs in a subdirectory, e.g. `img`:
+__The outputs of your analysis__ - Remember to keep your filepath sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph. It is also good practice to save image outputs in a subdirectory of your working directory, e.g. `img/`:
 
 ```r
 png(file="img/filename.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
@@ -228,11 +219,10 @@ __This way it's clear what's an object and what's an external file. These are no
  calculate_avg_clicks , calculateAvgClicks  # Bad.
 ```
 
-
 #### 2.2 Spacing
 
 __Place spaces around all infix operators (`=`, `+`, `-`, `<-`, etc.).__ The same rule applies when using `=` in function calls.
-__Always put a space after a comma, and never before.__
+__Always put a space after a comma, and never before, just like in normal prose.__
 
 There are two exceptions to this rule (that we know of): `:` and `::` don't need spaces around them, and one should not add spaces when defining coordinate systems in spatial objects.
 
@@ -284,6 +274,21 @@ x[1,]   # Needs a space after the comma
 x[1 ,]  # Space goes after comma not before
 ```
 
+__Inline commenting__ - If you are commenting inline with code, place  __two spaces__ after the code, followed by `#`, a __single space__ and then your text, e.g. `summary(model)<space><space>#<space>comment`.
+
+```r
+# Calculating summary statistics for each biome in the Living Planet Index database
+# No need to copy and run this code now, this just illustrates comments
+LPI_biome_summ <- LPI2 %>%
+  group_by(biome) %>%  # Group by biome
+  summarise(populations = n(),   # Create columns, number of populations
+            mean_study_length_years = mean(lengthyear),  # mean study length
+            max_lat = max(decimal_latitude),  # max latitude
+            min_lat = min(decimal_latitude),  # max longitude
+            dominant_sampling_method = names(which.max(table(sampling_method))),  # modal sampling method
+            dominant_units = names(which.max(table(units))))  # modal unit type
+```
+
 
 #### 2.3 Curly braces
 
@@ -324,13 +329,11 @@ if (y < 0 && debug) message("Y is negative")
 
 #### 2.4 Line length
 
-__The official convention is to limit your code to 80 characters per line.__ Having to continuously scroll left and right can be annoying and confusing. Also, when you publish your code on Github, the scroll bar is all the way down, so to scroll right, you first need to scroll all the way down, scroll right, then scroll all the way up to wherever you want to be ... unnecessary.
+__The official convention is to limit your code to 80 characters per line.__ Having to continuously scroll left and right can be annoying and confusing. Also, when you publish your code on Github, the scroll bar is all the way down at the bottom of the page, so to scroll right, you first need to scroll all the way down, scroll right, then scroll all the way up to wherever you want to be ... unnecessary.
 
 __How do you know what's 80 characters though? RStudio can place a handy line in your editor as a reminder! Go to `Tools/Global Options/Code/Display/Show Margin/80 characters`.__ Sometimes it might make more sense for your code to be a bit longer than 80 characters, but in general code is easier to read if there is no need for continuous scrolling left and right, around 100 characters should work alright.
 
-
-##### When using pipes, keep the piping operator `%>%` at the end of the line and continue your pipe on a new line.
-
+##### When using pipes, keep the pipe operator `%>%` at the end of the line and continue your pipe on a new line.
 
 ```r
 # Just an example of what a pipe could look like, no need to run the code at this stage.
@@ -344,9 +347,7 @@ LPI_long <- LPI_long %>%
   ungroup(.)  # Remove any groupings you've greated in the pipe, not entirely necessary but it's better to be safe
 ```
 
-
 ##### When using `ggplot2`, keep the `+` at the end of the line and continue adding on layers on a new line.
-
 
 ```r
 # Just an example of what the code could look like, no need to run the code at this stage.
@@ -464,8 +465,6 @@ devtools::install_github("ThinkRstat/littleboxes")
 ```
 
 <center> <img src="{{ site.baseurl }}/img/boxes.png" alt="Img" style="width: 800px;"/> </center>
-
-### Applying the coding etiquette to a real analysis
 
 Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html" target="_blank">Hadley Whickham's R Style Guide</a>.
 
