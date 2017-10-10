@@ -272,6 +272,21 @@ x[1,]   # Needs a space after the comma
 x[1 ,]  # Space goes after comma not before
 ```
 
+__Inline commenting__ - If you are commenting inline with code, place  __two spaces__ after the code, followed by `#`, a __single space__ and then your text, e.g. `summary(model)<space><space>#<space>comment`.
+
+```r
+# Calculating summary statistics for each biome in the Living Planet Index database
+# No need to copy and run this code now, this just illustrates comments
+LPI_biome_summ <- LPI2 %>%
+  group_by(biome) %>%  # Group by biome
+  summarise(populations = n(),   # Create columns, number of populations
+            mean_study_length_years = mean(lengthyear),  # mean study length
+            max_lat = max(decimal_latitude),  # max latitude
+            min_lat = min(decimal_latitude),  # max longitude
+            dominant_sampling_method = names(which.max(table(sampling_method))),  # modal sampling method
+            dominant_units = names(which.max(table(units))))  # modal unit type
+```
+
 
 #### 2.3 Curly braces
 
