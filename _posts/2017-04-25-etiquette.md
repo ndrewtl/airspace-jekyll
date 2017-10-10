@@ -21,7 +21,7 @@ tags: intro_to_r, github, data_manip
 
 #### <a href="#tidy"> 3. Tidying up old scripts and data frames</a>
 
-When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read, understand and use for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce errors arising from accidental overwriting of objects, typos when referring to objects, and similar small issues that might end up causing big frustrations.
+When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read, understand and use for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce errors arising from accidental overwriting of objects, typos when referring to objects with complicated names (e.g. `MyData_new.clean`), and similar small issues that might end up causing big frustrations.
 
 The coding etiquette outlined in this tutorial is applicable to most analyses - here we will apply them to an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below. 
 
@@ -49,7 +49,7 @@ __There are no strict rules and you can adapt the number and names of sections t
 
 __Introductory section__ - Author statement (what does this script do?), author(s) names, contact details and date.
 
-__Libraries__ - Ahat packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for.
+__Libraries__ - What packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for.
 
 __Here are two examples, good and bad, to illustrate these first two sections.__
 
@@ -96,6 +96,8 @@ theme_LPI <- function(){
           legend.position=c(0.9, 0.9))
 }
 ```
+
+If you run the code for the `ggplot2` function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message pops up asking if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will looks exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
 
 __Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. See below for some examples of how to set the working directory for both Windows and Mac/Linux:
 
