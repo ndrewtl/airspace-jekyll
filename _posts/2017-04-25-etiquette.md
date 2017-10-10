@@ -216,7 +216,7 @@ __This way it's clear what's an object and what's an external file. These are no
 # Function names
  calculate.avg.clicks  # This is what we are aiming for.
  CalculateAvgClicks  # Not that bad, but mixing capital and lowercase letters can lead to typos
- calculate_avg_clicks , calculateAvgClicks  # Bad.
+ calculate_avg_clicks , calculateAvgClicks  # Bad. The convention is that functions are defined using dots, not underscores.
 ```
 
 #### 2.2 Spacing
