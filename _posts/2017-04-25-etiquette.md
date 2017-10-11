@@ -74,7 +74,7 @@ library(readr)  # Manipulating data
 
 __You might have noticed that when you create a section using four or more `-` at the end of a comment line, a little arrow appears in the margin next to the comment. Clicking these arrows allows you to collapse the section, very useful when traversing a long script.__
 
-<center> <img src="{{ site.baseurl }}/img/outline4.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/outline5.png" alt="Img" style="width: 800px;"/> </center>
 
 __You can also go to `Edit/Folding/Collapse all` to collapse all sections - this is the outline of your script, and from here you can navigate to whichever section you need. `Expand all` displays all of the code you've written. Here is an example:__
 
