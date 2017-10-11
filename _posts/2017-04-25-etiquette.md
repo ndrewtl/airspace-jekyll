@@ -28,7 +28,7 @@ The coding etiquette outlined in this tutorial is applicable to most analyses. T
 __Some of the examples in this tutorial require you to type things into an R script but many are just there for reference. Follow along by typing code from the examples into a blank script file, to build your own example script file with perfect formatting and etiquette. Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below.__ 
 
 ### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip it so it appears as a folder. 
-Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
+Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our GitHub <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
 
 <a name="sections"></a>
 
@@ -74,7 +74,7 @@ library(readr)  # Manipulating data
 
 __You might have noticed that when you create a section using four or more `-` at the end of a comment line, a little arrow appears in the margin next to the comment. Clicking these arrows allows you to collapse the section, very useful when traversing a long script.__
 
-<center> <img src="{{ site.baseurl }}/img/outline4.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/etiquette_outline.png" alt="Img" style="width: 800px;"/> </center>
 
 __You can also go to `Edit/Folding/Collapse all` to collapse all sections - this is the outline of your script, and from here you can navigate to whichever section you need. `Expand all` displays all of the code you've written. Here is an example:__
 
@@ -116,14 +116,14 @@ setwd("D:/Work/coding_club/CC-4-Datavis-master")
 setwd("~/Work/coding_club/CC-4-Datavis-master")
 ```
 
-__Loading data__ - what data are you using and where is it stored? __Load `LPIdata_CC.csv` from your working directory__. Here is an example:
+__Importing data__ - what data are you using and where is it stored? __Import `LPIdata_CC.csv` from your working directory__. Here is an example:
 
 ```r
-# Load data ----
+# Import data ----
 LPI <- read.csv("LPIdata_CC.csv")
 ```
 
-__The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an undergraduate dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear. Once you have loaded in `LPIdata_CC.csv`, run the following code to generate the plot called `barplot`, which you can see in the image below:
+__The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an undergraduate dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear. Once you have imported in `LPIdata_CC.csv`, run the following code to generate the plot called `barplot`, which you can see in the image below:
 
 ```r
 # Formatting data ----
@@ -211,7 +211,7 @@ Object, variable (e.g.`object$variable`) and function names should be lowercase.
 ##### - __The preferred form for object/variable names is all lower case letters and words separated with underscores__ e.g. (`object_name$variable_name`).
 ##### - __For functions all lower case letters and words separated by dots__ e.g. (`function.name`).
 
-__This way it's clear what's an object and what's an external file. These are not strict rules - variable names like `variable_name` are also acceptable. The most important thing is to be consistent - choose one style of variable, object and file names, and stick with it!__
+__This way it is clear what is an object and what is an external file. These are not strict rules - variable names like `variable_name` are also acceptable. The most important thing is to be consistent - choose one style of variable, object and file names, and stick with it!__
 
 ```r
 # Object names
