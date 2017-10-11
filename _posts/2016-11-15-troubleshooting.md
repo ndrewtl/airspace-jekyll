@@ -94,7 +94,7 @@ We have also compiled a <a href="https://ourcodingclub.github.io/links/" target=
 
 ### Get even better at avoiding mistakes by following a Coding Etiquette! <a href="https://ourcodingclub.github.io/2017/04/25/etiquette.html" target ="_blank">You can complete our Coding Etiquette tutorial here.</a>
 
-<b>Feeling ready to go one step furher? Learn how to format and manipulate data in a tidy and efficient way with our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">tidyr and dplyr tutorial!</a> Keen to make more graphs? Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">data visualisation tutorial!</a></b>
+<b>Feeling ready to go one step further? Learn how to format and manipulate data in a tidy and efficient way with our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">tidyr and dplyr tutorial!</a> Keen to make more graphs? Check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">data visualisation tutorial!</a></b>
 
 
 ### Tutorial outcomes:

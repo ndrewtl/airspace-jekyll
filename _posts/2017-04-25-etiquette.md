@@ -23,12 +23,12 @@ tags: intro_to_r, github, data_manip
 
 When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read and understand, for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce the occurrence of annoying errors. 
 
-The coding etiquette outlined in this tutorial is applicable to most analyses. The examples we use are loosely based on an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below. 
+The coding etiquette outlined in this tutorial is applicable to most analyses. The examples we use are loosely based on an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> __
+
+__Some of the examples in this tutorial require you to type things into an R script but many are just there for reference. Follow along by typing code from the examples into a blank script file, to build your own example script file with perfect formatting and etiquette. Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below.__ 
 
 ### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip it so it appears as a folder. 
 Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
-
-__You can copy across code from this tutorial into a blank script file for practice, or you can edit some of your own scripts.__
 
 <a name="sections"></a>
 
@@ -72,7 +72,16 @@ library(ggplot2)  # Visualising results
 library(readr)  # Manipulating data
 ```
 
-__Functions__ - Are you using any functions written by you and/or others? Define them here. For example functions to remove `NA` values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">create your own `ggplot2` theme.</a>
+__You might have noticed that when you create a section using four or more `-` at the end of a comment line, a little arrow appears in the margin next to the comment. Clicking these arrows allows you to collapse the section, very useful when traversing a long script.__
+
+<center> <img src="{{ site.baseurl }}/img/outline4.png" alt="Img" style="width: 800px;"/> </center>
+
+__You can also go to `Edit/Folding/Collapse all` to collapse all sections - this is the outline of your script, and from here you can navigate to whichever section you need. `Expand all` displays all of the code you've written. Here is an example:__
+
+<center> <img src="{{ site.baseurl }}/img/outline2.png" alt="Img" style="width: 800px;"/> </center>
+
+
+__Functions__ - Are you using any functions written by you and/or others? Define them here. For example functions to remove `NA` values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">create your own `ggplot2` theme.</a> Here is an example functions section:
 
 ```r
 # Defining functions ----
@@ -95,9 +104,9 @@ theme.LPI <- function(){
 }
 ```
 
-If you run the code for the `ggplot2` theme function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message pops up asking if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will looks exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
+If you run the code for the `ggplot2` theme function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message will ask if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will look exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
 
-__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. __Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-4-Datavis-master`. See below for some examples for both Windows and Mac/Linux:
+__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. __Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-4-Datavis-master`. See below for some examples for both Windows and Mac/Linux:__
 
 ```r
 # Set the working directory on Windows ----
@@ -114,7 +123,7 @@ __Loading data__ - what data are you using and where is it stored? __Load `LPIda
 LPI <- read.csv("LPIdata_CC.csv")
 ```
 
-__The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an undergraduate dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear.
+__The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an undergraduate dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear. Once you have loaded in `LPIdata_CC.csv`, run the following code to generate the plot called `barplot`, which you can see in the image below:
 
 ```r
 # Formatting data ----
@@ -168,13 +177,6 @@ ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
 dev.off()
 ```
 
-__You might have noticed that when you create a section using four or more `-` at the end of a comment line, a little arrow appears in the margin next to the comment. Clicking these arrows allows you to collapse the section, very useful when traversing a long script.__
-
-<center> <img src="{{ site.baseurl }}/img/outline4.png" alt="Img" style="width: 800px;"/> </center>
-
-__You can also go to `Edit/Folding/Collapse all` to collapse all sections - this is the outline of your script, and from here you can navigate to whichever section you need. `Expand all` displays all of the code you've written. Here is an example:__
-
-<center> <img src="{{ site.baseurl }}/img/outline2.png" alt="Img" style="width: 800px;"/> </center>
 
 <a name="syntax"></a>
 
@@ -183,7 +185,7 @@ __You can also go to `Edit/Folding/Collapse all` to collapse all sections - this
 
 #### 2.1. Naming files and objects.
 
-#### "There are only two hard things in Computer Science: cache invalidation and naming things." - Phil Karlton
+##### "There are only two hard things in Computer Science: cache invalidation and naming things." - Phil Karlton
 
 We're not too familiar with cache invalidation, but we would definitely agree that naming things is hard, and going for a quick and easy solution, like calling your graphs `graph`, might cause trouble later!
 
@@ -197,17 +199,17 @@ yet_another_script.R  # Bad. Took me hours to find the file when I needed it one
 
 __Object names should be concise and meaningful.__
 
-Calling your objects `data` or something similarly vague might cause problems if you are doing multiple analyses at once / don't clean your environment, as these object names will get overwritten, and can mess up your script if you aren't running it in order. 
+Calling your objects `data` or something similarly vague might cause problems if you are doing multiple analyses at once / don't clean your environment periodically, as these object names will get overwritten, and can mess up your script if you aren't running it in order. 
 
 Long object names are annoying to type. More letters = higher chance you'll make a typo.
 
 Object, variable (e.g.`object$variable`) and function names should be lowercase. `MinPrecip_august` is confusing to remember, `min.precip.aug` is a bit long, but informative and easier to type.
 
-##### - __Variable names should be nouns.__ E.g. `abundance` `richness`
-##### - __Function names should be verbs.__ E.g. `calc.sp.richness`
-##### - __Use an underscore to separate words within a script file.__ E.g. `LPI_analysis_Apr_2017.R`
-##### - __The preferred form for object/variable names is all lower case letters and words separated with underscores (`object_name$variable_name`).__
-##### - __For functions all lower case letters and words separated by dots (`function.name`).__
+##### - __Variable names should be nouns.__ e.g. `abundance` `richness`
+##### - __Function names should be verbs.__ e.g. `calc.sp.richness`
+##### - __Use an underscore to separate words within a script file.__ e.g. `LPI_analysis_Apr_2017.R`
+##### - __The preferred form for object/variable names is all lower case letters and words separated with underscores__ e.g. (`object_name$variable_name`).
+##### - __For functions all lower case letters and words separated by dots__ e.g. (`function.name`).
 
 __This way it's clear what's an object and what's an external file. These are not strict rules - variable names like `variable_name` are also acceptable. The most important thing is to be consistent - choose one style of variable, object and file names, and stick with it!__
 
@@ -333,11 +335,11 @@ if (y < 0 && debug) message("Y is negative")
 
 #### 2.4 Line length
 
-__The official convention is to limit your code to 80 characters per line.__ Having to continuously scroll left and right can be annoying and confusing. Also, when you publish your code on Github, the scroll bar is all the way down at the bottom of the page, so to scroll right, you first need to scroll all the way down, scroll right, then scroll all the way up to wherever you want to be ... unnecessary.
+__The official convention is to limit your code to 80 characters per line.__ Having to continuously scroll left and right can be annoying and confusing. Also, when you publish your code to Github, the scroll bar is all the way down at the bottom of the page, so to scroll right, you first need to scroll all the way down, scroll right, then scroll all the way up to wherever you want to be ... unnecessary.
 
 __How do you know what's 80 characters though? RStudio can place a handy line in your editor as a reminder! Go to `Tools/Global Options/Code/Display/Show Margin/80 characters`.__ Sometimes it might make more sense for your code to be a bit longer than 80 characters, but in general code is easier to read if there is no need for continuous scrolling left and right, around 100 characters should work alright.
 
-##### When using pipes, keep the pipe operator `%>%` at the end of the line and continue your pipe on a new line.
+##### When using pipes from the `dplyr` package, keep the pipe operator `%>%` at the end of the line and continue your pipe on a new line.
 
 ```r
 # Just an example of what a pipe could look like, no need to run the code at this stage.
@@ -367,7 +369,7 @@ vulture_scatter <- ggplot(vultureITCR, aes (x = year, y = abundance, colour = Co
 ```
 
 #### 2.5 Indentation
-If a function definition runs over multiple lines, indent the second line to where the definition starts - you can check out the indentation in the `ggplot2` code above - when you click `Enter` after the `+` sign, the new line automatically gets indented.
+If a command runs over multiple lines, indent the second line to where the definition starts - you can check out the indentation in the `ggplot2` code above - when you click `Enter` after the `+` sign, the new line automatically gets indented.
 
 Here is a before and after of a `ggplot2` figure code:
 
