@@ -146,10 +146,14 @@ LPI_biome_summ <- LPI2 %>% # use of pipe operator
 # Visualising the number of populations in each biome ---- 
 levels(LPI2$biome) # lists out all the biomes
 barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() + #use of ggplot2 package
-  		theme_classic() +
+  		theme_LPI() + # use of personal theme function
   		ylab("Number of populations") +
-  		xlab("Biome")
+  		xlab("Biome") +
+		theme(legend.position = "none") #removal of legend for simplicity
 ```
+
+<center><img src="https://ourcodingclub.github.io/img/Biome_pop.png" alt="Img" style="width: 950px;"/></center>
+Figure 1. Abundance of species populations for each biome.
 
 __The outputs of your analysis__ - Remember to keep your filepath sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph. It is also good practice to save image outputs in a subdirectory of your working directory, e.g. `img/`:
 
@@ -158,14 +162,16 @@ png(file="img/filename.png", width = 1000, height = 2000)  # Note that png() use
 barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
   		theme_classic() +
   		ylab("Number of populations") +
-  		xlab("Biome")
+  		xlab("Biome") +
+		theme(legend.position = "none")
 dev.off()  # This tells R you are done with the plotting and it can save the file
 
 pdf(file="img/filename.png",  width = 13.33, height = 26.66)  # pdf() uses inches
 barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
   		theme_classic() +
   		ylab("Number of populations") +
-  		xlab("Biome")
+  		xlab("Biome") +
+		theme(legend.position = "none")
 dev.off()
 ```
 
