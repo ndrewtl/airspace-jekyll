@@ -72,6 +72,7 @@ __A more informative script intro:__
 library(tidyr)  # Formatting data for analysis
 library(dplyr)  # Manipulating data
 library(ggplot2)  # Visualising results
+library(readr)  # Manipulating data
 ```
 
 __Functions__ - Are you using any functions written by you and/or others? Define them here. For example functions to remove `NA` values, functions to <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">create your own `ggplot2` theme.</a>
@@ -103,19 +104,17 @@ __Setting the working directory__ - It helps to keep all your data, scripts, ima
 
 ```r
 # Set the working directory on Windows ----
-setwd("D:/Work/coding_club/CC-4-Datavis")
+setwd("D:/Work/coding_club/CC-4-Datavis-master")
 
 # Set the working directory on Mac/Linux ----
-setwd("~/Work/coding_club/CC-4-Datavis")
+setwd("~/Work/coding_club/CC-4-Datavis-master")
 ```
 
 __Loading data__ - what data are you using and where is it stored? __Load `LPIdata_CC.csv` from your working directory__. Here is an example:
 
 ```r
 # Load data ----
-LPI <- read.csv("LPIdata_CC.csv") #requires readr package
-# Here we are using `load()` because the dataset is very big
-# Alternatively if there is an error message, you can add your own .csv file using `read.csv("your_filepath")`
+LPI <- read.csv("LPIdata_CC.csv")
 ```
 
 __The different sections of your analysis__ - what is the logical workflow of your analysis? Keep the order in which you tackle your analysis consistent. If this is code for an undergraduate dissertation, a thesis chapter, or a manuscript, you can follow the same order in your script. Here is an example - if you copy these across to a script file, you'll see the sections appear.
@@ -140,8 +139,7 @@ LPI2$abundance <- as.numeric(LPI2$abundance)
 # Calculating summary statistics for each biome in the Living Planet Index database
 LPI_biome_summ <- LPI2 %>% # use of pipe operator
   group_by(biome) %>%  # Group by biome
-  summarise(populations = n(),   # Create columns, number of populations
-            dominant_units = names(which.max(table(units))))  # modal unit type
+  summarise(populations = n())   # Create columns, number of populations
 
 # Visualising the number of populations in each biome ---- 
 levels(LPI2$biome) # lists out all the biomes
@@ -155,19 +153,19 @@ barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() + #use of ggplot
 <center><img src="https://ourcodingclub.github.io/img/Biome_pop.png" alt="Img" style="width: 950px;"/></center>
 Figure 1. Abundance of species populations for each biome.
 
-__The outputs of your analysis__ - Remember to keep your filepath sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph. It is also good practice to save image outputs in a subdirectory of your working directory, e.g. `img/`:
+__The outputs of your analysis__ - Remember to keep your filepath sensible not only when loading data in, but also when you are outputting files (e.g. `.Rdata`, `.csv` files and any figures you want saved). `.csv` files are more transferable and can be used across multiple platforms, whereas `.Rdata` files are more compressed and are quicker to work with. Saving graphs as `.pdf` files is better practice, since `.pdf` files are vector based and don't decrease in quality when you zoom in or out. `.png` files, on the other hand, are easily inserted in text documents and presentations, so ideally you should save a `.pdf` and a `.png` file of your graph. It is also good practice to save image outputs in a subdirectory of your working directory, e.g. `img/`. Remember that you will have to create the folder `img` manually before saving plots to it:
 
 ```r
-png(file="img/filename.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
-barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
+png(file="img/biome_pop.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
+ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
   		theme_classic() +
   		ylab("Number of populations") +
   		xlab("Biome") +
 		theme(legend.position = "none")
 dev.off()  # This tells R you are done with the plotting and it can save the file
 
-pdf(file="img/filename.png",  width = 13.33, height = 26.66)  # pdf() uses inches
-barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
+pdf(file="img/biome_pop.pdf",  width = 13.33, height = 26.66)  # pdf() uses inches
+ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
   		theme_classic() +
   		ylab("Number of populations") +
   		xlab("Biome") +
@@ -381,6 +379,7 @@ If a function definition runs over multiple lines, indent the second line to whe
 Here is a before and after of a `ggplot2` figure code:
 
 ```r
+# Again, just an example, don't run this, it won't work!
 ggplot()+geom_hline(yintercept=0,linetype="dotted",colour="darkgrey")+
   geom_line(data=cwa.sub, aes(x=Season,y=Total.Concentration),size=2,alpha=0.2)+
   geom_ribbon(data=preds2, aes(x=Season, ymin=ploBT, ymax=phiBT), fill="#3cd0ea", alpha=0.3)+
