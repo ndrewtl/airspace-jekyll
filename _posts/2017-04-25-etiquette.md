@@ -99,21 +99,21 @@ theme_LPI <- function(){
 
 If you run the code for the `ggplot2` function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message pops up asking if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will looks exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
 
-__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. See below for some examples of how to set the working directory for both Windows and Mac/Linux:
+__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. __Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-4-Datavis`. See below for some examples for both Windows and Mac/Linux:
 
 ```r
 # Set the working directory on Windows ----
-setwd("D:/Work/LPI_analysis")
+setwd("D:/Work/coding_club/CC-4-Datavis")
 
 # Set the working directory on Mac/Linux ----
-setwd("~/Work/LPI_analysis")
+setwd("~/Work/coding_club/CC-4-Datavis")
 ```
 
-__Loading data__ - what data are you using and where is it stored?  An example section where data is loaded:
+__Loading data__ - what data are you using and where is it stored? __Load `LPIdata_CC.csv` from your working directory__. Here is an example:
 
 ```r
 # Load data ----
-load("LPIdata_CC.csv") #requires readr package
+LPI <- read.csv("LPIdata_CC.csv") #requires readr package
 # Here we are using `load()` because the dataset is very big
 # Alternatively if there is an error message, you can add your own .csv file using `read.csv("your_filepath")`
 ```
