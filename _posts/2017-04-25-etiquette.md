@@ -21,12 +21,11 @@ tags: intro_to_r, github, data_manip
 
 #### <a href="#tidy"> 3. Tidying up old scripts and data frames</a>
 
-When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read, understand and use for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce errors arising from accidental overwriting of objects, typos when referring to objects with complicated names (e.g. `MyData_new.clean`), and similar small issues that might end up causing big frustrations.
+When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read and understand, for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce the occurrence of annoying errors. 
 
-The coding etiquette outlined in this tutorial is applicable to most analyses - here we will apply them to an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below. 
+The coding etiquette outlined in this tutorial is applicable to most analyses. The examples we use are loosely based on an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below. 
 
-### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip and set the folder as your working directory with code, or click `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
-
+### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip it so it appears as a folder. 
 Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
 
 __You can copy across code from this tutorial into a blank script file for practice, or you can edit some of your own scripts.__
@@ -35,31 +34,29 @@ __You can copy across code from this tutorial into a blank script file for pract
 
 ### 1. Organising scripts into sections
 
-As with any piece of writing, it really helps to have a clear structure to your script. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, open RStudio and go to `File/New file/R script`. For more information on the general RStudio layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. A clearly structured script allows both the writer and the reader to easily navigate through the code to find the desired section. 
+As with any piece of writing, when writing an R script it really helps to have a clear structure. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, open RStudio and go to `File/New file/R script`. For more information on the general RStudio layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. A clearly structured script allows both the writer and the reader to easily navigate through the code to find the desired section. 
 
-`RStudio` has a very useful feature allowing you to see an outline of your script, similar to when using `Microsoft Word`. Now that you have made a new (blank) script file, you might notice a little outline icon in the top right corner of the script. If you click on it, you will see your outline - currently it is blank since we haven't added any code, but once we start creating sections, you will see them appear here. You can then click on the section you wish to view, and you are automatically taken to that part of the script. No more endless scrolling! __NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio - if you want to get this feature, please update.__
+The best way to split your script into sections is to use comments. You can define a comment by adding `#` to the start of any line and typing text after it, e.g. `# ggplot of population frequency`. Then underneath that comment you would write the code for making your ggplot. RStudio has a neat feature whereby you can make your sections into an outline, similar to that which you can find in `Microsoft Word`. To add a comment to the outline, type four `-` after your comment text, e.g. `# ggplot of population frequency ----`. To view your outline, click the button as shown below, you can then click an outline item and jump straight to it, no more scrolling!:
 
 <center> <img src="{{ site.baseurl }}/img/outline.png" alt="Img" style="width: 800px;"/> </center>
 
-To create sections, first you need to add a comment using the `#` symbol. Comments are incredibly useful for making sense of code and clarifying what you are doing, and why you are doing it. Once you have a comment statement, like `# Testing comments`, you can add four or more `#` or `-` to make that comment the start of a section (e.g. `# Testing comments ----`). In your outline you will see this comment as your first section.
+__NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio - if you want to get this feature, please update.__
 
 #### Script structure:
 
-__There are no strict rules and you can adapt the number and names of sections to your needs, but in general a script includes the following sections:__
+__There are no strict rules for the number and names of sections, you can adapt section content to your needs, but in general a script includes the following sections:__
 
-__Introductory section__ - Author statement (what does this script do?), author(s) names, contact details and date.
+__Introduction__ - Author statement (what does this script do?), author(s) names, contact details and date.
 
-__Libraries__ - What packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for.
+__Libraries__ - What packages are you using for this script? Keep all of them together at the start of your script. When switching between scripts, with your packages already loaded, it's easy to forget to copy across the library, which means future you might get confused as to why the code isn't working anymore. Your library will be extra informative to you and other people if you add in comments about what you are using each package for. Here are two examples, good and bad, to illustrate these first two sections:
 
-__Here are two examples, good and bad, to illustrate these first two sections.__
-
-__A not particularly useful script intro:__
+A not particularly useful script intro:
 
 ```r
 # My analysis
 ```
 
-__A more informative script intro:__
+A more informative script intro:
 
 ```r
 # Analysing vertebrate population change based on the Living Planet Index
@@ -80,7 +77,7 @@ __Functions__ - Are you using any functions written by you and/or others? Define
 ```r
 # Defining functions ----
 # A custom ggplot2 function
-theme_LPI <- function(){
+theme.LPI <- function(){
   theme_bw()+
     theme(axis.text.x=element_text(size=12, angle=45, vjust=1, hjust=1),
           axis.text.y=element_text(size=12),
@@ -98,9 +95,9 @@ theme_LPI <- function(){
 }
 ```
 
-If you run the code for the `ggplot2` function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message pops up asking if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will looks exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
+If you run the code for the `ggplot2` theme function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message pops up asking if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will looks exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
 
-__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. __Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-4-Datavis`. See below for some examples for both Windows and Mac/Linux:
+__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. __Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-4-Datavis-master`. See below for some examples for both Windows and Mac/Linux:
 
 ```r
 # Set the working directory on Windows ----
@@ -121,9 +118,8 @@ __The different sections of your analysis__ - what is the logical workflow of yo
 
 ```r
 # Formatting data ----
-# Here you would add all your code for the formatting of your data, e.g.:
 LPI2 <- gather(LPI, "year", "abundance", 9:53)  # Transforming the data from wide to long format, some blank cells may disappear
-# gather function requires tidyr package
+	# gather function requires tidyr package
 LPI2$year <- parse_number(LPI2$year)  # Do you see awkward Xs before all the years? This gets rid of them.
 names(LPI2)  # Check what the different variables are called
 names(LPI2) <- tolower(names(LPI2))  # Make all variable names lower case
@@ -135,19 +131,18 @@ str(LPI2)
 # Abundance is a character variable, when it should be numeric, let's fix that
 LPI2$abundance <- as.numeric(LPI2$abundance)
 
-# Calculating summary statistics ----
-# Calculating summary statistics for each biome in the Living Planet Index database
-LPI_biome_summ <- LPI2 %>% # use of pipe operator
+# Calc summary stats for each biome in the LPI database ----
+LPI_biome_summ <- LPI2 %>%  # use of pipe operator
   group_by(biome) %>%  # Group by biome
-  summarise(populations = n())   # Create columns, number of populations
+  summarise(populations = n())  # Create columns, number of populations
 
 # Visualising the number of populations in each biome ---- 
-levels(LPI2$biome) # lists out all the biomes
-barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() + #use of ggplot2 package
-  		theme_LPI() + # use of personal theme function
+levels(LPI2$biome)  # list all biomes
+barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +  # use of ggplot2 package
+  		theme.LPI() +  # use of personal theme function
   		ylab("Number of populations") +
   		xlab("Biome") +
-		theme(legend.position = "none") #removal of legend for simplicity
+		theme(legend.position = "none")  # removal of legend for simplicity
 ```
 
 <center><img src="https://ourcodingclub.github.io/img/Biome_pop.png" alt="Img" style="width: 950px;"/></center>
@@ -173,7 +168,7 @@ ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
 dev.off()
 ```
 
-__You might have noticed that when you create a section using four or more `#` or `-` at the end of a comment line, a little arrow appears in front of the comment. Another very useful feature of R Studio is that you can collapse and expand sections. This becomes especially useful when traversing a long script, just collapse the unwanted sections. If there is something you want to check out in the collapsed section, you can click the little arrow again to expand it.__
+__You might have noticed that when you create a section using four or more `-` at the end of a comment line, a little arrow appears in the margin next to the comment. Clicking these arrows allows you to collapse the section, very useful when traversing a long script.__
 
 <center> <img src="{{ site.baseurl }}/img/outline4.png" alt="Img" style="width: 800px;"/> </center>
 
@@ -202,27 +197,25 @@ yet_another_script.R  # Bad. Took me hours to find the file when I needed it one
 
 __Object names should be concise and meaningful.__
 
-Calling your data `data` might cause problems if you are doing multiple analyses at once / don't clean your environment, and you keep using the same object name. But if you need an overwrittable universal object and you don't need to keep lots of objects from each step of your analysis, sticking with the same object name might be useful.
+Calling your objects `data` or something similarly vague might cause problems if you are doing multiple analyses at once / don't clean your environment, as these object names will get overwritten, and can mess up your script if you aren't running it in order. 
 
-Long object names are annoying to type - more letters = higher chance you'll make a typo.
+Long object names are annoying to type. More letters = higher chance you'll make a typo.
 
-Variable and function names should be lowercase. `MinPrecip_august` is confusing to remember, `min.precip.aug` is a bit long, but informative and easier to type.
+Object, variable (e.g.`object$variable`) and function names should be lowercase. `MinPrecip_august` is confusing to remember, `min.precip.aug` is a bit long, but informative and easier to type.
 
 ##### - __Variable names should be nouns.__ E.g. `abundance` `richness`
 ##### - __Function names should be verbs.__ E.g. `calc.sp.richness`
 ##### - __Use an underscore to separate words within a script file.__ E.g. `LPI_analysis_Apr_2017.R`
-##### - __Use a dot to separate words within objects and functions.__ E.g. `pop.change.m` for the object that stores a model examining population change, and `calc.sp.richness` for a function.
-##### - __The preferred form for variable names is all lower case letters and words separated with dots (`variable.name`).__
-
-#### Note that <a href="http://adv-r.had.co.nz/Style.html ">Hadley Wickham's style guide</a> advises to use underscores to separate words within objects, e.g. `variable_name`.
+##### - __The preferred form for object/variable names is all lower case letters and words separated with underscores (`object_name$variable_name`).__
+##### - __For functions all lower case letters and words separated by dots (`function.name`).__
 
 __This way it's clear what's an object and what's an external file. These are not strict rules - variable names like `variable_name` are also acceptable. The most important thing is to be consistent - choose one style of variable, object and file names, and stick with it!__
 
 ```r
-# Variable names
- avg.clicks  # Good.
- avg_clicks  # Acceptable.
- avg_Clicks  # Not that okay.
+# Object names
+ avg_clicks  # Good.
+ avg.clicks  # Acceptable.
+ avg_Clicks  # Not okay.
 
 # Function names
  calculate.avg.clicks  # This is what we are aiming for.
