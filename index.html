@@ -3,6 +3,112 @@ layout: page
 title: ORAC by elegans.io
 permalink: /
 ---
+    <script>
+    /*
+      Define client
+    */
+    var client = new Keen({
+      projectId: '59d3895ac9e77c0001096d24',
+      writeKey: '34291211812811472FEB68C77A2161B28BFFEF2C664D8F3F20C7109F84FDEC6C04D58F4EA45C8471C3002978633A7BF2CEFCFFDE5CC3FD802F9769D6367C00FFF70E62D17D945E670EEB83CA5893334DA72A26D89084C01FD4FA468C5145B0F7'
+    });
+    // Log attempts
+    client.on('recordEvent', console.log);
+    Keen.debug = true;
+    Keen.ready(function(){
+      // Set listener to sample engagement on page unload
+      // Define data model for 'page-unload' events here
+      setUnloadListener(function(){
+        return {
+          scroll_info: sampleScrollState()
+        };
+      });
+    });
+
+    /*
+      Define scroll-handler
+    */
+    var winScroll = Keen.utils.listener('window');
+    var pixel = 0, pixel_max = 0;
+    winScroll.on('scroll', sampleScrollState);
+
+    /*
+      Scroll-depth sampling
+    */
+    function sampleScrollState() {
+      pixel = getScrollOffset() + getWindowHeight();
+      if (pixel > pixel_max) {
+        pixel_max = pixel;
+      }
+      return {
+        'pixel': pixel,
+        'pixel_max': pixel_max,
+        'ratio': parseFloat( Number(pixel / getScrollableArea()).toFixed(2) ),
+        'ratio_max': parseFloat( Number(pixel_max / getScrollableArea()).toFixed(2) )
+      }
+    }
+
+    function getWindowHeight() {
+      return window.innerHeight || document.documentElement.clientHeight;
+    }
+
+    function getScrollOffset() {
+      return (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
+    }
+
+    function getScrollableArea() {
+      var body = document.body, html = document.documentElement;
+      return Math.max( body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight ) || null;
+    }
+
+
+    /*
+      Interrupt unload to perform synchronous request
+    */
+    function setUnloadListener(dataModelHandler){
+      console.log('Called: setUnloadListener()')
+      var attachEvent, whichEvent;
+      var handler = function(){
+        handleUnloadEvent(dataModelHandler);
+      };
+      if (window.onpagehide || window.onpagehide === null) {
+        window.addEventListener('pagehide', handler, false);
+      }
+      else {
+        attachEvent = window.attachEvent || window.addEventListener
+        whichEvent = window.attachEvent ? 'onbeforeunload' : 'beforeunload';
+        attachEvent(whichEvent, handler);
+      }
+    }
+
+    function handleUnloadEvent(dataModelHandler){
+      var request = getXHR();
+      var url = client.url('events', 'page-unload');
+      if (request) {
+        url += '?api_key=' + client.writeKey();
+        url += '&data=' + encodeURIComponent(
+          btoa(
+            JSON.stringify(
+              dataModelHandler()
+            )
+          )
+        );
+        request.open('GET', url, false);
+        request.send(null);
+      }
+    }
+
+    function getXHR() {
+      if (window.XMLHttpRequest && ('file:' != window.location.protocol || !window.ActiveXObject)) {
+        return new XMLHttpRequest;
+      } else {
+        try { return new ActiveXObject('Microsoft.XMLHTTP'); } catch(e) {}
+        try { return new ActiveXObject('Msxml2.XMLHTTP.6.0'); } catch(e) {}
+        try { return new ActiveXObject('Msxml2.XMLHTTP.3.0'); } catch(e) {}
+        try { return new ActiveXObject('Msxml2.XMLHTTP'); } catch(e) {}
+      }
+      return false;
+    }
+  </script>
 
 <!-- Slider Start -->
 <section id="slider">
