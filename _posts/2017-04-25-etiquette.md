@@ -149,7 +149,7 @@ LPI_biome_summ <- LPI2 %>%  # use of pipe operator
   summarise(populations = n())  # Create columns, number of populations
 
 # Visualising the number of populations in each biome ---- 
-barplot <- ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +  # use of ggplot2 package
+barplot <- ggplot(LPI_biome_summ, aes(biome, color = biome, y = populations)) + geom_bar(stat = "identity") +  # use of ggplot2 package
   		theme.LPI() +  # use of personal theme function
   		ylab("Number of populations") +
   		xlab("Biome") +
@@ -163,7 +163,7 @@ __The outputs of your analysis__ - Remember to keep your filepath sensible not o
 
 ```r
 png(file="img/biome_pop.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
-ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
+ggplot(LPI_biome_summ, aes(biome, color = biome, y = populations)) + geom_bar(stat = "identity") +
   		theme_classic() +
   		ylab("Number of populations") +
   		xlab("Biome") +
@@ -171,7 +171,7 @@ ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
 dev.off()  # This tells R you are done with the plotting and it can save the file
 
 pdf(file="img/biome_pop.pdf",  width = 13.33, height = 26.66)  # pdf() uses inches
-ggplot(LPI2, aes(biome, color = biome)) + geom_bar() +
+ggplot(LPI_biome_summ, aes(biome, color = biome, y = populations)) + geom_bar(stat = "identity") +
   		theme_classic() +
   		ylab("Number of populations") +
   		xlab("Biome") +
