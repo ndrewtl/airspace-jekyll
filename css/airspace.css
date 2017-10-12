@@ -186,6 +186,48 @@ font header .navbar-default .navbar-nav li a:hover {
   line-height: 1.8;
 }
 /*--
+	pricing Start
+--*/
+#pricing {
+  background: url("../img/call-to-action-bg.jpg") no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 70px 0px;
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+#pricing:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #1d192c;
+  opacity: 0.8;
+}
+#pricing h2 {
+  padding-bottom: 20px;
+  line-height: 33px;
+  margin: 0;
+  font-size: 30px;
+}
+#pricing p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+#pricing .btn-pricing {
+  padding: 15px 35px;
+  border: none;
+  background-color: #fff;
+  font-size: 15px;
+  color: #333333;
+  margin-top: 30px;
+}
+/*--
 	call-to-action Start
 --*/
 #call-to-action {

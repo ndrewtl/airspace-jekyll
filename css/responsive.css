@@ -27,6 +27,25 @@ px      68    160    252    344    436    528    620    712    */
     width: 50%;
   }
   /*--
+	service Start 
+--*/
+  #service {
+    padding-top: 100px;
+  }
+  #service .thumbnail {
+    padding-bottom: 70px;
+  }
+  /*--
+	pricing Start 
+--*/
+  #pricing p {
+    padding: 0px 0px 40px;
+  }
+  #pricing .btn {
+    padding: 10px 20px;
+    font-size: 15px;
+  }
+  /*--
 	content Start 
 --*/
   #content {
