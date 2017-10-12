@@ -164,7 +164,7 @@ __The outputs of your analysis__ - Remember to keep your filepath sensible not o
 ```r
 png(file="img/biome_pop.png", width = 1000, height = 2000)  # Note that png() uses pixel values for width and height
 ggplot(LPI_biome_summ, aes(biome, color = biome, y = populations)) + geom_bar(stat = "identity") +
-  		theme_classic() +
+  		theme.LPI() +
   		ylab("Number of populations") +
   		xlab("Biome") +
 		theme(legend.position = "none")
@@ -172,7 +172,7 @@ dev.off()  # This tells R you are done with the plotting and it can save the fil
 
 pdf(file="img/biome_pop.pdf",  width = 13.33, height = 26.66)  # pdf() uses inches
 ggplot(LPI_biome_summ, aes(biome, color = biome, y = populations)) + geom_bar(stat = "identity") +
-  		theme_classic() +
+  		theme.LPI() +
   		ylab("Number of populations") +
   		xlab("Biome") +
 		theme(legend.position = "none")
