@@ -23,12 +23,13 @@ tags: intro_to_r, github, data_manip
 
 When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read and understand, for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce the occurrence of annoying errors. 
 
-The coding etiquette outlined in this tutorial is applicable to most analyses. The examples we use are loosely based on an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> __
+The coding etiquette outlined in this tutorial is applicable to most analyses and much of it is also applicable to other programming languages.
 
-__Some of the examples in this tutorial require you to type things into an R script but many are just there for reference. Follow along by typing code from the examples into a blank script file, to build your own example script file with perfect formatting and etiquette. Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below.__ 
+__We recommend that you follow the tutorial by typing code from the examples into a blank script file to build your own example script file with perfect formatting and etiquette. After you have done that, use your knowledge of coding etiquette to improve the formatting of `bad_script.R`, which you can find in <a href="https://github.com/ourcodingclub/CC-etiquette" target="_blank">the github repository for this tutorial</a>. Alternatively, feel free to edit some of your own scripts using the etiquette guidelines.__ 
 
-### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip it so it appears as a folder. 
-Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our GitHub <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
+### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-Etiquette" target="_blank">this github repository.</a> Clone and download the repo as a zipfile, then unzip it so it appears as a folder.
+
+Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-etiquette) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
 
 <a name="sections"></a>
 
@@ -106,14 +107,14 @@ theme.LPI <- function(){
 
 If you run the code for the `ggplot2` theme function above, you will see the name of the function you created appear in your `Global Environment` in the top right corner of your `RStudio` screen (you might need to scroll down past any objects you've created). Once you create a certain function, `RStudio` will remember it for the remainder of your session - if you close `RStudio` and then open it again later, you will need to run the code for the function again. __NOTE: When you close `RStudio`, a message will ask if you want to save your workspace image. If you click yes, the next time you open `RStudio`, it will look exactly as it did when you closed it, with the same objects stored in your `Global environment`. If you click no, the next time you open `RStudio`, you will need to open your script and run through the code again, if you want to use the same objects. We personally don't often save our workspace image - it makes `RStudio` run more slowly, and can introduce errors as you might confuse objects from different analyses and/or overwrite objects without noticing.__
 
-__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. __Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-4-Datavis-master`. See below for some examples for both Windows and Mac/Linux:__
+__Setting the working directory__ - It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually. __Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-etiquette-master`. See below for some examples for both Windows and Mac/Linux:__
 
 ```r
 # Set the working directory on Windows ----
-setwd("D:/Work/coding_club/CC-4-Datavis-master")
+setwd("D:/Work/coding_club/CC-etiquette-master")
 
 # Set the working directory on Mac/Linux ----
-setwd("~/Work/coding_club/CC-4-Datavis-master")
+setwd("~/Work/coding_club/CC-etiquette-master")
 ```
 
 __Importing data__ - what data are you using and where is it stored? __Import `LPIdata_CC.csv` from your working directory__. Here is an example:
@@ -472,6 +473,8 @@ devtools::install_github("ThinkRstat/littleboxes")
 ```
 
 <center> <img src="{{ site.baseurl }}/img/boxes.png" alt="Img" style="width: 800px;"/> </center>
+
+__Now that you have read through the tutorial, try to clean up `bad_script.R`, which can be found in <a href="https://github.com/ourcodingclub/CC-etiquette" target="_blank">the github repository for this tutorial</a>, or tidy up one of your own scripts.__ 
 
 Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html" target="_blank">Hadley Whickham's R Style Guide</a>.
 
