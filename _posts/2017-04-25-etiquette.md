@@ -23,11 +23,12 @@ tags: intro_to_r, github, data_manip
 
 When analysing data in `R`, the lines of code can quickly pile up - hundreds of lines to scroll through, numerous objects whose names might make sense to you, but not to other people or future you. This tutorial offers tips on how to make your code easy to read and understand, for yourself and others who may want to read your code in the future. Following a coding etiquette (a set of "rules" you follow consistently throughout your work) will improve your `R` workflow, and reduce the occurrence of annoying errors. 
 
-The coding etiquette outlined in this tutorial is applicable to most analyses. The examples we use are loosely based on an analysis of vertebrate population change from a previous Coding Club tutorial on <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data Visualisation.</a> __
+The coding etiquette outlined in this tutorial is applicable to most analyses and much of it is also applicable to other programming languages.
 
-__Some of the examples in this tutorial require you to type things into an R script but many are just there for reference. Follow along by typing code from the examples into a blank script file, to build your own example script file with perfect formatting and etiquette. Alternatively, feel free to edit some of your own scripts following the coding etiquette guidelines below.__ 
+__We recommend that you follow the tutorial by typing code from the examples into a blank script file to build your own example script file with perfect formatting and etiquette. After you have done that, use your knowledge of coding etiquette to improve the formatting of `bad_script.R`, which you can find in <a href="https://github.com/ourcodingclub/CC-etiquette" target="_blank">the github repository for this tutorial</a>. Alternatively, feel free to edit some of your own scripts using the etiquette guidelines.__ 
 
-### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-4-Datavis" target="_blank">this repository.</a> Clone and download the repo as a zipfile, then unzip it so it appears as a folder. 
+### You can download all the resources for the tutorial, including some helpful cheatsheets from <a href="https://github.com/ourcodingclub/CC-Etiquette" target="_blank">this github repository.</a> Clone and download the repo as a zipfile, then unzip it so it appears as a folder.
+
 Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-4-Datavis) to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
 
 <a name="sections"></a>
@@ -472,6 +473,8 @@ devtools::install_github("ThinkRstat/littleboxes")
 ```
 
 <center> <img src="{{ site.baseurl }}/img/boxes.png" alt="Img" style="width: 800px;"/> </center>
+
+__Now that you have read through the tutorial, try to clean up `bad_script.R`, which can be found in <a href="https://github.com/ourcodingclub/CC-etiquette" target="_blank">the github repository for this tutorial</a>, or tidy up one of your own scripts.__ 
 
 Our coding etiquette was developed with the help of <a href="http://adv-r.had.co.nz/Style.html" target="_blank">Hadley Whickham's R Style Guide</a>.
 
