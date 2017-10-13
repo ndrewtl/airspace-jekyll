@@ -5,6 +5,7 @@ subtitle: Getting comfortable with the basics of statistics modelling
 date: 2017-02-28 08:00:00
 author: Gergana
 meta: "Tutorials"
+tags: modelling
 ---
 
 <div class="block">
@@ -21,13 +22,13 @@ meta: "Tutorials"
 
 #### <a href="#generalised"> 2. Practice generalised linear models</a>
 
-As you are setting out to answer your research questions, often you might want to know what is the effect of X on Y, how does X change with Y, etc. The answer to "What statistical analysis are you going to use?" will probably be a model of some sort. A model in its simplest forms looks like: 
+Are your data all nicely formatted and ready for analysis? You can check out our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">Data formatting and manipulation tutorial</a>, if tidying up your data is still ahead of you, but if you're done, you can now go further in your coding! As you are setting out to answer your research questions, often you might want to know what is the effect of X on Y, how does X change with Y, etc. The answer to "What statistical analysis are you going to use?" will probably be a model of some sort. A model in its simplest forms looks like: 
 
 `temp.m <- lm(soil.temp ~ elevation)` - i.e. we are trying to determine the effect of elevation on soil temperature. 
 
 A slightly more complicated model might look like: `skylark.m <- lm(abundance ~ treatment + farm.area, family = poisson, data = skylarks)` - here you are modelling `abundance`, the response variable, as a function of `treatment` (e.g. a categorical variable describing different types of farms) and `farm.area` (i.e. the size of each farm on which abundance data were collected) - those are your explanatory variables. The `family` argument refers to the distribution of the data, in this case `abundance` represents count zero-inflated data, for which a Poisson distribution is suitable. The `data` argument refers to the dataframe from which the variables we are studying come.
 
-We will talk more about different data distributions later, until then, __go to <a href = "https://github.com/ourcodingclub/CC-8-Modelling">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial.__
+We will talk more about different data distributions later, until then, __go to <a href = "https://github.com/ourcodingclub/CC-8-Modelling" target="_blank">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial.__
 
 Here is a brief summary of the data distributions you might encounter most often.
 
@@ -124,7 +125,7 @@ The model we used above was a __general__ linear model, since it met all the ass
 
 #### A model with a Poisson distribution
 
-Import the `shagLPI.csv` dataset and check it's summary using `summary(shagLPI)` - notice that for some reason R has decided that year is a character variable, when it should instead be a numeric variable. Let's fix that, so that we don't run into trouble later. The data represent population trends for European Shags on the Isle of May, and are available from the <a href = "http://www.livingplanetindex.org/home/index">Living Planet Index.</a>
+Import the `shagLPI.csv` dataset and check it's summary using `summary(shagLPI)` - notice that for some reason R has decided that year is a character variable, when it should instead be a numeric variable. Let's fix that, so that we don't run into trouble later. The data represent population trends for European Shags on the Isle of May, and are available from the <a href = "http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index.</a>
 
 ```r
 shag$year <- as.numeric(shag$year)
@@ -174,36 +175,36 @@ Check out the summary output - looks like the probability of a pine tree endurin
 
 <b> We have now covered the basics of modelling - in our next tutorial we will look at mixed effects models, which are used more and more within ecology and environmental science. Until then, you can check out a couple of other tutorials on modelling to further your knowledge:
 
-<a href = "http://data.princeton.edu/R/linearModels.html"> General and generalised linear models, by Germán Rodríguez. </a>
+<a href = "http://data.princeton.edu/R/linearModels.html" target="_blank"> General and generalised linear models, by Germán Rodríguez. </a>
 
-<a href = "http://tutorials.iq.harvard.edu/R/Rstatistics/Rstatistics.html"> Regression modelling in R, by Harvard University. </a>
+<a href = "http://tutorials.iq.harvard.edu/R/Rstatistics/Rstatistics.html" target="_blank"> Regression modelling in R, by Harvard University. </a>
 
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
-
-#### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
-
-#### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
-#### [https://www.surveymonkey.co.uk/r/NNRS98G](https://www.surveymonkey.co.uk/r/NNRS98G)
-
-<ul class="social-icons">
-	<li>
-		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
-		</h3>
-	</li>
-</ul>
-
-### &nbsp;&nbsp;Subscribe to our mailing list:
+<h3><a href="https://www.surveymonkey.co.uk/r/NNRS98G" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<br>
+<h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
+<br>
+<h3>&nbsp; Related tutorials:</h3>
+{% for post in site.posts %}
+	{% if post.url != page.url %}
+  		{% for tag in post.tags %}
+    			{% if page.tags contains tag %}
+<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
+  			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+<br>
+<h3>&nbsp; Subscribe to our mailing list:</h3>
 <div class="container">
 	<div class="block">
         <!-- subscribe form start -->
 		<div class="form-group">
 			<form action="https://getsimpleform.com/messages?form_api_token=de1ba2f2f947822946fb6e835437ec78" method="post">
 			<div class="form-group">
-				<input type='text' class="form-control" name='Email' placeholder="Email">
+				<input type='text' class="form-control" name='Email' placeholder="Email" required/>
 			</div>
 			<div>
                         	<button class="btn btn-default" type='submit'>Subscribe</button>
@@ -212,3 +213,14 @@ Check out the summary output - looks like the probability of a pine tree endurin
 		</div>
 	</div>
 </div>
+
+<ul class="social-icons">
+	<li>
+		<h3>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+		</h3>
+	</li>
+</ul>
+
+
+

@@ -5,6 +5,7 @@ subtitle: Finding patterns in your data
 date: 2017-03-21 08:40:00
 author: Pedro
 meta: "Tutorials"
+tags: data_manip, data_vis
 ---
 <div class="block">
 	<center>
@@ -26,7 +27,7 @@ meta: "Tutorials"
 
 <a name="Introduction"></a>
 
-To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial. Alternatively you can download the repo as a zip file.__
+To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering" target="_blank">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial. Alternatively you can download the repo as a zip file.__
 
 ### Get acquainted with data clustering
 
@@ -71,7 +72,7 @@ library(cluster)
 
 As you might have realised by now, I work on tropical trees and forests in the Neotropics, and today I have decided to give you a quick tour through some of the amazing forests and floristic formations we have there. Today's destination is Bolivia, a large country in tropical South America with just about ten million people living in it. Most of these people live in four gigantic cities: La Paz, Sucre, Cochabamba and Santa Cruz de La Sierra. As a result, most of Bolivia's diversity is located away from human settlements and is, therefore, relatively protected from human impact. Biogeographically, Bolivia is where all the main Tropical South American biomes converge. This makes Bolivia one of the most interesting and exciting places to study (and visit) in South America.
 
-<b>The data we'll be using today come from a dataset called NeoTropTree which was developed by <a href="http://prof.icb.ufmg.br/treeatlan/">Professor Ary Oliveira-Filho (Federal University of Minas Gerais - Brazil)</a>. NeoTropTree is a large database containing records on forest tree species composition, gathered by reviewing the literature (published and unpublished - e.g. masters dissertations and PhD theses), compiling species check-lists, and studying herbarium records. Each site within the database has been assigned to a specific vegetation type (an ecologically meaningful unit). NeoTropTree is a very comprehensive and well kept dataset, which makes it very valuable and reliable when doing science. Professor Oliveira-Filho has kindly agreed to us using a tiny portion of it for this tutorial.</b>
+<b>The data we'll be using today come from a dataset called NeoTropTree which was developed by <a href="http://prof.icb.ufmg.br/treeatlan/" target="_blank">Professor Ary Oliveira-Filho (Federal University of Minas Gerais - Brazil)</a>. NeoTropTree is a large database containing records on forest tree species composition, gathered by reviewing the literature (published and unpublished - e.g. masters dissertations and PhD theses), compiling species check-lists, and studying herbarium records. Each site within the database has been assigned to a specific vegetation type (an ecologically meaningful unit). NeoTropTree is a very comprehensive and well kept dataset, which makes it very valuable and reliable when doing science. Professor Oliveira-Filho has kindly agreed to us using a tiny portion of it for this tutorial.</b>
 
 ```r
 # Loading the dataframes we'll be working with:
@@ -109,7 +110,7 @@ How does the chosen clustering method know which observations are more similar t
 
 Right now, what we need to do is use the data frames we have and create a presence and absence matrix with sites in the rows and species in the columns. As it is standard, `1` = species present in a site and `0` = the species absent in a site. No matter what distance metric you use, the pairwise distance matrix that will be used when clustering your data will always be constructed based on this table. Of course, if you have species abundance, than you'll be working with an abundance matrix.
 
-The way we are going to build such matrix is through a loop function. Loop functions are extremely useful used in many programming languages. If you want to learn more about them, you can check our tutorial on <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">how to use loops.</a>
+The way we are going to build such matrix is through a loop function. Loop functions are extremely useful used in many programming languages. If you want to learn more about them, you can check our tutorial on <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">how to use loops.</a>
 
 ```r
 # Making the species by site matrix (presence and abscence). We'll call it `commat`.
@@ -213,7 +214,7 @@ plot(bol_singlelink_tmp, direction = "downwards", cex = 0.5)  # You can change t
 write.tree(bol_singlelink_tmp, "bol_singlelink_tmp.tre")
 ```
 
-Let's open this file in Figtree and see how we can use this software to our advantage. You can quickly <a href="http://tree.bio.ed.ac.uk/software/figtree/">download Figtree for your operating system here</a> and install it on your computer. Figtree was originally designed to look at phylogenies, but we can use it to visualise dendograms (the outputs of our data clustering are called dendograms). You simply click on the document you want to open and select Figtree to open it. You can select branches and colour them to your liking with the `Colour` button. You can also zoom in with the `Zoom` button, allowing you to read the names on the tips of your dendogram and visualize your groups.
+Let's open this file in Figtree and see how we can use this software to our advantage. You can quickly <a href="http://tree.bio.ed.ac.uk/software/figtree/" target="_blank">download Figtree for your operating system here</a> and install it on your computer. Figtree was originally designed to look at phylogenies, but we can use it to visualise dendograms (the outputs of our data clustering are called dendograms). You simply click on the document you want to open and select Figtree to open it. You can select branches and colour them to your liking with the `Colour` button. You can also zoom in with the `Zoom` button, allowing you to read the names on the tips of your dendogram and visualize your groups.
 
 ![Img]({{ site.baseurl }}/img/figtree_scrot.png)
 
@@ -453,7 +454,7 @@ Which creates this map:
 ## Challenge number 1
 We mapped our sites using the `maps` package associated with R's basic `plot` function and its arguments.
 
-<b>Try recreating the above map using the `ggmap` package, which offers more choices of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html">our tutorial on spatial visualisation.</a>
+<b>Try recreating the above map using the `ggmap` package, which offers more choices of map types and in general can make very pretty maps.</b> See below for an idea of the map you could create and if you are stuck, look at `ggmap_challenge.R` in the [repo for this tutorial](https://github.com/ourcodingclub/CC-9-Data-clustering). If you are not familiar with `ggmap`, please refer to <a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html" target="_blank">our tutorial on spatial visualisation.</a>
 
 <center><img src="{{ site.baseurl }}/img/cluster_map_ggplot.png" alt="Img" style="width: 700px;"/> </center>
 
@@ -461,7 +462,7 @@ We mapped our sites using the `maps` package associated with R's basic `plot` fu
 
 When I look at the map we've made, I can't help but to think that we should look for simpler patterns first. It seems that there is probably a north to south or an Andean - non-Andean gradient at play in Bolivia. Could elevation be one of the main drivers of tree species distribution there? You can explore that using the knowledge you've gained today! When you take a look at the cluster we have just mapped, you can see that you have two main groups - one composed of vegetation usually found in the lowlands (groups 1 and 2) and a group with Andean vegetation and Chaco woodlands (which are usually subtropical).
 
-<b>With the help of the code above, create a vector containing these two groups (lowland and subtropical vegetation), map the sites according to these new categories, and check if elevation and temperature could be behind the observed patterns.</b> If you get stuck, you can find the code to complete the challenge <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering">the repository for this tutorial.</a>
+<b>With the help of the code above, create a vector containing these two groups (lowland and subtropical vegetation), map the sites according to these new categories, and check if elevation and temperature could be behind the observed patterns.</b> If you get stuck, you can find the code to complete the challenge <a href = "https://github.com/ourcodingclub/CC-9-Data-clustering" target="_blank">the repository for this tutorial.</a>
 
 ## Summary
 
@@ -472,28 +473,29 @@ In this tutorial we explored hierarchical agglomerative clustering methods, dist
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
-
-#### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
-
-#### <a href="https://www.surveymonkey.co.uk/r/B723DLF">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
-
-<ul class="social-icons">
-	<li>
-		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
-		</h3>
-	</li>
-</ul>
-
-### &nbsp;&nbsp;Subscribe to our mailing list:
+<h3><a href="https://www.surveymonkey.co.uk/r/B723DLF" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<br>
+<h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
+<br>
+<h3>&nbsp; Related tutorials:</h3>
+{% for post in site.posts %}
+	{% if post.url != page.url %}
+  		{% for tag in post.tags %}
+    			{% if page.tags contains tag %}
+<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
+  			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+<br>
+<h3>&nbsp; Subscribe to our mailing list:</h3>
 <div class="container">
 	<div class="block">
         <!-- subscribe form start -->
 		<div class="form-group">
 			<form action="https://getsimpleform.com/messages?form_api_token=de1ba2f2f947822946fb6e835437ec78" method="post">
 			<div class="form-group">
-				<input type='text' class="form-control" name='Email' placeholder="Email">
+				<input type='text' class="form-control" name='Email' placeholder="Email" required/>
 			</div>
 			<div>
                         	<button class="btn btn-default" type='submit'>Subscribe</button>
@@ -502,3 +504,12 @@ In this tutorial we explored hierarchical agglomerative clustering methods, dist
 		</div>
 	</div>
 </div>
+
+<ul class="social-icons">
+	<li>
+		<h3>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+		</h3>
+	</li>
+</ul>
+

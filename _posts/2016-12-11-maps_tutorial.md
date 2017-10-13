@@ -5,6 +5,7 @@ subtitle: Using R as a GIS software tool and creating informative maps
 date: 2016-12-11T16:00:00.000Z
 author: John
 meta: Maps_1
+tags: datavis
 ---
 
 <div class="block">
@@ -78,7 +79,7 @@ library(devtools)
 ```
 
 
-At the time of writing, `ggmap` needs to be compiled from source to maintain some functionality, hence `  devtools::install_github("dkahle/ggmap")`, but this might change in the future.
+At the time of writing, `ggmap` needs to be compiled from source (i.e. its repository on Github) to maintain some functionality, hence `  devtools::install_github("dkahle/ggmap")`, but this might change in the future.
 
 <a name="map_data"></a>
 
@@ -86,21 +87,21 @@ At the time of writing, `ggmap` needs to be compiled from source to maintain som
 
 The easiest way to think about map data is to first imagine a graph displaying whatever data you want, but with the x and y axes denoting longitude and latitude:
 
-![Img]({{ site.baseurl }}/img/Trout_Europe_Plot.jpeg)
+<center><img src="{{ site.baseurl }}/img/Trout_Europe_Plot.jpeg" alt="Img" style="width: 700px;"/></center>
 
 Then it's a simple case of adding a background map to your image to place the data points in the real world. In this case, the map was pulled from google maps using the `ggmap` package.
 
-![Img]({{ site.baseurl }}/img/Trout_Europe_Map.jpeg)
+<center><img src="{{ site.baseurl }}/img/Trout_Europe_Map.jpeg" alt="Img" style="width: 700px;"/></center>
 
 That was a simple example, and maps can incorporate more complex elements like polygons and lines:
 
-![Img]({{ site.baseurl }}/img/Polygon_Line_Map.jpeg)
+<center><img src="{{ site.baseurl }}/img/Polygon_Line_Map.jpeg" alt="Img" style="width: 700px;"/></center>
 
 <a name="create"></a>
 
 ## Creating a map using ggmap
 
-For this part of the tutorial we are going to create a map showing the spatial extent of 2 species of bird.  Rueppell's Vulture (_Gyps rueppellii_) feeds on large mammalian carrion and the African Penguin (_Spheniscus demersus_) feeds on small marine fish, it's probable that they have distinct spatial patterns, we shall see! We will use species occurence data from the <a href="http://www.gbif.org/">Global Biodiversity Information Facility (GBIF)</a>, which you have already downloaded and unzipped from [the repository](https://github.com/ourcodingclub/CC-6-Maps) for this tutorial.
+For this part of the tutorial we are going to create a map showing the spatial extent of 2 species of bird.  Rueppell's Vulture (_Gyps rueppellii_) feeds on large mammalian carrion and the African Penguin (_Spheniscus demersus_) feeds on small marine fish, it's probable that they have distinct spatial patterns, we shall see! We will use species occurence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility (GBIF)</a>, which you have already downloaded and unzipped from [the repository](https://github.com/ourcodingclub/CC-6-Maps) for this tutorial.
 
 First, import the data we need, `Gyps_rueppellii_GBIF.csv` and `Spheniscus_dermersus_GBIF.csv`:
 
@@ -201,7 +202,7 @@ ggmap(Map_penguin) +
 
 Now you should have a map that looks something like this:
 
-![Img]({{ site.baseurl }}/img/Birds_ggmap.jpg)
+<center><img src="{{ site.baseurl }}/img/Birds_ggmap.jpg" alt="Img" style="width: 700px;"/></center>
 
 #### ggmap can access a whole load of different map types. Have a go at redoing the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`:
 
@@ -276,7 +277,9 @@ Now you should have a map that looks something like this:
   </tr>
 </table>
 
-![Img]({{ site.baseurl }}/img/Map_collage.png)
+<center>
+	<img src="{{ site.baseurl }}/img/Map_collage.png" alt="Img" style="width: 700px;"/>
+</center>
 
 <a name="shp"></a>
 
@@ -382,30 +385,29 @@ Map_FEOW +
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
-
-
-#### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
-
-
-#### <a href="https://www.surveymonkey.co.uk/r/NMD3N5K">We would love to hear your feedback on the tutorial, whether you did it in the classroom or online!</a>
-
-<ul class="social-icons">
-	<li>
-		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
-		</h3>
-	</li>
-</ul>
-
-### &nbsp;&nbsp;Subscribe to our mailing list:
+<h3><a href="https://www.surveymonkey.co.uk/r/F5PDDHV" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<br>
+<h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
+<br>
+<h3>&nbsp; Related tutorials:</h3>
+{% for post in site.posts %}
+	{% if post.url != page.url %}
+  		{% for tag in post.tags %}
+    			{% if page.tags contains tag %}
+<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
+  			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+<br>
+<h3>&nbsp; Subscribe to our mailing list:</h3>
 <div class="container">
 	<div class="block">
         <!-- subscribe form start -->
 		<div class="form-group">
 			<form action="https://getsimpleform.com/messages?form_api_token=de1ba2f2f947822946fb6e835437ec78" method="post">
 			<div class="form-group">
-				<input type='text' class="form-control" name='Email' placeholder="Email">
+				<input type='text' class="form-control" name='Email' placeholder="Email" required/>
 			</div>
 			<div>
                         	<button class="btn btn-default" type='submit'>Subscribe</button>
@@ -414,3 +416,13 @@ Map_FEOW +
 		</div>
 	</div>
 </div>
+
+<ul class="social-icons">
+	<li>
+		<h3>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+		</h3>
+	</li>
+</ul>
+
+
