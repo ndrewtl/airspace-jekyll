@@ -5,6 +5,7 @@ subtitle:
 date: 2017-03-15 08:00:00
 author: Gabriela K Hajduk
 meta: "Tutorials"
+tags: modelling
 ---
 
 <div class="block">
@@ -21,7 +22,7 @@ If you are familiar with linear models, aware of their shortcomings and happy wi
 
 Similarly, I include quite a bit of explanatory text: you might choose to just skim it for now and go through the "coding bits" of the tutorial. But it will be here to help you along when you start using mixed models with your own data and you need a bit more context.
 
-To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-Linear-mixed-models">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html"> Intro to Github for version control</a> tutorial.__ 
+To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-Linear-mixed-models" target="_blank">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial.__ 
 
 Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bCpZQuj){:target="_blank"} and the **data** from [here](http://gkhajduk.d.pr/9GPn/3nbbPoK6){:target="_blank"}. I might update this tutorial in the future, if I do the latest version will be [on my website](https://gkhajduk.github.io/2017-03-09-mixed-models/){:target="_blank"}.
 
@@ -516,29 +517,29 @@ The model selection process recommended by Zuur *et al.* (2009) is a top-down st
 <hr>
 <hr>
 
-#### Check out our <a href="https://ourcodingclub.github.io/links/">Useful links</a> page where you can find loads of guides and cheatsheets.
-
-#### If you have any questions about completing this tutorial, please contact us on ourcodingclub@gmail.com
-
-#### We would love to hear your feedback on the tutorial, whether you did it in the classroom or online: 
-#### [https://www.surveymonkey.co.uk/r/HJYGVSF](https://www.surveymonkey.co.uk/r/HJYGVSF)
-
-<ul class="social-icons">
-	<li>
-		<h3>
-			<a href="https://twitter.com/our_codingclub">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
-		</h3>
-	</li>
-</ul>
-
-### &nbsp;&nbsp;Subscribe to our mailing list:
+<h3><a href="https://www.surveymonkey.co.uk/r/HJYGVSF" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<br>
+<h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
+<br>
+<h3>&nbsp; Related tutorials:</h3>
+{% for post in site.posts %}
+	{% if post.url != page.url %}
+  		{% for tag in post.tags %}
+    			{% if page.tags contains tag %}
+<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
+  			{% endif %}
+		{% endfor %}
+	{% endif %}
+{% endfor %}
+<br>
+<h3>&nbsp; Subscribe to our mailing list:</h3>
 <div class="container">
 	<div class="block">
         <!-- subscribe form start -->
 		<div class="form-group">
 			<form action="https://getsimpleform.com/messages?form_api_token=de1ba2f2f947822946fb6e835437ec78" method="post">
 			<div class="form-group">
-				<input type='text' class="form-control" name='Email' placeholder="Email">
+				<input type='text' class="form-control" name='Email' placeholder="Email" required/>
 			</div>
 			<div>
                         	<button class="btn btn-default" type='submit'>Subscribe</button>
@@ -547,3 +548,14 @@ The model selection process recommended by Zuur *et al.* (2009) is a top-down st
 		</div>
 	</div>
 </div>
+
+<ul class="social-icons">
+	<li>
+		<h3>
+			<a href="https://twitter.com/our_codingclub" target="_blank">&nbsp;Follow our coding adventures on Twitter! <i class="fa fa-twitter"></i></a>
+		</h3>
+	</li>
+</ul>
+
+
+
