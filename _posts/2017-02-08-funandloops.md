@@ -39,11 +39,15 @@ library(ggplot2)
 library(gridExtra)
 ```
 
-We will use data from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index</a>, which you have already downloaded from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop" target="_blank">the repository</a> (Click on 'Clone or Download/Download ZIP' and then unzip the files). When you run `read.csv(file.choose())`, a window will pop up, from where you can navigate to the folder where you saved the `LPI_data_loops.csv` file. Note that this is a different subset of the LPI data and not the same as in the <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">data visualisation tutorial</a>, so please download the new data file from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop" target="_blank">here</a>.
+We will use data from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index</a>, which you have already downloaded from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop" target="_blank">the repository</a> (Click on 'Clone or Download/Download ZIP' and then unzip the files). Note that this is a different subset of the LPI data and not the same as in the <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">data visualisation tutorial</a>, so please download the new data file from <a href="https://github.com/ourcodingclub/CC-5-fun-and-loop" target="_blank">here</a>.
 
 ```r
+# Set your working directory to where you have saved the files from the repository
+setwd("C:/User/CC-1-RBasics-master")
+# This is an example filepath, alter to your own filepath
+
 # Import data from the Living Planet Index - population trends of vertebrate species from 1970 to 2014
-LPI <- read.csv(file.choose())
+LPI <- read.csv("LPI_data_loops.csv")
 ```
 
 <b> You might remember making this scatter plot from the data visualisation tutorial, let's go through it again for some `ggplot2` practice, and to set the scene for our functions later.
@@ -81,7 +85,7 @@ vultureITCR <- filter(vulture, Country.list == c("Croatia", "Italy"))
 <p>Figure 1. Population trends of Griffon vulture in Croatia and Italy from 1970 to 2014. 
 Data points represent raw data with a linear model fit and 95% confidence intervals.</p>
 
-<b>Here we are using the `theme_bw()` theme but we are making lots of modifications to it. We tend to make the same modifications to it, so lets turn them into a function! To start writing a function, you first designate an object to it - what will your function be called? Since we are making a personalised theme for `ggplot2`, here I've called my function `theme_my_own`. To tell R that you are writing a function, you use `function()` and then the commands that you want your function to include go between the `{}`.</b>
+<b>Here we are using the `theme_bw()` theme but we are making lots of modifications to it. When we need to make lots of graphs, e.g. all the graph for a given research project, we would ideally like to format them in a consistent way - same font size, same layout of the graph panel. That meant that we will be repeating many lines of code, but instead of doing that, we can turn all the changes we want to make to a `ggplot2` theme into a function of our own! To start writing a function, you first designate an object to it - what will your function be called? Since we are making a personalised theme for `ggplot2`, here I've called my function `theme_my_own`. To tell R that you are writing a function, you use `function()` and then the commands that you want your function to include go between the `{}`.</b>
 
 ```r
 theme_my_own <- function(){
@@ -164,7 +168,7 @@ meadow.pipit <- filter(LPI.UK, Common.Name == "Meadow pipit")
 ```
 
 
-#### Now arrange all 4 plots in a panel and save the file
+#### Now arrange all 4 plots in a panel using the `gridExtra` package and save the file
 
 ```r
 panel <- grid.arrange(house.sparrow_scatter, great.tit_scatter, corn.bunting_scatter, meadow.pipit_scatter, ncol = 2)
