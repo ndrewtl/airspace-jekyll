@@ -55,7 +55,7 @@ LPI <- read.csv("LPI_data_loops.csv")
 #### Scatter plot to examine how Griffon vulture populations have changed between 1970 and 2017 in Croatia and Italy:
 
 ```r
-vulture <- filter(LPI_data_loops, Common.Name == "Griffon vulture / Eurasian griffon")
+vulture <- filter(LPI, Common.Name == "Griffon vulture / Eurasian griffon")
 vultureITCR <- filter(vulture, Country.list == c("Croatia", "Italy"))
 
 (vulture_scatter <- ggplot(vultureITCR, aes(x = year, y = abundance, colour = Country.list)) +
@@ -126,7 +126,7 @@ theme_my_own <- function(){
 <b>Filter the data to include only UK populations.</b>
 
 ```r
-LPI.UK <- filter(LPI_data_loops, Country.list == "United Kingdom")
+LPI.UK <- filter(LPI, Country.list == "United Kingdom")
 
 # Pick 4 species and make scatterplots with linear model fits that show how the population has varied through time
 # Careful with the spelling of the names, it needs to match the names of the species in the LPI.UK dataframe
@@ -173,6 +173,7 @@ meadow.pipit <- filter(LPI.UK, Common.Name == "Meadow pipit")
 ```r
 panel <- grid.arrange(house.sparrow_scatter, great.tit_scatter, corn.bunting_scatter, meadow.pipit_scatter, ncol = 2)
 ggsave(panel, file = "Pop_trend_panel.png", width = 10, height = 8)
+dev.off() # to close the image
 ```
 
 <center><img src="{{ site.baseurl }}/img/Pop_trend_panel.png" alt="Img" style="width: 1000px;"/></center>
