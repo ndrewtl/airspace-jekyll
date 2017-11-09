@@ -36,7 +36,9 @@ tags: datavis
 
 
 --------------------------------------------------------------------------------
-Open up a new R Script where you will be adding the code for your maps. All the resources for this tutorial, including some helpful cheatsheets can be downloaded from [this repository](https://github.com/ourcodingclub/CC-6-Maps) Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the actual folder path), or clicking `Session/ Set Working Directory/ Choose Directory` from the RStudio menu.
+All the resources for this tutorial, including some helpful cheatsheets can be downloaded from [this repository](https://github.com/ourcodingclub/CC-6-Maps) Clone and download the repo as a zipfile, then unzip it.
+
+Next, open up a new R Script where you will be adding the code for your mapsa. Set the folder you just downloaded as your working directory by running the code below (subbing in the location of the folder on your computer, e.g. `~/Downloads/CC-6-Maps-master`):
 
 ```r
 setwd("PATH_TO_FOLDER")
@@ -52,8 +54,8 @@ setwd("PATH_TO_FOLDER")
 ##### __Reproducible analyses with new data:__
   - Imagine you have a data project where you are given new data every week, which you want compare using maps. Using a GUI, you would have to repeat your analyses step by step, every time your data came in, being careful to maintain formatting between maps. Using the command line in R, you only have to plug in the new data to the script and the maps will look the same every time.
 
-##### __Free:__
-  - While ArcGIS and SuperGIS cost money to use, R packages are free and probably always will be.
+##### __It's free:__
+  - While ArCGIS and SuperGIS cost money to use, R packages are free and probably always will be.
 
 ##### __A range of GIS packages for different applications:__
   - Using the R package system you can find the right GIS application for your project, and you can adapt and hack the packages already there to create something specific for your project.
@@ -62,46 +64,42 @@ setwd("PATH_TO_FOLDER")
 
 ## Downloading the relevant packages
 
-Install the following packages:
+Load the following packages, remember if you haven't installed the packages first, you will have to use `install.packages(<PACKAGE_NAME>)` first:
 
 ```r
-install.packages("readr") # Read in files
-install.packages("dplyr") # Formatting data
-install.packages("rgdal") # Manipulate map data
-install.packages("devtools")
-
-library(readr)
-library(dplyr)
-library(rgdal)
+library(readr)  # For reading in files
+library(dplyr)  # For formatting and cleaning data
+library(rgdal)  # For manipulating map data
 library(devtools)
-  devtools::install_github("dkahle/ggmap") # Plot map data, download map tiles from online sources
-    library(ggmap)
+  devtools::install_github("dkahle/ggmap")
+	devtools::install_github("oswaldosantos/ggsn")
+    library(ggmap)  # For plotting map data, downloading map tiles from online sources
+		library(ggsn)  # For adding scalebars and north arrows.
 ```
 
-
-At the time of writing, `ggmap` needs to be compiled from source (i.e. its repository on Github) to maintain some functionality, hence `  devtools::install_github("dkahle/ggmap")`, but this might change in the future.
+At the time of writing, `ggmap` needs to be compiled from source (i.e. its repository on Github) to maintain some functionality, hence `devtools::install_github("dkahle/ggmap")`, but this will hopefully change in the future.
 
 <a name="map_data"></a>
 
 ## Getting your head around map data
 
-The easiest way to think about map data is to first imagine a graph displaying whatever data you want, but with the x and y axes denoting longitude and latitude:
+The easiest way to think about map data is to first imagine a graph displaying whatever data you want, but with the x and y axes denoting longitude and latitude instead of a variable:
 
 <center><img src="{{ site.baseurl }}/img/Trout_Europe_Plot.jpeg" alt="Img" style="width: 700px;"/></center>
 
-Then it's a simple case of adding a background map to your image to place the data points in the real world. In this case, the map was pulled from google maps using the `ggmap` package.
+Then it's a simple case of adding a background map to your image to place the data points in the real world. In this case, the map was pulled from Google maps using the `ggmap` package.
 
 <center><img src="{{ site.baseurl }}/img/Trout_Europe_Map.jpeg" alt="Img" style="width: 700px;"/></center>
 
-That was a simple example, and maps can incorporate more complex elements like polygons and lines:
+That was a simple example, maps can incorporate more complex elements like polygons and lines, each with their own values:
 
 <center><img src="{{ site.baseurl }}/img/Polygon_Line_Map.jpeg" alt="Img" style="width: 700px;"/></center>
 
 <a name="create"></a>
 
-## Creating a map using ggmap
+## Creating a map using `ggplot2`
 
-For this part of the tutorial we are going to create a map showing the spatial extent of 2 species of bird.  Rueppell's Vulture (_Gyps rueppellii_) feeds on large mammalian carrion and the African Penguin (_Spheniscus demersus_) feeds on small marine fish, it's probable that they have distinct spatial patterns, we shall see! We will use species occurence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility (GBIF)</a>, which you have already downloaded and unzipped from [the repository](https://github.com/ourcodingclub/CC-6-Maps) for this tutorial.
+For this part of the tutorial we are going to create a map showing occurrence records of 2 species of bird.  Rueppell's Vulture (_Gyps rueppellii_) feeds on large mammalian carrion and the African Penguin (_Spheniscus demersus_) feeds on small marine fish, it's probable that they have distinct spatial patterns, we shall see! We will use species occurence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility (GBIF)</a>, which you have already downloaded and unzipped from <a href="https://github.com/ourcodingclub/CC-6-Maps" target="_blank">the repository</a> for this tutorial.
 
 First, import the data we need, `Gyps_rueppellii_GBIF.csv` and `Spheniscus_dermersus_GBIF.csv`:
 
@@ -110,20 +108,23 @@ vulture <- read.csv("Gyps_rueppellii_GBIF.csv", sep="\t")
 penguin <- read.csv("Spheniscus_dermersus_GBIF.csv", sep="\t")
 ```
 
-Now onto cleaning up the data using `dplyr`. If you are keen to learn more about using the `dplyr` package, check out our [tutorial on data formatting and manipulation](https://ourcodingclub.github.io/2017/01/16/piping.html).
+Now onto cleaning up the data using `dplyr`. If you are keen to learn more about using the `dplyr` package, check out our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">tutorial on data formatting and manipulation</a>.
 
 ```r
-library(dplyr)
-
 # Keep only the columns we need
-vars <- c("gbifid", "scientificname", "locality", "decimallongitude", "decimallatitude", "coordinateuncertaintyinmeters")
+vars <- c("gbifid", "scientificname", "locality", "decimallongitude",
+          "decimallatitude", "coordinateuncertaintyinmeters")
 
-vulture_trim <- vulture %>% select(one_of(vars)) # `one_of()` is part of `select()` and selects all columns specified in `vars`
+vulture_trim <- vulture %>% select(one_of(vars))
 penguin_trim <- penguin %>% select(one_of(vars))
+# `one_of()` is part of `select()` and selects all columns specified in `vars`
 
 # Combine the dataframes
 pc_trim <- bind_rows(vulture_trim, penguin_trim)
-str(pc_trim) # Check column names and content
+
+# Check column names and content
+str(pc_trim)
+
 # Check that species names are consistent
 unique(pc_trim$scientificname)
   # Needs cleaning up
@@ -143,31 +144,75 @@ unique(pc_trim$scientificname)
 Now we can make a preliminary plot to make sure the data looks right. Remember, a map is just a graph with longitude and latitude as the x and y axes:
 
 ```r
-ggplot(pc_trim, aes(x = decimallongitude, y = decimallatitude, group = scientificname)) +
-geom_point(aes(colour = scientificname))
+ggplot(pc_trim, aes(x = decimallongitude, y = decimallatitude, colour = scientificname)) +
+geom_point()
 ```
 
-It looks like some of the penguin populations might be from zoos in U.S cities, let's remove those entries:
+If you squint, you might be able to see the southern African cape, with lots of penguins on it. It looks like some of the penguin populations might be from zoos in U.S cities, but we only want to plot natural populations, so let's remove those entries:
 
 ```r
-pc_trim <- pc_trim %>% filter(decimallongitude > -50)
+pc_trim_us <- pc_trim %>% filter(decimallongitude > -50)
 ```
 
 Plot it again:
 
 ```r
-ggplot(pc_trim, aes(x = decimallongitude, y = decimallatitude, group = scientificname)) + geom_point(aes(colour = scientificname))
+ggplot(pc_trim_us, aes(x = decimallongitude, y = decimallatitude, colour = scientificname)) +
+	geom_point()
 ```
 
-Now to make a map out of our graph using `ggmap`, which pulls map tiles from various online sources, including google maps and open street maps.
+Now we can add some simple map data from the `maps` package, which integrates nicely with `ggplot2`.
 
-First make a bounding box (`bbox`), to tell `ggmap` where to download map tiles from. The bounding box must be in the form of a vector, with decimal latitude and longitude values in this order `lowerleftlon, lowerleftlat, upperrightlon, upperrightlat`, which we can extract from our data frame using the following code:
+First we need to pull some map data from the `maps` package, using the `borders` function from `ggplot2`:
 
 ```r
-bbox <- c(min(pc_trim$decimallongitude) - 2,
-          min(pc_trim$decimallatitude) - 2,
-          max(pc_trim$decimallongitude) + 2,
-          max(pc_trim$decimallatitude) + 2
+map_world <- borders("world", fill = "grey90", colour = "black")
+```
+
+Then we can plot `map_world` by simply adding it to your ggplot2 call and designating the `ggplot()` as a map:
+
+```r
+ggplot() +
+	map_world +  # Add world map
+	geom_point(data = pc_trim_us,  # Add and plot speices data
+						 aes(x = decimallongitude, y = decimallatitude, colour = scientificname)) +
+	coord_quickmap() +  # Define aspect ratio of the map, so it doesn't get stretched when resizing
+	theme_classic() +  # Remove ugly grey background
+	theme(legend.position = "top")  # Position the legend at the top of the plot
+```
+
+You can also subset the contents of `world_map`, to only plot a particular country or set of countries. Say we wanted to only plot the distribution of vultures and penguins in southern Africa, in the countries of South Africa, Namibia, Botswana, Zimbabwe. We can set the `region` argument of the `borders()` function using a vector of country names:
+
+```r
+saf_countries <- c("South Africa", "Namibia", "Botswana", "Zimbabwe")
+map_saf <- borders("world", regions = saf_countries, fill = "grey90", colour = "black")
+```
+
+Then define the x and y axis limits in `ggplot()` using `xlim()` and `ylim()`:
+
+```r
+ggplot() +
+	map_saf +  # Add map
+	geom_point(data = pc_trim_us,  # Add and plot speices data
+						 aes(x = decimallongitude, y = decimallatitude, colour = scientificname)) +
+	coord_quickmap() +  # Define aspect ratio of the map, so it doesn't get stretched when resizing
+	xlim(8, 35) +  # Set x axis limits, xlim(min, max)
+	ylim(-35, -15) +  # Set y axis limits
+	theme_classic() +  # Remove ugly grey background
+	theme(legend.position = "top")  # Position the legend at the top of the plot
+```
+
+## Creating a map using `ggplot2` + `ggmap`
+
+The `ggmap` package also offers decent options for plotting maps. `ggmap` pulls map tiles as image files from various online sources, including Google maps and Open Street Maps.
+
+First make a bounding box (`bbox`), to tell `ggmap` what region of the world to download map tiles for. The bounding box must be in the form of a vector, with decimal latitude and longitude values in this order `c(lowerleftlon, lowerleftlat, upperrightlon, upperrightlat)`, which we can extract from our data frame using the following code:
+
+```r
+bbox <- c(min(pc_trim_us$decimallongitude) - 2,
+          min(pc_trim_us$decimallatitude) - 2,
+          max(pc_trim_us$decimallongitude) + 2,
+          max(pc_trim_us$decimallatitude) + 2
           )
 ```
 
@@ -176,35 +221,34 @@ the `+2` `-2` values are added to make the edges of the map slightly larger than
 Now to download the map data from `ggmap`:
 
 ```r
-Map_penguin <- get_map(location = bbox, source = "stamen", maptype = "terrain")
+Map_penguin <- get_map(location = bbox, source = "stamen", maptype = "toner-lite")
 ```
 
-We can check that the map is correct by plotting the `Map_penguin` object:
+We can check that the map is correct by plotting the `map_penguin` object:
 
 ```r
-ggmap(Map_penguin)
+ggmap(map_penguin)
 ```
 
-To add the data, use `ggplot2` syntax:
+To add the data, use `ggplot2` syntax, but define the base plot as a `ggmap()` instead of a `ggplot()`:
 
 ```r
-ggmap(Map_penguin) +
-  geom_point(aes(x = decimallongitude,
-                 y = decimallatitude,
-                 colour = scientificname),
-             data = pc_trim,
-             alpha = 0.6,                     # `alpha=` sets the transparency of `geom_point()`, from 0 (transparent) to 1 (opaque)
-             size = 2) +                      # `size=` sets the diameter of `geom_point()`
-  scale_colour_manual(values=c("red", "blue")) +  # `scale_colour_manual()` sets the geom_point colours to specific values
-  xlab(expression("Decimal Longitude ("*degree*")")) +  # Wrapping label in `expression()` and using *degree* lets us add a degree symbol
-  ylab(expression("Decimal Latitude ("*degree*")"))
+ggmap(map_penguin) +
+	geom_point(data = pc_trim_us,
+						 aes(x = decimallongitude,
+						 		y = decimallatitude,
+						 		colour = scientificname),
+						 alpha = 0.6,                     # `alpha=` sets the transparency of `geom_point()`, from 0 (transparent) to 1 (opaque)
+						 size = 2) +                      # `size=` sets the diameter of `geom_point()`
+	xlab(expression("Decimal Longitude ("*degree*")")) +  # Wrapping label in `expression()` and using *degree* lets us add a degree symbol
+	ylab(expression("Decimal Latitude ("*degree*")"))
 ```
 
 Now you should have a map that looks something like this:
 
 <center><img src="{{ site.baseurl }}/img/Birds_ggmap.jpg" alt="Img" style="width: 700px;"/></center>
 
-#### ggmap can access a whole load of different map types. Have a go at redoing the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`:
+`ggmap` can access a whole load of different map types. Have a go at re-plotting the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`. But be warned, not every maptype is available for the entire world:
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
@@ -277,47 +321,44 @@ Now you should have a map that looks something like this:
   </tr>
 </table>
 
-<center>
-	<img src="{{ site.baseurl }}/img/Map_collage.png" alt="Img" style="width: 700px;"/>
-</center>
-
 <a name="shp"></a>
 
 ## Using shapefiles
-Shapefiles are a data format developed by [ESRI](http://www.esri.com) used to hold information on spatial objects. Despite the name, a shapefile consists of a few different files:
+
+Shapefiles are a data format developed by [ESRI](http://www.esri.com) used to hold information on spatial objects. They are pretty ubiquitous and can be used by a lot of GIS packages. Despite the name, a shapefile consists of a few different files:
 
 __Mandatory files:__
 
-.shp = The main file containing the geometry data
+`.shp` = The main file containing the geometry data
 
-.shx = An index file
+`.shx` = An index file
 
-.dbf = An attribute file holding information on each object
+`.dbf` = An attribute file holding information on each object
 
 __Additional files:__
 
-.prj = A file containing information on the Co-ordinate Reference system
+`.prj` = A file containing information on the Coordinate Reference system
 
-.shp.xml = a file containing object metadata, citations for data, etc.
+`.shp.xml` = a file containing object metadata, citations for data, etc.
 
 __And many more!__
 
-We are going to use a shapefile of the World's Freshwater Ecoregions provided by [The Nature Conservancy](http://www.feow.org) to investigate the range of the Brown Trout in Europe using data from the [GBIF database](http://www.gbif.org).
+We are going to use a shapefile of the World's Freshwater Ecoregions provided by <a href="http://www.feow.org" target="_blank">The Nature Conservancy</a> to investigate the range of the Brown Trout in Europe using data from the <a href="http://www.gbif.org" target="_blank">GBIF database</a>.
 
-Read in the GBIF data:
+Read in the GBIF data for the Brown Trout:
 
 ```r
-Brown_Trout <- read.csv("Brown_Trout_GBIF_clip.csv")
+brown_trout <- read.csv("Brown_Trout_GBIF_clip.csv")
 ```
 
-Let's check that the data is displaying correctly using `ggplot()` like in the previous example:
+Check that the data is displaying correctly using `ggplot()` like in the previous example:
 
 ```r
-ggplot(Brown_Trout, mapping = aes(x = decimallongitude, y = decimallatitude)) + geom_point(alpha = 0.5)
+ggplot(brown_trout, mapping = aes(x = decimallongitude, y = decimallatitude)) + geom_point(alpha = 0.5)
 ```
 We can roughly see the outline of Scandinavia and maybe the Northern Mediterranean.
 
-Again, to plot our map, first make a bounding box, then download the map tiles using `ggmap`. We can set the map colour to greyscale with `color = "bw"`, so our shapefiles stand out. We can also set the map zoom with `zoom = 3`, with 3 being continent scale and 21 being individual buildings. This time we will make the bounding box manually:
+Again, to plot a preliminary map, first make a bounding box for the extent of the map, then download the map tiles using `ggmap`. We can set the map colour to greyscale with `color = "bw"`, so our shapefiles stand out. We can also set the map zoom with `zoom = 3`, with 3 being continent scale and 21 being individual buildings. This time we will make the bounding box manually:
 
 ```r
 bbox <- c(-40, 30, 40, 85)
@@ -336,50 +377,113 @@ ggmap(Map_trout) +
   ylab("Latitude")
 ```
 
-Now to read in the shapefiles. `readOGR()` converts a shapefile into a spatial object that can be interpreted by `ggmap`. `dsn = "FEOW-TNC"` gives the name of the folder where the shapefile can be found, `layer = "FEOWv1_TNC"` gives the name of the files to read in. It's important to keep filenames identical in a shapefile:
+It looks like the brow trout data has been imported fine. But for this map, instead of using ggmap to draw map elements, we're going to use our own shapefiles.
+
+Now to read in the shapefiles. `readOGR()` converts a shapefile into a SpatialPolygons object that can be interpreted by R. `dsn = "FEOW-TNC"` gives the name of the folder where the shapefile can be found, `layer = "FEOWv1_TNC"` gives the name of the files to read in. It's important to keep filenames identical in a shapefile:
 
 ```r
 shpData_FEOW <- readOGR(dsn = "FEOW-TNC", layer = "FEOWv1_TNC")
 ```
 
-Now we have to check that the shapefile has the right Co-ordinate Reference System (CRS) to be read by `ggmap`. A CRS specifies how the coordinates of the 2D map displayed on the computer screen are related to the real globe, which is roughly spherical. There are lot's of different CRSs, used for maps of different scales, or of different parts of the globe (e.g. the poles) and it is important to keep them consistent amongst all the elements of your map For more information on CRSs have a look at "Coord_Ref_Systems.pdf" in [the repository](https://github.com/ourcodingclub/CC-6-Maps) :
+Now we have to check that the shapefile has the right Co-ordinate Reference System (CRS) to be read by `ggmap`. A CRS specifies how the coordinates of the 2D map displayed on the computer screen are related to the real globe, which is roughly spherical. There are lot's of different CRSs, used for maps of different scales, or of different parts of the globe (e.g. the poles) and it is important to keep them consistent amongst all the elements of your map. You can use `proj4string()` to check the CRS. For more information on CRSs have a look at "Coord_Ref_Systems.pdf" in <a href="https://github.com/ourcodingclub/CC-6-Maps" target="_blank">the repository you downloaded earlier</a>:
 
 ```r
 proj4string(shpData_FEOW)
 ```
 
-To transform the CRS to the correct one we can use `spTransform` by specifying the correct CRS for `ggmap` which is [EPSG:WGS84](http://spatialreference.org/ref/epsg/wgs-84/) (`+proj=longlat +datum=WGS84`), then restructure the object into a data frame ready for plotting using `fortify()`:
+To transform the CRS to the correct one for use with `ggplot2`, we can use `spTransform` and specify the correct CRS, which is <a href="http://spatialreference.org/ref/epsg/wgs-84/" target="_blank">EPSG:WGS84</a> (`+proj=longlat +datum=WGS84`):
 
 ```r
-shpData_FEOW <- spTransform(shpData_FEOW, CRS("+proj=longlat +datum=WGS84"))
-shpData_FEOW <- fortify(shpData_FEOW)
+shpData_FEOW <- spTransform(shpData_FEOW, CRS("+proj=longlat +datum=WGS84"))  # Change the CRS
 ```
 
-Now, plot the map, point data and shapefile together. The shapefiles can be plotted using `geom_map()`, specifying that the map (i.e. the shapes) and the data (i.e. the colours filling the shapes) both come from the shapefile, `color = black` makes the shape outlines black:
+At this point you can quickly plot `shpData_FEOW` to get an idea of what it looks like:
 
 ```r
-Map_FEOW <- ggmap(Map_trout) +
-  geom_map(data = shpData_FEOW,
-           map = shpData_FEOW,
-           aes(x = long, y = lat, map_id = id, group = group, fill = id),
-           color = "black", size = 0.5) +
-  geom_point(colour = "blue", alpha = 0.5, size = 0.5,
-             aes(x = decimallongitude, y = decimallatitude),
-             data = Brown_Trout) +
-  theme(legend.position="none") +
-  xlab("Longitude") +
-  ylab("Latitude")
-
-Map_FEOW
+plot(shpData_FEOW)
 ```
 
-We can add extra elements using the `ggplot2` syntax, just like a normal `ggplot()`:
+<center><img src="{{ site.baseurl }}/img/ecoregions_global_map.jpg" alt="Img" style="width: 700px;"/></center>
+
+The shapefile contains ecoregions for the entire world, but we only want to plot the ecoregions where the brown trout is found. You can crop SpatialPolygons objects to the size of a bounding box using `intersect()` from the `raster` package:
 
 ```r
-Map_FEOW +
+clip_box <- as(extent(min(brown_trout$decimallongitude) -15,
+											max(brown_trout$decimallongitude) + 10,
+											min(brown_trout$decimallatitude),
+											max(brown_trout$decimallatitude)), "SpatialPolygons")
+
+shpData_FEOW_clipped <- intersect(shpData_FEOW, clip_box)
+```
+
+Plot `shpData_FEOW_clipped` to see that `intersect()` has cropped out polygons that were outside our bounding box, and has helpfully joined up the perimeters of any polygons that straddle the edge of the bounding box:
+
+```r
+plot(shpData_FEOW_clipped)
+```
+
+<center><img src="{{ site.baseurl }}/img/ecoregions_clipped_map.jpg" alt="Img" style="width: 700px;"/></center>
+
+Then we need to restructure the object into a data frame ready for plotting. The dataframe needs to contain the ID for each polygon, in this case the name of the ecoregion it is from. Explore the contents of `shpData_FEOW_clipped`, using `str`. `@` accesses sub-dataframes within the `shpData_FEOW` spatial object:
+
+```r
+str(shpData_FEOW_clipped@data)
+``
+
+`ECOREGION` contains all the data for the different types of ecoregions, they have names like "Aegean Drainages" and "". Now we can use `ECOREGION` as an identifier in the `fortify() command to transform the spatial object to a dataframe, where each polygon will be given an `id` of which `ECOREGION` it is from:
+
+```r
+shpData_FEOW_clipped_fort <- fortify(shpData_FEOW_clipped, region = "ECOREGION")  # Transform to a dataframe, this could take a while
+```
+
+Now, plot the map, point data and shapefile together. The ecoregion polygons can be plotted using `geom_map()`, specifying that the map (i.e. the polygons) and the data (i.e. the colours filling the shapes) both come from the dataframe, `color = black` makes the shape outlines black:
+
+```r
+map_FEOW <- ggplot() +
+	coord_map() +
+	#scale_x_continuous(limits = c(min(brown_trout$d?ecimallongitude) -15,
+	#															max(brown_trout$decimallongitude)) + 10) +
+	#scale_y_continuous(limits = c(min(brown_trout$decimallatitude),
+	#															max(brown_trout$decimallatitude))) +
+	geom_map(data = shpData_FEOW_clipped_fort,
+							 map = shpData_FEOW_clipped_fort,
+							 aes(x = long, y = lat, map_id = id, group = group, fill = id),
+							 color = "black", size = 0.5) +
+	geom_point(colour = "red", alpha = 0.5, size = 0.5,
+						 aes(x = decimallongitude, y = decimallatitude),
+						 data = brown_trout) +
+	theme_classic() +
+	theme(legend.position="none") +
+	xlab("Longitude") +
+	ylab("Latitude")
+```
+
+We can add extra elements using the `ggplot2` syntax, just like a normal `ggplot()`. Imagine that we want to indicate a potential area for a trout reintroduction program. Finland and Estonia have hardly any trout, but would probably have the right climatic conditions:
+
+```r
+map_FEOW +
   annotate("rect", xmin = 20 , xmax = 35, ymin = 55, ymax = 65, fill="red", alpha=0.5) +
   annotate("text", x = 27.5, y = 61, label = "Restock") +
   annotate("text", x = 27.5, y = 59, label = "Area")
+```
+
+<center><img src="{{ site.baseurl }}/img/map_FEOW.png" alt="Img" style="width: 700px;"/></center>
+
+Finally, all maps should have a scale bar and a north arrow. To add these you can use the `ggsn` package.
+
+Adding a scalebar. `dd2km` confirms whether the coordinates of the map are in decimal degrees, `dist` defines the distance for each gradation of the scalebar, `height` defines the height of the scalebar according to y axis measurements, so `0.01` is 0.01 decimal degrees latitude:
+
+```r
+map_FEOW_scale <- map_FEOW +
+	scalebar(location="topleft", data = shpData_FEOW_clipped_fort,
+					 dd2km = TRUE, dist = 500, model='WGS84',
+					 height = 0.01)
+```
+
+Adding a north arrow. Currently the default `north` command doesn't work properly, so we can't just do `map_FEOW + north()`. Instead `north2()` has to be used as a separate command. You can change the symbol by changing `symbol` to any integer from 1 to 8:
+
+```r
+north2(map_FEOW_scale, x = 0.2, y = 0.2, scale = 0.1, symbol = 1)
 ```
 
 <hr>
@@ -424,5 +528,3 @@ Map_FEOW +
 		</h3>
 	</li>
 </ul>
-
-
