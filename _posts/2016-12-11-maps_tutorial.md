@@ -135,8 +135,7 @@ pc_trim$scientificname <- pc_trim$scientificname %>%
                             recode("Gyps rueppellii (A. E. Brehm, 1852)" = "Gyps rueppellii",
                               "Gyps rueppellii subsp. erlangeri Salvadori, 1908" = "Gyps rueppellii",
                               "Gyps rueppelli rueppelli" = "Gyps rueppellii",
-                              "Spheniscus demersus (Linnaeus, 1758)" = "Spheniscus demersus"
-                              )
+                              "Spheniscus demersus (Linnaeus, 1758)" = "Spheniscus demersus")
 
 # Checking names
 unique(pc_trim$scientificname)
@@ -399,7 +398,7 @@ Then we can plot the map tiles with the data using `ggmap()`:
 ggmap(Map_trout) +
   geom_point(colour = "blue", alpha = 0.5,
              aes(x = decimallongitude, y = decimallatitude),
-             data = Brown_Trout) +
+             data = brown_brout) +
   theme_bw() +
   xlab("Longitude") +
   ylab("Latitude")
@@ -465,10 +464,6 @@ Now, plot the map, point data and shapefile together. The ecoregion polygons can
 ```r
 map_FEOW <- ggplot() +
 	coord_map() +
-	#scale_x_continuous(limits = c(min(brown_trout$d?ecimallongitude) -15,
-	#															max(brown_trout$decimallongitude)) + 10) +
-	#scale_y_continuous(limits = c(min(brown_trout$decimallatitude),
-	#															max(brown_trout$decimallatitude))) +
 	geom_map(data = shpData_FEOW_clipped_fort,
 							 map = shpData_FEOW_clipped_fort,
 							 aes(x = long, y = lat, map_id = id, group = group, fill = id),
