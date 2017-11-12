@@ -28,8 +28,8 @@ __In this tutorial we will create a map showing the locations of vertebrate spec
 
 Here is an example map, showing where the populations from the order Anseriformed were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, two populations have increased, and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order a changing, but you can filter the dataset if there is a particular species you are interested in.
 
-<center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/></center>
-<center>__Figure 1. _Anseriformes_ populations in Europe.__</center>
+<center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
+<p>__Figure 1. _Anseriformes_ populations in Europe.__</p></center>
 
 Make a new script by clicking on `File/New File/R Script`. Usually we open RStudio on half of our screen, and the tutorial on the other half, as that way it's easy to copy code across and google errors if they arise, or anything we might be interested in.
 <center><img src="{{ site.baseurl }}/img/workshop.png" alt="Img" style="width: 700px;"/></center>
