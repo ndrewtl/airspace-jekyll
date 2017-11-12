@@ -107,7 +107,7 @@ anseriformes <- filter(LPI_long, order == "Anseriformes")
 
 __We will use the `dplyr` and `broom` packages, which together create an efficient workflow in calculating population change. We will use linear models, from which we will extract the slope values - positive slopes indicate a population increase, negative slopes - a population decline, and a slope of zero indicates no net change.__
 
-__Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis - imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe, gets saved in the object to which you are assigning the pipe.__ You can find a more detailed explanation of data manipulation using `dplyr()` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html""target="_blank">data formatting and manipulation tutorial</a>.
+__Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis - imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe, gets saved in the object to which you are assigning the pipe.__ You can find a more detailed explanation of data manipulation using `dplyr()` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">data formatting and manipulation tutorial</a>.
 
 ```r
 pop_change <- anseriformes %>%
