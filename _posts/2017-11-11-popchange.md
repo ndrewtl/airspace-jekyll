@@ -29,7 +29,7 @@ __In this tutorial we will create a map showing the locations of vertebrate spec
 Here is an example map, showing where the populations from the order Anseriformed were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, two populations have increased, and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order a changing, but you can filter the dataset if there is a particular species you are interested in.
 
 <center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
-<p>__Figure 1. _Anseriformes_ populations in Europe.__</p></center>
+<p><b>Figure 1. <i>Anseriformes</i> populations in Europe.</b></p></center>
 
 Make a new script by clicking on `File/New File/R Script`. Usually we open RStudio on half of our screen, and the tutorial on the other half, as that way it's easy to copy code across and google errors if they arise, or anything we might be interested in.
 <center><img src="{{ site.baseurl }}/img/workshop2.png" alt="Img" style="width: 700px;"/></center>
@@ -154,11 +154,11 @@ ggsave(EU_pop, filename = "anseriformes.png", width = 10, height = 10)
 ```
 
 <center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/></center>
-<center>__Figure 1. _Anseriformes_ populations in Europe.__</center>
+<p><b>Figure 1. <i>Anseriformes</i> populations in Europe.</b></p></center>
 
 Here we have presented the map for _Anseriformes_, an order which includes many species of waterfowl, like the mallard and pochard. Curious to see how vertebrate populations across the whole LPI database have changed? You can check out our <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">tutorial on efficient ways to quantify population change</a>, where we compare how loops, `lapply()` functions and pipes compare when it comes to dealing with lots of data.
 
-__We'd love to see what maps you've made, so feel free to email them to us at ourcodingclub@gmail.com!__
+### We'd love to see what maps you've made, so feel free to email them to us at ourcodingclub@gmail.com!
 
 
 <hr>
