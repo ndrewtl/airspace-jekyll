@@ -24,7 +24,7 @@ tags: datavis
 
 ### All the files needed to complete this tutorial can be downloaded from this <a href="https://github.com/ourcodingclub/CC-EAB" target="_blank">Github repository</a>. Click on `Clone or Download/Download ZIP` and then unzip the files.
 
-__In this tutorial we will create a map showing the locations of vertebrate species populations from different orders and the direction in which those populations have changed in the last 60 years. We will use a dataset coming from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a>, which is publicly available. For the purpose of this tutorial, we have extracted a subset of the database (`LPI_EU.csv`) that includes vertebrate populations from the ten most common orders in Europe - _Passeriformes, Carnivora, Charadriiformes, Anseriformes, Falconiformes, Salmoniformes, Ciconiiformes, Artiodactyla, Perciformes, Cypriniformes_.__
+__In this tutorial we will create a map showing the locations of vertebrate species populations from different orders and the direction in which those populations have changed in the last 60 years. We will use a dataset from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a>, which is publicly available. For the purpose of this tutorial, we have extracted a subset of the database (`LPI_EU.csv`) that includes vertebrate populations from the ten most common orders in Europe - _Passeriformes, Carnivora, Charadriiformes, Anseriformes, Falconiformes, Salmoniformes, Ciconiiformes, Artiodactyla, Perciformes, Cypriniformes_.__
 
 Here is an example map, showing where the populations from the order Anseriformed were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, two populations have increased, and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order a changing, but you can filter the dataset if there is a particular species you are interested in.
 
@@ -32,7 +32,7 @@ Here is an example map, showing where the populations from the order Anseriforme
 <p>__Figure 1. _Anseriformes_ populations in Europe.__</p></center>
 
 Make a new script by clicking on `File/New File/R Script`. Usually we open RStudio on half of our screen, and the tutorial on the other half, as that way it's easy to copy code across and google errors if they arise, or anything we might be interested in.
-<center><img src="{{ site.baseurl }}/img/workshop.png" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/workshop2.png" alt="Img" style="width: 700px;"/></center>
 
 Future you, your supervisors or collaborators will all benefit from an informative header in your script, as well as comments throughout, just so that we outline why we are taking the steps that follow.
 
