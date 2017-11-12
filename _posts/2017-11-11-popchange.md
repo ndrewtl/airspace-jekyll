@@ -12,16 +12,14 @@ tags: datavis
         </div>
 
 
-### Tutorial aims:
+### Tutorial Aims:
 
+#### <a href="#tidy"> 1.  Tidy dataset </a>
 
-<a href="#tidy">#### 1. Tidy dataset</a>
+#### <a href="#calc"> 2. Calculate population change </a>
 
-<a href="#calc">#### 2. Calculate population change</a>
+#### <a href="#map"> 3. Make a map of vertebrate population change in Europe </a>
 
-<a href="#map">#### 3. Make a map of vertebrate population change in Europe</a>
-
-<a name="tidy"></a>
 
 ### All the files needed to complete this tutorial can be downloaded from this <a href="https://github.com/ourcodingclub/CC-EAB" target="_blank">Github repository</a>. Click on `Clone or Download/Download ZIP` and then unzip the files.
 
