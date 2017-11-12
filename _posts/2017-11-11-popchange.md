@@ -8,7 +8,7 @@ meta: "Tutorials"
 tags: datavis
 ---
 <div class="block">
-          <center><img src="{{ site.baseurl }}/img/tutheaderEAB.jpg" alt="Img"></center>
+          <center><img src="{{ site.baseurl }}/img/tutheaderEAB.png" alt="Img"></center>
         </div>
 
 
@@ -20,11 +20,11 @@ tags: datavis
 
 <a href="#map">#### 3. Make a map of vertebrate population change in Europe</a>
 
-
 <a name="tidy"></a>
+
 ### All the files needed to complete this tutorial can be downloaded from this <a href="https://github.com/ourcodingclub/CC-EAB" target="_blank">Github repository</a>. Click on `Clone or Download/Download ZIP` and then unzip the files.
 
-In this tutorial we will create a map showing the locations of vertebrate species populations from different orders and the direction in which those populations have changed in the last 60 years. We will use a dataset coming from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a>, which is publicly available. For the purpose of this tutorial, we have extracted a subset of the database (`LPI_EU.csv`) that includes vertebrate populations from the ten most common orders in Europe - _Passeriformes, Carnivora, Charadriiformes, Anseriformes, Falconiformes, Salmoniformes, Ciconiiformes, Artiodactyla, Perciformes, Cypriniformes_.
+__In this tutorial we will create a map showing the locations of vertebrate species populations from different orders and the direction in which those populations have changed in the last 60 years. We will use a dataset coming from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a>, which is publicly available. For the purpose of this tutorial, we have extracted a subset of the database (`LPI_EU.csv`) that includes vertebrate populations from the ten most common orders in Europe - _Passeriformes, Carnivora, Charadriiformes, Anseriformes, Falconiformes, Salmoniformes, Ciconiiformes, Artiodactyla, Perciformes, Cypriniformes_.__
 
 Here is an example map, showing where the populations from the order Anseriformed were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, two populations have increased, and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order a changing, but you can filter the dataset if there is a particular species you are interested in.
 
@@ -105,9 +105,9 @@ unique(LPI_long$order)  # displays all order options
 anseriformes <- filter(LPI_long, order == "Anseriformes")
 ```
 
-We will use the `dplyr` and `broom` packages, which together create an efficient workflow in calculating population change. We will use linear models, from which we will extract the slope values - positive slopes indicate a population increase, negative slopes - a population decline, and a slope of zero indicates no net change.
+__We will use the `dplyr` and `broom` packages, which together create an efficient workflow in calculating population change. We will use linear models, from which we will extract the slope values - positive slopes indicate a population increase, negative slopes - a population decline, and a slope of zero indicates no net change.__
 
-Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis - imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe, gets saved in the object to which you are assigning the pipe. You can find a more detailed explanation of data manipulation using `dplyr()` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html""target="_blank">data formatting and manipulation tutorial</a>.
+__Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis - imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe, gets saved in the object to which you are assigning the pipe.__ You can find a more detailed explanation of data manipulation using `dplyr()` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html""target="_blank">data formatting and manipulation tutorial</a>.
 
 ```r
 pop_change <- anseriformes %>%
@@ -146,7 +146,7 @@ You can use the default `viridis` palette by just specifying `scale_colour_virid
     labs(colour = "Slope", title = "Anseriformes"))
 ```
 
-We can save our map using `ggsave()` from the `ggplot2` package, the default `width` and `height` are measured in inches. If you want to swap to pixels or centimeters, you can add `units = "px"` or `units = "cm"` inside the `ggsave()` brackets.
+__We can save our map using `ggsave()` from the `ggplot2` package, the default `width` and `height` are measured in inches. If you want to swap to pixels or centimeters, you can add `units = "px"` or `units = "cm"` inside the `ggsave()` brackets, e.g. `ggsave(object, filename = "mymap.png", width = 1000, height = 1000, units = "px"`.__
 
 ```r
 ggsave(EU_pop, filename = "anseriformes.pdf", width = 10, height = 10)
@@ -160,7 +160,7 @@ Here we have presented the map for _Anseriformes_, an order which includes many 
 
 __We'd love to see what maps you've made, so feel free to email them to us at ourcodingclub@gmail.com!__
 
-```
+
 <hr>
 <hr>
 
@@ -203,4 +203,3 @@ __We'd love to see what maps you've made, so feel free to email them to us at ou
 		</h3>
 	</li>
 </ul>
-```
