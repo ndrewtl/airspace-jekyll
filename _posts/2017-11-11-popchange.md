@@ -14,6 +14,7 @@ tags: datavis
 
 ### Tutorial aims:
 
+
 <a href="#tidy">#### 1. Tidy dataset</a>
 
 <a href="#calc">#### 2. Calculate population change</a>
