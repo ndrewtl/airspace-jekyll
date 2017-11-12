@@ -11,6 +11,7 @@ tags: datavis
           <center><img src="{{ site.baseurl }}/img/tutheaderEAB.jpg" alt="Img"></center>
         </div>
 
+
 ### Tutorial aims:
 
 <a href="#tidy">#### 1. Tidy dataset</a>
