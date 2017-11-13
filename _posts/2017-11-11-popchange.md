@@ -26,15 +26,16 @@ tags: datavis
 
 __In this tutorial we will create a map showing the locations of vertebrate species populations from different orders and the direction in which those populations have changed in the last 60 years. We will use a dataset from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a>, which is publicly available. For the purpose of this tutorial, we have extracted a subset of the database (`LPI_EU.csv`) that includes vertebrate populations from the ten most common orders in Europe - _Passeriformes, Carnivora, Charadriiformes, Anseriformes, Falconiformes, Salmoniformes, Ciconiiformes, Artiodactyla, Perciformes, Cypriniformes_.__
 
-Here is an example map, showing where the populations from the order Anseriformed were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, two populations have increased, and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order a changing, but you can filter the dataset if there is a particular species you are interested in.
+Here is an example map, showing where the populations from the order Anseriformes were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, two populations have clearly increased, and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order a changing, but you can filter the dataset if there is a particular species you are interested in.
 
 <center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
 <p><b>Figure 1. <i>Anseriformes</i> populations in Europe.</b></p></center>
 
-Make a new script by clicking on `File/New File/R Script`. Usually we open RStudio on half of our screen, and the tutorial on the other half, as that way it's easy to copy code across and google errors if they arise, or anything we might be interested in.
+Open RStudio and make a new script by clicking on `File/New File/R Script`. Usually we open RStudio on half of our screen, and the tutorial on the other half, as that way it's easy to copy code across and google errors if they arise.
+
 <center><img src="{{ site.baseurl }}/img/workshop2.png" alt="Img" style="width: 700px;"/></center>
 
-Future you, your supervisors or collaborators will all benefit from an informative header in your script, as well as comments throughout, just so that we outline why we are taking the steps that follow.
+Future you, your supervisors or collaborators will all benefit from an informative header section in your script, as well as comments throughout. Headers and comments outline why we are taking the steps that follow.
 
 ```r
 # Aim of the script
@@ -67,12 +68,12 @@ str(LPI_EU)
 View(LPI_EU)
 ```
 
-The data are currently in wide format - each year is a column, which is not convenient for analysis. In a <a href="http://garrettgman.github.io/tidying/" target="_blank">"tidy"</a> dataset each row is an observation, so we can transform the dataset into wide format using the `gather()` function from the `tidyr` package.
+The data are currently in wide format - each year is a column, which is not convenient for analysis. In a <a href="http://garrettgman.github.io/tidying/" target="_blank">"tidy"</a> dataset each row is an observation, so we can transform the dataset into long format using the `gather()` function from the `tidyr` package.
 
 ```r
 # Transform data to long format ----
 LPI_long <- gather(data = LPI_EU, key = "year", value = "population", select = 24:89)
-# select = 24:89 refers to the columns we want to gather, from the 24th to the 89th column
+# `select = 24:89` refers to the columns we want to gather, from the 24th to the 89th column
 
 # Turn the year column into a numeric variable and get rid of the "x"
 LPI_long$year <- parse_number(LPI_long$year)
@@ -83,7 +84,7 @@ LPI_long$population <- as.numeric(as.character(LPI_long$population))
 
 The <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a> contains records from hundreds of populations from 1950 to recent time, but the populations weren't surveyed every year, thus there are rows which say `NULL`. We can remove those rows, so that the `population` column contains only numeric values.
 
-Since we will be calculating population change, to get more reliable estimates, we can conduct the analysis only using populations which have at least 5 records. We can also scale population size, so that the abundance of each species in each year is somewhere between 0 and 1. This helps when we are analysing many different populations whose numbers are very variable - e.g. some populations have 10-20 individuals, others have thousands.
+Since we will be calculating population change, to get more reliable estimates, we can conduct the analysis only using populations which have at least 5 records. Populations with only a few records might show a strong directional population change that is actually just noise in the data collection. We can also scale population size, so that the abundance of each species in each year is somewhere between 0 and 1. This helps when we are analysing many different populations whose numbers are very variable - e.g. some populations have 10-20 individuals, others have thousands.
 
 ```r
 # Remove rows with no population information (population = NULL)
@@ -107,7 +108,7 @@ anseriformes <- filter(LPI_long, order == "Anseriformes")
 
 __We will use the `dplyr` and `broom` packages, which together create an efficient workflow in calculating population change. We will use linear models, from which we will extract the slope values - positive slopes indicate a population increase, negative slopes - a population decline, and a slope of zero indicates no net change.__
 
-__Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis - imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe, gets saved in the object to which you are assigning the pipe.__ You can find a more detailed explanation of data manipulation using `dplyr()` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">data formatting and manipulation tutorial</a>.
+__Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis - imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe, gets saved in the object to which you are assigning the pipe.__ You can find a more detailed explanation of data manipulation using `dplyr` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">data formatting and manipulation tutorial</a>.
 
 ```r
 pop_change <- anseriformes %>%
@@ -124,7 +125,7 @@ pop_change <- anseriformes %>%
 ```
 
 <a name="map"></a>
-We are not all set to make our map! This is a simple map we will make using `ggplot2`, it doesn't have topography, or cities and roads. Instead, it presents a stylised view of European countries and focuses on where the different populations are located and how they have changed.
+We are now all set to make our map! This is a simple map we will make using `ggplot2`, it doesn't have topography, or cities and roads. Instead, it presents a stylised view of European countries and focuses on where the different populations are located and how they have changed.
 
 We are using the `viridis` package for the colour palette of the points. The `viridis` package contains four colour palettes, which are friendly to colour blind people, and they look quite nice in general.
 
@@ -153,12 +154,12 @@ ggsave(EU_pop, filename = "anseriformes.pdf", width = 10, height = 10)
 ggsave(EU_pop, filename = "anseriformes.png", width = 10, height = 10)
 ```
 
-<center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
 <p><b>Figure 1. <i>Anseriformes</i> populations in Europe.</b></p></center>
 
-Here we have presented the map for _Anseriformes_, an order which includes many species of waterfowl, like the mallard and pochard. Curious to see how vertebrate populations across the whole LPI database have changed? You can check out our <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">tutorial on efficient ways to quantify population change</a>, where we compare how loops, `lapply()` functions and pipes compare when it comes to dealing with lots of data.
+Here we have created a map for _Anseriformes_, an order which includes many species of waterfowl, like the mallard and pochard. Curious to see how vertebrate populations across the whole LPI database have changed? You can check out our <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">tutorial on efficient ways to quantify population change</a>, where we compare how for-loops, `lapply()` functions and pipes compare when it comes to dealing with lots of data.
 
-### We'd love to see what maps you've made, so feel free to email them to us at ourcodingclub@gmail.com!
+### We'd love to see the maps you've made, so feel free to email them to us at ourcodingclub@gmail.com!
 
 
 <hr>
