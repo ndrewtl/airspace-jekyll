@@ -72,7 +72,7 @@ library(dplyr)  # For formatting and cleaning data
 library(rgdal)  # For manipulating map data
 library(raster)  # For clipping shapefile polygons
 library(devtools)  # For installing packages from altenative sources, e.g. Github
-  devtools::install_github("dkahle/ggmap")
+	devtools::install_github("dkahle/ggmap")
 	devtools::install_github("oswaldosantos/ggsn")
 library(ggmap)  # For plotting map data, downloading map tiles from online sources
 library(ggsn)  # For adding scalebars and north arrows.
@@ -94,7 +94,7 @@ Then it's a simple case of adding a background map to your image to place the da
 
 That was a simple example, maps can incorporate more complex elements like polygons and lines, each with their own values:
 
-<center><img src="{{ site.baseurl }}/img/map_FEOW.png" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/map_FEOW_annot.png" alt="Img" style="width: 700px;"/></center>
 
 <a name="create_map"></a>
 
