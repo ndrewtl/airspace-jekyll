@@ -451,7 +451,7 @@ Then we need to restructure the object into a data frame ready for plotting. The
 
 ```r
 str(shpData_FEOW_clipped@data)
-``
+```
 
 `ECOREGION` contains all the data for the different types of ecoregions, they have names like "Aegean Drainages" and "Central Prairie". Now we can use `ECOREGION` as an identifier in the `fortify() command to transform the spatial object to a dataframe, where each polygon will be given an `id` of which `ECOREGION` it is from:
 
@@ -488,7 +488,7 @@ map_FEOW_annot <- map_FEOW +
   annotate("text", x = 27.5, y = 61, size = 10, label = "Restock Area")
 ```
 
-Finally, all maps should have a scale bar and a north arrow. To add these you can use the `ggsn` package.
+Finally, we can add a scale bar and a north arrow. To add these you can use the `ggsn` package.
 
 Adding a scalebar. `dd2km` confirms whether the coordinates of the map are in decimal degrees, `dist` defines the distance for each gradation of the scalebar, `height` defines the height of the scalebar according to y axis measurements, so `0.01` is 0.01 decimal degrees latitude:
 
