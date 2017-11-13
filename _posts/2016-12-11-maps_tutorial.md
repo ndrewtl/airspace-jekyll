@@ -256,7 +256,7 @@ ggmap(map_penguin) +
 
 Now you should have a map that looks something like this:
 
-<center><img src="{{ site.baseurl }}/img/Birds_ggmap.jpg" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/penguin_toner.png" alt="Img" style="width: 700px;"/></center>
 
 `ggmap` can access a whole load of different map types. Have a go at re-plotting the map above with some alternative map types by replacing the `source =` and `maptype =` arguments in `get_map()`. But be warned, not every maptype is available for the entire world:
 
