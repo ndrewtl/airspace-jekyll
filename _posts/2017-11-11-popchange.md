@@ -35,7 +35,7 @@ Open RStudio and make a new script by clicking on `File/New File/R Script`. Usua
 
 <center><img src="{{ site.baseurl }}/img/workshop2.png" alt="Img" style="width: 700px;"/></center>
 
-Future you, your supervisors or collaborators will all benefit from an informative header section in your script, as well as comments throughout. Headers and comments outline why we are taking the steps that follow.
+Headers and comments outline why we are taking the various steps in our analyses. Future you, your supervisors or collaborators will all benefit from informative comments. 
 
 ```r
 # Aim of the script
@@ -132,14 +132,13 @@ We are using the `viridis` package for the colour palette of the points. The `vi
 You can use the default `viridis` palette by just specifying `scale_colour_viridis()`, and if you want to try the other three options, you can instead use `scale_colour_viridis(option = "magma")`. The other two options are `inferno` and `plasma`.
 
 ```r
-(EU_pop <- ggplot(pop_change, aes(x = longitude, y = latitude, colour = year)) +
+(EU_pop <- ggplot(pop_change, aes(x = longitude, y = latitude, fill = year)) +
     borders("world", xlim = c(-10, 25), ylim = c(40, 80), colour = "gray40", fill = "gray75", size = 0.3) +
-    # colour specifies the border colour, fill the fill colour, size the width of the borders
-    theme_map() +  # a nice theme for maps from the ggthemes package
-    geom_point(alpha = 0.8, size = 5) +  # alpha specifies transparency, 1 is not transparent at all
-    geom_point(shape = 1, colour = "black", size = 5) +  # this adds a black border around the points
-    scale_colour_viridis() +
-    theme(legend.position = "right",  # customising the legend and plot title
+    theme_map() +
+    geom_point(shape = 21, colour = "black", alpha = 0.8, size = 4, position = position_jitter(w = 1.5, h = 1.5)) +
+    # there are quite a few points, so we can use jittering to avoid overplotting
+    scale_fill_viridis() +
+    theme(legend.position = "right",
           legend.title = element_text(size = 16),
           legend.text = element_text(size = 12),
           legend.justification = "center",
@@ -165,7 +164,7 @@ Here we have created a map for _Anseriformes_, an order which includes many spec
 <hr>
 <hr>
 
-<h3><a href="SURVEY_MONKEY_LINK" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<h3><a href="https://www.surveymonkey.co.uk/r/NYVBNF8" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 <br>
 <h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
 <br>
