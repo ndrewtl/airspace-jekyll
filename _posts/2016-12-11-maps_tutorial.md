@@ -179,7 +179,6 @@ ggplot() +
 						 aes(x = decimallongitude, y = decimallatitude, colour = scientificname)) +
 	coord_quickmap() +  # Define aspect ratio of the map, so it doesn't get stretched when resizing
 	theme_classic() +  # Remove ugly grey background
-	theme(legend.position = "top") +  # Position the legend at the top of the plot
 	xlab("Longitude") +
 	ylab("Latitude") + 
 	guides(colour=guide_legend(title="Species"))
