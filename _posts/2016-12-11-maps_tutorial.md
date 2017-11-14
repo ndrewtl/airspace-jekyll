@@ -179,7 +179,10 @@ ggplot() +
 						 aes(x = decimallongitude, y = decimallatitude, colour = scientificname)) +
 	coord_quickmap() +  # Define aspect ratio of the map, so it doesn't get stretched when resizing
 	theme_classic() +  # Remove ugly grey background
-	theme(legend.position = "top")  # Position the legend at the top of the plot
+	theme(legend.position = "top") +  # Position the legend at the top of the plot
+	xlab("Longitude") +
+	ylab("Latitude") + 
+	guides(colour=guide_legend(title="Species"))
 ```
 
 <center><img src="{{ site.baseurl }}/img/map_world_penguins.png" alt="Img" style="width: 700px;"/></center>
@@ -205,7 +208,11 @@ ggplot() +
 	xlim(8, 35) +  # Set x axis limits, xlim(min, max)
 	ylim(-35, -15) +  # Set y axis limits
 	theme_classic() +  # Remove ugly grey background
-	theme(legend.position = "top")  # Position the legend at the top of the plot
+	theme(legend.position = "top") +  # Position the legend at the top of the plot
+	xlab("Longitude") +
+	ylab("Latitude") + 
+	guides(colour=guide_legend(title="Species"))
+	
 ```
 
 <center><img src="{{ site.baseurl }}/img/map_saf_penguins.png" alt="Img" style="width: 700px;"/></center>
@@ -245,11 +252,11 @@ To add the data, use `ggplot2` syntax, but define the base plot as a `ggmap()` i
 ```r
 ggmap(map_penguin) +
 	geom_point(data = pc_trim_us,
-						 aes(x = decimallongitude,
-						 		y = decimallatitude,
-						 		colour = scientificname),
-						 alpha = 0.6,                     # `alpha=` sets the transparency of `geom_point()`, from 0 (transparent) to 1 (opaque)
-						 size = 2) +                      # `size=` sets the diameter of `geom_point()`
+	aes(x = decimallongitude,
+		y = decimallatitude,
+		colour = scientificname),
+		alpha = 0.6,                     # `alpha=` sets the transparency of `geom_point()`, from 0 (transparent) to 1 (opaque)
+		size = 2) +                      # `size=` sets the diameter of `geom_point()`
 	xlab(expression("Decimal Longitude ("*degree*")")) +  # Wrapping the label in `expression()` and using *degree* lets us add a degree symbol
 	ylab(expression("Decimal Latitude ("*degree*")"))
 ```
@@ -426,34 +433,34 @@ shpData_FEOW <- spTransform(shpData_FEOW, CRS("+proj=longlat +datum=WGS84"))
 
 At this point I wouldn't recommend plotting `shpData_FEOW`, it's a pretty big file, but so you can get an idea of what it looks like:
 
-<center><img src="{{ site.baseurl }}/img/ecoregions_global_map.jpg" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/ecoregions_global_map.png" alt="Img" style="width: 700px;"/></center>
 
 The shapefile contains ecoregions for the entire world, but we only want to plot the ecoregions where the brown trout is found. You can crop SpatialPolygons objects to the size of a bounding box using `intersect()` from the `raster` package:
 
 ```r
 clip_box <- as(extent(min(brown_trout$decimallongitude) -15,
-											max(brown_trout$decimallongitude) + 10,
-											min(brown_trout$decimallatitude),
-											max(brown_trout$decimallatitude)), "SpatialPolygons")
+	max(brown_trout$decimallongitude) + 10,
+	min(brown_trout$decimallatitude),
+	max(brown_trout$decimallatitude)), "spatialpolygons")
 
-shpData_FEOW_clipped <- intersect(shpData_FEOW, clip_box)
+shpdata_feow_clipped <- intersect(shpdata_feow, clip_box)
 ```
 
-Plot `shpData_FEOW_clipped` to see that `intersect()` has cropped out polygons that were outside our bounding box, and has helpfully joined up the perimeters of any polygons that straddle the edge of the bounding box:
+plot `shpdata_feow_clipped` to see that `intersect()` has cropped out polygons that were outside our bounding box, and has helpfully joined up the perimeters of any polygons that straddle the edge of the bounding box:
 
 ```r
-plot(shpData_FEOW_clipped)
+plot(shpdata_feow_clipped)
 ```
 
-<center><img src="{{ site.baseurl }}/img/ecoregions_clipped_map.jpg" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/ecoregions_clipped_map.png" alt="img" style="width: 700px;"/></center>
 
-Then we need to restructure the object into a data frame ready for plotting. The dataframe needs to contain the ID for each polygon, in this case the name of the ecoregion it is from. Explore the contents of `shpData_FEOW_clipped`, using `str`. `@` accesses sub-dataframes within the `shpData_FEOW` spatial object:
+then we need to restructure the object into a data frame ready for plotting. the dataframe needs to contain the id for each polygon, in this case the name of the ecoregion it is from. explore the contents of `shpdata_feow_clipped`, using `str`. `@` accesses sub-dataframes within the `shpdata_feow` spatial object:
 
 ```r
 str(shpData_FEOW_clipped@data)
 ```
 
-`ECOREGION` contains all the data for the different types of ecoregions, they have names like "Aegean Drainages" and "Central Prairie". Now we can use `ECOREGION` as an identifier in the `fortify() command to transform the spatial object to a dataframe, where each polygon will be given an `id` of which `ECOREGION` it is from:
+`ECOREGION` contains all the data for the different types of ecoregions, they have names like "Aegean Drainages" and "Central Prairie". Now we can use `ECOREGION` as an identifier in the `fortify()` command to transform the spatial object to a dataframe, where each polygon will be given an `id` of which `ECOREGION` it is from:
 
 ```r
 shpData_FEOW_clipped_fort <- fortify(shpData_FEOW_clipped, region = "ECOREGION")  # this could take a while
@@ -465,14 +472,15 @@ Now, plot the map, point data and shapefile together. The ecoregion polygons can
 map_FEOW <- ggplot() +
 	coord_map() +
 	geom_map(data = shpData_FEOW_clipped_fort,
-							 map = shpData_FEOW_clipped_fort,
-							 aes(x = long, y = lat, map_id = id, group = group, fill = id),
-							 color = "black", size = 0.5) +
+	 map = shpData_FEOW_clipped_fort,
+	 aes(x = long, y = lat, map_id = id, group = group, fill = id),
+	 color = "black", size = 0.5) +
 	geom_point(colour = "red", alpha = 0.5, size = 0.5,
-						 aes(x = decimallongitude, y = decimallatitude),
-						 data = brown_trout) +
+	 aes(x = decimallongitude, y = decimallatitude),
+	 data = brown_trout) +
 	theme_classic() +
-	theme(legend.position="none") +
+	theme(legend.position="bottom") +
+	theme(legend.title=element_blank()) + 
 	xlab("Longitude") +
 	ylab("Latitude")
 ```
