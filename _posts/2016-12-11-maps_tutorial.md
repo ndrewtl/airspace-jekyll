@@ -215,7 +215,7 @@ ggplot() +
 	
 ```
 
-<center><img src="{{ site.baseurl }}/img/map_saf_penguins.png" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/map_saf_penguins.png" alt="Img" style="width: 800px;"/></center>
 
 <a name="create_ggmap"></a>
 
