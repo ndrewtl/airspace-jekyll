@@ -64,7 +64,7 @@ setwd("PATH_TO_FOLDER")
 
 ## Downloading the relevant packages
 
-Load the following packages, remember if you haven't installed the packages first, you will have to use `install.packages(<PACKAGE_NAME>)` first:
+Load the following packages, remember if you haven't installed the packages first, you will have to use `install.packages("PACKAGE_NAME")` first:
 
 ```r
 library(readr)  # For reading in files
@@ -409,6 +409,8 @@ bbox <- c(-40, 30, 40, 85)
 Map_trout <- get_map(location = bbox, source = "google", maptype = "terrain", zoom = 3, color = "bw")
 ```
 
+You'll get a warning message saying: "Warning: bounding box given to google - spatial extent only approximate..." - this is because we haven't specified a coordinate system, and instead are using the default. For our purposes, that's okay, so you can move on and not worry about this message.
+
 Then we can plot the map tiles with the data using `ggmap()`:
 
 ```r
@@ -517,7 +519,7 @@ map_FEOW_scale <- map_FEOW_annot +
 					 height = 0.01)
 ```
 
-Adding a north arrow. Currently the default `north` command doesn't work properly, so we can't just do `map_FEOW + north()`. Instead `north2()` has to be used as a separate command. You can change the symbol by changing `symbol` to any integer from 1 to 8:
+Adding a north arrow. Currently the default `north` command doesn't work properly, so we can't just do `map_FEOW + north()`. Instead `north2()` has to be used as a separate command. You can change the symbol by changing `symbol` to any integer from 1 to 8. You might get an error saying: "Error: Don't know how to add o to a plot" and your arrow might be placed in a strange location - you can change the values for `x` and `y` till your arrow moves to where you want it to be.
 
 ```r
 north2(map_FEOW_scale, x = 0.2, y = 0.2, scale = 0.1, symbol = 1)
