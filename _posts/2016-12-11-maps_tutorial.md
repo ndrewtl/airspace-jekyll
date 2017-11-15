@@ -404,7 +404,7 @@ Then we can plot the map tiles with the data using `ggmap()`:
 ggmap(Map_trout) +
   geom_point(colour = "blue", alpha = 0.5,
              aes(x = decimallongitude, y = decimallatitude),
-             data = brown_brout) +
+             data = brown_trout) +
   theme_bw() +
   xlab("Longitude") +
   ylab("Latitude")
@@ -440,7 +440,7 @@ The shapefile contains ecoregions for the entire world, but we only want to plot
 clip_box <- as(extent(min(brown_trout$decimallongitude) -15,
 	max(brown_trout$decimallongitude) + 10,
 	min(brown_trout$decimallatitude),
-	max(brown_trout$decimallatitude)), "spatialpolygons")
+	max(brown_trout$decimallatitude)), "SpatialPolygons")
 
 shpdata_feow_clipped <- intersect(shpdata_feow, clip_box)
 ```
