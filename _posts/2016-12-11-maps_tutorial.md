@@ -71,17 +71,25 @@ library(readr)  # For reading in files
 library(dplyr)  # For formatting and cleaning data
 library(rgdal)  # For manipulating map data
 library(raster)  # For clipping shapefile polygons
+library(ggplot2)  # For drawing plots
+library(maps)  # For making maps
+library(mapdata)  # For supplying map data
+library(gpclib)  # For clipping polygons
+library(maptools) # For reading map data
 library(devtools)  # For installing packages from altenative sources, e.g. Github
 	devtools::install_github("dkahle/ggmap")
 	devtools::install_github("oswaldosantos/ggsn")
 library(ggmap)  # For plotting map data, downloading map tiles from online sources
 library(ggsn)  # For adding scalebars and north arrows.
-library(ggplot2)
-library(maps)
-library(mapdata)
 ```
 
 At the time of writing, `ggmap` and `ggsn` need to be compiled from source (i.e. their repositories on Github) to maintain some functionality, hence `devtools::install_github("")`, but this will hopefully change in the future when the updated versions of the packages are uploaded to CRAN.
+
+Also, you should the following line after loading all your packages to allow `maptools` to use the `gpclib` package:
+
+```r
+gpclibPermit()
+```
 
 <a name="map_data"></a>
 
