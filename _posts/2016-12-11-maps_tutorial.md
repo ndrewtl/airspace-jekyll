@@ -76,6 +76,9 @@ library(devtools)  # For installing packages from altenative sources, e.g. Githu
 	devtools::install_github("oswaldosantos/ggsn")
 library(ggmap)  # For plotting map data, downloading map tiles from online sources
 library(ggsn)  # For adding scalebars and north arrows.
+library(ggplot2)
+library(maps)
+library(mapdata)
 ```
 
 At the time of writing, `ggmap` and `ggsn` need to be compiled from source (i.e. their repositories on Github) to maintain some functionality, hence `devtools::install_github("")`, but this will hopefully change in the future when the updated versions of the packages are uploaded to CRAN.
