@@ -28,7 +28,7 @@ Are your data all nicely formatted and ready for analysis? You can check out our
 
 A slightly more complicated model might look like: `skylark.m <- lm(abundance ~ treatment + farm.area, family = poisson, data = skylarks)` - here you are modelling `abundance`, the response variable, as a function of `treatment` (e.g. a categorical variable describing different types of farms) and `farm.area` (i.e. the size of each farm on which abundance data were collected) - those are your explanatory variables. The `family` argument refers to the distribution of the data, in this case `abundance` represents count zero-inflated data, for which a Poisson distribution is suitable. The `data` argument refers to the dataframe from which the variables we are studying come.
 
-We will talk more about different data distributions later, until then, __go to <a href = "https://github.com/ourcodingclub/CC-8-Modelling" target="_blank">the repository for this tutorial</a>, fork it to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial.__
+We will talk more about different data distributions later, until then, __go to <a href = "https://github.com/ourcodingclub/CC-8-Modelling" target="_blank">the repository for this tutorial</a>, click on `Clone\Donwload`, select `Download ZIP` and then unzip the files to a folder on your computer. If you are registered on GitHub, you can also clone the repository to your computer and start a version-controlled project in RStudio. For more details on how to start a version-controlled project, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial.__
 
 Here is a brief summary of the data distributions you might encounter most often.
 
@@ -69,7 +69,28 @@ apples <- agridat::archbold.apple
 head(apples)
 summary(apples)
 ```
-Check out the dataset. Before we run our model, it's a good idea to visualise the data just to get an idea of what to expect. We can make a boxplot for this purpose. We can examine the effect of spacing on apple yield - we can hypothesise that the closer apples are to other apples, the more they compete for resources, thus reducing their yield. Ideally, we would have sampled yield from many orchards where the trees were planted at different distances from one another - from the summary of the dataset you can see that there are only three `spacing` categories - 6, 10 and 14 m, it would be a bit of a stretch to count three numbers as a continuous variable, so let's make them a factor instead. This turns the previously numeric `spacing` variable into a 3-level categorical variable, with 6, 10 and 14 being its levels.
+Check out the dataset. Before we run our model, it's a good idea to visualise the data just to get an idea of what to expect. First, we can define a `ggplot2` theme, which we will use throughout the tutorial - this creates nice looking graphs with consistent formatting.
+
+```r
+theme.clean <- function(){
+  theme_bw()+
+  theme(axis.text.x = element_text(size = 12, angle = 45, vjust = 1, hjust = 1),
+        axis.text.y = element_text(size = 12),
+        axis.title.x = element_text(size = 14, face = "plain"),             
+        axis.title.y = element_text(size = 14, face = "plain"),             
+        panel.grid.major.x = element_blank(),                                          
+        panel.grid.minor.x = element_blank(),
+        panel.grid.minor.y = element_blank(),
+        panel.grid.major.y = element_blank(),  
+        plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), units = , "cm"),
+        plot.title = element_text(size = 20, vjust = 1, hjust = 0.5),
+        legend.text = element_text(size = 12, face = "italic"),          
+        legend.title = element_blank(),                              
+        legend.position = c(0.9, 0.9))
+}
+```
+
+__We can now make a boxplot to examine our data. We can check out the effect of spacing on apple yield - we can hypothesise that the closer apples are to other apples, the more they compete for resources, thus reducing their yield. Ideally, we would have sampled yield from many orchards where the trees were planted at different distances from one another - from the summary of the dataset you can see that there are only three `spacing` categories - 6, 10 and 14 m, it would be a bit of a stretch to count three numbers as a continuous variable, so let's make them a factor instead. This turns the previously numeric `spacing` variable into a 3-level categorical variable, with 6, 10 and 14 being its levels.__
 
 ```r
 apples$spacing2 <- as.factor(apples$spacing)
@@ -89,41 +110,48 @@ From our boxplot we can see that yield is pretty similar across the different sp
 apples.m <- lm(yield ~ spacing2, data = apples)
 summary(apples.m)
 ```
-Check out the summary output of our model:
+
+__Check out the summary output of our model:__
 
 <center><img src="{{ site.baseurl }}/img/output.png" alt="Img" style="width: 800px;"/></center>
 
-Turns out that yield does significantly differ between the three spacing categories - we can reject the null hypothesis of no effect of spacing on apple yield. It looks like apple yield is indeed higher when the distance between trees is higher - this is in line with our original ecological thoughts - the further away trees are from one another, the less they are limiting each others growth. But let's take a look at a few other things from the summary output. Notice how because `spacing2` is a factor, you get results for `spacing210`, `spacing214`. If you are looking for the `spacing26` category, that is the intercept - R just picks the first category in an alphabetical order and makes that one the intercept. You also get a `Multiple R-squared` value, and an `Adjusted R-squared` value. These values refer to how much of the variation in the `yield` variable is explained by our predictor `spacing2` - the values go from 0 to 1, with 1 meaning that our model variables explain 100% of the variation in the examined variable. `R-squared` values tend to increase as you add more terms to your model, but you also need to account for overfitting - the `Adjusted R-squared` value takes into account how many terms your model has, and how many data points are available in the response variable. From looking at our `R-squared` values, this is not a great model, which makes sense - imagine all the other things that could have an impact on yield that we have not studied - fertilisation levels, weather conditions, water availability, etc.
+Turns out that yield does significantly differ between the three spacing categories - we can reject the null hypothesis of no effect of spacing on apple yield. It looks like apple yield is indeed higher when the distance between trees is higher - this is in line with our original ecological thoughts - the further away trees are from one another, the less they are limiting each others growth. But let's take a look at a few other things from the summary output. Notice how because `spacing2` is a factor, you get results for `spacing210`, `spacing214`. If you are looking for the `spacing26` category, that is the intercept - R just picks the first category in an alphabetical order and makes that one the intercept. 
 
-In addition to checking whether this model makes sense from an ecological perspective, we should check that it actually meets the assumptions of a linear model:
+__You also get a `Multiple R-squared` value, and an `Adjusted R-squared` value. These values refer to how much of the variation in the `yield` variable is explained by our predictor `spacing2` - the values go from 0 to 1, with 1 meaning that our model variables explain 100% of the variation in the examined variable. `R-squared` values tend to increase as you add more terms to your model, but you also need to account for overfitting - the `Adjusted R-squared` value takes into account how many terms your model has, and how many data points are available in the response variable. From looking at our `R-squared` values, this is not a great model, which makes sense - imagine all the other things that could have an impact on yield that we have not studied - fertilisation levels, weather conditions, water availability, etc.__
+
+#### In addition to checking whether this model makes sense from an ecological perspective, we should check that it actually meets the assumptions of a linear model - are the residuals normally distributed, are the data homoscedastic, and are the observations independent?
+
 
 ```r
 
 # Checking that the residuals are normally distributed
 apples.resid <- resid(apples.m)
-shapiro.test(apples.resid)
-# Normal distribution
+shapiro.test(apples.resid)  # Using the Shapiro-Wilk test
+# The null hypothesis of normal distribution is accepted
 
 # Checking for homoscedasticity
 bartlett.test(apples$yield, apples$spacing2)
 bartlett.test(yield ~ spacing2, data = apples)  # Note that these two ways of writing the code give the same results
-# Homoscedasticity
+# The null hypothesis of homoscedasticity is accepted
 ```
 
-Linear model assumptions are met (we can imagine that the data points are independent, since we didn't collect the data, we can't really know).
+The assumptions of a linear model are met (we can imagine that the data points are independent, since we didn't collect the data, we can't really know). If your residuals are not normally distributed and/or the data are heteroscedastic (i.e. the variances are not equal), you can consider transforming your data using a logarithmic transformation or a square root transformation.
 
 We can examine the model fit further by looking at a few plots:
 ```r
 plot(apples.m)
 ```
 
-This will produce a set of four plots: residuals versus fitted values, a Q-Q plot of standardized residuals, a scale-location plot (square roots of standardized residuals versus fitted values, and a plot of residuals versus leverage that adds bands corresponding to Cook's distances of 0.5 and 1. In general, looking at these plots can help you identify any outliers that have huge leverage, and confirm that your model has ran alright - e.g. you would want the data points on the Q-Q plot to follow the line.
+#### This will produce a set of four plots: 
 
-### Practicing generalised linear models
+__Residuals versus fitted values, a Q-Q plot of standardized residuals, a scale-location plot (square roots of standardized residuals versus fitted values, and a plot of residuals versus leverage that adds bands corresponding to Cook's distances of 0.5 and 1. In general, looking at these plots can help you identify any outliers that have huge leverage, and confirm that your model has ran alright - e.g. you would want the data points on the Q-Q plot to follow the line.__
+
+## Practicing generalised linear models
 
 The model we used above was a __general__ linear model, since it met all the assumptions for one (normal distribution, homoscedasticity, etc.) Quite often in ecology and environmental science that is not the case, and then we use different data distributions. Here we will talk about a Poisson and a binomial distribution - to use them, we need to run __generalised__ linear models.
 
-#### A model with a Poisson distribution
+
+## A model with a Poisson distribution
 
 Import the `shagLPI.csv` dataset and check it's summary using `summary(shagLPI)` - notice that for some reason R has decided that year is a character variable, when it should instead be a numeric variable. Let's fix that, so that we don't run into trouble later. The data represent population trends for European Shags on the Isle of May, and are available from the <a href = "http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index.</a>
 
@@ -158,7 +186,8 @@ From the summary of our model we can see that European Shag abundance varies sig
 
 __Figure 1. European shag abundance on the Isle of May, Scotland, between 1970 and 2006.__ Points represent raw data and model fit represents a generalised linear model with 95% confidence intervals.
 
-#### A model with a binomial distribution
+
+## A model with a binomial distribution
 
 We will now work this the `Weevil_damage.csv` data that you can import from your project's directory. We can examine if damage to Scott's pine by weevils (a binary, TRUE/FALSE variable) varies based on the block in which the trees were located. You can imagine that different blocks represent different Scott's pine populations, perhaps some of them will be particularly vulnerable to weevils?
 
@@ -171,9 +200,9 @@ weevil.m <- glm(damage_T_F ~ block, family = binomial, data = Weevil_damage)
 summary(weevil.m)
 ```
 
-Check out the summary output - looks like the probability of a pine tree enduring damage from weevils does vary significantly based on the block in which the tree was located.
+__Check out the summary output - looks like the probability of a pine tree enduring damage from weevils does vary significantly based on the block in which the tree was located.__
 
-<b> We have now covered the basics of modelling - in our next tutorial we will look at mixed effects models, which are used more and more within ecology and environmental science. Until then, you can check out a couple of other tutorials on modelling to further your knowledge:
+__We have now covered the basics of modelling - next you can go through <a href = "https://ourcodingclub.github.io/2017/03/15/mixed-models.html" target="_blank">our tutorial on mixed effects models</a>, which allow to account for the structure and nestedness of data. You can also check out a couple of other tutorials on modelling to further your knowledge:__
 
 <a href = "http://data.princeton.edu/R/linearModels.html" target="_blank"> General and generalised linear models, by Germán Rodríguez. </a>
 
