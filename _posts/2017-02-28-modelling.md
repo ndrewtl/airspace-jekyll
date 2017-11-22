@@ -156,6 +156,9 @@ The model we used above was a __general__ linear model, since it met all the ass
 Import the `shagLPI.csv` dataset and check it's summary using `summary(shagLPI)` - notice that for some reason R has decided that year is a character variable, when it should instead be a numeric variable. Let's fix that, so that we don't run into trouble later. The data represent population trends for European Shags on the Isle of May, and are available from the <a href = "http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index.</a>
 
 ```r
+# Rename the data object to something shorter
+shag <- shagLPI
+
 shag$year <- as.numeric(shag$year)
 
 # Making a histogram to asses data distribution
