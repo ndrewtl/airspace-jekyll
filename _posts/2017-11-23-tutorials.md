@@ -79,27 +79,26 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
         <div class="row">
           <div class="col-md-12">
             <div class="block">
-	    	<p>Ideas to stimulate creation of tutorials for Coding Club's workshop at the 2017 BES Ecology Across Borders Meeting</p>
               <div class="portfolio-contant">
                 <ul id="portfolio-contant-active">
                     <li>
                       <a href="#polar_map">
-                        <img src="{{ site.baseurl }}/img/portfolio/work1.jpg" alt="">
+                        <img src="{{ site.baseurl }}/img/portfolio/arctic_fox_icon.jpg" alt="">
                         <div class="overly">
                           <div class="position-center">
-                            <h2>Creating a circumpolar map</h2>
-                            <p>Exploring the range of the Arctic Fox</p>
+                            <center><h2>Mapping species occurrence records</h2></center>
+                            <center><p>A circumporal map of Arctic Fox occurrences</p></center>
                           </div>
                         </div>
                       </a>
                   </li>
                     <li>
                       <a href="#forest_plots">
-                        <img src="{{ site.baseurl }}/img/portfolio/work1.jpg" alt="">
+                        <img src="{{ site.baseurl }}/img/portfolio/elephants_icon.jpg" alt="">
                         <div class="overly">
                           <div class="position-center">
-                            <h2>Plotting forest plot tree data</h2>
-                            <p>Traits along environmental gradients</p>
+                            <center><h2>Plotting forest plot tree data</h2></center>
+                            <center><p>Traits along environmental gradients</p></center>
                           </div>
                         </div>
                       </a>
@@ -114,16 +113,12 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
 
 <a name="polar_map"></a>
 
-# Creating a circumpolar map of Arctic Fox occurrences
+# Mapping species occurrence records
 
-This is some sample text about making the map
+__The aims of this tutorial are to download species occurrence data from GBIF using the `rgbif` package, and then plot the data. We will also learn how to create a map with a top-down view of the world, as the species we've chosen, Arctic fox, is found in the Northern hemisphere.__
 
-```r
-Here is some sample code
-```
+### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script is the `arctic_map.R` file in the `arctic_fox` folder.
 
-<hr>
-<hr>
 
 <a name="forest_plots"></a>
 
@@ -131,7 +126,7 @@ Here is some sample code
 
 This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity.
 
-This tutorial should cover the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr`package to prepare datasets for use in data visualisation.
+This tutorial should cover the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.
 
 <center><img src="{{ site.baseurl }}/img/savanna_photo.jpg" alt="Img" style="width: 600px;"/></center>
 
@@ -153,6 +148,8 @@ This is the most tricky bit of code, which is used to create the plot below. Par
 <center><img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 600px;"/></center>
 
 <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target="_blank">Here is a link to a Github repository, with a folder ("dry_forest_plots") containing the data and an R script to help get you started</a>.
+
+### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The data and script for this tutorial are in the `savanna_elephants` folder.
 
 
 <a name="publish"></a>
