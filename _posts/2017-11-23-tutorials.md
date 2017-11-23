@@ -83,7 +83,7 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
                 <ul id="portfolio-contant-active">
                     <li>
                       <a href="#polar_map">
-                        <img src="{{ site.baseurl }}/img/portfolio/arctic_fox_icon.jpg" alt="">
+                        <img src="{{ site.baseurl }}/img/portfolio/arctic_fox_icon.png" alt="">
                         <div class="overly">
                           <div class="position-center">
                             <center><h2>Mapping species occurrence records</h2></center>
@@ -94,7 +94,7 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
                   </li>
                     <li>
                       <a href="#forest_plots">
-                        <img src="{{ site.baseurl }}/img/portfolio/elephants_icon.jpg" alt="">
+                        <img src="{{ site.baseurl }}/img/portfolio/elephants_icon.png" alt="">
                         <div class="overly">
                           <div class="position-center">
                             <center><h2>Plotting forest plot tree data</h2></center>
