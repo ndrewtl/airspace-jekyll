@@ -143,7 +143,7 @@ You can use the default `viridis` palette by just specifying `scale_colour_virid
           legend.text = element_text(size = 12),
           legend.justification = "center",
           plot.title = element_text(size = 20, vjust = 1, hjust = 0.6, face = "italic")) +
-    labs(colour = "Slope", title = "Anseriformes"))
+    labs(fill = "Slope\n", title = "Anseriformes"))  # \n adds a blank line below the legend title
 ```
 
 __We can save our map using `ggsave()` from the `ggplot2` package, the default `width` and `height` are measured in inches. If you want to swap to pixels or centimeters, you can add `units = "px"` or `units = "cm"` inside the `ggsave()` brackets, e.g. `ggsave(object, filename = "mymap.png", width = 1000, height = 1000, units = "px"`.__
