@@ -154,10 +154,10 @@ __The aims of this tutorial are to download species occurrence data from GBIF us
 ## Visualising forest plot tree data
 #### By John Godlee
 
-__This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity. The tutorial covers the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.__
+__This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how spatial clustering of trees varies according to elephant activity. The tutorial covers the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree abundance over space. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.__
 
 <center> <img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/no_elephant_plot.png" alt="Img" style="width: 500px;"/></center>
-<center>Tree morphology and spatial clustering of trees in a plot with elephant activity (left) and without elephant activity (right).</center>
+<center>The spatial clustering of trees in a plot with elephant activity (left) and without elephant activity (right). Elephants clearly have caused spatial clustering of trees.</center>
 
 #### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The data and script for this tutorial are in the `savanna_elephants` folder.
 
