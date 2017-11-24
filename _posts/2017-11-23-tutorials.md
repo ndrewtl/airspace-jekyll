@@ -60,16 +60,18 @@ We write our tutorials in Markdown and we use the Atom text editor, which is use
 
 Our workflow tends to go like this:
 
-- Write the `R` code for the tutorial in `RStudio`
-- Save any graphs you create with your code
-- Open Atom, copy and paste your `R` code in a new file
-- Save the file as a `.md` file, e.g. `datavis.md`
-- Add text to explain the purpose of the tutorial and what the code does
-- Add images and links as suitable (you can use html code within Markdown)
+#### - Write the `R` code for the tutorial in `RStudio`
+#### - Save any graphs you create with your code
+#### - Open `Atom`, copy and paste your `R` code in a new file
+#### - Save the file as a `.md` file, e.g. `datavis.md`
+#### - Add text to explain the purpose of the tutorial and what the code does
+#### - Add images and links as suitable
 
-Don't worry if you've never used Atom or Markdown before - we have created a template you can open straight in Atom and just insert your text, comments and images.
+### Don't worry if you've never used `Atom` or `Markdown` before - we have created a template you can open straight in Atom and just insert your text, comments and images.
 
-#### Open the file `md_template.md` in Atom. We have prepared a few sample topics based on which you can write a brief tutorial. Please choose a topic by clicking on it, which will take you to all the files necessary to write the tutorial.
+#### You can download the  `tut_template.md` file that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.
+
+#### Open the file `tut_template.md` in Atom. We have prepared a few sample topics based on which you can write a brief tutorial. Please choose a topic by clicking on it, which will take you to all the files necessary to write the tutorial.
 
 <section id="portfolio-work">
     <div class="container">
@@ -193,7 +195,7 @@ __The aim of this tutorial is to visualize data from a series of geographical co
 
 <a name="sunflecks"></a>
 
-#Analysing leaf-level understorey photosynthesis within sunflecks
+# Analysing leaf-level understorey photosynthesis within sunflecks
 ### Dries Landuyt
 
 __In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package. We will apply our data maninpulation and data visualisation skilss to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
@@ -203,7 +205,33 @@ __In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` fun
 
 <a name="publish"></a>
 
-*text on how to make a github pages repo and upload your md file there will appear here soon*
+# Publish your tutorial on Github
+
+__Next we can publish out tutorial on GitHub, which will turn it into a website, whose link you can share with your peers - transferring quantitative skills among ecologists in action!__
+
+__Go to the GitHub website, register if you don't already have an account(it's free) and click on `New Repository`.__
+
+<center> <img src="{{ site.baseurl }}/img/new_repo_eab.png" alt="Img" style="width: 600px;"/> </center>
+
+Choose a name for your repository - that will form part of the link for your online tutorial, so choose something short and informative. Add a brief description, click on `Initialize with a README.md`, and then click on `Create repository`.
+
+<center> <img src="{{ site.baseurl }}/img/new_repo_eab2.png" alt="Img" style="width: 600px;"/> </center>
+
+__Now you can see your new repository. Click on `Upload files` and upload your filled in `Markdown` template. To make our tutorial the landing (home) page of the website, we have to rename it to `index.md`. Click on the file you just uploaded, select `Edit` and change the filename. Remember to include the file extension as well, e.g. `index.md`. Upload any images you are using in your tutorial as well.__
+
+You are two clicks away from having a website with your tutorial! Now click on `Settings` and scroll down to the `GitHub pages` section - we need to enable the `GitHub pages` feature, which turns our `index.md` file into a page, i.e. website. Change `Source` from `None` to `master` - the master branch of our repository. Click on `Save`.
+
+<center> <img src="{{ site.baseurl }}/img/github_pages.png" alt="Img" style="width: 600px;"/> </center>
+
+#### Congratulations, your repository is now published as a website!
+
+__Scroll down to the `GitHub pages` section again - you can see the link for your tutorial! If you need to edit your tutorial, you can go back to your repository, select the `index.md` file, then click on `Edit` and make any necessary changes. You can also check out different themes for your website, though the default one is clean and tidy, which works well for coding and statistics tutorials in general.__
+
+### We would love to see your tutorials - feel free to share them with us on Twitter __@our_codingclub__ or via email __ourcodingclub@gmail.com__
+
+### Contribute a tutorial
+
+__Are you keen to share some of your coding and statistics knowledge? We would love to have more people join our team and build a world-wide community of people teaching and learning together! You can take a look at the tutorials we have already developed - feel free to make suggestions for changes on existing tutorials and get in touch with us at ourcodingclub@gmail.com if you would like to make a new tutorial.__
 
 
 <hr>
