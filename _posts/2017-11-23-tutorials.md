@@ -70,12 +70,12 @@ Our workflow tends to go like this:
 #### - Add images and links as suitable
 
 
-### Don't worry if you've never used `Atom` or `Markdown` before - we have created a template you can open straight in Atom and just insert your text, comments and images.
+#### Don't worry if you've never used `Atom` or `Markdown` before - we have created a template you can open straight in Atom and just insert your text, comments and images.
 
 
-#### You can download the  `tut_template.md` file that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.
+__You can download the  `tut_template.md` file that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.__
 
-#### Open the file `tut_template.md` in Atom. The file includes instructions on how to add subheadings, links, code and images. We have prepared a few sample topics based on which you can write a brief tutorial. Please choose a topic by clicking on it, which will take you to all the files necessary to write the tutorial.
+__Open the file `tut_template.md` in Atom. The file includes instructions on how to add subheadings, links, code and images. We have prepared a few sample topics based on which you can write a brief tutorial. Please choose a topic by clicking on it, which will take you to all the files necessary to write the tutorial.__
 
 <section id="portfolio-work">
     <div class="container">
