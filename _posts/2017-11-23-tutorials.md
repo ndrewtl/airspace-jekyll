@@ -3,7 +3,7 @@ layout: post
 title: Transferring quantitative skills among scientists
 subtitle: How to publish and share statistics and programming tutorials
 date: 2017-11-23 10:00:00
-author: Coding Club Team
+author: The Coding Club Team
 meta: "Tutorials"
 tags: datavis modelling data_manip github
 ---
@@ -53,6 +53,8 @@ We welcome people with all levels of `R` knowledge to our workshops - it's impre
 __Next we will learn how to write, format and publish coding tutorials.__
 
 We write our tutorials in Markdown and we use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets, if you prefer, the principle is the same.
+
+<center><img src="{{ site.baseurl }}/img/atom_screen.png" alt="Img" style="width: 700px;"/>
 
 #### You can <a href="https://atom.io/" target="_blank">download Atom here.</a>
 
@@ -131,6 +133,7 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
 <a name="polar_map"></a>
 
 # Mapping species occurrence records
+### By Gergana Daskalova
 
 __The aims of this tutorial are to download species occurrence data from GBIF using the `rgbif` package, and then plot the data. We will also learn how to create a map with a top-down view of the world, as the species we've chosen, Arctic fox, is found in the Northern hemisphere.__
 
@@ -143,10 +146,9 @@ __The aims of this tutorial are to download species occurrence data from GBIF us
 <a name="forest_plots"></a>
 
 # Visualising forest plot tree data
+### By John Godlee
 
-__This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity.__
-
-This tutorial should cover the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.
+__This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity. The tutorial covers the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.__
 
 <center> <img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/no_elephant_plot.png" alt="Img" style="width: 500px;"/></center>
 <center>Tree morphology and spatial clustering of trees in a plot with elephant activity (left) and without elephant activity (right).</center>
@@ -157,6 +159,7 @@ This tutorial should cover the basics of using the `ggplot2` package, using mult
 <a name="density_maps"></a>
 
 # Density maps of red squirrel occurrences
+### By Francesca Mancini
 
 __The tutorial will take you through the steps of downloading red squirrel occurrences in the UK from the Global Biodiversity Information Facility (GBIF), adjusting spatial projections and plot density maps with `ggplot2`.__
 
@@ -168,40 +171,39 @@ __The tutorial will take you through the steps of downloading red squirrel occur
 <a name="temp_timeseries"></a>
 
 # Visualising temperature timeseries data
+### By Anders Kolstrad
 
 __The aim of this tutorial is to produce a line graph or time series plot with mean daily temperature plus errors using `ggplot2`, and similarly, to produce a second graph of daily temperature fluctuations using a smoother function. Finally, we will plot and save the two figures together using the `gridExtra` package.__
 
 <center> <img src="{{ site.baseurl }}/img/temp_timeseries.png" alt="Img" style="width: 600px;"/> </center>
-<center>Mean daily temperatures ± SD (left) and daily temperature fluctions in 2016.</center>
+<center>Mean daily temperatures ± SD (left) and daily temperature fluctuations in 2016.</center>
 
+#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `temp_time_series.R` is in the `temp_timeseries` folder.
+
+
+<a name="spatial_movement"></a>
+
+# Analysis of spatial movement
+### By Stefano Masier
+
+__The aim of this tutorial is to visualize data from a series of geographical coordinates, plot them and extract some basic information. The goal is to handle a series of coordinates, plot the path itself, but also to calculate and plot the covered distance, the relative movement and the relative angle for each time step. This information can then be used as a starting point to more advanced statistical analysis (i.e. GLMs).__
+
+*Coming soon*
+
+
+<a name="sunflecks"></a>
+
+#Analysing leaf-level understorey photosynthesis within sunflecks
+### Dries Landuyt
+
+__In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package. We will apply our data maninpulation and data visualisation skilss to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
+
+*Coming soon*
 
 
 <a name="publish"></a>
 
 *text on how to make a github pages repo and upload your md file there will appear here soon*
-
-
-## Anders Kolstad
-
-“The aim of this exercise is to produce a line graph or time series plot with mean daily temperature
-plus errors using ggplot2, and similarly to produce a second graph of daily temperature
-fluctuations using a smoother function. Finally, we plot and save the two figures together.
-
-## Stefano Masier
-
-Title: "Analysis of spatial movement"
-Summary: the aim of this tutorial is to be able to visualize data from a series of geographical coordinates, plot them and extract some basic information.
-The aim is to become able handle a series of coordinates, plot the path itself, but also calculate and plot the covered distance, the relative movement and the relative angle for each time step.
-These info can then be used as a starting point to more advanced statistical analysis (i.e. GLMs)
-
-It's an actual analysis that I run some time ago: there is a small loop to prepare the dataset for the modelling, but the people attending don't have to go through it unless we have time and they really want to.
-The last part are just some models that I made: this part can be expanded or dropped, as you see fit.
-
-
-## Dries Landuyt
-title: Analysing leaf-level understorey photosynthesis within sunflecks
-summary: In this tutorial, we learn to work with pipes and other dplyr functions and different plotting techniques using the ggplot2 package. We will apply these functionalities to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.
-
 
 
 <hr>
