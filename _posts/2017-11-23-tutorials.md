@@ -100,12 +100,23 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
 											<img src="{{ site.baseurl }}/img/portfolio/density_rs_icon.png" alt="">
 											<div class="overly">
 												<div class="position-center">
-													<center><h2>Plotting forest plot tree data</h2></center>
+													<center><h2>Visualising forest plot tree data</h2></center>
 													<center><p>Traits along environmental gradients</p></center>
 												</div>
 											</div>
 										</a>
 								</li>
+								<li>
+									<a href="#temp_timeseries">
+										<img src="{{ site.baseurl }}/img/portfolio/timesr_icon.png" alt="">
+										<div class="overly">
+											<div class="position-center">
+												<center><h2>Visualising temperature time series data</h2></center>
+												<center><p>Plotting mean daily temperatures and fluctuations</p></center>
+											</div>
+										</div>
+									</a>
+							</li>
                 </ul>
               </div>
             </div>
@@ -123,12 +134,12 @@ __The aims of this tutorial are to download species occurrence data from GBIF us
 <center> <img src="{{ site.baseurl }}/img/fox_map.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/fox_map2.png" alt="Img" style="width: 500px;"/></center>
 <center>Arctic fox occurrences based on available data from the Global Biodiversity Information Facility (GBIF).</center>
 
-### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script is the `arctic_map.R` file in the `arctic_fox` folder.
+#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script is the `arctic_map.R` file in the `arctic_fox` folder.
 
 
 <a name="forest_plots"></a>
 
-# Visualising the effect of elephants on tree morphology
+# Visualising forest plot tree data
 
 __This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity.__
 
@@ -137,67 +148,34 @@ This tutorial should cover the basics of using the `ggplot2` package, using mult
 <center> <img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/no_elephant_plot.png" alt="Img" style="width: 500px;"/></center>
 <center>Tree morphology and spatial clustering of trees in a plot with elephant activity (left) and without elephant activity (right).</center>
 
-This is the most tricky bit of code, which is used to create the plot below. Particularly note the use of `..level..` in `stat_density2d()` to colour the contours according to the density of points:
-
-```r
- ggplot(tree_loc_diam_1_summ, aes(x = dec_lon, y = dec_lat)) +
-	stat_density2d(aes(fill = ..level..), geom = "polygon") +
-	scale_fill_viridis() +
-	geom_polygon(data = plot_bbox_1, aes(x = dec_lon, y = dec_lat), fill = NA, colour = "black") +
-	geom_point() +
-	xlim(min(plot_bbox_1$dec_lon) - 0.001, max(plot_bbox_1$dec_lon) + 0.001) +
-	ylim(min(plot_bbox_1$dec_lat) - 0.001, max(plot_bbox_1$dec_lat) + 0.001) +
-	xlab("Decimal Longitude") +
-	ylab("Decimal Latitude") +
-	theme_classic()
-```
-
-### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The data and script for this tutorial are in the `savanna_elephants` folder.
+#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The data and script for this tutorial are in the `savanna_elephants` folder.
 
 
 <a name="density_maps"></a>
+
 # Density maps of red squirrel occurrences
 
 __The tutorial will take you through the steps of downloading red squirrel occurrences in the UK from the Global Biodiversity Information Facility (GBIF), adjusting spatial projections and plot density maps with `ggplot2`.__
 
-<center> <img src="{{ site.baseurl }}/img/density_rs.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/density_rs.png" alt="Img" style="width: 600px;"/> </center>
 
-### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `density_maps.R` is in the `density_maps` folder.
+#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `density_maps.R` is in the `density_maps` folder.
+
+
+<a name="temp_timeseries"></a>
+
+# Visualising temperature timeseries data
+
+__The aim of this tutorial is to produce a line graph or time series plot with mean daily temperature plus errors using `ggplot2`, and similarly, to produce a second graph of daily temperature fluctuations using a smoother function. Finally, we will plot and save the two figures together using the `gridExtra` package.__
+
+<center> <img src="{{ site.baseurl }}/img/temp_timeseries.png" alt="Img" style="width: 600px;"/> </center>
+<center>Mean daily temperatures ± SD (left) and daily temperature fluctions in 2016.</center>
+
 
 
 <a name="publish"></a>
 
 *text on how to make a github pages repo and upload your md file there will appear here soon*
-
-
-
-
-# Visualising the effect of elephants on tree morphology
-## John Godlee
-This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity.
-
-This tutorial should cover the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr`package to prepare datasets for use in data visualisation.
-
-<center><img src="{{ site.baseurl }}/img/savanna_photo.jpg" alt="Img" style="width: 600px;"/></center>
-
-This is the most tricky bit of code, which is used to create the plot below. Particularly note the use of `..level..` in `stat_density2d()` to colour the contours according to the density of points:
-
-```r
- ggplot(tree_loc_diam_1_summ, aes(x = dec_lon, y = dec_lat)) +
-	stat_density2d(aes(fill = ..level..), geom = "polygon") +
-	scale_fill_viridis() +
-	geom_polygon(data = plot_bbox_1, aes(x = dec_lon, y = dec_lat), fill = NA, colour = "black") +
-	geom_point() +
-	xlim(min(plot_bbox_1$dec_lon) - 0.001, max(plot_bbox_1$dec_lon) + 0.001) +
-	ylim(min(plot_bbox_1$dec_lat) - 0.001, max(plot_bbox_1$dec_lat) + 0.001) +
-	xlab("Decimal Longitude") +
-	ylab("Decimal Latitude") +
-	theme_classic()
-```
-
-<center><img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 600px;"/></center>
-
-<a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target="_blank">Here is a link to a Github repository, with a folder ("dry_forest_plots") containing the data and an R script to help get you started</a>.
 
 
 ## Anders Kolstad
