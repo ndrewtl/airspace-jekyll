@@ -35,7 +35,7 @@ There are many ways to run a coding workshop, and different approaches might wor
 
 At each workshop, we have a team of demonstrators who are there to answer questions and help out. We find that it works well to let people go through the tutorial at their own pace, and we usually walk around and check whether things are going fine. Most of the tutorials have challenges at the end, for which people can work individually or in small teams. We bring cookies, popcorn and other treats, occasionally make bad R jokes, and try our best to make the atmosphere light and positive. We don't require people to sign up and there are no obligations to attend all the workshops - people are free to attend whichever workshops are of interest to them. At the end of the workshops, we usually stay behind for a while in case people have any specific questions about their own coding projects.
 
-We welcome people with all levels of R knowledge to our workshops - it's impressive how quickly people can go from never having used R before to making graphs with a bit of help! For the more advanced workshops, we usually send a link with a previous tutorial that provides the base we will build on, but we don't make completing the pre-requisites compulsory - basically we believe that people are free to make their own decisions, and we are there to support them along the way. Sometimes people don't have time to "prepare" and that's okay - it's way better if they show up and we give them a quick intro to bring them up to speed, as opposed to them not showing up at all, because they feel intimidated by the material.
+We welcome people with all levels of `R` knowledge to our workshops - it's impressive how quickly people can go from never having used R before to making graphs with a bit of help! For the more advanced workshops, we usually send a link with a previous tutorial that provides the base we will build on, but we don't make completing the pre-requisites compulsory - basically we believe that people are free to make their own decisions, and we are there to support them along the way. Sometimes people don't have time to "prepare" and that's okay - it's way better if they show up and we give them a quick intro to bring them up to speed, as opposed to them not showing up at all, because they feel intimidated by the material.
 
 ### Find out for yourself - complete a quick Coding Club tutorial
 
@@ -43,7 +43,7 @@ We welcome people with all levels of R knowledge to our workshops - it's impress
 #### To get a taste of the Coding Club experience, you can complete a <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">Coding Club tutorial on mapping vertebrate population change across Europe.</a>
 
 <center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
-<p><i>Anseriformes</i> populations in Europe.</p></center>
+<i>Anseriformes</i> populations in Europe.</center>
 
 
 <a name="tutorial"></a>
