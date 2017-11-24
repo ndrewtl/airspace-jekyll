@@ -45,9 +45,13 @@ We welcome people with all levels of R knowledge to our workshops - it's impress
 
 <a name="tutorial"></a>
 
+### Write your own tutorial
+
 __Next we will learn how to write, format and publish coding tutorials.__
 
 We write our tutorials in Markdown and we use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets, if you prefer, the principle is the same.
+
+#### You can <a href="https://atom.io/" target="_blank">download Atom here.</a>
 
 Our workflow tends to go like this:
 
@@ -61,18 +65,6 @@ Our workflow tends to go like this:
 Don't worry if you've never used Atom or Markdown before - we have created a template you can open straight in Atom and just insert your text, comments and images.
 
 #### Open the file `md_template.md` in Atom. We have prepared a few sample topics based on which you can write a brief tutorial. Please choose a topic by clicking on it, which will take you to all the files necessary to write the tutorial.
-
-<section id="global-header">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="block">
-                    <h1>Tutorial ideas for Ecology Across Borders 2017</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section id="portfolio-work">
     <div class="container">
@@ -103,6 +95,17 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
                         </div>
                       </a>
                   </li>
+									<li>
+										<a href="#density_maps">
+											<img src="{{ site.baseurl }}/img/portfolio/density_rs_icon.png" alt="">
+											<div class="overly">
+												<div class="position-center">
+													<center><h2>Plotting forest plot tree data</h2></center>
+													<center><p>Traits along environmental gradients</p></center>
+												</div>
+											</div>
+										</a>
+								</li>
                 </ul>
               </div>
             </div>
@@ -117,6 +120,9 @@ Don't worry if you've never used Atom or Markdown before - we have created a tem
 
 __The aims of this tutorial are to download species occurrence data from GBIF using the `rgbif` package, and then plot the data. We will also learn how to create a map with a top-down view of the world, as the species we've chosen, Arctic fox, is found in the Northern hemisphere.__
 
+<center> <img src="{{ site.baseurl }}/img/fox_map.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/fox_map2.png" alt="Img" style="width: 500px;"/></center>
+<center>Arctic fox occurrences based on available data from the Global Biodiversity Information Facility (GBIF).</center>
+
 ### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script is the `arctic_map.R` file in the `arctic_fox` folder.
 
 
@@ -124,11 +130,12 @@ __The aims of this tutorial are to download species occurrence data from GBIF us
 
 # Visualising the effect of elephants on tree morphology
 
-This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity.
+__This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity.__
 
 This tutorial should cover the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.
 
-<center><img src="{{ site.baseurl }}/img/savanna_photo.jpg" alt="Img" style="width: 600px;"/></center>
+<center> <img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/no_elephant_plot.png" alt="Img" style="width: 500px;"/></center>
+<center>Tree morphology and spatial clustering of trees in a plot with elephant activity (left) and without elephant activity (right).</center>
 
 This is the most tricky bit of code, which is used to create the plot below. Particularly note the use of `..level..` in `stat_density2d()` to colour the contours according to the density of points:
 
@@ -145,11 +152,17 @@ This is the most tricky bit of code, which is used to create the plot below. Par
 	theme_classic()
 ```
 
-<center><img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 600px;"/></center>
-
-<a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target="_blank">Here is a link to a Github repository, with a folder ("dry_forest_plots") containing the data and an R script to help get you started</a>.
-
 ### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The data and script for this tutorial are in the `savanna_elephants` folder.
+
+
+<a name="density_maps"></a>
+# Density maps of red squirrel occurrences
+
+__The tutorial will take you through the steps of downloading red squirrel occurrences in the UK from the Global Biodiversity Information Facility (GBIF), adjusting spatial projections and plot density maps with `ggplot2`.__
+
+<center> <img src="{{ site.baseurl }}/img/density_rs.png" alt="Img" style="width: 800px;"/> </center>
+
+### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `density_maps.R` is in the `density_maps` folder.
 
 
 <a name="publish"></a>
