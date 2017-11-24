@@ -54,7 +54,7 @@ __Next we will learn how to write, format and publish coding tutorials.__
 
 We write our tutorials in Markdown and we use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets, if you prefer, the principle is the same.
 
-<center><img src="{{ site.baseurl }}/img/atom_screen.png" alt="Img" style="width: 700px;"/>
+<center><img src="{{ site.baseurl }}/img/atom_screen.png" alt="Img" style="width: 700px;"/></center>
 
 #### You can <a href="https://atom.io/" target="_blank">download Atom here.</a>
 
