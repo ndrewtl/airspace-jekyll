@@ -42,6 +42,9 @@ We welcome people with all levels of R knowledge to our workshops - it's impress
 
 #### To get a taste of the Coding Club experience, you can complete a <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">Coding Club tutorial on mapping vertebrate population change across Europe.</a>
 
+<center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
+<p><i>Anseriformes</i> populations in Europe.</p></center>
+
 
 <a name="tutorial"></a>
 
