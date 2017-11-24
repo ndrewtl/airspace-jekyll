@@ -5,7 +5,7 @@ subtitle: How to publish and share statistics and programming tutorials
 date: 2017-11-23 10:00:00
 author: The Coding Club Team
 meta: "Tutorials"
-tags: datavis modelling data_manip github
+tags: github
 ---
 
 <div class="block">
