@@ -138,8 +138,8 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
 
 <a name="polar_map"></a>
 
-# Mapping species occurrence records
-### By Gergana Daskalova
+## Mapping species occurrence records
+#### By Gergana Daskalova
 
 __The aims of this tutorial are to download species occurrence data from GBIF using the `rgbif` package, and then plot the data. We will also learn how to create a map with a top-down view of the world, as the species we've chosen, Arctic fox, is found in the Northern hemisphere.__
 
@@ -151,8 +151,8 @@ __The aims of this tutorial are to download species occurrence data from GBIF us
 
 <a name="forest_plots"></a>
 
-# Visualising forest plot tree data
-### By John Godlee
+## Visualising forest plot tree data
+#### By John Godlee
 
 __This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how tree morphology and spatial clustering of trees varies according to elephant activity. The tutorial covers the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree growth and morphology over space. Data visualisation will be complemented by a few boxplots. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.__
 
@@ -164,8 +164,8 @@ __This tutorial involves plotting tree inventory data from 2 permanent survey pl
 
 <a name="density_maps"></a>
 
-# Density maps of red squirrel occurrences
-### By Francesca Mancini
+## Density maps of red squirrel occurrences
+#### By Francesca Mancini
 
 __The tutorial will take you through the steps of downloading red squirrel occurrences in the UK from the Global Biodiversity Information Facility (GBIF), adjusting spatial projections and plot density maps with `ggplot2`.__
 
@@ -176,8 +176,8 @@ __The tutorial will take you through the steps of downloading red squirrel occur
 
 <a name="temp_timeseries"></a>
 
-# Visualising temperature timeseries data
-### By Anders Kolstrad
+## Visualising temperature timeseries data
+#### By Anders Kolstrad
 
 __The aim of this tutorial is to produce a line graph or time series plot with mean daily temperature plus errors using `ggplot2`, and similarly, to produce a second graph of daily temperature fluctuations using a smoother function. Finally, we will plot and save the two figures together using the `gridExtra` package.__
 
@@ -189,8 +189,8 @@ __The aim of this tutorial is to produce a line graph or time series plot with m
 
 <a name="spatial_movement"></a>
 
-# Analysis of spatial movement
-### By Stefano Masier
+## Analysis of spatial movement
+#### By Stefano Masier
 
 __The aim of this tutorial is to visualize data from a series of geographical coordinates, plot them and extract some basic information. The goal is to handle a series of coordinates, plot the path itself, but also to calculate and plot the covered distance, the relative movement and the relative angle for each time step. This information can then be used as a starting point to more advanced statistical analysis (i.e. GLMs).__
 
@@ -199,8 +199,8 @@ __The aim of this tutorial is to visualize data from a series of geographical co
 
 <a name="sunflecks"></a>
 
-# Analysing leaf-level understorey photosynthesis within sunflecks
-### Dries Landuyt
+## Analysing leaf-level understorey photosynthesis within sunflecks
+#### Dries Landuyt
 
 __In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package. We will apply our data maninpulation and data visualisation skilss to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
 
