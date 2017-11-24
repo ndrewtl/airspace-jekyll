@@ -54,18 +54,25 @@ We write our tutorials in Markdown and we use the Atom text editor, which is use
 
 <center><img src="{{ site.baseurl }}/img/atom_screen.png" alt="Img" style="width: 700px;"/></center>
 
-#### You can <a href="https://atom.io/" target="_blank">download Atom here.</a>
+<center>#### You can <a href="https://atom.io/" target="_blank">download Atom here.</a></center>
 
 Our workflow tends to go like this:
 
 #### - Write the `R` code for the tutorial in `RStudio`
+
 #### - Save any graphs you create with your code
+
 #### - Open `Atom`, copy and paste your `R` code in a new file
+
 #### - Save the file as a `.md` file, e.g. `datavis.md`
+
 #### - Add text to explain the purpose of the tutorial and what the code does
+
 #### - Add images and links as suitable
 
+
 ### Don't worry if you've never used `Atom` or `Markdown` before - we have created a template you can open straight in Atom and just insert your text, comments and images.
+
 
 #### You can download the  `tut_template.md` file that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.
 
