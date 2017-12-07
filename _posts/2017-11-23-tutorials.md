@@ -14,13 +14,33 @@ tags: github
 	</center>
 </div>
 
-### Tutorial Aims:
+## Tutorial Aims:
 
 #### <a href="#demo"> 1. Get familiar with the Coding Club model</a>
 
 #### <a href="#tutorial"> 2. Write your own tutorial</a>
 
 #### <a href="#publish"> 3. Publish your tutorial on Github</a>
+
+## Key steps - each step is explained in detail as you start going through the tutorial below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far along the tutorial you are.
+
+#### 1. Individually or in small groups, complete <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">a brief Coding Club tutorial</a> about quantifying and mapping vertebrate population change in Europe.
+
+#### 2. In small groups, create your own tutorial.
+
+#### - Choose a topic for your tutorial from the list we’ve collated, each demonstrator will help out the group that has chosen the topic they contributed
+
+#### - Download the tutorial template file `tut_template.md` and the `R` scripts for the various tutorials from <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas">this GitHub repository.</a> (click on Clone/Download, Download Zip and unzip the fles)
+
+#### - Open the `R` script for your chosen topic, run through the code to get familiar with what it does, save any plots it generates
+
+#### - Open tut_template.md in a plain text editor on half of your screen. Keep `RStudio` and the `R` script on the other half of the screen.
+
+#### - Follow the template and instructions to create your tutorial. You need to copy the code from the `R` script to the template fle, add text to explain what your tutorial does and add the plots.
+
+#### - Save your completed template file as `index.md`.
+
+#### - Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages - you are done, your tutorial is now live at the link thats shows up in the GitHub pages settings panel!
 
 <a name="demo"></a>
 
@@ -50,9 +70,9 @@ At each workshop, we have a team of demonstrators who are there to answer questi
 
 __Next we will learn how to write, format and publish coding tutorials.__
 
-We write our tutorials in Markdown.
+We write our tutorials in Markdown. Markdown is a language with plain text formatting syntax. Github and Markdown work very well together, and we use Markdown, because we can turn a Markdown file into a website hosted on Github in a minute or so! Because of the syntax formatting, Markdown is a great way to display code - the code appears in chunks and stands out from the rest of the text. All of the Coding Club tutorials are written in Markdown.
 
-We use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or Text Edit a Mac and Notepad on a Windows computer, if you prefer, the principle is the same - you just a plain text editor. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, `.md` files. So for example, `Microsoft Word` is a text editor, but not a plain one, and you can't easily save `.md` files. In the "fancier" plain text editors, you get "synthax" highlighting - different types of text, like code and links, are colour coded, so they are easier to spot.
+We use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or Text Edit a Mac and Notepad on a Windows computer, if you prefer, the principle is the same - you just a plain text editor. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, `.md` files. So for example, `Microsoft Word` is a text editor, but not a plain one, and you can't easily save `.md` files. In the "fancier" plain text editors, you get "syntax" highlighting - different types of text, like code and links, are colour coded, so they are easier to spot.
 
 __You can <a href="https://atom.io/" target="_blank">download Atom here, if you wish.</a>__
 
@@ -171,7 +191,7 @@ __The aims of this tutorial are to download species occurrence data from GBIF us
 ## Visualising forest plot tree data
 #### By John Godlee
 
-__This tutorial involves plotting tree inventory data from 2 permanent survey plots in a dry tropical savannah to see how spatial clustering of trees varies according to elephant activity. The tutorial covers the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree abundance over space. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.__
+__This tutorial involves plotting tree inventory data from two permanent survey plots in a dry tropical savannah to see how spatial clustering of trees varies according to elephant activity. The tutorial covers the basics of using the `ggplot2` package, using multiple layered visualisation methods to show variation in tree abundance over space. In addition, the tutorial will touch on  simple skills in the immensely popular `dplyr` package to prepare datasets for use in data visualisation.__
 
 <center> <img src="{{ site.baseurl }}/img/elephant_plot.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/no_elephant_plot.png" alt="Img" style="width: 500px;"/></center>
 <center>The spatial clustering of trees in a plot with elephant activity (left) and without elephant activity (right). Elephants clearly have caused spatial clustering of trees.</center>
