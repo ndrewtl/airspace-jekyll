@@ -35,7 +35,7 @@ There are many ways to run a coding workshop, and different approaches might wor
 
 At each workshop, we have a team of demonstrators who are there to answer questions and help out. We find that it works well to let people go through the tutorial at their own pace, and we usually walk around and check whether things are going fine. Most of the tutorials have challenges at the end, for which people can work individually or in small teams. We bring cookies, popcorn and other treats, occasionally make bad R jokes, and try our best to make the atmosphere light and positive. We don't require people to sign up and there are no obligations to attend all the workshops - people are free to attend whichever workshops are of interest to them. At the end of the workshops, we usually stay behind for a while in case people have any specific questions about their own coding projects.
 
-### Find out for yourself - complete a quick Coding Club tutorial
+## Find out for yourself - complete a quick Coding Club tutorial
 
 
 #### To get a taste of the Coding Club experience, you can complete a <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">Coding Club tutorial on mapping vertebrate population change across Europe.</a>
@@ -46,11 +46,15 @@ At each workshop, we have a team of demonstrators who are there to answer questi
 
 <a name="tutorial"></a>
 
-### Write your own tutorial
+## Write your own tutorial
 
 __Next we will learn how to write, format and publish coding tutorials.__
 
-We write our tutorials in Markdown and we use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets, if you prefer, the principle is the same. __You can <a href="https://atom.io/" target="_blank">download Atom here.</a>__
+We write our tutorials in Markdown.
+
+We use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or Text Edit a Mac and Notepad on a Windows computer, if you prefer, the principle is the same - you just a plain text editor. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, `.md` files. So for example, `Microsoft Word` is a text editor, but not a plain one, and you can't easily save `.md` files. In the "fancier" plain text editors, you get "synthax" highlighting - different types of text, like code and links, are colour coded, so they are easier to spot.
+
+__You can <a href="https://atom.io/" target="_blank">download Atom here, if you wish.</a>__
 
 <center><img src="{{ site.baseurl }}/img/atom_screen.png" alt="Img" style="width: 700px;"/></center>
 
@@ -70,10 +74,11 @@ Our workflow tends to go like this:
 #### - Add images and links as suitable
 
 
-#### Don't worry if you've never used `Atom` or `Markdown` before - we have created a template you can open straight in Atom and just insert your text, comments and images.
+#### Don't worry if you've never used `Atom` or `Markdown` before - we have created a template you can open straight in Atom (or another plain text editor) and just insert your text, comments and images.
 
 
-__You can download the  `tut_template.md` file that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.__
+### You can download the  `tut_template.md` file that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.
+
 
 __Open the file `tut_template.md` in Atom. The file includes instructions on how to add subheadings, links, code and images. We have prepared a few sample topics based on which you can write a brief tutorial. Please choose a topic by clicking on it, which will take you to all the files necessary to write the tutorial.__
 
