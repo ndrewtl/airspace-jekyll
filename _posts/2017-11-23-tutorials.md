@@ -106,28 +106,40 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
                         </div>
                       </a>
                   </li>
-									<li>
-										<a href="#density_maps">
-											<img src="{{ site.baseurl }}/img/portfolio/density_rs_icon.png" alt="">
-											<div class="overly">
-												<div class="position-center">
-													<center><h2>Visualising forest plot tree data</h2></center>
-													<center><p>Traits along environmental gradients</p></center>
-												</div>
-											</div>
-										</a>
-								</li>
-								<li>
-									<a href="#temp_timeseries">
-										<img src="{{ site.baseurl }}/img/portfolio/timesr_icon.png" alt="">
-										<div class="overly">
-											<div class="position-center">
-												<center><h2>Visualising temperature time series data</h2></center>
-												<center><p>Plotting mean daily temperatures and fluctuations</p></center>
-											</div>
-										</div>
-									</a>
-							</li>
+		<li>
+		  <a href="#density_maps">
+		   <img src="{{ site.baseurl }}/img/portfolio/density_rs_icon.png" alt="">
+		   <div class="overly">
+		   <div class="position-center">
+		   <center><h2>Visualising forest plot tree data</h2></center>
+		   <center><p>Traits along environmental gradients</p></center>
+		        </div>
+		     </div>
+		  </a>
+		</li>
+		<li>
+		  <a href="#temp_timeseries">
+		<img src="{{ site.baseurl }}/img/portfolio/timesr_icon.png" alt="">
+		     <div class="overly">
+		      <div class="position-center">
+		    <center><h2>Visualising temperature time series data</h2></center>
+		   <center><p>Plotting mean daily temperatures and fluctuations</p></center>
+		    </div>
+	          </div>
+		</a>
+		</li>
+		<li>
+		  <a href="#plant_traits">
+		   <img src="{{ site.baseurl }}/img/portfolio/traits_icon.png" alt="">
+		   <div class="overly">
+		   <div class="position-center">
+		   <center><h2>Summarising plant tree data data</h2></center>
+		   <center><p>Manipulating and visualising plant traits</p></center>
+		        </div>
+		     </div>
+		  </a>
+		</li>
+
                 </ul>
               </div>
             </div>
@@ -185,6 +197,18 @@ __The aim of this tutorial is to produce a line graph or time series plot with m
 <center>Mean daily temperatures ± SD (left) and daily temperature fluctuations in 2016.</center>
 
 #### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `temp_time_series.R` is in the `temp_timeseries` folder.
+
+<a name="plant_traits"></a>
+
+## Visualising trait-trait correlations and summarising plant traits across species
+#### By Anne Bjorkman
+
+<center> <img src="{{ site.baseurl }}/img/traits.png" alt="Img" style="width: 800px;"/> </center>
+<center>Plant traits across different species.</center>
+
+__The aims of this tutorial are to create a trait-trait correlation plot using plant trait data in a wide format, then to convert this wide data format to long data format, to summarize the data (i.e., calculate a mean, max, min, range, and quantiles per trait and species), and finally to graph the raw and summarized data.__
+
+#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `Plant_Traits.R` and the data `TraitData_CodingClub.RData` are in the `plant_traits` folder.
 
 
 <a name="spatial_movement"></a>
