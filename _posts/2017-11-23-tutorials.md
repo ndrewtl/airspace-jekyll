@@ -22,7 +22,7 @@ tags: github
 
 #### <a href="#publish"> 3. Publish your tutorial on Github</a>
 
-## Key step 
+## Key steps
 
 __Each step is explained in detail as you start going through the tutorial below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far along the tutorial you are.__
 
