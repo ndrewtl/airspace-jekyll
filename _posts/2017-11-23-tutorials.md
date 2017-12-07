@@ -22,25 +22,27 @@ tags: github
 
 #### <a href="#publish"> 3. Publish your tutorial on Github</a>
 
-## Key steps - each step is explained in detail as you start going through the tutorial below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far along the tutorial you are.
+## Key step 
 
-#### 1. Individually or in small groups, complete <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">a brief Coding Club tutorial</a> about quantifying and mapping vertebrate population change in Europe.
+__Each step is explained in detail as you start going through the tutorial below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far along the tutorial you are.__
 
-#### 2. In small groups, create your own tutorial.
+__Individually or in small groups, complete <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">a brief Coding Club tutorial</a> about quantifying and mapping vertebrate population change in Europe.__
 
-#### - Choose a topic for your tutorial from the list we’ve collated, each demonstrator will help out the group that has chosen the topic they contributed
+__In small groups, create your own tutorial.__
 
-#### - Download the tutorial template file `tut_template.md` and the `R` scripts for the various tutorials from <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas">this GitHub repository.</a> (click on Clone/Download, Download Zip and unzip the fles)
+__Choose a topic for your tutorial from the list we’ve collated, each demonstrator will help out the group that has chosen the topic they contributed.__
 
-#### - Open the `R` script for your chosen topic, run through the code to get familiar with what it does, save any plots it generates
+__Download the tutorial template file `tut_template.md` and the `R` scripts for the various tutorials from <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas">this GitHub repository.</a> (click on Clone/Download, Download Zip and unzip the files).__
 
-#### - Open tut_template.md in a plain text editor on half of your screen. Keep `RStudio` and the `R` script on the other half of the screen.
+__Open the `R` script for your chosen topic, run through the code to get familiar with what it does, save any plots it generates.__
 
-#### - Follow the template and instructions to create your tutorial. You need to copy the code from the `R` script to the template fle, add text to explain what your tutorial does and add the plots.
+__Open `tut_template.md` in a plain text editor on half of your screen. Keep `RStudio` and the `R` script on the other half of the screen.__
 
-#### - Save your completed template file as `index.md`.
+__Follow the template and instructions to create your tutorial. You need to copy the code from the `R` script to the template fle, add text to explain what your tutorial does and add the plots.__
 
-#### - Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages - you are done, your tutorial is now live at the link thats shows up in the GitHub pages settings panel!
+__Save your completed template file as `index.md`.__
+
+__Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages - you are done, your tutorial is now live at the link thats shows up in the GitHub pages settings panel!__
 
 <a name="demo"></a>
 
