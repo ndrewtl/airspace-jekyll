@@ -290,6 +290,12 @@ __Scroll down to the `GitHub pages` section again - you can see the link for you
 
 __Are you keen to share some of your coding and statistics knowledge? We would love to have more people join our team and build a world-wide community of people teaching and learning together! You can take a look at the tutorials we have already developed - feel free to make suggestions for changes on existing tutorials and get in touch with us at ourcodingclub@gmail.com if you would like to make a new tutorial.__
 
+### Useful resources
+
+You can also make a website with multiple pages, rather that having a single page (your `index.md` file). That's how we've made the <a href="https://ourcodingclub.github.io/" target="_blank">Coding Club website and the <a href="https://aberdeenstudygroup.github.io/studyGroup/" target="_blank">Aberdeen Study Group website</a>.
+	
+__The Mozilla Science Lab has <a href="https://github.com/mozillascience/studyGroup" target="_blank">a template</a> you can use for your website and <a href="https://mozillascience.github.io/study-group-orientation/index.html" target="_blank">a guide on how to use it</a>.__
+
 
 <hr>
 <hr>
