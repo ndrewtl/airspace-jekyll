@@ -130,7 +130,7 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
                         <div class="overly">
                           <div class="position-center">
                             <center><h2>Plotting forest plot tree data</h2></center>
-                            <center><p>Traits along environmental gradients</p></center>
+                            <center><p>The effects of elephant activity</p></center>
                           </div>
                         </div>
                       </a>
@@ -140,8 +140,8 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
 		   <img src="{{ site.baseurl }}/img/portfolio/density_rs_icon.png" alt="">
 		   <div class="overly">
 		   <div class="position-center">
-		   <center><h2>Visualising forest plot tree data</h2></center>
-		   <center><p>Traits along environmental gradients</p></center>
+		   <center><h2>Visualising species occurrence data</h2></center>
+		   <center><p>Density maps of red squirrel occurrences</p></center>
 		        </div>
 		     </div>
 		  </a>
@@ -162,7 +162,7 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
 		   <img src="{{ site.baseurl }}/img/portfolio/traits_icon.png" alt="">
 		   <div class="overly">
 		   <div class="position-center">
-		   <center><h2>Summarising plant tree data data</h2></center>
+		   <center><h2>Summarising plant tree data</h2></center>
 		   <center><p>Manipulating and visualising plant traits</p></center>
 		        </div>
 		     </div>
