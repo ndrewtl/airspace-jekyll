@@ -44,9 +44,9 @@ __Step 8. Save your completed template file as `index.md`.__
 
 __Step 9. Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages - you are done, your tutorial is now live at the link thats shows up in the GitHub pages settings panel!__
 
+<a name="demo"></a>
 <center><img src="{{ site.baseurl }}/img/CodingClub_logo2.png" alt="Img" style="width: 700px;"/></center>
 
-<a name="demo"></a>
 
 __We started Coding Club to help people at all career stages gain statistical and programming fluency, facilitating the collective advancement of ecology across institutions and borders. We use in-person workshops and online tutorials to equip participants not only with new skills, but also with the means to communicate these new skills broadly via online tutorials.__
 
@@ -222,7 +222,7 @@ __The tutorial will take you through the steps of downloading red squirrel occur
 
 __The aim of this tutorial is to produce a line graph or time series plot with mean daily temperature plus errors using `ggplot2`, and similarly, to produce a second graph of daily temperature fluctuations using a smoother function. Finally, we will plot and save the two figures together using the `gridExtra` package.__
 
-<center> <img src="{{ site.baseurl }}/img/temp_fluctuations.png.png" alt="Img" style="width: 600px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/temp_fluctuations.png" alt="Img" style="width: 600px;"/> </center>
 <center>Daily temperature fluctuations in 2016.</center>
 
 #### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `temp_time_series.R` is in the `temp_timeseries` folder.
