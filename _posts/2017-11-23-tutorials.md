@@ -274,7 +274,7 @@ Choose a name for your repository - that will form part of the link for your onl
 
 <center> <img src="{{ site.baseurl }}/img/new_repo_eab2.png" alt="Img" style="width: 600px;"/> </center>
 
-__Now you can see your new repository. Click on `Upload files` and upload your filled in `Markdown` template. To make our tutorial the landing (home) page of the website, we have to rename it to `index.md`. Click on the file you just uploaded, select `Edit` and change the filename. Remember to include the file extension as well, e.g. `index.md`. Upload any images you are using in your tutorial as well.__
+#### Now you can see your new repository. Click on `Upload files` and upload your filled in `Markdown` template. Make sure you save the file as `index.md` - that will make your tutorial the landing (home) page of the website. Upload any images you are using in your tutorial as well.
 
 You are two clicks away from having a website with your tutorial! Now click on `Settings` and scroll down to the `GitHub pages` section - we need to enable the `GitHub pages` feature, which turns our `index.md` file into a page, i.e. website. Change `Source` from `None` to `master` - the master branch of our repository. Click on `Save`.
 
