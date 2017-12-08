@@ -80,7 +80,7 @@ We use the Atom text editor, which is user-friendly text editor and easy on the 
 
 __You can <a href="https://atom.io/" target="_blank">download Atom here, if you wish.</a>__
 
-<center><img src="{{ site.baseurl }}/img/atom_screen.png" alt="Img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/atom_rstudio.png" alt="Img" style="width: 1000px;"/></center>
 
 
 Our workflow tends to go like this:
