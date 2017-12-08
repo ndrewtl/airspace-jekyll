@@ -52,6 +52,11 @@ __We started Coding Club to help people at all career stages gain statistical an
 
 __We would love to extend Coding Club beyond the University of Edinburgh and create a supportive community of people keen to get better at coding and statistics! With that in mind, we present you with a tutorial on how to write and share tutorials!__
 
+
+<center><img src="{{ site.baseurl }}/img/74b26610-2027-11e7-841b-f91777fdfcdf.png" alt="Img" style="width: 700px;"/></center>
+
+There are similar initiatives already in place, which is very exciting! For this workshop, we are thrilled to be collaborating with the <a href="https://aberdeenstudygroup.github.io/studyGroup/" target="_blank">Aberdeen Study Group</a>, led by <a href="https://francescamancini.github.io/" target="_blank">Francesca Mancini</a>. The Aberdeen Study Group aims to foster a place where people can get together to work on their coding projects, help each other out and share their work, whilst also learning new skills. You can follow their adventures in coding and open science on <a href="https://twitter.com/abdnStudyGroup" target="_blank">Twitter</a>.
+
 ## How does a Coding Club workshop work?
 There are many ways to run a coding workshop, and different approaches might work better in different situations. Here is how we usually structure our workshops. The workshops take two hours and begin with a super short presentation or introductory talk about what we will be doing, what skills we will acquire and what they are useful for. We then direct workshop attendants to the link for the tutorial around which the workshop is focused. People usually open the tutorial on half of their screen, and `RStudio` on the other half of their screen.
 
