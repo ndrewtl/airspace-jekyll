@@ -24,25 +24,29 @@ tags: github
 
 ## Key steps
 
-__Each step is explained in detail as you start going through the tutorial below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far along the tutorial you are.__
+__Each step is explained in detail as you start going through the workshop resources below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far through the workshop you are.__
+
+__Part 1: Becoming familiar with the Coding Club model__
 
 __Step 1. Individually or in small groups, complete <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">a brief Coding Club tutorial</a> about quantifying and mapping vertebrate population change in Europe.__
 
-__Step 2. In small groups, create your own tutorial.__
 
-__Step 3. Choose a topic for your tutorial from the list we’ve collated, each demonstrator will help out the group that has chosen the topic they contributed.__
 
-__Step 4. Download the tutorial template file `tut_template.md` and the `R` scripts for the various tutorials from <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas">this GitHub repository.</a>__ (click on Clone/Download, Download Zip and unzip the files).
+__Part 2: In small groups, create your own tutorial.__
 
-__Step 5. Open the `R` script for your chosen topic, run through the code to get familiar with what it does, save any plots it generates.__
+__Step 1. Choose a topic for your tutorial from the list we’ve collated, each demonstrator will help out the group that has chosen the topic they contributed.__
 
-__Step 6. Open `tut_template.md` in a plain text editor on half of your screen. Keep `RStudio` and the `R` script on the other half of the screen.__
+__Step 2. Download the tutorial template file `tut_template.md` and the `R` scripts for the various tutorials from <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas">this GitHub repository.</a>__ (click on Clone/Download, Download Zip and unzip the files).
 
-__Step 7. Follow the template and instructions to create your tutorial. You need to copy the code from the `R` script to the template fle, add text to explain what your tutorial does and add the plots.__
+__Step 3. Open the `R` script for your chosen topic, run through the code to get familiar with what it does, save any plots it generates.__
 
-__Step 8. Save your completed template file as `index.md`.__
+__Step 4. Open `tut_template.md` in a plain text editor on half of your screen. Keep `RStudio` and the `R` script on the other half of the screen.__
 
-__Step 9. Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages - you are done, your tutorial is now live at the link thats shows up in the GitHub pages settings panel!__
+__Step 5. Follow the template and instructions to create your tutorial. You need to copy the code from the `R` script to the template fle, add text to explain what your tutorial does and add the plots.__
+
+__Step 6. Save your completed template file as `index.md`.__
+
+__Step 7. Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages - you are done, your tutorial is now live at the link thats shows up in the GitHub pages settings panel!__
 
 <a name="demo"></a>
 <center><img src="{{ site.baseurl }}/img/CodingClub_logo2.png" alt="Img" style="width: 700px;"/></center>
@@ -50,7 +54,7 @@ __Step 9. Create a new repository on GitHub and upload `index.md` and your plots
 
 __We started Coding Club to help people at all career stages gain statistical and programming fluency, facilitating the collective advancement of ecology across institutions and borders. We use in-person workshops and online tutorials to equip participants not only with new skills, but also with the means to communicate these new skills broadly via online tutorials.__
 
-__We would love to extend Coding Club beyond the University of Edinburgh and create a supportive community of people keen to get better at coding and statistics! With that in mind, we present you with a tutorial on how to write and share tutorials!__
+__We would love to extend Coding Club beyond the University of Edinburgh and create a supportive community of people keen to get better at coding and statistics! With that in mind, we present you with a workshop on how to write and share tutorials!__
 
 
 <center><img src="{{ site.baseurl }}/img/74b26610-2027-11e7-841b-f91777fdfcdf.png" alt="Img" style="width: 700px;"/></center>
@@ -79,9 +83,9 @@ At each workshop, we have a team of demonstrators who are there to answer questi
 
 __Next we will learn how to write, format and publish coding tutorials.__
 
-We write our tutorials in Markdown. Markdown is a language with plain text formatting syntax. Github and Markdown work very well together, and we use Markdown, because we can turn a Markdown file into a website hosted on Github in a minute or so! Because of the syntax formatting, Markdown is a great way to display code - the code appears in chunks and stands out from the rest of the text. All of the Coding Club tutorials are written in Markdown.
+We write our tutorials in Markdown. Markdown is a language with plain text formatting syntax. Github and Markdown work very well together, and we use Markdown because we can turn a Markdown file into a website hosted on Github in a minute or so! Because of the syntax formatting, Markdown is a great way to display code - the code appears in chunks and stands out from the rest of the text. All of the Coding Club tutorials are written in Markdown.
 
-We use the Atom text editor, which is user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or Text Edit a Mac and Notepad on a Windows computer, if you prefer, the principle is the same - you just a plain text editor. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, `.md` files. So for example, `Microsoft Word` is a text editor, but not a plain one, and you can't easily save `.md` files. In the "fancier" plain text editors, you get "syntax" highlighting - different types of text, like code and links, are colour coded, so they are easier to spot.
+We use the Atom text editor, which is a user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or TextEdit on a Mac and Notepad on a Windows computer if you prefer, the principle is the same. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, Markdown (`.md`) files. So for example, `Microsoft Word` is a text editor, but not a plain one. In the "fancier" plain text editors, you get "syntax" highlighting - different types of text, like code and links, are colour coded, so they are easier to spot.
 
 __You can <a href="https://atom.io/" target="_blank">download Atom here, if you wish.</a>__
 
@@ -124,7 +128,7 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
                         <div class="overly">
                           <div class="position-center">
                             <center><h2>Mapping species occurrence records</h2></center>
-                            <center><p>A circumporal map of Arctic Fox occurrences</p></center>
+                            <center><p>A circumpolar map of Arctic Fox occurrences</p></center>
                           </div>
                         </div>
                       </a>
@@ -167,7 +171,7 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
 		   <img src="{{ site.baseurl }}/img/portfolio/traits_icon.png" alt="">
 		   <div class="overly">
 		   <div class="position-center">
-		   <center><h2>Summarising plant tree data</h2></center>
+		   <center><h2>Summarising plant trait data</h2></center>
 		   <center><p>Manipulating and visualising plant traits</p></center>
 		        </div>
 		     </div>
@@ -213,7 +217,7 @@ __This tutorial involves plotting tree inventory data from two permanent survey 
 ## Density maps of red squirrel occurrences
 #### By Francesca Mancini
 
-__The tutorial will take you through the steps of downloading red squirrel occurrences in the UK from the Global Biodiversity Information Facility (GBIF), adjusting spatial projections and plot density maps with `ggplot2`.__
+__The tutorial will take you through the steps of downloading red squirrel occurrences in the UK from the Global Biodiversity Information Facility (GBIF), adjusting spatial projections and plotting density maps with `ggplot2`.__
 
 <center> <img src="{{ site.baseurl }}/img/density_rs.png" alt="Img" style="width: 600px;"/> </center>
 
@@ -260,7 +264,7 @@ __The aim of this tutorial is to visualize data from a series of geographical co
 ## Analysing leaf-level understorey photosynthesis within sunflecks
 #### Dries Landuyt
 
-__In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package. We will apply our data maninpulation and data visualisation skilss to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
+__In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package. We will apply our data maninpulation and data visualisation skills to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
 
 *Coming soon*
 
@@ -269,9 +273,9 @@ __In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` fun
 
 # Publish your tutorial on Github
 
-__Next we can publish out tutorial on GitHub, which will turn it into a website, whose link you can share with your peers - transferring quantitative skills among ecologists in action!__
+__Next we can publish our tutorial on GitHub, which will turn it into a website, whose link you can share with your peers - transferring quantitative skills among ecologists in action!__
 
-__Go to the GitHub website, register if you don't already have an account(it's free) and click on `New Repository`.__
+__Go to the GitHub website, register if you don't already have an account (it's free) and click on `New Repository`.__
 
 <center> <img src="{{ site.baseurl }}/img/new_repo_eab.png" alt="Img" style="width: 600px;"/> </center>
 
@@ -297,7 +301,7 @@ __Are you keen to share some of your coding and statistics knowledge? We would l
 
 ### Useful resources
 
-You can also make a website with multiple pages, rather that having a single page (your `index.md` file). That's how we've made the <a href="https://ourcodingclub.github.io/" target="_blank">Coding Club website and the <a href="https://aberdeenstudygroup.github.io/studyGroup/" target="_blank">Aberdeen Study Group website</a>.
+You can also make a website with multiple pages, rather that having a single page (your `index.md` file). That's how we've made the <a href="https://ourcodingclub.github.io/" target="_blank">Coding Club website</a> and the <a href="https://aberdeenstudygroup.github.io/studyGroup/" target="_blank">Aberdeen Study Group website</a>.
 	
 __The Mozilla Science Lab has <a href="https://github.com/mozillascience/studyGroup" target="_blank">a template</a> you can use for your website and <a href="https://mozillascience.github.io/study-group-orientation/index.html" target="_blank">a guide on how to use it</a>.__
 
@@ -306,6 +310,7 @@ __The Mozilla Science Lab has <a href="https://github.com/mozillascience/studyGr
 <hr>
 
 <h3><a href="SURVEY_MONKEY_LINK" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+
 <br>
 <h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
 <br>
