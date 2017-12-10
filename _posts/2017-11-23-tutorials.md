@@ -309,7 +309,7 @@ __The Mozilla Science Lab has <a href="https://github.com/mozillascience/studyGr
 <hr>
 <hr>
 
-<h3><a href="SURVEY_MONKEY_LINK" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<h3><a href="https://www.surveymonkey.com/r/C6BRZLH" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 
 <br>
 <h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
