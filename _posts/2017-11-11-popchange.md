@@ -93,8 +93,8 @@ LPI_long <- filter(LPI_long, population != "NULL")
 # Select only populations which have at least 5 data points
 LPI_long <- LPI_long %>% group_by(id) %>% filter(length(unique(year)) > 4)
 
-# Scale population size to be from 0 to 1
-LPI_long$scalepop <- (LPI_long$population - min(LPI_long$population))/(max(LPI_long$population)-min(LPI_long$population))
+# Scale population size to be from 0 to 1 for each population and store the info in a new column scalepop
+LPI_long <- LPI_long %>% group_by(id) %>% mutate(scalepop = (population - min(population))/(max(population)-min(population)))
 ```
 
 <a name="calc"></a>
