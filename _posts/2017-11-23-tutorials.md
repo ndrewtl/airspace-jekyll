@@ -188,6 +188,18 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
 		     </div>
 		  </a>
 		</li>
+                 <li>
+		  <a href="#movement">
+		   <img src="{{ site.baseurl }}/img/portfolio/movement_icon.png" alt="">
+		   <div class="overly">
+		   <div class="position-center">
+		   <center><h2>Analysis of spatial movement</h2></center>
+		   <center><p>Visualising paths of movement and checking for autocorrelation</p></center>
+		        </div>
+		     </div>
+		  </a>
+		</li>
+
                 </ul>
               </div>
             </div>
@@ -259,26 +271,28 @@ __The aims of this tutorial are to create a trait-trait correlation plot using p
 #### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `Plant_Traits.R` and the data `TraitData_CodingClub.RData` are in the `plant_traits` folder.
 
 
-<a name="spatial_movement"></a>
-
-## Analysis of spatial movement
-#### By Stefano Masier
-
-<center> <img src="{{ site.baseurl }}/img/PAR_assimilation.png" alt="Img" style="width: 800px;"/> </center>
-
-__The aim of this tutorial is to visualize data from a series of geographical coordinates, plot them and extract some basic information. The goal is to handle a series of coordinates, plot the path itself, but also to calculate and plot the covered distance, the relative movement and the relative angle for each time step. This information can then be used as a starting point to more advanced statistical analysis (i.e. GLMs).__
-
-#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `R_script_LICOR.R` and the data `LICOR.csv` are in the `sunfleckss` folder.
-
-
 <a name="sunflecks"></a>
 
 ## Analysing leaf-level understorey photosynthesis within sunflecks
 #### Dries Landuyt
 
+<center> <img src="{{ site.baseurl }}/img/PAR_assimilation.png" alt="Img" style="width: 800px;"/> </center>
+
 __In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package, such as having two y axises and printing axis labels with characters like μ. We will apply our data maninpulation and data visualisation skills to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
 
-*Coming soon*
+#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `R_script_LICOR.R` and the data `LICOR.csv` are in the `sunflecks` folder.
+
+
+<a name="spatial_movement"></a>
+
+## Analysis of spatial movement
+#### By Stefano Masier
+
+<center> <img src="{{ site.baseurl }}/img/autocorr.png" alt="Img" style="width: 600px;"/> </center>
+
+__The aim of this tutorial is to visualize data from a series of geographical coordinates coming from monitoring the movement of mites. The goal is to handle a series of coordinates, plot the path itself, and determine if there are points along the way that are autocorrelated.__
+
+#### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `Dispersion_script.R` and the data `Dispersion.txt` are in the `spatial_movement` folder.
 
 
 <a name="publish"></a>
