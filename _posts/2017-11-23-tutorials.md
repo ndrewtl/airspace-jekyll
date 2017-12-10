@@ -288,7 +288,7 @@ __In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` fun
 ## Analysis of spatial movement
 #### By Stefano Masier
 
-<center> <img src="{{ site.baseurl }}/img/autocorr.png" alt="Img" style="width: 600px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/autocorr1.png" alt="Img" style="width: 600px;"/> </center>
 
 __The aim of this tutorial is to visualize data from a series of geographical coordinates coming from monitoring the movement of mites. The goal is to handle a series of coordinates, plot the path itself, and determine if there are points along the way that are autocorrelated.__
 
