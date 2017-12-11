@@ -26,7 +26,7 @@ tags: github
 
 __Each step is explained in detail as you start going through the workshop resources below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far through the workshop you are.__
 
-#### __Part 1: Becoming familiar with the Coding Club model__
+#### __Part 1: Becoming familiar with the Coding Club model.__
 
 __Step 1. Individually or in small groups, complete <a href="https://ourcodingclub.github.io/2017/11/11/popchange.html" target="_blank">a brief Coding Club tutorial</a> about quantifying and mapping vertebrate population change in Europe.__
 
