@@ -574,7 +574,7 @@ ggsave(beluga.panel, filename = "beluga_panel.png", width = 15, height = 10)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/beluga_panel.png" alt="Img" style="width: 1000px;"/> </center>
-<center>Figure 4. <a>a. Map of beluga occurrence and monitoring sites, b. occurrence records through time and population trends in c. Hudson Bay, d. Cook Inlet stock and e. St. Lawrence estuary.</b> Note that in St. Lawrence estuary, beluga populations were monitored in three separate studies.</center>
+<center>Figure 4. <b>a. Map of beluga occurrence and monitoring sites, b. occurrence records through time and population trends in c. Hudson Bay, d. Cook Inlet stock and e. St. Lawrence estuary.</b> Note that in St. Lawrence estuary, beluga populations were monitored in three separate studies.</center>
 
 <hr>
 <hr>
