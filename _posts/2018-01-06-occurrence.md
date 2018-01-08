@@ -22,6 +22,7 @@ tags: data_manip data_vis
 #### <a href="#datavis"> 3. Visualise & customise species occurrence and population trends </a>
 
 
+
 #### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-occurrence" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
 <b>In this tutorial, we will focus on how to efficiently format, manipulate and visualise large species occurrence and population trend datasets. We will use the `tidyr` and `dplyr` packages to clean up daat frames and calculate new variables, then we will do a further clean up of species occurrence data using the `CleanCoordinates` function from the `CoordinateCleaner` package. Species occurrence records often include thousands if not millions of latitude and longitude points - but are they all valid points? Sometimes the latitude and longitude values are reversed, there are unwanted zeros, or terrestrial species are seen out at sea, and marine species very inland! The `CoordinateCleaner` package, developed by Alexander Zizka, flags potentially erroneous coordinates, so that you can decide whether or not to include them in your analysis (<a href="https://github.com/azizka/CoordinateCleaner" target="_blank">more info here</a>). Finally, we will use the `ggplot2` package to make simple maps of occurrence records, visualise a few trends in time, and then we will arrange all of our graphs together using the new `patchwork` package.</b>
