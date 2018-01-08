@@ -21,7 +21,7 @@ tags: data_manip data_vis
 
 #### <a href="#datavis"> 3. Visualise & customise species occurrence and population trends </a>
 
-
+<p></p>
 
 #### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-occurrence" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
