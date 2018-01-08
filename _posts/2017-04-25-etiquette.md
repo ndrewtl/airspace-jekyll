@@ -41,7 +41,7 @@ The best way to split your script into sections is to use comments. You can defi
 
 <center> <img src="{{ site.baseurl }}/img/outline.png" alt="Img" style="width: 800px;"/> </center>
 
-__NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio - if you want to get this feature, please update.__
+__NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio - if you want to get this feature, you can <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">download</a> the newest version of RStudio.__
 
 #### Script structure:
 
