@@ -331,7 +331,7 @@ You can also make a website with multiple pages, rather that having a single pag
 	
 __The Mozilla Science Lab has <a href="https://github.com/mozillascience/studyGroup" target="_blank">a template</a> you can use for your website and <a href="https://mozillascience.github.io/study-group-orientation/index.html" target="_blank">a guide on how to use it</a>.__
 
-#### This workshop was originally delivered at the <a href="https://www.britishecologicalsociety.org/events/annual-meeting-2017/" target="_blank">2017 Ecology Across Borders Conference</a> in Ghent, Belgium.
+#### This workshop was originally delivered at the <a href="https://www.britishecologicalsociety.org/events/annual-meeting-2017/" target="_blank">2017 Ecology Across Borders Conference</a> in Ghent, Belgium. You can find out more about how the workshop went <a href="https://teamshrub.wordpress.com/2017/12/13/ecology-across-borders-round-up-so-far/" target="_blank">here</a>.
 
 <hr>
 <hr>
