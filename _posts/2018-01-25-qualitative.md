@@ -15,20 +15,60 @@ tags: datavis data_manip modelling
 
 ### Tutorial Aims:
 
-#### <a href="#ggplot"> 1. Learn how to format survey data, coding responses </a>
+#### <a href="#format"> 1. Learn how to format survey data, coding responses </a>
 
-#### <a href="#practice"> 2. Practice visualising ordinal data, count data, likert scales </a>
+#### <a href="#visualise"> 2. Practice visualising ordinal data, count data, likert scales </a>
 
-#### <a href="#panel"> 3. Statistically analyse qualitative data</a>
+#### <a href="#analyse"> 3. Statistically analyse qualitative data</a>
 
-<a name="ggplot"></a>
+This workshop will explore qualitative data, such as the sort of data you might collect through responses to survey questions, interview transcripts, or observations. The data analysis techniques in this workshop lend themselves well to sociological research, and the examples we will use come from a study on human behaviour, but they could easily be applied to observations of any system. For example, you might use an ordinal scale (e.g. 1-5, Disagree-Agree) to describe the condition of a plant seedling, with the question being something like "How wilted are the leaves, 1=no sign of damage, 5=leaves abcised". 
 
-<b>Note : all the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Qualitative" target="_blank">this repository</a>. Clone and download the repo as a zip file, then unzip it.</b>
+Firstly, we will learn how to format data from surveys and interviews effectively so that it can be easily used in analysis later. Knowing a few key data manipulation techniques will make processing the data much faster in the long run. Then we will explore various ways to visualise these data graphically, and finally we will run some simple statistical analyses to answer some hypotheses.
 
-We've learned <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">how to import our data in RStudio</a>, <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">format and manipulate them</a>, and now it's time we talk about communicating the results of our analyses - data visualisation! When it comes to data visualisation, the package `ggplot2` by Hadley Wickham has won over many scientists' hearts. In this tutorial, we will learn how to make beautiful and informative graphs and how to arrange them in a panel. Before we take on the `ggplot2` syntax, let's briefly cover what good graphs have in common.
+<b>Note : all the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">this repository</a>. Clone and download the repo as a zip file, then unzip it.</b>
 
+Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the repository</a> to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">previous tutorial.</a>
 
-<BODY>
+## Getting Started
+
+The first thing to do is open R Studio. Then make a new script file using `File/ New File/ R Script`, save it with a sensible name inside the folder you just downloaded and unzipped from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>.
+
+Next, in your script file you need to set your working directory to the folder you just downloaded from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>. Copy and paste the code below as a guide, but remember that the path to your folder will be different:
+
+```r
+setwd("~/Downloads/CC-time-series-master")
+```
+
+Next, load (`library()`) the packages needed for this tutorial by running the code below in your script file. Remember to `install.packages()` if this is the first time you're using these packages:
+
+```r
+library(ggplot2)
+library(dplyr)
+```
+
+Finally, load the data files we will be using for the tutorial.
+
+```r
+
+```
+
+<DESCRIPTION of DATA>
+
+## 1. Formatting qualitative data
+
+<a name="format"></a>
+
+Getting qualitative data into the right format for analysis can take some time. Most analytical tools are based on numerical values, so some coercion is needed to generate numerical values from our qualitative observations. In the case of a likert scale, this has already mostly been done for us. We have five discrete categories that follow an order from low to high, in this case <DESCRIPTION>. Even so, on our data sheet, whoever entered all the data has instead used the raw descriptors (e.g. <DESCRIPTION>), instead of their numerical equivalents (e.g. 4). This can be fixed with a tool called `gsub()`. `gsub()` finds strings that you search for in the data and replaces them with whatever you choose. In this case:
+
+```r
+<CODE>
+
+```
+
+The first argument of `gsub()` is the pattern to be replaced, the second is the replacement to be substituted in, and the third is the data to act on.
+
+Depending on the question asked and what the responses show, responses from a likert scale are normally encoded from 1 to 5, or from -2 to +2
+
 
 <hr>
 <hr>
