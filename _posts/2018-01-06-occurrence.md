@@ -467,7 +467,7 @@ __Now comes what looks like a gigantic chunk of code! We have explained each ste
 		# We can recreate the shape of a dropped pin by overlaying a circle and a triangle
     annotation_custom(icon, xmin = -210, xmax = -120, ymin = 15, ymax = 35) +  # Adding the icon
     labs(title = "a. Beluga GBIF occurrences") +  # Adding a title
-    theme(plot.title = element_text(size = 20))  # Setting the size for the title
+    theme(plot.title = element_text(size = 20)))  # Setting the size for the title
 ```
 
 __We can use `ggsave() to save the map, by default, the width and height are measured in inches.`__
