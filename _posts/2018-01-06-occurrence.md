@@ -148,7 +148,7 @@ __The data are in a `.RData` format, as those are quicker to use, since ``.Rdata
 load("beluga.RData")
 
 # Load population change data for marine species from the Living Planet Database
-popchange <- load("marine.RData")
+load("marine.RData")
 ```
 
 
