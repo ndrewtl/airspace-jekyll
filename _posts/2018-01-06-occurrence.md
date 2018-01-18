@@ -94,9 +94,8 @@ library(maps)
 library(rgbif)
 library(CoordinateCleaner)
 library(ggrepel)
-install.packages("devtools")
-devtools::install_github("thomasp85/patchwork")
-library(patchwork)
+library(png)
+library(gridExtra)
 ```
 
 
@@ -489,7 +488,7 @@ __Next, we will have a go at two other kinds of graphs, a line graph and a few s
 # Number of occurrence records through time
 yearly.obs <- beluga.clean %>% group_by(year) %>% tally() %>% ungroup() %>% filter(is.na(year) == FALSE)
 
-(occurences <- ggplot(yearly.obs, aes(x = year, y = n)) +
+(occurrences <- ggplot(yearly.obs, aes(x = year, y = n)) +
     geom_line(colour = "aquamarine3", size = 1) +
     geom_area(aes(y = n), fill = "aquamarine3") +  # Fill the area below the line graph with colour
     labs(x = NULL, y = "Number of occurrences\n",  # x = NULL means no x axis label
@@ -550,27 +549,20 @@ beluga3 <- filter(beluga.pop, id == "1950" | id == "4557" | id == "4558")
 
 You might have noticed that the process is a bit repetitive, we are performing the same action, but for different species. It's not that big of a deal for three populations, but imagine we had a thousand!  If that were the case, we could have used a loop that goes through each population and makes a graph, or we could have used a pipe, where we group by population id and then make the graphs, and finally we could have used the `lapply()` function which applies a function, in our case making a graph, to e.g. each population. There are many options, and if you would like to learn more on how to automate your analysis and data visualisation when doing the same thing for many places or species, you can check out <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">our tutorial comparing loops, pipes and `lapply()`</a> and <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">our tutorial on using functions and loops</a>.
 
-#### Arrange all graphs in a panel with the `patchwork` package
+#### Arrange all graphs in a panel with the `gridExtra` package
 
-__The `patchwork` package is developed by Thomas Lin Pedersen and offers an easy way to create panels of multiple graphs made using `ggplot2` (<a href="https://github.com/thomasp85/patchwork" target="_blank") more info here</a>. A particular asset is being able to easily set the proportion of the panel each graph should take - e.g. for our panel, on the first row, we want the map to take up most of the space, around two thirds, then on the second row, we want the space to be split evenly between the three graphs.__
-
-The `grid.arrange` function from the `gridExtra` package serves a similar purpose and works for graphs made using `ggplot2` and `base R` graphics, but setting the proportions requires a few more lines of code. You can check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html#panel" target="_blank">data visualisation tutorial</a> to find out more about `grid.arrange`.
+The `grid.arrange` function from the `gridExtra` package creates panels of different graphs. You can check out our <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html#panel" target="_blank">data visualisation tutorial</a> to find out more about `grid.arrange`.
 
 
 ```r
 # Create panel of all graphs
-(beluga.panel <- {  # The curly brackets group the plots we want to appear on the same row
-  beluga.map.final + occurences +
-    plot_layout(ncol = 2, widths = c(2.15, 0.85))
-} -  # Use - to split the panel in two twos, think of it as a hyphen, not a minus
-{
-  hudson.bay + cook.inlet + st.lawrence.est +
-    plot_layout(ncol = 3, widths = c(1, 1, 1))
-} +
-    plot_layout(ncol = 1))
-
-# Save panel
-ggsave(beluga.panel, filename = "beluga_panel.png", width = 15, height = 10)
+row1 <- grid.arrange(beluga.map.final, occurrences, ncol = 2, widths = c(1.96, 1.04))
+# Makes a panel of the map and occurrence plot and specifies the ratio, i.e. we want the map to be wider than the graph
+row2 <- grid.arrange(hudson.bay, cook.inlet, st.lawrence.est, ncol = 3, widths = c(1.1, 1, 1))
+# Makes a panel of all the population plots and sets the ratio
+# We are giving the first graph more space because that's the one with the y axis label
+beluga.panel <- grid.arrange(row1, row2, nrow = 2, heights = c(0.9, 1.1))
+# Stiching it all together
 ```
 
 <center> <img src="{{ site.baseurl }}/img/beluga_panel.png" alt="Img" style="width: 1000px;"/> </center>
