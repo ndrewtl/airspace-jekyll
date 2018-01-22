@@ -55,18 +55,24 @@ a:active {
   text-transform: uppercase;
   font-size: 28px;
   font-weight: 600;
+  margin: 20px;
 }
 .section-title p {
   font-family: 'Volkhov', serif;
   font-style: italic;
   color: #666;
 }
+blockquote {
+  font-family: 'Volkhov', serif;
+  color: #666;
+  font-size: 16px;
+}
 /*--
 	Header Start
 --*/
 header {
   background: #fff;
-  padding: 20px 0;
+  padding: 20px 20px 30px 20px;
 }
 header .navbar {
   margin-bottom: 0px;
@@ -173,7 +179,7 @@ font header .navbar-default .navbar-nav li a:hover {
 #intro .block h2 {
   padding-top: 0px;
   line-height: 2px;
-  margin: 0;
+  margin: 20px;
 }
 #intro .block p {
   color: #7B7B7B;
@@ -181,8 +187,9 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 #intro .block img {
   padding-left: 0px;
-  width: 100%;
+  width: 80%;
 }
+
 #intro .section-title {
   margin-bottom: 0px;
 }
@@ -216,7 +223,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-bottom: 30px;
 }
 #service .service-item i {
-  font-size: 60px;
+  font-size: 30px;
   color: #4A4656;
 }
 #service .service-item h4 {
@@ -524,6 +531,89 @@ font header .navbar-default .navbar-nav li a:hover {
   letter-spacing: 1px;
   word-spacing: 3px;
 }
+#global-header-golden {
+  background: url("../img/37.png") no-repeat;
+  background-size: cover;
+  padding-top: 150px;
+  padding-bottom: 107px;
+  position: relative;
+  background-attachment: fixed;
+}
+#global-header-golden:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #928dab, #1f1c2c 70%);
+  opacity: 0.8;
+}
+#global-header-golden .block {
+  color: #E3E3E4;
+  margin: 0 auto;
+  padding-left: 90px;
+  text-align: center;
+}
+#global-header-golden .block h1 {
+  font-weight: 100;
+  font-size: 45px;
+  letter-spacing: 6px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+#global-header-golden .block p {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+}
+
+#global-header-maltes {
+  background: url("../img/32.jpg") no-repeat;
+  background-size: cover;
+  padding-top: 150px;
+  padding-bottom: 107px;
+  position: relative;
+  background-attachment: fixed;
+}
+
+#global-header-maltes:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #928dab, #1f1c2c 70%);
+  opacity: 0.8;
+}
+#global-header-maltes .block {
+  color: #E3E3E4;
+  margin: 0 auto;
+  padding-left: 90px;
+  text-align: center;
+}
+#global-header-maltes .block h1 {
+  font-weight: 100;
+  font-size: 45px;
+  letter-spacing: 6px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+#global-header-maltes .block p {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+}
+
 /*--
 	portfolio-work Start
 --*/
