@@ -51,9 +51,8 @@ Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bC
 ##### <a href="#selection"> The entire model selection</a>
 ### <a href="#end"> 7. THE END </a>
 
-
-### What is mixed effects modelling and why does it matter?
 <a name="one"></a>
+### What is mixed effects modelling and why does it matter?
 
 Ecological and biological data are often complex and messy. We can have different **grouping factors** like populations, species, sites we collect the data at etc. **Sample sizes** might leave something to be desired too, especially if we are trying to fit complicated models with **many parameters**. On top of that our data points might **not be truly independent** - for instance, we might be using quadrats within our sites to collect the data (and so there is structure to our data: quadrats are nested within the sites).
 
@@ -61,8 +60,8 @@ This is why **mixed models** were developed, to deal with such messy data and to
 
 We will cover only linear mixed models here, but if you are trying to "extend" your linear model fear not: there are generalised linear mixed effects models out there too.
 
-### Explore the data
 <a name="two"></a>
+### Explore the data
 
 We are going to focus on a fictional study system, dragons, so that we don't have to get too distracted with the specifics of this example (and so I don't throw too much biology/ecology at those of you who come from different fields). Imagine that we decided to train dragons and so we went out into the mountains and collected data on dragon intelligence (`testScore`) as a prerequisite. We sampled individuals with a range of body lengths across three sites in eight different mountain ranges. Start by loading the data and having a look at them.
 
@@ -80,18 +79,18 @@ hist(dragons$testScore)  # seems close to a normal distribution - good!
 ```
 <center><img src="{{ site.baseurl }}/img/mm-1.png" alt="Img" style="width: 800px;"/></center>
 
-
 It is good practice to **standardise** your explanatory variables before proceeding, so that they have a mean of zero and standard deviation of one. It ensures that the estimated coefficients are all on the same scale, making it easier to compare effect sizes. You can use ``scale()`` to do that:
 
 ```r
 dragons$bodyLength2 <- scale(dragons$bodyLength)
 ```
+
 `scale()` centers the data (the column mean is subtracted from the values in the column) and then scales it (the centered column values are divided by the column's standard deviation).
 
 Back to our question: is the test score affected by body length?
 
-### Fit all data in one analysis
 <a name="three"></a>
+### Fit all data in one analysis
 
 One way to analyse this data would be to fit a linear model to all our data, ignoring the sites and the mountain ranges for now.
 
@@ -114,7 +113,6 @@ ggplot(dragons, aes(x = bodyLength, y = testScore)) +
 <center><img src="{{ site.baseurl }}/img/mm-2.png" alt="Img" style="width: 800px;"/></center>
 
 Ok, so both from the linear model and from the plot it seems like bigger dragons do better in our intelligence test. That seems a bit odd, size shouldn't really affect the test scores.
-
 
 But... Are the assumptions met?
 
@@ -153,16 +151,17 @@ We could also plot it and colour points by mountain range:
 ggplot(dragons, aes(x = bodyLength, y = testScore, colour = mountainRange)) +
   geom_point(size = 2) +
   theme_classic() +
-    theme(legend.position = "none")
+  theme(legend.position = "none")
 ```
+
 <center><img src="{{ site.baseurl }}/img/mm-6.png" alt="Img" style="width: 800px;"/></center>
 
 From the above plots it looks like our mountain ranges vary both in the dragon body length and in their test scores. This confirms that our observations from within each of the ranges **aren't independent**. We can't ignore that.
 
 So what do we do?
 
-### Run multiple analyses
 <a name="four"></a>
+### Run multiple analyses
 
 We could run many separate analyses and fit a regression for each of the mountain ranges. 
 
@@ -183,8 +182,8 @@ To do the above we would have to estimate a slope and intercept parameter for ea
 
 This presents problems - not only we are **hugely decreasing our sample size**, but we are also **increasing chances of a Type I Error by carrying out multiple comparisons**. Not ideal!
 
-### Modify the current model
 <a name="five"></a>
+### Modify the current model
 
 We want to use all the data, but account for the data coming from different mountain ranges (let's put sites on hold for a second to make things simpler).
 
@@ -199,8 +198,8 @@ Now body length is <u>not</u> significant. But let's think about what we are doi
 
 This is what we refer to as **"random factors"** and so we arrive at mixed effects models. Ta-daa!
 
-### Mixed effects models
 <a name="six"></a>
+### Mixed effects models
 
 A Mixed model is a good choice here: it will allow us to **use all the data we have** (higher sample size) and **account for the correlations between data** coming from the sites and mountain ranges. We will also **estimate fewer parameters** and **avoid problems with multiple comparisons** that we would encounter while using separate regressions.
 
@@ -210,9 +209,9 @@ We are going to work in `lme4`, so load the package (or use `install.packages` i
 library(lme4)
 ```
 
-
-#### Fixed and Random effects
 <a name="FERE"></a>
+#### Fixed and Random effects
+
 Let's talk a little about the **fixed and random effects** first - the literature isn't clear on the exact definitions of those, so I'm going to give you an "introductory" explanation. See links in the <a href="#Further_reading">*further reading*</a> below if you want to know more. 
 
 In some cases the same variable could be considered either a random or a fixed effect (and sometimes even both at the same time!), so you have to think not only about your data, but also **about the questions you are asking** and construct your models accordingly.
@@ -233,8 +232,8 @@ If we specifically chose eight particular mountain ranges *a priori* and we were
 
 ##### **So the big question is:** *what are you trying to do? What are you trying to make predictions about? What is just variation (a.k.a "noise") that you need to control for?*
 
-#### Further reading for the keen: 
 <a name="Further_Reading"></a>
+#### Further reading for the keen: 
 
 - [Is it a fixed or random effect?](https://dynamicecology.wordpress.com/2015/11/04/is-it-a-fixed-or-random-effect/){:target="_blank"} A useful way to think about fixed *vs*. random effects is in terms of partitioning the variation and estimating random effects with **partial pooling**. The description [here](http://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode){:target="_blank"} is the most accessible one I could find for now and you can find more opinions in the comments under the previous link too (search for *pooling* and *shrinkage* too if you are very keen).
 
@@ -244,9 +243,8 @@ If we specifically chose eight particular mountain ranges *a priori* and we were
 
 - Have a look at some of the fixed and random effects definitions gathered by Gelman in [this paper](http://www.stat.columbia.edu/~gelman/research/published/AOS259.pdf){:target="_blank"} (you can also find them [here](http://stats.stackexchange.com/questions/4700/what-is-the-difference-between-fixed-effect-random-effect-and-mixed-effect-mode/4702#4702){:target="_blank"} if you can't access the paper).
 
-
-### Let's fit our first mixed model
 <a name="first"></a>
+### Let's fit our first mixed model
 
 Alright! Still with me? We have a response variable, the test score, and we are attempting to **explain part of the variation** in test score through fitting body length as a fixed effect. But the response variable has some **residual variation** (*i.e.* unexplained variation) associated with mountain ranges. By using random effects we are modeling that unexplained variation through **variance**.
 
@@ -294,9 +292,9 @@ We can see the variance for `mountainRange = 339.7`. Mountain ranges are clearly
 
 So the differences between mountain ranges explain ~60% of the variance. Do keep in mind that's 60% of variance "left over" after the variance explained by our fixed effects.
 
-
-#### Types of random effects
 <a name="types"></a>
+#### Types of random effects
+
 Before we go any further let's review the syntax above and chat about crossed and nested random effects. It's useful to get those clear in your head.
 
 **Reminder**: a factor is just any categorical independent variable.
@@ -305,22 +303,21 @@ Above we used `(1|mountainRange)` to fit our random effect - whatever is on the 
 
 **Random effects (factors) can be crossed or nested** - it depends on the relationship between the variables. Let's have a look.
 
-
-##### Crossed random effects
 <a name="crossed"></a>
+##### Crossed random effects
 
 Be careful with the nomenclature. There are **"hierarchical linear models"** (HLMs) or **“multilevel models”** out there, but while all HLMs are mixed models, **not all mixed models are hierarchical**. That's because you can have **crossed (or partially crossed) random factors** that do not represent levels in a hierarchy. 
 
 Think for instance about our study where you monitor dragons (subject) across different mountain ranges (context) and imagine that we collect **multiple observations per dragon** (we give it the test multiple times - risking **pseudoreplication**). Since our dragons can fly it's easy to imagine that **we might observe the same dragon across different mountain ranges**, but also that we might not see all the dragons visiting all of the mountain ranges. Therefore, we can potentially observe every dragon in every mountain range (**crossed**) or at least observe some dragons across some of the mountain ranges (**partially crossed**). We would then fit the identity of the dragon and mountain range as (partially) crossed random effects.
 
-
-#### Nested random effects
 <a name="nested"></a>
+#### Nested random effects
+
 If this sounds confusing, not to worry - `lme4` handles partially and fully crossed factors well, they don't have to be hierarchical or “multilevel” by design. However, **the same model specification can be used to represent both (partially) crossed or nested factors**, so you can't use the model's specification to tell you what's going on with the random factors, you have to look at the structure of the factors in the data. To make things easier for yourself code your data properly and **avoid implicit nesting**. Not sure what implicit nesting is? Read on.
 
-
-#### Implicit *vs*. explicit nesting
 <a name="implicit"></a>
+#### Implicit *vs*. explicit nesting
+
 To tackle this, let's look at another aspect of our study: we collected the data on dragons not only across multiple mountain ranges, but also across several sites within those mountain ranges. If you don't remember have another look at the data:
 
 ```r
@@ -340,8 +337,8 @@ Now it's obvious that we have 24 samples (8 mountain ranges x 3 sites) and not j
 
 **To sum up:** for **nested random effects** the factor appears **ONLY** within a particular level of another factor (each site belongs to a specific mountain range and only to that range); for **crossed effects** a given factor appears in more than one level of another factor (dragons appearing within more than one mountain range). **Or you can just remember that if your random effects aren't nested then they are crossed!**
 
-### Our second mixed model
 <a name="second"></a>
+### Our second mixed model
 
 Based on the above, using following specification would be **<u>wrong</u>**:
 
@@ -364,7 +361,6 @@ For the record you could also use the below syntax, but I'd advise you to set ou
 `(1|mountainRange/site)`  or even
 `(1|mountainRange) + (1|mountainRange:site)`
 
-
 Let's plot this again - visualising what's going on is always helpful. You should be able to see eight mountain ranges with three sites (different colour points) within them, with a line fitted through each site.
 
 ```r
@@ -381,14 +377,14 @@ ggplot(dragons, aes(x = bodyLength, y = testScore, colour = site)) +
 
 If you are particularly keen the next section gives you a few options when it comes to **presenting your model results**, and in the last "extra" section you  can learn about the **model selection conundrum**. There is just a little bit more code there to get through if you fancy those.
 
-
-
-#### Presenting your model results
 <a name="presenting"></a>
+#### Presenting your model results
+
 Once you get your model you have to **present** it in a nicer form. 
 
-#### Tables
 <a name="tables"></a>
+#### Tables
+
 For `lme4` if you are looking for a table, I'd recommend that you have a look at the `stargazer` package.
 
 ```r
@@ -413,22 +409,21 @@ stargazer(mixed.lmer2, type = "text",
 
 If you are looking for **a way to create plots of your results** check out `dotwhisker` and this [tutorial](https://cran.r-project.org/web/packages/dotwhisker/vignettes/dotwhisker-vignette.html){:target="_blank"}.
 
-
-#### Further processing
 <a name="processing"></a>
+#### Further processing
+
 If you'd like to be able **to do more with your model results**, for instance process them further, collate model results from multiple models or plot them have a look at the `broom` package: this [tutorial](http://varianceexplained.org/r/broom-intro/){:target="_blank"} is a great start.
 
-
-#### EXTRA: P-values and model selection
 <a name="extra"></a>
+#### EXTRA: P-values and model selection
 
 Please be **very, very careful** when it comes to model selection. Focus on your **question**, don't just plug in and drop variables from a model haphazardly till you make something "significant". Always choose variables based on biology/ecology, I might use model selection to check a couple of non-focal parameters, but I keep the "core" of the model untouched in most cases. **Define your goals and questions and focus on that.** Also, don't just put all possible variables in (i.e. don't **overfit**) - remember that as a rule of thumb **you need 10 times more data than parameters** you are trying to estimate.
 
 For more info on overfitting check out this [tutorial](https://ourcodingclub.github.io/2017/02/28/modelling.html){:target="_blank"}.
 
-
-#### Fixed effects structure
 <a name="fixedstr"></a>
+#### Fixed effects structure
+
 **Before we start, again: think twice before trusting model selection!**
 
 Most of you are probably going to be predominantly interested in your fixed effects, so let's start here. `lme4` doesn't spit out p-values for the parameters by default - this is a conscious choice made by the authors of the package, as there are many problems with p-values (I'm sure you are aware of the debates!)
@@ -446,7 +441,7 @@ You will inevitably look for a way to assess your model though, so here are a fe
 
 I think that `MCMC` and bootstrapping are a bit out of our reach for this workshop, so let's have a quick go at **likelihood ratio tests** using `anova()`. With large sample sizes p-values based on the likelihood ratio are generally considered ok. **NOTE:** With small sample sizes you might want to look into deriving p-values using the Kenward-Roger or Satterthwaite approximations (for `REML` models). Check out the `pbkrtest` package.
 
-Fit the models,  a full model and a reduced model in which we dropped our fixed effect (`bodyLength2`):
+Fit the models, a full model and a reduced model in which we dropped our fixed effect (`bodyLength2`):
 
 ```r
 full.lmer <- lmer(testScore ~ bodyLength2 + (1|mountainRange) + (1|sample), 
@@ -474,9 +469,9 @@ Even though you **use ML to compare models** you should **report parameter estim
 
 **NOTE 3:** There isn't really an agreed upon way of dealing with the variance from the random effects in mixed models when it comes to assessing significance. Both **p-values** and **effect sizes** have issues, although from what I gather p-values seem to cause more disagreement than effect sizes, at least in the R community.
 
-
-#### Random effects structure
 <a name="randomstr"></a>
+#### Random effects structure
+
 Now you might wonder about selecting your random effects. In general, I'd advise you to think about your **experimental design, your system and data collected as well as your questions**.
 
 If your random effects are there to deal with **pseudoreplication** then it doesn't really matter whether they are "significant" or not - they **are part of your design** and have to be included. Imagine we tested our dragons multiple times - we then *have to* fit dragon identity as a random effect.
@@ -490,9 +485,9 @@ When it comes to such random effects you can use **model selection** to help you
 
 **NOTE 2:** Do **NOT** compare `lmer` models with `lm` models (or `glmer` with `glm`).
 
-
-#### Entire model selection
 <a name="selection"></a>
+#### Entire model selection
+
 A few notes on the process of model selection. There are two ways here: (i) **"top-down"**, where you start with a complex model and gradually reduce it, and (ii) **"step up"**, where you start with a simple model and add new variables to it. Unfortunately, you might arrive at different final models by using those strategies and so you need to be careful. 
 
 The model selection process recommended by Zuur *et al.* (2009) is a top-down strategy and goes as follows:
@@ -504,8 +499,9 @@ The model selection process recommended by Zuur *et al.* (2009) is a top-down st
 
 **NOTE:** At the risk of sounding like a broken record: I think it's best to decide on what your model is based on biology/ecology/data structure *etc*. than through following model selection blindly. Additionally, just because something is non-significant doesn't necessarily mean you should always get rid of it.
 
-### THE END 
 <a name="end"></a>
+### THE END 
+
 **Well done for getting through this!** As you probably gather mixed effects models can be a bit tricky and often there isn't much consensus on the best way to tackle something within them. The coding bit is actually the (relatively) easy part here. Be mindful of what you are doing, prepare the data well and things should be alright.
 
 <hr>
