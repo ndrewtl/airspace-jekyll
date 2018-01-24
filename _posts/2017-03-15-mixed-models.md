@@ -169,10 +169,10 @@ Lets have a quick look at the data split by mountain range.  We use the `facet_w
 
 ```r
 ggplot(aes(bodyLength, testScore), data = dragons) + 
-geom_point() + 
-facet_wrap(~ mountainRange) + 
-xlab("length") + 
-ylab("test score")
+  geom_point() + 
+  facet_wrap(~ mountainRange) + 
+  xlab("length") + 
+  ylab("test score")
 ```
 <center><img src="{{ site.baseurl }}/img/mm-7.png" alt="Img" style="width: 800px;"/></center>
 
