@@ -225,9 +225,10 @@ font header .navbar-default .navbar-nav li a:hover {
 #service .service-item i {
   font-size: 30px;
   color: #4A4656;
+  position: relative;
 }
-#service .service-item h4 {
-  padding-top: 20px;
+#service .service-item h5 {
+  padding-top: 15px;
   margin: 0;
   color: #666;
 }
@@ -238,6 +239,13 @@ font header .navbar-default .navbar-nav li a:hover {
   font-size: 14px;
   line-height: 1.8;
 }
+#service span{
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+#service .service-item
+
 /*--
 	call-to-action Start
 --*/
