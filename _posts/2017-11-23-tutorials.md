@@ -24,7 +24,7 @@ tags: github
 
 ## Key steps
 
-__Each step is explained in detail as you start going through the workshop resources below. Have a quick read, there is no need to click on links or download things right now, this is just an outline, so that you know what is ahead of you. You can use this list as a reference to track how far through the workshop you are.__
+__Each step is explained in detail as you start going through the workshop resources below. Have a quick read. There is no need to click on links or download things right now, this is just an outline so that you know what is ahead of you. You can use this list as a reference to track how far through the workshop you are.__
 
 #### __Part 1: Becoming familiar with the Coding Club model.__
 
@@ -34,11 +34,11 @@ __Step 1. Individually or in small groups, complete <a href="https://ourcodingcl
 
 #### __Part 2: In small groups, create your own tutorial.__
 
-__Step 1. Choose a topic for your tutorial from the list we’ve collated, each demonstrator will help out the group that has chosen the topic they contributed.__
+__Step 1. Choose a topic for your tutorial from the list we’ve collated Each demonstrator will help out the group that has chosen the topic they contributed.__
 
-__Step 2. Download the tutorial template file `tut_template.md` and the `R` scripts for the various tutorials from <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas">this GitHub repository.</a>__ (click on Clone/Download, Download Zip and unzip the files).
+__Step 2. Download the tutorial template file `tut_template.md` and the `R` scripts for the various tutorials from <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target="_blank">this GitHub repository</a>__ (click on Clone/Download, Download Zip and unzip the files).
 
-__Step 3. Open the `R` script for your chosen topic, run through the code to get familiar with what it does, save any plots it generates.__
+__Step 3. Open the `R` script for your chosen topic, run through the code to get familiar with what it does and save any plots it generates.__
 
 __Step 4. Open `tut_template.md` in a plain text editor on half of your screen. Keep `RStudio` and the `R` script on the other half of the screen.__
 
@@ -46,7 +46,7 @@ __Step 5. Follow the template and instructions to create your tutorial. You need
 
 __Step 6. Save your completed template file as `index.md`.__
 
-__Step 7. Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages - you are done, your tutorial is now live at the link thats shows up in the GitHub pages settings panel!__
+__Step 7. Create a new repository on GitHub and upload `index.md` and your plots. Go to Settings, enable GitHub pages and you are done! Your tutorial is now live at the link thats shows up in the GitHub pages settings panel!__
 
 <a name="demo"></a>
 <center><img src="{{ site.baseurl }}/img/CodingClub_logo2.png" alt="Img" style="width: 700px;"/></center>
@@ -62,11 +62,11 @@ __We would love to extend Coding Club beyond the University of Edinburgh and cre
 There are similar initiatives already in place, which is very exciting! For this workshop, we are thrilled to be collaborating with the <a href="https://aberdeenstudygroup.github.io/studyGroup/" target="_blank">Aberdeen Study Group</a>, led by <a href="https://francescamancini.github.io/" target="_blank">Francesca Mancini</a>. The Aberdeen Study Group aims to foster a place where people can get together to work on their coding projects, help each other out and share their work, whilst also learning new skills. You can follow their adventures in coding and open science on <a href="https://twitter.com/abdnStudyGroup" target="_blank">Twitter</a>.
 
 ## How does a Coding Club workshop work?
-There are many ways to run a coding workshop, and different approaches might work better in different situations. Here is how we usually structure our workshops. The workshops take two hours and begin with a super short presentation or introductory talk about what we will be doing, what skills we will acquire and what they are useful for. We then direct workshop attendants to the link for the tutorial around which the workshop is focused. People usually open the tutorial on half of their screen, and `RStudio` on the other half of their screen.
+There are many ways to run a coding workshop and different approaches might work better in different situations. Here is how we usually structure our workshops. The workshops take two hours and begin with a super short presentation or introductory talk about what we will be doing, what skills we will acquire and what they are useful for. We then direct workshop attendants to the link for the tutorial around which the workshop is focused. People usually open the tutorial on half of their screen and `RStudio` on the other half.
 
 <center><img src="{{ site.baseurl }}/img/workshop.png" alt="Img" style="width: 650px;"/></center>
 
-At each workshop, we have a team of demonstrators who are there to answer questions and help out. We find that it works well to let people go through the tutorial at their own pace, and we usually walk around and check whether things are going fine. Most of the tutorials have challenges at the end, for which people can work individually or in small teams. We bring cookies, popcorn and other treats, occasionally make bad R jokes, and try our best to make the atmosphere light and positive. We don't require people to sign up and there are no obligations to attend all the workshops - people are free to attend whichever workshops are of interest to them. At the end of the workshops, we usually stay behind for a while in case people have any specific questions about their own coding projects.
+At each workshop, we have a team of demonstrators who are there to answer questions and help out. We find that it works well to let people go through the tutorial at their own pace and we usually walk around and check whether things are going fine. Most of the tutorials have challenges at the end, for which people can work individually or in small teams. We bring cookies, popcorn and other treats, occasionally make bad R jokes and try our best to make the atmosphere light and positive. We don't require people to sign up and there are no obligations to attend all the workshops: people are free to attend whichever workshops are of interest to them. At the end of the workshops, we usually stay behind for a while in case people have any specific questions about their own coding projects.
 
 ## Find out for yourself - complete a quick Coding Club tutorial
 
@@ -83,9 +83,9 @@ At each workshop, we have a team of demonstrators who are there to answer questi
 
 __Next we will learn how to write, format and publish coding tutorials.__
 
-We write our tutorials in Markdown. Markdown is a language with plain text formatting syntax. Github and Markdown work very well together, and we use Markdown because we can turn a Markdown file into a website hosted on Github in a minute or so! Because of the syntax formatting, Markdown is a great way to display code - the code appears in chunks and stands out from the rest of the text. All of the Coding Club tutorials are written in Markdown.
+We write our tutorials in Markdown. Markdown is a language with plain text formatting syntax. Github and Markdown work very well together and we use Markdown because we can turn a Markdown file into a website hosted on Github in a minute or so! Because of the syntax formatting, Markdown is a great way to display code: the code appears in chunks and stands out from the rest of the text. All of the Coding Club tutorials are written in Markdown.
 
-We use the Atom text editor, which is a user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or TextEdit on a Mac and Notepad on a Windows computer if you prefer, the principle is the same. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, Markdown (`.md`) files. So for example, `Microsoft Word` is a text editor, but not a plain one. In the "fancier" plain text editors, you get "syntax" highlighting - different types of text, like code and links, are colour coded, so they are easier to spot.
+We use the Atom text editor, which is a user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or TextEdit on a Mac and Notepad on a Windows computer if you prefer, the principle is the same. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, Markdown (`.md`) files. So for example, `Microsoft Word` is a text editor, but not a plain one. In the "fancier" plain text editors, you get "syntax" highlighting: different types of text, like code and links, are colour coded so they are easier to spot.
 
 __You can <a href="https://atom.io/" target="_blank">download Atom here, if you wish.</a>__
 
@@ -107,7 +107,7 @@ Our workflow tends to go like this:
 #### - Add images and links as suitable
 
 
-#### Don't worry if you've never used `Atom` or `Markdown` before - we have created a template you can open straight in Atom (or another plain text editor) and just insert your text, comments and images.
+#### Don't worry if you've never used `Atom` or `Markdown` before. We have created a template you can open straight in Atom (or another plain text editor) and just insert your text, comments and images.
 
 
 ### You can download the  `tut_template.md` file that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.
@@ -213,7 +213,7 @@ __Open the file `tut_template.md` in Atom. The file includes instructions on how
 ## Mapping species occurrence records
 #### By Gergana Daskalova
 
-__The aims of this tutorial are to download species occurrence data from GBIF using the `rgbif` package, and then plot the data. We will also learn how to create a map with a top-down view of the world, as the species we've chosen, Arctic fox, is found in the Northern hemisphere.__
+__The aims of this tutorial are to download species occurrence data from GBIF using the `rgbif` package and then plot the data. We will also learn how to create a map with a top-down view of the world, as the species we've chosen, Arctic fox, is found in the Northern hemisphere.__
 
 <center> <img src="{{ site.baseurl }}/img/fox_map.png" alt="Img" style="width: 500px;"/>   <img src="{{ site.baseurl }}/img/fox_map2.png" alt="Img" style="width: 500px;"/></center>
 <center>Arctic fox occurrences based on available data from the Global Biodiversity Information Facility (GBIF).</center>
@@ -251,7 +251,7 @@ __The tutorial will take you through the steps of downloading red squirrel occur
 ## Visualising temperature timeseries data
 #### By Anders Kolstrad
 
-__The aim of this tutorial is to produce a line graph or time series plot with mean daily temperature plus errors using `ggplot2`, and similarly, to produce a second graph of daily temperature fluctuations using a smoother function. Finally, we will plot and save the two figures together using the `gridExtra` package.__
+__The aim of this tutorial is to produce a line graph or time series plot with mean daily temperature plus errors using `ggplot2` and similarly, to produce a second graph of daily temperature fluctuations using a smoother function. Finally, we will plot and save the two figures together using the `gridExtra` package.__
 
 <center> <img src="{{ site.baseurl }}/img/temp_fluctuations.png" alt="Img" style="width: 600px;"/> </center>
 <center>Daily temperature fluctuations in 2016.</center>
@@ -266,7 +266,7 @@ __The aim of this tutorial is to produce a line graph or time series plot with m
 <center> <img src="{{ site.baseurl }}/img/traits.png" alt="Img" style="width: 800px;"/> </center>
 <center>Plant traits across different species.</center>
 
-__The aims of this tutorial are to create a trait-trait correlation plot using plant trait data in a wide format, then to convert this wide data format to long data format, to summarize the data (i.e., calculate a mean, max, min, range, and quantiles per trait and species), and finally to graph the raw and summarized data.__
+__The aims of this tutorial are to create a trait-trait correlation plot using plant trait data in a wide format, then to convert this wide data format to long data format, to summarize the data (i.e., calculate a mean, max, min, range, and quantiles per trait and species) and finally to graph the raw and summarized data.__
 
 #### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `Plant_Traits.R` and the data `TraitData_CodingClub.RData` are in the `plant_traits` folder.
 
@@ -278,7 +278,7 @@ __The aims of this tutorial are to create a trait-trait correlation plot using p
 
 <center> <img src="{{ site.baseurl }}/img/PAR_assimilation.png" alt="Img" style="width: 800px;"/> </center>
 
-__In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package, such as having two y axises and printing axis labels with characters like μ. We will apply our data maninpulation and data visualisation skills to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LICOR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
+__In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` functions, as well as different plotting techniques using the `ggplot2` package, such as having two y axises and printing axis labels with characters like μ. We will apply our data maninpulation and data visualisation skills to explore the importance of sunflecks for carbon assimilation in an understorey herb based on a LI-COR dataset (leaf-level gas exchange measurements) with a temporal resolution of 5 seconds, gathered on a sunny day in June 2017.__
 
 #### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `R_script_LICOR.R` and the data `LICOR.csv` are in the `sunflecks` folder.
 
@@ -290,7 +290,7 @@ __In this tutorial, we will learn to work with pipes `%>%` and other `dplyr` fun
 
 <center> <img src="{{ site.baseurl }}/img/autocorr1.png" alt="Img" style="width: 600px;"/> </center>
 
-__The aim of this tutorial is to visualize data from a series of geographical coordinates coming from monitoring the movement of mites. The goal is to handle a series of coordinates, plot the path itself, and determine if there are points along the way that are autocorrelated.__
+__The aim of this tutorial is to visualize data from a series of geographical coordinates coming from monitoring the movement of mites. The goal is to handle a series of coordinates, plot the path itself and determine if there are points along the way that are autocorrelated.__
 
 #### You can download the `R` script that you can turn into a tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them. The script for this tutorial `Dispersion_script.R` and the data `Dispersion.txt` are in the `spatial_movement` folder.
 
@@ -305,13 +305,13 @@ __Go to the GitHub website, register if you don't already have an account (it's 
 
 <center> <img src="{{ site.baseurl }}/img/new_repo_eab.png" alt="Img" style="width: 600px;"/> </center>
 
-Choose a name for your repository - that will form part of the link for your online tutorial, so choose something short and informative. Add a brief description, click on `Initialize with a README.md`, and then click on `Create repository`.
+Choose a name for your repository: that will form part of the link for your online tutorial so choose something short and informative. Add a brief description, click on `Initialize with a README.md` and then click on `Create repository`.
 
 <center> <img src="{{ site.baseurl }}/img/new_repo_eab2.png" alt="Img" style="width: 600px;"/> </center>
 
 #### Now you can see your new repository. Click on `Upload files` and upload your filled in `Markdown` template. Make sure you save the file as `index.md` - that will make your tutorial the landing (home) page of the website. Upload any images you are using in your tutorial as well.
 
-You are two clicks away from having a website with your tutorial! Now click on `Settings` and scroll down to the `GitHub pages` section - we need to enable the `GitHub pages` feature, which turns our `index.md` file into a page, i.e. website. Change `Source` from `None` to `master` - the master branch of our repository. Click on `Save`.
+You are two clicks away from having a website with your tutorial! Now click on `Settings` and scroll down to the `GitHub pages` section. We need to enable the `GitHub pages` feature, which turns our `index.md` file into a page, i.e. website. Change `Source` from `None` to `master` - the master branch of our repository. Click on `Save`.
 
 <center> <img src="{{ site.baseurl }}/img/github_pages.png" alt="Img" style="width: 600px;"/> </center>
 
@@ -323,7 +323,7 @@ __Scroll down to the `GitHub pages` section again - you can see the link for you
 
 ### Contribute a tutorial
 
-__Are you keen to share some of your coding and statistics knowledge? We would love to have more people join our team and build a world-wide community of people teaching and learning together! You can take a look at the tutorials we have already developed - feel free to make suggestions for changes on existing tutorials and get in touch with us at ourcodingclub@gmail.com if you would like to make a new tutorial.__
+__Are you keen to share some of your coding and statistics knowledge? We would love to have more people join our team and build a world-wide community of people teaching and learning together! You can take a look at the tutorials we have already developed. Feel free to make suggestions for changes on existing tutorials and get in touch with us at ourcodingclub@gmail.com if you would like to make a new tutorial.__
 
 ### Useful resources
 
