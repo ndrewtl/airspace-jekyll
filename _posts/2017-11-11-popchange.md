@@ -26,12 +26,12 @@ tags: datavis
 
 __In this tutorial we will create a map showing the locations of vertebrate species populations from different orders and the direction in which those populations have changed in the last 60 years. We will use a dataset from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a>, which is publicly available. For the purpose of this tutorial, we have extracted a subset of the database (`LPI_EU.csv`) that includes vertebrate populations from the ten most common orders in Europe - _Passeriformes, Carnivora, Charadriiformes, Anseriformes, Falconiformes, Salmoniformes, Ciconiiformes, Artiodactyla, Perciformes, Cypriniformes_.__
 
-Here is an example map, showing where the populations from the order Anseriformes were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, three populations have increased, and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order a changing, but you can filter the dataset if there is a particular species you are interested in.
+Here is an example map showing where the populations from the order Anseriformes were located, as well as how their populations have changed between 1950 and 2015. Looks like most of the populations have remained stable, with a slope around zero, three populations have increased and a few have decreased. Here, we have demonstrated how to do the analysis on the population level, with a focus on how all species within a given order are changing, but you can filter the dataset if there is a particular species you are interested in.
 
 <center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
 <p><b>Figure 1. <i>Anseriformes</i> populations in Europe.</b></p></center>
 
-Open RStudio and make a new script by clicking on `File/New File/R Script`. Usually we open RStudio on half of our screen, and the tutorial on the other half, as that way it's easy to copy code across and google errors if they arise.
+Open RStudio and make a new script by clicking on `File/New File/R Script`. Usually we open RStudio on half of our screen and the tutorial on the other half, as that way it's easy to copy code across and google errors if they arise.
 
 <center><img src="{{ site.baseurl }}/img/workshop2.png" alt="Img" style="width: 700px;"/></center>
 
@@ -68,7 +68,7 @@ str(LPI_EU)
 View(LPI_EU)
 ```
 
-The data are currently in wide format - each year is a column, which is not convenient for analysis. In a <a href="http://garrettgman.github.io/tidying/" target="_blank">"tidy"</a> dataset each row is an observation, so we can transform the dataset into long format using the `gather()` function from the `tidyr` package.
+The data are currently in wide format: each year is a column, which is not convenient for analysis. In a <a href="http://garrettgman.github.io/tidying/" target="_blank">"tidy"</a> dataset each row is an observation. We can transform the dataset into long format using the `gather()` function from the `tidyr` package.
 
 ```r
 # Transform data to long format ----
@@ -82,9 +82,9 @@ LPI_long$year <- as.numeric(as.character(LPI_long$year))
 LPI_long$population <- as.numeric(as.character(LPI_long$population))
 ```
 
-The <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a> contains records from hundreds of populations from 1950 to recent time, but the populations weren't surveyed every year, thus there are rows which say `NULL`. We can remove those rows, so that the `population` column contains only numeric values.
+The <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Index Database</a> contains records from hundreds of populations from 1950 to recent time, but the populations weren't surveyed every year, thus there are rows which say `NULL`. We can remove those rows so that the `population` column contains only numeric values.
 
-Since we will be calculating population change, to get more reliable estimates, we can conduct the analysis only using populations which have at least 5 records. Populations with only a few records might show a strong directional population change that is actually just noise in the data collection. We can also scale population size, so that the abundance of each species in each year is somewhere between 0 and 1. This helps when we are analysing many different populations whose numbers are very variable - e.g. some populations have 10-20 individuals, others have thousands.
+Since we will be calculating population change, to get more reliable estimates, we can conduct the analysis only using populations which have at least 5 records. Populations with only a few records might show a strong directional population change that is actually just noise in the data collection. We can also scale population size so that the abundance of each species in each year is somewhere between 0 and 1. This helps when we are analysing many different populations whose numbers are very variable - e.g. some populations have 10-20 individuals, others have thousands.
 
 ```r
 # Remove rows with no population information (population = NULL)
@@ -98,7 +98,7 @@ LPI_long <- LPI_long %>% group_by(id) %>% mutate(scalepop = (population - min(po
 ```
 
 <a name="calc"></a>
-We have subsetted the data for the ten most common orders in the LPI European database, so we can quantify the change in populations from an order of our choice. Alternatively, we can calculate population change for all orders, or for just the marine or terrestrial ones, many options!
+We have subsetted the data for the ten most common orders in the LPI European database so we can quantify the change in populations from an order of our choice. Alternatively, we can calculate population change for all orders or for just the marine or terrestrial ones: many options!
 
 ```r
 # Calculate population change for an order of your choice ----
@@ -106,9 +106,9 @@ unique(LPI_long$order)  # displays all order options
 anseriformes <- filter(LPI_long, order == "Anseriformes")
 ```
 
-__We will use the `dplyr` and `broom` packages, which together create an efficient workflow in calculating population change. We will use linear models, from which we will extract the slope values - positive slopes indicate a population increase, negative slopes - a population decline, and a slope of zero indicates no net change.__
+__We will use the `dplyr` and `broom` packages, which together create an efficient workflow in calculating population change. We will use linear models, from which we will extract the slope values. Positive slopes indicate a population increase, negative slopes signify a population decline and a slope of zero indicates no net change.__
 
-__Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis - imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe, gets saved in the object to which you are assigning the pipe.__ You can find a more detailed explanation of data manipulation using `dplyr` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">data formatting and manipulation tutorial</a>.
+__Pipes, designated by the pipe operator `%>%`, are a way to streamline your analysis. Imagine your data going in one end of a pipe, then you transform it, do some analysis on it, and then whatever comes out the other end of the pipe gets saved in the object to which you are assigning the pipe.__ You can find a more detailed explanation of data manipulation using `dplyr` in our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">data formatting and manipulation tutorial</a>.
 
 ```r
 pop_change <- anseriformes %>%
@@ -125,11 +125,11 @@ pop_change <- anseriformes %>%
 ```
 
 <a name="map"></a>
-We are now all set to make our map! This is a simple map we will make using `ggplot2`, it doesn't have topography, or cities and roads. Instead, it presents a stylised view of European countries and focuses on where the different populations are located and how they have changed.
+We are now all set to make our map! This is a simple map we will make using `ggplot2` - it doesn't have topography, or cities and roads. Instead, it presents a stylised view of European countries and focuses on where the different populations are located and how they have changed.
 
-We are using the `viridis` package for the colour palette of the points. The `viridis` package contains four colour palettes, which are friendly to colour blind people, and they look quite nice in general.
+We are using the `viridis` package for the colour palette of the points. The `viridis` package contains four colour palettes, which are friendly to colour blind people and they look quite nice in general.
 
-You can use the default `viridis` palette by just specifying `scale_colour_viridis()`, and if you want to try the other three options, you can instead use `scale_colour_viridis(option = "magma")`. The other two options are `inferno` and `plasma`.
+You can use the default `viridis` palette by just specifying `scale_colour_viridis()` and if you want to try the other three options, you can instead use `scale_colour_viridis(option = "magma")`. The other two options are `inferno` and `plasma`.
 
 ```r
 (EU_pop <- ggplot(pop_change, aes(x = longitude, y = latitude, fill = year)) +
@@ -146,7 +146,7 @@ You can use the default `viridis` palette by just specifying `scale_colour_virid
     labs(fill = "Slope\n", title = "Anseriformes"))  # \n adds a blank line below the legend title
 ```
 
-__We can save our map using `ggsave()` from the `ggplot2` package, the default `width` and `height` are measured in inches. If you want to swap to pixels or centimeters, you can add `units = "px"` or `units = "cm"` inside the `ggsave()` brackets, e.g. `ggsave(object, filename = "mymap.png", width = 1000, height = 1000, units = "px"`.__
+__We can save our map using `ggsave()` from the `ggplot2` package. The default `width` and `height` are measured in inches. If you want to swap to pixels or centimeters, you can add `units = "px"` or `units = "cm"` inside the `ggsave()` brackets, e.g. `ggsave(object, filename = "mymap.png", width = 1000, height = 1000, units = "px"`.__
 
 ```r
 ggsave(EU_pop, filename = "anseriformes.pdf", width = 10, height = 10)
@@ -156,9 +156,9 @@ ggsave(EU_pop, filename = "anseriformes.png", width = 10, height = 10)
 <center><img src="{{ site.baseurl }}/img/anseriformes.png" alt="Img" style="width: 700px;"/>
 <p><b>Figure 1. <i>Anseriformes</i> populations in Europe.</b></p></center>
 
-Here we have created a map for _Anseriformes_, an order which includes many species of waterfowl, like the mallard and pochard. Curious to see how vertebrate populations across the whole LPI database have changed? You can check out our <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">tutorial on efficient ways to quantify population change</a>, where we compare how for-loops, `lapply()` functions and pipes compare when it comes to dealing with lots of data.
+Here we have created a map for _Anseriformes_, an order which includes many species of waterfowl, like the mallard and pochard. Curious to see how vertebrate populations across the whole LPI database have changed? You can check out our <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">tutorial on efficient ways to quantify population change</a>, where we compare how for-loops, `lapply()` functions and pipes compare when it comes to dealing with a lot of data.
 
-### We'd love to see the maps you've made, so feel free to email them to us at ourcodingclub@gmail.com!
+### We'd love to see the maps you've made so feel free to email them to us at ourcodingclub@gmail.com!
 
 
 <hr>
