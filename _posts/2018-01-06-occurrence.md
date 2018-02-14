@@ -375,7 +375,7 @@ beluga.pipe <- beluga.clean %>% filter(decimalLongitude != -46 | decimalLatitude
 anti_join(beluga.base, beluga.pipe)  # There are no differences
 ```
 
-__We could keep going with the occurrence clean up and you could use the identified for each record, the value in the `key` column to go back to the original GBIF data frame with the hundreds of columns to get more information on that specific record, e.g. is it from a wild population, how was it collected and by whom.__
+__We could keep going with the occurrence clean up and you could use the identifier for each record (the `key` column in the data frame that has a unique value for each record) to go back to the original GBIF data and filter out that record, using e.g. `new.beluga <- filter(beluga.clean, key != "whatever the key number is")`. You can also look up the many columns of data from the original GBIF data frame to get more information on that specific record, e.g. is it from a wild population, how was it collected and by whom. Then you might decide you want to exclude more records.__
 
 __For now, we will move onto more data visualisation. We will customise our map of beluga occurrence, visualise when the records were collected and how some of the beluga populations have changed through time.__
 
