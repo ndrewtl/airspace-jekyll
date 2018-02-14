@@ -280,9 +280,9 @@ __Now that we have our colours, we can make a map. A map is really like any othe
  # beluga.map
 ```
 
-__`ggplot2` works with aesthetics, that is the `aes` argument which "maps" your variables to the `x` and `y` axises.__
+__`ggplot2` works with aesthetics. That is the `aes` argument which "maps" your variables to the `x` and `y` axises.__
 
-__When you want the colour, fill, shape or size of your points, bars or lines to vary depending on a certain variable, you have to include that argument *inside the `aes()` code*, e.g. `geom_point(alpha = 0.5, size = 2, aes(colour = individualCount)` will change the colour of the points based on the `individualCount` variable, which is a continuous variable showing how many individuals were recorded.
+__When you want to change the colour, fill, shape or size of your points, bars or lines to vary depending on a certain variable, you have to include that argument *inside the `aes()` code*, e.g. `geom_point(alpha = 0.5, size = 2, aes(colour = individualCount)` will change the colour of the points based on the `individualCount` variable, which is a continuous variable showing how many individuals were recorded.__
 
 __When you want to specify particular colours, shapes or sizes, those are included *outside of the `aes()` code*, e.g. `geom_point(alpha = 0.5, size = 2, colour = "aquamarine3")`.__
 
@@ -310,7 +310,7 @@ beluga.coord.test <- CleanCoordinates(beluga, lon = "decimalLongitude", lat = "d
                                       outliers.td = 5000, seas = TRUE, seas.ref = buffland,
                                       zeros = TRUE)
 # species = "" refers to the name of the column which has the species name
-# By default outliers are occurrences further than 1000km from any other occurrence
+# By default, outliers are occurrences further than 1000km from any other occurrence
 # We can change that using outliers.td() with a value of our choice
 # We'll also test if occurrences are on land or at sea and if there are any zeros for lat and long
 
@@ -335,7 +335,7 @@ beluga.clean <- CleanCoordinates(beluga, lon = "decimalLongitude", lat = "decima
 View(beluga.clean)
 ```
 
-__Now we can update our map by swapping the `beluga` object with the `beluga.clean` object to see what difference cleaning the coordinate data made. When cleaning coordinate data for your own analyses, you can include further tests, e.g. if you are doing a UK-scale analysis, you can check whether the points are actually in the UK. As usual with research, the decision about what to include or exclude is yours, and the `CleanCoordinates` function offers one way to inform your decision.__
+__Now we can update our map by swapping the `beluga` object with the `beluga.clean` object to see what difference cleaning the coordinate data made. When cleaning coordinate data for your own analyses, you can include further tests, e.g. if you are doing a UK-scale analysis, you can check whether the points are actually in the UK. As usual with research, the decision about what to include or exclude is yours and the `CleanCoordinates` function offers one way to inform your decision.__
 
 ```r
 # Make a map of the clean GBIF occurrences
@@ -348,7 +348,7 @@ __Now we can update our map by swapping the `beluga` object with the `beluga.cle
 <center> <img src="{{ site.baseurl }}/img/beluga_map_clean.png" alt="Img" style="width: 800px;"/> </center>
 <center>Figure 2. Map of GBIF occurrences for the beluga whale after filtering for records that passed the coordinate validity tests.</center>
 
-Interestingly, some land points still appear. The tests did remove the obvious outliers, like the beluga record near Africa. We can manually exclude points we think are not real if we wish, e.g. for example the Greenland land point is fairly distinct and easy to remove.
+Interestingly, some land points still appear. The tests did remove the obvious outliers, like the beluga record near Africa. We can manually exclude points we think are not real if we wish, e.g. the Greenland land point is fairly distinct and easy to remove.
 
 ```r
 greenland <- filter(beluga, country == "Greenland")
@@ -375,9 +375,9 @@ beluga.pipe <- beluga.clean %>% filter(decimalLongitude != -46 | decimalLatitude
 anti_join(beluga.base, beluga.pipe)  # There are no differences
 ```
 
-__We could keep going with the occurrence clean up, and you could use the identified for each record, the value in the `key` column to go back to the original GBIF data frame with the hundreds of columns to get more information on that specific record, e.g. is it from a wild population, how was it collected and by whom.
+__We could keep going with the occurrence clean up and you could use the identified for each record, the value in the `key` column to go back to the original GBIF data frame with the hundreds of columns to get more information on that specific record, e.g. is it from a wild population, how was it collected and by whom.__
 
-For now, we will move onto more data visualisation. We will customise our map of beluga occurrence, visualise when the records were collected and how some of the beluga populations have changed through time.__
+__For now, we will move onto more data visualisation. We will customise our map of beluga occurrence, visualise when the records were collected and how some of the beluga populations have changed through time.__
 
 ```r
 # Make a new map and include the locations of the populations part of the Living Planet Database
@@ -390,7 +390,7 @@ For now, we will move onto more data visualisation. We will customise our map of
 # You have to specify where the data come from when plotting from more than one data frame using data = ""
 ```
 
-__The `ggplot2` package offers many different ways you can customise your graphs, we will use some of those here, and we will also use an additional package, `ggrepel` which adds nice labels for the points we specified, e.g. from our map, we know where belugas occur (the GBIF records) and some of the places where they have been monitored (the population change points), and we can label the monitoring sites. First, we have to make sure the names are consistent, and we don't want them to be too long, so we can rename them using the `recode()` function from `dplyr`.__
+__The `ggplot2` package offers many different ways you can customise your graphs. We will use some of those here and we will also use an additional package, `ggrepel`, which adds nice labels for the points we specified, e.g. from our map, we know where belugas occur (the GBIF records) and some of the places where they have been monitored (the population change points) and we can label the monitoring sites. First, we have to make sure the names are consistent and we don't want them to be too long so we can rename them using the `recode()` function from `dplyr`.__
 
 ```r
 # Customising map ----
@@ -414,10 +414,10 @@ beluga.slopes$Location.of.population <- recode(beluga.slopes$Location.of.populat
 # Check names
 print(beluga.slopes$Location.of.population)
 # Note that even though we have filtered for just the beluga records, the rest of the locations
-# for the other marine LPI populations feature as object attributes, but not to worry those don't get analysed
+# for the other marine LPI populations feature as object attributes, but not to worry, those don't get analysed
 ```
 
-__We can use the `annotation_custom` function from `ggplot2` to add images to our graphs, for example a beluga icon. Sometimes you have to make the same graphs but for different places or species groups, so adding icons can help quickly orient the viewer.__
+__We can use the `annotation_custom` function from `ggplot2` to add images to our graphs, for example, a beluga icon. Sometimes you have to make the same graphs, but for different places or species groups so adding icons can help quickly orient the viewer.__
 
 ```r
 # Load packages for adding images
@@ -432,7 +432,7 @@ icon <- rasterGrob(icon, interpolate=TRUE)
 # Doesn't matter for our black icon
 ```
 
-__Now comes what looks like a gigantic chunk of code! We have explained each step in the comments, so you can  read through the code before you run it. This doesn't mean that every time you make a map your code has to be this long - from the maps above, you can see that 4-5 lines of code make a pretty decent map. Here we have included lots of customising options, including how to plot points from different data frames on the same map, how to add labels, icons and change the title, so that when it comes to making your own maps, you can pick and choose whichever ones are relevant for your map.__
+__Now comes what looks like a gigantic chunk of code! We have explained each step in the comments so you can  read through the code before you run it. This doesn't mean that every time you make a map your code has to be this long. From the maps above, you can see that 4-5 lines of code make a pretty decent map. Here we have included a lot of customising options, including how to plot points from different data frames on the same map, how to add labels, icons and change the title so that when it comes to making your own maps, you can pick and choose whichever ones are relevant for your map.__
 
 ```r
 # Update map
@@ -448,10 +448,10 @@ __Now comes what looks like a gigantic chunk of code! We have explained each ste
 		# Adding labels, here is what is happening step by step for the labels
 
 		# We are specifying the data frame for the labels - one site has three monitored populations
-		# but we only want to label it once, so we are subsetting using data = beluga.slopes[1:3,]
+		# but we only want to label it once so we are subsetting using data = beluga.slopes[1:3,]
 		# to get only the first three rows and all columns
 
-		#	We are specifying the size of the labels and nudging the points, so that they
+		#	We are specifying the size of the labels and nudging the points so that they
 		# don't hide data points, along the x axis we are nudging by one, and along the
 		# y axis, we have an ifelse statement.
 
@@ -469,7 +469,7 @@ __Now comes what looks like a gigantic chunk of code! We have explained each ste
     theme(plot.title = element_text(size = 20)))  # Setting the size for the title
 ```
 
-__We can use `ggsave() to save the map, by default, the width and height are measured in inches.`__
+__We can use `ggsave() to save the map. By default, the width and height are measured in inches.`__
 
 ```r
 # Save the plot, it will get saved in your working directory
@@ -498,7 +498,7 @@ yearly.obs <- beluga.clean %>% group_by(year) %>% tally() %>% ungroup() %>% filt
 
 __For our final set of graphs, we will plot beluga abundance through time and a linear model fit of population change for each beluga population, part of the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Database</a>.__
 
-```
+```r
 # ** Population trends ----
 # Visualising the population trends of five beluga populations
 
@@ -531,7 +531,7 @@ beluga2 <- filter(beluga.pop, id == "2191")
     theme_marine())
 ```
 
-__The last site, St. Lawrence estuary, has been monitored by three different studies in different timeperios.__
+__The last site, St. Lawrence estuary, has been monitored by three different studies in different time periods.__
 
 ```r
 Create an object containing the three populations in the St. Lawrence estuary
@@ -547,7 +547,7 @@ beluga3 <- filter(beluga.pop, id == "1950" | id == "4557" | id == "4558")
     guides(shape = FALSE))
 ```
 
-You might have noticed that the process is a bit repetitive, we are performing the same action, but for different species. It's not that big of a deal for three populations, but imagine we had a thousand!  If that were the case, we could have used a loop that goes through each population and makes a graph, or we could have used a pipe, where we group by population id and then make the graphs, and finally we could have used the `lapply()` function which applies a function, in our case making a graph, to e.g. each population. There are many options, and if you would like to learn more on how to automate your analysis and data visualisation when doing the same thing for many places or species, you can check out <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">our tutorial comparing loops, pipes and `lapply()`</a> and <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html">our tutorial on using functions and loops</a>.
+You might have noticed that the process is a bit repetitive. We are performing the same action, but for different species. It's not that big of a deal for three populations, but imagine we had a thousand!  If that were the case, we could have used a loop that goes through each population and makes a graph, or we could have used a pipe, where we group by population id and then make the graphs and finally we could have used the `lapply()` function which applies a function, in our case making a graph, to e.g. each population. There are many options and if you would like to learn more on how to automate your analysis and data visualisation when doing the same thing for many places or species, you can check out <a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">our tutorial comparing loops, pipes and `lapply()`</a> and <a href="https://ourcodingclub.github.io/2017/02/08/funandloops.html" target="_blank">our tutorial on using functions and loops</a>.
 
 #### Arrange all graphs in a panel with the `gridExtra` package
 
@@ -566,7 +566,7 @@ beluga.panel <- grid.arrange(row1, row2, nrow = 2, heights = c(0.9, 1.1))
 ```
 
 <center> <img src="{{ site.baseurl }}/img/beluga_panel.png" alt="Img" style="width: 1000px;"/> </center>
-<center>Figure 4. <b>a. Map of beluga occurrence and monitoring sites, b. occurrence records through time and population trends in c. Hudson Bay, d. Cook Inlet stock and e. St. Lawrence estuary.</b> Note that in St. Lawrence estuary, beluga populations were monitored in three separate studies.</center>
+<center>Figure 4. <b>a. Map of beluga occurrence and monitoring sites; b. occurrence records through time and population trends in c. Hudson Bay, d. Cook Inlet stock and e. St. Lawrence estuary.</b> Note that in St. Lawrence estuary, beluga populations were monitored in three separate studies.</center>
 
 <hr>
 <hr>
