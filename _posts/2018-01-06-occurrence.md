@@ -191,12 +191,12 @@ beluga.pop <- marine %>% filter(species == "Delphinapterus leucas") %>%  # Selec
   gather(key = "year", value = "abundance", select = 26:70) %>%  # Turn data frame from wide to long format
   filter(is.na(abundance) == FALSE) %>%  # Remove empty rows
   group_by(id) %>%   # Group rows so that each group is one population
-  mutate(scalepop = (abundance-min(abundance))/(max(abundance)-min(abundance)) %>%  # Scale abundance from 0 to 1
+  mutate(scalepop = (abundance-min(abundance))/(max(abundance)-min(abundance))) %>%  # Scale abundance from 0 to 1
   filter(length(unique(year)) > 4) %>% # Only include populations monitored at least 5 times
   ungroup()  # Remove the grouping
 ```
 
-Because column names are coded in as characters, when we turned the column names (`1970`, `1971`, `1972`, etc.) into rows, R automatically put an `X` in front of the numbers to force them to remain characters. We don't want that, so to turn `year` into a numeric variable, you can use the `parse_number` function from the `readr` package.
+Because column names are coded in as characters, when we turned the column names (`1970`, `1971`, `1972`, etc.) into rows, R automatically put an `X` in front of the numbers to force them to remain characters. We don't want that so to turn `year` into a numeric variable, you can use the `parse_number` function from the `readr` package.
 
 ```r
 # Explore data frame
@@ -212,7 +212,7 @@ beluga.pop$year <- parse_number(beluga.pop$year)
 #### Quantify population change
 
 
-__We will fit simple linear models (abundance over time for each population, `abundance ~ year`) to get a measure of the overall change experienced by each population for the period it was monitored. We will extract the slope, i.e. the estimate for the `year` term for each population. We can do this in a pipe as well, which makes for an efficient analysis. Here, we are analysing five populations, but you can also do it for thousands. With the `broom` package, we can extract model coefficients using one single line `tidy(model_name)`.__
+__We will fit simple linear models (abundance over time for each population, `abundance ~ year`) to get a measure of the overall change experienced by each population for the period it was monitored. We will extract the slope, i.e. the estimate for the `year` term for each population. We can do this in a pipe as well, which makes for an efficient analysis. Here, we are analysing five populations, but you can also do it for thousands. With the `broom` package, we can extract model coefficients using one single line: `tidy(model_name)`.__
 
 ```r
 # Calculate population change using linear models
@@ -225,7 +225,7 @@ beluga.slopes <- beluga.pop %>%
 View(beluga.slopes)
 
 # For analysis and plotting, we often need the intercept and slopes to be columns, not rows
-# Format dataframe with model outputs
+# Format data frame with model outputs
 beluga.slopes <- beluga.slopes %>%
   dplyr::select(Location.of.population, Decimal.Latitude, Decimal.Longitude, id, term, estimate) %>%  # Select the columns we need
   spread(term, estimate) %>%  # spread() is the opposite of gather()
@@ -237,7 +237,7 @@ beluga.slopes <- beluga.slopes %>%
 
 ### 2. Clean species occurrence data
 
-We have over a thousand GBIF occurrence records of belugas. Using the `CleanCoordinates` function from the `CoordinateCleaner` package, developed by Alexander Zizka, we can perform different tests of validity to flag potentially wrong coordinates (<a href="https://github.com/azizka/CoordinateCleaner" target="_blank">more info here</a>). For example, we are currently working with a marine species, the beluga whale, so we don't expect to see those on land. Nevertheless, people sometimes see whales from land, i.e. when they are whalewatching from the coastline, and when they take a GPS reading, that occurrence would technically be on land, since it's for the land-based observer, not the whale swimming by. Additionally, some of the records might be from zoos, which can explain species appearing to occur outside of their usual ranges.
+We have over a thousand GBIF occurrence records of belugas. Using the `CleanCoordinates` function from the `CoordinateCleaner` package, developed by Alexander Zizka, we can perform different tests of validity to flag potentially wrong coordinates (<a href="https://github.com/azizka/CoordinateCleaner" target="_blank">more info here</a>). For example, we are currently working with a marine species, the beluga whale so we don't expect to see those on land. Nevertheless, people sometimes see whales from land, i.e. when they are whalewatching from the coastline and when they take a GPS reading. That occurrence would technically be on land, since it's for the land-based observer, not the whale swimming by. Additionally, some of the records might be from zoos, which can explain species appearing to occur outside of their usual ranges.
 
 Before we perform the coordinate tests, we can make a quick map to get an idea of the spatial spread of the beluga GBIF records. With `ggplot2` and the `ggthemes` packages (the theme_map() function comes from `ggthemes`), you can make quick and easy maps. To choose colours for your map, you can use the `Rcolourpicker` addin, which offers a really easy way to get the colour codes for whatever colours you want right within `RStudio`.
 
@@ -245,21 +245,21 @@ Before we perform the coordinate tests, we can make a quick map to get an idea o
 #### Picking colours using the `Rcolourpicker` addin
 
 
-Setting custom colours for your graphs can set them apart from all the rest (we all know what the default `ggplot2` colours look like!), make them prettier, and most importantly, give your work a consistent and logical colour scheme. Finding the codes, e.g. `colour="#8B5A00"`, for your chosen colours, however, can be a bit tedious. Though one can always use Paint / Photoshop / google colour codes, there is a way to do this within RStudio thanks to the addin `colourpicker`. RStudio addins are installed the same way as packages, and you can access them by clicking on `Addins` in your RStudio menu. To install `colourpicker`, run the following code:
+Setting custom colours for your graphs can set them apart from all the rest (we all know what the default `ggplot2` colours look like!), make them prettier, and most importantly, give your work a consistent and logical colour scheme. Finding the codes, e.g. `colour="#8B5A00"`, for your chosen colours, however, can be a bit tedious. Though one can always use Paint / Photoshop / google colour codes, there is a way to do this within RStudio thanks to the addin `colourpicker`. RStudio addins are installed the same way as packages and you can access them by clicking on `Addins` in your RStudio menu. To install `colourpicker`, run the following code:
 
 ```r
 install.packages("colourpicker")
 ```
 
-To find out what is the code for a colour you like, click on `Addins/Colour picker`.
+To find out what the code for a colour you like is, click on `Addins/Colour picker`.
 
 <center><img src="{{ site.baseurl }}/img/colourpicker.png" alt="Img" style="width: 800px;"/></center>
 
-When you click on `All R colours` you will see lots of different colours you can choose from - a good colour scheme makes your graph stand out, but of course, don't go crazy with the colours. When you click on `1`, and then on a certain colour, you fill up `1` with that colour, same goes for `2`, `3` - you can add mode colours with the `+`, or delete them by clicking the bin. Once you've made your pick, click `Done`. You will see a line of code `c("#8B5A00", "#CD8500")` appear - in this case, we just need the colour code, so we can copy that, and delete the rest.
+When you click on `All R colours` you will see lots of different colours you can choose from. A good colour scheme makes your graph stand out, but of course, don't go crazy with the colours. When you click on `1`, and then on a certain colour, you fill up `1` with that colour. The same goes for `2`, `3` - you can add mode colours with the `+` or delete them by clicking the bin. Once you've made your pick, click `Done`. You will see a line of code `c("#8B5A00", "#CD8500")` appear. In this case, we just need the colour code so we can copy that and delete the rest.
 
 <center><img src="{{ site.baseurl }}/img/colourpicker2.png" alt="Img" style="width: 800px;"/></center>
 
-__Now that we have our colours, we can make a map. A map is really like any other graph - in our `ggplot()` code, we have to specify a dataframe and then say what should be plotted on the x axis and on the y axis - in our case, the longitude and latitude of each occurrence record.__
+__Now that we have our colours, we can make a map. A map is really like any other graph. In our `ggplot()` code, we have to specify a data frame and then say what should be plotted on the x axis and on the y axis: in our case, the longitude and latitude of each occurrence record.__
 
 ```r
 # Data visualisation ----
@@ -308,10 +308,10 @@ load("buffland_1deg.rda")
 beluga.coord.test <- CleanCoordinates(beluga, lon = "decimalLongitude", lat = "decimalLatitude",
                                       species = "name", outliers =  TRUE, outliers.method = "distance",
                                       outliers.td = 5000, seas = TRUE, seas.ref = buffland,
-                                      zeros = TRUE, value = "clean")
+                                      zeros = TRUE)
 # species = "" refers to the name of the column which has the species name
 # By default outliers are occurrences further than 1000km from any other occurrence
-# We can change that using outlirs.td() with a value of our choice
+# We can change that using outliers.td() with a value of our choice
 # We'll also test if occurrences are on land or at sea and if there are any zeros for lat and long
 
 # No need to worry about the warning message, just lets you know about one of the default tests
