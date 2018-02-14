@@ -25,7 +25,7 @@ tags: data_manip data_vis
 
 #### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-occurrence" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
-<b>In this tutorial, we will focus on how to efficiently format, manipulate and visualise large species occurrence and population trend datasets. We will use the `tidyr` and `dplyr` packages to clean up daat frames and calculate new variables, then we will do a further clean up of species occurrence data using the `CleanCoordinates` function from the `CoordinateCleaner` package. Species occurrence records often include thousands if not millions of latitude and longitude points - but are they all valid points? Sometimes the latitude and longitude values are reversed, there are unwanted zeros, or terrestrial species are seen out at sea, and marine species very inland! The `CoordinateCleaner` package, developed by Alexander Zizka, flags potentially erroneous coordinates, so that you can decide whether or not to include them in your analysis (<a href="https://github.com/azizka/CoordinateCleaner" target="_blank">more info here</a>). Finally, we will use the `ggplot2` package to make simple maps of occurrence records, visualise a few trends in time, and then we will arrange all of our graphs together using the new `patchwork` package.</b>
+<b>In this tutorial, we will focus on how to efficiently format, manipulate and visualise large species occurrence and population trend datasets. We will use the `tidyr` and `dplyr` packages to clean up data frames and calculate new variables. Then we will do a further clean up of species occurrence data using the `CleanCoordinates` function from the `CoordinateCleaner` package. Species occurrence records often include thousands if not millions of latitude and longitude points, but are they all valid points? Sometimes the latitude and longitude values are reversed, there are unwanted zeros, or terrestrial species are seen out at sea, and marine species very inland! The `CoordinateCleaner` package, developed by Alexander Zizka, flags potentially erroneous coordinates so that you can decide whether or not to include them in your analysis (<a href="https://github.com/azizka/CoordinateCleaner" target="_blank">more info here</a>). Finally, we will use the `ggplot2` package to make simple maps of occurrence records, visualise a few trends in time and then we will arrange all of our graphs together using the new `patchwork` package.</b>
 
 <center><img src="{{ site.baseurl }}/img/beluga_panel.png" alt="Img" style="width: 1000px;"/></center>
 
@@ -33,15 +33,15 @@ tags: data_manip data_vis
 
 ### 1. Download, format and manipulate biodiversity data
 
-We will be working with occurrence data for the beluga whale from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility</a>, and population data for the same species from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Database</a>, both of which are publicly available datasets.
+We will be working with occurrence data for the beluga whale from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility</a> and population data for the same species from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Database</a>, both of which are publicly available datasets.
 
 
 #### Set your the working directory.
 
 
-It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`), so you will have to change those manually.
+It helps to keep all your data, scripts, image outputs etc. in a single folder. This minimises the chance of losing any part of your analysis and makes it easier to move the analysis on your computer without breaking filepaths. Note that filepaths are defined differently on Mac/Linux and Windows machines. On a Mac/Linux machine, user files are found in the 'home' directory (`~`), whereas on a Windows machine, files can be placed in multiple 'drives' (e.g. `D:`). Also note that on a Windows machine, if you copy and paste a filepath from Windows Explorer into RStudio, it will appear with backslashes (`\ `), but R requires all filepaths to be written using forward-slashes (`/`) so you will have to change those manually.
 
-__Set your working directory to the folder you downloaded from Github earlier, it should be called `CC-occurrence-master` or however you renamed it when unzippin. See below for some examples for both Windows and Mac/Linux:__
+__Set your working directory to the folder you downloaded from Github earlier. It should be called `CC-occurrence-master` or however you renamed it when unzipping. See below for some examples for both Windows and Mac/Linux:__
 
 ```r
 # Set the working directory on Windows
@@ -55,20 +55,20 @@ setwd("~/Work/coding_club/CC-occurrence-master")
 
 #### Organise your script into sections
 
-As with any piece of writing, when writing an R script it really helps to have a clear structure. A script is a `.R` file that contains your code - you could directly type code into the R console, but that way you have no record of it, and you won't be able to reuse it later. To make a new `.R` file, open RStudio and go to `File/New file/R script`. For more information on the general RStudio layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. A clearly structured script allows both the writer and the reader to easily navigate through the code to find the desired section.
+As with any piece of writing, when writing an R script it really helps to have a clear structure. A script is a `.R` file that contains your code. You could directly type code into the R console, but that way you have no record of it and you won't be able to reuse it later. To make a new `.R` file, open RStudio and go to `File/New file/R script`. For more information on the general RStudio layout, you can check out our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Intro to RStudio tutorial</a>. A clearly structured script allows both the writer and the reader to easily navigate through the code to find the desired section.
 
-The best way to split your script into sections is to use comments. You can define a comment by adding `#` to the start of any line and typing text after it, e.g. `# Load data`. Then underneath that comment you would write the code for importing your data in `R`. RStudio has a great feature allowing you to turn your sections into an outline, similar to that which you can find in `Microsoft Word`. To add a comment to the outline, type four `-` after your comment text, e.g. `# Load data ----`. To view your outline, click on the button shown below, you can then click on an outline item and jump straight to it, no more scrolling!
+The best way to split your script into sections is to use comments. You can define a comment by adding `#` to the start of any line and typing text after it, e.g. `# Load data`. Then underneath that comment you would write the code for importing your data in `R`. RStudio has a great feature allowing you to turn your sections into an outline, similar to that which you can find in `Microsoft Word`. To add a comment to the outline, type four `-` after your comment text, e.g. `# Load data ----`. To view your outline, click on the button shown below. You can then click on an outline item and jump straight to it; no more scrolling!
 
 
 <center> <img src="{{ site.baseurl }}/img/outline.png" alt="Img" style="width: 800px;"/> </center>
 
-__NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio - if you want to get this feature, you can <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">download</a> the newest version of RStudio.__
+__NOTE: If you don't see the outline icon, you most likely do not have the newest version of RStudio. If you want to get this feature, you can <a href="https://www.rstudio.com/products/rstudio/download/" target="_blank">download</a> the newest version of RStudio.__
 
 
 #### Write an informative header
 
 
-<b>Whatever your coding adventure, it will be way smoother if you record what you are doing and why you are doing it - that way your collaborators and future you can come back to the script and not be puzzled by the thousands of line of code. It's good practice to start a script with information on who you are, what the code is for and when you are writing it. We have some comments throughout the code in the tutorial, feel free to add more comments to your script using a hashtag `#` before a line of text.</b>
+<b>Whatever your coding adventure, it will be way smoother if you record what you are doing and why you are doing it so that  your collaborators and future you can come back to the script and not be puzzled by the thousands of line of code. It's good practice to start a script with information on who you are, what the code is for and when you are writing it. We have some comments throughout the code in the tutorial. Feel free to add more comments to your script using a hashtag `#` before a line of text.</b>
 
 ```r
 # Marine mammal distribution and population change
@@ -102,7 +102,7 @@ library(gridExtra)
 #### Make your own `ggplot2` theme
 
 
-If you've ever tried to perfect your `ggplot2` graphs, you might have noticed that the lines starting with `theme()` quickly pile up - you adjust the font size of the axes and the labels, the position of the title, the background colour of the plot, you remove the grid lines in the background, etc. And then you have to do the same for the next plot, which really increases the amount of code you use. Here is a simple solution - create a customised theme that combines all the `theme()` elements you want, and apply it to your graphs to make things easier and increase consistency. You can include as many elements in your theme as you want, as long as they don't contradict one another, and then when you apply your theme to a graph, only the relevant elements will be considered - e.g. for our graphs we won't need to use `legend.position`, but it's fine to keep it in the theme, in case any future graphs we apply it to do have the need for legends.
+If you've ever tried to perfect your `ggplot2` graphs, you might have noticed that the lines starting with `theme()` quickly pile up: you adjust the font size of the axes and the labels, the position of the title, the background colour of the plot, you remove the grid lines in the background, etc. And then you have to do the same for the next plot, which really increases the amount of code you use. Here is a simple solution: create a customised theme that combines all the `theme()` elements you want and apply it to your graphs to make things easier and increase consistency. You can include as many elements in your theme as you want, as long as they don't contradict one another and then when you apply your theme to a graph, only the relevant elements will be considered - e.g. for our graphs we won't need to use `legend.position`, but it's fine to keep it in the theme in case any future graphs we apply it to do have the need for legends.
 
 ```r
 # Personalised ggplot2 theme
@@ -133,7 +133,7 @@ theme_marine <- function(){
 #### Load species occurrence and population trend data
 
 
-__The data are in a `.RData` format, as those are quicker to use, since ``.Rdata` files are more compressed. Of course, a drawback is that `.RData` files can only be used within R, whereas `.csv` files are more transferable.__
+__The data are in a `.RData` format, as those are quicker to use, since `.Rdata` files are more compressed. Of course, a drawback is that `.RData` files can only be used within R, whereas `.csv` files are more transferable.__
 
 ```r
 # Load data ----
@@ -142,7 +142,7 @@ __The data are in a `.RData` format, as those are quicker to use, since ``.Rdata
 # beluga <- occ_search(scientificName = "Delphinapterus leucas", limit = 20000,
 #                      hasCoordinate = TRUE, return = "data")
 
-# Downloading takes a while, so unless you have time to wait, you can use the file we donwloaded in advance
+# Downloading takes a while so unless you have time to wait, you can use the file we donwloaded in advance
 
 load("beluga.RData")
 
@@ -161,7 +161,7 @@ The `beluga` object contains hundreds of columns with information about the GBIF
 beluga <- beluga %>% dplyr::select(key, name, decimalLongitude, decimalLatitude, year, individualCount, country)
 ```
 
-<b>We specified that we want the `select` function from exactly the `dplyr` package and not any other package we have loaded using ``dplyr::select`. Otherwise, you might get this error:</b>
+<b>We specified that we want the `select` function from exactly the `dplyr` package and not any other package we have loaded using `dplyr::select`. Otherwise, you might get this error:</b>
 
 ```r
 #Error in (function (classes, fdef, mtable)  :
@@ -174,13 +174,13 @@ beluga <- beluga %>% dplyr::select(key, name, decimalLongitude, decimalLatitude,
 
 __Next, we will follow a few consecutive steps to format the population change data, exclude `NA` values and prepare the abundance data for analysis. Each step follows logically from the one before and we don't need to store intermediate objects along the way - we just need the final object. For this purpose, we can use pipes.__
 
-__Pipes (`%>%`) are a way of streamlining data manipulation - imagine all of your data coming in one end of the pipe, while they are in there, they are manipulated, summarised, etc., then the output (e.g. your new data frame or summary statistics) comes out the other end of the pipe. At each step of the pipe processing, the pipe takes the output of the previous step and applies the function you've chosen. For more information on data manipulation using pipes, you can check out our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target ="_blank">data formatting and manipulation tutorial</a>.__
+__Pipes (`%>%`) are a way of streamlining data manipulation. Imagine all of your data coming in one end of the pipe, while they are in there, they are manipulated, summarised, etc., then the output (e.g. your new data frame or summary statistics) comes out the other end of the pipe. At each step of the pipe processing, the pipe takes the output of the previous step and applies the function you've chosen. For more information on data manipulation using pipes, you can check out our <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target ="_blank">data formatting and manipulation tutorial</a>.__
 
-__The population change data are in a wide format - each row contains a population that has been monitored over time and towards the right of the data frame there are lots of columns with population estimates for each year. To make this data "tidy" (one column per variable) we can use `gather()` to transform the data so there is a new column containing all the years for each population and an adjacent column containing all the population estimates for those years. Now if you wanted to compare between groups, treatments, species, etc, R would be able to split the dataframe correctly, as each grouping factor has its own column.__
+__The population change data are in a wide format: each row contains a population that has been monitored over time and towards the right of the data frame, there are a lot of columns with population estimates for each year. To make this data "tidy" (one column per variable) we can use `gather()` to transform the data so there is a new column containing all the years for each population and an adjacent column containing all the population estimates for those years. Now if you wanted to compare between groups, treatments, species, etc, R would be able to split the dataframe correctly, as each grouping factor has its own column.__
 
 We will take our original dataset `marine`, filter to include just the beluga populations and create a new column called `year`, fill it with column names from columns numbers 26 to 70 (`26:70`) and then use the data from these columns to make another column called `abundance`.
 
-We should also scale the population data, because since the data come from many species, the units and magnitude of the data are very different - imagine tiny fish whose abundance is in the millions, and large carnivores whose abundance is much smaller. By scaling the data, we are also normalising it, so that later on we can use linear models with a normal distribution to quantify overall experienced population change.
+We should also scale the population data, because since the data come from many species, the units and magnitude of the data are very different. Imagine tiny fish whose abundance is in the millions and large carnivores whose abundance is much smaller. By scaling the data, we are also normalising it so that later on we can use linear models with a normal distribution to quantify overall experienced population change.
 
 ```r
 # Take a look at the population change data
@@ -191,7 +191,7 @@ beluga.pop <- marine %>% filter(species == "Delphinapterus leucas") %>%  # Selec
   gather(key = "year", value = "abundance", select = 26:70) %>%  # Turn data frame from wide to long format
   filter(is.na(abundance) == FALSE) %>%  # Remove empty rows
   group_by(id) %>%   # Group rows so that each group is one population
-  mutate(scalepop = (abundance-min(abundance))/(max(abundance)-min(abundance))) %>%  # Scale abundance from 0 to 1
+  mutate(scalepop = (abundance-min(abundance))/(max(abundance)-min(abundance)) %>%  # Scale abundance from 0 to 1
   filter(length(unique(year)) > 4) %>% # Only include populations monitored at least 5 times
   ungroup()  # Remove the grouping
 ```
