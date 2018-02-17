@@ -38,15 +38,15 @@ tags: data_manip
 
 ## Why not just copy and paste?
 
-Imagine you want to collect information on the area and percentage water area of African countries. It's easy enough to head to [wikipedia](https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa), click through each page then copy the relevant information and paste it into a spreadsheet. Now imagine you want to repeat this for every country in the [world](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population)! This can quickly become VERY tedious as you click between lots of pages, repeating the same actions over and over. It also increases the chance of making mistakes when copying and pasting. By automating this process using R to perform "Web Scraping", you can reduce the chance of making mistakes and speed up your data collection. Additionally, once you have written the script, it can be adapted for lots of different projects, saving time in the long run.
+Imagine you want to collect information on the area and percentage water area of African countries. It's easy enough to head to <a href="https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa" target="_blank">wikipedia</a>, click through each page, then copy the relevant information and paste it into a spreadsheet. Now imagine you want to repeat this for every country in the <a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population" target="_blank">world</a>! This can quickly become VERY tedious as you click between lots of pages, repeating the same actions over and over. It also increases the chance of making mistakes when copying and pasting. By automating this process using R to perform "Web Scraping," you can reduce the chance of making mistakes and speed up your data collection. Additionally, once you have written the script, it can be adapted for a lot of different projects, saving time in the long run.
 
-Web scraping refers to the action of extracting data from a web page using a computer program, in this case our computer program will be R. Other popular command line interfaces that can perform similar actions are [`wget`](https://www.gnu.org/software/wget/) and [`curl`](https://github.com/curl/curl).
+Web scraping refers to the action of extracting data from a web page using a computer program, in this case our computer program will be R. Other popular command line interfaces that can perform similar actions are <a href="https://www.gnu.org/software/wget/" target="_blank">`wget`</a> and <a href="https://github.com/curl/curl" target="_blank">`curl`</a>.
 
 ## Getting started
 
-Open up a new R Script where you will be adding the code for this tutorial. All the resources for this tutorial, including some helpful cheatsheets, can be downloaded from [this repository](https://github.com/ourcodingclub/CC-12-Webscraping). Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the real path), or clicking `Session/ Set Working Directory/ Choose Directory` in the RStudio menu.
+Open up a new R Script where you will be adding the code for this tutorial. All the resources for this tutorial, including some helpful cheatsheets, can be downloaded from <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">this repository</a>. Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the real path), or clicking `Session/ Set Working Directory/ Choose Directory` in the RStudio menu.
 
-Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-12-Webscraping) to your own Github account and then add it as a new RStudio project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync RStudio and Github and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
+Alternatively, you can fork  <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">the repository</a> to your own Github account and then add it as a new RStudio project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync RStudio and Github and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial</a>.
 
 ```r
 setwd("<PATH TO FOLDER>")
@@ -68,7 +68,7 @@ library(dplyr)
 
 ## Download a `.html` web page
 
-The simplest way to download a web page is to save it as a `.html` file to your working. This can be accomplished in most browsers by clicking _`File -> Save as...`_ and saving the file type to `Webpage, HTML Only` or something similar. Here are some examples for different browser Operating System combinations:
+The simplest way to download a web page is to save it as a `.html` file to your working directory. This can be accomplished in most browsers by clicking _`File -> Save as...`_ and saving the file type to `Webpage, HTML Only` or something similar. Here are some examples for different browser Operating System combinations:
 
 ### Microsoft Windows - Internet Explorer
 
@@ -82,7 +82,7 @@ The simplest way to download a web page is to save it as a `.html` file to your 
 
 <img src="{{ site.baseurl }}/img/Safari_Save.png" alt="Img">
 
-Download the IUCN Red List information for _Aptenogytes forsteri_ (Emperor Penguin) from http://www.iucnredlist.org/details/22697810/0 using the above method, saving the file to your working directory.
+Download the IUCN Red List information for _Aptenogytes forsteri_ (Emperor Penguin) from <a href="http://www.iucnredlist.org/details/22697810/0" target="_blank">http://www.iucnredlist.org/details/22697810/0</a> using the above method, saving the file to your working directory.
 
 <a name="import"></a>
 
@@ -102,7 +102,7 @@ Each string in the vector is one line of the original `.html` file.
 
 ## Locating useful information using `grep()` and isolating it using `gsub`
 
-In this example we are going to build a data frame of different species of penguin and gather data on their IUCN status and when the assessment was made, so we will have a data frame that looks something like this:
+In this example we are going to build a data frame of different species of penguin and gather data on their IUCN status and when the assessment was made so we will have a data frame that looks something like this:
 
 | Scientific Name                 | Common Name       | Red List Status | Assessment Date |
 |-------------------------|-------------------|-------------|-----------------|
@@ -111,7 +111,7 @@ In this example we are going to build a data frame of different species of pengu
 | ...                     | ...               | ...         | ...             |
 | Spheniscus mendiculus   | Galapagos Penguin | Endangered          | 2016-10-01      |
 
-Open the IUCN web page for the Emperor Penguin in a web browser, you should see that the species name is next to some other text, `Scientific Name:`. We can use this "anchor" to find the rough location of the species name:
+Open the IUCN web page for the Emperor Penguin in a web browser. You should see that the species name is next to some other text, `Scientific Name:`. We can use this "anchor" to find the rough location of the species name:
 
 ```r
 grep("Scientific Name:", Penguin_html)
