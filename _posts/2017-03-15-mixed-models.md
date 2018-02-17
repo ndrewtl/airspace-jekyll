@@ -437,9 +437,9 @@ You will inevitably look for a way to assess your model though so here are a few
 - Likelihood ratio tests (via `anova()` or `drop1()`)
 - `MCMC` or parametric bootstrap confidence intervals
 
-(See [this link](http://stats.stackexchange.com/questions/95054/how-to-get-an-overall-p-value-and-effect-size-for-a-categorical-factor-in-a-mi){:target="_blank"} for more information and further reading)
+See [this link](http://stats.stackexchange.com/questions/95054/how-to-get-an-overall-p-value-and-effect-size-for-a-categorical-factor-in-a-mi){:target="_blank"} for more information and further reading.
 
-I think that `MCMC` and bootstrapping are a bit out of our reach for this workshop, so let's have a quick go at **likelihood ratio tests** using `anova()`. With large sample sizes p-values based on the likelihood ratio are generally considered ok. **NOTE:** With small sample sizes you might want to look into deriving p-values using the Kenward-Roger or Satterthwaite approximations (for `REML` models). Check out the `pbkrtest` package.
+I think that `MCMC` and bootstrapping are a bit out of our reach for this workshop so let's have a quick go at **likelihood ratio tests** using `anova()`. With large sample sizes, p-values based on the likelihood ratio are generally considered okay. **NOTE:** With small sample sizes, you might want to look into deriving p-values using the Kenward-Roger or Satterthwaite approximations (for `REML` models). Check out the `pbkrtest` package.
 
 Fit the models, a full model and a reduced model in which we dropped our fixed effect (`bodyLength2`):
 
@@ -459,15 +459,15 @@ anova(reduced.lmer, full.lmer)  # the two models are not significantly different
 
 Notice that we have fitted our models with `REML = FALSE`.
 
-**REML** stands for **restricted (or "residual") maximum likelihood** and it is the default parameter estimation criterion for linear mixed models. As you probably guessed, **ML** stands for  **maximum likelihood** - you can set  `REML = FALSE` in your call to `lmer` to use ML estimates. However, **ML estimates are known to be bias** and with REML being usually less bias, **REML estimates of variance components are generally preferred.** This is why in our previous models we skipped setting `REML` - we just left it as default (i.e. `REML = TRUE`).
+**REML** stands for **restricted (or "residual") maximum likelihood** and it is the default parameter estimation criterion for linear mixed models. As you probably guessed, **ML** stands for  **maximum likelihood** - you can set  `REML = FALSE` in your call to `lmer` to use ML estimates. However, **ML estimates are known to be biased** and with REML being usually less biased, **REML estimates of variance components are generally preferred.** This is why in our previous models we skipped setting `REML` - we just left it as default (i.e. `REML = TRUE`).
 
 **REML** assumes that the fixed effects structure is correct. You **should use maximum likelihood when comparing models with different fixed effects**, as **ML** doesn't rely on the coefficients of the fixed effects - and that's why we are refitting our full and reduced models above with the addition of `REML = FALSE` in the call. 
 
-Even though you **use ML to compare models** you should **report parameter estimates from your final "best" REML model**, as ML may underestimate variance of the random effects.
+Even though you **use ML to compare models**, you should **report parameter estimates from your final "best" REML model**, as ML may underestimate variance of the random effects.
 
 **NOTE 2:** Models can also be compared using the `AICc` function from the `AICcmodavg` package. The Akaike Information Criterion (AIC) is a measure of model quality. AICc corrects for bias created by small sample size when estimating AIC. Generally, if models are within 2 AICc units of each other they are very similar. Within 5 units they are quite similar, over 10 units difference and you can probably be happy with the model with lower AICc. As with p-values though, there is no "hard line" that's always correct.
 
-**NOTE 3:** There isn't really an agreed upon way of dealing with the variance from the random effects in mixed models when it comes to assessing significance. Both **p-values** and **effect sizes** have issues, although from what I gather p-values seem to cause more disagreement than effect sizes, at least in the R community.
+**NOTE 3:** There isn't really an agreed upon way of dealing with the variance from the random effects in mixed models when it comes to assessing significance. Both **p-values** and **effect sizes** have issues, although from what I gather, p-values seem to cause more disagreement than effect sizes, at least in the R community.
 
 <a name="randomstr"></a>
 #### Random effects structure
