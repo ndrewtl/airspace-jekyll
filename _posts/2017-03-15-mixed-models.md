@@ -16,15 +16,15 @@ tags: modelling
 
 This is a workshop is aimed at people new to mixed modeling and as such it doesn't cover all the nuances of mixed models, but hopefully serves as a starting point when it comes to both the concepts and the code syntax in `R`. There are no equations used to keep it beginner friendly.
 
-**Acknowledgements:** First of all, thanks where thanks are due. This tutorial has been built on the tutorial written by [Liam Bailey](https://twitter.com/ldbailey255), who has been kind enough to let me use chunks of his script as well as some of the data. Having this backbone of code made my life much, much easier, so thanks Liam, you are a star! The seemingly excessive waffling is mine.
+**Acknowledgements:** First of all, thanks where thanks are due. This tutorial has been built on the tutorial written by <a href="https://twitter.com/ldbailey255" target="_blank">Liam Bailey</a>, who has been kind enough to let me use chunks of his script, as well as some of the data. Having this backbone of code made my life much, much easier, so thanks Liam, you are a star! The seemingly excessive waffling is mine.
 
-If you are familiar with linear models, aware of their shortcomings and happy with their fitting then you should be able to very quickly get through the first five of the sections below. I am however including them for the sake of completeness and in an attempt to cater to a broader audience. 
+If you are familiar with linear models, aware of their shortcomings and happy with their fitting, then you should be able to very quickly get through the first five of the sections below. I am however including them for the sake of completeness and in an attempt to cater to a broader audience. 
 
 Similarly, I include quite a bit of explanatory text: you might choose to just skim it for now and go through the "coding bits" of the tutorial. But it will be here to help you along when you start using mixed models with your own data and you need a bit more context.
 
-To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-Linear-mixed-models" target="_blank">the repository for this tutorial</a>, click on `Clone/Download/Download ZIP` to download the files, and then unzip the folder. Alternatively, fork the repository to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial.__ 
+To get all you need for this session, __go to <a href = "https://github.com/ourcodingclub/CC-Linear-mixed-models" target="_blank">the repository for this tutorial</a>, click on `Clone/Download/Download ZIP` to download the files and then unzip the folder. Alternatively, fork the repository to your own Github account, clone the repository on your computer and start a version-controlled project in RStudio. For more details on how to do this, please check out our <a href = "https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank"> Intro to Github for version control</a> tutorial.__ 
 
-Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bCpZQuj){:target="_blank"} and the **data** from [here](http://gkhajduk.d.pr/9GPn/3nbbPoK6){:target="_blank"}. I might update this tutorial in the future, if I do the latest version will be [on my website](https://gkhajduk.github.io/2017-03-09-mixed-models/){:target="_blank"}.
+Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bCpZQuj){:target="_blank"} and the **data** from [here](http://gkhajduk.d.pr/9GPn/3nbbPoK6){:target="_blank"}. I might update this tutorial in the future and if I do, the latest version will be [on my website](https://gkhajduk.github.io/2017-03-09-mixed-models/){:target="_blank"}.
 
 ## Tutorial Sections:
 
@@ -54,11 +54,11 @@ Alternatively, you can grab the **R script** [here](http://gkhajduk.d.pr/FG8/2bC
 <a name="one"></a>
 ### What is mixed effects modelling and why does it matter?
 
-Ecological and biological data are often complex and messy. We can have different **grouping factors** like populations, species, sites we collect the data at etc. **Sample sizes** might leave something to be desired too, especially if we are trying to fit complicated models with **many parameters**. On top of that our data points might **not be truly independent** - for instance, we might be using quadrats within our sites to collect the data (and so there is structure to our data: quadrats are nested within the sites).
+Ecological and biological data are often complex and messy. We can have different **grouping factors** like populations, species, sites we collect the data at etc. **Sample sizes** might leave something to be desired too, especially if we are trying to fit complicated models with **many parameters**. On top of that, our data points might **not be truly independent**. For instance, we might be using quadrats within our sites to collect the data (and so there is structure to our data: quadrats are nested within the sites).
 
-This is why **mixed models** were developed, to deal with such messy data and to allow us to use all our data, even when we have low sample sizes, structured data, and many covariates to fit. Oh, and on top of all that mixed models allow us to save degrees of freedom compared to running standard linear models! Sounds good, doesn't it?
+This is why **mixed models** were developed, to deal with such messy data and to allow us to use all our data, even when we have low sample sizes, structured data and many covariates to fit. Oh, and on top of all that, mixed models allow us to save degrees of freedom compared to running standard linear models! Sounds good, doesn't it?
 
-We will cover only linear mixed models here, but if you are trying to "extend" your linear model fear not: there are generalised linear mixed effects models out there too.
+We will cover only linear mixed models here, but if you are trying to "extend" your linear model, fear not: there are generalised linear mixed effects models out there too.
 
 <a name="two"></a>
 ### Explore the data
@@ -72,14 +72,14 @@ head(dragons)
 
 Let's say we want to know how the body length of the dragons affects their test scores.
 
-You don't need to worry about the distribution of your **predictor** variables. Have a look at the distribution of the response variable: 
+You don't need to worry about the distribution of your **explanatory** variables. Have a look at the distribution of the response variable: 
 
 ```r
 hist(dragons$testScore)  # seems close to a normal distribution - good!
 ```
 <center><img src="{{ site.baseurl }}/img/mm-1.png" alt="Img" style="width: 800px;"/></center>
 
-It is good practice to **standardise** your explanatory variables before proceeding, so that they have a mean of zero and standard deviation of one. It ensures that the estimated coefficients are all on the same scale, making it easier to compare effect sizes. You can use ``scale()`` to do that:
+It is good practice to **standardise** your explanatory variables before proceeding so that they have a mean of zero and standard deviation of one. It ensures that the estimated coefficients are all on the same scale, making it easier to compare effect sizes. You can use ``scale()`` to do that:
 
 ```r
 dragons$bodyLength2 <- scale(dragons$bodyLength)
@@ -112,11 +112,11 @@ ggplot(dragons, aes(x = bodyLength, y = testScore)) +
 
 <center><img src="{{ site.baseurl }}/img/mm-2.png" alt="Img" style="width: 800px;"/></center>
 
-Ok, so both from the linear model and from the plot it seems like bigger dragons do better in our intelligence test. That seems a bit odd, size shouldn't really affect the test scores.
+Okay, so both from the linear model and from the plot, it seems like bigger dragons do better in our intelligence test. That seems a bit odd: size shouldn't really affect the test scores.
 
-But... Are the assumptions met?
+But... are the assumptions met?
 
-Plot the residuals - the red line should be nearly flat, like the dashed grey line:
+Plot the residuals: the red line should be nearly flat, like the dashed grey line:
 
 ```r
 plot(basic.lm, which = 1)  # not perfect... 
@@ -127,7 +127,7 @@ plot(basic.lm, which = 1)  # not perfect...
 
 <center><img src="{{ site.baseurl }}/img/mm-3.png" alt="Img" style="width: 800px;"/></center>
 
-Have a quick look at the qqplot too - points should ideally fall onto the diagonal dashed line:
+Have a quick look at the qqplot too: points should ideally fall onto the diagonal dashed line:
 
 ```r
 plot(basic.lm, which = 2)  # a bit off at the extremes, but that's often the case; again doesn't look too bad
@@ -136,7 +136,7 @@ plot(basic.lm, which = 2)  # a bit off at the extremes, but that's often the cas
 
 However, what about observation independence? Are our data independent?
 
-We collected multiple samples from eight mountain ranges. It's perfectly plausible that the data from within each mountain range are more similar to each other than the data from different mountain ranges - they are correlated.
+We collected multiple samples from eight mountain ranges. It's perfectly plausible that the data from within each mountain range are more similar to each other than the data from different mountain ranges: they are correlated.
 
 Have a look at the data to see if above is true:
 
@@ -156,7 +156,7 @@ ggplot(dragons, aes(x = bodyLength, y = testScore, colour = mountainRange)) +
 
 <center><img src="{{ site.baseurl }}/img/mm-6.png" alt="Img" style="width: 800px;"/></center>
 
-From the above plots it looks like our mountain ranges vary both in the dragon body length and in their test scores. This confirms that our observations from within each of the ranges **aren't independent**. We can't ignore that.
+From the above plots, it looks like our mountain ranges vary both in the dragon body length and in their test scores. This confirms that our observations from within each of the ranges **aren't independent**. We can't ignore that.
 
 So what do we do?
 
@@ -178,9 +178,9 @@ ggplot(aes(bodyLength, testScore), data = dragons) +
 
 That's eight analyses. Oh wait, we also have different sites, which similarly to mountain ranges aren't independent... So we could run an analysis for each site in each range separately.
 
-To do the above we would have to estimate a slope and intercept parameter for each regression. That's two parameters, three sites and eight mountain ranges, which means **48 parameter estimates** (2 x 3 x 8 = 48)! Moreover, the sample size for each analysis would be only 20.
+To do the above, we would have to estimate a slope and intercept parameter for each regression. That's two parameters, three sites and eight mountain ranges, which means **48 parameter estimates** (2 x 3 x 8 = 48)! Moreover, the sample size for each analysis would be only 20.
 
-This presents problems - not only we are **hugely decreasing our sample size**, but we are also **increasing chances of a Type I Error by carrying out multiple comparisons**. Not ideal!
+This presents problems: not only are we **hugely decreasing our sample size**, but we are also **increasing chances of a Type I Error by carrying out multiple comparisons**. Not ideal!
 
 <a name="five"></a>
 ### Modify the current model
