@@ -474,11 +474,11 @@ Even though you **use ML to compare models**, you should **report parameter esti
 
 Now you might wonder about selecting your random effects. In general, I'd advise you to think about your **experimental design, your system and data collected as well as your questions**.
 
-If your random effects are there to deal with **pseudoreplication** then it doesn't really matter whether they are "significant" or not - they **are part of your design** and have to be included. Imagine we tested our dragons multiple times - we then *have to* fit dragon identity as a random effect.
+If your random effects are there to deal with **pseudoreplication**, then it doesn't really matter whether they are "significant" or not: they **are part of your design** and have to be included. Imagine we tested our dragons multiple times - we then *have to* fit dragon identity as a random effect.
 
-On the other hand if you are trying to account for other variability that you think might be important it becomes a bit harder. Imagine we measured the mass of our dragons over their lifespans (let's say 100 years). We might then want to fit year as a random effect to account for any temporal variation - maybe some years were affected by drought, the resources were scarce and so dragon mass was negatively impacted. Year would definitely be a sensible random effect, although strictly speaking not a must.
+On the other hand, if you are trying to account for other variability that you think might be important, it becomes a bit harder. Imagine we measured the mass of our dragons over their lifespans (let's say 100 years). We might then want to fit year as a random effect to account for any temporal variation - maybe some years were affected by drought, the resources were scarce and so dragon mass was negatively impacted. Year would definitely be a sensible random effect, although strictly speaking not a must.
 
-When it comes to such random effects you can use **model selection** to help you decide what to keep in. Following Zuur's advice we **use `REML` estimators for comparison of models with different random effects** (we keep fixed effects constant). (Zuur: "Two models with nested random structures cannot be done with ML because the estimators for the variance terms are biased." )
+When it comes to such random effects you can use **model selection** to help you decide what to keep in. Following Zuur's advice, we **use `REML` estimators for comparison of models with different random effects** (we keep fixed effects constant). (Zuur: "Two models with nested random structures cannot be done with ML because the estimators for the variance terms are biased." )
 
 
 **NOTE:** Do **NOT** vary random and fixed effects at the same time - either deal with your random effects structure or with your fixed effects structure at any given point.
@@ -502,7 +502,7 @@ The model selection process recommended by Zuur *et al.* (2009) is a top-down st
 <a name="end"></a>
 ### THE END 
 
-**Well done for getting through this!** As you probably gather mixed effects models can be a bit tricky and often there isn't much consensus on the best way to tackle something within them. The coding bit is actually the (relatively) easy part here. Be mindful of what you are doing, prepare the data well and things should be alright.
+**Well done for getting through this!** As you probably gather, mixed effects models can be a bit tricky and often there isn't much consensus on the best way to tackle something within them. The coding bit is actually the (relatively) easy part here. Be mindful of what you are doing, prepare the data well and things should be alright.
 
 <hr>
 <hr>
