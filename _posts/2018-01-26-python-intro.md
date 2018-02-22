@@ -48,21 +48,21 @@ Python is a programming language, a tool used to make computers do useful things
 
 Python shines because it is designed to be *readable* for us humans. Python is often described as a language that is intuitive and relatively easy to learn. The **syntax** (how you arrange the set of words and symbols to make a Python program) is meant to be intuitve to humans by being similar to natural human languages in many ways. For example, look at these little snippets of Python and see if you can guess what they mean and what might happen if we told the computer to run the code:
 
-```
+```python
 "Python".startswith("P")
 ```
 This bit of python code reads like: *Python starts with a "P"*, and that is exactly what it means  in Python!. If we ran this bit of code, the computer would print out `True` on the screen.
 
 What about this one?
 
-```
+```python
 "thon" in "Python"
 ```
 (Imagine reading it like a question...)
 
 So if we ask: *"thon" in "Python"?*, the answer is yes (or True), because the letters "thon" appear in the word "Python". If we wrote:
 
-```
+```python
 "xyz" in "Python"
 ```
 we would get False, because those letters are not in the word "Python".
@@ -71,7 +71,7 @@ Python syntax has many more similarities with natural languages, and we will dis
 
 Here is one more bonus round. Can you guess what might happen if we ran this Python code?
 
-```
+```python
 tastyword = "chocolate"
 x = 3
 
