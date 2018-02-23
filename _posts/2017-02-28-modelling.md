@@ -119,7 +119,7 @@ Turns out that yield does significantly differ between the three spacing categor
 
 __You also get a `Multiple R-squared` value and an `Adjusted R-squared` value. These values refer to how much of the variation in the `yield` variable is explained by our predictor `spacing2`. The values go from 0 to 1, with 1 meaning that our model variables explain 100% of the variation in the examined variable. `R-squared` values tend to increase as you add more terms to your model, but you also need to account for overfitting. The `Adjusted R-squared` value takes into account how many terms your model has and how many data points are available in the response variable. From looking at our `R-squared` values, this is not a great model, which makes sense. Imagine all the other things that could have an impact on yield that we have not studied: fertilisation levels, weather conditions, water availability, etc.__
 
-#### In addition to checking whether this model makes sense from an ecological perspective, we should check that it actually meets the assumptions of a linear model: are the residuals normally distributed, are the data homoscedastic and are the observations independent?
+#### In addition to checking whether this model makes sense from an ecological perspective, we should check that it actually meets the assumptions of a linear model: are the residuals, which describe the difference between the observed and predicted value of the dependent varible, normally distributed, are the data homoscedastic and are the observations independent?
 
 
 ```r
