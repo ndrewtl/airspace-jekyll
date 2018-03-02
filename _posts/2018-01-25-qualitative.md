@@ -96,11 +96,32 @@ Imagine we want to ask the question "Does the number of sustainable energy-relat
 sust_data$energy_action_n <- nchar(as.character(sust_data$energy_action))
 ```
 
-Finally, some columns contain comments left by people who completed the survey, giving some extra information or giving context to their answers. We can mine these comments for keywords to build up a more complete picture of the survey respondents.
+Finally, some columns (e.g. `energy_action_comment`) contain comments left by people who completed the survey, giving some extra information or giving context to their answers. We can mine these comments for keywords to build up a more complete of what our respondents were thinking about when they did the survey and whether that varies by gender.
 
-__FILL__
+```r
+sust_comment <- sust_data %>% 
+	select(id, gender, energy_action_comment, 
+				 food_action_comment, water_action_comment, 
+				 waste_action_comment, other_action_comment) %>%
+	gather(action, comment, -id, -gender) %>%
+	mutate(comment = as.character(comment)) %>% 
+	group_by(gender) %>%
+	unnest_tokens(output = comment_word,
+								input = comment) %>%
+	anti_join(stop_words, by = c("comment_word" = "word")) %>%
+	count(comment_word, sort = TRUE)  %>%
+	filter(n > 5) %>%
+	filter(!is.na(comment_word)) %>% 
+	mutate(comment_word = reorder(comment_word, n)) 
+
+sust_comment$comment_word <- reorder(sust_comment$comment_word, sust_comment$n)
+
+ggplot(sust_comment, aes(x = comment_word, y = n, fill = gender)) + 
+	geom_bar(stat = "identity") + 
+	coord_flip()
 
 
+https://www.tidytextmining.com
 
 ## 2. Visualising qualitative data
 
