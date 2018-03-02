@@ -3,7 +3,7 @@ layout: post
 title: Analysing ordinal data, surveys, count data 
 subtitle: Using R to answer sociological questions
 date: 2017-01-29 10:00:00
-author: Gergana
+author: John 
 meta: "Tutorials"
 tags: datavis data_manip modelling  
 ---
@@ -95,6 +95,29 @@ str(sust_data)
 Now that we formatted our data for analysis we can visualise the data to identify any interesting patterns. 
 
 Let's start with the likert scales. We can create bar charts to visualise the number of responses to a question which fit into each of the ordinal categories. The correct form for the bar chart will depend on the type of question that was asked, and the wording of the various responses. For example, if potential responses were presented as "Strongly disagree", "Disagree", "Neither agree nor disagree", "Agree", "Strongly agree", you could assume that the neutral or zero answer is in the middle, with Disagree being negative and Agree being positive. On the other hand, if the answers were presented as "Never", "Rarely", "Sometimes", "Often", "Nearly every decision I make", the neutral or zero answer would be Never, with all other answers being positive. For the first example, we could use a "diverging stacked bar chart", and for the latter we would just use a standard "stacked bar chart".
+
+As an example, let's first make a diverging stacked bar chart of responses to the question: "How often during a normal day do you think about the sustainability of your actions?". Investigating how gender affects the response. The responses from this question are found in the column called `sustainability_daily_think`. 
+
+First, we need to make a summary table of the responses from this column, which can be done easily using the `dplyr` package.
+
+```r
+
+```
+
+And now for the code to create the plot.
+
+
+
+For the second example it is much easier. Just create the summary table and plot as a normal stacked bar chart, without any of the fiddling to get the neutral option to display in the 0 mark.
+
+
+Of course, there are other options to display this sort of data. You could use a pie chart, or just a basic table showing the number of responses by group, but I think that the diverging bar chart gives an effective way to compare groups of respondees, or even to compare answers to different questions, if you group by question instead of gender.
+
+## 3. Analyse
+
+<a name="analyse"></a>
+
+
 
 
 
