@@ -227,7 +227,9 @@ View(beluga.slopes)
 # For analysis and plotting, we often need the intercept and slopes to be columns, not rows
 # Format data frame with model outputs
 beluga.slopes <- beluga.slopes %>%
-  dplyr::select(Location.of.population, Decimal.Latitude, Decimal.Longitude, id, term, estimate) %>%  # Select the columns we need
+  dplyr::select(Location.of.population, Decimal.Latitude, 
+                Decimal.Longitude, id, term, estimate) %>%  
+                # Select the columns we need
   spread(term, estimate) %>%  # spread() is the opposite of gather()
   ungroup()
 ```
@@ -429,7 +431,7 @@ icon <- readPNG("beluga_icon.png")
 icon <- rasterGrob(icon, interpolate=TRUE)
 
 # You can ignore the warning message, it's referring to the colour profile of the image
-# Doesn't matter for our black icon
+# Doesn't matter for our icon
 ```
 
 __Now comes what looks like a gigantic chunk of code! We have explained each step in the comments so you can  read through the code before you run it. This doesn't mean that every time you make a map your code has to be this long. From the maps above, you can see that 4-5 lines of code make a pretty decent map. Here we have included a lot of customising options, including how to plot points from different data frames on the same map, how to add labels, icons and change the title so that when it comes to making your own maps, you can pick and choose whichever ones are relevant for your map.__
