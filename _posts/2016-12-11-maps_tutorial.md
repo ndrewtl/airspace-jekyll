@@ -74,12 +74,20 @@ library(readr)
 library(dplyr)
 library(rgdal)
 library(devtools)
+library(rtools)  # Not bundled with R as standard anymore
   devtools::install_github("dkahle/ggmap") # Plot map data, download map tiles from online sources
     library(ggmap)
 ```
 
 
 At the time of writing, `ggmap` needs to be compiled from source (i.e. its repository on Github) to maintain some functionality, hence `  devtools::install_github("dkahle/ggmap")`, but this might change in the future.
+
+Also note that if you are on Linux, installing the `devtools` package may not work, throwing an error like `non-zero exit status`. Hopefully you can fix this by entering the following into your Linux terminal to install some dependencies, then reinstalling `devtools` in R. This was tested on Ubuntu 16.04.4 LTS in March 2018:
+
+```shell
+apt-get -y build-dep libcurl4-gnutls-dev
+apt-get -y install libcurl4-gnutls-dev
+```
 
 <a name="map_data"></a>
 
@@ -184,6 +192,8 @@ We can check that the map is correct by plotting the `Map_penguin` object:
 ```r
 ggmap(Map_penguin)
 ```
+
+Note that sometimes `ggmap()` will fail, especially if you're internet connection is patchy. Try running it a few more times before looking for other fixes.
 
 To add the data, use `ggplot2` syntax:
 
