@@ -76,6 +76,7 @@ library(maps)  # For making maps
 library(mapdata)  # For supplying map data
 library(gpclib)  # For clipping polygons
 library(maptools) # For reading map data
+library(rtools)  # Not bundled with R as standard anymore
 library(devtools)  # For installing packages from altenative sources, e.g. Github
 	devtools::install_github("dkahle/ggmap")
 	devtools::install_github("oswaldosantos/ggsn")
@@ -89,6 +90,13 @@ Also, you should the following line after loading all your packages to allow `ma
 
 ```r
 gpclibPermit()
+```
+
+Also note that if you are on Linux, installing the `devtools` package may not work, throwing an error like `non-zero exit status`. Hopefully you can fix this by entering the following into your Linux terminal to install some dependencies, then reinstalling `devtools` in R. This was tested on Ubuntu 16.04.4 LTS in March 2018:
+
+```shell
+apt-get -y build-dep libcurl4-gnutls-dev
+apt-get -y install libcurl4-gnutls-dev
 ```
 
 <a name="map_data"></a>
@@ -257,7 +265,10 @@ We can check that the map is correct by plotting the `map_penguin` object:
 ggmap(map_penguin)
 ```
 
-To add the data, use `ggplot2` syntax, but define the base plot as a `ggmap()` instead of a `ggplot()`:
+Note that sometimes `ggmap()` will fail, especially if you're internet connection is patchy. Try running it a few more times before looking for other fixes.
+
+To add the data, use `ggplot2` syntax but define the base plot as a `ggmap()` instead of a `ggplot()`:
+
 
 ```r
 ggmap(map_penguin) +
