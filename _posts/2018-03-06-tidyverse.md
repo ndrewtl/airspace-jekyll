@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Manipulation and visualisation of spatial and population data
+title: GitHub, Tidyverse and Markdown - a coding workshop for the EVENET network
 subtitle: Cleaning occurrence data and customising graphs and maps
 date: 2018-03-06 10:00:00
 author: Gergana
