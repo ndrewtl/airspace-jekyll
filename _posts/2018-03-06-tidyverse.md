@@ -9,7 +9,7 @@ tags: data_manip data_vis github
 ---
 <div class="block">
 	<center>
-		<img src="{{ site.baseurl }}/img/tutheaderoccur.png" alt="Img">
+		<img src="{{ site.baseurl }}/img/tutheader_ghent.png" alt="Img">
 	</center>
 </div>
 
@@ -26,18 +26,13 @@ tags: data_manip data_vis github
 
 <p></p>
 
-#### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-occurrence" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
+### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-occurrence" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
-<a name="create"></a>
 <center><img src="{{ site.baseurl }}/img/CodingClub_logo2.png" alt="Img" style="width: 700px;"/></center>
-
 
 __We started Coding Club to help people at all career stages gain statistical and programming fluency, facilitating the collective advancement of ecology across institutions and borders. We use in-person workshops and online tutorials to equip participants not only with new skills, but also with the means to communicate these new skills broadly via online tutorials.__
 
 __We would love to extend Coding Club beyond the University of Edinburgh and create a supportive community of people keen to get better at coding and statistics! With that in mind, we present you with a workshop on how to write and share tutorials!__
-
-
-<center><img src="{{ site.baseurl }}/img/74b26610-2027-11e7-841b-f91777fdfcdf.png" alt="Img" style="width: 700px;"/></center>
 
 There are similar initiatives already in place, including in Ghent University, University of Aberdeen and University of St Andrews, which is very exciting!
 
@@ -48,15 +43,15 @@ There are many ways to run a coding workshop and different approaches might work
 
 At each workshop, we have a team of demonstrators who are there to answer questions and help out. We find that it works well to let people go through the tutorial at their own pace and we usually walk around and check whether things are going fine. Most of the tutorials have challenges at the end, for which people can work individually or in small teams. We bring cookies, popcorn and other treats, occasionally make bad R jokes and try our best to make the atmosphere light and positive. We don't require people to sign up and there are no obligations to attend all the workshops: people are free to attend whichever workshops are of interest to them. At the end of the workshops, we usually stay behind for a while in case people have any specific questions about their own coding projects.
 
+<a name="create"></a>
+
 ## 1. Create a coding tutorial and host it on GitHub
 
 We write our tutorials in Markdown. Markdown is a language with plain text formatting syntax. Github and Markdown work very well together and we use Markdown because we can turn a Markdown file into a website hosted on Github in a minute or so! Because of the syntax formatting, Markdown is a great way to display code: the code appears in chunks and stands out from the rest of the text. All of the Coding Club tutorials are written in Markdown.
 
-<center><img src="{{ site.baseurl }}/img/atom_rstudio.png" alt="Img" style="width: 1000px;"/></center>
-
 We use the Atom text editor, which is a user-friendly text editor and easy on the eyes. You can use another text editor, like Brackets or TextEdit on a Mac and Notepad on a Windows computer if you prefer, the principle is the same. A plain text editor is a programme, which allow you to create, save and edit various types of text files, like `.txt` and in our case, Markdown (`.md`) files. So for example, `Microsoft Word` is a text editor, but not a plain one. In the "fancier" plain text editors, you get "syntax" highlighting: different types of text, like code and links, are colour coded so they are easier to spot.
 
-__You can <a href="https://atom.io/" target="_blank">download Atom here</a>, if you wish, but it's a fairly large file, so you can also proceed with whatever text editor you already have and you can check out Atom later.
+__You can <a href="https://atom.io/" target="_blank">download Atom here</a>, if you wish, but it's a fairly large file, so you can also proceed with whatever text editor you already have and you can check out Atom later.__
 
 You can also open the tutorial template in RStudio, but note that there are small differences between Markdown and GitHub-flavoured Markdown (the curly brackets):__
 
@@ -87,13 +82,13 @@ Our workflow tends to go like this:
 #### - Add images and links as suitable
 
 
-#### Don't worry if you've never used a text editor or `Markdown` before. We have created a template you can open straight in Atom (or another plain text editor) and just insert your text, code and images.
+__Don't worry if you've never used a text editor or `Markdown` before. We have created a template you can open straight in Atom (or another plain text editor) and just insert your text, code and images.__
 
-## You can download the  `tut_template.md` file that you can turn into a tutorial and the brief R script for the tutorial from this <a href="https://github.com/ourcodingclub/CC-EAB-tut-ideas" target ="_blank">GitHub repository.</a> Click on Clone/Download Zip, download the files and unzip them.
+### Open the `tut_template.md` file in a text editor or `RStudio` and the `tutorial_script.R` file in `RStudio`.
 
-__Open the file `tut_template.md` in Atom. The file includes instructions on how to add subheadings, links, code and images.__
+The sample script in `tutorial_script.R` creates a few simple plots about plant trait relationships. Run through the code and save the graph. Next, transfer the code from the `R` script into the code chunks in the `tut_template.md` file.
 
-We are using `<a href="#section_number">text</a>` to create anchors within our text. For example, when you click on section one, the page will automatically go to where you have put `<a name="section_number"></a>`.
+In the `tut_template.md` file, we are using `<a href="#section_number">text</a>` to create anchors within our text. For example, when you click on section one, the page will automatically go to where you have put `<a name="section_number"></a>`.
 
 To create subheadings, you can use `#`, e.g. `# Subheading 1` creates a subheading with a large font size. The more hashtags you add, the smaller the text becomes. If you want to make text bold, you can surround it with `__text__`, which creates __text__. For italics, use only one understore around the text, e.g. `_text_`, _text_.
 
@@ -105,7 +100,7 @@ To find the backticks on your keyboard, look towards the top left corner on a Wi
 
 __Next we can publish our tutorial on GitHub, which will turn it into a website, whose link you can share with your peers - transferring quantitative skills among ecologists in action!__
 
-__Go to the GitHub website, register if you don't already have an account (it's free) and click on `New Repository`.__
+__Go to the <a href="https://github.com" target="_blank">GitHub website</a>, register if you don't already have an account (it's free) and click on `New Repository`.__
 
 <center> <img src="{{ site.baseurl }}/img/new_repo_eab.png" alt="Img" style="width: 600px;"/> </center>
 
@@ -113,13 +108,13 @@ Choose a name for your repository: that will form part of the link for your onli
 
 <center> <img src="{{ site.baseurl }}/img/new_repo_eab2.png" alt="Img" style="width: 600px;"/> </center>
 
-#### Now you can see your new repository. Click on `Upload files` and upload your filled in `Markdown` template. Make sure you save the file as `index.md` - that will make your tutorial the landing (home) page of the website. Upload any images you are using in your tutorial as well.
+#### Now you can see your new repository. Click on `Upload files` and upload your filled in `Markdown` template and the graph you saved. Make sure you save the file as `index.md` - that will make your tutorial the landing (home) page of the website. Upload any images you are using in your tutorial as well.
 
 You are two clicks away from having a website with your tutorial! Now click on `Settings` and scroll down to the `GitHub pages` section. We need to enable the `GitHub pages` feature, which turns our `index.md` file into a page, i.e. website. Change `Source` from `None` to `master` - the master branch of our repository. Click on `Save`.
 
 <center> <img src="{{ site.baseurl }}/img/github_pages.png" alt="Img" style="width: 600px;"/> </center>
 
-#### Congratulations, your repository is now published as a website!
+#### Your repository is now published as a website!
 
 __Scroll down to the `GitHub pages` section again - you can see the link for your tutorial! If you need to edit your tutorial, you can go back to your repository, select the `index.md` file, then click on `Edit` and make any necessary changes. You can also check out different themes for your website, though the default one is clean and tidy, which works well for coding and statistics tutorials in general.__
 
@@ -133,7 +128,7 @@ Version control allows you to keep track of your work and helps you to easily ex
 
 ### How does GitHub work?
 
-#### You make a repository (a folder that is under version control) and you have two copies of it - a local copy (on your computer) and a remote copy (online on GitHub). Repositories can be public or private - if you would like to have free private repositories, you can apply <a href="https://education.github.com/discount_requests/new">here</a> using your institutional email address.
+__You make a repository (a folder that is under version control) and you have two copies of it - a local copy (on your computer) and a remote copy (online on GitHub). Repositories can be public or private - if you would like to have free private repositories, you can apply <a href="https://education.github.com/discount_requests/new">here</a> using your institutional email address.__
 
 ## The GitHub workflow can be summaried by commit-pull-push.
 
@@ -151,11 +146,11 @@ __Once you are up to date, you can push your changes - at this point in time you
 
 __Each file on GitHub has a history, so instead of having many files like `Dissertation_1st_May.R`, `Dissertation_2nd_May.R`, you can have only one and by exploring its history, you can see what it looked at different points in time.__
 
-For example, here is the history for a script. Obviously it took me a while to calculate those model predictions!
+For example, here is the history for a script. You can see it took me a while to calculate those model predictions!
 
-<center> <img src="{{ site.baseurl }}/img/filehistory.png" alt="Img" style="width: 1200px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/filehistory.png" alt="Img" style="width: 800px;"/> </center>
 
-You can embed this workflow within `RStudio` using projects and enabling version control for them - we will be doing that shortly in the tutorial. You can use git through the command line, or through RStudio and/or GitHub desktop.
+You can embed this workflow within `RStudio` using projects and enabling version control for them - we will be doing that shortly in the tutorial. You can use `git` through the command line, or through `RStudio` and/or GitHub desktop.
 
 ### What are the benefits of using GitHub as a lab?
 
@@ -163,20 +158,22 @@ Having a GitHub repo for your lab makes it easy to keep track of collaborative a
 
 ### Make a new GitHub repository and sync it with RStudio
 
+
 #### What is a repository?
 GitHub uses repositories - you can think of a repository (_aka_ a repo) as a "master folder" - a repository can have folders within it, or be just separate files. In any case, a repository is what holds all of the files associated with a certain project that is version-controlled.
 
 To make a repository, go to `Repositories/New repository` - choose a concise and informative name that has no spaces or funky characters in it. This can be your master repo that holds together past and ongoing research, data, scripts, manuscripts. Later on you might want to have more repositories - e.g. a repository associated with a particular project that you want to make public or a project where you are actively seeking feedback from a wide audience.
 
-<center> <img src="{{ site.baseurl }}/img/newrepo.png" alt="Img" style="width: 1200px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/newrepo.png" alt="Img" style="width: 800px;"/> </center>
 
 Click on `Initialise repo with a README.md file`. It's common practice for each repository to have a `README.md` file, which contains information about the project/lab group, what is the purpose of the repository, as well as any comments on licensing and data sources. Github understands several text formats, among which `.txt` and `.md`. `.md` stands for a file written in <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a> - you might have used Markdown before from within `RStudio` to create reports of your code and its outputs. You can also use Markdown to write plain text files, for example the file you are reading now was written in Markdown.
 
-<center> <img src="{{ site.baseurl }}/img/newrepo2.png" alt="Img" style="width: 1200px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/newrepo2.png" alt="Img" style="width: 800px;"/> </center>
 
 You can directly edit your `README.md` file on Github by clicking on the file and then selecting `Edit this file`.
 
-<center> <img src="{{ site.baseurl }}/img/readme.png" alt="Img" style="width: 1200px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/readme.png" alt="Img" style="width: 800px;"/> </center>
+
 
 
 #### Exercise 1: Write an informative README.md file
@@ -208,20 +205,9 @@ Go to `Create new file` and write a `.gitignore` file within the main repository
 #*README_files/
 ```
 
-### GitHub etiquette
+#### Relative filepaths
 
-It's a good idea to define some rules on how to use a repository, particularly if it is shared among many users.
-
-__Here is a set of sample GitHub rules:__
-
-```
-Keep your scripts in your personal scripts folder. Don't look in other people's folders.
-When working on group projects, move the script out of your personal folder to the relevant project folder, so that everyone can work on it.
-Keep file paths short and sensible.
-Upload your data on GitHub and use relative file paths - if the data are on your computer, and you have e.g. `data <- read.csv("C:/user/Documents/bird_abundance.csv")` in your code, only you will be able to read in that data, since it's only on your computer. But if you load the data from the lab's repo, every member of the repo can use it, e.g. `data <- read.csv("data/bird_abundance.csv")`, where `data` is a folder within the lab's repo.
-Don't use funky characters and spaces in your file names, these cause trouble because of differences in Mac/Windows systems.
-Always pull before you push in case someone has done any work since the last time you pulled - you wouldn't want anyone's work to get lost or to have to resolve many coding conflicts.
-```
+Another reason why `git` is great is that you can use relative file paths - if the data are on your computer, and you have e.g. `data <- read.csv("C:/user/Documents/bird_abundance.csv")` in your code, only you will be able to read in that data, since that's the filepath specific to your computer. But if you load the data from a repo using a relative filepath, every member of the repo (or you from e.g. your work computer and your laptop) can use it, e.g. `data <- read.csv("data/bird_abundance.csv")`, where `data` is a folder within the lab's repo.
 
 ### Sync your GitHub rep with RStudio
 We are now ready to start using your repository - first you need to create a local (i.e. on your computer) copy of the repository and create an RStudio project for the repo.
@@ -250,18 +236,18 @@ Once the files have finished copying across, you will notice that a few things a
 
 <center><img src="{{ site.baseurl }}/img/project2.png" alt="Img" style="width: 1200px;"/></center>
 
-__The working directory in the top left corner is set to your local copy of the lab's repository.__ You can load in data using `read.csv("data/your_file.csv")` - this would load a `.csv` file in a folder called `data` within your lab's repository - notice that there is no need to include the repository's name - by setting up a RStudio project, you are already within it. Similarly, when saving files, you can specify the folder where you want them saved without the repository's name.
+__The working directory in the top left corner is set to your local copy of the repository.__ You can load in data using `read.csv("data/your_file.csv")` - this would load a `.csv` file in a folder called `data` within your lab's repository - notice that there is no need to include the repository's name - by setting up a RStudio project, you are already within it. Similarly, when saving files, you can specify the folder where you want them saved without the repository's name.
 
 __There is a `Git` tab in the top right panel of RStudio.__ We will be doing our version control using the options within this tab.
 
 __All the files that were in the repository online are now on your computer as well.__
 
-# Tell RStudio who you are on GitHub
+#### Tell RStudio who you are on GitHub
 In the top right corner of the RStudio screen, click on `More/Shell`.
 
 <center> <img src="{{ site.baseurl }}/img/shell.png" alt="Img" style="width: 900px;"/> </center>
 
-### Copy the following code:
+__Copy the following code:__
 
 ```
 git config --global user.email your_email@example.com
@@ -271,7 +257,7 @@ git config --global user.name "Your GitHub Username"
 # Add your username and click Enter
 ```
 
-### If it worked fine, there will be no messages and you can close the shell window - you only need to do this once.
+__If it worked fine, there will be no messages and you can close the shell window - you only need to do this once.__
 
 ### Make a new script file and go through commit - pull - push
 Click on `File/New file/R Script` and type a one line comment like `# This is a test file.`. Save the file - you will see its name appear under the Git tab in the top right corner of the `RStudio` window. Click on the file, then on `Commit`, write a quick message and commit. Then click on `Pull` first and `Push` afterwards - given that you just made this repo, you'll probably get a message saying you are all up to date when you pulled - this means that everything that is in the remote (online) copy is also on your local copy on your computer. After you've pushed, everything on your local copy will appear on the remote copy - if you go to your repository on GitHub, you'll see your test file.
@@ -280,22 +266,19 @@ Click on `File/New file/R Script` and type a one line comment like `# This is a 
 
 Sometimes you will see error messages as you try to commit-pull-push. Usually the error message identifies the problem and which file it's associated with, if the message is more obscure, googling it is a good step towards solving the problem.
 
-#### Code conflicts
+### Code conflicts
 While you were working on a certain part of a script, someone else was working on it, too. When you go through commit-pull-push, GitHub will make you decide which version you want to keep. This is called a code conflict, and you can't proceed until you've resolved it. You will see arrows looking like `>>>>>>>>>` around the two versions of the code - delete the version of the code you don't want to keep, as well as the arrows, and save the file. Then open the git shell, type `git add path-to-your-file/your-file.R` where you should replace the filepath with the one leading to the problem file. Then hit `Enter` and close the shell window. Now you should be able to commit again without issues.
 
-# Contribute to an existing repo & get set up for the `tidyverse` tutorial
+### Contribute to an existing repo & get set up for the `tidyverse` tutorial
 
-#### Log into your Github account and navigate to <a href = "https://github.com/ourcodingclub/CC-7-Github" target="_blank">the repository for the `tidyverse` tutorial </a>. Click `Fork` - this means you are making a copy of this repository to your own Github account - think of it as a working copy.
-
-<center><img src="{{ site.baseurl }}/img/fork.png" alt="Img" style="width: 1000px;"/></center>
+#### Log into your Github account and navigate to <a href = "https://github.com/ourcodingclub/CC-7-Github" target="_blank">the repository for the `tidyverse` tutorial </a>. Click `Fork` in the top right corner of the screen- this means you are making a copy of this repository to your own Github account - think of it as a working copy.
 
 This is a tiny repo, so forking it will only take a few seconds, note that when working with lots of data, it can take a while. Once the forking is done, you will be automatically redirected to your forked copy of the `CC-7-Github` repo. Notice that now the repo is located within your own Github account - e.g. where you see "gndaskalova", you should see your name.
-
-<center><img src="{{ site.baseurl }}/img/fork2.png" alt="Img" style="width: 1000px;"/></center>
 
 Click `Clone or download` and copy the HTTPS link.
 
 Now open RStudio, click `File/ New Project/ Version control/ Git` and paste the HTTPS link into the `Repository URL:`. You can have more than one `RStudio` project and you can have multiple `RStudio` windows open with a project each - e.g. if you go to `File/Recent projects`, you should see the project you made earlier.
+
 
 #### What is the difference between forking and cloning?
 If you had just cloned the `tidyverse` repository (i.e. copying the HTTPS link of the original repository that is hosted on the Coding Club account), then the repository still remains associated with the Coding Club account -  then everyone reading this tutorial would have been working in the same repository. In this case, we thought it would be nice if everyone has their own space, i.e. one working copy per person, so that's why you fork the repo first, which gives you a copy hosted on your account, and that is the copy you clone to your computer.
@@ -310,18 +293,17 @@ If you had just cloned the `tidyverse` repository (i.e. copying the HTTPS link o
 ### PART 1: Intro to the tidyverse
 #### How to analyse population change of forest vertebrates
 
-1. How to write a custom ggplot2 function
-2. How to use gather() and spread() from the tidyr package in the tidyverse
-3. How to parse numbers using parse_number() from the readr package in the tidyverse
-4. How to use the distinct() function from dplyr in the tidyverse
-5. How to use the filter() function from dplyr in the tidyverse
-6. How to use the mutate() function from dplyr in the tidyverse
-7. How to use the summarise()/summarize() function from dplyr in the tidyverse
-8. How to use the tidy() function from the broom package to summarise model results
-9. How to use the select() function from dplyr in the tidyverse
+1. How to write a custom `ggplot2` function
+2. How to use `gather()` and `spread()` from the `tidyr` package
+3. How to parse numbers using `parse_number()` from the `readr` package
+4. How to use the `distinct()` function from `dplyr`
+5. How to use the `filter()` function from `dplyr
+6. How to use the `mutate()` function from `dplyr`
+7. How to use the `summarise()`/`summarize()` function from `dplyr`
+8. How to use the `tidy()` function from the `broom` package to summarise model results
+9. How to use the `select()` function from `dplyr`
 
-# Model population change for vertebrate forest species and see whether
-# greater population change is found for longer duration studies
+Model population change for vertebrate forest species and see whether greater population change is found for longer duration studies
 
 ```r
 # Packages ----
