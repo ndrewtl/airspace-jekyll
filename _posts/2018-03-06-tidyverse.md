@@ -26,7 +26,7 @@ tags: data_manip data_vis github
 
 <p></p>
 
-### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-occurrence" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
+### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Ghent" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
 <center><img src="{{ site.baseurl }}/img/CodingClub_logo2.png" alt="Img" style="width: 700px;"/></center>
 
@@ -271,7 +271,7 @@ While you were working on a certain part of a script, someone else was working o
 
 ### Contribute to an existing repo & get set up for the `tidyverse` tutorial
 
-#### Log into your Github account and navigate to <a href = "https://github.com/ourcodingclub/CC-7-Github" target="_blank">the repository for the `tidyverse` tutorial </a>. Click `Fork` in the top right corner of the screen- this means you are making a copy of this repository to your own Github account - think of it as a working copy.
+#### Log into your Github account and navigate to <a href = "https://github.com/ourcodingclub/CC-Ghent" target="_blank">the repository for this workshop </a>. You downloaded the files earlier, but they are not currently under version control or set up as a project in `RStudio`. We will do this now. Click `Fork` in the top right corner of the screen - this means you are making a copy of this repository to your own Github account - think of it as a working copy.
 
 This is a tiny repo, so forking it will only take a few seconds, note that when working with lots of data, it can take a while. Once the forking is done, you will be automatically redirected to your forked copy of the `CC-7-Github` repo. Notice that now the repo is located within your own Github account - e.g. where you see "gndaskalova", you should see your name.
 
@@ -290,20 +290,26 @@ If you had just cloned the `tidyverse` repository (i.e. copying the HTTPS link o
 
 ### Learning Objectives
 
-### PART 1: Intro to the tidyverse
+### PART 1: Intro to the `tidyverse`
 #### How to analyse population change of forest vertebrates
 
 1. How to write a custom `ggplot2` function
 2. How to use `gather()` and `spread()` from the `tidyr` package
 3. How to parse numbers using `parse_number()` from the `readr` package
 4. How to use the `distinct()` function from `dplyr`
-5. How to use the `filter()` function from `dplyr
+5. How to use the `filter()` function from `dplyr`
 6. How to use the `mutate()` function from `dplyr`
 7. How to use the `summarise()`/`summarize()` function from `dplyr`
 8. How to use the `tidy()` function from the `broom` package to summarise model results
 9. How to use the `select()` function from `dplyr`
 
-Model population change for vertebrate forest species and see whether greater population change is found for longer duration studies
+<b>In this tutorial, we will focus on how to efficiently format, manipulate and visualise large datasets. We will use the `tidyr` and `dplyr` packages to clean up data frames and calculate new variables. We will use the `broom` and `purr` packages to make the modelling of thousands of population trends more efficient. We will use the `ggplot2` package to make graphs, maps of occurrence records, and to visualise ppulation trends and then we will arrange all of our graphs together using the `gridExtra` package.</b>
+
+We will be working with population data from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Database</a> and red deer occurrence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility</a>, both of which are publicly available datasets.
+
+__First, we will model population change for vertebrate forest species to see whether greater population change is found for longer duration studies.__
+
+Here are the packages we need. Note that not all `tidyverse` packages load automatically with `library(tidyverse)` -  only the core ones do, so you need to load `broom` separately. If you don't have some of the packages installed, you can install them using `ìnstall.packages("package-name")`.
 
 ```r
 # Packages ----
@@ -314,6 +320,8 @@ library(maps)  # To make pretty maps - warning: maps masks map from purr!
 library(RColorBrewer)  # To make pretty colours
 library(gridExtra)  # To arrange multi-plot panels
 ```
+
+If you've ever tried to perfect your `ggplot2` graphs, you might have noticed that the lines starting with `theme()` quickly pile up: you adjust the font size of the axes and the labels, the position of the title, the background colour of the plot, you remove the grid lines in the background, etc. And then you have to do the same for the next plot, which really increases the amount of code you use. Here is a simple solution: create a customised theme that combines all the `theme()` elements you want and apply it to your graphs to make things easier and increase consistency. You can include as many elements in your theme as you want, as long as they don't contradict one another and then when you apply your theme to a graph, only the relevant elements will be considered - e.g. for our graphs we won't need to use `legend.position`, but it's fine to keep it in the theme in case any future graphs we apply it to do have the need for legends.
 
 ```r
 # Setting a custom ggplot2 function ---
@@ -338,13 +346,21 @@ theme_LPD <- function(){
 }
 ```
 
+#### Load population trend data
+
+__The data are in a `.RData` format, as those are quicker to use, since `.Rdata` files are more compressed. Of course, a drawback is that `.RData` files can only be used within R, whereas `.csv` files are more transferable.__
+
 ```r
 # Load data ----
-load("scripts/users/gdaskalova/GHENT/LPDdata_Feb2016.RData")
+load("LPDdata_Feb2016.RData")
 
 # Inspect data ----
 head(LPDdata_Feb2016)
 ```
+
+At the moment, each row contains a population that has been monitored over time and towards the right of the data frame there are lots of columns with population estimates for each year. To make this data "tidy" (one column per variable) we can use `gather()` to transform the data so there is a new column containing all the years for each population and an adjacent column containing all the population estimates for those years.
+
+This takes our original dataset `LPIdata_Feb2016` and creates a new column called `year`, fills it with column names from columns `26:70` and then uses the data from these columns to make another column called `pop`.
 
 ```r
 # Format data for analysis ----
@@ -353,6 +369,8 @@ head(LPDdata_Feb2016)
 # *** gather() function from the reshape package in the tidyverse ***
 LPD_long <- gather(data = LPDdata_Feb2016, key = "year", value = "pop", select = 26:70)
 ```
+
+Because column names are coded in as characters, when we turned the column names (`1970`, `1971`, `1972`, etc.) into rows, R automatically put an `X` in front of the numbers to force them to remain characters. We don't want that, so to turn `year` into a numeric variable, use the `parse_number()` function from the `readr` package. We can also make all the column names lowercase and remove some of the funky characters in the country column - strange characters mess up things in general, e.g. when you want to save files, push them to GitHub, etc.
 
 ```r
 # Get rid of the X in front of years
@@ -374,6 +392,12 @@ LPD_long$biome <- gsub("/", "", LPD_long$biome, fixed = TRUE)
 # Examine the tidy data frame
 head(LPD_long)
 ```
+
+Now that our dataset is *tidy* we can get it ready for our analysis. This data frame contains data from lots of different sources so to help answer our question of how populations have changed since 1970, we should create some new variables and filter out the unnecessary data.
+
+Next, we want to only use populations that have more than 5 years of data to make sure our analysis has enough data to capture population change. We should also scale the population data, because since the data come from many species, the units and magnitude of the data are very different - imagine tiny fish whose abundance is in the millions, and large carnivores whose abundance is much smaller. Scaling also normalises the data, as later on we will be using linear models assuming a normal distribution.To do all of this in one go, we can use pipes. 
+
+__Pipes (`%>%`) are a way of streamlining data manipulation - imagine all of your data coming in one end of the pipe, while they are in there, they are manipulated, summarised, etc., then the output (e.g. your new data frame or summary statistics) comes out the other end of the pipe. At each step of the pipe processing, you can tell the pipe what information to use - e.g. here we are using `.`, which just means "take the ouput of the previous step".
 
 ```r
 # Data manipulation ----
@@ -403,6 +427,8 @@ LPD_long2 <- LPD_long %>%
   ungroup()
 ```
 
+Now we can explore our data a bit. Let's create a few basic summary statistics for each biome and store them in a new data frame:
+
 ```r
 # Calculate summary statistics for each biome
 LPD_biome_sum <- LPD_long2 %>%
@@ -424,6 +450,8 @@ LPD_biome_sum <- LPD_long2 %>%
 head(LPD_biome_sum)
 ```
 
+Next we will explore how populations from two of these biomes, temperate coniferous and temperate broadleaf forests, have changed over the monitoring duration. We will make the `biome` variable a factor (before it is just a character variable), so that later on we can make graphs based on the two categories (coniferous and broadleaf forests). We'll use the `filter()` function from `dplyr` to subset the data to just the forest species.
+
 ```
 # Subset to just temperate forest species -----
   # Notice the difference between | and & when filtering
@@ -433,6 +461,16 @@ LPD_long2$biome <- as.factor(LPD_long2$biome)
 LPD.forest <- filter(LPD_long2, biome == "Temperate broadleaf and mixed forests" |
                                       biome == "Temperate coniferous forests")
 ```
+
+Before running models, it's a good idea to visualise our data to explore what kind of distribution we are working with. 
+
+The `gg` in `ggplot2` stands for grammar of graphics. Writing the code for your graph is like constructing a sentence made up of different parts that logically follow from one another. In a data visualisation context, the different elements of the code represent layers - first you make an empty plot, then you add a layer with your data points, then your measure of uncertainty, the axis labels and so on.
+
+<b> When using `ggplot2`, you usually start your code with `ggplot(your_data, aes(x = independent_variable, y = dependent_variable))`, then you add the type of plot you want to make using `+ geom_boxplot()`, `+ geom_histogram()`, etc. `aes` stands for aesthetics, hinting to the fact that using `ggplot2` you can make aesthetically pleasing graphs - there are many `ggplot2` functions to help you clearly communicate your results, and we will now go through some of them.</b>
+	
+<b>when we want to change the colour, shape or fill of a variable based on another variable, e.g. colour-code by species, we include `colour = species` inside the `aes()` function. When we want to set a specific colour, shape or fill, e.g. `colour = "black"`, we put that outside of the `aes()` function.</b>
+
+We will see our custom theme `theme_LPD()` in action as well! 
 
 ```r
 # Data visualisation ----
@@ -449,6 +487,8 @@ LPD.forest <- filter(LPD_long2, biome == "Temperate broadleaf and mixed forests"
 # thus we don't need the same legend twice
 ```
 
+Next up we can explore for how long populations have been monitored in the two biomes using a density histogram.
+
 ```r
 # Density histogram of duration of studies in the two biomes
 (duration.forests <- ggplot(LPD.forest, aes(duration, colour = biome)) +
@@ -458,11 +498,15 @@ LPD.forest <- filter(LPD_long2, biome == "Temperate broadleaf and mixed forests"
    labs(x = "\nYears", y = "Density\n", title = "b) Monitoring duration\n"))
 ```
 
+We'll use the `grid.arrange` function from the `gridExtra` package to combine the two plots in a panel. You can specify the number of columns using `ncol =` and the number of rows using `nrow =`.
+
 ```r
 # Arrange in a panel and save
 forest.panel <- grid.arrange(forest.hist, duration.forests, ncol = 2)
 ggsave(forest.panel, file = "forest_panel.png", height = 5, width = 10)
 ```
+
+We are now ready to model how each population has changed over time. There are 1785 populations, so with this one code chunk, we will run 1785 models and tidy up their outputs. You can read through the line-by-line comments to get a feel for what each line of code is doing.
 
 ```r
 # Calculate population change for each forest population
@@ -483,7 +527,11 @@ forest.slopes <- LPD.forest %>%
   dplyr::select(-term) %>%
   # Remove any groupings you've greated in the pipe
   ungroup()
-```r
+```
+
+We are ungrouping at the end of our pipe just because otherwise the object remains grouped and later on that might cause problems, if we forget about it.
+
+__Now we can visualise the outputs of all our models and see how they vary based on study duration. We will add density histograms along the margins of the graph which makes for a more informative graph using the `ggMarginal()` function from the `ggExtra` package. Note that `ggExtra` is also an addin in `RStudio`, so for future reference, if you select some `ggplot2` code, then click on `Addins/ggplot2 Marginal plots` (the menu is in the middle top part of the screen), you can customise marginal histograms and the code gets automatically generated.__
 
 ```r
 # Visualising model outputs ----
@@ -841,6 +889,8 @@ R Markdown allows you to create documents that serve as a neat record of your an
 
 R Markdown uses <a href="http://www.markdowntutorial.com" target="_blank">markdown syntax</a>. Markdown is a very simple 'markup' language which provides methods for creating documents with headers, images, links etc. from plain text files, while keeping the original plain text file easy to read. You can convert Markdown documents to other file types like `.html` or `.pdf`.
 
+<center> <img src="{{ site.baseurl }}/img/md_script.png" alt="Img" style="width: 900px;"/> </center>
+
 ## Download R Markdown
 To get R Markdown working in RStudio, the first thing you need is the `rmarkdown` package, which you can get from <a href="https://cran.r-project.org/web/packages/rmarkdown/index.html" target="_blank">CRAN</a> by running the following commands in R or RStudio:
 
@@ -937,6 +987,7 @@ library(dplyr)
 ```
 ````
 
+
 #### Hiding code chunks
 
 If you don't want the code of a particular code chunk to appear in the final document, but still want to show the output (e.g. a plot), then you can include `echo = FALSE` in the code chunk instructions.
@@ -959,7 +1010,7 @@ __Now you can start copying across the code from your tidyverse script and inser
 
 You can run an individual chunk of code at any time by placing your cursor inside the code chunk and selecting `Run -> Run Current Chunk`:
 
-<img src="{{ site.baseurl }}/img/run_sel.png" alt="Img">
+<img src="{{ site.baseurl }}/img/run_sel.png" alt="Img" style="width: 900px;"/>
 
 ### Summary of  code chunk instructions
 
@@ -1038,12 +1089,10 @@ You can run an individual chunk of code at any time by placing your cursor insid
 </table>
 
 ## Inserting Figures
-Inserting a graph into R Markdown is easy, the difficult bit is adjusting the formatting.
-
 By default, RMarkdown will place graphs by maximising their height, while keeping them within the margins of the page and maintaining aspect ratio. If you have a particularly tall figure, this can mean a really huge graph. To manually set the figure dimensions, you can insert an instruction into the curly braces:
 
 ````
-```{r, fig.width=2.5, fig.height=7.5}
+```{r, fig.width = 2.5, fig.height = 7.5}
 ggplot(df, aes(x = x, y = y) + geom_point()
 ```
 ````
@@ -1051,14 +1100,14 @@ ggplot(df, aes(x = x, y = y) + geom_point()
 By default, figures are rendered as `.png` files by R Markdown, which can lead to loss of quality if your document is rescaled. You can change that to `.svg`, a vector file format by adding `dev='svg'` to the code chunk instruction section.
 
 ````
-```{r, fig.width=2.5, fig.height=7.5, dev='svg'}
+```{r, fig.width = 2.5, fig.height = 7.5, dev = 'svg'}
 ggplot(df, aes(x = x, y = y) + geom_point()
 ```
 ````
 
 ## Inserting Tables
 
-While R Markdown can print the contents of a data frame easily by enclosing the name of the data frame in a code chunk:
+R Markdown can print the contents of a data frame easily by enclosing the name of the data frame in a code chunk:
 
 ````
 ```{r}
@@ -1066,9 +1115,7 @@ dataframe
 ```
 ````
 
-this can look a bit messy, especially with data frames with a lot of columns. Including a formal table requires more effort.
-
-The most aesthetically pleasing and simple table formatting function I have found is `kable()` in the `knitr` package. The first argument tells kable to make a table out of the object `dataframe` and that numbers should have two significant figures. Remember to load the `knitr` package in your `.Rmd` file as well.
+This can look a bit messy, especially with data frames with a lot of columns. You can also use a table formatting function, e.g. `kable()` from the `knitr` package. The first argument tells kable to make a table out of the object `dataframe` and that numbers should have two significant figures. Remember to load the `knitr` package in your `.Rmd` file, if you are using the `kable()` function.
 
 ````
 ```{r}
@@ -1076,7 +1123,7 @@ kable(dataframe, digits = 2)
 ```
 ````
 
-If you want a bit more control over the content of your table you can use ``pander()`` in the `pander` package. Imagine I want the 3rd column to appear in italics:
+If you want a bit more control over the content of your table you can use ``pander()`` from the `pander` package. Imagine I want the 3rd column to appear in italics:
 
 ````
 ```{r}
@@ -1098,10 +1145,10 @@ http://r4ds.had.co.nz/iteration.html
 For more information on functional programming see:
 http://r4ds.had.co.nz/functions.html
 
-### Git in the command line
-Traditionally, Git uses the command line to perform actions on local Git repositories. In this tutorial we ignored the command line but it is necessary if you want more control over Git. There are several excellent introductory guides on version control using Git, e.g. <a href = "http://simon-m-mudd.github.io/NMDM_book/#_version_control_with_git" target="_blank">Prof Simon Mudd's Numeracy, Modelling and Data management guide</a>, <a href = "https://swcarpentry.github.io/git-novice/" target="_blank">The Software Carpentry guide</a>, and this <a href = "https://github.com/BES2016Workshop/version-control" target="_blank">guide from the British Ecological Society Version Control workshop </a>. We have also created a neat cheatsheet with some basic Git commands and how they fit into the git/github ecosystem. A couple of the commands require [`hub`](https://github.com/github/hub) a wrapper for Git that increases its functionality, but not having this won't prevent you using the other commands:
+Then we will do a further clean up of species occurrence data using the `CleanCoordinates` function from the `CoordinateCleaner` package. Species occurrence records often include thousands if not millions of latitude and longitude points, but are they all valid points? Sometimes the latitude and longitude values are reversed, there are unwanted zeros, or terrestrial species are seen out at sea, and marine species very inland! The `CoordinateCleaner` package, developed by Alexander Zizka, flags potentially erroneous coordinates so that you can decide whether or not to include them in your analysis (<a href="https://github.com/azizka/CoordinateCleaner" target="_blank">more info here</a>).
 
-<center><img src="{{ site.baseurl }}/img/git_cli.png" alt="Img" style="width: 1000px;"/></center>
+### Git in the command line
+Traditionally, Git uses the command line to perform actions on local Git repositories. In this tutorial we ignored the command line but it is necessary if you want more control over Git. There are several great introductory guides on version control using Git, e.g. <a href = "https://swcarpentry.github.io/git-novice/" target="_blank">The Software Carpentry guide</a>, and this <a href = "https://github.com/BES2016Workshop/version-control" target="_blank">guide from the British Ecological Society Version Control workshop </a>. A couple of the commands below require [`hub`](https://github.com/github/hub) a wrapper for Git that increases its functionality, but not having this won't prevent you using the other commands:
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
