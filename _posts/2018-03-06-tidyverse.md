@@ -566,10 +566,10 @@ How to print plots of population change for multiple taxa
 11. How to use a pipe to plot many plots by taxa
 12. How to use the purrr package and functional programming
 
+__In the next part of the tutorial, we will focus on automating iterative actions, for example when we want to create the same type of graph for different subsets of our data. In our case, we will make histograms of the population change experienced by different vertebrate taxa in forests. When making multiple graphs at once, we have to specify the folder where they will be saved first:__
+
 ```r
 # PART 2: Using pipes to make figures with large datasets ----
-
-# First we will do this using dplyr and a pipe
 
 # Make histograms of slope estimates for each taxa -----
 # Set up new folder for figures
@@ -579,16 +579,20 @@ path1 <- "Taxa_Forest_LPD/"
 dir.create(path1)
 ```
 
+There isn't a right answer here, there are different ways to achieve the same result and you can decide which one works best for your workflow. First we will use `dplyr` and pipes `%>%`. Since we want one graph per taxa, we are going to group by the `class` variable. You can add functions that are not part of the `dplyr` package to pipes using `do` - in our case, we are saying that we want `R` to do our requested action (making and saving the histograms) for each taxa.
+
 ```r
+# First we will do this using dplyr and a pipe
+
 forest.slopes %>%
 # Select the relevant data
 dplyr::select(id, class, species.name, estimate) %>%
 # Group by taxa
 group_by(class) %>%
 # Save all plots in new folder
-do(ggsave(ggplot(.,aes(x = estimate)) +
+do(ggsave(ggplot(., aes(x = estimate)) +
             # Add histograms
-            geom_histogram(colour="darkgreen", fill="darkgreen", binwidth = 0.02) +
+            geom_histogram(colour = "darkgreen", fill = "darkgreen", binwidth = 0.02) +
             # Use custom theme
             theme_LPD() +
             # Add axis lables
@@ -598,20 +602,33 @@ do(ggsave(ggplot(.,aes(x = estimate)) +
                                           ".pdf")), device = "pdf"))
 ```
 
-### Intro to the purrr package ----
-Now let's use purrr instead of dplyr to do the same thing
+Another way to make all those histograms in one go is by creating a function for it. In general, whenever you find yourself copying and pasting lots of code only to change the object name, you're probably in a position to swap all the code with a function - you can then apply the function using the `purrr` package.
+
+But what is `purrr`? __It is a way to "map" or "apply" functions to data. Note that there are functions from other packages also called `map()`, which is why we are specifying we want the `map()` function from the `purrr` package. Here we are mapping the `taxa.slopes` data to the mean fuction:__
 
 ```r
+taxa.mean <- purrr::map(taxa.slopes, ~mean(., na.rm = TRUE))
+# This plots the mean population change per taxa
+taxa.mean
+```
+
+Now we can write our own function to make histograms and use the `purrr` package to apply it to each taxa.
+
+```r
+### Intro to the purrr package ----
+
 # First let's write a function to make the plots
 # *** Functional Programming ***
 # This function takes one argument x, the data vector that we want to make a histogram
 plot.hist <- function(x) {
   ggplot() +
-  geom_histogram(aes(x), colour="darkgreen", fill="darkgreen", binwidth = 0.02) +
+  geom_histogram(aes(x), colour = "darkgreen", fill = "darkgreen", binwidth = 0.02) +
   theme_LPD() +
   xlab("Rate of population change (slopes)")
 }
 ```
+
+We have to change the format of the data, in our case we will split the data using `spread()` from the `tidyr` package.
 
 ```r
 # Here we select the relevant data
@@ -624,19 +641,7 @@ taxa.slopes <- forest.slopes %>%
   dplyr::select(-id)
 ```
 
-But what is purrr?  It is a way to "map" or "apply" functions to data
-Here we are mapping the taxa.slopes data to the mean fuction
- *** map() function in purrr from the tidyverse ***
-
-```r
-taxa.mean <- purrr::map(taxa.slopes, ~mean(., na.rm = TRUE))
-# This plots the mean population change per taxa
-taxa.mean
-```
-
-Now we can use purr to "map" our figure making function
-The first input is your data that you want to iterate over
-The second input is the function
+__Now we can use purr to "map" our figure making function. The first input is your data that you want to iterate over and the second input is the function.__
 
 ```r
 taxa.plots <- purrr::map(taxa.slopes, ~plot.hist(.))
@@ -645,10 +650,8 @@ path2 <- "scripts/users/gdaskalova/GHENT/Taxa_Forest_LPD_purrr/"
 dir.create(path2)
 ```
 
-First we learned about map when there is one dataset, but there are many purrr functions
-walk2 takes two arguments and returns nothing
-In this case we just want to print the graphs, so we don't need anything returned
-The first argument is our file paths, the second is our data and ggsave is our function
+__First we learned about `map()` when there is one dataset, but there are other `purrr` functions,too.
+`walk2()` takes two arguments and returns nothing. In our case we just want to print the graphs, so we don't need anything returned. The first argument is our file paths, the second is our data and ggsave is our function.__
 
 ```r
 # *** walk2() function in purrr from the tidyverse ***
@@ -658,10 +661,11 @@ walk2(paste0(path2, names(taxa.slopes), ".pdf"), taxa.plots, ggsave)
 ### PART 3: Downloading and mapping data from large datasets
 #### Map the distribution of a forest vertebrate species and the location of monitored populations
 
-13. How to download species IUCN status
-14. How to download GBIF records
-15. How to map occurence data and populations
-16. How to make a custom function for plotting figures
+13. How to download GBIF records
+14. How to map occurence data and populations
+15. How to make a custom function for plotting figures
+
+red deer occurrence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility</a>
 
 ```r
 ### PART 3: Downloading and mapping data from large datasets ----
@@ -669,8 +673,7 @@ walk2(paste0(path2, names(taxa.slopes), ".pdf"), taxa.plots, ggsave)
 
 # Packages ----
 library(rgbif)  # To extract GBIF data
-library(rredlist)  # To extract Red List information
-library(CoordinateCleaner)  # To clean coordinates
+# library(CoordinateCleaner)  # To clean coordinates if you want to explore that later
 library(gridExtra)  # To make pretty graphs
 library(ggrepel)  # To add labels with rounded edges
 library(png)  # To add icons
@@ -751,7 +754,6 @@ icon <- rasterGrob(icon, interpolate = TRUE)
 ```r
 # Update map
 # Note - this takes a while depending on your computer
-# I might add a version with less occurrences
 (deer.map.final <- ggplot(deer.locations, aes(x = decimalLongitude, y = decimalLatitude)) +
     # For more localized maps use "worldHires" instead of "world"
     borders("world", colour = "gray80", fill = "gray80", size = 0.3) +
