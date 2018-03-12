@@ -466,7 +466,7 @@ clip_box <- as(extent(min(brown_trout$decimallongitude) -15,
 	min(brown_trout$decimallatitude),
 	max(brown_trout$decimallatitude)), "SpatialPolygons")
 
-shpdata_feow_clipped <- intersect(shpdata_feow, clip_box)
+shpdata_feow_clipped <- intersect(shpData_FEOW, clip_box)
 ```
 
 plot `shpdata_feow_clipped` to see that `intersect()` has cropped out polygons that were outside our bounding box, and has helpfully joined up the perimeters of any polygons that straddle the edge of the bounding box:
