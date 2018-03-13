@@ -506,6 +506,8 @@ forest.panel <- grid.arrange(forest.hist, duration.forests, ncol = 2)
 ggsave(forest.panel, file = "forest_panel.png", height = 5, width = 10)
 ```
 
+<center> <img src="{{ site.baseurl }}/img/forest_panel.png" alt="Img" style="width: 900px;"/> </center>
+
 We are now ready to model how each population has changed over time. There are 1785 populations, so with this one code chunk, we will run 1785 models and tidy up their outputs. You can read through the line-by-line comments to get a feel for what each line of code is doing.
 
 ```r
@@ -559,6 +561,8 @@ __Now we can visualise the outputs of all our models and see how they vary based
 ggsave(density.slopes, filename = "slopes_duration.png", height = 6, width = 6)
 ```
 
+<center> <img src="{{ site.baseurl }}/img/slopes_duration.png" alt="Img" style="width: 900px;"/> </center>
+
 ### PART 2: Using pipes to make figures with large datasets
 How to print plots of population change for multiple taxa
 
@@ -601,6 +605,9 @@ do(ggsave(ggplot(., aes(x = estimate)) +
             filename = gsub("", "", paste0(path1, unique(as.character(.$class)),
                                           ".pdf")), device = "pdf"))
 ```
+
+If you go check out your folder now, you should see four histograms, one per taxa:
+<center> <img src="{{ site.baseurl }}/img/folder.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/mamm.png" alt="Img" style="width: 500px;"/> </center>
 
 Another way to make all those histograms in one go is by creating a function for it. In general, whenever you find yourself copying and pasting lots of code only to change the object name, you're probably in a position to swap all the code with a function - you can then apply the function using the `purrr` package.
 
@@ -665,7 +672,9 @@ walk2(paste0(path2, names(taxa.slopes), ".pdf"), taxa.plots, ggsave)
 14. How to map occurence data and populations
 15. How to make a custom function for plotting figures
 
-red deer occurrence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility</a>
+__In this part of the tutorial, we will focus on one particular species, red deer (*Cervus elaphus*), where it has been recorded around the world, and where it's populations are being monitored. We will use occurrence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility</a> which we will download in `R` using the `rgbif` package.__
+
+Occurrence data can be messy and when you are working with thousands of records, not all of them might be valid records. If you are keen to find out how to test the validity of geographic coordinates using the `CoordinateCleaner` package, check out our tutorial <a href="https://ourcodingclub.github.io/2018/01/06/occurrence.html" target = "_blank">here</a>.
 
 ```r
 ### PART 3: Downloading and mapping data from large datasets ----
@@ -681,6 +690,22 @@ library(mapdata)  # To plot maps
 library(ggthemes)  # To make maps extra pretty
 ```
 
+We are limiting the number of records to 5000 for the sake of time - in the future you can ask for more records as well, there's just a bit of waiting involved. The records come with a lot of metadata. For our purposes, we will select just the columns we need. Similar to how before we had to specify that we want the `map()` function from the `purrr` package, there are often other `select()` functions, so we are saying that we want the one from `dplyr` using `dplyr::select()`.
+
+```r
+# Download species occurrence records from the Global Biodiversity Information Facility
+# *** rgbif package and the occ_search() function ***
+# You can increase the limit to get more records - 5000 takes a couple of minutes
+deer.locations <- occ_search(scientificName = "Cervus elaphus", limit = 5000,
+                             hasCoordinate = TRUE, return = "data") %>%
+                  # Simplify occurrence data frame
+                  dplyr::select(key, name, decimalLongitude, 
+		                decimalLatitude, year, 
+				individualCount, country)
+```
+
+Next we will extract the red deer population data - the raw time series and the slopes of population change from the two data frames.
+
 ```r
 # Data formatting & manipulation ----
 
@@ -694,22 +719,23 @@ deer.slopes <- forest.slopes %>%
   filter(species.name == "Cervus elaphus")
 ```
 
-```r
-# Download species occurrence records from the Global Biodiversity Information Facility
-# *** rgbif package and the occ_search() function ***
-# You can increase the limit to get more records - 5000 takes a couple of minutes
-deer.locations <- occ_search(scientificName = "Cervus elaphus", limit = 5000,
-                             hasCoordinate = TRUE, return = "data") %>%
-# Simplify occurrence data frame
-dplyr::select(key, name, decimalLongitude, decimalLatitude, year, individualCount, country)
+__In addition to making histograms, scatterplots and such, you can use `ggplot2` to make maps as well - the maps come from the `mapdata` package we loaded earlier. In this map, we want to visualise information from two separate data frames - where the species occurs (`deer.locations`, the GBIF data) and where it is monitored (`deer.slopes`, the Living Planet Database data). We can combine this information in the same `ggplot2` code chunk using the `geom_point()` function twice - the first time it will plot the occurrences since that the data frame associated with the plot in the very first line, and the second time we've told the function to specifically use the `deer.slopes` object using `data = deer.slopes`.__
+
+As you start making your maps, you may get this warning message:
+
+```
+Warning message:
+In drawGrob(x) : reached elapsed time limit
 ```
 
+We are working with thousands of records, so depending on your computer, making the map might take a while. This message doesn't mean something is wrong, just lets you know that generating the map took a bit longer than what `RStudio` expected. 
+
 ```r
-# Make a new map and include the locations of the populations part of the Living Planet Database
+# Make an occurrence map and include the locations of the populations part of the Living Planet Database
 (deer.map.LPD <- ggplot(deer.locations, aes(x = decimalLongitude, y = decimalLatitude)) +
     # Add map data
     borders("world", colour = "gray80", fill = "gray80", size = 0.3) +
-    # Use custom map theme
+    # Use custom map theme from ggthemes package
     theme_map() +
     # Add the points from the population change data
     geom_point(alpha = 0.3, size = 2, colour = "aquamarine3") +
@@ -717,6 +743,12 @@ dplyr::select(key, name, decimalLongitude, decimalLatitude, year, individualCoun
     geom_point(data = deer.slopes, aes(x = decimal.longitude, y = decimal.latitude),
                size = 2, colour = "darkgreen"))
 ```
+
+<center> <img src="{{ site.baseurl }}/img/deer_map.png" alt="Img" style="width: 900px;"/> </center>
+
+The map already looks fine, but we can customise it further to add more information. For example, we can add labels for the locations of some of the monitored populations and we can add plots of population change next to our map. 
+
+First we will rename some of the populations, just so that our labels are not crazy long, using the `recode()` function from the `dplyr` package.
 
 ```r
 # Customising map to make it more beautiful ----
@@ -741,6 +773,8 @@ deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
   "Bow Valley watershed of Banff National Park, Alberta" = "Banff National Park, Alberta")
 ```
 
+You can also use `ggplot2` to add images to your graphs, so here we will add a deer icon.
+
 ```r
 # Load packages for adding images
 packs <- c("png","grid")
@@ -750,6 +784,8 @@ lapply(packs, require, character.only = TRUE)
 icon <- readPNG("reddeer.png")
 icon <- rasterGrob(icon, interpolate = TRUE)
 ```
+
+Now we can update our map by adding labels and our icon - this looks like a gigantic chunk of code, but we've added line by line comments so that you can see what's happening at each step. The `ggrepel` package adds labels whilst also aiming to avoid overlap and as a bonus, the labels have rounded edges.
 
 ```r
 # Update map
@@ -773,13 +809,13 @@ icon <- rasterGrob(icon, interpolate = TRUE)
                size = 4, colour = "darkgreen") +
     geom_point(data = deer.slopes, aes(x = decimal.longitude, y = decimal.latitude - 0.3),
                size = 3, fill = "darkgreen", colour = "darkgreen", shape = 25) +
-    # Adding the icon
+    # Adding the icon using the coordinates on the x and y axis
     annotation_custom(icon, xmin = -210, xmax = -100, ymin = -60 , ymax = -30) +
     # Adding a title
     labs(title = "a. Red Deer GBIF occurrences", size = 12))
 ```
 
-Now let's add some additional plots to our figure
+Now let's add some additional plots to our figure, for example how many occurrences there are for each year. 
 
 ```r
 # Visualise the number of occurrence records through time ----
@@ -794,8 +830,10 @@ yearly.obs <- deer.locations %>% group_by(year) %>% tally() %>% ungroup() %>% fi
     # Use our customised theme, saves many lines of code!
     theme_LPD() +
     # if you want to change things about your theme, you need to include the changes after adding the theme
-    theme(plot.title = element_text(size=12), axis.title.y = element_text(size=10)))
+    theme(plot.title = element_text(size = 12), axis.title.y = element_text(size = 10)))
 ```
+
+Now we can add plots that show the population trends for those populations we've labelled. Given that we will be doing the same thing for multiple objects (the same type of plot for each population), we can practice functional programming and using `purrr` again here. The function looks very similar to a normal `ggplot2` code chunk, except we've wrapped it up in a function and we are not using any specific objects, just `x`, `y` and `z` as the three arguments the function needs.
 
 ```r
 # Visualise population trends ----
@@ -810,7 +848,7 @@ yearly.obs <- deer.locations %>% group_by(year) %>% tally() %>% ungroup() %>% fi
 # z - the location of the monitoring
 # This function needs to take three arguments
 
-# Okay let's make the ggplot function
+# Let's make the ggplot function
 pop.graph <- function(x, y, z) {
   # Make a ggplot graph with the 'x'
   ggplot(x, aes(x = year, y = pop)) +
@@ -830,6 +868,8 @@ pop.graph <- function(x, y, z) {
   theme(plot.title = element_text(size=12), axis.title.y = element_text(size=10))
 }
 ```
+
+We will focus on four populations in the USA, Switzerland and Canada. We will make three objects for each population, which represent the three arguments the function takes - the population data, the slope value and the location of the population. Then we will run our function `pop.graph()` using those objects.
 
 ```r
 # Find all unique ids for red deer populations
@@ -861,6 +901,8 @@ location_deer4 <- deer.slopes$location.of.population[deer.slopes$id == "4383"]
 banff <- pop.graph(deer4, location_deer4, slope_deer4)
 ```
 
+We are now ready to combine all of our graphs into one panel. When using `grid.arrange()`, you can add an additional argument `widths = c()` or `heights = c()`, which controls the ratios between the different plots. By default, `grid.arrange()` will give equal space to each graph, but sometimes you might want one graph to be wider than others, like here we want the map to have more space.
+
 ```r
 # Create panel of all graphs
 # Makes a panel of the map and occurrence plot and specifies the ratio
@@ -877,9 +919,12 @@ deer.panel <- grid.arrange(row1, row2, nrow = 2, heights = c(1.2, 0.8))
 ggsave(deer.panel, filename = "deer_panel2.png", height = 10, width = 15)
 ```
 
-If that wasn't challenging enough for you, we have a challenge for you to figure out on your own.
-Take what you have learned about pipes and make a map for the five most well-sampled populations in the LPD database (the ones with the most replicate populations).
-You get extra points for incorporating a handwritten function to make the map and for using purr to implement that function.
+<center> <img src="{{ site.baseurl }}/img/deer_panel2.png" alt="Img" style="width: 900px;"/> </center>
+
+#### A challenge for later if you are keen
+
+__If that wasn't challenging enough for you, we have a challenge for you to figure out on your own.
+Take what you have learned about pipes and make a map for the five most well-sampled populations in the LPD database (the ones with the most replicate populations). You get extra points for incorporating a handwritten function to make the map and for using purr to implement that function.__
 
 <a name="markdown"></a>
 
@@ -1134,20 +1179,24 @@ pander(richness_abund)  # Create the table
 ```
 ````
 
-Find more info on pander <a href="https://cran.r-project.org/web/packages/pander/pander.pdf" target="_blank">here</a>.
+#### Extra resources
+
+You can find more info on `pander` here:
+https://cran.r-project.org/web/packages/pander/pander.pdf
 
 To learn more about the power of pipes check out:
 http://dplyr.tidyverse.org/
 http://r4ds.had.co.nz/pipes.html
 
-To learn more about purr check out the following:
+To learn more about `purrr` check out the following:
 http://purrr.tidyverse.org/reference/map2.html
 http://r4ds.had.co.nz/iteration.html
 
 For more information on functional programming see:
 http://r4ds.had.co.nz/functions.html
 
-Then we will do a further clean up of species occurrence data using the `CleanCoordinates` function from the `CoordinateCleaner` package. Species occurrence records often include thousands if not millions of latitude and longitude points, but are they all valid points? Sometimes the latitude and longitude values are reversed, there are unwanted zeros, or terrestrial species are seen out at sea, and marine species very inland! The `CoordinateCleaner` package, developed by Alexander Zizka, flags potentially erroneous coordinates so that you can decide whether or not to include them in your analysis (<a href="https://github.com/azizka/CoordinateCleaner" target="_blank">more info here</a>).
+To learn more about the `tidyverse`, check out Charlotte Wickham's slides here:
+https://github.com/cwickham/data-science-in-tidyverse/tree/master/slides
 
 ### Git in the command line
 Traditionally, Git uses the command line to perform actions on local Git repositories. In this tutorial we ignored the command line but it is necessary if you want more control over Git. There are several great introductory guides on version control using Git, e.g. <a href = "https://swcarpentry.github.io/git-novice/" target="_blank">The Software Carpentry guide</a>, and this <a href = "https://github.com/BES2016Workshop/version-control" target="_blank">guide from the British Ecological Society Version Control workshop </a>. A couple of the commands below require [`hub`](https://github.com/github/hub) a wrapper for Git that increases its functionality, but not having this won't prevent you using the other commands:
