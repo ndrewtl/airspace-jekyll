@@ -1181,24 +1181,19 @@ pander(richness_abund)  # Create the table
 ```
 ````
 
-#### Extra resources
+## Extra resources
 
-You can find more info on `pander` here:
-https://cran.r-project.org/web/packages/pander/pander.pdf
+You can find more info on `pander` <a href="https://cran.r-project.org/web/packages/pander/pander.pdf" target="_blank"> here</a>.
 
 To learn more about the power of pipes check out:
-http://dplyr.tidyverse.org/
-http://r4ds.had.co.nz/pipes.html
+<a href = "http://dplyr.tidyverse.org/" target ="_blank"> the tidyverse website</a> and <a href="http://r4ds.had.co.nz/pipes.html" target="_blank"> the R for Data Science book</a>.
 
-To learn more about `purrr` check out the following:
-http://purrr.tidyverse.org/reference/map2.html
-http://r4ds.had.co.nz/iteration.html
+To learn more about `purrr` check out the <a href="http://purrr.tidyverse.org/reference/map2.html" target="_blank">tidyverse website</a> and the <a href=http://r4ds.had.co.nz/iteration.html target="_blank"> R for Data Science book</a>.
 
-For more information on functional programming see:
-http://r4ds.had.co.nz/functions.html
+For more information on functional programming see the <a href="http://r4ds.had.co.nz/functions.html" target="_blank">R for Data Science book chapter here</a>.
 
-To learn more about the `tidyverse`, check out Charlotte Wickham's slides here:
-https://github.com/cwickham/data-science-in-tidyverse/tree/master/slides
+To learn more about the `tidyverse` in general, check out Charlotte Wickham's slides <a href="https://github.com/cwickham/data-science-in-tidyverse/tree/master/slides" target="_blank">here</a>.
+
 
 ### Git in the command line
 Traditionally, Git uses the command line to perform actions on local Git repositories. In this tutorial we ignored the command line but it is necessary if you want more control over Git. There are several great introductory guides on version control using Git, e.g. <a href = "https://swcarpentry.github.io/git-novice/" target="_blank">The Software Carpentry guide</a>, and this <a href = "https://github.com/BES2016Workshop/version-control" target="_blank">guide from the British Ecological Society Version Control workshop </a>. A couple of the commands below require [`hub`](https://github.com/github/hub) a wrapper for Git that increases its functionality, but not having this won't prevent you using the other commands:
