@@ -358,6 +358,8 @@ load("LPDdata_Feb2016.RData")
 head(LPDdata_Feb2016)
 ```
 
+<center> <img src="{{ site.baseurl }}/img/wide.png" alt="Img" style="width: 600px;"/> </center>
+
 At the moment, each row contains a population that has been monitored over time and towards the right of the data frame there are lots of columns with population estimates for each year. To make this data "tidy" (one column per variable) we can use `gather()` to transform the data so there is a new column containing all the years for each population and an adjacent column containing all the population estimates for those years.
 
 This takes our original dataset `LPIdata_Feb2016` and creates a new column called `year`, fills it with column names from columns `26:70` and then uses the data from these columns to make another column called `pop`.
@@ -393,9 +395,9 @@ LPD_long$biome <- gsub("/", "", LPD_long$biome, fixed = TRUE)
 head(LPD_long)
 ```
 
-Now that our dataset is *tidy* we can get it ready for our analysis. This data frame contains data from lots of different sources so to help answer our question of how populations have changed since 1970, we should create some new variables and filter out the unnecessary data.
+<center> <img src="{{ site.baseurl }}/img/long.png" alt="Img" style="width: 600px;"/> </center>
 
-Next, we want to only use populations that have more than 5 years of data to make sure our analysis has enough data to capture population change. We should also scale the population data, because since the data come from many species, the units and magnitude of the data are very different - imagine tiny fish whose abundance is in the millions, and large carnivores whose abundance is much smaller. Scaling also normalises the data, as later on we will be using linear models assuming a normal distribution.To do all of this in one go, we can use pipes. 
+Now that our dataset is *tidy* we can get it ready for our analysis. We want to only use populations that have more than 5 years of data to make sure our analysis has enough data to capture population change. We should also scale the population data, because since the data come from many species, the units and magnitude of the data are very different - imagine tiny fish whose abundance is in the millions, and large carnivores whose abundance is much smaller. Scaling also normalises the data, as later on we will be using linear models assuming a normal distribution. To do all of this in one go, we can use pipes. 
 
 __Pipes (`%>%`) are a way of streamlining data manipulation - imagine all of your data coming in one end of the pipe, while they are in there, they are manipulated, summarised, etc., then the output (e.g. your new data frame or summary statistics) comes out the other end of the pipe. At each step of the pipe processing, you can tell the pipe what information to use - e.g. here we are using `.`, which just means "take the ouput of the previous step".
 
@@ -561,7 +563,7 @@ __Now we can visualise the outputs of all our models and see how they vary based
 ggsave(density.slopes, filename = "slopes_duration.png", height = 6, width = 6)
 ```
 
-<center> <img src="{{ site.baseurl }}/img/slopes_duration.png" alt="Img" style="width: 900px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/slopes_duration.png" alt="Img" style="width: 600px;"/> </center>
 
 ### PART 2: Using pipes to make figures with large datasets
 How to print plots of population change for multiple taxa
