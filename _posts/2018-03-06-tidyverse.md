@@ -787,7 +787,7 @@ icon <- readPNG("reddeer.png")
 icon <- rasterGrob(icon, interpolate = TRUE)
 ```
 
-Now we can update our map by adding labels and our icon - this looks like a gigantic chunk of code, but we've added line by line comments so that you can see what's happening at each step. The `ggrepel` package adds labels whilst also aiming to avoid overlap and as a bonus, the labels have rounded edges.
+We can update our map by adding labels and our icon - this looks like a gigantic chunk of code, but we've added line by line comments so that you can see what's happening at each step. The `ggrepel` package adds labels whilst also aiming to avoid overlap and as a bonus, the labels have rounded edges.
 
 ```r
 # Update map
@@ -817,7 +817,7 @@ Now we can update our map by adding labels and our icon - this looks like a giga
     labs(title = "a. Red Deer GBIF occurrences", size = 12))
 ```
 
-Now let's add some additional plots to our figure, for example how many occurrences there are for each year. 
+Let's add some additional plots to our figure, for example how many occurrences there are for each year. 
 
 ```r
 # Visualise the number of occurrence records through time ----
@@ -835,7 +835,7 @@ yearly.obs <- deer.locations %>% group_by(year) %>% tally() %>% ungroup() %>% fi
     theme(plot.title = element_text(size = 12), axis.title.y = element_text(size = 10)))
 ```
 
-Now we can add plots that show the population trends for those populations we've labelled. Given that we will be doing the same thing for multiple objects (the same type of plot for each population), we can practice functional programming and using `purrr` again here. The function looks very similar to a normal `ggplot2` code chunk, except we've wrapped it up in a function and we are not using any specific objects, just `x`, `y` and `z` as the three arguments the function needs.
+We can add plots that show the population trends for those populations we've labelled. Given that we will be doing the same thing for multiple objects (the same type of plot for each population), we can practice functional programming and using `purrr` again here. The function looks very similar to a normal `ggplot2` code chunk, except we've wrapped it up in a function and we are not using any specific objects, just `x`, `y` and `z` as the three arguments the function needs.
 
 ```r
 # Visualise population trends ----
