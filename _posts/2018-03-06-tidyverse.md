@@ -3,7 +3,7 @@ layout: post
 title: GitHub, Tidyverse and Markdown - a coding workshop for the EVENET network
 subtitle: Cleaning occurrence data and customising graphs and maps
 date: 2018-03-06 10:00:00
-author: Gergana
+author: Gergana and Isla
 meta: "Tutorials"
 tags: data_manip data_vis github
 ---
