@@ -144,6 +144,8 @@ __Now you need to pull, i.e. make sure you are completely up to date with the on
 ### Push
 __Once you are up to date, you can push your changes - at this point in time your local copy and the online copy of the files will be the same.__
 
+__When you open a fresh `RStudio` session and start working in a repository, especially when it's a shared one, it's a good idea to first pull, then you get the latest version of everything in the repo, and you can continue with the work you had planned. Pulling first can really minimise the amount of problems between users - e.g. you having to do something another person has already done, not working on the latest version, etc.__
+
 __Each file on GitHub has a history, so instead of having many files like `Dissertation_1st_May.R`, `Dissertation_2nd_May.R`, you can have only one and by exploring its history, you can see what it looked at different points in time.__
 
 For example, here is the history for a script. You can see it took me a while to calculate those model predictions!
@@ -264,10 +266,12 @@ Click on `File/New file/R Script` and type a one line comment like `# This is a 
 
 ### Potential problems
 
-Sometimes you will see error messages as you try to commit-pull-push. Usually the error message identifies the problem and which file it's associated with, if the message is more obscure, googling it is a good step towards solving the problem.
+Sometimes you will see error messages as you try to commit-pull-push. Usually the error message identifies the problem and which file it's associated with, if the message is more obscure, googling it is a good step towards solving the problem. __When you google errors, you'll often see little chunks of code you can run in the `shell` in `RStudio` or the command line/terminal - read carefully before you run them! For example, when the code includes `hard reset` - there is no going back - e.g. if you do a `hard reset` from the origin repo (the online version) this will overwrite the version on your local computer. If you haven't pushed all your changes or recent work, they will disappear.__
 
 ### Code conflicts
 While you were working on a certain part of a script, someone else was working on it, too. When you go through commit-pull-push, GitHub will make you decide which version you want to keep. This is called a code conflict, and you can't proceed until you've resolved it. You will see arrows looking like `>>>>>>>>>` around the two versions of the code - delete the version of the code you don't want to keep, as well as the arrows, and save the file. Then open the git shell, type `git add path-to-your-file/your-file.R` where you should replace the filepath with the one leading to the problem file. Then hit `Enter` and close the shell window. Now you should be able to commit again without issues.
+
+When there are code conflicts in collaborative repositories, communication and respect are both very important - you wouldn't want to hurt someone else's work. If it comes to deciding which version of a file to keep, might be best to get in touch with the person who is also working on the same file before you take any drastic measures. You could save your own version as a separate file, too, which avoids another person's work getting overwritten.
 
 ### Contribute to an existing repo & get set up for the `tidyverse` tutorial
 
@@ -308,6 +312,8 @@ If you had just cloned the `tidyverse` repository (i.e. copying the HTTPS link o
 We will be working with population data from the <a href="http://www.livingplanetindex.org/home/index" target="_blank">Living Planet Database</a> and red deer occurrence data from the <a href="http://www.gbif.org/" target="_blank">Global Biodiversity Information Facility</a>, both of which are publicly available datasets.
 
 __First, we will model population change for vertebrate forest species to see whether greater population change is found for longer duration studies.__
+
+__Because we have created a version-controlled `R` project using the repository for the workshop, we are already in the right working directory, i.e. the folder that contains all the data and other files, thus there is no need for us to set a working directory at the start of the script, unless we explicitly want to change it for some reason.__
 
 Here are the packages we need. Note that not all `tidyverse` packages load automatically with `library(tidyverse)` -  only the core ones do, so you need to load `broom` separately. If you don't have some of the packages installed, you can install them using `ìnstall.packages("package-name")`.
 
@@ -368,7 +374,7 @@ This takes our original dataset `LPIdata_Feb2016` and creates a new column calle
 # Format data for analysis ----
 
 # Transform from wide to long format usign gather (opposite is spread)
-# *** gather() function from the reshape package in the tidyverse ***
+# *** gather() function from the dplyr package in the tidyverse ***
 LPD_long <- gather(data = LPDdata_Feb2016, key = "year", value = "pop", select = 26:70)
 ```
 
@@ -399,7 +405,7 @@ head(LPD_long)
 
 Now that our dataset is *tidy* we can get it ready for our analysis. We want to only use populations that have more than 5 years of data to make sure our analysis has enough data to capture population change. We should also scale the population data, because since the data come from many species, the units and magnitude of the data are very different - imagine tiny fish whose abundance is in the millions, and large carnivores whose abundance is much smaller. Scaling also normalises the data, as later on we will be using linear models assuming a normal distribution. To do all of this in one go, we can use pipes. 
 
-__Pipes (`%>%`) are a way of streamlining data manipulation - imagine all of your data coming in one end of the pipe, while they are in there, they are manipulated, summarised, etc., then the output (e.g. your new data frame or summary statistics) comes out the other end of the pipe. At each step of the pipe processing, you can tell the pipe what information to use - e.g. here we are using `.`, which just means "take the ouput of the previous step".
+__Pipes (`%>%`) are a way of streamlining data manipulation - imagine all of your data coming in one end of the pipe, while they are in there, they are manipulated, summarised, etc., then the output (e.g. your new data frame or summary statistics) comes out the other end of the pipe. At each step of the pipe processing, the pipe is using the ouput of the previous step.__
 
 ```r
 # Data manipulation ----
@@ -470,7 +476,7 @@ The `gg` in `ggplot2` stands for grammar of graphics. Writing the code for your 
 
 <b> When using `ggplot2`, you usually start your code with `ggplot(your_data, aes(x = independent_variable, y = dependent_variable))`, then you add the type of plot you want to make using `+ geom_boxplot()`, `+ geom_histogram()`, etc. `aes` stands for aesthetics, hinting to the fact that using `ggplot2` you can make aesthetically pleasing graphs - there are many `ggplot2` functions to help you clearly communicate your results, and we will now go through some of them.</b>
 	
-<b>when we want to change the colour, shape or fill of a variable based on another variable, e.g. colour-code by species, we include `colour = species` inside the `aes()` function. When we want to set a specific colour, shape or fill, e.g. `colour = "black"`, we put that outside of the `aes()` function.</b>
+<b>When we want to change the colour, shape or fill of a variable based on another variable, e.g. colour-code by species, we include `colour = species` inside the `aes()` function. When we want to set a specific colour, shape or fill, e.g. `colour = "black"`, we put that outside of the `aes()` function.</b>
 
 We will see our custom theme `theme_LPD()` in action as well! 
 
@@ -511,6 +517,8 @@ ggsave(forest.panel, file = "forest_panel.png", height = 5, width = 10)
 <center> <img src="{{ site.baseurl }}/img/forest_panel.png" alt="Img" style="width: 900px;"/> </center>
 
 We are now ready to model how each population has changed over time. There are 1785 populations, so with this one code chunk, we will run 1785 models and tidy up their outputs. You can read through the line-by-line comments to get a feel for what each line of code is doing.
+
+__One specific thing to note is that when you add the `lm()` function in a pipe, you have to add `data = .`, which means use the outcome of the previous step in the pipe for the model.__
 
 ```r
 # Calculate population change for each forest population
@@ -608,12 +616,29 @@ do(ggsave(ggplot(., aes(x = estimate)) +
                                           ".pdf")), device = "pdf"))
 ```
 
+A warning message pops up: `Error: Results 1, 2, 3, 4 must be data frames, not NULL` - you can ignore this, it's because the `do()` function expects a data frame as an output, but in our case we are making graphs, not data frames.
+
 If you go check out your folder now, you should see four histograms, one per taxa:
 <center> <img src="{{ site.baseurl }}/img/folder.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/mamm.png" alt="Img" style="width: 500px;"/> </center>
 
 Another way to make all those histograms in one go is by creating a function for it. In general, whenever you find yourself copying and pasting lots of code only to change the object name, you're probably in a position to swap all the code with a function - you can then apply the function using the `purrr` package.
 
-But what is `purrr`? __It is a way to "map" or "apply" functions to data. Note that there are functions from other packages also called `map()`, which is why we are specifying we want the `map()` function from the `purrr` package. Here we are mapping the `taxa.slopes` data to the mean fuction:__
+But what is `purrr`? __It is a way to "map" or "apply" functions to data. Note that there are functions from other packages also called `map()`, which is why we are specifying we want the `map()` function from the `purrr` package. Here we will first format the data `taxa.slopes` and then we will map it to the mean fuction:__
+
+We have to change the format of the data, in our case we will split the data using `spread()` from the `tidyr` package.
+
+```r
+# Here we select the relevant data
+# Let's get rid of the other levels of 'class'
+forest.slopes$class <- as.character(forest.slopes$class)
+# Selecting the relevant data and splitting it into a list
+taxa.slopes <- forest.slopes %>%
+  dplyr::select(id, class, estimate) %>%
+  spread(class, estimate) %>%
+  dplyr::select(-id)
+```
+
+We can apply the `mean` function using `purrr::map()`:
 
 ```r
 taxa.mean <- purrr::map(taxa.slopes, ~mean(., na.rm = TRUE))
@@ -637,19 +662,6 @@ plot.hist <- function(x) {
 }
 ```
 
-We have to change the format of the data, in our case we will split the data using `spread()` from the `tidyr` package.
-
-```r
-# Here we select the relevant data
-# Let's get rid of the other levels of 'class'
-forest.slopes$class <- as.character(forest.slopes$class)
-# Selecting the relevant data and splitting it into a list
-taxa.slopes <- forest.slopes %>%
-  dplyr::select(id, class, estimate) %>%
-  spread(class, estimate) %>%
-  dplyr::select(-id)
-```
-
 __Now we can use purr to "map" our figure making function. The first input is your data that you want to iterate over and the second input is the function.__
 
 ```r
@@ -660,7 +672,7 @@ dir.create(path2)
 ```
 
 __First we learned about `map()` when there is one dataset, but there are other `purrr` functions,too.
-`walk2()` takes two arguments and returns nothing. In our case we just want to print the graphs, so we don't need anything returned. The first argument is our file paths, the second is our data and ggsave is our function.__
+`walk2()` takes two arguments and returns nothing. In our case we just want to print the graphs, so we don't need anything returned. The first argument is our file path, the second is our data and ggsave is our function.__
 
 ```r
 # *** walk2() function in purrr from the tidyverse ***
@@ -692,7 +704,7 @@ library(mapdata)  # To plot maps
 library(ggthemes)  # To make maps extra pretty
 ```
 
-We are limiting the number of records to 5000 for the sake of time - in the future you can ask for more records as well, there's just a bit of waiting involved. The records come with a lot of metadata. For our purposes, we will select just the columns we need. Similar to how before we had to specify that we want the `map()` function from the `purrr` package, there are often other `select()` functions, so we are saying that we want the one from `dplyr` using `dplyr::select()`.
+We are limiting the number of records to 5000 for the sake of time - in the future you can ask for more records as well, there's just a bit of waiting involved. The records come with a lot of metadata. For our purposes, we will select just the columns we need. Similar to how before we had to specify that we want the `map()` function from the `purrr` package, there are often other `select()` functions, so we are saying that we want the one from `dplyr` using `dplyr::select()`. Otherwise, the `select()` function might not work because of a conflict with another `select()` function from a different package, e.g. the `raster` packge.
 
 ```r
 # Download species occurrence records from the Global Biodiversity Information Facility
@@ -760,19 +772,26 @@ print(deer.slopes$location.of.population)
 
 # Beautify site names
 deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
-                                             "Northern Yellowstone National Park" = "Yellowstone National Park")
+                                             "Northern Yellowstone National Park" 
+					     = "Yellowstone National Park")
 deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
-                                             "Mount Rainier National Park, USA" = "Mount Rainier National Park")
+                                             "Mount Rainier National Park, USA" 
+					     = "Mount Rainier National Park")
 deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
-  "Bow Valley - eastern zone, Banff National Park, Alberta" = "Banff National Park, Alberta")
+                                             "Bow Valley - eastern zone, Banff National Park, Alberta" = 
+					     "Banff National Park, Alberta")
 deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
-  "Bow Valley - western zone, Banff National Park, Alberta" = "Banff National Park, Alberta")
+                                             "Bow Valley - western zone, Banff National Park, Alberta" = 
+					     "Banff National Park, Alberta")
 deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
-  "Bow Valley - central zone, Banff National Park, Alberta" = "Banff National Park, Alberta")
+                                             "Bow Valley - central zone, Banff National Park, Alberta" = 
+					     "Banff National Park, Alberta")
 deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
-  "Study area within Bow Valley, Banff National Park, Alberta" = "Banff National Park, Alberta")
+                                             "Study area within Bow Valley, Banff National Park, Alberta" = 
+					     "Banff National Park, Alberta")
 deer.slopes$location.of.population <- recode(deer.slopes$location.of.population,
-  "Bow Valley watershed of Banff National Park, Alberta" = "Banff National Park, Alberta")
+                                             "Bow Valley watershed of Banff National Park, Alberta" = 
+					     "Banff National Park, Alberta")
 ```
 
 You can also use `ggplot2` to add images to your graphs, so here we will add a deer icon.
@@ -798,8 +817,8 @@ We can update our map by adding labels and our icon - this looks like a gigantic
     theme_map() +
     geom_point(alpha = 0.3, size = 2, colour = "aquamarine3") +
     # We are specifying the data frame for the labels - one site has three monitored populations
-    # but we only want to label it once so we are subsetting using data = beluga.slopes[1:3,]
-    # to get only the first three rows and all columns
+    # but we only want to label it once so we are subsetting using data = deer.slopes[c(2, 4, 5, 9),]
+    # to get only the first rows number 2, 4, 5 and 9
     geom_label_repel(data = deer.slopes[c(2, 4, 5, 9),], aes(x = decimal.longitude, y = decimal.latitude,
                                                      label = location.of.population),
                      box.padding = 1, size = 5, nudge_x = 1,
@@ -1009,7 +1028,7 @@ plot(dataframe)
 ```
 ````
 
-you must include the code that defines what `dataframe` is, just like in a normal R script. For example:
+You have to include the code that defines what `dataframe` is, just like in a normal R script. For example:
 
 ````
 ```{r}
@@ -1209,78 +1228,65 @@ Traditionally, Git uses the command line to perform actions on local Git reposit
   <tr>
     <th class="tg-baqh"><b>Command</b></th>
     <th class="tg-baqh"><b>Is <code>hub</code> required?</b></th>
-    <th class="tg-baqh"><b>Origin</b></th>
-    <th class="tg-baqh"><b>Destination</b></th>
     <th class="tg-baqh"><b>Description</b></th>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><code>git reset --soft HEAD^</code></td>
+    <td class="tg-baqh">N</td>
+    <td class="tg-yw4l">Unstage a local commit.</td>
+  </tr>
+	  <tr>
+    <td class="tg-yw4l"><code>git checkout -- <file></code></td>
+    <td class="tg-baqh">N</td>
+    <td class="tg-yw4l">Revert an individual file to the online GitHub version.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git fork</code></td>
     <td class="tg-baqh">Y</td>
-    <td class="tg-yw4l">Other Github</td>
-    <td class="tg-yw4l">Personal Github</td>
-    <td class="tg-yw4l">Creates github repo in your personal account from a previously cloned github repo.</td>
-  </tr>
+    <td class="tg-yw4l">Create github repo in your personal account from a previously cloned GitHub repo.</td></tr>
   <tr>
     <td class="tg-yw4l"><code>git clone git@github.com:user/repo.git</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Personal Github</td>
-    <td class="tg-yw4l">Local</td>
-    <td class="tg-yw4l">Creates a local copy of a github repo called "repo" owned by the user "user". This can be copied from github.com.</td>
+    <td class="tg-yw4l">Create a local copy of a GitHub repo called "repo" owned by the user "user". This can be copied from github.com.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git add README.md</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Working Dir</td>
-    <td class="tg-yw4l">Staging Area</td>
     <td class="tg-yw4l">Add "README.md" to staging area.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git commit -m "Message"</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Staging Area</td>
-    <td class="tg-yw4l">Local</td>
-    <td class="tg-yw4l">Commits changes to files to the local repo with the commit message "Message".</td>
+    <td class="tg-yw4l">Commit changes to files to the local repo with the commit message "Message".</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git commit -a -m "Message"</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Working Dir</td>
-    <td class="tg-yw4l">Local</td>
-    <td class="tg-yw4l">adds and commits all file changes to the local repo with the commit message "Message".</td>
+     <td class="tg-yw4l">Add and commit all file changes to the local repo with the commit message "Message".</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git pull</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Personal Github</td>
-    <td class="tg-yw4l">Local</td>
-    <td class="tg-yw4l">Retrieve any changes from a github repo.</td>
+    <td class="tg-yw4l">Retrieve any changes from the online master branch of a GitHub repo.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git push</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Local</td>
-    <td class="tg-yw4l">Personal Github</td>
-    <td class="tg-yw4l">Sends commited file changes to github repo.</td>
+    <td class="tg-yw4l">Send commited file changes to online master branch of GitHub repo.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git create</code></td>
     <td class="tg-baqh">Y</td>
-    <td class="tg-yw4l">Local</td>
-    <td class="tg-yw4l">Personal Github</td>
-    <td class="tg-yw4l">Create a github repo with the same name as the local repo.</td>
+    <td class="tg-yw4l">Create a GitHub repo with the same name as the local repo.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git merge</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">NA</td>
-    <td class="tg-yw4l">NA</td>
     <td class="tg-yw4l">Merge any changes in the named branch with the current branch.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git checkout -b patch1</code></td>
     <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">NA</td>
-    <td class="tg-yw4l">NA</td>
     <td class="tg-yw4l">Create a branch called "patch1" from the current branch and switch to it.</td>
   </tr>
 </table>
