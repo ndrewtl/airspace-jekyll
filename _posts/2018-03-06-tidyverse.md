@@ -667,7 +667,7 @@ __Now we can use purr to "map" our figure making function. The first input is yo
 ```r
 taxa.plots <- purrr::map(taxa.slopes, ~plot.hist(.))
 # We need to make a new folder to put these figures in
-path2 <- "scripts/users/gdaskalova/GHENT/Taxa_Forest_LPD_purrr/"
+path2 <- "Taxa_Forest_LPD_purrr/"
 dir.create(path2)
 ```
 
