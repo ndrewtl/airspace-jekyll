@@ -112,4 +112,27 @@ Key Points that will be covered:
   - "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
   - "Use the `pyplot` library from `matplotlib` for creating simple visualizations."
 
+This short tutorial is based around exploring the Geosceince's weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the [link to the station webpage](https://www.ed.ac.uk/geosciences/weather-station/weather-station-data), but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format.
+
+JCMB_Jan_2017.csv
+
+We are going to dive right in here and start using a Python module called NumPy. Modules are ubiquitous in Python, and most scientific programming done with Python makes use of one or more modules. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. NumPy is short for *numerical Python* and contains a whole bunch of useful functions and data structures for dealing with primarily numerical data. 
+
+We need to tell Python that we want to use NumPy (it is not available by default), so we use an `import` statement to do this, i.e. we want to *import* the module int our program so we can use its features.
+
+```python
+import numpy as np
+
+data = np.loadtxt('JCMB_Jan_2017.csv', delimiter=',')
+
+```
+
+Let's break down the above to see what is happening. After we import numpy, we can now use function in numpy using the abbreviated form `np`. We then access the features of numpy by putting a dot `.` after `np`, and then typing the name of the function we want to use.
+
+In this case, we are using the `loadtxt` function to load a text based file (after all, a csv file is just a text file). We need to give the loadtxt function two arguments: the path and name of the file ("JCMB_Jan_2017.csv"), and the *delimiter* used in this type of text file. Since we are using a csv file (comma separated variable file), the delimiter is a comma. The delimiter must go inside quotation marks. 
+
+Finally, note that we have assigned the result of the loadtxt function call to a variable we have created called `data`.
+
+
+
 
