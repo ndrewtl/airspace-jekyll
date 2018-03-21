@@ -116,9 +116,37 @@ This short tutorial is based around exploring the Geosceince's weather station d
 
 JCMB_Jan_2017.csv
 
-We are going to dive right in here and start using a Python module called NumPy. Modules are ubiquitous in Python, and most scientific programming done with Python makes use of one or more modules. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. NumPy is short for *numerical Python* and contains a whole bunch of useful functions and data structures for dealing with primarily numerical data. 
+Python has built in support for reading csv files, using a module (or library) called...csv. To use the `csv` library in Python, we have to *import* it first, which is just a way of saying we want to bring this module into our Python program and use its features. 
 
-We need to tell Python that we want to use NumPy (it is not available by default), so we use an `import` statement to do this, i.e. we want to *import* the module int our program so we can use its features.
+```python
+import csv
+
+with open('JCMB_2017_Jan.csv', 'rb') as csvfile:
+  rainfallreader = csv.reader(csvfile)
+  for row in rainfallreader:
+    print(row)
+```
+
+If we run the script, we should just see our csv file printed out to the terminal.
+
+But we probably want to more than that with our data! Let's think about how we could extact the rainfall data. The variable `row` we create in the for loop is a Python `list` type, and we can get individual items from the row list by *indexing*. You may have come across indexing in other langauges. Indexing is a way of saying we want the n-th item in a list or other data sequence. 
+
+Python starts counting from zero, so to get the first item in the row list, we would write:
+
+```python
+row[0]
+```
+
+
+
+
+Using `csv` is okay, but it's a bit 
+
+We are going to dive right in here and start using a Python package called NumPy. Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. NumPy is short for *numerical Python* and contains a whole bunch of useful functions and data structures for dealing with primarily numerical data. 
+
+We need to tell Python that we want to use the NumPy package (it is not available by default), so we use an `import` statement to do this, i.e. we want to *import* the package into our program so we can use its features. (Just like we did with the csv module)
+
+(The only practical difference between `csv` and `numpy` is that `csv` is part of the standard Python library.)
 
 ```python
 import numpy as np
@@ -127,7 +155,7 @@ data = np.loadtxt('JCMB_Jan_2017.csv', delimiter=',')
 
 ```
 
-Let's break down the above to see what is happening. After we import numpy, we can now use function in numpy using the abbreviated form `np`. We then access the features of numpy by putting a dot `.` after `np`, and then typing the name of the function we want to use.
+Let's break down the above to see what is happening. After we import numpy, we can now use function in numpy using the abbreviated form `np`. We then access the features of numpy by putting a dot `.` after `np`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `loadtxt` function from the `numpy` module.
 
 In this case, we are using the `loadtxt` function to load a text based file (after all, a csv file is just a text file). We need to give the loadtxt function two arguments: the path and name of the file ("JCMB_Jan_2017.csv"), and the *delimiter* used in this type of text file. Since we are using a csv file (comma separated variable file), the delimiter is a comma. The delimiter must go inside quotation marks. 
 
