@@ -21,7 +21,13 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="dropdown collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ site.baseurl }}/historia">Nossa História</a></li>
+                <li class="dropdownhover">
+                  <button class="dropbtn">Quem Somos</button>
+                    <ul class="dropdownhover-content">
+                      <li><a href="{{ site.baseurl }}/historia">Nossa História</a></li>
+                      <li><a href="{{ site.baseurl }}/familiavivah">A Família Vivah</a></li>
+                    </ul>
+                    </li>
                 <li class="dropdownhover">
                   <button class="dropbtn">Cães do Vivah</button>
                     <ul class="dropdownhover-content">
@@ -33,9 +39,8 @@
                 <li><a href="{{ site.baseurl }}/servicos">Serviços</a></li>
                 <li><a href="https://www.instagram.com/vivahkennel/">Galeria</a></li>
                 <li><a href="{{ site.baseurl }}/eventos">Eventos</a></li>
-                <li><a href="{{ site.baseurl }}/blog">Vivah na Mídia</a></li>
+                <li><a href="{{ site.baseurl }}/blog">Blog</a></li>
                 <li><a href="{{ site.baseurl }}/contact">Contato</a></li>
-                <li><a href="{{ site.baseurl }}/filhotes">Filhotes</a></li>
               </ul>
             </div><!-- /.navbar-collapse -->
           </div><!-- /.container-fluid -->
