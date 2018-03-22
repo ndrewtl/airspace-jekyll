@@ -137,8 +137,101 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 
 Note how when using `with` we do not have to worry about closing the file -- it is taken care of automatically when we exit the code block. `with` also makes sure that any exceptions that occur when opening the file are dealt with appropriately.
 
+We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to the basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
 
-Python has built in support for reading csv files, using a module (or library) called...csv. To use the `csv` library in Python, we have to *import* it first, which is just a way of saying we want to bring this module into our Python program and use its features. 
+Firstly, our csv file is separated by commas, but we need to get rid of these before we can start doing useful things with the data. In fact, although it is obvious to us that we are dealing with numeric data, Python is just treating the text file as a bunch of lines of text, rather than numbers. In Python (and many other langauges), this type of data is refered to as a *string*. Try changing the `print(line)` function in the above code snippet to: `print(type(line))` and run the program again. You should get this output:
+
+
+```python
+<type 'str'>
+```
+
+`str` is short for *string*, i.e. text or characters. Oh no! W have just got one long string of text from our data, including all the commas from the csv file format. Luckily, Python is very good at manipulating strings. We can break up the data by *splitting* the string. Like so:
+
+```python
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  for line in weatherfile:
+    print(line.split(','))
+```
+
+We should get output that looks like this:
+
+```python
+...
+['1239882', '252.5', '3.466666', '4.3', '6.5', '78', '978.0999', '0\n']
+...
+```
+
+We also probably want the data separated by the columns, so we can do calculations on each column of data, like wind-speed, rainfall, pressure, and so on.
+
+Let's suppose we are interested in the `air pressure` from our data file. Air pressure is stored in the 7th column of the text file. However, Python, like many other programming langauges, starts counting from *zero*, so the columns of each line are numbered 0, 1, 2, 3, 4, 5, 6, 7. So to get the seventh column we actually use the number 6:
+
+```python
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  for line in weatherfile:
+    data_row = line.split(',')
+    pressure = data_row[6]
+    print(pressure)
+```
+
+We've broken this down into stages now. First we create a variable called `data_row` to store each line of the text file as a **list** as we read it in. Then we get each value of pressure by *indexing* the `data_row` list with the number 6. Finally we print the `pressure` value to screen. Run the above code and you should get all the pressure values printed out. 
+
+This is okay, but we are just printing out values of pressure, not storing them anywhere. In fact we are overwriting the value of `pressure` every time we go through the `for` loop. So we are going to create a list of pressure values that we can store and reuse. 
+
+```python
+pressure_data = []
+
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  for line in weatherfile:
+    data_row = line.split(',')
+    pressure = data_row[6]
+    pressure_data.append(pressure)
+```
+
+We now have a data structure called `pressure_data` that contains all the air pressure measurements from the text file. But there are a couple of problems here. (Can you think what they might be?)
+
+Hint: Think about
+
+ 1. The very first line in the original text file
+ 2. The type of the data in the list...
+
+Yes, unfortunately, we have two problems: 1. The first text line in the original file ("Pair_avg") has been read into the list, which is not good if we want to try and sum or average the list later, for example. 2. The items in the list are actually still strings, not numbers! You can test this by inserting the following line at the end of the code:
+
+```python
+# Oh no! This is the header line!
+print(pressure_data[0])   # Prints: 'Pair_avg'
+
+# Argh! This is a string!
+print(type(pressure_data[1])  # Prints: 'str'
+```
+
+No worries, we can fix this with Python. To skip the header line, we can use a handy built-in function in Python called `next()`. `next()` can be used on objects or data structures in Python to simply mean "Go to the next item in this object". By adding `next(weatherfile)`, we are telling Python to take us to the next line before we start to do anything else.
+
+Python is normally quite good at inferring what type of data you are dealing with, but sometimes it needs a hint. We can do this by converting our `pressure` variable from a string to a floating-point number by doing: `float(pressure)`
+
+With the above amendments, your script should now look like:
+
+```python
+pressure_data = []
+
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  for line in weatherfile:
+    data_row = line.split(',')
+    pressure = data_row[6]
+    pressure_data.append(float(pressure))
+```
+
+Add print statements to check that the type of data is no longer strings, and that we have skipped over the header line containing the description text.
+
+### Python's core language is simple, but limited
+
+This all seems a bit long-winded, doesn't it? Isn't Python meant to be quick and easy, I hear you cry? 
+
+Correct. Python's simple and hopefully intuitive syntax is nice, but the real strength of Python is in it's support for packages and libraries that make your coding life easier.  
+
+Python actually has built in support for reading text and csv files, using a module (or library) called...`csv`! So there is no need to do all of the above every time you want to read in a simple text file. But I hope it was useful introduction to the feel of Python syntax, and some of the basic language features -- they will come in handy later!
+
+ To use the `csv` library in Python, we have to *import* it first, which is just a way of saying we want to bring this module into our Python program and use its features. 
 
 ```python
 import csv
