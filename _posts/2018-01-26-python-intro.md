@@ -112,9 +112,31 @@ Key Points that will be covered:
   - "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
   - "Use the `pyplot` library from `matplotlib` for creating simple visualizations."
 
-This short tutorial is based around exploring the Geosceince's weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the [link to the station webpage](https://www.ed.ac.uk/geosciences/weather-station/weather-station-data), but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format.
+This short tutorial is based around exploring the Geosceince's weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the [link to the station webpage](https://www.ed.ac.uk/geosciences/weather-station/weather-station-data), but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from [Storm Eleanor](https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor), which passed over the UK and Edinburgh on the 2nd-3rd January.
 
-JCMB_Jan_2017.csv
+JCMB_StormEleanor_2_3_Jan.csv
+
+We are going to start off simple, using the basic 'core' Python language features to explore the data, then later in the tutorial we'll look at some of the ways we can use modules and libraries to make dealing with data easier.
+
+```python
+weatherfile = open("StormEleanor_2_3_Jan.csv", "r")
+
+for line in weatherfile:
+  print(line)
+
+weatherfile.close()
+```
+
+It's good practice in Python to use a keyword called `with` when you are reading from (or writing to) data files. The `with` keyword ensures that files are automatically closed properly at the end of their use, and system resources are correctly freed up. You could think of it intuitively like, "**With** this file opened **as** this shorthand name, I am going to do these things in the following block of code..."
+
+```python
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  for line in weatherfile:
+    print(line)
+```
+
+Note how when using `with` we do not have to worry about closing the file -- it is taken care of automatically when we exit the code block. `with` also makes sure that any exceptions that occur when opening the file are dealt with appropriately.
+
 
 Python has built in support for reading csv files, using a module (or library) called...csv. To use the `csv` library in Python, we have to *import* it first, which is just a way of saying we want to bring this module into our Python program and use its features. 
 
@@ -137,10 +159,7 @@ Python starts counting from zero, so to get the first item in the row list, we w
 row[0]
 ```
 
-
-
-
-Using `csv` is okay, but it's a bit 
+Using `csv` is okay, but it's a bit.......
 
 We are going to dive right in here and start using a Python package called NumPy. Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. NumPy is short for *numerical Python* and contains a whole bunch of useful functions and data structures for dealing with primarily numerical data. 
 
