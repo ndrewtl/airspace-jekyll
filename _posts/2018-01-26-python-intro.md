@@ -252,11 +252,17 @@ print(type(pressure_data[1])
 
 Using the built-in `csv` module is *okay*, it's a bit nicer than the manual version we made using only the core Python language but there are *much* better alternatives available by using one of the many available Python *packages*.
 
+### Python Data Analysis: Pandas
+
+We are going to dive right in here and start using a Python package called **pandas** (The name comes from *panel data* rather than the cute black and white fluffy animals at Edinburgh Zoo. 
+
+Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. Pandas is a sofware package for Python that contains a whole bunch of useful functions and data structures for dealing with tables of data, time-series data, and other similar datasets. 
+
+
+
 ### Numeric Python: NumPy to the rescue!
 
 *If you have not already done so, you will need to install the 'numpy' Python package*.
-
-We are going to dive right in here and start using a Python package called NumPy. Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. NumPy is short for *numerical Python* and contains a whole bunch of useful functions and data structures for dealing with primarily numerical data. 
 
 We need to tell Python that we want to use the NumPy package (it is not available by default), so we use an `import` statement to do this, i.e. we want to *import* the package into our program so we can use its features. (Just like we did with the csv module)
 
@@ -265,16 +271,58 @@ We need to tell Python that we want to use the NumPy package (it is not availabl
 ```python
 import numpy as np
 
-data = np.loadtxt('StormEleanor_Jan_2_3.csv', delimiter=',')
+data = np.loadtxt('StormEleanor_2_3_Jan.csv', delimiter=',', skiprows=1)
 
 ```
 That's it! Two lines of code :)
 
-Let's break down the above to see what is happening. After we import numpy, we can now use function in numpy using the abbreviated form `np`. We then access the features of numpy by putting a dot `.` after `np`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `loadtxt` function from the `numpy` module.
+Let's break down the above to see what is happening. After we import numpy, we can now use function in numpy using the abbreviated form `np`. We then access the numpy functions and data structures by putting a dot `.` after `np`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `loadtxt` function from the `numpy` module.
 
-In this case, we are using the `loadtxt` function to load a text based file (after all, a csv file is just a text file). We need to give the loadtxt function two arguments: the path and name of the file ("JCMB_Jan_2017.csv"), and the *delimiter* used in this type of text file. Since we are using a csv file (comma separated variable file), the delimiter is a comma. The delimiter must go inside quotation marks. 
+In this case, we are using the `loadtxt` function to load a text based file (after all, a csv file is just a text file). We need to give the loadtxt function three arguments: 
 
-Finally, note that we have assigned the result of the loadtxt function call to a variable we have created called `data`.
+1. The path and name of the file ("StormEleanor_2_3_Jan.csv")
+2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
+3. The skiprows argument, which tells numpy how many rows to skip before reading in the text. This is useful if you have a header row you need to skip. 
+
+Finally, note that we have assigned the result of the loadtxt function call to a variable we have created called `data`. This variable is a numpy array. (Try using `type(data)` to get Python to confirm this for you.) **Numpy arrays** are a more useful data structure for doing numerical calculations compared to the standard Python **lists**, which are more of a general purpose and fairly simple data structure. 
+
+**Note**: *Somewhat confusingly, Python also has its own built-in `array` type, but there is not much use for it if you are using numpy. Stick to using the numpy arrays!*
+
+#### Data type
+
+Numpy arrays contain one or more elements of the same type. The `type()` function will only tell us that the `data` variable is a numpy array though; to get the actual type of the values *within the array*, we must access one of the attributes of the array, like so:
+
+```python
+print(data.dtype)
+```
+
+The output when you run the script after adding the code above should be:
+
+```
+dtype('float64')
+```
+This means that our `data` array contains floating point numbers.
+
+We can also find the **shape** of the array, which means the number of dimensions and the length of those dimensions. This can be done with the attribute `shape`, like this:
+
+```python
+print(data.shape)
+
+# Output: (2880, 8)
+```
+
+The output of `(2880, 8)` means we have 2880 *rows* by 8 *columns* of data. In this case, the columns represent the measurement (rainfall, pressure, temperature, humidity etc.) and the rows represent each measurement timestep (1 measurement per minute, in the case of the JCMB weather station.)
+
+So we have 8 different types of measurement (columns) and 2880 readings for each measurement type (rows). This means we are dealing with a two-dimensional array, but NumPy arrays can have any number of dimensions.
+
+If we wanted to get a single value from the NumPy array, we have to give an index in square brackets after the variable name (similar to mathematical notation). 
+
+Let's suppose we want to get the very first measurement of Air Pressure from our data. 
+
+
+
+
+
 
 
 
