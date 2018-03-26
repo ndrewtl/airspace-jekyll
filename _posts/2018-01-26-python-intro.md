@@ -151,7 +151,7 @@ There are many other ways of using Python, such as from an interactive sessions 
 
 #### Files for this tutorial
 
-This short tutorial is based around exploring the Geosceince's weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the [link to the station webpage](https://www.ed.ac.uk/geosciences/weather-station/weather-station-data), but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from [Storm Eleanor](https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor), which passed over the UK and Edinburgh on the 2nd-3rd January.
+This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the [link to the station webpage](https://www.ed.ac.uk/geosciences/weather-station/weather-station-data), but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from [Storm Eleanor](https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor), which passed over the UK and Edinburgh on the 2nd-3rd January.
 
 You will need to download the following file for this tutorial:
 
@@ -206,7 +206,7 @@ Firstly, our csv file is separated by commas, but we need to get rid of these be
 <type 'str'>
 ```
 
-`str` is short for *string*, i.e. text or characters. Oh no! W have just got one long string of text from our data, including all the commas from the csv file format. Luckily, Python is very good at manipulating strings. We can break up the data by *splitting* the string. Like so:
+`str` is short for *string*, i.e. text or characters. But wait, this means that the variable `line` is just one long string of text from our data, including all the commas from the csv file format. Luckily, Python is very good at manipulating strings. We can break up the data by *splitting* the string. Like so:
 
 ```python
 with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
