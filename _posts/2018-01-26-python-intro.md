@@ -427,9 +427,100 @@ plt.savefig("pressure.png")
 
 ```
 
+The `plot` function will plot a line chart by default, and the first argument is the dataseries you wish to plot. There are many other optional arguments that can be provided to the plot function, but for now we will just keep it simple. To write the plot out to an image file, the `savefig` function is used, with the filename specified. The image filetype is inferred from the filename (e.g. ".png") and a wide range of common image file types are supported in matplotlib, including vector and raster formats.
+
 Open the "pressure.png" file (it will be in the same directory) and you should see a simple line plot of the pressure data over the 2 days that Storm Eleanor passed over Edinburgh. It should look something like this:
 
 ![pressure1](pressure.png)
+
+We can see how the pressure drops significantly as the storm passes over the weather station. However, the plot could be imporved with some lables on the axes, and a title. To add them to the figure, change our script to include the following:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
+
+pressure_data = data['Pair_Avg']
+
+plt.plot(pressure_data)
+plt.ylabel("Pressure (hPa)")
+plt.title("Average Pressure, JCMB Weather Station, 2-3rd Jan 2018")
+
+# Hmmm, what about the time along the x axis?...
+```
+
+As you can see, adding labels is easy enough with the `ylabel` and `title` functions. But although there is an `xlabel` function, our x data is simply integers for each timestep, rather than an actual timestamp. It would more readable if we could convert these integers into actual times, and plot these instead. We can do this with the help of the `datetime` module, a built-in python module for dealing with dates and times. 
+
+```python
+import datetime
+
+# data loading code...
+
+date_time_series = []
+
+date_time = datetime.datetime(2018, 1, 2)
+date_at_end = datetime.datetime(2018, 1, 3, 23, 59)
+step = datetime.timedelta(minutes=1)
+
+while date_time <= date_at_end:
+  date_time_series.append(date_time)
+  date_time += step
+
+plt.plot(date_time_series, pressure_data)
+plt.xticks(rotation=45)
+# etc...
+```
+Let's break this down:
+
+1. We add `datetime` to our import statements at the start of the script
+2. We create an empty list to store our dates
+3. We set the first date in the series, which is Midnight (00:00) on the 2nd January 2018. (Midnight is set by default if no hours/minutes are specified)
+4. We set the end date for our date, which is 23:59 on the 3rd January 2018.
+5. Set the timestep as a `timedelta` object. (Remember, the weather the station data is recorded every minute.
+6. Iterate by adding the time delta to the start time, and appending the new time step to the list, until we reach the final time.
+
+Finally, we now have a new list of times that we can plot. When we call plt.plot() this time, we are going to supply *two* arguments: an x series (datetimes) and a y series (pressure). 
+
+7. (Optional) It will probably look nice if the x-labels are rotated slightly so that the times don't overlap. We can do this by setting the `rotation` argument in the `plt.xticks()` function.
+
+8. To tidy up the axes, and scale them correctly, we can add a call to `plt.tight_layout()` just before we save the figure.
+
+Add the above code into to your script after the data loading lines, then run the script again. (Make sure you still have a plt.savefig() call at the end).
+
+The final script should look like this:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+import datetime
+
+data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
+
+pressure_data = data['Pair_Avg']
+
+date_time_series = []
+date_time = datetime.datetime(2018, 1, 2)
+date_at_end = datetime.datetime(2018, 1, 3, 23, 59)
+step = datetime.timedelta(minutes=1)
+
+while date_time <= date_at_end:
+  date_time_series.append(date_time)
+  date_time += step
+
+plt.plot(date_time_series, pressure_data)
+plt.ylabel("Pressure (hPa)")
+plt.xlabel("Time")
+plt.title("Average Pressure, JCMB Weather Station, 2-3rd Jan 2018")
+plt.xticks(rotation=-60)
+plt.tight_layout()
+plt.savefig("pressure_final.png")
+```
+
+And the plot, like this:
+
+![final_pressure](pressure_final.png)
+
 
 #### Data type
 
