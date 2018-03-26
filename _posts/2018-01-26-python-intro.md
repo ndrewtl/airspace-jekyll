@@ -15,25 +15,21 @@ tags: intro_to_python
 
 #### 0. Understand why Python is so useful for scientific programming
 
-#### 1. Learn how to import tabular data
+#### 1. Installing Python and run a simple Python program
 
-#### 2. Learn how to apply the same operations to multiple values
+#### 2. Reading data from a file
 
-#### 3. Learn how to store many values together
+#### 3. Get a feel for how Python looks and feels
 
-#### 4. Learn how to perform the same operations of many different values
+#### 4. Load data from a text file into memory
 
-#### 5. Making programs do different things based on different values
+#### 5. Learn about some basic Python data types and structures
 
-#### 6. Learn about functions in Python
+#### 6. Moving beyond the core Python langauge with modules
 
-#### 7. Learn how to deal with errors in Python
+#### 7. A brief introduction to Python and the Pandas package
 
-#### 8. Making programs more reliable
-
-#### 9. Learn how to debug scientific code
-
-#### 10. Learn how to write Python programs for the command line
+#### 8. Plotting data with Matplotlib
 
 
 ## Why Python for scientific programming?
@@ -93,7 +89,7 @@ If you are stuck with a problem in Python, online resources are so plentiful tha
 
 In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like Numpy (Numerical Python), SciPy (Scientific Python), as well as other tools like Pandas, matplotlib, and others. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
 
-## Let's go! Reading data with Python
+## Let's go! Reading data with Pytho
 
 Key Points that will be covered:
 
