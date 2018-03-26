@@ -343,8 +343,68 @@ Let's have a look at using pandas to load in our weather station data:
 ```python
 import pandas as pd
 
-pd.read_csv....
+data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
 ```
+
+These two lines of code read the whole table of data from the text file into a data structure assigned to the variable name `data`.
+
+That's it! Two lines of code :)
+
+Let's break down the above to see what is happening. After we import pandas, we can now use functions in pandas using the abbreviated form `pd`. We then access the pandas functions and data structures by putting a dot `.` after `pd`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `read_csv` function from the `pandas` module.
+
+In this case, we are using the `read_csv` function to load a text based file (after all, a csv file is just a text file). We need to give the `read_csv` function three arguments: 
+
+1. The *path and name* of the file ("StormEleanor_2_3_Jan.csv"). (This assumes you have downloaded the text file to the same place you are writing your Python scripts.)
+2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
+3. The *header* argument, which tells pandas which row contains the column header names. Remember Python starts counting from zero, so we want to use row 0.  
+
+Finally, note that we have assigned the result of the `read_csv` function call to a variable we have created called `data`. This variable is a pandas *dataframe*. (Try using `type(data)` to get Python to confirm this for you). We will have a look at the pandas dataframe type in a later tutorial, for now you can think of it as a more 'feature-rich' data structure than the `list` type we used in the previous example. 
+
+
+#### Exploring our weather data
+
+Pandas is clever in that it is aware that the header row is used to refer to the columns of data below it in the text file. Whereas in a standard Python list we would have to index an item of data by an index number, pandas lets us access data by its column name, which easier to remember than a number! So if we wanted to get hold of the Air Pressure data, we could do so using:
+
+```python
+data['Pair_Avg']
+```
+
+which would return the single column of data corresponding to the air pressures. Use the above code to extract the air pressures as a new variable, and then print them out to screen by re-running the script. The solution is below:
+
+```python
+pressure_data = data['Pair_Avg']
+print(pressure_data)
+```
+
+Python should print out all the Air Pressure data, as well as a 'record' number on the left hand side, and at the end it prints out the name of the data variable and the data type.
+
+### Plotting the data: a brief taste of Matplotlib
+
+Let's plot the data! We are going to use another package called **matplotlib**. Matplotlib is a widely used plotting library that can be used to create a wide range of high-quality charts and graphs of scientific data. We're going to keep it simple in this introductory tutorial by plotting a simple line graph of the pressure data from the JCMB weather station.
+
+Matplotlib is imported using this syntax, which you should add to the top of your script:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+Note how we are now using the dot notation to only import a submodule from the matplotlib package, namely the `pyplot` module. Pyplot is designed to mimic in many ways the Matlab plotting functionality, so users of matlab may see some similarity with the commands of pyplot. 
+
+To plot the data, we can do this by adding to our script:
+
+```python
+plt.plot(pressure_data)
+plt.savefig("pressure.png")
+```
+
+So your pandas + matplotlib plotting script should look like:
+
+```python
+import pandas as pd
+
+data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
+
+
 
 ### Numeric Python: NumPy to the rescue!
 
@@ -355,24 +415,21 @@ We need to tell Python that we want to use the NumPy package (it is not availabl
 (The only practical difference between `csv` and `numpy` is that `csv` is part of the standard Python library.)
 
 ```python
-import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
 
-data = np.loadtxt('StormEleanor_2_3_Jan.csv', delimiter=',', skiprows=1)
+data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
+
+pressure_data = data['Pair_Avg']
+
+plt.plot(pressure_data)
+plt.savefig("pressure.png")
 
 ```
-That's it! Two lines of code :)
 
-Let's break down the above to see what is happening. After we import numpy, we can now use function in numpy using the abbreviated form `np`. We then access the numpy functions and data structures by putting a dot `.` after `np`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `loadtxt` function from the `numpy` module.
+Open the "pressure.png" file (it will be in the same directory) and you should see a simple line plot of the pressure data over the 2 days that Storm Eleanor passed over Edinburgh. It should look something like this:
 
-In this case, we are using the `loadtxt` function to load a text based file (after all, a csv file is just a text file). We need to give the loadtxt function three arguments: 
-
-1. The path and name of the file ("StormEleanor_2_3_Jan.csv")
-2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
-3. The skiprows argument, which tells numpy how many rows to skip before reading in the text. This is useful if you have a header row you need to skip. 
-
-Finally, note that we have assigned the result of the loadtxt function call to a variable we have created called `data`. This variable is a numpy array. (Try using `type(data)` to get Python to confirm this for you.) **Numpy arrays** are a more useful data structure for doing numerical calculations compared to the standard Python **lists**, which are more of a general purpose and fairly simple data structure. 
-
-**Note**: *Somewhat confusingly, Python also has its own built-in `array` type, but there is not much use for it if you are using numpy. Stick to using the numpy arrays!*
+![pressure1](pressure.png)
 
 #### Data type
 
