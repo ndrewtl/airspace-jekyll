@@ -159,7 +159,7 @@ This short tutorial is based around exploring the Geosceince's weather station d
 
 You will need to download the following file for this tutorial:
 
-JCMB_StormEleanor_2_3_Jan.csv
+[StormEleanor_2_3_Jan.csv](../StormEleanor_2_3_Jan.csv)
 
 
 ### Just the basics!
