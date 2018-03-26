@@ -89,30 +89,9 @@ If you are stuck with a problem in Python, online resources are so plentiful tha
 
 In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like Numpy (Numerical Python), SciPy (Scientific Python), as well as other tools like Pandas, matplotlib, and others. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
 
-## Let's go! Reading data with Pytho
+## Let's go! Python set up and a first program
 
-Key Points that will be covered:
-
-  - "Import a library into a program using `import libraryname`."
-  - "Use the `numpy` library to work with arrays in Python."
-  - "Use `variable = value` to assign a value to a variable in order to record it in memory."
-  - "Variables are created on demand whenever a value is assigned to them."
-  - "Use `print(something)` to display the value of `something`."
-  - "The expression `array.shape` gives the shape of an array."
-  - "Use `array[x, y]` to select a single element from a 2D array."
-  - "Array indices start at 0, not 1."
-  - "Use `low:high` to specify a `slice` that includes the indices from `low` to `high-1`."
-  - "All the indexing and slicing that works on arrays also works on strings."
-  - "Use `# some kind of explanation` to add comments to programs."
-  - "Use `numpy.mean(array)`, `numpy.max(array)`, and `numpy.min(array)` to calculate simple statistics."
-  - "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
-  - "Use the `pyplot` library from `matplotlib` for creating simple visualizations."
-  - "A brief look at the Pandas library for data analysis
-
-
-### Python set up and a first program
-
-#### Installation
+### Installation
 
 *Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here.*
 
@@ -122,7 +101,7 @@ Installing Pythom This depends on your operating system (Linux/Mac/Windows), but
 
 **If you are in the 'live' tutorial, now would be a good point to raise any issues or questions you have about installing Python.**
 
-#### Running a Python Program
+### Running a Python Program
 
 There are a number of ways to run a Python program (or 'script'). This tutorial only presents one way of doing it, which is to write your Python program in a text file, save it with the extenstion `.py`, and then run it from the command line with the command:
 
@@ -158,7 +137,7 @@ You will need to download the following file for this tutorial:
 [StormEleanor_2_3_Jan.csv](../assets/StormEleanor_2_3_Jan.csv)
 
 
-### Just the basics!
+## Reading data from a file
 
 We are going to start off simple, using the basic 'core' Python language features to explore the data, then later in the tutorial we'll look at some of the ways we can use modules and libraries to make dealing with data easier.
 
@@ -182,7 +161,7 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 Note how when using `with` we do not have to worry about closing the file -- it is taken care of automatically when we exit the code block. `with` also makes sure that any exceptions that occur when opening the file are dealt with appropriately.
 
 
-#### A note on code blocks in Python
+### A note on code blocks in Python
 
 All programming lanaguages need a way of marking small units or subsections of code. For example, in a `for` loop, there needs to be a way to mark the start and end of the code to be executed within the loop. Some programming languages use terminating keywords to take care of this, Matlab and Fortran for example use the **end** keyword to signify the end of a particular code block. C-based languages often use the "curly braces" to open and close code blocks. E.g.:
 
@@ -195,7 +174,7 @@ if (some_condition == true):
 
 Python uses neither braces nor "end" statements to mark the end of code blocks. Instead, the end of code blocks are infered from the indentation or *whitespace*. Indenting code in Python implies that you are starting a code block, such as in the for loops or with blocks in the above examples. To end the code block (say at the end of an **if** statement, you simply *un-indent* the code to the previous indentation level. This often catches people out when first using Python -- Python in this respect is quite a visual language -- you need to look at the indentation levels to work out where your code block start and finish. There are advantages and disadvantages to this, but one major advantage is that it forces you to write very legible and consistently indented code! Python will complain if your indentation is wrong or inconsistent. You may use either a tab or spaces (any number of spaces...) to indicate indentation. I prefere personally to use two spaces, as it's easy to type and keeps the code looking nice and compact, but it's up to your personal preference. The important thing is to **be consistent with your whitespace and indentation!**
 
-#### Python basic data structures
+### Python basic data structures
 
 We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to the basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
 
@@ -283,15 +262,15 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 
 Add print statements to check that the type of data is no longer strings, and that we have skipped over the header line containing the description text.
 
-### Python's core language is simple, but limited
+## Python's core language is simple, but limited. Enter modules!
 
 This all seems a bit long-winded, doesn't it? Isn't Python meant to be quick and easy, I hear you cry? 
 
-Correct. Python's simple and hopefully intuitive syntax is nice, but the real strength of Python is in it's support for packages and libraries that make your coding life easier.  
+Correct. Python's simple and hopefully intuitive syntax is nice, but the real strength of Python is in it's support for packages and libraries/modules that make your coding life easier.  
 
 Python actually has built in support for reading text and csv files, using a module (or library) called...`csv`! So there is no need to do all of the above every time you want to read in a simple text file. But I hope it was useful introduction to the feel of Python syntax, and some of the basic language features -- they will come in handy later!
 
-To use the `csv` library in Python, we have to *import* it first, which is just a way of saying we want to bring this module into our Python program and use its features. 
+To use the `csv` module in Python, we have to *import* it first, which is just a way of saying we want to bring this module into our Python program and use its features. 
 
 ```python
 import csv
@@ -314,11 +293,11 @@ Packages are ubiquitous in Python, and most scientific programming done with Pyt
 
 
 
-### Python Data Analysis: Pandas
+## Python Data Analysis: Pandas
 
 We are going to dive right in here and start using a Python package called **pandas**, which is widely used for data analysis. (The name comes from *panel data* rather than the cute black and white fluffy animals at Edinburgh Zoo.)
 
-#### Why pandas and when to use it?
+### Why pandas and when to use it?
 
 Pandas is useful for situations when you have data in 'table-like' form, such as the sample weather station data we are using, that you want to perform some form of analysis on. Pandas is particularly useful when you have columns of data, potentially of different data types. Timeseries data, database-like data, are other typical types of dataset used with pandas. 
 
@@ -357,7 +336,7 @@ In this case, we are using the `read_csv` function to load a text based file (af
 Finally, note that we have assigned the result of the `read_csv` function call to a variable we have created called `data`. This variable is a pandas *dataframe*. (Try using `type(data)` to get Python to confirm this for you). We will have a look at the pandas dataframe type in a later tutorial, for now you can think of it as a more 'feature-rich' data structure than the `list` type we used in the previous example. 
 
 
-#### Exploring our weather data
+### Exploring our weather data
 
 Pandas is clever in that it is aware that the header row is used to refer to the columns of data below it in the text file. Whereas in a standard Python list we would have to index an item of data by an index number, pandas lets us access data by its column name, which easier to remember than a number! So if we wanted to get hold of the Air Pressure data, we could do so using:
 
@@ -374,7 +353,7 @@ print(pressure_data)
 
 Python should print out all the Air Pressure data, as well as a 'record' number on the left hand side, and at the end it prints out the name of the data variable and the data type.
 
-### Plotting the data: a brief taste of Matplotlib
+## Plotting the data: a brief taste of Matplotlib
 
 Let's plot the data! We are going to use another package called **matplotlib**. Matplotlib is a widely used plotting library that can be used to create a wide range of high-quality charts and graphs of scientific data. We're going to keep it simple in this introductory tutorial by plotting a simple line graph of the pressure data from the JCMB weather station.
 
@@ -504,6 +483,24 @@ And the plot, like this:
 ![final_pressure](../img/pressure_final.png)
 
 
+
+## Summary
+
+In this tutorial we have looked at why Python is popular for scientific programming, and gotten a feel for how Python looks and feels. Hopefully, you have learnt some of the basic syntax, and how to write and run simple python scripts to read in data from text files, and make a simple plot of some of the data.
+
+### Tutorial outcomes:
+
+#### 1. You have a feel for how widely used Python is, and why it is popular
+
+#### 2. You can run a simple test Python program on your computer
+
+#### 3. You can read in data from a text file using the core Python language
+
+#### 4. You can use modules and packages to streamline data reading and analysis
+
+#### 5. You can make simple figures with matplotlib
+
+#### 6. You have a feel for some of the basic syntax and data structures of Python
 
 
 
