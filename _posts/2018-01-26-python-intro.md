@@ -155,7 +155,7 @@ This short tutorial is based around exploring the School of GeoSciences weather 
 
 You will need to download the following file for this tutorial:
 
-[StormEleanor_2_3_Jan.csv](../StormEleanor_2_3_Jan.csv)
+[StormEleanor_2_3_Jan.csv](../assets/StormEleanor_2_3_Jan.csv)
 
 
 ### Just the basics!
@@ -413,7 +413,7 @@ The `plot` function will plot a line chart by default, and the first argument is
 
 Open the "pressure.png" file (it will be in the same directory) and you should see a simple line plot of the pressure data over the 2 days that Storm Eleanor passed over Edinburgh. It should look something like this:
 
-![pressure1](pressure.png)
+![pressure1](../img/pressure.png)
 
 We can see how the pressure drops significantly as the storm passes over the weather station. However, the plot could be imporved with some lables on the axes, and a title. To add them to the figure, change our script to include the following:
 
@@ -501,7 +501,7 @@ plt.savefig("pressure_final.png")
 
 And the plot, like this:
 
-![final_pressure](pressure_final.png)
+![final_pressure](../img/pressure_final.png)
 
 
 
