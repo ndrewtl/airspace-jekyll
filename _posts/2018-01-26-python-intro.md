@@ -183,8 +183,23 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
   for line in weatherfile:
     print(line)
 ```
-
 Note how when using `with` we do not have to worry about closing the file -- it is taken care of automatically when we exit the code block. `with` also makes sure that any exceptions that occur when opening the file are dealt with appropriately.
+
+
+#### A note on code blocks in Python
+
+All programming lanaguages need a way of marking small units or subsections of code. For example, in a `for` loop, there needs to be a way to mark the start and end of the code to be executed within the loop. Some programming languages use terminating keywords to take care of this, Matlab and Fortran for example use the **end** keyword to signify the end of a particular code block. C-based languages often use the "curly braces" to open and close code blocks. E.g.:
+
+```c
+if (some_condition == true):
+{
+  // do something here inside the braces...
+}
+```
+
+Python uses neither braces nor "end" statements to mark the end of code blocks. Instead, the end of code blocks are infered from the indentation or *whitespace*. Indenting code in Python implies that you are starting a code block, such as in the for loops or with blocks in the above examples. To end the code block (say at the end of an **if** statement, you simply *un-indent* the code to the previous indentation level. This often catches people out when first using Python -- Python in this respect is quite a visual language -- you need to look at the indentation levels to work out where your code block start and finish. There are advantages and disadvantages to this, but one major advantage is that it forces you to write very legible and consistently indented code! Python will complain if your indentation is wrong or inconsistent. You may use either a tab or spaces (any number of spaces...) to indicate indentation. I prefere personally to use two spaces, as it's easy to type and keeps the code looking nice and compact, but it's up to your personal preference. The important thing is to **be consistent with your whitespace and indentation!**
+
+#### Python basic data structures
 
 We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to the basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
 
