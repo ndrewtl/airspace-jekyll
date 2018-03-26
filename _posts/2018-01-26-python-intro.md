@@ -38,7 +38,7 @@ tags: intro_to_python
 
 ## Why Python for scientific programming?
 
-You may have heard about the Python programming language before. It is often talked about as the next "Up and coming" programming language, or described as being a new, "trendy" programming language that everyone should be learning, particularly scientists. I am going to argue that Python is no longer merely "up and coming", or even particularly new, but one of the most popular and useful programming languages you could invest time in learning. In fact, as of 2018, Python is (by certain measures) **the most widely used programming language in the world**. So if you are a scientist, researcher, or student doing any kind of data analysis, or numeric programming, then I think Python is worth investing some time in learning, even just the basics.
+You may have heard about the Python programming language before. It is often talked about as the next "Up and coming" programming language, or described as being a new, "trendy" programming language that everyone should be learning, particularly scientists. I would argue that Python is no longer merely "up and coming", or even particularly new, but one of the most popular and useful programming languages you could invest time in learning. In fact, as of 2018, Python is (by certain measures) **the most widely used programming language in the world**. So if you are a scientist, researcher, or student doing any kind of data analysis, or numeric programming, then I think Python is worth investing some time in learning, even just the basics.
 
 Python is a programming language, a tool used to make computers do useful things for scientific coders much faster than they could do using conventional tools like spreadsheets or plotting software (and certainly much faster than manual calculations!). But programming languages are not really designed for computers at all. In fact, your computer has no idea what all the words and symbols in a piece of code written in Python actually *mean*. (It only understands ones and zeros and electrical currents.) [footnote]. The reason is that programming languages are actually designed for *humans* to have a convenent way of programming a computer without getting involved in things like binary and hexadecimal codes, and worrying about electronic circuitry inside the computer. 
 
@@ -111,10 +111,56 @@ Key Points that will be covered:
   - "Use `numpy.mean(array)`, `numpy.max(array)`, and `numpy.min(array)` to calculate simple statistics."
   - "Use `numpy.mean(array, axis=0)` or `numpy.mean(array, axis=1)` to calculate statistics across the specified axis."
   - "Use the `pyplot` library from `matplotlib` for creating simple visualizations."
+  - "A brief look at the Pandas library for data analysis
+
+
+### Python set up and a first program
+
+#### Installation
+
+*Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here.*
+
+Installing Pythom This depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as matplotlib, numpy, pandas, etc. (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: https://www.anaconda.com/download/.
+
+*Make sure to install a **Python 3** version specific for your operating system*
+
+**If you are in the 'live' tutorial, now would be a good point to raise any issues or questions you have about installing Python.**
+
+#### Running a Python Program
+
+There are a number of ways to run a Python program (or 'script'). This tutorial only presents one way of doing it, which is to write your Python program in a text file, save it with the extenstion `.py`, and then run it from the command line with the command:
+
+```
+python myscript.py
+```
+
+Any output will be printed to the screen in the terminal or console you are running from. Let's try running the most basic program to test you have a working Python installation:
+
+Open a text file with the editor of your choice, and type the following lines:
+
+```python
+print("Hello, World!")
+```
+
+Save the file as `hello.py` and the run the script from the command line/console/terminal as follows:
+
+```
+python hello.py
+```
+Hopefully, you should see "Hello, World!" printed to screen.
+
+#### Other ways of running Python
+
+There are many other ways of using Python, such as from an interactive sessions with something called [IPython](https://ipython.org/), or via an IDE (integrated development environment) such as [Spyder](https://spyder-ide.github.io/). The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for transferability between different platforms, I've stuck with the simple "run from command line approach".
+
+#### Files for this tutorial
 
 This short tutorial is based around exploring the Geosceince's weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the [link to the station webpage](https://www.ed.ac.uk/geosciences/weather-station/weather-station-data), but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from [Storm Eleanor](https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor), which passed over the UK and Edinburgh on the 2nd-3rd January.
 
+You will need to download the following file for this tutorial:
+
 JCMB_StormEleanor_2_3_Jan.csv
+
 
 ### Just the basics!
 
@@ -128,6 +174,7 @@ for line in weatherfile:
 
 weatherfile.close()
 ```
+
 
 It's good practice in Python to use a keyword called `with` when you are reading from (or writing to) data files. The `with` keyword ensures that files are automatically closed properly at the end of their use, and system resources are correctly freed up. You could think of it intuitively like, "**With** this file opened **as** this shorthand name, I am going to do these things in the following block of code..."
 
