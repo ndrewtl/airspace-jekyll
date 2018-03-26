@@ -308,7 +308,7 @@ print(pressure_data)
 print(type(pressure_data[1])
 ```
 
-Using the built-in `csv` module is *okay*; it's a bit nicer than the manual version we made using only the core Python language, but there are *much* better alternatives available by using one of the many available Python *packages*. In the remainder of the tutorial, we are going to (very briefly!) look at two powerful Python packages that are widely used in scientific programming: **Pandas** and **NumPy**.
+Using the built-in `csv` module is *okay*; it's a bit nicer than the manual version we made using only the core Python language, but there are *much* better alternatives available by using one of the many available Python *packages*. In the remainder of the tutorial, we are going to (very briefly!) look at two powerful Python packages that are widely used in scientific programming: **pandas** and **matplotlib**. (NumPy will be covered in a later tutorial).
 
 Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. Pandas is a sofware package for Python that contains a whole bunch of useful functions and data structures for dealing with tables of data, time-series data, and other similar datasets. 
 
@@ -316,7 +316,7 @@ Packages are ubiquitous in Python, and most scientific programming done with Pyt
 
 ### Python Data Analysis: Pandas
 
-We are going to dive right in here and start using a Python package called **pandas** (The name comes from *panel data* rather than the cute black and white fluffy animals at Edinburgh Zoo.)
+We are going to dive right in here and start using a Python package called **pandas**, which is widely used for data analysis. (The name comes from *panel data* rather than the cute black and white fluffy animals at Edinburgh Zoo.)
 
 #### Why pandas and when to use it?
 
@@ -332,7 +332,7 @@ When not to use pandas:
 
  * For really simple data files (a single column of values in a text file, for example, might be overkill).
  * If you are dealing with large gridded datasets of a single data type. (Consider using NumPy).
- * If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consder using NumPy).
+ * If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consider using NumPy).
 
 Let's have a look at using pandas to load in our weather station data:
 
