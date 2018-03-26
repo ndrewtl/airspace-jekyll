@@ -399,20 +399,6 @@ plt.savefig("pressure.png")
 
 So your pandas + matplotlib plotting script should look like:
 
-```python
-import pandas as pd
-
-data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
-
-
-
-### Numeric Python: NumPy to the rescue!
-
-*If you have not already done so, you will need to install the 'numpy' Python package*.
-
-We need to tell Python that we want to use the NumPy package (it is not available by default), so we use an `import` statement to do this, i.e. we want to *import* the package into our program so we can use its features. (Just like we did with the csv module)
-
-(The only practical difference between `csv` and `numpy` is that `csv` is part of the standard Python library.)
 
 ```python
 import pandas as pd
