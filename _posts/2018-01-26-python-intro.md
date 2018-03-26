@@ -522,36 +522,7 @@ And the plot, like this:
 ![final_pressure](pressure_final.png)
 
 
-#### Data type
 
-Numpy arrays contain one or more elements of the same type. The `type()` function will only tell us that the `data` variable is a numpy array though; to get the actual type of the values *within the array*, we must access one of the attributes of the array, like so:
-
-```python
-print(data.dtype)
-```
-
-The output when you run the script after adding the code above should be:
-
-```
-dtype('float64')
-```
-This means that our `data` array contains floating point numbers.
-
-We can also find the **shape** of the array, which means the number of dimensions and the length of those dimensions. This can be done with the attribute `shape`, like this:
-
-```python
-print(data.shape)
-
-# Output: (2880, 8)
-```
-
-The output of `(2880, 8)` means we have 2880 *rows* by 8 *columns* of data. In this case, the columns represent the measurement (rainfall, pressure, temperature, humidity etc.) and the rows represent each measurement timestep (1 measurement per minute, in the case of the JCMB weather station.)
-
-So we have 8 different types of measurement (columns) and 2880 readings for each measurement type (rows). This means we are dealing with a two-dimensional array, but NumPy arrays can have any number of dimensions.
-
-If we wanted to get a single value from the NumPy array, we have to give an index in square brackets after the variable name (similar to mathematical notation). 
-
-Let's suppose we want to get the very first measurement of Air Pressure from our data. 
 
 
 
