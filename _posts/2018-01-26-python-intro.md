@@ -328,15 +328,15 @@ Pandas is useful for situations when you have data in 'table-like' form, such as
 
 When to use pandas:
 
- . Table-like columnular data
- . Interfacing with databases (MySQL etc.)
- . Multiple data-types in a single data file.
+ * Table-like columnular data
+ * Interfacing with databases (MySQL etc.)
+ * Multiple data-types in a single data file.
 
 When not to use pandas:
 
- . For really simple data files (a single column of values in a text file, for example, might be overkill).
- . If you are dealing with large gridded datasets of a single data type. (Consider using NumPy).
- . If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consder using NumPy).
+ * For really simple data files (a single column of values in a text file, for example, might be overkill).
+ * If you are dealing with large gridded datasets of a single data type. (Consider using NumPy).
+ * If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consder using NumPy).
 
 Let's have a look at using pandas to load in our weather station data:
 
