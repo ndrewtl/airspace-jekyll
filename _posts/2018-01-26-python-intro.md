@@ -25,7 +25,7 @@ tags: python
 
 #### <a href="basics"> 5. Learn about some basic Python data types and structures</a>
 
-#### <a href="modules"> 6. Moving beyond the core Python langauge with modules</a>
+#### <a href="modules"> 6. Moving beyond the core Python language with modules</a>
 
 #### <a href="pandas"> 7. A brief introduction to data analysis with the pandas package</a>
 
@@ -37,7 +37,7 @@ tags: python
 
 You may have heard about the Python programming language before. It is often talked about as the next "Up and coming" programming language, or described as being a new, "trendy" programming language that everyone should be learning, particularly scientists. I would argue that Python is no longer merely "up and coming", or even particularly new, but one of the most popular and useful programming languages you could invest time in learning. In fact, as of 2018, Python is (by certain measures) **the most widely used programming language in the world**. So if you are a scientist, researcher, or student doing any kind of data analysis, or numeric programming, then I think Python is worth investing some time in learning, even just the basics.
 
-Python is a programming language, a tool used to make computers do useful things for scientific coders much faster than they could do using conventional tools like spreadsheets or plotting software (and certainly much faster than manual calculations!). But programming languages are not really designed for computers at all. In fact, your computer has no idea what all the words and symbols in a piece of code written in Python actually *mean*. (It only understands ones and zeros and electrical currents.) [footnote]. The reason is that programming languages are actually designed for *humans* to have a convenent way of programming a computer without getting involved in things like binary and hexadecimal codes, and worrying about electronic circuitry inside the computer. 
+Python is a programming language, a tool used to make computers do useful things for scientific coders much faster than they could do using conventional tools like spreadsheets or plotting software (and certainly much faster than manual calculations!). But programming languages are not really designed for computers at all. In fact, your computer has no idea what all the words and symbols in a piece of code written in Python actually *mean*. (It only understands ones and zeros and electrical currents.) [footnote]. The reason is that programming languages are actually designed for *humans* to have a convenient way of programming a computer without getting involved in things like binary and hexadecimal codes, and worrying about electronic circuitry inside the computer. 
 
 ## Why Python?
 
@@ -204,7 +204,7 @@ Note how when using `with` we do not have to worry about closing the file -- it 
 
 ### A note on code blocks in Python
 
-All programming lanaguages need a way of marking small units or subsections of code. For example, in a `for` loop, there needs to be a way to mark the start and end of the code to be executed within the loop. Some programming languages use terminating keywords to take care of this, Matlab and Fortran for example use the **end** keyword to signify the end of a particular code block. C-based languages often use the "curly braces" to open and close code blocks. E.g.:
+All programming languages need a way of marking small units or subsections of code. For example, in a `for` loop, there needs to be a way to mark the start and end of the code to be executed within the loop. Some programming languages use terminating keywords to take care of this, Matlab and Fortran for example use the **end** keyword to signify the end of a particular code block. C-based languages often use the "curly braces" to open and close code blocks. E.g.:
 
 ```c
 if (some_condition == true):
@@ -222,7 +222,7 @@ Python uses neither braces nor "end" statements to mark the end of code blocks. 
 
 We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to the basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
 
-Firstly, our csv file is separated by commas, but we need to get rid of these before we can start doing useful things with the data. In fact, although it is obvious to us that we are dealing with numeric data, Python is just treating the text file as a bunch of lines of text, rather than numbers. In Python (and many other langauges), this type of data is refered to as a *string*. Try changing the `print(line)` function in the above code snippet to: `print(type(line))` and run the program again. 
+Firstly, our csv file is separated by commas, but we need to get rid of these before we can start doing useful things with the data. In fact, although it is obvious to us that we are dealing with numeric data, Python is just treating the text file as a bunch of lines of text, rather than numbers. In Python (and many other languages), this type of data is refered to as a *string*. Try changing the `print(line)` function in the above code snippet to: `print(type(line))` and run the program again. 
 
 ```python
 with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
@@ -255,7 +255,7 @@ We should get output that looks something like this:
 
 We also probably want the data separated by the columns, so we can do calculations on each column of data, like wind-speed, rainfall, pressure, and so on.
 
-Let's suppose we are interested in the `air pressure` from our data file. Air pressure is stored in the 7th column of the text file. However, Python, like many other programming langauges, starts counting from *zero*, so the columns of each line are numbered 0, 1, 2, 3, 4, 5, 6, 7. So to get the seventh column we actually use the number 6:
+Let's suppose we are interested in the `air pressure` from our data file. Air pressure is stored in the 7th column of the text file. However, Python, like many other programming languages, starts counting from *zero*, so the columns of each line are numbered 0, 1, 2, 3, 4, 5, 6, 7. So to get the seventh column we actually use the number 6:
 
 ```python
 with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
@@ -279,7 +279,7 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
     pressure_data.append(pressure)
 ```
 
-Note that we must first create an empty list to store our pressure data in. We also have to make sure to create it outside of the `with` block, in case we want to use it later on. In the for loop we do the folliwing for every line:
+Note that we must first create an empty list to store our pressure data in. We also have to make sure to create it outside of the `with` block, in case we want to use it later on. In the for loop we do the following for every line:
 
 ##### 1. Split the line up from one long string into a list of items in the row.
 ##### 2. Extract the item at position 6. (The pressure reading)
@@ -348,7 +348,7 @@ import csv
 
 pressure_data = []   # Create an empty list as before to store values
 
-with open('StormEleanor_2_3_Jan.csv', 'rb') as csvfile:
+with open('StormEleanor_2_3_Jan.csv', 'r') as csvfile:
   next(csvfile)
   for row in csv.reader(csvfile, quoting=csv.QUOTE_NONNUMERIC):
     pressure_data.append(row[6])
@@ -364,7 +364,7 @@ Using the built-in `csv` module is *okay*; it's a bit nicer than the manual vers
 
 #### Packages vs libraries vs modules
 
-You will hear the following terms used a lot in the Python world (and other langauges too). In a general sense, they all refer to 'add-ons, 'extras', or additional Python software providing extra features in addition to the core Python langauge. *Package* usually means an externally developed piece of Python software that has to be installed separately. A *library* or *module* generally refers to add-ons that already bundled with a standard Python installation (such as the `csv` library/module. You will find the terms are used interchangeably - even in the official Python documentation!
+You will hear the following terms used a lot in the Python world (and other languages too). In a general sense, they all refer to 'add-ons, 'extras', or additional Python software providing extra features in addition to the core Python language. *Package* usually means an externally developed piece of Python software that has to be installed separately. A *library* or *module* generally refers to add-ons that already bundled with a standard Python installation (such as the `csv` library/module. You will find the terms are used interchangeably - even in the official Python documentation!
 
 *Strictly speaking, a Python **module** is simply a Python source file, which groups together similar functions, data structures, and variables, but this is getting beyond the scope of an introductory tutorial...*
 
@@ -428,7 +428,7 @@ data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
 pressure_data = data['Pair_Avg']
 ```
 
-which would give us a single column of data corresponding to the air pressures, and assign it to the variable `pressure_data`. Use the above code to extract the air pressures as a new variable, and then print them out to screen by re-running the script. The final script should like this:
+which would give us a single column of data corresponding to the air pressures, and assign it to the variable `pressure_data`. Use the above code to extract the air pressures as a new variable, and then print them out to screen by re-running the script. The final script should be like this:
 
 ```python
 import pandas as pd
@@ -477,7 +477,7 @@ Open the "pressure.png" file (it will be in the same folder) and you should see 
 
 <center> <img src="{{ site.baseurl }}/img/pressure.png" alt="Img" style="width: 800px;"/> </center>
 
-We can see how the pressure drops significantly as the storm passes over the weather station. However, the plot could be imporved with some lables on the axes, and a title. To add them to the figure, change our script to include the following:
+We can see how the pressure drops significantly as the storm passes over the weather station. However, the plot could be improved with some lables on the axes, and a title. To add them to the figure, change our script to include the following:
 
 ```python
 import pandas as pd
@@ -494,7 +494,7 @@ plt.title("Average Pressure, JCMB Weather Station, 2-3rd Jan 2018")
 # Hmmm, what about the time along the x axis?...
 ```
 
-As you can see, adding labels is easy enough with the `ylabel` and `title` functions. But although there is an `xlabel` function, our x data is simply integers for each timestep, rather than an actual timestamp. It would more readable if we could convert these integers into actual times, and plot these instead. We can do this with the help of the `datetime` module, a built-in python module for dealing with dates and times. 
+As you can see, adding labels is easy enough with the `ylabel` and `title` functions. But although there is an `xlabel` function, our x data is simply integers for each timestep, rather than an actual timestamp. It would be more readable if we could convert these integers into actual times, and plot these instead. We can do this with the help of the `datetime` module, a built-in python module for dealing with dates and times. 
 
 ```python
 # import the required libraries and modules
@@ -518,12 +518,12 @@ Let's break this down:
 ##### 2. We create an empty list to store our dates
 ##### 3. We set the first date in the series, which is Midnight (00:00) on the 2nd January 2018. (Midnight is set by default if no hours/minutes are specified)
 ##### 4. We set the end date for our date, which is 23:59 on the 3rd January 2018.
-##### 5. Set the timestep as a `timedelta` object. (Remember, the weather the station data is recorded every minute.
+##### 5. Set the timestep as a `timedelta` object. (Remember, the weather station data is recorded every minute.
 ##### 6. Iterate by adding the time delta to the start time, and appending the new time step to the list, until we reach the final time.
 
 Finally, we now have a new list of times that we can plot. When we call plt.plot() this time, we are going to supply *two* arguments: an x series (datetimes) and a y series (pressure). 
 
-Add the above code into to your script after the data loading lines, then run the script again. (Make sure you still have a plt.savefig() call at the end).
+Add the above code into your script after the data loading lines, then run the script again. (Make sure you still have a plt.savefig() call at the end).
 
 We can also add a few extra matplotlib functions to tidy up our plot:
 
