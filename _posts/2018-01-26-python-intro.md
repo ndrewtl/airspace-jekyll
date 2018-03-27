@@ -96,23 +96,41 @@ In the domain of science, the Scientific Python community is just as well establ
 
 ### Installation
 
-*Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here.*
+*Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here if you are in the 'live' workshop*
 
 The method for installing Python depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as `matplotlib`, `numpy` and  `pandas` (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
 
-*Make sure to install a **Python 3** version specific for your operating system*
+*Make sure to install a **Python 3** version specific to your operating system*
 
 **If you are in the 'live' workshop, now would be a good point to raise any issues or questions you have about installing Python.**
 
 ### Running a Python Program
 
-There are a number of ways to run a Python program (or 'script'). This tutorial only presents one way of doing it, which is to write your Python program in a text file, save it with the extenstion `.py`, and then run it from the command line with the command:
+This tutorial assumes that you are going to write the Python code as a 'script', i.e. writing the code in text files using a text editor of your choice, and then running them from the console/terminal or command line.
+
+If you have successfully installed a Python distribution, Linux and Mac users should be able to do this simply by opening a terminal, navigating to the location of your script, and typing the following command (replacing 'myscript.py' with the name of your script). 
 
 ```
 python myscript.py
 ```
+On Windows, this may require a few extra steps to get working, which can be found in the official Python documentation pages for <a href="https://docs.python.org/3.3/using/windows.html" target="_blank">using Python on Windows</a>.
 
-Any output will be printed to the screen in the terminal or console you are running from. Let's try running the most basic program to test you have a working Python installation:
+Any output will be printed to the screen in the terminal or console you are running from.
+
+This workshop does not cover the command line/terminal in depth, but handy 'cheat sheets' are available here for:
+
+##### <a href="https://learntocodewith.me/command-line/unix-command-cheat-sheet/" target="_blank">Linux/Mac terminal users</a>
+
+##### <a href="http://simplyadvanced.net/blog/cheat-sheet-for-windows-command-prompt/" target="_blank">Windows command line users"</a>
+
+
+#### Following the tutorial with Spyder or another IDE
+
+If you are not comfortable using the command line or terminal, or just prefer to use an IDE such as Spyder (similar to RStudio), you can still follow along using Spyder (which is bundled with the Anaconda installation). Ask the workshop helpers for guidance, or consult the <a href="https://pythonhosted.org/spyder/" target="_blank">Spyder documentation</a>. You will be editing and running the scripts from within the IDE in this case, rather than the command line or terminal, so the instructions will be slightly different. The Python code is the same though!
+
+#### Hello, World!
+
+Let's try running the most basic program to test you have a working Python installation:
 
 Open a text file with the editor of your choice, and type the following lines:
 
@@ -129,7 +147,10 @@ Hopefully, you should see "Hello, World!" printed to screen.
 
 #### Other ways of running Python
 
-There are many other ways of using Python, such as interactive sessions with something called <a href="https://ipython.org/" target="_blank">IPython</a>, or via an IDE (integrated development environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a>. The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for transferability between different platforms, I've stuck with the simple "run from command line approach".
+There are many other ways of using Python, such as interactive sessions with something called <a href="https://ipython.org/" target="_blank">IPython</a>, or via an IDE (integrated development environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a>. The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for consistency in this workshop and transferability between different platforms, I've stuck with the simple "run from command line/terminal approach". 
+
+If you alread have a bit of experience using Spyder or another IDE, or wish to use IPython, please feel free to do so during the tutorial. 
+
 
 #### Files for this tutorial
 
