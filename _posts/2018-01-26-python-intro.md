@@ -239,8 +239,8 @@ We now have a data structure called `pressure_data` that contains all the air pr
 
 Hint: Think about
 
- 1. The very first line in the original text file
- 2. The type of the data in the list...
+##### 1. The very first line in the original text file
+##### 2. The type of the data in the list...
 
 Yes, unfortunately, we have two problems: 1. The first text line in the original file ("Pair_avg") has been read into the list, which is not good if we want to try and sum or average the list later, for example. 2. The items in the list are actually still strings, not numbers! You can test this by inserting the following line at the end of the code:
 
@@ -341,9 +341,9 @@ Let's break down the above to see what is happening. After we import pandas, we 
 
 In this case, we are using the `read_csv` function to load a text based file (after all, a csv file is just a text file). We need to give the `read_csv` function three arguments: 
 
- 1. The *path and name* of the file ("StormEleanor_2_3_Jan.csv"). (This assumes you have downloaded the text file to the same place you are writing your Python scripts.)
- 2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
- 3. The *header* argument, which tells pandas which row contains the column header names. Remember Python starts counting from zero, so we want to use row 0.  
+##### 1. The *path and name* of the file ("StormEleanor_2_3_Jan.csv"). (This assumes you have downloaded the text file to the same place you are writing your Python scripts.)
+##### 2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
+##### 3. The *header* argument, which tells pandas which row contains the column header names. Remember Python starts counting from zero, so we want to use row 0.  
 
 Finally, note that we have assigned the result of the `read_csv` function call to a variable we have created called `data`. This variable is a pandas *dataframe*. (Try using `type(data)` to get Python to confirm this for you). We will have a look at the pandas dataframe type in a later tutorial, for now you can think of it as a more 'feature-rich' data structure than the `list` type we used in the previous example. 
 
@@ -448,18 +448,18 @@ plt.xticks(rotation=45)
 ```
 Let's break this down:
 
- 1. We add `datetime` to our import statements at the start of the script
- 2. We create an empty list to store our dates
- 3. We set the first date in the series, which is Midnight (00:00) on the 2nd January 2018. (Midnight is set by default if no hours/minutes are specified)
- 4. We set the end date for our date, which is 23:59 on the 3rd January 2018.
- 5. Set the timestep as a `timedelta` object. (Remember, the weather the station data is recorded every minute.
- 6. Iterate by adding the time delta to the start time, and appending the new time step to the list, until we reach the final time.
+##### 1. We add `datetime` to our import statements at the start of the script
+##### 2. We create an empty list to store our dates
+##### 3. We set the first date in the series, which is Midnight (00:00) on the 2nd January 2018. (Midnight is set by default if no hours/minutes are specified)
+##### 4. We set the end date for our date, which is 23:59 on the 3rd January 2018.
+##### 5. Set the timestep as a `timedelta` object. (Remember, the weather the station data is recorded every minute.
+##### 6. Iterate by adding the time delta to the start time, and appending the new time step to the list, until we reach the final time.
 
 Finally, we now have a new list of times that we can plot. When we call plt.plot() this time, we are going to supply *two* arguments: an x series (datetimes) and a y series (pressure). 
 
- 7. (Optional) It will probably look nice if the x-labels are rotated slightly so that the times don't overlap. We can do this by setting the `rotation` argument in the `plt.xticks()` function.
+##### 7. (Optional) It will probably look nice if the x-labels are rotated slightly so that the times don't overlap. We can do this by setting the `rotation` argument in the `plt.xticks()` function.
 
- 8. To tidy up the axes, and scale them correctly, we can add a call to `plt.tight_layout()` just before we save the figure.
+##### 8. To tidy up the axes, and scale them correctly, we can add a call to `plt.tight_layout()` just before we save the figure.
 
 Add the above code into to your script after the data loading lines, then run the script again. (Make sure you still have a plt.savefig() call at the end).
 
