@@ -2,7 +2,7 @@
 layout: post
 title: Introduction to Python
 subtitle: Importing and exploring data with Python, writing good scientific code
-date: 2019-01-26 00:00:00
+date: 2018-01-26 00:00:00
 author: Declan
 meta: "PythonBasics"
 tags: python
