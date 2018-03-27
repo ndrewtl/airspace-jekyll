@@ -5,34 +5,35 @@ subtitle: Importing and exploring data with Python, writing good scientific code
 date: 2019-01-26 00:00:00
 author: Declan
 meta: "PythonBasics"
-tags: intro_to_python
+tags: python
 ---
 <div class="block">
-          <center><img src="{{ site.baseurl }}/img/tutheaderintro.jpg" alt="Img"></center>
-        </div>
+  <center><img src="{{ site.baseurl }}/img/tutheader_python.jpg" alt="Img"></center>
+</div>
 
 ### Tutorial aims:
 
-#### 0. Understand why Python is so useful for scientific programming
+#### <a href="understanding"> 0. Understand why Python is so useful for scientific programming</a>
 
-#### 1. Installing Python and run a simple Python program
+#### <a href="installing"> 1. Installing Python and running a simple Python program</a>
 
-#### 2. Reading data from a file
+#### <a href="reading"> 2. Reading data from a file</a>
 
-#### 3. Get a feel for how Python looks and feels
+#### <a href="feeling"> 3. Get a feel for how Python looks and feels</a>
 
-#### 4. Load data from a text file into memory
+#### <a href="loading"> 4. Load data from a text file into memory</a>
 
-#### 5. Learn about some basic Python data types and structures
+#### <a href="basics"> 5. Learn about some basic Python data types and structures</a>
 
-#### 6. Moving beyond the core Python langauge with modules
+#### <a href="modules"> 6. Moving beyond the core Python langauge with modules</a>
 
-#### 7. A brief introduction to Python and the Pandas package
+#### <a href="pandas"> 7. A brief introduction to data analysis with the pandas package</a>
 
-#### 8. Plotting data with Matplotlib
+#### <a href="matplotlib"> 8. Plotting data with Matplotlib</a>
 
+<a name="understanding"></a>
 
-## Why Python for scientific programming?
+## Understanding why Python is so useful for scientific programming
 
 You may have heard about the Python programming language before. It is often talked about as the next "Up and coming" programming language, or described as being a new, "trendy" programming language that everyone should be learning, particularly scientists. I would argue that Python is no longer merely "up and coming", or even particularly new, but one of the most popular and useful programming languages you could invest time in learning. In fact, as of 2018, Python is (by certain measures) **the most widely used programming language in the world**. So if you are a scientist, researcher, or student doing any kind of data analysis, or numeric programming, then I think Python is worth investing some time in learning, even just the basics.
 
@@ -74,7 +75,7 @@ x = 3
 if tastyword.count("o") < x and tastyword.endswith("e"):
   print("You have won some tasty chocolate!")
 ```
->
+
 ### 2. General Puropose
 
 Python has a major advantage when compared to some other commonly used programming languages in the scientific community; it is a *general purpose* programming language. Compared to other languages such as Matlab, IDL, ncl, and R, which were designed with specific applications in mind, Python was built as a general purpose programming language (like Java, C, Ruby etc.). This means you can use Python to write your data analysis code, plot the results of the analysis, write a numerical model, run a website, do your tax return...the list goes on. 
@@ -89,13 +90,15 @@ If you are stuck with a problem in Python, online resources are so plentiful tha
 
 In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like Numpy (Numerical Python), SciPy (Scientific Python), as well as other tools like Pandas, matplotlib, and others. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
 
-## Let's go! Python set up and a first program
+<a name="installing"></a>
+
+## Installing Python and running a simple Python program
 
 ### Installation
 
 *Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here.*
 
-Installing Pythom This depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as matplotlib, numpy, pandas, etc. (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: https://www.anaconda.com/download/.
+Installing Pythom This depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as matplotlib, numpy, pandas, etc. (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
 
 *Make sure to install a **Python 3** version specific for your operating system*
 
@@ -126,16 +129,17 @@ Hopefully, you should see "Hello, World!" printed to screen.
 
 #### Other ways of running Python
 
-There are many other ways of using Python, such as from an interactive sessions with something called [IPython](https://ipython.org/), or via an IDE (integrated development environment) such as [Spyder](https://spyder-ide.github.io/). The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for transferability between different platforms, I've stuck with the simple "run from command line approach".
+There are many other ways of using Python, such as from an interactive sessions with something called <a href="https://ipython.org/" target="_blank">IPython</a>, or via an IDE (integrated development environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a>. The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for transferability between different platforms, I've stuck with the simple "run from command line approach".
 
 #### Files for this tutorial
 
-This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the [link to the station webpage](https://www.ed.ac.uk/geosciences/weather-station/weather-station-data), but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from [Storm Eleanor](https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor), which passed over the UK and Edinburgh on the 2nd-3rd January.
+This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
 
 You will need to download the following file for this tutorial:
 
-[StormEleanor_2_3_Jan.csv](../assets/StormEleanor_2_3_Jan.csv)
+<a href="{{ site.baseurl }}/assets/StormEleanor_2_3_Jan.csv" target="_blank">StormEleanor_2_3_Jan.csv</a>
 
+<a name="reading"></a>
 
 ## Reading data from a file
 
@@ -160,6 +164,7 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 ```
 Note how when using `with` we do not have to worry about closing the file -- it is taken care of automatically when we exit the code block. `with` also makes sure that any exceptions that occur when opening the file are dealt with appropriately.
 
+<a name="feeling"></a>
 
 ### A note on code blocks in Python
 
@@ -174,7 +179,10 @@ if (some_condition == true):
 
 Python uses neither braces nor "end" statements to mark the end of code blocks. Instead, the end of code blocks are infered from the indentation or *whitespace*. Indenting code in Python implies that you are starting a code block, such as in the for loops or with blocks in the above examples. To end the code block (say at the end of an **if** statement, you simply *un-indent* the code to the previous indentation level. This often catches people out when first using Python -- Python in this respect is quite a visual language -- you need to look at the indentation levels to work out where your code block start and finish. There are advantages and disadvantages to this, but one major advantage is that it forces you to write very legible and consistently indented code! Python will complain if your indentation is wrong or inconsistent. You may use either a tab or spaces (any number of spaces...) to indicate indentation. I prefere personally to use two spaces, as it's easy to type and keeps the code looking nice and compact, but it's up to your personal preference. The important thing is to **be consistent with your whitespace and indentation!**
 
-### Python basic data structures
+<a name="loading"></a>
+<a name="basics"></a>
+
+### Loading a text file into memory and basic data structures
 
 We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to the basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
 
@@ -262,7 +270,11 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 
 Add print statements to check that the type of data is no longer strings, and that we have skipped over the header line containing the description text.
 
-## Python's core language is simple, but limited. Enter modules!
+<a name="modules"></a>
+
+## Moving beyond the core Python language with modules
+
+### Python's core language is simple, but limited. Enter modules!
 
 This all seems a bit long-winded, doesn't it? Isn't Python meant to be quick and easy, I hear you cry? 
 
@@ -291,9 +303,9 @@ Using the built-in `csv` module is *okay*; it's a bit nicer than the manual vers
 
 Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. Pandas is a sofware package for Python that contains a whole bunch of useful functions and data structures for dealing with tables of data, time-series data, and other similar datasets. 
 
+<a name="pandas"></a>
 
-
-## Python Data Analysis: Pandas
+## A brief introduction to data analysis with pandas
 
 We are going to dive right in here and start using a Python package called **pandas**, which is widely used for data analysis. (The name comes from *panel data* rather than the cute black and white fluffy animals at Edinburgh Zoo.)
 
@@ -301,17 +313,17 @@ We are going to dive right in here and start using a Python package called **pan
 
 Pandas is useful for situations when you have data in 'table-like' form, such as the sample weather station data we are using, that you want to perform some form of analysis on. Pandas is particularly useful when you have columns of data, potentially of different data types. Timeseries data, database-like data, are other typical types of dataset used with pandas. 
 
-When to use pandas:
+#### When to use pandas:
 
- * Table-like columnular data
- * Interfacing with databases (MySQL etc.)
- * Multiple data-types in a single data file.
+##### Table-like columnular data
+##### Interfacing with databases (MySQL etc.)
+##### Multiple data-types in a single data file.
 
-When not to use pandas:
+#### When not to use pandas:
 
- * For really simple data files (a single column of values in a text file, for example, might be overkill).
- * If you are dealing with large gridded datasets of a single data type. (Consider using NumPy).
- * If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consider using NumPy).
+##### For really simple data files (a single column of values in a text file, for example, might be overkill).
+##### If you are dealing with large gridded datasets of a single data type. (Consider using NumPy).
+##### If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consider using NumPy).
 
 Let's have a look at using pandas to load in our weather station data:
 
@@ -329,9 +341,9 @@ Let's break down the above to see what is happening. After we import pandas, we 
 
 In this case, we are using the `read_csv` function to load a text based file (after all, a csv file is just a text file). We need to give the `read_csv` function three arguments: 
 
-1. The *path and name* of the file ("StormEleanor_2_3_Jan.csv"). (This assumes you have downloaded the text file to the same place you are writing your Python scripts.)
-2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
-3. The *header* argument, which tells pandas which row contains the column header names. Remember Python starts counting from zero, so we want to use row 0.  
+ 1. The *path and name* of the file ("StormEleanor_2_3_Jan.csv"). (This assumes you have downloaded the text file to the same place you are writing your Python scripts.)
+ 2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
+ 3. The *header* argument, which tells pandas which row contains the column header names. Remember Python starts counting from zero, so we want to use row 0.  
 
 Finally, note that we have assigned the result of the `read_csv` function call to a variable we have created called `data`. This variable is a pandas *dataframe*. (Try using `type(data)` to get Python to confirm this for you). We will have a look at the pandas dataframe type in a later tutorial, for now you can think of it as a more 'feature-rich' data structure than the `list` type we used in the previous example. 
 
@@ -353,7 +365,9 @@ print(pressure_data)
 
 Python should print out all the Air Pressure data, as well as a 'record' number on the left hand side, and at the end it prints out the name of the data variable and the data type.
 
-## Plotting the data: a brief taste of Matplotlib
+<a name="matplotlib"></a>
+
+## Plotting data with matplotlib
 
 Let's plot the data! We are going to use another package called **matplotlib**. Matplotlib is a widely used plotting library that can be used to create a wide range of high-quality charts and graphs of scientific data. We're going to keep it simple in this introductory tutorial by plotting a simple line graph of the pressure data from the JCMB weather station.
 
@@ -392,7 +406,7 @@ The `plot` function will plot a line chart by default, and the first argument is
 
 Open the "pressure.png" file (it will be in the same directory) and you should see a simple line plot of the pressure data over the 2 days that Storm Eleanor passed over Edinburgh. It should look something like this:
 
-![pressure1](../img/pressure.png)
+<center> <img src="{{ site.baseurl }}/img/pressure.png" alt="Img" style="width: 800px;"/> </center>
 
 We can see how the pressure drops significantly as the storm passes over the weather station. However, the plot could be imporved with some lables on the axes, and a title. To add them to the figure, change our script to include the following:
 
@@ -434,18 +448,18 @@ plt.xticks(rotation=45)
 ```
 Let's break this down:
 
-1. We add `datetime` to our import statements at the start of the script
-2. We create an empty list to store our dates
-3. We set the first date in the series, which is Midnight (00:00) on the 2nd January 2018. (Midnight is set by default if no hours/minutes are specified)
-4. We set the end date for our date, which is 23:59 on the 3rd January 2018.
-5. Set the timestep as a `timedelta` object. (Remember, the weather the station data is recorded every minute.
-6. Iterate by adding the time delta to the start time, and appending the new time step to the list, until we reach the final time.
+ 1. We add `datetime` to our import statements at the start of the script
+ 2. We create an empty list to store our dates
+ 3. We set the first date in the series, which is Midnight (00:00) on the 2nd January 2018. (Midnight is set by default if no hours/minutes are specified)
+ 4. We set the end date for our date, which is 23:59 on the 3rd January 2018.
+ 5. Set the timestep as a `timedelta` object. (Remember, the weather the station data is recorded every minute.
+ 6. Iterate by adding the time delta to the start time, and appending the new time step to the list, until we reach the final time.
 
 Finally, we now have a new list of times that we can plot. When we call plt.plot() this time, we are going to supply *two* arguments: an x series (datetimes) and a y series (pressure). 
 
-7. (Optional) It will probably look nice if the x-labels are rotated slightly so that the times don't overlap. We can do this by setting the `rotation` argument in the `plt.xticks()` function.
+ 7. (Optional) It will probably look nice if the x-labels are rotated slightly so that the times don't overlap. We can do this by setting the `rotation` argument in the `plt.xticks()` function.
 
-8. To tidy up the axes, and scale them correctly, we can add a call to `plt.tight_layout()` just before we save the figure.
+ 8. To tidy up the axes, and scale them correctly, we can add a call to `plt.tight_layout()` just before we save the figure.
 
 Add the above code into to your script after the data loading lines, then run the script again. (Make sure you still have a plt.savefig() call at the end).
 
@@ -480,9 +494,7 @@ plt.savefig("pressure_final.png")
 
 And the plot, like this:
 
-![final_pressure](../img/pressure_final.png)
-
-
+<center> <img src="{{ site.baseurl }}/img/pressure_final.png" alt="Img" style="width: 800px;"/> </center>
 
 ## Summary
 
