@@ -82,6 +82,10 @@ Python has a major advantage when compared to some other commonly used programmi
 
 Because of it's general-purpose design, Python is used in the real world in a range of industries. Python is used by scientists at universities across the world, developers at big tech companies like Amazon, Facebook, and Google, by financial services companies, and social media apps like Facebook and Instagram, for example. In short, while this tutorial focuses on scientific applications of Python, you are learning a programming language that has a huge variety both within and outwith the scientific community.
 
+Python has grown hugely in popularity in recent years, by some measures it is *the* most popular programming language as of 2018. Consider the chart below, which is based on number of question views on StackOverflow:
+
+<center><img src="{{ site.baseurl }}/img/python_growth_major_languages.png" alt="Img" style="width: 1000px"></center>
+
 ### 3. Scientific Python Community
 
 The third reason I'm going to mention is the community behind Python. As mentioned before, writing code is as much a way of communicating between humans trying to solve the same scientific problems as it is telling the computer what to do. Python has a very friendly and active community supporting it, many of whom are found on internet resources such as forums and the popular StackOverflow Q&A site. 
@@ -89,6 +93,12 @@ The third reason I'm going to mention is the community behind Python. As mention
 If you are stuck with a problem in Python, online resources are so plentiful that is often enough to just type "How do I do _X_ in Python", into a search engine - the first few results often will contain your answer. (And often the top link is a StackOverflow question asked by someone with the same or very similar problem to you.
 
 In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like `numpy` (Numerical Python), `scipy` (Scientific Python), as well as other tools like `pandas`, `matplotlib`, and others. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
+
+You may also wish to have a look at this chart showing the growth of Python and other smaller, growing technologies (including R):
+
+<center><img src="{{ site.baseurl }}/img/python_growth_smaller_languages.png" alt="Img" style="width: 1000px"></center>
+
+If you are interested in reading more about the growth of Python (and the background to the above charts), I highly recommend reading <a href="https://stackoverflow.blog/2017/09/06/incredible-growth-python/" target="_blank">this blog post from StackOverflow</a>.
 
 <a name="installing"></a>
 
