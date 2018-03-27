@@ -88,7 +88,7 @@ The third reason I'm going to mention is the community behind Python. As mention
 
 If you are stuck with a problem in Python, online resources are so plentiful that is often enough to just type "How do I do _X_ in Python", into a search engine - the first few results often will contain your answer. (And often the top link is a StackOverflow question asked by someone with the same or very similar problem to you.
 
-In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like Numpy (Numerical Python), SciPy (Scientific Python), as well as other tools like Pandas, matplotlib, and others. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
+In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like `numpy` (Numerical Python), `scipy` (Scientific Python), as well as other tools like `pandas`, `matplotlib`, and others. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
 
 <a name="installing"></a>
 
@@ -98,11 +98,11 @@ In the domain of science, the Scientific Python community is just as well establ
 
 *Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here.*
 
-The method for installing Python depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as matplotlib, numpy, pandas, etc. (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
+The method for installing Python depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as `matplotlib`, `numpy` and  `pandas` (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
 
 *Make sure to install a **Python 3** version specific for your operating system*
 
-**If you are in the 'live' tutorial, now would be a good point to raise any issues or questions you have about installing Python.**
+**If you are in the 'live' workshop, now would be a good point to raise any issues or questions you have about installing Python.**
 
 ### Running a Python Program
 
@@ -133,11 +133,15 @@ There are many other ways of using Python, such as interactive sessions with som
 
 #### Files for this tutorial
 
-This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University of Edinburgh. You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
+This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University of Edinburgh.
+
+You can download the data, and some helpful Python cheatsheets from <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">this github repository</a>. Clone and download the repo as a zipfile by pressing the big green button, then unzip it. You should then save any python scripts to that folder, so they can access the data easily.
+
+Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the repository</a> to your own Github account and then clone it using the HTTPS/SSH link. For more details on how to register on Github, download Git and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">previous tutorial.</a>
+
+You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, we've provided the data file <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">in the repo you just downloaded</a>. Specifically, the data comes from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
 
 You will need to download the following file for this tutorial:
-
-<a href="{{ site.baseurl }}/assets/StormEleanor_2_3_Jan.csv" target="_blank">StormEleanor_2_3_Jan.csv</a>
 
 <a name="reading"></a>
 
@@ -153,7 +157,6 @@ for line in weatherfile:
 
 weatherfile.close()
 ```
-
 
 It's good practice in Python to use a keyword called `with` when you are reading from (or writing to) data files. The `with` keyword ensures that files are automatically closed properly at the end of their use, and system resources are correctly freed up. You could think of it intuitively like, "**With** this file opened **as** this shorthand name, I am going to do these things in the following block of code..."
 
@@ -252,7 +255,7 @@ print(pressure_data[0])   # Prints: 'Pair_avg'
 print(type(pressure_data[1])  # Prints: 'str'
 ```
 
-No worries, we can fix this with Python. To skip the header line, we can use a handy built-in function in Python called `next()`. `next()` can be used on objects or data structures in Python to simply mean "Go to the next item in this object". By adding `next(weatherfile)`, we are telling Python to take us to the next line before we start to do anything else.
+No worries, we can fix this. To skip the header line, we can use a handy built-in function in Python called `next()`. `next()` can be used on objects or data structures in Python to simply mean "Go to the next item in this object". By adding `next(weatherfile)`, we are telling Python to take us to the next line before we start to do anything else.
 
 Python is normally quite good at inferring what type of data you are dealing with, but sometimes it needs a hint. We can do this by converting our `pressure` variable from a string to a floating-point number by doing: `float(pressure)`
 
@@ -299,33 +302,33 @@ print(pressure_data)
 print(type(pressure_data[1])
 ```
 
-Using the built-in `csv` module is *okay*; it's a bit nicer than the manual version we made using only the core Python language, but there are *much* better alternatives available by using one of the many available Python *packages*. In the remainder of the tutorial, we are going to (very briefly!) look at two powerful Python packages that are widely used in scientific programming: **pandas** and **matplotlib**. (NumPy will be covered in a later tutorial).
+Using the built-in `csv` module is *okay*; it's a bit nicer than the manual version we made using only the core Python language, but there are *much* better alternatives available by using one of the many available Python *packages*. In the remainder of the tutorial, we are going to (very briefly!) look at two powerful Python packages that are widely used in scientific programming: `pandas` and `matplotlib`. (`numpy` will be covered in a later tutorial).
 
-Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. Pandas is a sofware package for Python that contains a whole bunch of useful functions and data structures for dealing with tables of data, time-series data, and other similar datasets. 
+Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. `pandas` is a package that contains a whole bunch of useful functions and data structures for dealing with tables of data, time-series data, and other similar datasets. 
 
 <a name="pandas"></a>
 
-## A brief introduction to data analysis with pandas
+## A brief introduction to data analysis with Pandas
 
-We are going to dive right in here and start using a Python package called **pandas**, which is widely used for data analysis. (The name comes from *panel data* rather than the cute black and white fluffy animals at Edinburgh Zoo.)
+We are going to dive right in here and start using a Python package called `pandas`, which is widely used for data analysis. (The name comes from *panel data* rather than the cute black and white fluffy animals at Edinburgh Zoo.)
 
-### Why pandas and when to use it?
+### Why Pandas and when to use it?
 
-Pandas is useful for situations when you have data in 'table-like' form, such as the sample weather station data we are using, that you want to perform some form of analysis on. Pandas is particularly useful when you have columns of data, potentially of different data types. Timeseries data, database-like data, are other typical types of dataset used with pandas. 
+`pandas` is useful for situations when you have data in 'table-like' form, such as the sample weather station data we are using, that you want to perform some form of analysis on. `pandas` is particularly useful when you have columns of data, potentially of different data types. Timeseries data, database-like data, are other typical types of dataset used with `pandas`. 
 
-#### When to use pandas:
+#### When to use `pandas`:
 
-##### Table-like columnular data
+##### Table-like columnar data
 ##### Interfacing with databases (MySQL etc.)
 ##### Multiple data-types in a single data file.
 
-#### When not to use pandas:
+#### When not to use `pandas`:
 
 ##### For really simple data files (a single column of values in a text file, for example, might be overkill).
-##### If you are dealing with large gridded datasets of a single data type. (Consider using NumPy).
-##### If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consider using NumPy).
+##### If you are dealing with large gridded datasets of a single data type. (Consider using `numpy`).
+##### If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consider using `numpy`).
 
-Let's have a look at using pandas to load in our weather station data:
+Let's have a look at using `pandas` to load in our weather station data:
 
 ```python
 import pandas as pd
@@ -337,20 +340,20 @@ These two lines of code read the whole table of data from the text file into a d
 
 That's it! Two lines of code :)
 
-Let's break down the above to see what is happening. After we import pandas, we can now use functions in pandas using the abbreviated form `pd`. We then access the pandas functions and data structures by putting a dot `.` after `pd`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `read_csv` function from the `pandas` module.
+Let's break down the above to see what is happening. After we import `pandas`, we can now use functions in `pandas` using the abbreviated form `pd`. We then access the `pandas` functions and data structures by putting a dot `.` after `pd`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `read_csv` function from the `pandas` module.
 
 In this case, we are using the `read_csv` function to load a text based file (after all, a csv file is just a text file). We need to give the `read_csv` function three arguments: 
 
-##### 1. The *path and name* of the file ("StormEleanor_2_3_Jan.csv"). (This assumes you have downloaded the text file to the same place you are writing your Python scripts.)
+##### 1. The *path and name* of the file ("StormEleanor_2_3_Jan.csv"). (This assumes you have downloaded the text file to the same folder you are writing your Python scripts.)
 ##### 2. The *delimiter* used in this type of text file, or the character used to separate the values in the file. Since we are using a csv file (comma separated variable file), the delimiter is a comma (`','`). The delimiter must go inside quotation marks. 
 ##### 3. The *header* argument, which tells pandas which row contains the column header names. Remember Python starts counting from zero, so we want to use row 0.  
 
-Finally, note that we have assigned the result of the `read_csv` function call to a variable we have created called `data`. This variable is a pandas *dataframe*. (Try using `type(data)` to get Python to confirm this for you). We will have a look at the pandas dataframe type in a later tutorial, for now you can think of it as a more 'feature-rich' data structure than the `list` type we used in the previous example. 
+Finally, note that we have assigned the result of the `read_csv` function call to a variable we have created called `data`. This variable is a `pandas` *dataframe*. (Try using `type(data)` to get Python to confirm this for you). We will have a look at the `pandas` dataframe type in a later tutorial, for now you can think of it as a more 'feature-rich' data structure than the `list` type we used in the previous example. 
 
 
 ### Exploring our weather data
 
-Pandas is clever in that it is aware that the header row is used to refer to the columns of data below it in the text file. Whereas in a standard Python list we would have to index an item of data by an index number, pandas lets us access data by its column name, which easier to remember than a number! So if we wanted to get hold of the Air Pressure data, we could do so using:
+`pandas` is clever in that it is aware that the header row is used to refer to the columns of data below it in the text file. Whereas in a standard Python list we would have to index an item of data by an index number, `pandas` lets us access data by its column name, which easier to remember than a number! So if we wanted to get hold of the Air Pressure data, we could do so using:
 
 ```python
 data['Pair_Avg']
@@ -369,15 +372,15 @@ Python should print out all the Air Pressure data, as well as a 'record' number 
 
 ## Plotting data with matplotlib
 
-Let's plot the data! We are going to use another package called **matplotlib**. Matplotlib is a widely used plotting library that can be used to create a wide range of high-quality charts and graphs of scientific data. We're going to keep it simple in this introductory tutorial by plotting a simple line graph of the pressure data from the JCMB weather station.
+Let's plot the data! We are going to use another package called `matplotlib`. `matplotlib` is a widely used plotting library that can be used to create a wide range of high-quality charts and graphs of scientific data. We're going to keep it simple in this introductory tutorial by plotting a simple line graph of the pressure data from the JCMB weather station.
 
-Matplotlib is imported using this syntax, which you should add to the top of your script:
+`matplotlib` is imported using this syntax, which you should add to the top of your script:
 
 ```python
 import matplotlib.pyplot as plt
 ```
 
-Note how we are now using the dot notation to only import a submodule from the matplotlib package, namely the `pyplot` module. Pyplot is designed to mimic in many ways the Matlab plotting functionality, so users of matlab may see some similarity with the commands of pyplot. 
+Note how we are now using the dot notation to only import a submodule from the `matplotlib` package, namely the `pyplot` module. Pyplot is designed to mimic in many ways the Matlab plotting functionality, so users of matlab may see some similarity with the commands of pyplot. 
 
 To plot the data, we can do this by adding to our script:
 
@@ -386,7 +389,7 @@ plt.plot(pressure_data)
 plt.savefig("pressure.png")
 ```
 
-So your pandas + matplotlib plotting script should look like:
+So your `pandas` + `matplotlib` plotting script should look like:
 
 
 ```python
@@ -402,9 +405,9 @@ plt.savefig("pressure.png")
 
 ```
 
-The `plot` function will plot a line chart by default, and the first argument is the dataseries you wish to plot. There are many other optional arguments that can be provided to the plot function, but for now we will just keep it simple. To write the plot out to an image file, the `savefig` function is used, with the filename specified. The image filetype is inferred from the filename (e.g. ".png") and a wide range of common image file types are supported in matplotlib, including vector and raster formats.
+The `plot` function will plot a line chart by default, and the first argument is the dataseries you wish to plot. There are many other optional arguments that can be provided to the plot function, but for now we will just keep it simple. To write the plot out to an image file, the `savefig` function is used, with the filename specified. The image filetype is inferred from the filename (e.g. ".png") and a wide range of common image file types are supported in `matplotlib`, including vector and raster formats.
 
-Open the "pressure.png" file (it will be in the same directory) and you should see a simple line plot of the pressure data over the 2 days that Storm Eleanor passed over Edinburgh. It should look something like this:
+Open the "pressure.png" file (it will be in the same folder) and you should see a simple line plot of the pressure data over the 2 days that Storm Eleanor passed over Edinburgh. It should look something like this:
 
 <center> <img src="{{ site.baseurl }}/img/pressure.png" alt="Img" style="width: 800px;"/> </center>
 
