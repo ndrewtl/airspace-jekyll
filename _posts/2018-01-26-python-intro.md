@@ -8,7 +8,7 @@ meta: "PythonBasics"
 tags: python
 ---
 <div class="block">
-  <center><img src="{{ site.baseurl }}/img/tutheader_python.jpg" alt="Img"></center>
+  <center><img src="{{ site.baseurl }}/img/tutheader_python.png" alt="Img"></center>
 </div>
 
 ### Tutorial aims:
