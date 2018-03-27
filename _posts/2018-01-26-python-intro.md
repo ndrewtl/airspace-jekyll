@@ -98,7 +98,7 @@ In the domain of science, the Scientific Python community is just as well establ
 
 *Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here.*
 
-Installing Pythom This depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as matplotlib, numpy, pandas, etc. (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
+The method for installing Python depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as matplotlib, numpy, pandas, etc. (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
 
 *Make sure to install a **Python 3** version specific for your operating system*
 
@@ -129,11 +129,11 @@ Hopefully, you should see "Hello, World!" printed to screen.
 
 #### Other ways of running Python
 
-There are many other ways of using Python, such as from an interactive sessions with something called <a href="https://ipython.org/" target="_blank">IPython</a>, or via an IDE (integrated development environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a>. The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for transferability between different platforms, I've stuck with the simple "run from command line approach".
+There are many other ways of using Python, such as interactive sessions with something called <a href="https://ipython.org/" target="_blank">IPython</a>, or via an IDE (integrated development environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a>. The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for transferability between different platforms, I've stuck with the simple "run from command line approach".
 
 #### Files for this tutorial
 
-This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University. You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
+This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University of Edinburgh. You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, I've provided the data file that we'll be using here. The file is in the commonly used csv format. We are going to look at some of the data from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
 
 You will need to download the following file for this tutorial:
 
