@@ -147,7 +147,7 @@ You will need to download the following file for this tutorial:
 
 ## Reading data from a file
 
-We are going to start off simple, using the basic 'core' Python language features to explore the data, then later in the tutorial we'll look at some of the ways we can use modules and libraries to make dealing with data easier.
+We are going to start off simple, using the basic 'core' Python language features to explore the data, then later in the tutorial we'll look at some of the ways we can use modules and libraries to make dealing with data easier. Create a new Python script in your editor or IDE, and type in the following lines:
 
 ```python
 weatherfile = open("StormEleanor_2_3_Jan.csv", "r")
@@ -158,7 +158,9 @@ for line in weatherfile:
 weatherfile.close()
 ```
 
-It's good practice in Python to use a keyword called `with` when you are reading from (or writing to) data files. The `with` keyword ensures that files are automatically closed properly at the end of their use, and system resources are correctly freed up. You could think of it intuitively like, "**With** this file opened **as** this shorthand name, I am going to do these things in the following block of code..."
+Save it and run the script. You should see all the lines of the csv file are printed out to screen.
+
+It's good practice in Python to use a keyword called `with` when you are reading from (or writing to) data files. The `with` keyword ensures that files are automatically closed properly at the end of their use, and system resources are correctly freed up. You could think of it intuitively like, "**With** this file opened **as** this shorthand name, I am going to do these things in the following block of code...". The above script can be shortened by replacing the `open()` and `close()` statements with a single `with` and `open` as below:
 
 ```python
 with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
@@ -189,14 +191,22 @@ Python uses neither braces nor "end" statements to mark the end of code blocks. 
 
 We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to the basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
 
-Firstly, our csv file is separated by commas, but we need to get rid of these before we can start doing useful things with the data. In fact, although it is obvious to us that we are dealing with numeric data, Python is just treating the text file as a bunch of lines of text, rather than numbers. In Python (and many other langauges), this type of data is refered to as a *string*. Try changing the `print(line)` function in the above code snippet to: `print(type(line))` and run the program again. You should get this output:
+Firstly, our csv file is separated by commas, but we need to get rid of these before we can start doing useful things with the data. In fact, although it is obvious to us that we are dealing with numeric data, Python is just treating the text file as a bunch of lines of text, rather than numbers. In Python (and many other langauges), this type of data is refered to as a *string*. Try changing the `print(line)` function in the above code snippet to: `print(type(line))` and run the program again. 
+
+```python
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  for line in weatherfile:
+    print(type(line))
+```
+
+You should get this output printed repeatedly to screen:
 
 
 ```python
-<type 'str'>
+<type 'str'> 
 ```
 
-`str` is short for *string*, i.e. text or characters. But wait, this means that the variable `line` is just one long string of text from our data, including all the commas from the csv file format. Luckily, Python is very good at manipulating strings. We can break up the data by *splitting* the string. Like so:
+`str` is short for *string*, i.e. text or characters. But wait, this means that the variable `line` is just one long string of text from our data, including all the commas from the csv file format. This is not ideal if we want to work on individual values from the file. Luckily, Python is very good at manipulating strings. We can break up the data by *splitting* the string. Change the script so it contains:
 
 ```python
 with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
@@ -204,7 +214,7 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
     print(line.split(','))
 ```
 
-We should get output that looks like this:
+We should get output that looks something like this:
 
 ```python
 ...
@@ -226,7 +236,7 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 
 We've broken this down into stages now. First we create a variable called `data_row` to store each line of the text file as a **list** as we read it in. Then we get each value of pressure by *indexing* the `data_row` list with the number 6. Finally we print the `pressure` value to screen. Run the above code and you should get all the pressure values printed out. 
 
-This is okay, but we are just printing out values of pressure, not storing them anywhere. In fact we are overwriting the value of `pressure` every time we go through the `for` loop. So we are going to create a list of pressure values that we can store and reuse. 
+This is okay, but we are just printing out values of pressure, not storing them anywhere. In fact we are overwriting the value of `pressure` every time we go through the `for` loop. So we are going to create a list of pressure values that we can store and reuse. The script should be changed to look like this:
 
 ```python
 pressure_data = []
@@ -238,6 +248,12 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
     pressure_data.append(pressure)
 ```
 
+Note that we must first create an empty list to store our pressure data in. We also have to make sure to create it outside of the `with` block, in case we want to use it later on. In the for loop we do the folliwing for every line:
+
+##### 1. Split the line up from one long string into a list of items in the row.
+##### 2. Extract the item at position 6. (The pressure reading)
+##### 3. Use the `append` method to add the current line's pressure value to our list of pressure data.
+
 We now have a data structure called `pressure_data` that contains all the air pressure measurements from the text file. But there are a couple of problems here. (Can you think what they might be?)
 
 Hint: Think about
@@ -245,9 +261,17 @@ Hint: Think about
 ##### 1. The very first line in the original text file
 ##### 2. The type of the data in the list...
 
-Yes, unfortunately, we have two problems: 1. The first text line in the original file ("Pair_avg") has been read into the list, which is not good if we want to try and sum or average the list later, for example. 2. The items in the list are actually still strings, not numbers! You can test this by inserting the following line at the end of the code:
+Yes, unfortunately, we have two problems: 1. The first text line in the original file ("Pair_avg") has been read into the list, which is not good if we want to try and sum or average the list later, because it will contain a string as well as some numbers. 2. The items in the list are actually all still strings, not numbers! You can test this by adding two print statements to the end of the script:
 
 ```python
+pressure_data = []
+
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  for line in weatherfile:
+    data_row = line.split(',')
+    pressure = data_row[6]
+    pressure_data.append(pressure)
+
 # Oh no! This is the header line!
 print(pressure_data[0])   # Prints: 'Pair_avg'
 
@@ -265,13 +289,14 @@ With the above amendments, your script should now look like:
 pressure_data = []
 
 with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  next(weatherfile)
   for line in weatherfile:
     data_row = line.split(',')
     pressure = data_row[6]
     pressure_data.append(float(pressure))
 ```
 
-Add print statements to check that the type of data is no longer strings, and that we have skipped over the header line containing the description text.
+If you like you can add print statements to check that the type of data is no longer strings, and that we have skipped over the header line containing the description text.
 
 <a name="modules"></a>
 
@@ -290,7 +315,7 @@ To use the `csv` module in Python, we have to *import* it first, which is just a
 ```python
 import csv
 
-pressure_data = []   # Create an empty list
+pressure_data = []   # Create an empty list as before to store values
 
 with open('StormEleanor_2_3_Jan.csv', 'rb') as csvfile:
   next(csvfile)
@@ -302,9 +327,18 @@ print(pressure_data)
 print(type(pressure_data[1])
 ```
 
+The `quoting=csv.QUOTE_NONNUMERIC` argument tells the csv module to read all the non-quoted values in the csv file as strings, and the rest as numeric values (e.g. floats).
+
 Using the built-in `csv` module is *okay*; it's a bit nicer than the manual version we made using only the core Python language, but there are *much* better alternatives available by using one of the many available Python *packages*. In the remainder of the tutorial, we are going to (very briefly!) look at two powerful Python packages that are widely used in scientific programming: `pandas` and `matplotlib`. (`numpy` will be covered in a later tutorial).
 
-Packages are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. `pandas` is a package that contains a whole bunch of useful functions and data structures for dealing with tables of data, time-series data, and other similar datasets. 
+#### Packages vs libraries vs modules
+
+You will hear the following terms used a lot in the Python world (and other langauges too). In a general sense, they all refer to 'add-ons, 'extras', or additional Python software providing extra features in addition to the core Python langauge. *Package* usually means an externally developed piece of Python software that has to be installed separately. A *library* or *module* generally refers to add-ons that already bundled with a standard Python installation (such as the `csv` library/module. You will find the terms are used interchangeably - even in the official Python documentation!
+
+*Strictly speaking, a Python **module** is simply a Python source file, which groups together similar functions, data structures, and variables, but this is getting beyond the scope of an introductory tutorial...*
+
+Packages and modules are ubiquitous in Python, and most scientific programming done with Python makes use of one or more packages that are installed separately to the standard Python installation. You can think of them as 'add-ons' to the basic Python language, much like libraries in R or other programming languages. `pandas` is a package that contains a whole bunch of useful functions and data structures for dealing with tables of data, time-series data, and other similar datasets.
+
 
 <a name="pandas"></a>
 
@@ -328,7 +362,7 @@ We are going to dive right in here and start using a Python package called `pand
 ##### If you are dealing with large gridded datasets of a single data type. (Consider using `numpy`).
 ##### If you are doing lots of matrix calculations, or other heavily mathematical operations on gridded data. (Consider using `numpy`).
 
-Let's have a look at using `pandas` to load in our weather station data:
+Let's have a look at using `pandas` to load in our weather station data. Create a new script using your editor or IDE containing the following:
 
 ```python
 import pandas as pd
@@ -336,7 +370,7 @@ import pandas as pd
 data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
 ```
 
-These two lines of code read the whole table of data from the text file into a data structure assigned to the variable name `data`.
+These two lines of code read the whole table of data from the text file into a data structure assigned to the variable name `data`. Run the script. There will be no output yet, but check that no errors come up.
 
 That's it! Two lines of code :)
 
@@ -356,13 +390,22 @@ Finally, note that we have assigned the result of the `read_csv` function call t
 `pandas` is clever in that it is aware that the header row is used to refer to the columns of data below it in the text file. Whereas in a standard Python list we would have to index an item of data by an index number, `pandas` lets us access data by its column name, which easier to remember than a number! So if we wanted to get hold of the Air Pressure data, we could do so using:
 
 ```python
-data['Pair_Avg']
+import pandas as pd
+
+data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
+
+pressure_data = data['Pair_Avg']
 ```
 
-which would return the single column of data corresponding to the air pressures. Use the above code to extract the air pressures as a new variable, and then print them out to screen by re-running the script. The solution is below:
+which would give us a single column of data corresponding to the air pressures, and assign it to the variable `pressure_data`. Use the above code to extract the air pressures as a new variable, and then print them out to screen by re-running the script. The final script should like this:
 
 ```python
+import pandas as pd
+
+data = pd.read_csv('StormEleanor_2_3_Jan.csv', delimiter=',', header=0)
+
 pressure_data = data['Pair_Avg']
+
 print(pressure_data)
 ```
 
@@ -382,15 +425,7 @@ import matplotlib.pyplot as plt
 
 Note how we are now using the dot notation to only import a submodule from the `matplotlib` package, namely the `pyplot` module. Pyplot is designed to mimic in many ways the Matlab plotting functionality, so users of matlab may see some similarity with the commands of pyplot. 
 
-To plot the data, we can do this by adding to our script:
-
-```python
-plt.plot(pressure_data)
-plt.savefig("pressure.png")
-```
-
-So your `pandas` + `matplotlib` plotting script should look like:
-
+To plot the data, we can do this by adding two new function calls to the end of our script:
 
 ```python
 import pandas as pd
@@ -431,12 +466,11 @@ plt.title("Average Pressure, JCMB Weather Station, 2-3rd Jan 2018")
 As you can see, adding labels is easy enough with the `ylabel` and `title` functions. But although there is an `xlabel` function, our x data is simply integers for each timestep, rather than an actual timestamp. It would more readable if we could convert these integers into actual times, and plot these instead. We can do this with the help of the `datetime` module, a built-in python module for dealing with dates and times. 
 
 ```python
+# import the required libraries and modules
 import datetime
 
-# data loading code...
-
+# Code to create the timeseries values
 date_time_series = []
-
 date_time = datetime.datetime(2018, 1, 2)
 date_at_end = datetime.datetime(2018, 1, 3, 23, 59)
 step = datetime.timedelta(minutes=1)
@@ -445,9 +479,7 @@ while date_time <= date_at_end:
   date_time_series.append(date_time)
   date_time += step
 
-plt.plot(date_time_series, pressure_data)
-plt.xticks(rotation=45)
-# etc...
+print(date_time_series)
 ```
 Let's break this down:
 
@@ -460,13 +492,15 @@ Let's break this down:
 
 Finally, we now have a new list of times that we can plot. When we call plt.plot() this time, we are going to supply *two* arguments: an x series (datetimes) and a y series (pressure). 
 
+Add the above code into to your script after the data loading lines, then run the script again. (Make sure you still have a plt.savefig() call at the end).
+
+We can also add a few extra matplotlib functions to tidy up our plot:
+
 ##### 7. (Optional) It will probably look nice if the x-labels are rotated slightly so that the times don't overlap. We can do this by setting the `rotation` argument in the `plt.xticks()` function.
 
 ##### 8. To tidy up the axes, and scale them correctly, we can add a call to `plt.tight_layout()` just before we save the figure.
 
-Add the above code into to your script after the data loading lines, then run the script again. (Make sure you still have a plt.savefig() call at the end).
-
-The final script should look like this:
+The final script should look now look like this:
 
 ```python
 import pandas as pd
@@ -495,7 +529,9 @@ plt.tight_layout()
 plt.savefig("pressure_final.png")
 ```
 
-And the plot, like this:
+Make sure the script is saved, and then run it. Open up the "pressure_final.png" file to see your results.
+
+The final figure should look like this:
 
 <center> <img src="{{ site.baseurl }}/img/pressure_final.png" alt="Img" style="width: 800px;"/> </center>
 
