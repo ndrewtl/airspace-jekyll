@@ -13,23 +13,23 @@ tags: python
 
 ### Tutorial aims:
 
-#### <a href="understanding"> 0. Understand why Python is so useful for scientific programming</a>
+#### <a href="#understanding"> 0. Understand why Python is so useful for scientific programming</a>
 
-#### <a href="installing"> 1. Installing Python and running a simple Python program</a>
+#### <a href="#installing"> 1. Installing Python and running a simple Python program</a>
 
-#### <a href="reading"> 2. Reading data from a file</a>
+#### <a href="#reading"> 2. Reading data from a file</a>
 
-#### <a href="feeling"> 3. Get a feel for how Python looks and feels</a>
+#### <a href="#feeling"> 3. Get a feel for how Python looks and feels</a>
 
-#### <a href="loading"> 4. Load data from a text file into memory</a>
+#### <a href="#loading"> 4. Load data from a text file into memory</a>
 
-#### <a href="basics"> 5. Learn about some basic Python data types and structures</a>
+#### <a href="#basics"> 5. Learn about some basic Python data types and structures</a>
 
-#### <a href="modules"> 6. Moving beyond the core Python language with modules</a>
+#### <a href="#modules"> 6. Moving beyond the core Python language with modules</a>
 
-#### <a href="pandas"> 7. A brief introduction to data analysis with the pandas package</a>
+#### <a href="#pandas"> 7. A brief introduction to data analysis with the pandas package</a>
 
-#### <a href="matplotlib"> 8. Plotting data with Matplotlib</a>
+#### <a href="#matplotlib"> 8. Plotting data with Matplotlib</a>
 
 <a name="understanding"></a>
 
