@@ -106,61 +106,69 @@ If you are interested in reading more about the growth of Python (and the backgr
 
 ### Installation
 
-*Make sure you have installed Python before the tutorial, but if you have had problems, we can discuss it here if you are in the 'live' workshop*
-
-The method for installing Python depends on your operating system (Linux/Mac/Windows), but the easiest way I have found is to install a distribution of Python called 'Anaconda'. Anaconda is a Python distribution that includes a range of useful packages for scientific coding, such as `matplotlib`, `numpy` and  `pandas` (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
+The method for installing Python depends on your operating system (Linux/Mac/Windows), but the easiest way I have found, which works across multiple operating systems is to install a distribution of Python called 'Anaconda'. Anaconda includes a range of useful packages for scientific coding, such as `matplotlib`, `numpy` and  `pandas` (We will cover these later on in the tutorial). It all comes with the conda package manager - a tool for easily installing other Python add-on packages that you may want to use. It also comes with a few useful programmes which can be used to write Python code. The download link is here: <a href="https://www.anaconda.com/download/" target="_blank">Downloading Anaconda</a>.
 
 *Make sure to install a **Python 3** version specific to your operating system*
 
 **If you are in the 'live' workshop, now would be a good point to raise any issues or questions you have about installing Python.**
 
-### Running a Python Program
+On Windows, you may run into some problems, depending on you version, but help can be found in the official Python documentation pages for <a href="https://docs.python.org/3.3/using/windows.html" target="_blank">using Python on Windows</a>.
 
-This tutorial assumes that you are going to write the Python code as a 'script', i.e. writing the code in text files using a text editor of your choice, and then running them from the console/terminal or command line.
+### The Python workflow 
 
-If you have successfully installed a Python distribution, Linux and Mac users should be able to do this simply by opening a terminal, navigating to the location of your script, and typing the following command (replacing 'myscript.py' with the name of your script). 
+From here you have two main options for how to write your Python code during this workshop:
 
-```
+#### Following the tutorial with the command line and any text editor
+
+This method of writing Python code is most applicable to Mac and Linux users, as it requires access to a terminal program like Terminal.app, or the Gnome Terminal.
+
+The way Python programming normally works is that you write a script, save the script, then run the script. Python scripts can be written using any plain text editor, e.g. <a href="https://atom.io" target="_blank">Atom</a>, <a href="http://www.pspad.com" target="_blank">PSPad</a>, <a href="https://www.vim.org" target="_blank">Vim</a>, or even simple programs like <a href="https://support.apple.com/en-gb/guide/textedit/welcome/mac" target="_blank">TextEdit.app</a>!
+
+To run the Python script, you then need to navigate to the folder where the Python script is stored, using the command line, and run it like this, assuming your Python script is called `myscript.py`:
+
+```shell
 python myscript.py
 ```
-On Windows, this may require a few extra steps to get working, which can be found in the official Python documentation pages for <a href="https://docs.python.org/3.3/using/windows.html" target="_blank">using Python on Windows</a>.
 
 Any output will be printed to the screen in the terminal or console you are running from.
 
-This workshop does not cover the command line/terminal in depth, but handy 'cheat sheets' are available here for:
-
-##### <a href="https://learntocodewith.me/command-line/unix-command-cheat-sheet/" target="_blank">Linux/Mac terminal users</a>
-
-##### <a href="http://simplyadvanced.net/blog/cheat-sheet-for-windows-command-prompt/" target="_blank">Windows command line users"</a>
-
+This workshop doesn't cover the command line/terminal in depth, but handy 'cheat sheets' are available here for <a href="https://learntocodewith.me/command-line/unix-command-cheat-sheet/" target="_blank">Linux/Mac terminal users</a>.
 
 #### Following the tutorial with Spyder or another IDE
 
-If you are not comfortable using the command line or terminal, or just prefer to use an IDE such as Spyder (similar to RStudio), you can still follow along using Spyder (which is bundled with the Anaconda installation). Ask the workshop helpers for guidance, or consult the <a href="https://pythonhosted.org/spyder/" target="_blank">Spyder documentation</a>. You will be editing and running the scripts from within the IDE in this case, rather than the command line or terminal, so the instructions will be slightly different. The Python code is the same though!
+If you are not comfortable using the command line or terminal, or are on a Windows machine, we recommend using this method.
+
+Instead of using a text editor and the command line, you can write and run your Python scripts using an IDE (Integrated Development Environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a> (similar to RStudio). Spyder is bundled with the Anaconda installation, so it should be easily accessible. Ask the workshop helpers for guidance, or consult the <a href="https://pythonhosted.org/spyder/" target="_blank">Spyder documentation</a> for more info on how to use Spyder.
+
+This diagram explains the process of writing and running a script in Spyder:
+
+<center><img src="{{ site.baseurl }}/img/spyder.png" alt="Img" style="width: 800px"></center>
+
+The window on the left is a text editor where you can write your script, the window on the right is the console where the output of the script will be shown. The green play button will run the script through the console, giving you the output.
+
+Although we recommend using Spyder if you are a beginner, there are many other ways to use Python. One notable method is called <a href="https://ipython.org/" target="_blank">IPython</a>, which runs an interactive session. 
+
+For consistency in this workshop and to maintain transferability between different platforms, the rest of the tutorial assumes that you are using the text editor and command line approach described above, but everything will still work if you want to use an IDE like Spyder§.
 
 #### Hello, World!
 
 Let's try running the most basic program to test you have a working Python installation:
 
-Open a text file with the editor of your choice, and type the following lines:
+Open a text file with the editor of your choice or the Spyder IDE, and type the following lines:
 
 ```python
 print("Hello, World!")
 ```
 
-Save the file as `hello.py` and the run the script from the command line/console/terminal as follows:
+Save the file as `hello.py` and the run the script from the command line as follows:
 
 ```
 python hello.py
 ```
+
+OR press the play button in the Spyder IDE.
+
 Hopefully, you should see "Hello, World!" printed to screen.
-
-#### Other ways of running Python
-
-There are many other ways of using Python, such as interactive sessions with something called <a href="https://ipython.org/" target="_blank">IPython</a>, or via an IDE (integrated development environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a>. The Spyder IDE will seem familiar to users of RStudio or the Matlab GUI. You can follow this tutorial along using Spyder/IPython if you wish, but for consistency in this workshop and transferability between different platforms, I've stuck with the simple "run from command line/terminal approach". 
-
-If you alread have a bit of experience using Spyder or another IDE, or wish to use IPython, please feel free to do so during the tutorial. 
-
 
 #### Files for this tutorial
 
