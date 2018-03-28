@@ -37,9 +37,19 @@ tags: python
 
 You may have heard about the Python programming language before. It is often talked about as the next "up and coming" programming language, or described as being a new, "trendy" programming language that everyone should be learning, particularly scientists. I would argue that Python is no longer merely "up and coming", or even particularly new, but one of the most popular and useful programming languages you could invest time in learning. In fact, as of 2018, Python is (by certain measures) **the most widely used programming language in the world**. So if you are a scientist, researcher, or student doing any kind of data analysis, or numeric programming, then I think Python is worth investing some time in learning, even just the basics.
 
-Python is a programming language, a tool used to make computers do useful things for scientific coders much faster than they could do using conventional tools like spreadsheets or plotting software (and certainly much faster than manual calculations!). But programming languages are not really designed for computers at all. In fact, your computer has no idea what all the words and symbols in a piece of code written in Python actually *mean*. It only understands ones and zeros and electrical currents. Programming languages are actually designed for *humans* to have a convenient way of programming a computer without getting involved in things like binary and hexadecimal codes, and worrying about electronic circuitry inside the computer. 
+Python is a programming language, a tool used to make computers do useful things for scientific coders much faster than they could do using conventional tools like spreadsheets or plotting software (and certainly much faster than manual calculations!). But programming languages are not really designed for computers at all. In fact, your computer has no idea what all the words and symbols in a piece of code written in Python actually *mean*. It only understands ones and zeros and electrical currents. Programming languages are actually designed for *humans* to have a convenient way of programming a computer without getting involved in things like binary and hexadecimal codes, and worrying about electronic circuitry inside the computer.
 
-## Why Python?
+Python has grown hugely in popularity in recent years, by some measures it is *the* most popular programming language as of 2018. Consider the chart below, which is based on number of question views on StackOverflow:
+
+<center><img src="{{ site.baseurl }}/img/python_growth_major_languages.png" alt="Img" style="width: 1000px"></center>
+
+You may also wish to have a look at this chart showing the growth of Python and other smaller, growing technologies (including R):
+
+<center><img src="{{ site.baseurl }}/img/python_growth_smaller_languages.png" alt="Img" style="width: 1000px"></center>
+
+If you are interested in reading more about the growth of Python (and the background to the above charts), I highly recommend reading <a href="https://stackoverflow.blog/2017/09/06/incredible-growth-python/" target="_blank">this blog post from StackOverflow</a>.
+
+## Python's strengths as a language
 
 ### 1. Readability
 
@@ -88,11 +98,8 @@ Did you win some chocolate? (I hope so!)
 
 Python has a major advantage when compared to some other commonly used programming languages in the scientific community; it is a *general purpose* programming language. Compared to other languages such as Matlab, IDL, ncl, and R, which were designed with specific applications in mind, Python was built as a general purpose programming language (like Java, C, Ruby etc.). This means you can use Python to write your data analysis code, plot the results of the analysis, write a numerical model, run a website, do your tax return...the list goes on. 
 
-Because of it's general-purpose design, Python is used in the real world in a range of industries. Python is used by scientists at universities across the world, developers at big tech companies like Amazon, Facebook, and Google, by financial services companies, and social media apps like Facebook and Instagram, for example. In short, while this tutorial focuses on scientific applications of Python, you are learning a programming language that has a huge variety both within and outwith the scientific community.
+Because of its general-purpose design, Python is used in the real world in a range of industries. Python is used by scientists at universities across the world, developers at big tech companies like Amazon, Facebook, and Google, by financial services companies, and social media apps like Facebook and Instagram, for example. In short, while this tutorial focuses on scientific applications of Python, you are learning a programming language that has a huge variety both within and outwith the scientific community.
 
-Python has grown hugely in popularity in recent years, by some measures it is *the* most popular programming language as of 2018. Consider the chart below, which is based on number of question views on StackOverflow:
-
-<center><img src="{{ site.baseurl }}/img/python_growth_major_languages.png" alt="Img" style="width: 1000px"></center>
 
 ### 3. Scientific Python Community
 
@@ -102,11 +109,6 @@ If you are stuck with a problem in Python, online resources are so plentiful tha
 
 In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like `numpy` (Numerical Python), `scipy` (Scientific Python), as well as other tools like `pandas`, `matplotlib`, and many more. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
 
-You may also wish to have a look at this chart showing the growth of Python and other smaller, growing technologies (including R):
-
-<center><img src="{{ site.baseurl }}/img/python_growth_smaller_languages.png" alt="Img" style="width: 1000px"></center>
-
-If you are interested in reading more about the growth of Python (and the background to the above charts), I highly recommend reading <a href="https://stackoverflow.blog/2017/09/06/incredible-growth-python/" target="_blank">this blog post from StackOverflow</a>.
 
 <a name="installing"></a>
 
@@ -231,14 +233,16 @@ if (some_condition == true):
 }
 ```
 
-Python uses neither braces nor "end" statements to mark the end of code blocks. Instead, the end of code blocks are infered from the indentation or *whitespace*. Indenting code in Python implies that you are starting a code block, such as in the for loops or with blocks in the above examples. To end the code block (say at the end of an **if** statement, you simply *un-indent* the code to the previous indentation level. This often catches people out when first using Python -- Python in this respect is quite a visual language -- you need to look at the indentation levels to work out where your code block start and finish. There are advantages and disadvantages to this, but one major advantage is that it forces you to write very legible and consistently indented code! Python will complain if your indentation is wrong or inconsistent. You may use either a tab or spaces (any number of spaces...) to indicate indentation. I prefer personally to use two spaces, as it's easy to type and keeps the code looking nice and compact, but it's up to your personal preference. The important thing is to **be consistent with your whitespace and indentation!**
+Python uses neither braces nor "end" statements to mark the end of code blocks. Instead, the end of code blocks are inferred from the indentation or *whitespace*. Indenting code in Python implies that you are starting a code block, such as in the for loops or with blocks in the above examples. To end the code block (say at the end of an **if** statement, you simply *un-indent* the code to the previous indentation level. This often catches people out when first using Python -- Python in this respect is quite a visual language -- you need to look at the indentation levels to work out where your code blocks start and finish. There are advantages and disadvantages to this, but one major advantage is that it forces you to write very legible and consistently indented code! Python will complain if your indentation is wrong or inconsistent. 
+
+You may use either a tab or spaces (any number of spaces...) to indicate indentation. I prefer personally to use two spaces, as it's easy to type and keeps the code looking nice and compact, but it's up to your personal preference. The important thing is to **be consistent with your whitespace and indentation!**
 
 <a name="loading"></a>
 <a name="basics"></a>
 
 ### Loading a text file into memory and basic data structures
 
-We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to the basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
+We can load the data in from the file and print it to screen, but that probably isn't much practical use. How should we approach reading the data into variables that we can manipulate and perform calculations on? We can do this by assigning the values in the file to a basic Python data structure, the **list**. (We shall discover later that lists are not necessarily the best data struture for numerical data, but they are a good introduction when learning Python.)
 
 Firstly, our csv file is separated by commas, but we need to get rid of these before we can start doing useful things with the data. In fact, although it is obvious to us that we are dealing with numeric data, Python is just treating the text file as a bunch of lines of text, rather than numbers. In Python (and many other languages), this type of data is refered to as a *string*. Try changing the `print(line)` function in the above code snippet to: `print(type(line))` and run the program again. 
 
@@ -252,8 +256,16 @@ You should get this output printed repeatedly to screen:
 
 
 ```python
-<type 'str'> 
+<class 'str'> 
 ```
+
+If you are using the older Python version 2, it will be slightly different:
+
+```python
+<type 'str'>
+```
+
+...but it effectively means the same thing.
 
 `str` is short for *string*, i.e. text or characters. But wait, this means that the variable `line` is just one long string of text from our data, including all the commas from the csv file format. This is not ideal if we want to work on individual values from the file. Luckily, Python is very good at manipulating strings. We can break up the data by *splitting* the string. Change the script so it contains:
 
@@ -325,7 +337,7 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 print(pressure_data[0])   # Prints: 'Pair_avg'
 
 # Argh! This is a string!
-print(type(pressure_data[1])  # Prints: 'str'
+print(type(pressure_data[1]))  # Prints: 'str'
 ```
 
 Remember that `pressure_data[0]` refers to the very first line of the csv file we read in, which is a header line containing text. Similarly, `pressure_data[1]` refers to the *second* line of the csv file, because Python counts from zero.
@@ -349,13 +361,34 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
 
 If you like you can add print statements to check that the type of data is no longer strings, and that we have skipped over the header line containing the description text.
 
+```python
+pressure_data = []
+
+with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
+  next(weatherfile)
+  for line in weatherfile:
+    data_row = line.split(',')
+    pressure = data_row[6]
+    pressure_data.append(float(pressure))
+
+print(pressure_data[0])
+print(type(pressure_data[1]))
+```
+
+The output should be:
+
+```
+989.4
+<class 'float'>
+```
+
 <a name="modules"></a>
 
 ## Moving beyond the core Python language with modules
 
 This all seems a bit long-winded, doesn't it? Isn't Python meant to be quick and easy, I hear you cry? 
 
-Correct. Python's simple and hopefully intuitive syntax is nice, but the real strength of Python is in it's support for packages and libraries/modules that make your coding life easier.  
+Correct. Python's simple and hopefully intuitive syntax is nice, but the real strength of Python lies in its support for packages and libraries/modules that make your coding life easier.  
 
 Python actually has built in support for reading text and csv files, using a module (or library) called...`csv`! So there is no need to do all of the above every time you want to read in a simple text file. But I hope it was useful introduction to the feel of Python syntax, and some of the basic language features -- they will come in handy later!
 
@@ -373,7 +406,7 @@ with open('StormEleanor_2_3_Jan.csv', 'r') as csvfile:
 
 # Check our variables look okay and they are the correct type:
 print(pressure_data)
-print(type(pressure_data[1])
+print(type(pressure_data[1]))
 ```
 
 The `quoting=csv.QUOTE_NONNUMERIC` argument tells the csv module to read all the non-quoted values in the csv file as strings, and the rest as numeric values (e.g. floats).
@@ -382,7 +415,7 @@ Using the built-in `csv` module is *okay*; it's a bit nicer than the manual vers
 
 #### Packages vs libraries vs modules
 
-You will hear the following terms used a lot in the Python world (and other languages too). In a general sense, they all refer to 'add-ons, 'extras', or additional Python software providing extra features in addition to the core Python language. *Package* usually means an externally developed piece of Python software that has to be installed separately. A *library* or *module* generally refers to add-ons that already bundled with a standard Python installation (such as the `csv` library/module. You will find the terms are used interchangeably - even in the official Python documentation!
+You will hear the following terms used a lot in the Python world (and other languages too). In a general sense, they all refer to 'add-ons, 'extras', or additional Python software providing extra features in addition to the core Python language. *Package* usually means an externally developed piece of Python software that has to be installed separately. A *library* or *module* generally refers to add-ons that already bundled with a standard Python installation (such as the `csv` library/module). You will find the terms are used interchangeably - even in the official Python documentation!
 
 *Strictly speaking, a Python **module** is simply a Python source file, which groups together similar functions, data structures, and variables, but this is getting beyond the scope of an introductory tutorial...*
 
@@ -423,7 +456,7 @@ These two lines of code read the whole table of data from the text file into a d
 
 That's it! Two lines of code :)
 
-Let's break down the above to see what is happening. After we import `pandas`, we can now use functions in `pandas` using the abbreviated form `pd`. We then access the `pandas` functions and data structures by putting a dot `.` after `pd`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way of grouping similar functions and data structures together, like saying, "Get me the `read_csv` function from the `pandas` module.
+Let's break down the above to see what is happening. After we import `pandas`, we can now use functions in `pandas` using the abbreviated form `pd`. We then access the `pandas` functions and data structures by putting a dot `.` after `pd`, and then typing the name of the function we want to use. The dotted notation is used a lot in Python: it's a shorthand way accessing functions and data structures from modules, or sub-modules, like saying, "Get me the `read_csv` function from the `pandas` module".
 
 In this case, we are using the `read_csv` function to load a text based file (after all, a csv file is just a text file). We need to give the `read_csv` function three arguments: 
 
