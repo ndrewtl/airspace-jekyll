@@ -94,7 +94,7 @@ Finally there is a *logical operator*: `and`. *Both* boolean expressions in the 
 
 Did you win some chocolate? (I hope so!)
 
-### 2. General Puropose
+### 2. General Purpose
 
 Python has a major advantage when compared to some other commonly used programming languages in the scientific community; it is a *general purpose* programming language. Compared to other languages such as Matlab, IDL, ncl, and R, which were designed with specific applications in mind, Python was built as a general purpose programming language (like Java, C, Ruby etc.). This means you can use Python to write your data analysis code, plot the results of the analysis, write a numerical model, run a website, do your tax return...the list goes on. 
 
