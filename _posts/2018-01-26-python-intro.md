@@ -35,15 +35,15 @@ tags: python
 
 ## Understanding why Python is so useful for scientific programming
 
-You may have heard about the Python programming language before. It is often talked about as the next "Up and coming" programming language, or described as being a new, "trendy" programming language that everyone should be learning, particularly scientists. I would argue that Python is no longer merely "up and coming", or even particularly new, but one of the most popular and useful programming languages you could invest time in learning. In fact, as of 2018, Python is (by certain measures) **the most widely used programming language in the world**. So if you are a scientist, researcher, or student doing any kind of data analysis, or numeric programming, then I think Python is worth investing some time in learning, even just the basics.
+You may have heard about the Python programming language before. It is often talked about as the next "up and coming" programming language, or described as being a new, "trendy" programming language that everyone should be learning, particularly scientists. I would argue that Python is no longer merely "up and coming", or even particularly new, but one of the most popular and useful programming languages you could invest time in learning. In fact, as of 2018, Python is (by certain measures) **the most widely used programming language in the world**. So if you are a scientist, researcher, or student doing any kind of data analysis, or numeric programming, then I think Python is worth investing some time in learning, even just the basics.
 
-Python is a programming language, a tool used to make computers do useful things for scientific coders much faster than they could do using conventional tools like spreadsheets or plotting software (and certainly much faster than manual calculations!). But programming languages are not really designed for computers at all. In fact, your computer has no idea what all the words and symbols in a piece of code written in Python actually *mean*. (It only understands ones and zeros and electrical currents.) [footnote]. The reason is that programming languages are actually designed for *humans* to have a convenient way of programming a computer without getting involved in things like binary and hexadecimal codes, and worrying about electronic circuitry inside the computer. 
+Python is a programming language, a tool used to make computers do useful things for scientific coders much faster than they could do using conventional tools like spreadsheets or plotting software (and certainly much faster than manual calculations!). But programming languages are not really designed for computers at all. In fact, your computer has no idea what all the words and symbols in a piece of code written in Python actually *mean*. It only understands ones and zeros and electrical currents. Programming languages are actually designed for *humans* to have a convenient way of programming a computer without getting involved in things like binary and hexadecimal codes, and worrying about electronic circuitry inside the computer. 
 
 ## Why Python?
 
 ### 1. Readability
 
-Python shines because it is designed to be *readable* for us humans. Python is often described as a language that is intuitive and relatively easy to learn. The **syntax** (how you arrange the set of words and symbols to make a Python program) is meant to be intuitve to humans by being similar to natural human languages in many ways. For example, look at these little snippets of Python and see if you can guess what they mean and what might happen if we told the computer to run the code:
+Python shines because it is designed to be *readable* by us humans. Python is often described as a language that is intuitive and relatively easy to learn. The **syntax** (how you arrange the set of words and symbols to make a Python program) is meant to be intuitve to humans by being similar to natural human languages in many ways. For example, look at these little snippets of Python and see if you can guess what they mean and what might happen if we told the computer to run the code:
 
 ```python
 "Python".startswith("P")
@@ -57,14 +57,12 @@ What about this one?
 ```python
 "thon" in "Python"
 ```
-(Imagine reading it like a question...)
-
-So if we ask: *"thon" in "Python"?*, the answer is yes (or True), because the letters "thon" appear in the word "Python". If we wrote:
+If you imagine reading it like a question, if we ask: *"thon" in "Python"?*, the answer is yes (or `True`), because the letters "thon" appear in the word "Python". If we wrote:
 
 ```python
 "xyz" in "Python"
 ```
-we would get False, because those letters are not in the word "Python".
+we would get `False`, because those letters are not in the word "Python" in that order.
 
 Python syntax has many more similarities with natural languages, and we will discover more throughout this tutorial. Hopefully this will make learning the Python language more intuitive (and fun, as we can compare it to human languages (well, English...)).
 
@@ -78,9 +76,9 @@ if tastyword.count("o") < x and tastyword.endswith("e"):
   print("You have won some tasty chocolate!")
 ```
 First we assign the variable `tastyword` so it refers to the string "chocolate".
-Then we assign the number 3 to the variable x.
+Then we assign the number 3 to the variable `x`.
 
-Next follows a boolean expression (a true/false question). Actually there are a few boolean expressions here. The first is `tastyword.count("o") < x`, the second one is `tastyword.endswith("e"). This translates to: *Count the number of letter o's in the `tastyword` variable, and see if it is less than `x`*, and *Does the `tastyword` end with "e"?* 
+Next follows a boolean expression (a true/false question). Actually there are a few boolean expressions here. The first is `tastyword.count("o") < x`, the second one is `tastyword.endswith("e")`. This translates to: *Count the number of letter o's in the `tastyword` variable, and see if it is less than `x`*, and *Does the `tastyword` end with "e"?* 
 
 Finally there is a *logical operator*: `and`. *Both* boolean expressions in the `if` statement must be `True` to allow us to reach the `print` function. Otherwise nothing will be printed out. 
 
@@ -98,11 +96,11 @@ Python has grown hugely in popularity in recent years, by some measures it is *t
 
 ### 3. Scientific Python Community
 
-The third reason I'm going to mention is the community behind Python. As mentioned before, writing code is as much a way of communicating between humans trying to solve the same scientific problems as it is telling the computer what to do. Python has a very friendly and active community supporting it, many of whom are found on internet resources such as forums and the popular StackOverflow Q&A site. 
+The third reason Python is so great is the community behind it. As mentioned before, writing code is as much a way of communicating between humans trying to solve the same scientific problems as it is telling the computer what to do. Python has a very friendly and active community supporting it, many of whom are found on internet resources such as forums and the popular <a href="https://stackoverflow.com" target="_blank">StackOverflow Q&A site</a>. 
 
-If you are stuck with a problem in Python, online resources are so plentiful that is often enough to just type "How do I do _X_ in Python", into a search engine - the first few results often will contain your answer. (And often the top link is a StackOverflow question asked by someone with the same or very similar problem to you.
+If you are stuck with a problem in Python, online resources are so plentiful that is often enough to just type "How do I do _X_ in Python", into a search engine - the first few results often will contain your answer, and often the top link is a StackOverflow question asked by someone with the same or very similar problem to you.
 
-In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like `numpy` (Numerical Python), `scipy` (Scientific Python), as well as other tools like `pandas`, `matplotlib`, and others. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
+In the domain of science, the Scientific Python community is just as well established. You may have already heard of Python packages like `numpy` (Numerical Python), `scipy` (Scientific Python), as well as other tools like `pandas`, `matplotlib`, and many more. Many of these tools were developed by scientists to share something back to the Python community, and they have now grown and become almost _de facto_ standard tools within the scientific programming community. 
 
 You may also wish to have a look at this chart showing the growth of Python and other smaller, growing technologies (including R):
 
@@ -134,7 +132,7 @@ This method of writing Python code is most applicable to Mac and Linux users, as
 
 The way Python programming normally works is that you write a script, save the script, then run the script. Python scripts can be written using any plain text editor, e.g. <a href="https://atom.io" target="_blank">Atom</a>, <a href="http://www.pspad.com" target="_blank">PSPad</a>, <a href="https://www.vim.org" target="_blank">Vim</a>, or even simple programs like <a href="https://support.apple.com/en-gb/guide/textedit/welcome/mac" target="_blank">TextEdit.app</a>!
 
-To run the Python script, you then need to navigate to the folder where the Python script is stored, using the command line, and run it like this, assuming your Python script is called `myscript.py`:
+To run the Python script, you then need to navigate to the folder where the Python script is saved, using the command line, and run it like this, assuming your Python script is called `myscript.py`:
 
 ```shell
 python myscript.py
@@ -151,15 +149,15 @@ If you are not comfortable using the command line or terminal, or are on a Windo
 
 Instead of using a text editor and the command line, you can write and run your Python scripts using an IDE (Integrated Development Environment) such as <a href="https://spyder-ide.github.io/" target="_blank">Spyder</a> (similar to RStudio). Spyder is bundled with the Anaconda installation, so it should be easily accessible. Ask the workshop helpers for guidance, or consult the <a href="https://pythonhosted.org/spyder/" target="_blank">Spyder documentation</a> for more info on how to use Spyder.
 
-This diagram explains the process of writing and running a script in Spyder:
+This diagram shows a basic Spyder session:
 
 <center><img src="{{ site.baseurl }}/img/spyder.png" alt="Img" style="width: 800px"></center>
 
 The window on the left is a text editor where you can write your script, the window on the right is the console where the output of the script will be shown. The green play button will run the script through the console, giving you the output.
 
-Although we recommend using Spyder if you are a beginner, there are many other ways to use Python. One notable method is called <a href="https://ipython.org/" target="_blank">IPython</a>, which runs an interactive session. 
+Although we recommend using Spyder if you are a beginner, there are many other ways to use Python. One notable method is called <a href="https://ipython.org/" target="_blank">IPython</a>. 
 
-For consistency in this workshop and to maintain transferability between different platforms, the rest of the tutorial assumes that you are using the text editor and command line approach described above, but everything will still work if you want to use an IDE like Spyder§.
+For consistency in this workshop and to maintain transferability between different platforms, the rest of the tutorial assumes that you are using the text editor and command line approach described above, but everything will still work if you want to use an IDE like Spyder.
 
 #### Hello, World!
 
@@ -173,23 +171,23 @@ print("Hello, World!")
 
 Save the file as `hello.py` and the run the script from the command line as follows:
 
-```
+```shell
 python hello.py
 ```
 
-OR press the play button in the Spyder IDE.
+_OR_ press the play button in the Spyder IDE.
 
 Hopefully, you should see "Hello, World!" printed to screen.
 
 #### Files for this tutorial
 
-This short tutorial is based around exploring the School of GeoSciences weather station data located on top of the James Clark Maxwell Building at the University of Edinburgh.
+This short tutorial is based around exploring data from the School of GeoSciences weather station, which is located on top of the James Clark Maxwell Building at the University of Edinburgh.
 
 You can download the data, and some helpful Python cheatsheets from <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">this github repository</a>. Clone and download the repo as a zipfile by pressing the big green button, then unzip it. You should then save any python scripts to that folder, so they can access the data easily.
 
 Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">the repository</a> to your own Github account and then clone it using the HTTPS/SSH link. For more details on how to register on Github, download Git and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">previous tutorial.</a>
 
-You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, we've provided the data file <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">in the repo you just downloaded</a>. Specifically, the data comes from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
+You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" target="_blank">link to the station webpage</a>, but for ease of use, we've provided the data file <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">in the repo you just downloaded</a> (`StormEleanor_2_3_Jan.csv`). Specifically, the data comes from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
 
 
 <a name="reading"></a>
@@ -233,7 +231,7 @@ if (some_condition == true):
 }
 ```
 
-Python uses neither braces nor "end" statements to mark the end of code blocks. Instead, the end of code blocks are infered from the indentation or *whitespace*. Indenting code in Python implies that you are starting a code block, such as in the for loops or with blocks in the above examples. To end the code block (say at the end of an **if** statement, you simply *un-indent* the code to the previous indentation level. This often catches people out when first using Python -- Python in this respect is quite a visual language -- you need to look at the indentation levels to work out where your code block start and finish. There are advantages and disadvantages to this, but one major advantage is that it forces you to write very legible and consistently indented code! Python will complain if your indentation is wrong or inconsistent. You may use either a tab or spaces (any number of spaces...) to indicate indentation. I prefere personally to use two spaces, as it's easy to type and keeps the code looking nice and compact, but it's up to your personal preference. The important thing is to **be consistent with your whitespace and indentation!**
+Python uses neither braces nor "end" statements to mark the end of code blocks. Instead, the end of code blocks are infered from the indentation or *whitespace*. Indenting code in Python implies that you are starting a code block, such as in the for loops or with blocks in the above examples. To end the code block (say at the end of an **if** statement, you simply *un-indent* the code to the previous indentation level. This often catches people out when first using Python -- Python in this respect is quite a visual language -- you need to look at the indentation levels to work out where your code block start and finish. There are advantages and disadvantages to this, but one major advantage is that it forces you to write very legible and consistently indented code! Python will complain if your indentation is wrong or inconsistent. You may use either a tab or spaces (any number of spaces...) to indicate indentation. I prefer personally to use two spaces, as it's easy to type and keeps the code looking nice and compact, but it's up to your personal preference. The important thing is to **be consistent with your whitespace and indentation!**
 
 <a name="loading"></a>
 <a name="basics"></a>
@@ -312,7 +310,7 @@ Hint: Think about
 ##### 1. The very first line in the original text file
 ##### 2. The type of the data in the list...
 
-Yes, unfortunately, we have two problems: 1. The first text line in the original file ("Pair_avg") has been read into the list, which is not good if we want to try and sum or average the list later, because it will contain a string as well as some numbers. 2. The items in the list are actually all still strings, not numbers! You can test this by adding two print statements to the end of the script:
+Yes, unfortunately, we have two problems: 1. The first text line in the original file (`Pair_avg`) has been read into the list, which is not good if we want to try and sum or average the list later, because it will contain a string as well as some numbers. 2. The items in the list are actually all still strings, not numbers! You can test this by adding two print statements to the end of the script:
 
 ```python
 pressure_data = []
@@ -354,8 +352,6 @@ If you like you can add print statements to check that the type of data is no lo
 <a name="modules"></a>
 
 ## Moving beyond the core Python language with modules
-
-### Python's core language is simple, but limited. Enter modules!
 
 This all seems a bit long-winded, doesn't it? Isn't Python meant to be quick and easy, I hear you cry? 
 
