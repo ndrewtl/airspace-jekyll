@@ -50,6 +50,8 @@ Python shines because it is designed to be *readable* for us humans. Python is o
 ```
 This bit of python code reads like: *Python starts with a "P"*, and that is exactly what it means  in Python!. If we ran this bit of code, the computer would print out `True` on the screen.
 
+In more technical terms, Python reads the *expression* (the line of code here) and then *evaluates* it. It takes the *string* and checks whether it starts with the letter "P", by using the *function* call (or *method* call) `startswith`. The expression will either be `True` or `False`. This is known as a **boolean** expression (a true/false expression). The following examples are all examples of boolean expressions.
+
 What about this one?
 
 ```python
@@ -66,7 +68,7 @@ we would get False, because those letters are not in the word "Python".
 
 Python syntax has many more similarities with natural languages, and we will discover more throughout this tutorial. Hopefully this will make learning the Python language more intuitive (and fun, as we can compare it to human languages (well, English...)).
 
-Here is one more bonus round. Can you guess what might happen if we ran this Python code?
+Here is one more bonus round. Can you guess what might happen if we ran this Python code? (This will be a bit trickier if you are new to programming, but have a go.)
 
 ```python
 tastyword = "chocolate"
@@ -75,6 +77,14 @@ x = 3
 if tastyword.count("o") < x and tastyword.endswith("e"):
   print("You have won some tasty chocolate!")
 ```
+First we assign the variable `tastyword` so it refers to the string "chocolate".
+Then we assign the number 3 to the variable x.
+
+Next follows a boolean expression (a true/false question). Actually there are a few boolean expressions here. The first is `tastyword.count("o") < x`, the second one is `tastyword.endswith("e"). This translates to: *Count the number of letter o's in the `tastyword` variable, and see if it is less than `x`*, and *Does the `tastyword` end with "e"?* 
+
+Finally there is a *logical operator*: `and`. *Both* boolean expressions in the `if` statement must be `True` to allow us to reach the `print` function. Otherwise nothing will be printed out. 
+
+Did you win some chocolate? (I hope so!)
 
 ### 2. General Puropose
 
@@ -131,7 +141,7 @@ This workshop does not cover the command line/terminal in depth, but handy 'chea
 
 ##### <a href="https://learntocodewith.me/command-line/unix-command-cheat-sheet/" target="_blank">Linux/Mac terminal users</a>
 
-##### <a href="http://simplyadvanced.net/blog/cheat-sheet-for-windows-command-prompt/" target="_blank">Windows command line users"</a>
+##### <a href="http://simplyadvanced.net/blog/cheat-sheet-for-windows-command-prompt/" target="_blank">Windows command line users</a>
 
 
 #### Following the tutorial with Spyder or another IDE
@@ -168,11 +178,10 @@ This short tutorial is based around exploring the School of GeoSciences weather 
 
 You can download the data, and some helpful Python cheatsheets from <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">this github repository</a>. Clone and download the repo as a zipfile by pressing the big green button, then unzip it. You should then save any python scripts to that folder, so they can access the data easily.
 
-Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the repository</a> to your own Github account and then clone it using the HTTPS/SSH link. For more details on how to register on Github, download Git and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">previous tutorial.</a>
+Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">the repository</a> to your own Github account and then clone it using the HTTPS/SSH link. For more details on how to register on Github, download Git and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">previous tutorial.</a>
 
-You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, we've provided the data file <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">in the repo you just downloaded</a>. Specifically, the data comes from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
+You can have a look at all the data via the <a href="https://www.ed.ac.uk/geosciences/weather-station/weather-station-data" taget="_blank">link to the station webpage</a>, but for ease of use, we've provided the data file <a href="https://github.com/ourcodingclub/CC-python-intro" target="_blank">in the repo you just downloaded</a>. Specifically, the data comes from <a href="https://www.metoffice.gov.uk/barometer/uk-storm-centre/storm-eleanor" target="_blank">Storm Eleanor</a>, which passed over the UK and Edinburgh on the 2nd-3rd January 2018.
 
-You will need to download the following file for this tutorial:
 
 <a name="reading"></a>
 
@@ -199,6 +208,8 @@ with open("StormEleanor_2_3_Jan.csv", "r") as weatherfile:
     print(line)
 ```
 Note how when using `with` we do not have to worry about closing the file -- it is taken care of automatically when we exit the code block. `with` also makes sure that any exceptions that occur when opening the file are dealt with appropriately.
+
+The second argument we provide to the `open()` function, `"r"`, tells the Python we want to open the file for *reading* from it. There are other arguments that we could have given such as `"w"` for writing to the file. <a href="https://docs.python.org/3/library/functions.html#open" target="_blank">More details can be found in the Python documentation</a>.
 
 <a name="feeling"></a>
 
@@ -309,6 +320,8 @@ print(pressure_data[0])   # Prints: 'Pair_avg'
 # Argh! This is a string!
 print(type(pressure_data[1])  # Prints: 'str'
 ```
+
+Remember that `pressure_data[0]` refers to the very first line of the csv file we read in, which is a header line containing text. Similarly, `pressure_data[1]` refers to the *second* line of the csv file, because Python counts from zero.
 
 No worries, we can fix this. To skip the header line, we can use a handy built-in function in Python called `next()`. `next()` can be used on objects or data structures in Python to simply mean "Go to the next item in this object". By adding `next(weatherfile)`, we are telling Python to take us to the next line before we start to do anything else.
 
