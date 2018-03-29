@@ -134,7 +134,7 @@ This method of writing Python code is most applicable to Mac and Linux users, as
 
 The way Python programming normally works is that you write a script, save the script, then run the script. Python scripts can be written using any plain text editor, e.g. <a href="https://atom.io" target="_blank">Atom</a>, <a href="http://www.pspad.com" target="_blank">PSPad</a>, <a href="https://www.vim.org" target="_blank">Vim</a>, or even simple programs like <a href="https://support.apple.com/en-gb/guide/textedit/welcome/mac" target="_blank">TextEdit.app</a>!
 
-To run the Python script, you then need to navigate to the folder where the Python script is saved, using the command line, and run it like this, assuming your Python script is called `myscript.py`:
+To run the Python script, you then need to navigate to the folder where the Python script is saved, using the command line, and run it by typing this, assuming your Python script is called `myscript.py`:
 
 ```shell
 python myscript.py
@@ -159,7 +159,7 @@ The window on the left is a text editor where you can write your script, the win
 
 Although we recommend using Spyder if you are a beginner, there are many other ways to use Python. One notable method is called <a href="https://ipython.org/" target="_blank">IPython</a>. 
 
-For consistency in this workshop and to maintain transferability between different platforms, the rest of the tutorial assumes that you are using the text editor and command line approach described above, but everything will still work if you want to use an IDE like Spyder.
+For consistency in this workshop and to maintain transferability between different platforms, the rest of the tutorial assumes that you are using the text editor and command line approach described above, but everything should still work if you want to use an IDE like Spyder.
 
 #### Hello, World!
 
@@ -171,15 +171,17 @@ Open a text file with the editor of your choice or in the Spyder IDE, and type t
 print("Hello, World!")
 ```
 
-Save the file as `hello.py` and then __either__ run the script from the command line as follows:
+Then save the file as `hello.py`.
+
+If you are using the Spyder IDE, you can then press the green play button or select "Run" from the menu to run the script through the console on the right hand side of the screen.
+
+If you are using the command line you can navigate to the folder where `hello.py` is stored, then run the script by typing:
 
 ```shell
 python hello.py
 ```
 
-__OR__ press the green play button in the Spyder IDE.
-
-Hopefully, you should see "Hello, World!" printed to screen.
+Hopefully, regardless of what method you use, you should see "Hello, World!" printed to screen.
 
 #### Files for this tutorial
 
