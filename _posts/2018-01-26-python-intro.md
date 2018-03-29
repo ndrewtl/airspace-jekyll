@@ -165,19 +165,19 @@ For consistency in this workshop and to maintain transferability between differe
 
 Let's try running the most basic program to test you have a working Python installation:
 
-Open a text file with the editor of your choice or the Spyder IDE, and type the following lines:
+Open a text file with the editor of your choice or in the Spyder IDE, and type the following lines:
 
 ```python
 print("Hello, World!")
 ```
 
-Save the file as `hello.py` and the run the script from the command line as follows:
+Save the file as `hello.py` and then __either__ run the script from the command line as follows:
 
 ```shell
 python hello.py
 ```
 
-_OR_ press the play button in the Spyder IDE.
+__OR__ press the green play button in the Spyder IDE.
 
 Hopefully, you should see "Hello, World!" printed to screen.
 
