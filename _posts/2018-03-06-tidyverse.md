@@ -1236,7 +1236,7 @@ Traditionally, Git uses the command line to perform actions on local Git reposit
     <td class="tg-yw4l">Unstage a local commit.</td>
   </tr>
 	  <tr>
-    <td class="tg-yw4l"><code>git checkout -- <file></code></td>
+    <td class="tg-yw4l"><code>git checkout -- file</code></td>
     <td class="tg-baqh">N</td>
     <td class="tg-yw4l">Revert an individual file to the online GitHub version.</td>
   </tr>
@@ -1293,6 +1293,8 @@ Traditionally, Git uses the command line to perform actions on local Git reposit
 
 <hr>
 <hr>
+
+
 
 <h3><a href="https://www.surveymonkey.com/r/XD85MW5" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 
