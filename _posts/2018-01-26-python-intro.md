@@ -13,7 +13,7 @@ tags: python
 
 ### Tutorial aims:
 
-#### <a href="#understanding"> 0. Understand why Python is so useful for scientific programming</a>
+#### <a href="#understanding"> Understand why Python is so useful for scientific programming</a>
 
 #### <a href="#installing"> 1. Installing Python and running a simple Python program</a>
 
