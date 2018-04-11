@@ -322,7 +322,7 @@ Now that we have explored the idea of a hierarchical model, let's see how our an
 First let's model with only site as a random effect.  This model does not incorporate the temporal replication in the data or the fact that there are plots within blocks within those sites:
 
 ```r
-plant_m_plot <- lm(Richness ~ I(Year-2007) + (1|Site), data = toolik_plants)
+plant_m_plot <- lmer(Richness ~ I(Year-2007) + (1|Site), data = toolik_plants)
 summary(plant_m_plot)
 plot(plant_m_plot)  # Checking assumptions
 ```
@@ -330,14 +330,14 @@ plot(plant_m_plot)  # Checking assumptions
 From the `summary()` outputs you can see the effect sizes - that's a key element of the model outputs - they tell us about the strengths of the relationships we are testing. We are still not accounting for the different plots and blocks though, so let's gradually add those and see how the results change.
 
 ```r
-plant_m_plot2 <- lm(Richness ~ I(Year-2007) + (1|Site/Block), data = toolik_plants)
+plant_m_plot2 <- lmer(Richness ~ I(Year-2007) + (1|Site/Block), data = toolik_plants)
 summary(plant_m_plot2)
 ```
 
 __Have the estimates for the effect sizes changed?__
 
 ```r
-plant_m_plot3 <- lm(Richness ~ I(Year-2007) + (1|Site/Block/Plot), data = toolik_plants)
+plant_m_plot3 <- lmer(Richness ~ I(Year-2007) + (1|Site/Block/Plot), data = toolik_plants)
 summary(plant_m_plot3)
 ```
 
@@ -394,7 +394,7 @@ Other model structures to consider - random slopes versus random intercepts.
 richness ~ time + (time|plot) + (1|year)
 
 ```r
-plant_m_rs <- lm(Richness ~ I(Year-2007) + (I(Year-2007)|plot) + (1|year), data = toolik_plants)
+plant_m_rs <- lmer(Richness ~ I(Year-2007) + (I(Year-2007)|plot) + (1|year), data = toolik_plants)
 summary(plant_m_rs)
 plot(plant_m_rs)
 
