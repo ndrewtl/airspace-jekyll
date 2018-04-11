@@ -24,7 +24,7 @@ tags: modelling data_manip data_vis
 #### <a href="#linear"> 7. General linear models </a>
 #### <a href="#lme4"> 7. Hierarchical models using `lme4` </a>
 
-### All the files you need to complete this tutorial can be downloaded from <a href="INSERT LINK" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
+### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-model-design" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
 ## Introduction
 
