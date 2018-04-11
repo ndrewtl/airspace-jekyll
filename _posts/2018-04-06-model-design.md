@@ -387,20 +387,40 @@ sjp.lmer(plant_m_temp, type = "fe")
 1. We have not accounted for spatial autocorrelation in the data - whether more closely located plots are more likely to show similar responses than farther away plots.
 2. We have not accounted for temporal autocorrelation in the data - whether the influence of prior years of data are influencing the data in a given year.
 
-#### <a href="#lme4"> 9. Random slopes versus random intercepts `lme4` </a>
+## 9. Random slopes versus random intercepts `lme4`
 
-Other model structures to consider - random slopes versus random intercepts.
-
-richness ~ time + (time|plot) + (1|year)
+__We can now think about having random slopes and random intercepts. For our question, how does temperature influence species richness, we can allow each plot to have it's own relationship with temperature.__
 
 ```r
-plant_m_rs <- lmer(Richness ~ I(Year-2007) + (I(Year-2007)|plot) + (1|year), data = toolik_plants)
+plant_m_rs <- lmer(Richness ~ Mean.Temp + (Mean.Temp|Site/Block/Plot) + (1|Year),
+                 data = toolik_plants)
 summary(plant_m_rs)
-plot(plant_m_rs)
-
-add plot here
-
 ```
+
+__Check out the summary outputs and the messages we get - this model is not converging and we shouldn't trust its outputs - the model structure is too complicated for the underlying data, so now we can simplify it.__
+
+```r
+plant_m_rs <- lmer(Richness ~ Mean.Temp + (Mean.Temp|Plot) + (1|Year),
+                 data = toolik_plants)
+summary(plant_m_rs)
+```
+
+__This one is not converging either! Let's try with just a `Plot` random intercept and with random slopes to illustrate what a random slope model looks like.__
+
+```r
+plant_m_rs <- lmer(Richness ~ Mean.Temp + (Mean.Temp|Plot),
+                 data = toolik_plants)
+summary(plant_m_rs)
+```
+
+We can visualise the results:
+
+```r
+sjp.lmer(plant_m_rs, y.offset = .4)
+sjp.lmer(plant_m_rs, type = "fe")
+```
+
+<center> <img src="{{ site.baseurl }}/img/effects5.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects6.png" alt="Img" style="width: 500px;"/></center>
 
 #### <a href="#MCMCglmm"> 9. Hierarchical models using `MCMCglmm` </a>
 
