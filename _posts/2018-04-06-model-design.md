@@ -319,35 +319,61 @@ plot(plant_m)
 
 Now that we have explored the idea of a hierarchical model, let's see how our analysis changes if we do or do not incorporate elements of the experimental design to the hierarchy of our model.
 
-First let's model with only plot as a random effect.  This model does not incorporate the temporal replication in the data:
+First let's model with only site as a random effect.  This model does not incorporate the temporal replication in the data or the fact that there are plots within blocks within those sites:
 
 ```r
-plant_m_plot <- lm(Richness ~ I(Year-2007) + (1|plot), data = toolik_plants)
+plant_m_plot <- lm(Richness ~ I(Year-2007) + (1|Site), data = toolik_plants)
 summary(plant_m_plot)
-plot(plant_m_plot)
+plot(plant_m_plot)  # Checking assumptions
 ```
 
-Let's check out a new package - the sjPlot package.
+From the `summary()` outputs you can see the effect sizes - that's a key element of the model outputs - they tell us about the strengths of the relationships we are testing. We are still not accounting for the different plots and blocks though, so let's gradually add those and see how the results change.
 
 ```r
-library(sjPlot)
-
-add plot here
-
+plant_m_plot2 <- lm(Richness ~ I(Year-2007) + (1|Site/Block), data = toolik_plants)
+summary(plant_m_plot2)
 ```
 
-Model with plot and year as random effects
-
-richness ~ time + (1|plot) + (1|year)
+__Have the estimates for the effect sizes changed?__
 
 ```r
-plant_m_plotyear <- lm(Richness ~ I(Year-2007) + (1|plot) + (1|year), data = toolik_plants)
-summary(plant_m_plotyear)
-plot(plant_m_plotyear)
+plant_m_plot3 <- lm(Richness ~ I(Year-2007) + (1|Site/Block/Plot), data = toolik_plants)
+summary(plant_m_plot3)
+```
 
-add plot here
+__This final model answers our question about how plant species richness has changed over time, whilst also accounting for the hierarchical structure of the data. Let's visualise the results using the `sjPlot` package!__
+
+```r
+# offset refers to the alignment of the labels
+# visualises random effects by default
+sjp.lmer(plant_m_plot3, y.offset = .4)
+
+# To see the estimate for our fixed effect, Year
+sjp.lmer(plant_m_plot3, type = "fe", axis.lim = c(-2, 2))
+```
+
+<center> <img src="{{ site.baseurl }}/img/effects1.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects3.png" alt="Img" style="width: 500px;"/></center>
+
+__For our second question, how does temperature influence species richness, we can design a similar model with one important difference - we will include `Year` as a random effect to account for temporal autocorrelation.__
+
+```r
+plant_m_temp <- lmer(Richness ~ Mean.Temp + (1|Site/Block/Plot) + (1|Year),
+                      data = toolik_plants)
+summary(plant_m_temp)
+```
+
+Let's see the model outputs again:
 
 ```
+# visualise the random effect terms
+sjp.lmer(plant_m_temp, y.offset = .4)
+
+# visualise the fixed effect
+sjp.lmer(plant_m_temp, type = "fe")
+```
+
+<center> <img src="{{ site.baseurl }}/img/effects2.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects4.png" alt="Img" style="width: 500px;"/></center>
+
 
 #### Assumptions made:
 
