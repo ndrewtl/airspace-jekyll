@@ -34,17 +34,17 @@ __Ecological data can throw up complex challenges for statistical models and des
 
 ## 1. Learn what is a statistical model
 
-In order to answer research questions, we require statistical tests of the relationships in our data. In modern ecology and other fields, models are designed to fit the structure of data and to appropriately test the questions that we have as researchers. Thus, the first step to any data analysis is figuring out what your research question is. __Without a research question, there is no point in trying to do a statistical test. __So let's pause here and figure out the research question for our tutorial today.__
+In order to answer research questions, we require statistical tests of the relationships in our data. In modern ecology and other fields, models are designed to fit the structure of data and to appropriately test the questions that we have as researchers. Thus, the first step to any data analysis is figuring out what your research question is. __Without a research question, there is no point in trying to conduct a statistical test. So let's pause here and figure out the research question for our tutorial today.__
 
 <a name="question"></a>
 
 ## 2. The research question
 
-In this tutorial we will work with part of the long-term plant cover dataset from the <a href="http://arc-lter.ecosystems.mbl.edu/terrestrial-data" target="_blank">Toolik Lake Field Station</a>.  These data (remember the word data is plural, thus data are ... not data is ...!) are plant composition data collected over four years across five sites over time.  A simple question we might have with these data is how has the species richness changed in these plots over time.
+In this tutorial we will work with part of the long-term plant cover dataset from the <a href="http://arc-lter.ecosystems.mbl.edu/terrestrial-data" target="_blank">Toolik Lake Field Station</a>.  These data (remember the word data is plural, thus data are ... not data is ...!) are plant composition data collected over four years across five sites over time in Arctic tundra in Northern Alaska.  A simple question we might ask with these data is how has the species richness changed in these plots over time.
 
 ### Question 1: How has plant species richness changed over time at Toolik Lake?
 
-Once we have figured out our research question, we next need to figure out our hypothesis. To come up with a hypothesis, we need to learn something about this system. To start us off today, we will suggest a hypothesis for you. That plant species richness is increasing over time. We might expect this as these tundra plots might be undergoing warming and warming might lead to increased plant species richness in tundra plant communities (see this paper for more on this topic).
+Once we have figured out our research question, we next need to figure out our hypothesis. To come up with a hypothesis, we need to learn something about this system. To start us off today, we will suggest a hypothesis for you. That plant species richness is increasing over time. We might expect this as these tundra plots might be undergoing warming and warming might lead to increased plant species richness in tundra plant communities (see <a href="https://www.nature.com/articles/s41586-018-0005-6" target="_blank">this paper</a> for more on this topic).
 
 __Hypothesis 1: Plant species richness has increased over time at Toolik Lake.__ (Remember to phrase your hypothesis in the past tense, as these data represent changes that have already occurred, and remember that results are always written in the past tense.)
 
