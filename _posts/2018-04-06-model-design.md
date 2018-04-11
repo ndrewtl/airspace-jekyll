@@ -22,6 +22,7 @@ tags: modelling data_manip data_vis
 #### <a href="#types"> 5. Turn a question in to a model </a>
 #### <a href="#models"> 6. Learn about the different types of models </a>
 #### <a href="#linear"> 7. General linear models </a>
+#### <a href="#lme4"> 7. Hierarchical models using `lme4` </a>
 
 ### All the files you need to complete this tutorial can be downloaded from <a href="INSERT LINK" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
@@ -143,9 +144,7 @@ unique(toolik_plants$Year)
 
 There are four years of data from 2008 to 2012.
 
-**ADD DIAGRAM?**
-
-How many species are represented in this data set?  Let's use some code to figure this out. Using the `unique` and `length` functions we can count how many species are in the dataset as a whole.
+__How many species are represented in this data set?  Let's use some code to figure this out. Using the `unique` and `length` functions we can count how many species are in the dataset as a whole.__
 
 ```r
 length(unique(toolik_plants$Species))
@@ -242,8 +241,6 @@ One of the assumptions of a model is that the data points are independent - in r
 ### Temporal autocorrelation  
 Similarly, it's possible that the data points in one year are not independent from those in the year before - for example if a species was more abundant in the year 2000, that is going to influence it's abundance in 2001 as well.
 
-**Add diagrams of spatial and temporal replication and autocorrelation.**
-
 <a name="types"></a>
 
 ## 5. Turn a question in to a model
@@ -258,7 +255,7 @@ __Richness is a function of time.__
 
 __In R this turns into the code: `richness ~ time`.__
 
-__Richness is our dependent (predictor) variable and time is our independent variable (a href="https://en.wikipedia.org/wiki/Dependent_and_independent_variables" target="_blank"> see here for more details</a>). This is our base model. But what other things do we need to account for? What would happen if we just modelled richness as a function of time without dealing with the other structure in our data?  Let's find out in the rest of the tutorial.__
+__Richness is our dependent (predictor) variable and time is our independent variable <a href="https://en.wikipedia.org/wiki/Dependent_and_independent_variables" target="_blank"> see here for more details</a>). This is our base model. But what other things do we need to account for? What would happen if we just modelled richness as a function of time without dealing with the other structure in our data?  Let's find out in the rest of the tutorial.__
 
 <a name="models"></a>
 
@@ -266,35 +263,25 @@ __Richness is our dependent (predictor) variable and time is our independent var
 
 Before we get back to our dataset that we are designing a model for, let's revisit some statistics basics.
 
+__Here are some questions to consider.__
+
 ### What is the difference between a continuous and a categorical variable in a linear model?
-
-**Add content here.**
-
-**Categorical vs continuous variables - explaining how the intercept becomes the first level of the categorical variable, unless you force the intercept to be zero?**
 
 ### How many variables can you have in a model?
 
-**Is it better to have one model with five variables or one model per variable? When do we choose variables? ADD TEXT**
+Is it better to have one model with five variables or one model per variable? When do we choose variables?
 
 ### What is a fixed effect? What is a random effect?
 
-**Add content here.**
-
-## What is the most important result from a model output?
-** ADD TEXT**
+### What is the most important result from a model output?
 
 ## Why does it matter which type of models we use?
 
 <a name="linear"></a>
 
-## 7. General linear models </a>
+## 7. General linear models
 
 Model without any random effects:
-
-```r
-plant_m <- lm(Richness ~ I(Year-2007), data = toolik_plants)
-summary(plant_m)
-```
 
 ```r
 plant_m <- lm(Richness ~ I(Year-2007), data = toolik_plants)
@@ -311,7 +298,7 @@ And there are many more - you can check out <a href="http://r-statistics.co/Assu
 
 __Do you think the assumptions of a general linear model are met for our questions and data? Probably not!__
 
-__From the histograms we can see that the data are not normally distributed, and furthermore, if we think about what the data are, they are integer counts (number of species), probably a bit skewed to the left as most plots might not have a crazy amount of species. For these reasons, a Poisson distribution might be suitable, not a normal one. You can check out the <a href="https://ourcodingclub.github.io/2017/02/28/modelling.html" target ="_blank">Models and Distributions Coding Club tutorial</a. for more about different data distributions.__
+__From the histograms we can see that the data are not normally distributed, and furthermore, if we think about what the data are, they are integer counts (number of species), probably a bit skewed to the left as most plots might not have a crazy amount of species. For these reasons, a Poisson distribution might be suitable, not a normal one. You can check out the <a href="https://ourcodingclub.github.io/2017/02/28/modelling.html" target ="_blank">Models and Distributions Coding Club tutorial</a>. for more about different data distributions.__
 
 __We know that because of how the experimental design was set up (remember the Russian doll of plots within blocks within sites), the data points are not independent from one another. If we don't account for the plot, block and site-level effects, we are completely ignoring the hierarchical structure of our data which might then lead to wrong inferences based on the wrong model outputs.__
 
@@ -324,17 +311,15 @@ __Checking model convergence can be done to different levels, with parametric mo
 __For now let's check the residual versus predicted plot for our linear model. By using the 'plot()' function we can plot the residuals versus fitted values, a Q-Q plot of standardized residuals, a scale-location plot (square roots of standardized residuals versus fitted values) and a plot of residuals versus leverage that adds bands corresponding to Cook’s distances of 0.5 and 1. ILoking at these plots can help you identify any outliers that have huge leverage and confirm that your model has indeed run. E.g., you want the data points on the Q-Q plot to follow the one-to-one line.__
 
 ```r
-plant_m <- lm(Richness ~ I(Year-2007), data = toolik_plants)
 plot(plant_m)
 ```
 
-#### <a href="#lme4"> 8. Hierarchical models using `lme4` </a>
+
+## 8. Hierarchical models using `lme4`
 
 Now that we have explored the idea of a hierarchical model, let's see how our analysis changes if we do or do not incorporate elements of the experimental design to the hierarchy of our model.
 
 First let's model with only plot as a random effect.  This model does not incorporate the temporal replication in the data:
-
-richness ~ time + (1|plot)
 
 ```r
 plant_m_plot <- lm(Richness ~ I(Year-2007) + (1|plot), data = toolik_plants)
