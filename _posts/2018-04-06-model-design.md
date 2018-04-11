@@ -85,7 +85,7 @@ Our data consists of plant species cover measured across four years in plots tha
 library(dplyr)  # for data manipulation
 library(ggplot2)  # for data visualisation
 library(lme4)  # for models
-library(sjplot)  # to visualise model outputs
+library(sjPlot)  # to visualise model outputs
 library(MCMCglmm)  # for models
 library(MCMCvis)  # to visualise model outputs
 library(brms)  # for models
