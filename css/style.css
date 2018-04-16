@@ -17,16 +17,17 @@
  }
 
 .post-area {
-  padding: 40px;
-  width: 100%;
-  min-height: 150px;
   background-color: white;
   border-bottom: 1px dotted #ddd;
-}
+  min-height: 150px;
+  padding: 40px;
+  width: 100%;
 
+
+}
 .post-area a:link, .post-area a:visited {
-  font-size: 30px;
   color: #333;
+  font-size: 30px;
 }
 
 .post-area a:hover {

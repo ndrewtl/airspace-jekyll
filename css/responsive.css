@@ -1,5 +1,5 @@
-/*		Default Layout: 992px. 
-		Gutters: 24px.
+/* Default Layout: 992px.
+ 		Gutters: 24px.
 		Outer margins: 48px.
 		Leftover space for scrollbars @1024px: 32px.
 -------------------------------------------------------------------------------
@@ -14,10 +14,10 @@ cols    1     2      3      4      5      6      7      8
 px      68    160    252    344    436    528    620    712    */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   /*---------------------------------------------
-					Index Start 
+					Index Start
 -----------------------------------------------*/
   /*--
-	wrapper Start 
+	wrapper Start
 --*/
   #wrapper {
     text-align: center;
@@ -27,7 +27,7 @@ px      68    160    252    344    436    528    620    712    */
     width: 50%;
   }
   /*--
-	content Start 
+	content Start
 --*/
   #content {
     text-align: center;
@@ -36,13 +36,13 @@ px      68    160    252    344    436    528    620    712    */
     padding-bottom: 100px;
   }
   /*--
-	features Start 
+	features Start
 --*/
   #features {
     text-align: center;
   }
   /*--
-	footer Start 
+	footer Start
 --*/
   footer .navbar {
     margin-bottom: 0px;
@@ -62,14 +62,14 @@ px      68    160    252    344    436    528    620    712    */
     color: #000;
   }
   /*---------------------------------------------
-					Index Close 
+					Index Close
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
-					Work Start 
+					Work Start
 -----------------------------------------------*/
   /*--
-	slider-work Start 
+	slider-work Start
 --*/
   #slider-work .block h1 {
     font-size: 28px;
@@ -78,7 +78,7 @@ px      68    160    252    344    436    528    620    712    */
     font-size: 15px;
   }
   /*--
-	portfolio Start 
+	portfolio Start
 --*/
   #portfolio-work .block .portfolio-manu {
     padding-left: 0px;
@@ -109,7 +109,7 @@ px      68    160    252    344    436    528    620    712    */
     padding-top: 15px;
   }
   /*--
-	wrapper Start 
+	wrapper Start
 --*/
   #wrapper-work ul li .items-text {
     padding-top: 0;
@@ -125,29 +125,29 @@ px      68    160    252    344    436    528    620    712    */
     padding-right: 30px;
   }
   /*--
-	features Start 
+	features Start
 --*/
   #features-work .block ul li {
     width: 49%;
   }
   /*---------------------------------------------
-					Work close 
+					Work close
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
-					contact start 
+					contact start
 -----------------------------------------------*/
   #wrapper-contact .block {
     padding-bottom: 50px;
   }
   /*--
-	features-contact Start 
+	features-contact Start
 --*/
   #features-contact .block ul li {
     width: 49%;
   }
   /*---------------------------------------------
-					contact close 
+					contact close
 -----------------------------------------------*/
   /*------------------*/
 }
@@ -160,7 +160,7 @@ cols    1     2      3
 px      68    160    252    */
 @media only screen and (max-width: 767px) {
   /*---------------------------------------------
-					Index Start 
+					Index Start
 -----------------------------------------------*/
   .heading {
     padding-left: 0px;
@@ -189,7 +189,7 @@ px      68    160    252    */
     font-size: 13px;
   }
   /*--
-	wrapper Start 
+	wrapper Start
 --*/
   #wrapper {
     text-align: center;
@@ -202,7 +202,7 @@ px      68    160    252    */
     width: 100%;
   }
   /*--
-	service Start 
+	service Start
 --*/
   #service {
     padding-top: 100px;
@@ -211,7 +211,7 @@ px      68    160    252    */
     padding-bottom: 70px;
   }
   /*--
-	call-to-action Start 
+	call-to-action Start
 --*/
   #call-to-action p {
     padding: 0px 0px 40px;
@@ -221,7 +221,7 @@ px      68    160    252    */
     font-size: 15px;
   }
   /*--
-	content Start 
+	content Start
 --*/
   #content {
     text-align: center;
@@ -240,17 +240,17 @@ px      68    160    252    */
     padding-left: 0px;
   }
   /*--
-	features Start 
+	features Start
 --*/
   #features .features-img {
     text-align: center;
   }
   /*---------------------------------------------
-					Index Close 
+					Index Close
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
-					Work Start 
+					Work Start
 -----------------------------------------------*/
   #slider-work {
     padding-top: 100px;
@@ -267,7 +267,7 @@ px      68    160    252    */
     line-height: 25px;
   }
   /*--
-	portfolio Start 
+	portfolio Start
 --*/
   #portfolio-work .block .portfolio-manu {
     padding-left: 0px;
@@ -306,7 +306,7 @@ px      68    160    252    */
     padding-right: 5px;
   }
   /*--
-	wrapper Start 
+	wrapper Start
 --*/
   #wrapper-work ul li {
     float: none;
@@ -328,21 +328,21 @@ px      68    160    252    */
     padding-top: 15px;
   }
   /*--
-	features Start 
+	features Start
 --*/
   #features-work .block ul li {
     display: block;
     width: 100%;
   }
   /*---------------------------------------------
-					Work close 
+					Work close
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
-					contact Start 
+					contact Start
 -----------------------------------------------*/
   /*--
-	slider-contact Start 
+	slider-contact Start
 --*/
   #slider-contact {
     padding-top: 100px;
@@ -359,7 +359,7 @@ px      68    160    252    */
     line-height: 25px;
   }
   /*--
-	wrapper-contact Start 
+	wrapper-contact Start
 --*/
   #wrapper-contact .block {
     padding-bottom: 50px;
@@ -371,17 +371,17 @@ px      68    160    252    */
     padding-top: 30px;
   }
   /*--
-	features-contact Start 
+	features-contact Start
 --*/
   #features-contact .block ul li {
     display: block;
     width: 100%;
   }
   /*---------------------------------------------
-					contact close 
+					contact close
 -----------------------------------------------*/
   /*--
-	footer Start 
+	footer Start
 --*/
   footer .footer-manu {
     display: none;
@@ -395,6 +395,6 @@ px      68    160    252    */
 cols    1     2      3      4      5
 px      68    160    252    344    436    */
 /*	Retina media query.
-	Overrides styles for devices with a 
+	Overrides styles for devices with a
 	device-pixel-ratio of 2+, such as iPhone 4.
 -----------------------------------------------    */
