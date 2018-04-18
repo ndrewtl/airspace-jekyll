@@ -455,16 +455,23 @@ stan_dens(fit)
 stan_hist(fit)
 ```
 
+<center> <img src="{{ site.baseurl }}/img/stan_density.png" alt="Img" style="width: 900px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/stan_histograms.png" alt="Img" style="width: 900px;"/> </center>
+<center>Figure 10. Density plots and histograms of the posteriors for the intercept, slope and residual variance from the `Stan` model.</center>
+
 And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in.
 
 ```r
 plot(fit, show_density = FALSE, ci_level = 0.5, outer_level = 0.95, fill_color = "salmon")
 ```
 
-### **Posterior Predictive Checks**
-Vignettes: https://cran.r-project.org/web/packages/bayesplot/index.html
+<center> <img src="{{ site.baseurl }}/img/stan_effects.png" alt="Img" style="width: 500px;"/> </center>
+<center>Figure 11. Parameter estimates from the `Stan` model.</center>
 
-For prediction and as another form of model diagnostic, `Stan` can use random number generators to generate predicted values for each data point, at each iteration.
+#### Posterior Predictive Checks
+
+For prediction and as another form of model diagnostic, `Stan` can use random number generators to generate predicted values for each data point, at each iteration. For details, you can check out the <a href="https://cran.r-project.org/web/packages/bayesplot/index.html" target="_blank">vignettes</a>.
+
 
 This way we can generate predictions that also represent the uncertainties in our model and our data generation process. We generate these using the Generated Quantities block. This block can be used to get any other information we want about the posterior, or make predictions for new data.
 
@@ -521,19 +528,24 @@ Each row is an iteration (single posterior estimate) from the model.
 
 We can use the `bayesplot` package to make some prettier looking plots. This package is a wrapper for many common `ggplot2` plots, and has a lot of built-in functions to work with posterior predictions.
 
-Comparing density of `y` with densities of `y` over 200 posterior draws
+Comparing density of `y` with densities of `y` over 200 posterior draws.
 
 ```r
 ppc_dens_overlay(y, y_rep[1:200, ])
 ```
 
+<center> <img src="{{ site.baseurl }}/img/bayes1.png" alt="Img" style="width: 500px;"/> </center>
+<center>Figure 12. Comparing estimates across random posterior draws.</center>
+
 Here we see data (dark blue) fit well with our posterior predictions.
 
-We can also use this to get compare estimates of summary statistics
+We can also use this to compare estimates of summary statistics.
 
 ```r
 ppc_stat(y = y, yrep = y_rep, stat = "mean")
 ```
+<center> <img src="{{ site.baseurl }}/img/bayes2.png" alt="Img" style="width: 500px;"/> </center>
+<center>Figure 13. Comparing estimates of summary statistics.</center>
 
 We can change the function passed to the `stat` function, and even write our own!
 
@@ -543,7 +555,11 @@ We can investigate mean posterior prediction per datapoint vs the observed value
 ppc_scatter_avg(y = y, yrep = y_rep)
 ```
 
-#### `bayesplot`
+<center> <img src="{{ site.baseurl }}/img/bayes2.png" alt="Img" style="width: 500px;"/> </center>
+<center>Figure 14. Mean posterior prediction per datapoint vs the observed value for each datapoint.</center>
+
+
+##### `bayesplot` options
 
 Here is a list of currently available plots (bayesplot 1.2)
 
@@ -569,7 +585,9 @@ You can set color schemes with:
 color_scheme_set("blue")
 ```
 
-### **Back to our research question**
+
+### Back to our research question
+
 
 So now you have learned how to run a linear model in `Stan` and to check the model convergence. But what is the answer to our research question?
 
@@ -587,21 +605,23 @@ Is the same pattern happening in the Antarctic as in the Arctic?  Fit a Stan mod
 
 In the next Stan tutorial, we will build on the concept of a simple linear model in Stan to learn about more complex modelling structures including different distributions and random effects. And in a future tutorial, we will introduce the concept of a mixture model where two different distributions are modelled at the same time - a great way to deal with zero inflation in your proportion or count data!
 
-### **Stan References**
 
-Stan is a run by a small, but dedicated group of developers. If you are new to Stan, you can join the mailing list. It's a great resource for understanding and diagnosing problems with Stan, and by posting problems you encounter you are helping yourself, and giving back to the community.
+### Stan References
 
-* *WEBSITE:* http://mc-stan.org/
 
-* *MANUAL(v2.14):* https://github.com/stan-dev/stan/releases/download/v2.14.0/stan-reference-2.14.0.pdf
+__Stan is a run by a small, but dedicated group of developers. If you are new to Stan, you can join the mailing list. It's a great resource for understanding and diagnosing problems with Stan, and by posting problems you encounter you are helping yourself, and giving back to the community.__
 
-* *RSTAN:* https://cran.r-project.org/web/packages/rstan/vignettes/rstan.html
+<a href="http://mc-stan.org/" target="_blank">WEBSITE</a>
 
-* *STANCON 2017 Intro Course Materials:* https://t.co/6d3omvBkrd
+<a href="https://github.com/stan-dev/stan/releases/download/v2.14.0/stan-reference-2.14.0.pdf" target="_blank">MANUAL(v2.14)</a>
 
-* *Statistical Rethinking* by R. McElreath: http://xcelab.net/rm/statistical-rethinking/
+<a href="https://cran.r-project.org/web/packages/rstan/vignettes/rstan.html" target="_blank">RSTAN</a>
 
-* *MAILING LIST:* https://groups.google.com/forum/#!forum/stan-users
+<a href="https://t.co/6d3omvBkrd" target="_blank">STANCON 2017 Intro Course Materials</a>
+
+<a href="http://xcelab.net/rm/statistical-rethinking/" target="_blank">Statistical Rethinking by R. McElreath</a>
+
+<a href="https://groups.google.com/forum/#!forum/stan-users" target="_blank">MAILING LIST</a>
 
 
 
