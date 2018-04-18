@@ -77,6 +77,12 @@ Let's have a look at the data:
 head(seaice)
 ```
 
+If for some reason the column names are not read in properly, you can change column names using:
+
+```r
+colnames(seaice) <- c("year", "extent_north", "extent_south")
+```
+
 __What research question can we ask with these data? How about the following:__
 
 ### _Research Question:_ Is sea ice extent declining in the Northern Hemisphere over time?
@@ -205,7 +211,7 @@ model {
 }
 
 generated quantities {
-}", // The posterior predictive distribution
+} // The posterior predictive distribution",
 
 "stan_model1.stan")
 ```
