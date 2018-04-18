@@ -28,7 +28,9 @@ tags: modelling advanced
 
 #### <a href="#priors"> 6. Assess convergence diagnostics</a>
 
-### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Stan-intro" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
+
+#### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Stan-intro" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
+
 
 ### 1. Learn about `Stan`
 
@@ -204,7 +206,7 @@ First, we should check our `Stan` model to make sure we wrote a file.
 
 ```r
 stanc("stan_model1.stan")
-`` ``
+```
 
 Now let's save that file path.
 
