@@ -561,18 +561,20 @@ ppc_scatter_avg(y = y, yrep = y_rep)
 
 ##### `bayesplot` options
 
-Here is a list of currently available plots (bayesplot 1.2)
+Here is a list of currently available plots (`bayesplot 1.2`):
 
 ```r
 available_ppc()
 ```
 
-You can change the colour scheme in bayesplot too:
+You can change the colour scheme in `bayesplot` too:
 
 ```r
 color_scheme_view(c("blue", "gray", "green", "pink", "purple",
  "red","teal","yellow"))
 ```
+
+<center> <img src="{{ site.baseurl }}/img/bayes_colours.png" alt="Img" style="width: 800px;"/> </center>
 
 And you can even mix them:
 
