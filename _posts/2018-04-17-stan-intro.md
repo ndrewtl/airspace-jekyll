@@ -131,6 +131,14 @@ lm1 <- lm(y ~ x)
 summary(lm1)
 ```
 
+We can also extract some of the key summary statistics from our simple model, so that we can compare them with the outputs of the `Stan` models later.
+
+```r
+lm_alpha <- summary(lm1)$coeff[1]  # the intercept
+lm_beta <- summary(lm1)$coeff[2]  # the slope
+lm_sigma <- sigma(lm1)  # the residual error
+```
+
 __Now let's turn that into a dataframe for inputting into a `Stan` model. Data passed to Stan needs to be a list of named objects. The names given here need to match the variable names used in the models (see the model code below).__
 
 ```r
@@ -241,6 +249,10 @@ __We can get summary statistics for parameter estimates, and sampler diagnostics
 ```r
 fit
 ```
+
+<center> <img src="{{ site.baseurl }}/img/stan_summary.png" alt="Img" style="width: 600px;"/> </center>
+
+__What does the model output show you?  How do you know your model has converged?  Can you see that text indicating that your C++ compiler has run?__
 
 __From this output we can quickly assess model convergence by looking at the `Rhat` values for each parameter. When these are at or near 1, the chains have converged. There are many other diagnostics, but this is an important one for Stan.__
 
@@ -385,6 +397,10 @@ plot(posterior_bad$beta, type = "l")
 plot(posterior_bad$sigma, type = "l")
 ```
 
+<center> <img src="{{ site.baseurl }}/img/bad_stan_traces.png" alt="Img" style="width: 600px;"/> </center>
+<center>Figure 7. Bad trace plot for alpha, the intercept.</center>
+
+
 #### Parameter summaries
 
 We can also get summaries of the parameters through the posterior directly. Let's also plot the non-Bayesian linear model values to make sure our model is doing what we think it is...
@@ -393,16 +409,19 @@ We can also get summaries of the parameters through the posterior directly. Let'
 par(mfrow = c(1,3))
 
 plot(density(posterior$alpha), main = "Alpha")
-abline(v = alpha, col = 4, lty = 2)
+abline(v = lm_alpha, col = 4, lty = 2)
 
 plot(density(posterior$beta), main = "Beta")
-abline(v = beta, col = 4, lty = 2)
+abline(v = lm_beta, col = 4, lty = 2)
 
 plot(density(posterior$sigma), main = "Sigma")
-abline(v = sigma, col = 4, lty = 2)
+abline(v = lm_sigma, col = 4, lty = 2)
 ```
 
-And from the posterior we can directly calculate the probability of any parameter being over or under a certain value of interest
+<center> <img src="{{ site.baseurl }}/img/stan_panel.png" alt="Img" style="width: 900px;"/> </center>
+<center>Figure 8. Density plot distributions from the `Stan` model fit compared with the estimates from the general `lm` fit.</center>
+
+From the posterior we can directly calculate the probability of any parameter being over or under a certain value of interest.
 
 **Probablility that beta is >0:**
 
@@ -423,6 +442,9 @@ While we can work with the posterior directly, `rstan` has a lot of useful funct
 ```r
 traceplot(fit)
 ```
+
+<center> <img src="{{ site.baseurl }}/img/stan_chains.png" alt="Img" style="width: 900px;"/> </center>
+<center>Figure 9. Trace plots of the different chains of the `Stan` model.</center>
 
 This is a wrapper for the `stan_trace()` function, which is much better than our previous plot because it allows us to compare the chains.
 
