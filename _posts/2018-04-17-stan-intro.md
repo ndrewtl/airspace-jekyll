@@ -44,7 +44,7 @@ __Statistical models can be fit in a variety of packages in `R` or other statist
 
 In this introductory tutorial we'll go through the iterative process of model building starting with a linear model. In our advanced `Stan` tutorial we will explore more complex model structures.
 
-First, before building a model you need to define your question and get to know your data. Explore it, plot it, calculate some summary statistics.
+First, before building a model you need to define your question and get to know your data. Explore them, plot them, calculate some summary statistics.
 
 Once you have a sense of your data and what question you want to answer with your statistical model, you can begin the iterative process of building a Bayesian model:
 
@@ -84,7 +84,7 @@ __What research question can we ask with these data? How about the following:__
 To explore the answer to that question, first we can make a figure.
 
 ```r
-plot(extent_north ~ year, pch = 20, data = seaice)
+(extent_north ~ year, pch = 20, data = seaice)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/sea_ice1.png" alt="Img" style="width: 600px;"/> </center>
