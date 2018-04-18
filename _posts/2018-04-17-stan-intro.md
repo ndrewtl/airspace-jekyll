@@ -1,13 +1,4 @@
 ---
-
-title: "Intro to Stan"
-author: "Maxwell J. Farrell, Isla Myers-Smith and Gergana Daskalova"
-adapted from: "QCBS workshop written by Maxwell J. Farrell (April 24th 2017)"
-date: "April 17th 2018"
-
----
-
----
 layout: post
 title: Intro to Stan
 subtitle: Getting started with Bayesian modelling in Stan
