@@ -2,7 +2,7 @@
 layout: post
 title: Intro to Stan
 subtitle: Getting started with Bayesian modelling in Stan
-date: 2017-04-17 08:00:00
+date: 2018-04-17 08:00:00
 author: Maxwell Farrell & Isla Myers-Smith
 meta: "Tutorials"
 tags: modelling advanced
