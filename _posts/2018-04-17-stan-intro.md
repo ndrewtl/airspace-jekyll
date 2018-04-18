@@ -122,7 +122,7 @@ Let's rename the variables and index the years from 1 to 39. One critical thing 
 x <- I(seaice$year - 1978)
 y <- seaice$extent_north
 N <- length(seaice$year)
-``
+```
 
 We can re-run that linear model with our new data.
 
