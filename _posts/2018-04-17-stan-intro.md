@@ -456,7 +456,7 @@ stan_hist(fit)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/stan_density.png" alt="Img" style="width: 900px;"/> </center>
-<center> <img src="{{ site.baseurl }}/img/stan_histograms.png" alt="Img" style="width: 900px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/stan_histogram.png" alt="Img" style="width: 900px;"/> </center>
 <center>Figure 10. Density plots and histograms of the posteriors for the intercept, slope and residual variance from the `Stan` model.</center>
 
 And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in.
