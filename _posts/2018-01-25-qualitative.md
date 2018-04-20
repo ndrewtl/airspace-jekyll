@@ -2,7 +2,7 @@
 layout: post
 title: Analysing ordinal data, surveys, count data 
 subtitle: Using R to answer sociological questions
-date: 2017-01-29 10:00:00
+date: 2018-01-29 10:00:00
 author: John 
 meta: "Tutorials"
 tags: datavis data_manip modelling  
@@ -46,7 +46,11 @@ Next, load (`library()`) the packages needed for this tutorial by copying the co
 ```r
 library(ggplot2)
 library(dplyr)
+library(tidyr)
+library(RColorBrewer)
 library(tidytext)
+library(R.utils)
+library(wordcloud)
 ```
 
 Finally, load the data files we will be using for the tutorial.
@@ -82,7 +86,7 @@ unique(sust_data$sustainability_daily_think)
 You should see that the column contains 5 discrete categories that follow an intuitive order from low to high: `Never`, `Rarely`, `Sometimes`, `Often`, `All the time `. We could just treat the responses as factors, but this doesn't take into account their ordinal nature, any plots that we make will simply place the factors in alphabetical order, so instead we will ask R to treat them as an "ordered factor" using this code:
 
 ```r
-sust_data$sustainability_daily_think <- factor(sust_data$sustainability_daily_think, 
+sust_data$sustainability_daily_think <- factor(sust_data$sustainability_daily_think,
 	levels=c("Never", "Rarely", "Sometimes", "Often", "All the time"), 
 	ordered=TRUE)
 ```
@@ -135,7 +139,7 @@ sust_data$sustainability_daily_think
 First, we need to make a summary data frame of the responses from this column, which can be done easily using the `dplyr` package. For an introduction to `dplyr`, check out <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">our tutorial on data manipulation</a>. Enter the code below to make the summary table: 
 
 ```r 
-sust_think_summ <- sust_data %>%
+sust_think_summ_wide <- sust_data %>%
 	group_by(gender, sustainability_daily_think) %>%
 	tally() %>%
 	mutate(perc = n / sum(n) * 100) %>%
@@ -208,7 +212,7 @@ The main problem is getting the "Sometimes" responses to straddle the 0 line. To
 
 
 ```r
-sust_think_summ_hi_lo <- sust_think_summ %>%
+sust_think_summ_hi_lo <- sust_think_summ_wide %>%
 	mutate(midlow = Sometimes / 2,
 		midhigh = Sometimes / 2) %>%
 	dplyr::select(gender, Never, Rarely, midlow, midhigh, Often, `All the time`) %>%
@@ -387,7 +391,7 @@ Then keep only the most common words and plot it as a bar chart:
 
 ```r
 tidy_energy_often_comment_summ <- tidy_energy_often_comment %>%
-	filter(n > 4) %>%
+	filter(n > 10) %>%
 	filter(!is.na(energy_action_comment_word)) %>%
 	mutate(energy_action_comment_word = reorder(energy_action_comment_word, n ))
 
