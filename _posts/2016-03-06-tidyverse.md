@@ -1,17 +1,13 @@
 ---
 layout: post
-title: GitHub, Tidyverse and Markdown - a coding workshop for the EVENET network
-subtitle: Cleaning occurrence data and customising graphs and maps
+title: Advanced data manipulation and visualisation
+subtitle: A BES QE SIG training event
 date: 2016-03-06 10:00:00
 author: Gergana + ....
 meta: "Tutorials"
 tags: data_manip data_vis github
 ---
-<div class="block">
-	<center>
-		<img src="{{ site.baseurl }}/img/tutheader_update.png" alt="Img">
-	</center>
-</div>
+
 
 ### Tutorial Aims:
 
