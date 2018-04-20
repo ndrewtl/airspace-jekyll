@@ -644,15 +644,28 @@ __Stan is a run by a small, but dedicated group of developers. If you are new to
 <h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
 <br>
 <h3>&nbsp; Related tutorials:</h3>
-{% for post in site.posts %}
-	{% if post.url != page.url %}
-  		{% for tag in post.tags %}
-    			{% if page.tags contains tag %}
-<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
-  			{% endif %}
-		{% endfor %}
-	{% endif %}
-{% endfor %}
+
+{% assign posts_thresh = 8 %}
+
+<ul>
+  {% assign related_post_count = 0 %}
+  {% for post in site.posts %}
+    {% if related_post_count == posts_thresh %}
+      {% break %}
+    {% endif %}
+    {% for tag in post.tags %}
+      {% if page.tags contains tag %}
+        <li>
+            <a href="{{ site.url }}{{ post.url }}">
+	    &nbsp; - {{ post.title }}
+            </a>
+        </li>
+        {% assign related_post_count = related_post_count | plus: 1 %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</ul>
 <br>
 <h3>&nbsp; Subscribe to our mailing list:</h3>
 <div class="container">
