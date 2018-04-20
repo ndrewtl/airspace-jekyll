@@ -544,7 +544,7 @@ If you are keen, you can now try out the `brms` package and generate the Stan co
 	{% if post.url != page.url %}
   		{% for tag in post.tags %}
     			{% if page.tags contains tag %}
-<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
+				<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
   			{% endif %}
 		{% endfor %}
 	{% endif %}
