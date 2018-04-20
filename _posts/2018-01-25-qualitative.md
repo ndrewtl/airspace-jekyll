@@ -79,11 +79,11 @@ Some of the questions in this data set were designed on a 5 point scale, also kn
 unique(sust_data$sustainability_daily_think)
 ```
 
-You should see that the column contains 5 discrete categories that follow an intuitive order from low to high: `Never`, `Rarely`, `Sometimes`, `Often`, `Nearly every decision I make`. We could just treat the responses as factors, but this doesn't take into account their ordinal nature, any plots that we make will simply place the factors in alphabetical order, so instead we will ask R to treat them as an "ordered factor" using this code:
+You should see that the column contains 5 discrete categories that follow an intuitive order from low to high: `Never`, `Rarely`, `Sometimes`, `Often`, `All the time `. We could just treat the responses as factors, but this doesn't take into account their ordinal nature, any plots that we make will simply place the factors in alphabetical order, so instead we will ask R to treat them as an "ordered factor" using this code:
 
 ```r
 sust_data$sustainability_daily_think <- factor(sust_data$sustainability_daily_think, 
-	levels=c("Never", "Rarely", "Sometimes", "Often", "Nearly every decision I make"), 
+	levels=c("Never", "Rarely", "Sometimes", "Often", "All the time"), 
 	ordered=TRUE)
 ```
 
@@ -114,7 +114,7 @@ sust_data$energy_action_n <- nchar(as.character(sust_data$energy_action))
 
 Now that we formatted our data for analysis we can visualise the data to identify some interesting patterns. 
 
-Let's start with the Likert scales. We can create bar charts to visualise the number of responses to a question which fit into each of the ordinal categories. The correct form for the bar chart will depend on the type of question that was asked, and the wording of the various responses. For example, if potential responses were presented as "Strongly disagree", "Disagree", "Neither agree nor disagree", "Agree", "Strongly agree", you could assume that the neutral or zero answer is in the middle, with Disagree being negative and Agree being positive. On the other hand, if the answers were presented as "Never", "Rarely", "Sometimes", "Often", "Nearly every decision I make", the neutral or zero answer would be Never, with all other answers being positive. For the first example, we could use a "diverging stacked bar chart", and for the latter we would just use a standard "stacked bar chart".
+Let's start with the Likert scales. We can create bar charts to visualise the number of responses to a question which fit into each of the ordinal categories. The correct form for the bar chart will depend on the type of question that was asked, and the wording of the various responses. For example, if potential responses were presented as "Strongly disagree", "Disagree", "Neither agree nor disagree", "Agree", "Strongly agree", you could assume that the neutral or zero answer is in the middle, with Disagree being negative and Agree being positive. On the other hand, if the answers were presented as "Never", "Rarely", "Sometimes", "Often", "All the time", the neutral or zero answer would be Never, with all other answers being positive. For the first example, we could use a "diverging stacked bar chart", and for the latter we would just use a standard "stacked bar chart".
 
 ### Diverging stacked bar chart
 
@@ -211,9 +211,9 @@ The main problem is getting the "Sometimes" responses to straddle the 0 line. To
 sust_think_summ_hi_lo <- sust_think_summ %>%
 	mutate(midlow = Sometimes / 2,
 		midhigh = Sometimes / 2) %>%
-	dplyr::select(gender, Never, Rarely, midlow, midhigh, Often, `All the time`) %>%  # Select the correct columns and put them in a logical order
-	gather(key = gender, value = perc) %>%  # Gather the dataframe to long format,
-	`colnames<-`(c("gender", "response", "perc"))  # rename the resultant columns
+	dplyr::select(gender, Never, Rarely, midlow, midhigh, Often, `All the time`) %>%
+	gather(key = response, value = perc, 2:7) %>%
+	`colnames<-`(c("gender", "response", "perc"))
 ```
 
 In the code above we have created two new columns `midhigh` and `midlow`, which both contain values from `Sometimes`, but divided by 2. The `Sometimes` column is then dropped from the data frame using `dplyr::select()`. The data frame is then gathered back into long format so there are three columns, gender, response type, and percentage of respondents.
@@ -406,7 +406,7 @@ To effectively plot more words and their frequencies, you could also create a wo
 
 ```r
 tidy_energy_often_comment %>%
-	with(wordcloud((words = energy_action_comment_word, freq = n, max.words = 100))
+	with(wordcloud(words = energy_action_comment_word, freq = n, max.words = 100))
 ```
 
 <center> <img src="{{ site.baseurl }}/img/wordcloud_qual.png" alt="Img" style="width: 800px;"/> </center>
