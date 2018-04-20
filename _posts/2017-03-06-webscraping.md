@@ -38,15 +38,15 @@ tags: data_manip
 
 ## Why not just copy and paste?
 
-Imagine you want to collect information on the area and percentage water area of African countries. It's easy enough to head to [wikipedia](https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa), click through each page then copy the relevant information and paste it into a spreadsheet. Now imagine you want to repeat this for every country in the [world](https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population)! This can quickly become VERY tedious as you click between lots of pages, repeating the same actions over and over. It also increases the chance of making mistakes when copying and pasting. By automating this process using R to perform "Web Scraping", you can reduce the chance of making mistakes and speed up your data collection. Additionally, once you have written the script, it can be adapted for lots of different projects, saving time in the long run.
+Imagine you want to collect information on the area and percentage water area of African countries. It's easy enough to head to <a href="https://en.wikipedia.org/wiki/List_of_sovereign_states_and_dependent_territories_in_Africa" target="_blank">wikipedia</a>, click through each page, then copy the relevant information and paste it into a spreadsheet. Now imagine you want to repeat this for every country in the <a href="https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population" target="_blank">world</a>! This can quickly become VERY tedious as you click between lots of pages, repeating the same actions over and over. It also increases the chance of making mistakes when copying and pasting. By automating this process using R to perform "Web Scraping," you can reduce the chance of making mistakes and speed up your data collection. Additionally, once you have written the script, it can be adapted for a lot of different projects, saving time in the long run.
 
-Web scraping refers to the action of extracting data from a web page using a computer program, in this case our computer program will be R. Other popular command line interfaces that can perform similar actions are [`wget`](https://www.gnu.org/software/wget/) and [`curl`](https://github.com/curl/curl).
+Web scraping refers to the action of extracting data from a web page using a computer program, in this case our computer program will be R. Other popular command line interfaces that can perform similar actions are <a href="https://www.gnu.org/software/wget/" target="_blank">`wget`</a> and <a href="https://github.com/curl/curl" target="_blank">`curl`</a>.
 
 ## Getting started
 
-Open up a new R Script where you will be adding the code for this tutorial. All the resources for this tutorial, including some helpful cheatsheets, can be downloaded from [this repository](https://github.com/ourcodingclub/CC-12-Webscraping). Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the real path), or clicking `Session/ Set Working Directory/ Choose Directory` in the RStudio menu.
+Open up a new R Script where you will be adding the code for this tutorial. All the resources for this tutorial, including some helpful cheatsheets, can be downloaded from <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">this repository</a>. Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the real path), or clicking `Session/ Set Working Directory/ Choose Directory` in the RStudio menu.
 
-Alternatively, you can fork [the repository](https://github.com/ourcodingclub/CC-12-Webscraping) to your own Github account and then add it as a new RStudio project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync RStudio and Github and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial.</a>
+Alternatively, you can fork  <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">the repository</a> to your own Github account and then add it as a new RStudio project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync RStudio and Github and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial</a>.
 
 ```r
 setwd("<PATH TO FOLDER>")
@@ -68,7 +68,7 @@ library(dplyr)
 
 ## Download a `.html` web page
 
-The simplest way to download a web page is to save it as a `.html` file to your working. This can be accomplished in most browsers by clicking _`File -> Save as...`_ and saving the file type to `Webpage, HTML Only` or something similar. Here are some examples for different browser Operating System combinations:
+The simplest way to download a web page is to save it as a `.html` file to your working directory. This can be accomplished in most browsers by clicking _`File -> Save as...`_ and saving the file type to `Webpage, HTML Only` or something similar. Here are some examples for different browser Operating System combinations:
 
 ### Microsoft Windows - Internet Explorer
 
@@ -82,7 +82,7 @@ The simplest way to download a web page is to save it as a `.html` file to your 
 
 <img src="{{ site.baseurl }}/img/Safari_Save.png" alt="Img">
 
-Download the IUCN Red List information for _Aptenogytes forsteri_ (Emperor Penguin) from http://www.iucnredlist.org/details/22697810/0 using the above method, saving the file to your working directory.
+Download the IUCN Red List information for _Aptenogytes forsteri_ (Emperor Penguin) from <a href="http://www.iucnredlist.org/details/22697752/0" target="_blank">http://www.iucnredlist.org/details/22697752/0</a> using the above method, saving the file to your working directory.
 
 <a name="import"></a>
 
@@ -102,7 +102,7 @@ Each string in the vector is one line of the original `.html` file.
 
 ## Locating useful information using `grep()` and isolating it using `gsub`
 
-In this example we are going to build a data frame of different species of penguin and gather data on their IUCN status and when the assessment was made, so we will have a data frame that looks something like this:
+In this example we are going to build a data frame of different species of penguin and gather data on their IUCN status and when the assessment was made so we will have a data frame that looks something like this:
 
 | Scientific Name                 | Common Name       | Red List Status | Assessment Date |
 |-------------------------|-------------------|-------------|-----------------|
@@ -111,7 +111,7 @@ In this example we are going to build a data frame of different species of pengu
 | ...                     | ...               | ...         | ...             |
 | Spheniscus mendiculus   | Galapagos Penguin | Endangered          | 2016-10-01      |
 
-Open the IUCN web page for the Emperor Penguin in a web browser, you should see that the species name is next to some other text, `Scientific Name:`. We can use this "anchor" to find the rough location of the species name:
+Open the IUCN web page for the Emperor Penguin in a web browser. You should see that the species name is next to some other text, `Scientific Name:`. We can use this "anchor" to find the rough location of the species name:
 
 ```r
 grep("Scientific Name:", Penguin_html)
@@ -153,7 +153,7 @@ species_name <- species_line %>%
 species_name
 ```
 
-For more information on using pipes, [follow our data manipulation tutorial](https://ourcodingclub.github.io/2017/01/16/piping.html).
+For more information on using pipes, <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">folllow our data manipulation tutorial</a>.
 
 `gsub()` works in the following way:
 
@@ -161,7 +161,7 @@ For more information on using pipes, [follow our data manipulation tutorial](htt
 gsub("Pattern to replace", "The replacement pattern", .)
 ```
 
-This is self explanatory when we remove the html tags, but the pattern to remove whitespace looks like a lot of random characters. In this `gsub()` command we have used "regular expressions" also known as "regex". These are sets of character combinations that R (and many other programming languages) can understand and are used to search through character strings. Let's break down `"^\\s+|\\s+$"` to understand what it means:
+This is self explanatory when we remove the html tags, but the pattern to remove whitespace looks like a lot of random characters. In this `gsub()` command, we have used "regular expressions" also known as "regex". These are sets of character combinations that R (and many other programming languages) can understand and are used to search through character strings. Let's break down `"^\\s+|\\s+$"` to understand what it means:
 
 `^` = From start of string
 
@@ -173,7 +173,7 @@ This is self explanatory when we remove the html tags, but the pattern to remove
 
 `$` = To the end of the line
 
-So `"^\\s+|\\s+$"` can be interpreted as "Select one or more white spaces that exist at the start of the string, and select one or more white spaces that exist at the end of the string". Look in the [repo for this tutorial](https://github.com/ourcodingclub/CC-12-Webscraping) for a regex cheat sheet to help you master `grep`.
+So `"^\\s+|\\s+$"` can be interpreted as "Select one or more white spaces that exist at the start of the string and select one or more white spaces that exist at the end of the string". Look in the <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">repo for this tutorial</a> for a regex cheat sheet to help you master `grep`.
 
 We can do the same for common name:
 
@@ -218,16 +218,16 @@ date_assess
 We can create the start of our data frame by concatenating the vectors:
 
 ```r
-iucn <- data.frame(species_name, common_name, red_cat, date)
+iucn <- data.frame(species_name, common_name, red_cat, date_assess)
 ```
 
 <a name="multiple"></a>
 
 ## Importing multiple web pages
 
-The above example only used one file, but the real power of web scraping comes from being able to repeat these actions over a number of web pages to build up a larger data set.
+The above example only used one file, but the real power of web scraping comes from being able to repeat these actions over a number of web pages to build up a larger dataset.
 
-We can import many web pages from a list of URLs generated by searching the IUCN red list for the word `Penguin`. Go to http://www.iucnredlist.org/, search for "penguin" and download the resulting web page as a `.html` file in your working directory.
+We can import many web pages from a list of URLs generated by searching the IUCN red list for the word `Penguin`. Go to <a href="http://www.iucnredlist.org/" target="_blank">http://www.iucnredlist.org/</a>, search for "penguin" and download the resulting web page as a `.html` file in your working directory.
 
 
 Import `Search Results.html`:
@@ -265,7 +265,7 @@ Now we can use `mapply()` to download each web page in turn using `species_list`
 mapply(function(x,y) download.file(x,y), species_list, file_list_grep)
 ```
 
-`mapply()` loops through `download.file` for each instance of `species_list` and `file_list_grep` giving us 18 files saved to the working directory
+`mapply()` loops through `download.file` for each instance of `species_list` and `file_list_grep`, giving us 18 files saved to the working directory
 
 Import each of the downloaded `.html` files based on its name:
 ```r
@@ -281,7 +281,7 @@ sci_name_list_rough
 penguin_html_list[[2]][133]
 ```
 
-Convert the list into a simple vector using `unlist()`, `+1` gives us the line containing the actual species name rather than `Scientific Name:`:
+Convert the list into a simple vector using `unlist()`. `+1` gives us the line containing the actual species name rather than `Scientific Name:`:
 ```r
 sci_name_unlist_rough <- unlist(sci_name_list_rough) + 1
 ```
@@ -300,7 +300,7 @@ sci_name <- sci_name_line %>%
   gsub("^\\s+|\\s+$", "", .)
 ```
 
-As before we can perform similar actions for Common Name:
+As before, we can perform similar actions for Common Name:
 ```r
 # Find common name
 ## Isolate line
@@ -390,9 +390,9 @@ Does your data frame look something like this?
 |Spheniscus magellanicus |Magellanic Penguin                                             |Near Threatened |2016-10-01 |
 |Spheniscus mendiculus   |Galapagos Penguin, Galápagos Penguin                           |Endangered      |2016-10-01 |
 
-Now that you have your data frame you can start analysing it. Try to make a bar chart showing how many penguin species are in each red list category ([follow our data visualisation tutorial to learn how to do this with `ggplot2`](https://ourcodingclub.github.io/2017/01/29/datavis.html)).
+Now that you have your data frame you can start analysing it. Try to make a bar chart showing how many penguin species are in each red list category <a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">follow our data visualisation tutorial to learn how to do this with `ggplot2`/</a>.
 
-A full `.R` script for this tutorial along with some helpful cheatsheets and data can be found in the [repo for this tutorial](https://github.com/ourcodingclub/CC-12-Webscraping).
+A full `.R` script for this tutorial along with some helpful cheatsheets and data can be found in the <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">rep for this tutorial/</a>.
 
 <hr>
 <hr>
@@ -402,15 +402,28 @@ A full `.R` script for this tutorial along with some helpful cheatsheets and dat
 <h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
 <br>
 <h3>&nbsp; Related tutorials:</h3>
-{% for post in site.posts %}
-	{% if post.url != page.url %}
-  		{% for tag in post.tags %}
-    			{% if page.tags contains tag %}
-<h4><a style="margin:0 padding:0" href="{{ post.url }}">&nbsp; - {{ post.title }}</a></h4>
-  			{% endif %}
-		{% endfor %}
-	{% endif %}
-{% endfor %}
+
+{% assign posts_thresh = 8 %}
+
+<ul>
+  {% assign related_post_count = 0 %}
+  {% for post in site.posts %}
+    {% if related_post_count == posts_thresh %}
+      {% break %}
+    {% endif %}
+    {% for tag in post.tags %}
+      {% if page.tags contains tag %}
+        <li>
+            <a href="{{ site.url }}{{ post.url }}">
+	    &nbsp; - {{ post.title }}
+            </a>
+        </li>
+        {% assign related_post_count = related_post_count | plus: 1 %}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+  {% endfor %}
+</ul>
 <br>
 <h3>&nbsp; Subscribe to our mailing list:</h3>
 <div class="container">
