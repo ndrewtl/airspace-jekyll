@@ -275,6 +275,8 @@ pander(richness_abund)  # Create the table
 ```
 ````
 
+__Now that you have started your `Markdown` document, you can use that when completing the next part of the tutorial, i.e., inserting the code that follows into code chunks and then generating a report at the end of this tutorial.__
+
 <a name="tidyverse"></a>
 
 ## Analyse and visualise data using the `tidyverse`
