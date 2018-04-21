@@ -191,6 +191,9 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-left: 0px;
   width: 100%;
 }
+#intro .block .imagem-servico img {
+  width: 80%;
+}
 
 #intro .section-title {
   margin-bottom: 0px;
@@ -447,7 +450,7 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 #galery .galery-carousel img {
   padding-bottom: 38px;
-  width: 75%;
+  width: 70%;
 }
 #galery .galery-carousel p {
   line-height: 28px;
@@ -536,6 +539,46 @@ font header .navbar-default .navbar-nav li a:hover {
   text-transform: capitalize;
 }
 #global-header .block p {
+  font-size: 16px;
+  font-weight: 300;
+  letter-spacing: 1px;
+  word-spacing: 3px;
+}
+#global-header-servicos {
+  background: url("../img/31.png") no-repeat;
+  background-size: cover;
+  padding-top: 150px;
+  padding-bottom: 107px;
+  position: relative;
+  background-attachment: fixed;
+}
+#global-header-servicos:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #928dab, #1f1c2c 70%);
+  opacity: 0.8;
+}
+#global-header-servicos .block {
+  color: #E3E3E4;
+  margin: 0 auto;
+  padding-left: 90px;
+  text-align: center;
+}
+#global-header-servicos .block h1 {
+  font-weight: 100;
+  font-size: 45px;
+  letter-spacing: 6px;
+  padding-bottom: 15px;
+  margin-top: 0;
+  text-transform: capitalize;
+}
+#global-header-servicos .block p {
   font-size: 16px;
   font-weight: 300;
   letter-spacing: 1px;
