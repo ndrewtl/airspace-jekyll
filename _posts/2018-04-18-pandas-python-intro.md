@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Python Data Analysis with Pandas
+title: Python Data Analysis with Pandas and Matplotlib
 subtitle: Using the Python data analysis package pandas
 date: 2018-04-17 00:00:00
 author: Declan V.
@@ -8,7 +8,7 @@ meta: "PythonPandas"
 tags: python pandas
 ---
 <div class="block">
-  <center><img src="{{ site.baseurl }}/img/tutheader_python.png" alt="Img"></center>
+  <center><img src="{{ site.baseurl }}/img/tutheaderpandas.png" alt="Img"></center>
 </div>
 
 Welcome to this tutorial about doing data analysis with `pandas`. If you did the <a href="https://ourcodingclub.github.io/2018/01/26/python-intro.html" target="_blank">Introductory Python tutorial</a>, you'll rememember we briefly looked at the `pandas` package as a way of quickly loading a .csv file to extract some data. This tutorial looks at pandas and matplotlib in some more depth. 
