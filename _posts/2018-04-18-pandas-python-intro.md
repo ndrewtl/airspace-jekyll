@@ -494,7 +494,7 @@ If you are writing a complete script to follow the tutorial, create a new file a
 ```python
 import pandas as pd
 
-dataframe = pd.read_csv("scottish_peaks.csv")
+dataframe = pd.read_csv("scottish_hills.csv")
 print(dataframe.head(10))
 ```
 (IPython users can continue to just type in the commands above below the `import` statement.)
@@ -542,7 +542,121 @@ We now have our hills sorted by height. Note how we've used the `ascending=False
 <a name="matplotlib"></a>
 ## Understand the basics of the matplotlib plotting package
 
+Matplotlib is a Python library used for data plotting and visualisation. It is a useful complement to pandas, and like pandas, is a very feature-rich library which can produce a large variety of plots, charts, maps, and other visualisations. It would be impossible to cover the entirety of matplotlib in one tutorial, so this section is really to give you a flavour of the capabilities of matplotlib, and to cover some of the basics, as well as a couple of more interesting 'advanced' features. 
 
+If you have a bit of basic Python knowledge already, the common route to learning matplotib is to find examples of plots similar to ones you are trying to create and walk through them, trying to reproduce them with your own data perhaps. A great starting point is the <a href="https://matplotlib.org/gallery.html" target="_blank">matplotlib gallery of examples</a>. I recommend this because in practice it is difficult to cover each and every plot type, as the needs of scientists differ considerably depending on the type of data they are working with or the message they are trying to convey in their visualisation. You might also find it useful to refer to the <a href="https://matplotlib.org/api/pyplot_api.html" target="_blank">matplotlib official documentation</a> as you go along.
+
+### Matplotlib conventions
+
+Like pandas, matplotlib has a few conventions that you will see in the examples, and in resources on other websites such as StackOverflow. Typically, if we are going to work on some plotting, we would import matplotlib like this:
+
+```python
+import matplotlib.pyplot as plt
+```
+
+And thereafter, we could access the most commonly used features of matplotlib with `plt` as shorthand. Note that this import is at the _submodule_ level. We are not importing the full `matplotlib` module, but a subset of it called `pyplot`. Pyplot contains the most useful features of matplotlib with an interface that makes interactive-style plotting easier. Submodule imports have the form `import module.submodule` and you see them used in other Python libraries too sometimes. 
+
+### Matplotlib basics
+
+We're going to use the Scottish hill data from the pandas section of the tutorial, so if you need to set this up again, the script should look like this to begin with:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+
+dataframe = pd.read_csv("scottish_hills.csv")
+```
+
+Let's have a look at the realtionship between two varibles in our Scottish hills data. Suppose I have a hypothesis that the height of Scottish hill increases with latitude northwards. Were going to plot height against latitude. To save typing later on, we can extract the Series for Height and Latitude by assigning each to a new variable.
+
+Add the following underneath the script above:
+
+```python
+x = dataframe.Height
+y = dataframe.Latitude
+```
+
+(This saves us having to type `dataframe.Height` etc. every time)
+
+Then we can plot them as a scatter chart by adding:
+
+```python
+plt.scatter(x, y)
+```
+
+To make Python show the chart, we need to either save the figure, or show it in Spyder. To do this from the script add:
+
+```python
+plt.show()
+```
+
+OR
+
+```python
+plt.savefig("my_chart_name.png")
+```
+Then run the script and have a look at the figure. It should look something like this:
+
+[FIGURE 1]
+
+(IPython users, the figure should render automatically after calling `plt.scatter(x, y)`.)
+
+Now we are going to do some basic statistics. I'm a software engineer, not a statistician, so this will be pretty basic...
+
+Let's plot a linear regression through the data. Python has a module called `scipy` that contains a lot of statistics routines. We can import it by adding to the top of our script:
+
+```python
+from scipy.stats import linregress
+```
+
+And then at the bottom of our script, we are going to get statistics for the linear regression by using a function called `linregress` by adding:
+
+```
+stats = linregress(x, y)
+
+m = stats.slope
+b = stats.intercept
+```
+
+Let's pause and recap what we've done here before plotting the regression. We used an import statement with a slightly different format here: `from module.submodule import function`. This is a handy way of importing just a single function from a python library, in this case we only want to use the `linregress` function in scipy's `stats` submodule, so we can just import it without anything else using that syntax.
+
+Next we are assigning the results of linregress to variable called `stats`. The `linregress` function is slightly different to the functions we've seen so far, because it returns an object with multiple values. In fact it returns the `slope`, `intercept`, `rvalue`, `pvalue`, and `stderr` (standard error). We can get hold of each of these values by using the dot notation: `stats.slope`, for example. 
+
+For ease of typing later, we've assigned the `stats.slope` to a variable `m`, and `stats.intercept` to a variable `b`.
+
+The equation for the straight line that describes linear regression is `y = mx + b`, where `m` is the slope and `b` is the intercept.
+
+Therefore, we can then plot the line of linear regression by adding the following line:
+
+```python
+plt.plot(x, m * x + b, color="red")   # Or a colour of your choice...
+```
+
+That's a lot of new Python, so let's review what the final script should look like:
+
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import linregress
+
+dataframe = pd.read_csv("scottish_hills.csv")
+
+x = dataframe.Height
+y = dataframe.Latitude
+
+stats = linregress(x, y)
+
+m = stats.slope
+b = stats.intercept
+
+plt.scatter(x, y)
+plt.plot(x, m * x + b, color="red") 
+
+plt.savefig("figure.png")
+
+# Or you can use plt.show()
+```
 
 
 ## Summary
