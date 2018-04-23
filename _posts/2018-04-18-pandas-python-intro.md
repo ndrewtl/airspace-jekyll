@@ -597,7 +597,7 @@ plt.savefig("my_chart_name.png")
 ```
 Then run the script and have a look at the figure. It should look something like this:
 
-[FIGURE 1]
+<center><img src="{{ site.baseurl }}/img/python-scatter.png" alt="Img" style="width: 1000px"></center>
 
 (IPython users, the figure should render automatically after calling `plt.scatter(x, y)`.)
 
@@ -660,7 +660,8 @@ plt.savefig("figure.png")
 
 Hopefully, you will have a figure that should look similar to this:
 
-[FIGURE 2]
+
+<center><img src="{{ site.baseurl }}/img/python-linear-reg.png" alt="Img" style="width: 1000px"></center>
 
 Matplotlib figures are highly customisable, and there are so many options it is usually best to consult the documentation first. To get started on matplotlib plot customisation, here is an extended version of the above which sets the font sizes, axes lables, linewidths, and marker types:
 
@@ -699,7 +700,7 @@ plt.yticks(fontsize=18)
 plt.savefig("python-linear-reg-custom.png")
 ```
 
-[FIGURE FINAL CIUSTOM]
+<center><img src="{{ site.baseurl }}/img/python-linear-reg-custom.png" alt="Img" style="width: 1000px"></center>
 
 I will leave it as an exercise for the reader to determine if they think this is a good fit...
 
@@ -743,7 +744,8 @@ plt.scatter(dataframe['Longitude'],dataframe['Latitude'],
                     color='red', marker='^', transform=ccrs.PlateCarree())
 plt.savefig("munros.png")
 ```
-[FIGURE 3 - MUNROS]
+
+<center><img src="{{ site.baseurl }}/img/python-munros.png" alt="Img" style="width: 1000px"></center>
 
 Finally, there is one more bonus matplotlib example plot I would like to share, create by PhD student James Warner at Exeter University. It shows precipitable water in the atmopshere over the year 2017, projected over the globe. He has even created an animation of it which can be viewed here: https://twitter.com/MetmanJames/status/978659301337202693. This was all done using Python and some other Python libraries, including matplotlib, numpy, cartopy, and a few others. It would take a long time to explain all of it, but hopefully it is some inspiration of the cool things you can do in Python with data visualisation. 
 
@@ -752,7 +754,7 @@ The Python code for this is actually not too complicated and he has shared it he
 If you are feeling ambitious, try reproducing the images!
 
 
-[FIGURE 4 - JAMES WARNER]
+<center><img src="{{ site.baseurl }}/img/python-global-water.png" alt="Img" style="width: 1000px"></center>
 
 ## Summary
 
