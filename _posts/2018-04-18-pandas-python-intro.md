@@ -658,6 +658,101 @@ plt.savefig("figure.png")
 # Or you can use plt.show()
 ```
 
+Hopefully, you will have a figure that should look similar to this:
+
+[FIGURE 2]
+
+Matplotlib figures are highly customisable, and there are so many options it is usually best to consult the documentation first. To get started on matplotlib plot customisation, here is an extended version of the above which sets the font sizes, axes lables, linewidths, and marker types:
+
+```python
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy.stats import linregress
+
+dataframe = pd.read_csv("scottish_hills.csv")
+
+x = dataframe.Height
+y = dataframe.Latitude
+
+stats = linregress(x, y)
+
+m = stats.slope
+b = stats.intercept
+
+# Change the default figure size
+plt.figure(figsize=(10,10))
+
+# Change the default marker for the scatter from circles to x's
+plt.scatter(x, y, marker='x')
+
+# Set the linewidth on the regression line to 3px
+plt.plot(x, m * x + b, color="red", linewidth=3)
+
+# Add x and y lables, and set their font size
+plt.xlabel("Height (m)", fontsize=20)
+plt.ylabel("Latitude", fontsize=20)
+
+# Set the font size of the number lables on the axes
+plt.xticks(fontsize=18)
+plt.yticks(fontsize=18)
+
+plt.savefig("python-linear-reg-custom.png")
+```
+
+[FIGURE FINAL CIUSTOM]
+
+I will leave it as an exercise for the reader to determine if they think this is a good fit...
+
+(Hint: you have some extra information in the `stats` object - `stats.rvalue` and `stats.pvalue`.)
+
+## Bonus matplotlib material: plotting data onto maps with Cartopy
+
+The best way to learn matplotlib I believe is to learn from examples. I'm going to leave you with two examples that use an extra python library called `cartopy`, unfortunately, cartopy is not installed (yet) on the University lab's computers, so you will have to try this at home or on your own laptops later. We won't go through this step-by-step in the tutorial, it is more of an example of how you could take things further in your own time.
+
+The easiest way to do this on your own computer is with the package manager conda:
+
+`conda install -c conda-forge cartopy`
+
+This is only a short example, so don't worry if you can't install it right now, just try to follow the code and have look at the final figure.
+
+
+```python
+import cartopy.crs as ccrs
+from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
+import cartopy.feature as cfeature
+
+plt.figure(figsize=(20,10))
+ax = plt.axes(projection=ccrs.Mercator())
+ax.coastlines('10m')
+
+ax.xaxis.set_visible(True)
+ax.yaxis.set_visible(True)
+
+ax.set_yticks([56,57,58,59], crs=ccrs.PlateCarree())
+ax.set_xticks([-8, -6, -4, -2], crs=ccrs.PlateCarree())
+
+lon_formatter = LongitudeFormatter(zero_direction_label=True)
+lat_formatter = LatitudeFormatter()
+
+ax.xaxis.set_major_formatter(lon_formatter)
+ax.yaxis.set_major_formatter(lat_formatter)
+
+ax.set_extent([-8, -1.5, 55.3, 59])
+
+plt.scatter(dataframe['Longitude'],dataframe['Latitude'],
+                    color='red', marker='^', transform=ccrs.PlateCarree())
+plt.savefig("munros.png")
+```
+[FIGURE 3 - MUNROS]
+
+Finally, there is one more bonus matplotlib example plot I would like to share, create by PhD student James Warner at Exeter University. It shows precipitable water in the atmopshere over the year 2017, projected over the globe. He has even created an animation of it which can be viewed here: https://twitter.com/MetmanJames/status/978659301337202693. This was all done using Python and some other Python libraries, including matplotlib, numpy, cartopy, and a few others. It would take a long time to explain all of it, but hopefully it is some inspiration of the cool things you can do in Python with data visualisation. 
+
+The Python code for this is actually not too complicated and he has shared it here: http://empslocal.ex.ac.uk/people/phd/jw773/Plot_PWAT_OrthoProj.py
+
+If you are feeling ambitious, try reproducing the images!
+
+
+[FIGURE 4 - JAMES WARNER]
 
 ## Summary
 
