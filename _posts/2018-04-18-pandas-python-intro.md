@@ -11,7 +11,7 @@ tags: python pandas
   <center><img src="{{ site.baseurl }}/img/tutheader_python.png" alt="Img"></center>
 </div>
 
-Welcome to this tutorial about doing data analysis with `pandas`. If you did the Introductory Python tutorial, you'll rememember we briefly looked at the `pandas` package as a way of quickly loading a .csv file to extract some data. This tutorial looks at pandas in some more depth. 
+Welcome to this tutorial about doing data analysis with `pandas`. If you did the <a href="https://ourcodingclub.github.io/2018/01/26/python-intro.html" target="_blank">Introductory Python tutorial</a>, you'll rememember we briefly looked at the `pandas` package as a way of quickly loading a .csv file to extract some data. This tutorial looks at pandas and matplotlib in some more depth. 
 
 ### Tutorial aims:
 
@@ -29,6 +29,11 @@ Welcome to this tutorial about doing data analysis with `pandas`. If you did the
 
 #### <a href="#matplotlib">Understand the basics of the matplotlib plotting package</a>
 
+#### <a href="#stats">Learn how to bring together other packages to enhance your plots</a>
+
+#### <a href="#customise">Learn how to further customise the appearance of matplotlib plots</a>
+
+#### <a href="#inspiration">Be inspired to experiment further with matplotlib!</a>
 
 
 <a name="understanding"></a>
@@ -601,6 +606,9 @@ Then run the script and have a look at the figure. It should look something like
 
 (IPython users, the figure should render automatically after calling `plt.scatter(x, y)`.)
 
+<a name="stats"></a>
+## Learn how to bring together other Python libraries with matplotlib
+
 Now we are going to do some basic statistics. I'm a software engineer, not a statistician, so this will be pretty basic...
 
 Let's plot a linear regression through the data. Python has a module called `scipy` that contains a lot of statistics routines. We can import it by adding to the top of our script:
@@ -663,7 +671,10 @@ Hopefully, you will have a figure that should look similar to this:
 
 <center><img src="{{ site.baseurl }}/img/python-linear-reg.png" alt="Img" style="width: 1000px"></center>
 
-Matplotlib figures are highly customisable, and there are so many options it is usually best to consult the documentation first. To get started on matplotlib plot customisation, here is an extended version of the above which sets the font sizes, axes lables, linewidths, and marker types:
+<a name="customise"></a>
+### Learn how to customise matplotlib plots further
+
+Matplotlib figures are highly customisable, and there are so many options it is usually best to consult the <a href="https://matplotlib.org/tutorials/index.html" target="_blank">documentation first</a>. In addition, the <a href="https://matplotlib.org/users/pyplot_tutorial.html" target="_blank">matplotlib official pyplot tutorial is quite useful</a>. To get started on matplotlib plot customisation, here is an extended version of the above which sets the font sizes, axes lables, linewidths, and marker types:
 
 ```python
 import pandas as pd
@@ -706,7 +717,8 @@ I will leave it as an exercise for the reader to determine if they think this is
 
 (Hint: you have some extra information in the `stats` object - `stats.rvalue` and `stats.pvalue`.)
 
-## Bonus matplotlib material: plotting data onto maps with Cartopy
+<a name="inspiration"></a>
+## Bonus matplotlib: plotting data onto maps with Cartopy
 
 The best way to learn matplotlib I believe is to learn from examples. I'm going to leave you with two examples that use an extra python library called `cartopy`, unfortunately, cartopy is not installed (yet) on the University lab's computers, so you will have to try this at home or on your own laptops later. We won't go through this step-by-step in the tutorial, it is more of an example of how you could take things further in your own time.
 
@@ -758,21 +770,31 @@ If you are feeling ambitious, try reproducing the images!
 
 ## Summary
 
-In this tutorial we have looked at why pandas...
+In this tutorial we have covered the various ways in which we can use pandas, matplotlib, and a few other Python libraries to start doing data analysis.
 
 ### Tutorial outcomes:
 
-#### 1. You have a feel for how widely used Python is, and why it is popular
+#### 1. Understood what the Pandas library does
 
-#### 2. You can run a simple test Python program on your computer
+#### 2. Recap the different ways Python can be run
 
-#### 3. You can read in data from a text file using the core Python language
+#### 3. Understood the basic Pandas data structures
 
-#### 4. You can use modules and packages to streamline data reading and analysis
+#### 4. Learnt how to acces data from a Pandas DataFrame
 
-#### 5. You can make simple figures with matplotlib
+#### 5. Learnt how to filter data in a Pandas DataFrame
 
-#### 6. You have a feel for some of the basic syntax and data structures of Python
+#### 6. Learnt how to read and sort data from a file
+
+#### 7. Understood the basics of the matplotlib plotting package
+
+#### 8. Learnt how to bring together other packages to enhance your plots
+
+#### 9. Learnt how to further customise the appearance of matplotlib plots
+
+#### 10. Be inspired to experiment further with matplotlib!
+
+
 
 
 <hr>
