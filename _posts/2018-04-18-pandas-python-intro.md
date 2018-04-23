@@ -19,6 +19,18 @@ Welcome to this tutorial about doing data analysis with `pandas`. If you did the
 
 #### <a href="#following">Ways of running Python and Pandas</a>
 
+#### <a href="#datastructures">Understanding the basic Pandas data structures</a>
+
+#### <a href="#accessing">Learn how to acces data from a Pandas DataFrame</a>
+
+#### <a href="#filtering">Learn how to filter data in a Pandas DataFrame</a>
+
+#### <a href="#sorting">Learn how to read and sort data from a file</a>
+
+#### <a href="#matplotlib">Understand the basics of the matplotlib plotting package</a>
+
+
+
 <a name="understanding"></a>
 
 ## What is pandas?
@@ -47,7 +59,10 @@ Some other important points to note about pandas are:
 
 You can read more about the pandas package at the <a href="https://pandas.pydata.org/" target="_blank">pandas project website</a>.
 
-## Following this tutorial
+<a name="following"></a>
+## Ways of running Python with Pandas
+
+Here we briefly discuss the different ways you can folow this tutorial:
 
 ### Spyder
 
@@ -70,6 +85,464 @@ IPython is an 'interactive' python interpreter. It lets you type in Python comma
 ```bash
 ipython
 ```
+
+**Note for interactive (IPython) users:** If you are following this tutorial with IPython, you do not need to use print functions to get IPython to display variables or other Python objects. IPython will automatically print out variable simply when you type in the variable name and press enter. So for example:
+
+```ipython
+In [1]: my_var = "Hello, World!"
+
+In [2]: my_var  # Now press ENTER
+Out[2]: 'Hello, World!'
+```
+
+IPython users: When you see a print function used in this tutorial, e.g. `print(my_var)`, you can omit it and simply type the variable name and press `ENTER`. 
+
+
+### Conventions when using Pandas
+
+All the examples in this tutorial assume you have installed the Python library pandas, either through using a scientific python distribution such as Anaconda/Spyder, or by installing it using a package-manager. To use any of the features of Pandas, you will need to have an import statement at the top of your script like so:
+
+```python
+import pandas as pd
+```
+
+By convention, pandas is almost always imported this way to `pd`. Every time we use a pandas feature thereafter, we can shorten what we type by just typing `pd`, such as `pd.some_function()`. You will need this at the top of every script that uses pandas. 
+
+_If you are running Python interactively, such as in IPython, you will need to type in the same import statement at the start of each interactive session._
+
+Try the following to see which version of pandas you are running:
+
+```python
+import pandas as pd
+
+print(pd.__version__)
+```
+
+Run the script and note the output. My script prints `'0.22.0'`, but you may be on a slighty newer/older version, which is OK for this introductory tutorial.
+
+### Files for this tutorial
+
+This short tutorial is mainly based around working with the basic pandas commands and data structures, but we also use some data about Scottish mountains, provided in the form of a csv file (`scottish_hills.csv`).
+
+You can download the data, and some helpful Python cheatsheets from <a href="https://github.com/ourcodingclub/CC-python-pandas-matplotlib" target="_blank">this github repository</a>. Clone and download the repo as a zipfile by pressing the big green button, then unzip it. You should then save any python scripts to that folder, so they can access the data easily.
+
+Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-python-pandas-matplotlib" target="_blank">the repository</a> to your own Github account and then clone it using the HTTPS/SSH link. For more details on how to register on Github, download Git and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">previous tutorial.</a>
+
+The original data came from a series of databases about the mountains of Scotland, which if you are interested further can be found here: http://www.haroldstreet.org.uk/other/excel-csv-files/.
+
+_As a side note, and some interesting trivia, the dataset we are using was originally compiled in **1891** by Sir Hugh Munro. He compiled a list of all the mountains in Scotland above 3000 feet (914m if you prefer the metric system). The table has been revised since with more accurate heights and coordinates._
+
+<a name="datastructures"></a>
+## Understand the basic Pandas data structures
+
+Pandas has two core datastructures used to store data: The _Series_ and the _Dataframe_. 
+
+### Series
+
+The series is a one-dimensional array-like structure designed to hold a single array (or 'column') of data and an associated array called of data labels, called an _index_. We can create a series to experiment with just by passing a list of data, let's use numbers in this example:
+
+```python
+import pandas as pd
+
+my_series = pd.Series([4.6, 2.1, -4.0, 3.0])
+print(my_series)
+```
+
+The output should be:
+
+```
+0    4.6
+1    2.1
+2   -4.0
+3    3.0
+dtype: float64
+```
+
+Note that printing out our _Series_ object prints out the values and the index numbers. If we just wanted the values, we can add to our script the following line:
+
+```python
+print(my_series.values)
+
+```
+Which in addition will print:
+
+```
+array([ 4.6,  2.1, -4. ,  3. ])
+```
+
+For a lot of applications, a plain old _Series_ is probably not a lot of use, but it is the core component of the pandas workhorse, the _DataFrame_, so it's useful to know about.
+
+
+### DataFrames
+The DataFrame represents tabular data, a bit like a spreadsheet. DataFrames are organised into colums (each of which is a _Series_), and each column can store a single data-type, such as floating point numbers, strings, boolean values etc. DataFrames can be indexed by either their row or column names. (They are similar in many ways to R's `data.frame`.)
+
+We can create a dataframe in pandas from a Python dictionary, or by loading in a text file containing tabular data.
+
+#### A refresher on the Dictionary data type
+
+Dictionaries are a core Python data structure that contain a set of `key:value` pairs. If you image having a written language dictionary, say for English-Hungarian, and you wanted to know the Hungarian word for "spaceship", you would look-up the English word (the dictionary `key` in Python) and the dictionary would give you the Hungarian translation (the dictionary `value` in Python). So the "key-value pair" would be `'spaceship': 'űrhajó'`. 
+
+To construct a dictionary in Python, the syntax we would write is:
+
+```python
+# Note that dictionaries are part of the core Python language
+# You do not need 'import pandas' if you are only working with dictionaries.
+
+hungarian_dictionary = {'spaceship': 'űrhajó'}
+```
+
+We could then look-up items in our dictionary with this syntax:
+
+```python
+hungarian_dictionary['spaceship']
+```
+
+Dictionaries can have multiple entries (multiple key-value pairs), and these are separated with a comma:
+
+```python
+hungarian_dictionary = {'spaceship': 'űrhajó',
+                        'watermelon': 'görögdinnye',
+                        'bicycle': 'kerékpár'}
+```
+
+The `values` in dictionaries are not limtied to single strings or words. Values can be any Python object such as numbers, lists, tuples, or even other dictionaries:
+
+
+```python
+# Names (keys) mapped to a tuple (the value) containing the height, lat and longitude.
+scottish_peaks = {'Ben Nevis': (1345, 56.79685, -5.003508),
+                  'Ben Macdui': (1309, 57.070453, -3.668262),
+                  'Braeriach': (1296, 57.078628, -3.728024),
+                  'Cairn Toul': (1291, 57.054611, -3.71042),
+                  'Sgòr an Lochain Uaine': (1258, 57.057999, -3.725416)}
+```
+
+Looking up a Scottish mountain using its name as the key would then give us the height, latitude and longitude as the value returned.
+
+```python
+scottish_peaks['Braeriach']
+```
+
+Enclosed in a print function, this would print out:
+
+``` 
+(1296, 57.078628, -3.728024)
+```
+
+### Back to DataFrames...
+
+If we didn't have any real data to play with from an external file, we could manually create a DataFrame from a Python dictionary. Using the `scottish_hills` dictionary above, we can load it into a pandas DataFrame with this syntax:
+
+```python
+dataframe = pd.DataFrame(scottish_hills)
+```
+
+**Note**: You will often see `df` used as shorthand convention for a DataFrame object in many pandas examples, such as in the official documentation and on StackOverflow. (I have used `dataframe` for readability here.)
+
+Try creating a Python script that converts a Python dictionary into a pandas DataFrame, then print the DataFrame to screen. You can use the hills example or experiment with your own as well.
+
+```
+import pandas as pd
+
+scottish_hills = {'Ben Nevis': (1345, 56.79685, -5.003508),
+                  'Ben Macdui': (1309, 57.070453, -3.668262),
+                  'Braeriach': (1296, 57.078628, -3.728024),
+                  'Cairn Toul': (1291, 57.054611, -3.71042),
+                  'Sgòr an Lochain Uaine': (1258, 57.057999, -3.725416)}
+
+dataframe = pd.DataFrame(scottish_hills)
+print(dataframe)
+```
+
+And the output should look like this:
+
+```
+    Ben Macdui    Ben Nevis    Braeriach   Cairn Toul  Sgòr an Lochain Uaine
+0  1309.000000  1345.000000  1296.000000  1291.000000            1258.000000
+1    57.070453    56.796850    57.078628    57.054611              57.057999
+2    -3.668262    -5.003508    -3.728024    -3.710420              -3.725416
+```
+
+Now, this is not necessarily the most logical order to store data. It would probably make more sense for the columns to be categories or types of data, rather than the names of each hill. To do this, we need to think about how to structure our dictionary. Pandas works best with dictionaries when the dictionary keys refer to column names or headers. Here's a better dictionary to use:
+
+```python
+scottish_peaks = {'Hill Name': ['Ben Nevis', 'Ben Macdui', 'Braeriach', 'Cairn Toul', 'Sgòr an Lochain Uaine'],
+                  'Height': [1345, 1309, 1296, 1291, 1258],
+                  'Latitude': [56.79685, 57.070453, 57.078628, 57.054611, 57.057999],
+                  'Longitude': [-5.003508, -3.668262, -3.728024, -3.71042, -3.725416]}
+```
+We've made the dictionary keys into category-like names, and then these are followed by a list of corresponding data values. Pandas will be able to read this better. Replace the dictionary in your script above and run it again. Now you should get the following output:
+
+```
+   Height   Latitude  Longitude              Hill Name
+0    1345  56.796850  -5.003508              Ben Nevis
+1    1309  57.070453  -3.668262             Ben Macdui
+2    1296  57.078628  -3.728024              Braeriach
+3    1291  57.054611  -3.710420             Cairn Toul
+4    1258  57.057999  -3.725416  Sgòr an Lochain Uaine
+```
+
+This is a more useful layout for our DataFrame. The column names are ordered alphabetically by default (left to right), but we can specify the order using the `columns` keyword. (Another way would be to use an `OrderedDict` data structure, but that's not covered in this tutorial...)
+
+In your original script, replace the line where you create the DataFrame with the following:
+
+```python
+dataframe = pd.DataFrame(scottish_peaks, columns=['Hill Name', 'Height', 'Latitude', 'Longitude'])
+```
+
+Run the modified script. You should now get output that looks like this:
+
+```
+               Hill Name  Height   Latitude  Longitude
+0              Ben Nevis    1345  56.796850  -5.003508
+1             Ben Macdui    1309  57.070453  -3.668262
+2              Braeriach    1296  57.078628  -3.728024
+3             Cairn Toul    1291  57.054611  -3.710420
+4  Sgòr an Lochain Uaine    1258  57.057999  -3.725416
+```
+
+Note how the dictionary keys have become column headers running along the top, and as with the Series, an index number has been automatically generated. The columns are also in the order we specified.
+
+Pandas dataframes have many useful methods that can be used to inspect the data and manipulate it. We are going to have a look at just a few of them.
+
+If our DataFrame was huge, we would not want to print all of it to screen, instead we could have a look at the first few items with the `head` method, which takes the number of rows you want to view as its argument.
+
+```
+print(dataframe.head(3))
+```
+
+If we added this to the end of our script and ran it again, it would print:
+
+```
+    Hill Name  Height   Latitude  Longitude
+0   Ben Nevis    1345  56.796850  -5.003508
+1  Ben Macdui    1309  57.070453  -3.668262
+2   Braeriach    1296  57.078628  -3.728024
+```
+
+We could also look at the last couple of values with the `tail` method:
+
+```python
+print(dataframe.tail(2))
+```
+
+Which would give us:
+
+```
+               Hill Name  Height   Latitude  Longitude
+3             Cairn Toul    1291  57.054611  -3.710420
+4  Sgòr an Lochain Uaine    1258  57.057999  -3.725416
+```
+<a name="accessing"></a>
+## Learn how to access data from a Pandas DataFrame
+
+Our columns in the `dataframe` are individual Series of data. We can access them by referring to the column name e.g. `dataframe['column-name']`. Have a go at adding these extra statements to your script, and check that you get the same output:
+
+```python
+print(dataframe['Hill Name'])
+```
+Should print:
+```
+0                Ben Nevis
+1               Ben Macdui
+2                Braeriach
+3               Cairn Toul
+4    Sgòr an Lochain Uaine
+Name: Hill Name, dtype: object
+
+```
+And:
+
+```python
+print(dataframe['Height'])
+```
+Should print:
+```
+0    1345
+1    1309
+2    1296
+3    1291
+4    1258
+Name: Height, dtype: int64
+```
+
+Note that pandas DataFrames are accessed _primarily by columns_, in a sense the row is less important to a DataFrame. For example, what do you think would happend using the following code?
+
+```python
+dataframe[0]
+```
+(Try adding it your script somewhere at the end and printing the result.)
+
+
+Ouch! That's a lot of error messages... __The columns cannot be accessed by their index number in this way__, you must use the column name. You may have thought that this might return the row index instead, but we have to use a different method to get the row:
+
+
+```python
+dataframe.iloc[0]
+```
+Gives you the *row* at position zero. (The "first" row in normal speech). This contains all the information about Ben Nevis:
+```
+Hill Name    Ben Nevis
+Height            1345
+Latitude       56.7968
+Longitude     -5.00351
+Name: 0, dtype: object
+```
+
+The `iloc` method gives us access to the DataFrame in more traditional 'matrix' style notation, i.e. `[row, column]` notation. So if we wanted to get the height of Ben Nevis specifically, we could do:
+
+```python
+dataframe.iloc[0,0]
+```
+Which would give us `'Ben Nevis`.
+
+A way to remeber this is that `iloc` is short for "**i**nteger **loc**ation". But a more pandas-style approach would be to do:
+
+```python
+dataframe['Hill Name'][0]
+```
+Which would also give us `'Ben Nevis`.
+
+In other words, we are saying to our pandas DataFrame _get me the `Hill Name` Series, and give me the zero-th item in that Series._ Remember Python uses zero-indexing (starts counting items from zero). Pandas is the same in this regard.
+
+An even quicker way to access our columns (less typing) is to treat the names as if they were attributes of our DataFrame, like this:
+
+```python
+dataframe.Height
+```
+This would return:
+
+```
+0    1345
+1    1309
+2    1296
+3    1291
+4    1258
+Name: Height, dtype: int64
+```
+**Experiment with modifying your script (or interactively if using IPython) to access different elements of your data frame**
+
+
+<a name="filtering"></a>
+## Learn how to filter data in a Pandas DataFrame
+
+We can also apply conditions to the data we are inspecting, such as to filter our data.
+
+```python
+dataframe.Height > 1300
+```
+
+Would return:
+```
+0     True
+1     True
+2    False
+3    False
+4    False
+Name: Height, dtype: bool
+```
+
+This returns a new Series of True/False values though. To actually filter the data, we need to use this Series to mask our original DataFrame:
+
+```python
+dataframe[dataframe.Height > 1300]
+```
+
+<a name="appending"></a>
+## Learn how to append data to an exisiting DataFrame
+
+We can also append data to the DataFrame. This is done using the following syntax:
+
+```python
+dataframe['Region'] = ['Grampian', 'Cairngorm', 'Cairngorm', 'Cairngorm', 'Cairngorm']
+```
+
+Using the original script, try adding this line to the end of the script to append the Regions data and then printing the DataFrame again. _If you are following the tutorial by building up a script as you go along, it should now look like this:_
+
+```python
+import pandas as pd
+
+scottish_hills = {'Hill Name': ['Ben Nevis', 'Ben Macdui', 'Braeriach', 'Cairn Toul', 'Sgòr an Lochain Uaine'],
+                  'Height': [1345, 1309, 1296, 1291, 1258],
+                  'Latitude': [56.79685, 57.070453, 57.078628, 57.054611, 57.057999],
+                  'Longitude': [-5.003508, -3.668262, -3.728024, -3.71042, -3.725416]}
+
+dataframe = pd.DataFrame(scottish_hills, columns=['Hill Name', 'Height', 'Latitude', 'Longitude'])
+dataframe['Region'] = ['Grampian', 'Cairngorm', 'Cairngorm', 'Cairngorm', 'Cairngorm']
+print(dataframe)
+```
+
+Run the script again, the output should now be:
+
+```
+               Hill Name  Height   Latitude  Longitude     Region
+0              Ben Nevis    1345  56.796850  -5.003508   Grampian
+1             Ben Macdui    1309  57.070453  -3.668262  Cairngorm
+2              Braeriach    1296  57.078628  -3.728024  Cairngorm
+3             Cairn Toul    1291  57.054611  -3.710420  Cairngorm
+4  Sgòr an Lochain Uaine    1258  57.057999  -3.725416  Cairngorm
+```
+<a name="sorting"></a>
+### Learn how to read data from a file using Pandas
+
+Pandas has built in tools for reading data from a variety of data formats, including Excel spreadsheets, raw text and csv files. It can also interface with databases such as MySQL, but we are not going to cover databases in this tutorial.
+
+We've provided the `scottish_hills.csv` file<a href="https://github.com/ourcodingclub/CC-python-pandas-matplotlib" target="_blank">in this github repository</a> The file contains **all** the mountains above 3000 feet (about 914 metres) in Scotland. We can load this easily into a DataFrame with the `read_csv` command.
+
+If you are writing a complete script to follow the tutorial, create a new file and enter:
+
+```python
+import pandas as pd
+
+dataframe = pd.read_csv("scottish_peaks.csv")
+print(dataframe.head(10))
+```
+(IPython users can continue to just type in the commands above below the `import` statement.)
+
+Run the script, and you should get the following output:
+
+```
+                    Hill Name  Height   Latitude  Longitude    Osgrid
+0       A' Bhuidheanach Bheag   936.0  56.870342  -4.199001  NN660775
+1               A' Chailleach   997.0  57.693800  -5.128715  NH136714
+2               A' Chailleach   929.2  57.109564  -4.179285  NH681041
+3  A' Chraileag (A' Chralaig)  1120.0  57.184186  -5.154837  NH094147
+4             A' Ghlas-bheinn   918.0  57.255090  -5.303687  NH008231
+5               A' Mhaighdean   967.0  57.719644  -5.346720  NH007749
+6              A' Mharconaich   973.2  56.857002  -4.290668  NN604762
+7                  Am Basteir   934.0  57.247931  -6.202982  NG465253
+8                   Am Bodach  1031.8  56.741727  -4.983393  NN176650
+9               Am Faochagach   953.0  57.771801  -4.853899  NH303793
+```
+
+We've used the `head()` function to give us only the first 10 items in the DataFrame, and avoid printing all 282 mountains out to screen...
+
+It looks like this table contains the hills in alphabetical order. It would be nice to see them in order of height. We can sort the DataFrame using the `sort_values` method. You can add the following lines to your script:
+
+```python
+sorted_hills = dataframe.sort_values(by=['Height'], ascending=False)
+
+# Let's have a look at the top 5 to check
+print(sorted_hills.head(5))
+```
+
+Run the script with these extra lines, and have a look at the output:
+
+```
+                       Hill Name  Height   Latitude  Longitude    Osgrid
+92                     Ben Nevis  1344.5  56.796891  -5.003675  NN166712
+88   Ben Macdui (Beinn Macduibh)  1309.0  57.070368  -3.669099  NN988989
+104                    Braeriach  1296.0  57.078298  -3.728389  NN953999
+115                   Cairn Toul  1291.0  57.054397  -3.710773  NN963972
+212        Sgor an Lochain Uaine  1258.0  57.058369  -3.725797  NN954976
+```
+
+We now have our hills sorted by height. Note how we've used the `ascending=False` keyword to get the heights sorted in descending order, from highest to lowest.
+
+<a name="matplotlib"></a>
+## Understand the basics of the matplotlib plotting package
+
+
 
 
 ## Summary
