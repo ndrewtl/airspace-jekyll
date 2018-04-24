@@ -46,7 +46,7 @@ _If you have used R's dataframes before, or the `numpy` package in Python, you m
 
 Pandas is a hugely popular, and still growing, Python library used across a range of disciplines from environmental and climate science, through to social science, linguistics, biology, as well as a number of applications in industry such as data analytics, financial trading, and many others. In the <a href="https://ourcodingclub.github.io/2018/01/26/python-intro.html" target="_blank">Introduction to Python tutorial</a> we had a look at how Python had grown rapidly in terms of users over the last decade or so, based on traffic to the <a href="https://stackoverflow.com" target="_blank">StackOverflow</a> question and answer site. A similar graph has been produced showing the growth of Pandas compared to some other Python software libraries! (Based on StackOverflow question views per month).
 
-<center><img src="{{ site.baseurl }}/img/python_pandas_growth.png" alt="Img" style="width: 1000px"></center>
+<center><img src="{{ site.baseurl }}/img/python-pandas-growth.png" alt="Img" style="width: 1000px"></center>
 
 These graphs of course should be taken with a pinch of salt, as there is no agreed way of absolutely determing programming langauge and library popularity, but they are interesting to think about nonetheless. 
 
