@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Python Data Analysis with Pandas and Matplotlib
-subtitle: Using the Python data analysis package pandas
+subtitle: Create plots and manipulate data with Pandas and Matplotlib 
 date: 2018-04-18 00:00:00
 author: Declan V.
 meta: "PythonPandas"
