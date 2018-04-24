@@ -31,9 +31,9 @@ Welcome to this tutorial about data analysis with Python and the Pandas library.
 
 #### <a href="#stats">8. Learn how to bring together other packages to enhance your plots</a>
 
-#### <a href="#customise">9. Learn how to further customise the appearance of matplotlib plots</a>
+#### <a href="#customise">9. Learn how to further customise the appearance of Matplotlib plots</a>
 
-#### <a href="#inspiration">10. Be inspired to experiment further with matplotlib!</a>
+#### <a href="#inspiration">10. Be inspired to experiment further with Matplotlib!</a>
 
 
 <a name="understanding"></a>
@@ -44,25 +44,25 @@ Welcome to this tutorial about data analysis with Python and the Pandas library.
 
 _If you have used R's dataframes before, or the `numpy` package in Python, you may find some similarities in the Python `pandas` package. But if not, don't worry because this tutorial doesn't assume any knowledge of NumPy or R, only basic-level Python._
 
-`pandas` is a hugely popular, and still growing, Python library used across a range of disciplines from environmental and climate science, through to social science, linguistics, biology, as well as a number of applications in industry such as data analytics, financial trading, and many others. In the <a href="https://ourcodingclub.github.io/2018/01/26/python-intro.html" target="_blank">Introduction to Python tutorial</a> we had a look at how Python had grown rapidly in terms of users over the last decade or so, based on traffic to the <a href="https://stackoverflow.com" target="_blank">StackOverflow</a> question and answer site. A similar graph has been produced showing the growth of `pandas` compared to some other Python software libraries! (Based on StackOverflow question views per month).
+Pandas is a hugely popular, and still growing, Python library used across a range of disciplines from environmental and climate science, through to social science, linguistics, biology, as well as a number of applications in industry such as data analytics, financial trading, and many others. In the <a href="https://ourcodingclub.github.io/2018/01/26/python-intro.html" target="_blank">Introduction to Python tutorial</a> we had a look at how Python had grown rapidly in terms of users over the last decade or so, based on traffic to the <a href="https://stackoverflow.com" target="_blank">StackOverflow</a> question and answer site. A similar graph has been produced showing the growth of Pandas compared to some other Python software libraries! (Based on StackOverflow question views per month).
 
 <center><img src="{{ site.baseurl }}/img/python_pandas_growth.png" alt="Img" style="width: 1000px"></center>
 
 These graphs of course should be taken with a pinch of salt, as there is no agreed way of absolutely determing programming langauge and library popularity, but they are interesting to think about nonetheless. 
 
-`pandas` is best suited for structured, __labelled__ data, in other words, tabular data, that has headings associated with each column of data. The <a href="https://pandas.pydata.org" target="_blank">official Pandas website</a> describes Pandas' data-handling strengths as:
+Pandas is best suited for structured, __labelled__ data, in other words, tabular data, that has headings associated with each column of data. The <a href="https://pandas.pydata.org" target="_blank">official Pandas website</a> describes Pandas' data-handling strengths as:
 
 ##### - Tabular data with heterogeneously-typed columns, as in an SQL table or Excel spreadsheet.
 ##### - Ordered and unordered (not necessarily fixed-frequency) time series data.
 ##### - Arbitrary matrix data (homogeneously typed or heterogeneous) with row and column labels.
 ##### - Any other form of observational / statistical data sets. The data actually need not be labelled at all to be placed into a `pandas` data structure.
  
-Some other important points to note about `pandas` are:
+Some other important points to note about Pandas are:
 
 ##### - Pandas is __fast__. Python sometimes gets a bad rap for being a bit slow compared to 'compiled' languages such as C and Fortran. But deep down in the internals of Pandas, it is actually written in C, and so processing large datasets is no problem for Pandas.
 ##### - Pandas is a dependency of another library called `statsmodels`, making it an important part of the statistical computing ecosystem in Python.
 
-You can read more about the Pandas package at the <a href="https://pandas.pydata.org/" target="_blank">pandas project website</a>.
+You can read more about the Pandas package at the <a href="https://pandas.pydata.org/" target="_blank">Pandas project website</a>.
 
 <a name="following"></a>
 ## Ways of running Python with Pandas
@@ -123,7 +123,7 @@ By convention, the `pandas` module is almost always imported this way as `pd`. E
 
 _If you are running Python interactively, such as in IPython, you will need to type in the same import statement at the start of each interactive session._
 
-Try the following to see which version of pandas you are running:
+Try the following to see which version of Pandas you are running:
 
 ```python
 import pandas as pd
@@ -137,7 +137,7 @@ Run the script and note the output. My script prints `'0.22.0'`, but you may be 
 
 ### Files for this tutorial
 
-This short tutorial is mainly based around working with the basic `pandas` commands and data structures, but we also use some data about Scottish mountains, provided in the form of a `.csv` file (`scottish_hills.csv`).
+This short tutorial is mainly based around working with the basic Pandas commands and data structures, but we also use some data about Scottish mountains, provided in the form of a `.csv` file (`scottish_hills.csv`).
 
 You can download the data from <a href="https://github.com/ourcodingclub/CC-python-pandas-matplotlib" target="_blank">this Github repository</a>. Clone and download the repo as a zipfile by pressing the big green button, then unzip it. You should then save any Python scripts to that folder, so they can access the data easily.
 
@@ -150,7 +150,7 @@ _As a side note, and some interesting trivia, the dataset we are using was origi
 <a name="datastructures"></a>
 ## Understand the basic Pandas data structures
 
-`pandas` has two core data structures used to store data: The _Series_ and the _DataFrame_. 
+Pandas has two core data structures used to store data: The _Series_ and the _DataFrame_. 
 
 ### Series
 
@@ -185,13 +185,13 @@ Which in addition will print:
 array([ 4.6,  2.1, -4. ,  3. ])
 ```
 
-For a lot of applications, a plain old _Series_ is probably not a lot of use, but it is the core component of the `pandas` workhorse, the _DataFrame_, so it's useful to know about.
+For a lot of applications, a plain old _Series_ is probably not a lot of use, but it is the core component of the Pandas workhorse, the _DataFrame_, so it's useful to know about.
 
 ### DataFrames
 
 The DataFrame represents tabular data, a bit like a spreadsheet. DataFrames are organised into colums (each of which is a _Series_), and each column can store a single data-type, such as floating point numbers, strings, boolean values etc. DataFrames can be indexed by either their row or column names. (They are similar in many ways to R's `data.frame`.)
 
-We can create a DataFrame in `pandas` from a Python dictionary, or by loading in a text file containing tabular data. First we are going to look at how to create one from a dictionary.
+We can create a DataFrame in Pandas from a Python dictionary, or by loading in a text file containing tabular data. First we are going to look at how to create one from a dictionary.
 
 #### A refresher on the Dictionary data type
 
@@ -246,7 +246,7 @@ Enclosed in a print function, i.e. `print(scottish_hills['Braeriach']`, this wou
 
 ### Back to DataFrames...
 
-If we didn't have any real data to play with from an external file, we could manually create a DataFrame from a Python dictionary. Using the `scottish_hills` dictionary above, we can load it into a pandas DataFrame with this syntax:
+If we didn't have any real data to play with from an external file, we could manually create a DataFrame from a Python dictionary. Using the `scottish_hills` dictionary above, we can load it into a Pandas DataFrame with this syntax:
 
 ```python
 dataframe = pd.DataFrame(scottish_hills)
@@ -254,7 +254,7 @@ dataframe = pd.DataFrame(scottish_hills)
 
 **Note**: You will sometimes see `df` used as shorthand convention for a DataFrame object in many Pandas examples, such as in the official Pandas documentation and on StackOverflow. (I have used `dataframe` for readability here.)
 
-Try creating a Python script that converts a Python dictionary into a `pandas` DataFrame, then print the DataFrame to screen. You can use the `scottish_hills` example or experiment with your own.
+Try creating a Python script that converts a Python dictionary into a Pandas DataFrame, then print the DataFrame to screen. You can use the `scottish_hills` example or experiment with your own.
 
 ```python
 import pandas as pd
@@ -352,7 +352,7 @@ Which would give us:
 4  Sgòr an Lochain Uaine    1258  57.057999  -3.725416
 ```
 
-Our columns in the `dataframe` are individual Series of data. We can access them by referring to the column name e.g. `dataframe['column-name']`. Have a go at adding these extra statements to your script, and check that you get the same output:
+Our columns in the `dataframe` object are individual Series of data. We can access them by referring to the column name e.g. `dataframe['column-name']`. Have a go at adding these extra statements to your script, and check that you get the same output:
 
 ```python
 print(dataframe['Hill Name'])
@@ -573,7 +573,7 @@ Like Pandas, Matplotlib has a few conventions that you will see in the examples,
 import matplotlib.pyplot as plt
 ```
 
-And thereafter, we could access the most commonly used features of matplotlib with `plt` as shorthand. Note that this `import` statement is at the _submodule_ level. We are not importing the full `matplotlib` module, but a subset of it called `pyplot`. Pyplot contains the most useful features of matplotlib with an interface that makes interactive-style plotting easier. Submodule imports have the form `import module.submodule` and you will see them used in other Python libraries too sometimes. 
+And thereafter, we could access the most commonly used features of Matplotlib with `plt` as shorthand. Note that this `import` statement is at the _submodule_ level. We are not importing the full `matplotlib` module, but a subset of it called `pyplot`. Pyplot contains the most useful features of Matplotlib with an interface that makes interactive-style plotting easier. Submodule imports have the form `import module.submodule` and you will see them used in other Python libraries too sometimes. 
 
 ### Matplotlib basics
 
@@ -801,7 +801,7 @@ plt.savefig("munros.png")
 
 <center><img src="{{ site.baseurl }}/img/python-munros.png" alt="Img" style="width: 1000px"></center>
 
-Finally, there is one more bonus matplotlib example plot I would like to share, create by PhD student James Warner at Exeter University. It shows precipitable water in the atmopshere over the year 2017, projected over the globe. He has even created an animation of it which can be viewed <a href="https://twitter.com/MetmanJames/status/978659301337202693" target="_blank">on his Twitter account</a>. This was all done using Python and some other Python libraries, including Matplotlib, Numpy, Cartopy, and a few others. It would take a long time to explain all of it, but hopefully it is some inspiration of the cool things you can do in Python with data visualisation. 
+Finally, there is one more bonus Matplotlib example plot I would like to share, create by PhD student James Warner at Exeter University. It shows precipitable water in the atmopshere over the year 2017, projected over the globe. He has even created an animation of it which can be viewed <a href="https://twitter.com/MetmanJames/status/978659301337202693" target="_blank">on his Twitter account</a>. This was all done using Python and some other Python libraries, including Matplotlib, Numpy, Cartopy, and a few others. It would take a long time to explain all of it, but hopefully it is some inspiration of the cool things you can do in Python with data visualisation. 
 
 The Python code for this is actually not too complicated and he has shared it <a href="http://empslocal.ex.ac.uk/people/phd/jw773/Plot_PWAT_OrthoProj.py" target="_blank">here</a>.
 
