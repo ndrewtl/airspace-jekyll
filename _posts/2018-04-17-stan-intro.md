@@ -465,13 +465,13 @@ stan_hist(fit)
 <center> <img src="{{ site.baseurl }}/img/stan_histogram.png" alt="Img" style="width: 900px;"/> </center>
 <center>Figure 10. Density plots and histograms of the posteriors for the intercept, slope and residual variance from the `Stan` model.</center>
 
-And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in.
+And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in. Note that the 95% credible intervals for the `beta` and `sigma` parameters are very small, thus you only see the dots.
 
 ```r
 plot(fit, show_density = FALSE, ci_level = 0.5, outer_level = 0.95, fill_color = "salmon")
 ```
 
-<center> <img src="{{ site.baseurl }}/img/stan_effects.png" alt="Img" style="width: 500px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/stan_caterpillar.png" alt="Img" style="width: 500px;"/> </center>
 <center>Figure 11. Parameter estimates from the `Stan` model.</center>
 
 #### Posterior Predictive Checks
@@ -619,17 +619,17 @@ In the next Stan tutorial, we will build on the concept of a simple linear model
 
 __Stan is a run by a small, but dedicated group of developers. If you are new to Stan, you can join the mailing list. It's a great resource for understanding and diagnosing problems with Stan, and by posting problems you encounter you are helping yourself, and giving back to the community.__
 
-<a href="http://mc-stan.org/" target="_blank">WEBSITE</a>
+<a href="http://mc-stan.org/" target="_blank">Stan website</a>
 
-<a href="https://github.com/stan-dev/stan/releases/download/v2.14.0/stan-reference-2.14.0.pdf" target="_blank">MANUAL(v2.14)</a>
+<a href="https://github.com/stan-dev/stan/releases/download/v2.14.0/stan-reference-2.14.0.pdf" target="_blank">Stan manual(v2.14)</a>
 
-<a href="https://cran.r-project.org/web/packages/rstan/vignettes/rstan.html" target="_blank">RSTAN</a>
+<a href="https://cran.r-project.org/web/packages/rstan/vignettes/rstan.html" target="_blank">Rstan vignette</a>
 
 <a href="https://t.co/6d3omvBkrd" target="_blank">STANCON 2017 Intro Course Materials</a>
 
 <a href="http://xcelab.net/rm/statistical-rethinking/" target="_blank">Statistical Rethinking by R. McElreath</a>
 
-<a href="https://groups.google.com/forum/#!forum/stan-users" target="_blank">MAILING LIST</a>
+<a href="https://groups.google.com/forum/#!forum/stan-users" target="_blank">Stan mailing list</a>
 
 
 
