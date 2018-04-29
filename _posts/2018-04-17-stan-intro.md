@@ -638,7 +638,7 @@ __Stan is a run by a small, but dedicated group of developers. If you are new to
 
 
 
-<h3><a href="https://www.surveymonkey.com/r/XD85MW5" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<h3><a href="https://www.surveymonkey.co.uk/r/P39ZP2G" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 
 <br>
 <h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
