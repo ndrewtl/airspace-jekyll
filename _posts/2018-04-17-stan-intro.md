@@ -471,7 +471,7 @@ And we can generate plots which indicate the mean parameter estimates and any cr
 plot(fit, show_density = FALSE, ci_level = 0.5, outer_level = 0.95, fill_color = "salmon")
 ```
 
-<center> <img src="{{ site.baseurl }}/img/stan_caterpillar.png" alt="Img" style="width: 500px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/stan_caterpillar.png" alt="Img" style="width: 900px;"/> </center>
 <center>Figure 11. Parameter estimates from the `Stan` model.</center>
 
 #### Posterior Predictive Checks
