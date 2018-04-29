@@ -16,9 +16,9 @@ tags: data_manip
 
 ### Tutorial Aims:
 
-#### 1. Isolate and retrieve data from a html web page
+#### 1. Isolate and retrieve data from a `html` web page
 
-#### 2. Automate the download of multiple web pages using R
+#### 2. Automate the download of multiple web pages using `R`
 
 #### 3. Understand how web scraping can speed up the harvesting of online data
 
@@ -28,11 +28,11 @@ tags: data_manip
 
 #### <a href="#data">2. Download a `.html` web page  </a>
 
-#### <a href="#import">3. Import a `.html` into R  </a>
+#### <a href="#import">3. Import a `.html` file into `R`  </a>
 
 #### <a href="#locate">4. Locate useful data using `grep` </a>
 
-#### <a href="#isolate">5. Remove html data with `gsub` and regular expressions </a>
+#### <a href="#isolate">5. Filter html data with `gsub` and regular expressions </a>
 
 #### <a href="#multiple">6. Import multiple web pages with `mapply` </a>
 
@@ -46,7 +46,7 @@ Web scraping refers to the action of extracting data from a web page using a com
 
 Open up a new R Script where you will be adding the code for this tutorial. All the resources for this tutorial, including some helpful cheatsheets, can be downloaded from <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">this repository</a>. Clone and download the repo as a zipfile, then unzip and set the folder as your working directory by running the code below (subbing in the real path), or clicking `Session/ Set Working Directory/ Choose Directory` in the RStudio menu.
 
-Alternatively, you can fork  <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">the repository</a> to your own Github account and then add it as a new RStudio project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync RStudio and Github and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial</a>.
+Alternatively, you can fork  <a href="https://github.com/ourcodingclub/CC-12-Webscraping" target="_blank">the repository</a> to your own Github account and then add it as a new `RStudio` project by copying the HTTPS / SSH link. For more details on how to register on Github, download git, sync `RStudio` and `Github` and do version control, please check out our previous <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">tutorial</a>.
 
 ```r
 setwd("<PATH TO FOLDER>")
@@ -396,6 +396,10 @@ A full `.R` script for this tutorial along with some helpful cheatsheets and dat
 
 <hr>
 <hr>
+
+__Check out <a href="https://ourcodingclub.github.io/workshop/" target="_blank">this page</a> to learn how you can get involved! We are very happy to have people use our tutorials and adapt them to their needs. We are also very keen to expand the content on the website, so feel free to get in touch if you'd like to write a tutorial!__
+
+This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/). <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" alt="Img" style="width: 100px;"/></a>
 
 <h3><a href="https://www.surveymonkey.co.uk/r/S9R5G2T" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 <br>
