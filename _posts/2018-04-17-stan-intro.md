@@ -636,7 +636,9 @@ __Stan is a run by a small, but dedicated group of developers. If you are new to
 <hr>
 <hr>
 
+__Check out <a href="https://ourcodingclub.github.io/workshop/" target="_blank">this page</a> to learn how you can get involved! We are very happy to have people use our tutorials and adapt them to their needs. We are also very keen to expand the content on the website, so feel free to get in touch if you'd like to write a tutorial!__
 
+This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/). <a href="https://creativecommons.org/licenses/by-sa/4.0/"><img src="https://licensebuttons.net/l/by-sa/4.0/80x15.png" alt="Img" style="width: 100px;"/></a>
 
 <h3><a href="https://www.surveymonkey.co.uk/r/P39ZP2G" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 
