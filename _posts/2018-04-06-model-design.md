@@ -275,7 +275,7 @@ Is it better to have one model with five variables or one model per variable? Wh
 
 ### What is the most important result from a model output?
 
-## Why does it matter which type of models we use?
+### Why does it matter which type of models we use?
 
 <a name="linear"></a>
 
@@ -518,7 +518,7 @@ MCMCplot(treatment_mcmc$VCV)
 
 <center> <img src="{{ site.baseurl }}/img/mcmc_vis1.png" alt="Img" style="width: 400px;"/>  <img src="{{ site.baseurl }}/img/mcmc_vis2.png" alt="Img" style="width: 500px;"/></center>
 
-#### <a href="#generalised"> Conclusions </a>
+#### Conclusions
 
 So, today we have learned that in order to design a statistical model we first need to think about our questions, the structure in the data we are working with and the types of assumptions that we want to make. No model will ever be perfect, but we can use hierarchical models to minimize the assumptions that we are making about our data and to better represent the complex data structures that we often have in ecology and other disciplines. Designing a statistical model can at first seem very overwhelming, but it gets easier over time and in the end can be one of the most fun bits of ecology - believe it or not! And the more tools you build in your statistical toolkit to help you developing appropriate statistical models, the better you will be able to tackle the challenges that ecological data throw your way! Happy modelling!
 
@@ -534,7 +534,7 @@ If you are keen, you can now try out the `brms` package and generate the Stan co
 
 
 
-<h3><a href="INSERT LINK" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
+<h3><a href="https://www.surveymonkey.co.uk/r/PFJ7S2D" target="_blank">&nbsp; We would love to hear your feedback, please fill out our survey!</a></h3>
 
 <br>
 <h3>&nbsp; You can contact us with any questions on <a href="mailto:ourcodingclub@gmail.com?Subject=Tutorial%20question" target = "_top">ourcodingclub@gmail.com</a></h3>
