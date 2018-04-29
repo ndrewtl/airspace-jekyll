@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Introduction to Python
+title: Intro to Python
 subtitle: Importing and exploring data with Python, writing good scientific code
 date: 2018-01-26 00:00:00
 author: Declan
