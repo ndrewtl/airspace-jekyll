@@ -17,7 +17,7 @@ tags: modelling data_manip data_vis
 
 #### <a href="#model"> 1. Learn what is a statistical model </a>
 #### <a href="#question"> 2. Come up with a research question </a>
-#### <a href="#thinking"> 2. Think about our data </a>
+#### <a href="#thinking"> 3. Think about our data </a>
 #### <a href="#design"> 4. Think about our experimental design </a>
 #### <a href="#types"> 5. Turn a question in to a model </a>
 #### <a href="#models"> 6. Learn about the different types of models </a>
