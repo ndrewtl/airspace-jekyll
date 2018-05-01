@@ -36,7 +36,7 @@ tags: modelling advanced
 
 <a name="intro"></a>
 
-__Bayesian modelling like any statistical modelling can require work to design the appropriate model for your research question and then to develope that model so that it meets the assumptions of your data and runs. You can check out the Coding Club tutorial on <a href="https://ourcodingclub.github.io/2018/04/06/model-design.html" target="_blank"> how to design a model</a>, and <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian Modelling in `MCMCglmm`</a> for key background information on model design and Bayesian statistics.__
+__Bayesian modelling like any statistical modelling can require work to design the appropriate model for your research question and then to develop that model so that it meets the assumptions of your data and runs. You can check out the Coding Club tutorial on <a href="https://ourcodingclub.github.io/2018/04/06/model-design.html" target="_blank"> how to design a model</a>, and <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian Modelling in `MCMCglmm`</a> for key background information on model design and Bayesian statistics.__
 
 __Statistical models can be fit in a variety of packages in `R` or other statistical languages. But sometimes the perfect model that you can design conceptually is very hard or impossible to implement in a package or programme that restricts the distributions and complexity that you can use. This is when you may want to move to a statistical programming language such as <a href="http://mc-stan.org/" target="_blanl">`Stan`</a>.__
 
