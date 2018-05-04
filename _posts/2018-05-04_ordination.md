@@ -79,7 +79,7 @@ The plot you`ve made should look like this:
 
 It is now a lot easier to interpret your data. Can you see which samples have a similar species composition?
 
-In this tutorial, we only focus on __unconstrained ordination or indirect gradient analysis__. This ordination goes in two steps. First, we will perfom an ordination on a species abundance matrix. Then we will use environmental data (samples by environmental variables) to interpret the gradients that were uncovered by the ordination. The final result will look like this:
+__In this tutorial, we only focus on unconstrained ordination or indirect gradient analysis.__ This ordination goes in two steps. First, we will perfom an ordination on a species abundance matrix. Then we will use environmental data (samples by environmental variables) to interpret the gradients that were uncovered by the ordination. The final result will look like this:
 
 <center> <img src="{{ site.baseurl }}/ordexample2.png" alt="Img" style="width: 800px;"/> </center>
 
@@ -164,7 +164,7 @@ In contrast to some of the other ordination techniques, species are represented 
 
 <center> <img src="{{ site.baseurl }}/Unimodalresp.png" alt="Img" style="width: 800px;"/> </center>
 
-Unfortunately, this linear assumption causes PCA to suffer from a serious problem, __the horseshoe orarch effect__, which makes it unsuitable for most ecological datasets. The PCA solution is often distorted into a horseshoe/arch shape (with the toe either up or down) if beta diversity is moderate to high. The horseshoe can appear even if there is an important secondary gradient. Can you detect a horseshoe shape in the biplot?
+Unfortunately, __this linear assumption causes PCA to suffer from a serious problem, the horseshoe or arch effect__, which makes it unsuitable for most ecological datasets. The PCA solution is often distorted into a horseshoe/arch shape (with the toe either up or down) if beta diversity is moderate to high. The horseshoe can appear even if there is an important secondary gradient. Can you detect a horseshoe shape in the biplot?
 
 <a name="section5"></a>
 ### Principal Coordinate Analysis (PCoA)
@@ -277,7 +277,7 @@ NMDS2<-metaMDS(varespec,k=2,trymax=100, trace = F)
 NMDS2
 ```
 
-The results are not the same! Can you see the reason why? `metaMDS()` has indeed calculated the Bray-Curtis distances, but first applied a square root transformation on the community matrix. Check the help file for metaNMDS and try to adapt the function for NMDS2, so that the automatic transformation is turned off.
+The results are not the same! Can you see the reason why? `metaMDS()` has indeed calculated the Bray-Curtis distances, but first applied a square root transformation on the community matrix. Check the help file for `metaNMDS()` and try to adapt the function for NMDS2, so that the automatic transformation is turned off.
 
 Let`s check the results of NMDS1 with a stressplot
 
@@ -314,7 +314,7 @@ orditorp(NMDS3,display="sites",cex=1.1, air=0.01)
 <a name="section3"></a>
 # 3. Interpretation of the results
 
-So we now have a nice ordination plot and we know which plots have a similar species composition. We also know that the first ordination axis corresponds to the largest gradient in our dataset (the gradient that explains the most variance in our data), the second axis to the second biggest gradient and so on. The next question is: Which environmental variable is driving the observed differences in species composition. We can do that by correlating environmental variables with our ordination axes. Therefore, we will use a second dataset with environmental variables (sample by environmental variables). We continue using the results of the NMDS.
+So we now have a nice ordination plot and we know which plots have a similar species composition. We also know that the first ordination axis corresponds to the largest gradient in our dataset (the gradient that explains the most variance in our data), the second axis to the second biggest gradient and so on. __The next question is: Which environmental variable is driving the observed differences in species composition?__ We can do that by correlating environmental variables with our ordination axes. Therefore, we will use a second dataset with environmental variables (sample by environmental variables). We continue using the results of the NMDS.
 
 ```r
 #Load the second dataset
@@ -375,11 +375,7 @@ __This is the end of the tutorial. In this tutorial we learned:__
 ##### - how to perform an ordination analysis in vegan and ape
 ##### - how to interpret the results of the ordination
 
-For more on `vegan` and how to use it for multivariate analysis of ecological communities, read this <a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf" target="_blank">vegan tutorial</a>.
-
-Another good website to learn more about statistical analysis of ecological data is <a href="https://sites.google.com/site/mb3gustame/home" target="_blank">GUSTA ME</a>
-
-To construct this tutorial, we borrowed from <a href="https://sites.google.com/site/mb3gustame/home" target="_blank">GUSTA ME</a> and and <a href="http://ordination.okstate.edu/" target="_blank">Ordination methods for ecologists</a>.
+For more on `vegan` and how to use it for multivariate analysis of ecological communities, read this <a href="http://cc.oulu.fi/~jarioksa/opetus/metodi/vegantutor.pdf" target="_blank">vegan tutorial</a>. Another good website to learn more about statistical analysis of ecological data is <a href="https://sites.google.com/site/mb3gustame/home" target="_blank">GUSTA ME</a>. To construct this tutorial, we borrowed from <a href="https://sites.google.com/site/mb3gustame/home" target="_blank">GUSTA ME</a> and and <a href="http://ordination.okstate.edu/" target="_blank">Ordination methods for ecologists</a>.
 
 
 <hr>
