@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Intro to ordination
+title: Introduction to ordination
 subtitle: Finding patterns in your data
 date: 2018-03-11 12:15:00
 author: Koenraad
