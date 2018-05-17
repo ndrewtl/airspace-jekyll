@@ -33,7 +33,7 @@ Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-Qualit"
 
 ## Getting Started
 
-The first thing to do is open RStudio. Then make a new script file using `File/ New File/ R Script`, save it with a sensible name inside the folder you just downloaded and unzipped from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>.
+The first thing to do is open `RStudio`. Then make a new script file using `File/ New File/ R Script`, save it with a sensible name inside the folder you just downloaded and unzipped from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>.
 
 Next, in your script file you need to set your working directory to the folder you just downloaded from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>. Copy and paste the code below as a guide, but remember that the location of the folder on your computer will be different:
 
@@ -41,7 +41,7 @@ Next, in your script file you need to set your working directory to the folder y
 setwd("~/Downloads/CC-Qualit-master")
 ```
 
-Next, load (`library()`) the packages needed for this tutorial by copying the code below into your script file then running those lines through the console. Remember to `install.packages()` if this is the first time you're using these packages:
+Next, load the packages needed for this tutorial by copying the code below into your script file then running those lines of code using either `Cmd+R` on a Mac, or `Ctrl+R` on Windows. If this is the first time you're using them these packages, you'll need to install them first, for example using `install.packages("ggplot2")`, and afterwards you can use `library()` to load them.
 
 ```r
 library(ggplot2)
@@ -65,11 +65,11 @@ sust_lookup <- read.csv("sust_lookup.csv")
 # A list of boring and non-useful words, bundled with `tidytext`
 data(stop_words)
 ```
-This is anonymised data from an online survey designed to investigate whether gender and different cohabitation arrangements influence the likelihood of participants performing environmentally friendly actions around the house, like recycling or buying sustainable household products.
+These are anonymised data from an online survey designed to investigate whether gender and different cohabitation arrangements influence the likelihood of participants performing environmentally friendly actions around the house, like recycling or buying sustainable household products.
 
 This example dataset is formatted to purposely resemble the sort of thing you might generate from your own survey responses on Google Forms or Survey Monkey. It is not ready for analysis yet! We will spend some time getting the data ready for analysis, so that you can learn the skills needed to format your own data for analysis.
 
-`sust_lookup` is a table which connects the name of each column in the dataframe to the corresponding question that was asked in the survey. Replacing the raw questions with shorter column names makes it much easier to write code, and with the lookup table we can add the actual question title back in when we are creating plots. 
+The object `sust_lookup` is a table which connects the name of each column in the dataframe to the corresponding question that was asked in the survey. Replacing the raw questions with shorter column names makes it much easier to write code, and with the lookup table we can add the actual question title back in when we are creating plots. 
 
 ## 1. Formatting qualitative data
 
@@ -77,21 +77,21 @@ This example dataset is formatted to purposely resemble the sort of thing you mi
 
 Getting qualitative data into a tidy format for analysis can take some time. Most analytical tools are best suited to numerical datasets, so some coercion is needed to generate numerical values from our qualitative observations. Remember when you are designing a survey to consider how you will analyse the data, this will make it much easier later on.
 
-Some of the questions in this data set were designed on a 5 point scale, also known as a Likert scale. Each column in the dataframe contains responses to a single question. Look at the values contained in the column titled: `sustainability_daily_think`, by entering this code:
+Some of the questions in this data set were designed on a five point scale, also known as a Likert scale. Each column in the dataframe contains responses to a single question. You can Look at the values contained in the column titled  `sustainability_daily_think` entering this code:
 
 ```r
 unique(sust_data$sustainability_daily_think)
 ```
 
-You should see that the column contains 5 discrete categories that follow an intuitive order from low to high: `Never`, `Rarely`, `Sometimes`, `Often`, `All the time `. We could just treat the responses as factors, but this doesn't take into account their ordinal nature, any plots that we make will simply place the factors in alphabetical order, so instead we will ask R to treat them as an "ordered factor" using this code:
+You should see that the column contains five discrete categories that follow an intuitive order from low to high: `Never`, `Rarely`, `Sometimes`, `Often`, `All the time `. We could just treat the responses as factors, but this doesn't take into account their ordinal nature, any plots that we make will simply place the factors in alphabetical order, so instead we will ask R to treat them as an "ordered factor" using this code:
 
 ```r
 sust_data$sustainability_daily_think <- factor(sust_data$sustainability_daily_think,
-	levels=c("Never", "Rarely", "Sometimes", "Often", "All the time"), 
-	ordered=TRUE)
+	levels = c("Never", "Rarely", "Sometimes", "Often", "All the time"), 
+	ordered = TRUE)
 ```
 
-Look for other columns that you think contain ordered factor data like this one, then change them to ordered factors in the same way you did above. Search for columns using:
+Look for other columns that you think contain ordered factor data like these ones, then change them to ordered factors in the same way you did above. You can search for columns using:
 
 ```r
 head(sust_data)
@@ -103,7 +103,7 @@ OR
 str(sust_data)
 ```
 
-Other columns in the data frame, such as sust_data$energy_action, contain strings of letters, e.g. `BDEFH`. This question on the survey presented the user with a list of sustainable actions related to the home, e.g. "I have replaced my lightbulbs with energy saving lightbulbs" and asked the user to tick all the ones that applied to them. Each of the letters refers to a single action. The format of this column is similar to what you would receive if you downloaded the raw results of a Google Form.
+Other columns in the data frame, such as `sust_data$energy_action`, contain strings of letters, e.g. `BDEFH`. This question on the survey presented the user with a list of sustainable actions related to the home, e.g. "I have replaced my lightbulbs with energy saving lightbulbs" and asked the user to tick all the ones that applied to them. Each of the letters refers to a single action. The format of this column is similar to what you would receive if you downloaded the raw results of a Google Form.
 
 Imagine we want to ask the question "Does the number of sustainable energy-related actions performed vary according to gender?". To do this we need to create a column in the data frame which counts the number of letters in `sust_data$energy_action`. To do this we can use `nchar()`, a simple function which counts the number of characters in a string. Additionally, we have to use `as.character()` to coerce `energy_action` to a character variable, as it is currently encoded as a factor, which isn't compatible with `nchar()`.
 :
@@ -116,7 +116,7 @@ sust_data$energy_action_n <- nchar(as.character(sust_data$energy_action))
 
 <a name="visualise"></a>
 
-Now that we formatted our data for analysis we can visualise the data to identify some interesting patterns. 
+Now that we formatted our data for analysis we can visualise the data to identify interesting patterns. 
 
 Let's start with the Likert scales. We can create bar charts to visualise the number of responses to a question which fit into each of the ordinal categories. The correct form for the bar chart will depend on the type of question that was asked, and the wording of the various responses. For example, if potential responses were presented as "Strongly disagree", "Disagree", "Neither agree nor disagree", "Agree", "Strongly agree", you could assume that the neutral or zero answer is in the middle, with Disagree being negative and Agree being positive. On the other hand, if the answers were presented as "Never", "Rarely", "Sometimes", "Often", "All the time", the neutral or zero answer would be Never, with all other answers being positive. For the first example, we could use a "diverging stacked bar chart", and for the latter we would just use a standard "stacked bar chart".
 
@@ -200,15 +200,15 @@ __Wide Format:__
 <tr><td style="text-align:left">2</td><td>Male</td><td>3.226</td><td>6.452</td><td>32.258</td><td>38.710</td><td>19.355</td></tr>
 <tr><td colspan="7" style="border-bottom: 1px solid black"></td></tr></table>
 
-Basically, in long format each column contains a unique variable (e.g. gender, percentage), whereas in wide format, the percentage data is spread across five columns, where each column is a response type.
+In a long format, each column contains a unique variable (e.g. gender, percentage), whereas in a wide format, the percentage data is spread across five columns, where each column is a response type.
 
 And now for the code to create the plot. First, let's have a look at what we are aiming for:
 
 <center> <img src="{{ site.baseurl }}/img/diverging_bar_likert.png" alt="Img" style="width: 800px;"/> </center>
 
-This type of plot is called a diverging stacked bar chart. "Stacked" means that each bar is further split into sub-categories, in this case each bar is a gender and each sub-bar is the percentage of that gender giving a particular response. "Diverging" means that the bar is straddled over the zero line. Formatting the bar chart in this way allows us to make a visual distinction between negative responses (i.e. Never, Rarely), positive responses (i.e. Often, All the time) and neutral responses (i.e. Sometimes). It is unfortunately not straightforward to achieve a plot like this, it requires some `ggplot2` trickery.
+This type of plot is called a diverging stacked bar chart. "Stacked" means that each bar is further split into sub-categories, in this case each bar is a gender and each sub-bar is the percentage of that gender giving a particular response. "Diverging" means that the bar is straddled over the zero line. Formatting the bar chart in this way allows us to make a visual distinction between negative responses (i.e. Never, Rarely), positive responses (i.e. Often, All the time) and neutral responses (i.e. Sometimes).
 
-The main problem is getting the "Sometimes" responses to straddle the 0 line. To do this, we have to split the "Sometimes" values into two groups (`midlow` and `midhigh`), one group will sit below the zero line and one group will sit above. To do this we can use `dplyr` again:
+To get the "Sometimes" responses to straddle the 0 line, we have to split the "Sometimes" values into two groups (`midlow` and `midhigh`), one group will sit below the zero line and one group will sit above. To do this we can use `dplyr` again:
 
 
 ```r
@@ -217,10 +217,10 @@ sust_think_summ_hi_lo <- sust_think_summ_wide %>%
 		midhigh = Sometimes / 2) %>%
 	dplyr::select(gender, Never, Rarely, midlow, midhigh, Often, `All the time`) %>%
 	gather(key = response, value = perc, 2:7) %>%
-	`colnames<-`(c("gender", "response", "perc"))
+	`colnames <-`(c("gender", "response", "perc"))
 ```
 
-In the code above we have created two new columns `midhigh` and `midlow`, which both contain values from `Sometimes`, but divided by 2. The `Sometimes` column is then dropped from the data frame using `dplyr::select()`. The data frame is then gathered back into long format so there are three columns, gender, response type, and percentage of respondents.
+In the code above we have created two new columns `midhigh` and `midlow`, which both contain values from `Sometimes`, but divided by two. The `Sometimes` column is then dropped from the data frame using `dplyr::select()`. The data frame is then gathered back into long format so there are three columns, gender, response type, and percentage of respondents.
 
 Next, we have to split the data frame into two data frames, one containing the negative responses and half of `Sometimes` (i.e. `midlow`) and one containing the positive repsonses and the other half of `Sometimes` (i.e. `midhigh`). We need to do this because there are actually two sets of bars on the graph, one for the left side of the zero line and one for the right of the zero line.
 
@@ -236,7 +236,7 @@ sust_think_summ_lo <- sust_think_summ_hi_lo %>%
 	mutate(response = factor(response, levels = c("Never", "Rarely", "midlow")))
 ```
 
-Next, in order to change the colours on the plot, we need to define a custom colour scheme. To do this I'm using a colour palette from `RColorBrewer` and tweaking it a bit.
+Next, in order to change the colours on the plot, we need to define a custom colour scheme. To do this, we can use a colour palette from `RColorBrewer` and tweak it a bit.
 
 ```r
 # Use RColorBrewer to store a preset diverging colour palette as a vector of colour codes 
@@ -256,8 +256,8 @@ Now for the actual plot code!
 
 ```r
 ggplot() + 
-	geom_bar(data=sust_think_summ_hi, aes(x = gender, y=perc, fill = response), stat="identity") +
-	geom_bar(data=sust_think_summ_lo, aes(x = gender, y=-perc, fill = response), stat="identity") + 
+	geom_bar(data = sust_think_summ_hi, aes(x = gender, y=perc, fill = response), stat="identity") +
+	geom_bar(data = sust_think_summ_lo, aes(x = gender, y=-perc, fill = response), stat="identity") + 
 	geom_hline(yintercept = 0, color =c("black")) + 
 	scale_fill_manual(values = legend_pal, 
 		breaks = c("All the time", "Often", "midhigh", "Rarely", "Never"),
@@ -268,14 +268,14 @@ ggplot() +
 	theme_classic() 
 ```
 
-as you can see there are two `geom_bar()` arguments, one for the positive responses and one for the negative responses. `geom_hline()` makes the 0 line. `scale_fill_manual()` applies the colour scheme. Notice that `breaks =` is a vector of colour values that will be included in the legend, and `labels =` gives them custom names, in this case, turning "midhigh" to "Sometimes" and excluding `midlow` entirely. `coord_flip()` rotates the whole plot 90 degrees, meaning the bars are now horizontal. `labs()` and `ggtitle()` define the custom x and y axis labels and the title. `ggtitle()` accesses the lookup table to display the name of the question from the name of the column in our original data frame. `theme_classic() just makes the whole plot look nicer, removing the default grey background.
+There are two `geom_bar()` arguments - one for the positive responses and one for the negative responses. `geom_hline()` makes the 0 line. `scale_fill_manual()` applies the colour scheme. Notice that `breaks =` is a vector of colour values that will be included in the legend, and `labels =` gives them custom names, in this case, turning "midhigh" to "Sometimes" and excluding `midlow` entirely. `coord_flip()` rotates the whole plot 90 degrees, meaning the bars are now horizontal. `labs()` and `ggtitle()` define the custom x and y axis labels and the title. `ggtitle()` accesses the lookup table to display the name of the question from the name of the column in our original data frame. `theme_classic()` just makes the whole plot look nicer, removing the default grey background.
 
-Of course, there are other options to display this sort of data. You could use a pie chart, or just a basic table showing the number of responses by group, but I think that the diverging bar chart gives an effective way to compare groups of respondees, or even to compare answers to different questions, if you group by question instead of gender.
+Of course, there are other options to display this sort of data. You could use a pie chart, or just a basic table showing the number of responses by group, but the diverging bar chart effectively compares groups of respondees, or even answers to different questions, if you group by question instead of gender.
 
 
 ### Basic stacked bar chart
 
-For the second example, to demonstrate a conventional stacked bar chart, it is much easier. We will use the question on "How many of these energy related sustainable actions do you perform?", the responses to which are found in `sust_data$energy_action`.
+To make a conventional stacked bar chart, we will use the question on "How many of these energy related sustainable actions do you perform?", the responses to which are found in `sust_data$energy_action`.
 
 First, we need to count the number of sustainable actions performed, like we did earlier:
 
@@ -305,7 +305,7 @@ ggplot(sust_data, aes(x =energy_action_n, fill = gender)) +
 
 ### Bubble plot
 
-If we want to compare correlations between two categories of data, we can use a bubble plot. For example, is there a pattern between age of respondent and how often they think about sustainable activities? Unfortunately, the data from this survey doesn't contain actual age values, only age ranges (e.g. 18-20, 21-29 etc.). 
+If we want to compare correlations between two categories of data, we can use a bubble plot. For example, is there a pattern between age of respondent and how often they think about sustainable activities? The data from this survey doesn't contain actual age values, only age ranges (e.g. 18-20, 21-29 etc.). 
 
 First, create a summary table by tallying the number of responses by the two groups, age and how often they think about sustainable activities:
 
@@ -339,7 +339,7 @@ We can mine the comments for keywords to build up a more complete picture of wha
 
 ### Comments from all the questions 
 
-The following pipe collects all the comment columns along with the gender and id columns (`dplyr::select()`), then gathers those comment columns together into a single column (`gather()`), then transforms the comments column from a factor into a character class (`mutate()`). 
+The following pipe collects all the comment columns along with the gender and id columns (`dplyr::select()`), then gathers those comment columns together into a single column (`gather()`), then transforms the comments column from a factor into a character class (`mutate()`). Note that we are using `dplyr::select()` instead of just `select()` - this is because often we have other packages loaded that might also have a `select()` function within them, so we want to explicitly state that we want to use the `select()` function from the `dplyr` package.
 
 ```r
 sust_comm_gather <- sust_data %>% 
@@ -397,7 +397,7 @@ tidy_energy_often_comment_summ <- tidy_energy_often_comment %>%
 
 ggplot(tidy_energy_often_comment_summ, aes(x = energy_action_comment_word, y = n)) +
 	geom_col() +
-	xlab(NULL) +
+	xlab(NULL) +  # this means we don't want an axis title
 	coord_flip() + 
 	theme_classic()
 ```
@@ -415,13 +415,13 @@ tidy_energy_often_comment %>%
 
 <center> <img src="{{ site.baseurl }}/img/wordcloud_qual.png" alt="Img" style="width: 800px;"/> </center>
 
-For more on text mining using `tidytext` I would highly recommend <a href="https://www.tidytextmining.com" target="_blank">their Gitbook website</a>, which has some good tutorials and goes into far more depth than we have time for here..
+For more on text mining using `tidytext`, you can check out <a href="https://www.tidytextmining.com" target="_blank">the Gitbook website</a>.
 
 <a name="analyse"></a>
 
 ## 4. Analyse qualitative data
 
-Visualising qualitative data can take you a long way, and can often give more useful information than statistical analysis, but sometimes statistical analysis is needed before you can definitively prove or disprove a hypothesis. Due to the way survey data are often formatted, with lot of counts and factors, the assumptions of conventional parametric statistical analysis are often violated, necessitating a more complex statistical approach. Below are a few examples of how to test various hypotheses in our survey data. 
+Due to the way survey data are often formatted, with lot of counts and factors, the assumptions of conventional parametric statistical analysis are often violated, necessitating a more complex statistical approach. Below are a few examples of how to test various hypotheses using our survey data. 
 
 ### Chi-squared
 
@@ -432,20 +432,20 @@ gender_think_chi <- chisq.test(sust_data$gender, sust_data$sustainability_daily_
 gender_think_chi
 ```
 
-The output of the `gender_think_chi` object can be used to interpret the outcome of the chi-squared test, with a lower p-value indicating a greater probability that the two variables are dependent on each other. In this case, p = 0.01518, which is lower than the conventional threshold of 0.05, meaning we can reject the null hypothesis that gender does not correlate with the frequency that sustainable tasks are thought about.
+The output of the `gender_think_chi` object can be used to interpret the outcome of the chi-squared test, with a lower p-value indicating a greater probability that the two variables are dependent on each other. In this case, `p = 0.01518`, which is lower than the conventional threshold of `0.05`, meaning we can reject the null hypothesis that gender does not correlate with the frequency at which people think about sustainable tasks.
 
 ### Poisson regression
 
-For a more in depth analysis, we might hypothesise that gender causes the difference in the number of energy related sustainable actions performed. This is in contrast to the Chi-squared test which merely suggests a non-directional correlative tendency between the two variables. As the number of actions performed is count data, we can use a poisson regression, which is a form of generalised linear model: 
+For a more in depth analysis, we might hypothesise that gender causes the difference in the number of energy related sustainable actions performed. This is in contrast to the Chi-squared test which merely suggests a non-directional correlative tendency between the two variables. As the number of actions performed is count data, we can use a `Poisson regression`, which is a type of a generalised linear model: 
 
 ```r
 energy_action_pois <- glm(energy_action_n ~ gender, family = "poisson", data = sust_data)
 summary(energy_action_pois)
 ```
 
-In this case it seems like there actually isn't much effect of gender on number of actions performed, with a very low z-value of 0.343 and a non-significant p-value (0.732). This means I would be inclined to accept a null hypothesis that gender does not affect the number of sustainable energy actions performed. 
+In this case it seems like there actually isn't much effect of gender on number of actions performed, with a very low z-value of `0.343` and a non-significant p-value (`0.732`). This means we cann accept the null hypothesis that gender does not affect the number of sustainable energy actions performed. 
 
-### Multi-variate poisson regression
+### Multi-variate Poisson regression
 
 Going deeper, we might hypothesise that gender and age interact to determine the amount of sustainable food related actions. For example, maybe the difference between genders becomes more accentuated as age increases. Including age in our model might help to make the model fit better and explain more variance. This effect can be included in a generalised linear model as an "interaction term". In the code below `gender * age` defines the interaction between those two explanatory variables:
 
@@ -454,8 +454,11 @@ energy_action_pois_int <- glm(energy_action_n ~ gender * age, family = "poisson"
 summary(energy_action_pois_int)
 ```
 
-Unfortunately we still have no significant p-values, and additionally it seems like adding that extra variable hasn't added to the quality of the model. Comparing the AIC values, the original model has a smaller AIC than the more complex model, meaning that the original model is generally of better fit and quality. 
+We don't find support for our hypothesis that gender differences increase with age, as the effect size for the interaction term is very small.
 
+### Conclusion
+
+__In this tutorial, we learned how to visualise qualitative data using different types of plots, as well as how to analyse the data to test different hypotheses.__
 
 <hr>
 <hr>
