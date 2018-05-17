@@ -3,7 +3,7 @@ layout: post
 title: Intro to Stan
 subtitle: Getting started with Bayesian modelling in Stan
 date: 2018-04-17 08:00:00
-author: Maxwell Farrell & Isla Myers-Smith
+author: Max Farrell & Isla Myers-Smith
 meta: "Tutorials"
 tags: modelling advanced
 ---
@@ -31,10 +31,12 @@ tags: modelling advanced
 
 #### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Stan-intro" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
-
-### 1. Learn about `Stan`
+__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="<a name="intro"></a>
+" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
 
 <a name="intro"></a>
+
+### 1. Learn about `Stan`
 
 __Bayesian modelling like any statistical modelling can require work to design the appropriate model for your research question and then to develop that model so that it meets the assumptions of your data and runs. You can check out the Coding Club tutorial on <a href="https://ourcodingclub.github.io/2018/04/06/model-design.html" target="_blank"> how to design a model</a>, and <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian Modelling in `MCMCglmm`</a> for key background information on model design and Bayesian statistics.__
 
@@ -613,7 +615,6 @@ In the next Stan tutorial, we will build on the concept of a simple linear model
 
 ### Stan References
 
-
 __Stan is a run by a small, but dedicated group of developers. If you are new to Stan, you can join the mailing list. It's a great resource for understanding and diagnosing problems with Stan, and by posting problems you encounter you are helping yourself, and giving back to the community.__
 
 <a href="http://mc-stan.org/" target="_blank">Stan website</a>
@@ -628,7 +629,8 @@ __Stan is a run by a small, but dedicated group of developers. If you are new to
 
 <a href="https://groups.google.com/forum/#!forum/stan-users" target="_blank">Stan mailing list</a>
 
-
+__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="<a name="intro"></a>
+" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
 
 <hr>
 <hr>
