@@ -224,10 +224,10 @@ stanc("stan_model1.stan")
 Now let's save that file path.
 
 ```r
-stan_model1 <- "scripts/users/imyerssmith/CC-Stan-Part-1/stan_model1.stan"
+stan_model1 <- "stan_model1.stan"
 ```
 
-__Here we are implicitly using `uniform(-infinity, +infinity)` priors for our parameters. These are also known as "flat" priors or "non-informative" priors.__
+__Here we are implicitly using `uniform(-infinity, +infinity)` priors for our parameters. These are also known as "flat" priors or "weakly informative" priors.__
 
 <a name="run"></a>
 
@@ -363,7 +363,7 @@ __So what happened to the posterior predictions (your modelled relationship)? Do
 
 ### 6. Convergence Diagnostics
 
-__Before we go on, we should check again the `Rhat` values, the effective sample size (`n_eff`), and the traceplots of our model parameters to make sure the model has converged and is reliable. To find out more about what these model checks are doing, you can check out the tutorial on <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian statistics using `MCMCglmm`</a>.__
+__Before we go on, we should check again the `Rhat` values, the effective sample size (`n_eff`), and the traceplots of our model parameters to make sure the model has converged and is reliable. To find out more about what effective sample sizes and trace plots, you can check out the tutorial on <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian statistics using `MCMCglmm`</a>.__
 
 `n_eff` is a crude measure of the effective sample size. You usually only need to worry is this number is less than 1/100th or 1/1000th of
 your number of iterations.
@@ -378,7 +378,7 @@ plot(posterior$beta, type = "l")
 plot(posterior$sigma, type = "l")
 ```
 
-<center> <img src="{{ site.baseurl }}/img/sea_ice5.png" alt="Img" style="width: 600px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/alpha_trace.png" alt="Img" style="width: 600px;"/> </center>
 <center>Figure 6. Trace plot for alpha, the intercept.</center>
 
 For simpler models, convergence is usually not a problem unless you have a bug in your code, or run your sampler for too few iterations.
@@ -402,7 +402,7 @@ plot(posterior_bad$beta, type = "l")
 plot(posterior_bad$sigma, type = "l")
 ```
 
-<center> <img src="{{ site.baseurl }}/img/bad_stan_traces.png" alt="Img" style="width: 600px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/bad_traces2.png" alt="Img" style="width: 600px;"/> </center>
 <center>Figure 7. Bad trace plot for alpha, the intercept.</center>
 
 
@@ -432,13 +432,16 @@ From the posterior we can directly calculate the probability of any parameter be
 
 ```r
 sum(posterior$beta>0)/length(posterior$beta)
+# 0
 ```
 
 **Probablility that beta is >0.2:**
 
 ```r
 sum(posterior$beta>0.2)/length(posterior$beta)
+# 0
 ```
+
 
 #### Diagnostic plots in `rstan`
 
@@ -464,7 +467,7 @@ stan_hist(fit)
 <center> <img src="{{ site.baseurl }}/img/stan_histogram.png" alt="Img" style="width: 900px;"/> </center>
 <center>Figure 10. Density plots and histograms of the posteriors for the intercept, slope and residual variance from the `Stan` model.</center>
 
-And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in. Note that the 95% credible intervals for the `beta` and `sigma` parameters are very small, thus you only see the dots.
+And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in. Note that the 95% credible intervals for the `beta` and `sigma` parameters are very small, thus you only see the dots. Depending on the variance in your own data, when you do your own analyses, you might see smaller or larger credible intervals.
 
 ```r
 plot(fit, show_density = FALSE, ci_level = 0.5, outer_level = 0.95, fill_color = "salmon")
@@ -475,10 +478,7 @@ plot(fit, show_density = FALSE, ci_level = 0.5, outer_level = 0.95, fill_color =
 
 #### Posterior Predictive Checks
 
-For prediction and as another form of model diagnostic, `Stan` can use random number generators to generate predicted values for each data point, at each iteration. For details, you can check out the <a href="https://cran.r-project.org/web/packages/bayesplot/index.html" target="_blank">vignettes</a>.
-
-
-This way we can generate predictions that also represent the uncertainties in our model and our data generation process. We generate these using the Generated Quantities block. This block can be used to get any other information we want about the posterior, or make predictions for new data.
+For prediction and as another form of model diagnostic, `Stan` can use random number generators to generate predicted values for each data point, at each iteration. This way we can generate predictions that also represent the uncertainties in our model and our data generation process. We generate these using the Generated Quantities block. This block can be used to get any other information we want about the posterior, or make predictions for new data.
 
 ```stan
 
@@ -514,7 +514,7 @@ generated quantities {
 stan_model2_GQ <- "scripts/users/imyerssmith/CC-Stan-Part-1/stan_model2_GQ.stan"
 ```
 
-Note that vectorization is not supported in the GQ (generated quantities) block, so we have to put it in a loop. But since this is compiled to `C++`, loops are actually quite fast and Stan only evaluates the GQ block once per iteration, so it won't add too much time to your sampling. Typically, the data generating functions will be the distributions you used in the model block but with an `_rng` suffix. (Double-check in the Stan manual to see which sampling statements have corresponding rng functions already coded up.)
+Note that vectorization is not supported in the GQ (generated quantities) block, so we have to put it in a loop. But since this is compiled to `C++`, loops are actually quite fast and Stan only evaluates the GQ block once per iteration, so it won't add too much time to your sampling. Typically, the data generating functions will be the distributions you used in the model block but with an `_rng` suffix. (Double-check in the Stan manual to see which sampling statements have corresponding `rng` functions already coded up.)
 
 ```r
 fit3 <- stan(stan_model2_GQ, data = stan_data, iter = 1000, chains = 4, cores = 2, thin = 1)
@@ -524,14 +524,14 @@ fit3 <- stan(stan_model2_GQ, data = stan_data, iter = 1000, chains = 4, cores = 
 
 There are many options for dealing with `y_rep` values.
 
-```r posterior
+```r
 y_rep <- as.matrix(fit3, pars = "y_rep")
 dim(y_rep)
 ```
 
 Each row is an iteration (single posterior estimate) from the model.
 
-We can use the `bayesplot` package to make some prettier looking plots. This package is a wrapper for many common `ggplot2` plots, and has a lot of built-in functions to work with posterior predictions.
+We can use the `bayesplot` package to make some prettier looking plots. This package is a wrapper for many common `ggplot2` plots, and has a lot of built-in functions to work with posterior predictions. For details, you can check out the <a href="https://cran.r-project.org/web/packages/bayesplot/index.html" target="_blank">vignettes</a>.
 
 Comparing density of `y` with densities of `y` over 200 posterior draws.
 
