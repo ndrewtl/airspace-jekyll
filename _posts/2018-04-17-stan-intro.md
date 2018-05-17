@@ -90,7 +90,7 @@ __What research question can we ask with these data? How about the following:__
 To explore the answer to that question, first we can make a figure.
 
 ```r
-(extent_north ~ year, pch = 20, data = seaice)
+plot(extent_north ~ year, pch = 20, data = seaice)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/sea_ice1.png" alt="Img" style="width: 600px;"/> </center>
