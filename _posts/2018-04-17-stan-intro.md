@@ -161,9 +161,6 @@ __You can find detailed instructions <a href="https://github.com/stan-dev/rstan/
 library(rstan)
 library(gdata)
 library(bayesplot)
-library(rstanarm)
-library(shinystan)
-library(loo)
 ```
 
 <a name="stan"></a>
