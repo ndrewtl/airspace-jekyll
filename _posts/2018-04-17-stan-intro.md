@@ -31,8 +31,7 @@ tags: modelling advanced
 
 #### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Stan-intro" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
-__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="<a name="intro"></a>
-" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
+__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="https://github.com/maxfarrell/qcbs_stan_workshop/blob/master/QCBS_stan.Rmd" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
 
 <a name="intro"></a>
 
@@ -608,12 +607,15 @@ How would you write up these results? What is the key information to report from
 
 #### _Research Question:_ Is sea ice extent declining in the Southern Hemisphere over time?
 
-Is the same pattern happening in the Antarctic as in the Arctic?  Fit a Stan model to find out!  
+Is the same pattern happening in the Antarctic as in the Arctic?  Fit a `Stan` model to find out!  
 
 In the next Stan tutorial, we will build on the concept of a simple linear model in Stan to learn about more complex modelling structures including different distributions and random effects. And in a future tutorial, we will introduce the concept of a mixture model where two different distributions are modelled at the same time - a great way to deal with zero inflation in your proportion or count data!
 
+### Additional ways to run `Stan` models in `R`
 
-### Stan References
+__Check out our <a href="https://ourcodingclub.github.io/2018/04/30/stan-2.html" target="_blank">second `Stan` tutorial</a> to learn how to fit `Stan` models using model syntax similar to the style of other common modelling packages like `lme4` and `MCMCglmm`, as well as how to fit generalised linear models using `Poisson` and negative binomial distributions.__
+
+### `Stan` References
 
 __Stan is a run by a small, but dedicated group of developers. If you are new to Stan, you can join the mailing list. It's a great resource for understanding and diagnosing problems with Stan, and by posting problems you encounter you are helping yourself, and giving back to the community.__
 
@@ -629,8 +631,7 @@ __Stan is a run by a small, but dedicated group of developers. If you are new to
 
 <a href="https://groups.google.com/forum/#!forum/stan-users" target="_blank">Stan mailing list</a>
 
-__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="<a name="intro"></a>
-" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
+__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="https://github.com/maxfarrell/qcbs_stan_workshop/blob/master/QCBS_stan.Rmd" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
 
 <hr>
 <hr>
