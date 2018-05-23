@@ -18,7 +18,6 @@ permalink: /faq/
     font-size: 15px;
     transition: 0.4s;
 }
-
 .active, .accordion:hover {
     background-color: #ccc;
 }
@@ -42,6 +41,28 @@ permalink: /faq/
 .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
 }
+code {
+    color: black;
+}
+.code-container {
+    background-color: #f2f3f4;
+    border: solid;
+    border-radius: 0.25em;
+    border-width: 0.5px;
+    border-color: lightgray;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    }
+a {
+    text-decoration: none;
+    color: blue;
+    }
+ul {
+    list-style-type: none;
+    padding-left: 0pt;
+    }
+@media only screen and (max-width: 600px) {
+    .code-container {margin-bottom: 2em;}
 </style>
 </head>
 
@@ -67,15 +88,29 @@ permalink: /faq/
         <p>Click on the buttons to open the collapsible content.</p>
         <button class="accordion">Setting up your workspace</button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p>First of all, what is a working directory? This is the folder that R will look into to find data and save any plots or scripts. To find out where your working directory currently is, and to change it see the below code.<br/><br/>
+                Alternatively you can set it from the menu: <em>Session > Set Working Directory > Choose Directory.</em> For <code>setwd()</code>, inside the brackets you should input your file path as follows <code>setwd("C:/Documents/Directory")</code>
+                </p>
+                <div class="code-container">
+                    <code># Identify your current directory<br/>get.wd()<br/><br/># Set your working directory<br/> set.wd("insert folder path")
+                    </code>
+                </div>
             </div>
         <button class="accordion">Loading data into R</button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p><b>Saving and loading your script again</b><br/>You should always be typing your code into a script file in order to produce a reproducible record of your analysis; if you only type in the console, R will not save your work! You should save your script often to avoid any problems. To save, click the icon at the top of your R Script to save as an .Rdata file. Here you will have to choose a file name. Try to avoid spaces and capital letters, as R can get confused by these! Save the file to your working directory so it will be easy to locate whenever you need it next. To load your script again, go to File > Open File and choose your script. It should open on a new script tab in RStudio.<br/><br/><b>Saving CSV files</b><br/>A CSV, or comma-separated values file contains values as a series of rows organised so that each column is separated by a comma. If your data is entered in Excel, you can save it as a CSV file by clicking on Save As and then choosing CSV as your file extension. CSV files are often easier to work with in R.</p>
+                <div class="code-container">
+                    <code># Load RData file<br/>objectname &lt;- load("filepath/file.RData")<br/><br/># Load CSV file<br/> objectname &lt;- read.csv("filepath/file.csv")
+                    </code>
+                </div>
             </div>
         <button class="accordion">Other tips</button>
             <div class="panel">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <p><b>Writing clean code</b><br/>R code should be easy to read, share, and verify. Aim to keep your object naming conventions consistent across your script and make sure to comment your code. For extensive guidelines please consult Google's R style guide <a href="https://google.github.io/styleguide/Rguide.xml" target="_blank">here</a><br/><br/><b>Helpful tutorials</b><br/><ul>
+                <li><a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Introduction to R</a></li>
+                <li><a href="https://ourcodingclub.github.io/2016/11/15/troubleshooting.html" target="_blank">Troubleshooting R</a></li>
+                <li><a href="https://ourcodingclub.github.io/2017/04/25/etiquette.html" target="_blank">Coding Etiquette</a></li>
+                </ul><p/>
             </div>
         <script>
             var acc = document.getElementsByClassName("accordion");
