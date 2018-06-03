@@ -57,7 +57,7 @@ In ecological terms: Ordination summarizes community data (such as species abund
 
 Generally, ordination techniques are used in ecology to describe relationships between species composition patterns and the underlying environmental gradients (e.g. what environmental variables structure the community?). Two very important advantages of ordination is that 1) we can determine the relative importance of different gradients and 2) the graphical results from most techniques often lead to ready and intuitive interpretations of species-environment relationships.
 
-To give you an idea about what to expect from this ordination course today, we`ll run the following code.
+To give you an idea about what to expect from this ordination course today, we'll run the following code.
 
 ```r
 #Load the community dataset which we`ll use in the examples today
@@ -75,7 +75,7 @@ varespec%>%
 
 ```
 The plot you`ve made should look like this:
-<center> <img src="{{ site.baseurl }}/ordexample.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/ordexample.png" alt="Img" style="width: 800px;"/> </center>
 
 It is now a lot easier to interpret your data. Can you see which samples have a similar species composition?
 
