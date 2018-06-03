@@ -81,7 +81,7 @@ It is now a lot easier to interpret your data. Can you see which samples have a 
 
 __In this tutorial, we only focus on unconstrained ordination or indirect gradient analysis.__ This ordination goes in two steps. First, we will perfom an ordination on a species abundance matrix. Then we will use environmental data (samples by environmental variables) to interpret the gradients that were uncovered by the ordination. The final result will look like this:
 
-<center> <img src="{{ site.baseurl }}/ordexample2.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/ordexample2.png" alt="Img" style="width: 800px;"/> </center>
 
 ## Ordination vs. classification
 
@@ -101,7 +101,7 @@ __In this section you will learn more about how and when to use the three main (
 <a name="section4"></a>
 ## Principal Component Analysis (PCA)
 PCA uses a rotation of the original axes to derive new axes, which maximize the variance in the data set. In 2D, this looks as follows:
-<center> <img src="{{ site.baseurl }}/PCAexample.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/PCAexample.png" alt="Img" style="width: 800px;"/> </center>
 
 Computationally, __PCA is an eigenanalysis__. To explain what this is and how it works is beyond the scope of this tutorial. We will only discuss the most important consequences:
 - There is a unique solution to the eigenanalysis.
@@ -136,7 +136,7 @@ plot(PCA,display="species", type = "text")
 ```
 
 Try to display both species and sites with points. This should look like this:
-<center> <img src="{{ site.baseurl }}/PCAresult.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/PCAresult.png" alt="Img" style="width: 800px;"/> </center>
 
 ```r
 #You can extract the species and site scores on the new PC for further analyses:
@@ -147,7 +147,7 @@ speciesPCA<-PCA$CA$v #Species scores
 biplot(PCA, choices=c(1,2), type=c("text","points"), xlim=c(-5,10)) #biplot of axis 1 vs 2
 biplot(PCA, choices=c(1,3), type=c("text","points")) #biplot of axis 1 vs 3
 ```
-<center> <img src="{{ site.baseurl }}/biplotresult.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/biplotresult.png" alt="Img" style="width: 800px;"/> </center>
 
 ```r
 #Check out the help file how to pimp your biplot further:
@@ -162,7 +162,7 @@ library(ggbiplot)
 
 In contrast to some of the other ordination techniques, species are represented by arrows. This implies that the abundance of the species is continuously increasing in the direction of the arrow, and decreasing in the opposite direction. Thus PCA is a linear method. PCA is extremely useful when we expect species to be linearly (or even monotonically) related to each other. Unfortunately, we rarely encounter such a situation in nature. It is much more likely that species have a unimodal species response curve: 
 
-<center> <img src="{{ site.baseurl }}/Unimodalresp.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/Unimodalresp.png" alt="Img" style="width: 800px;"/> </center>
 
 Unfortunately, __this linear assumption causes PCA to suffer from a serious problem, the horseshoe or arch effect__, which makes it unsuitable for most ecological datasets. The PCA solution is often distorted into a horseshoe/arch shape (with the toe either up or down) if beta diversity is moderate to high. The horseshoe can appear even if there is an important secondary gradient. Can you detect a horseshoe shape in the biplot?
 
@@ -170,7 +170,7 @@ Unfortunately, __this linear assumption causes PCA to suffer from a serious prob
 ### Principal Coordinate Analysis (PCoA)
 Principal coordinates analysis (PCoA, also known as metric multidimensional scaling) attempts to represent the distances between samples in a low-dimensional, Euclidean space. In particular, it maximizes the linear correlation between the distances in the distance matrix, and the distances in a space of low dimension (typically, 2 or 3 axes are selected). The PCoA algorithm is analogous to rotating the multidimensional object such that the distances (lines) in the shadow are maximally correlated with the distances (connections) in the object:
 
-<center> <img src="{{ site.baseurl }}/PCOAexample.gif" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/PCOAexample.gif" alt="Img" style="width: 800px;"/> </center>
 
 __The first step of a PCoA is the construction of a (dis)similarity matrix__. While PCA is based on Euclidean distances, PCoA can handle (dis)similarity matrices calculated from quantitative, semi-quantitative, qualitative, and mixed variables. As always, the choice of (dis)similarity measure is critical and must be suitable to the data in question. If you want to know more about distance measures, please check out our <a href="https://ourcodingclub.github.io/2017/03/21/data-clustering.html#Distance" target="_blank">Intro to data clustering</a>. For abundance data, Bray-Curtis distance is often recommended. You can use Jaccard index for presence/absence data. When the distance metric is Euclidean, PCoA is equivalent to Principal Components Analysis. __Although PCoA is based on a (dis)similarity matrix, the solution can be found by eigenanalysis__. The interpretation of the results is the same as with PCA. 
 
@@ -196,7 +196,7 @@ biplot.pcoa(PCOA)
 biplot.pcoa(PCOA,varespec)
 ```
 
-<center> <img src="{{ site.baseurl }}/PCOA.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/PCOA.png" alt="Img" style="width: 800px;"/> </center>
 
 ```r
 #Extract the plot scores from first two PCoA axes (if you need them):
@@ -230,7 +230,7 @@ Axes are not ordered in NMDS. `metaMDS()` in `vegan` automatically rotates the f
 
 A plot of stress (a measure of goodness-of-fit) vs. dimensionality can be used to assess the proper choice of dimensions. The stress values themselves can be used as an indicator. Stress values >0.2 are generally poor and potentially uninterpretable, whereas values <0.1 are good and <0.05 are excellent, leaving little danger of misinterpretation. Stress values between 0.1 and 0.2 are useable but some of the distances will be misleading. Finding the inflexion point can instruct the selection of a minimum number of dimensions.
 
-<center> <img src="{{ site.baseurl }}/NMDSstress.PNG" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/NMDSstress.PNG" alt="Img" style="width: 800px;"/> </center>
 
 __Methodology of NMDS:__
 - __Step 1:__ Perform NMDS with 1 to 10 dimensions
@@ -256,11 +256,11 @@ NMDS.scree<-function(x) { #where x is the name of the data frame variable
 NMDS.scree(dist)
 ```
 
-<center> <img src="{{ site.baseurl }}/NMDSscree.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/NMDSscree.png" alt="Img" style="width: 800px;"/> </center>
 
-On this graph, we don´t see a data point for 1 dimension. Do you know what happened? Tip: Run a NMDS (with the function `metaNMDS()` with one dimension to find out what`s wrong. Then adapt the function above to fix this problem.
+On this graph, we don´t see a data point for 1 dimension. Do you know what happened? Tip: Run a NMDS (with the function `metaNMDS()` with one dimension to find out what's wrong. Then adapt the function above to fix this problem.
 
-We further see on this graph that the stress decreases with the number of dimensions. This is a normal behavior of a stress plot. This graph doesn´t have a very good inflexion point. So here, you would select a nr of dimensions for which the stress meets the criteria. This would be 3-4 D. To make this tutorial easier, let`s select 2 dimensions. This also an ok solution. Now, we will perform the final analysis with 2 dimensions 
+We further see on this graph that the stress decreases with the number of dimensions. This is a normal behavior of a stress plot. This graph doesn´t have a very good inflexion point. So here, you would select a nr of dimensions for which the stress meets the criteria. This would be 3-4 D. To make this tutorial easier, let's select 2 dimensions. This also an ok solution. Now, we will perform the final analysis with 2 dimensions 
 
 ```r
 #Because the final result depends on the initial random placement of the points, we`ll set a seed to make the results reproducible
@@ -285,7 +285,7 @@ Let`s check the results of NMDS1 with a stressplot
 stressplot(NMDS1)
 ```
 
-<center> <img src="{{ site.baseurl }}/NMDSstressplot.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/NMDSstressplot.png" alt="Img" style="width: 800px;"/> </center>
 
 There is a good non-metric fit between observed dissimilarities (in our distance matrix) and the distances in ordination space. Also the stress of our final result was ok (do you know how much the stress is?). So we can go further and plot the results:
 
@@ -309,7 +309,7 @@ orditorp(NMDS3,display="sites",cex=1.1, air=0.01)
 
 
 ```
-<center> <img src="{{ site.baseurl }}/NMDSbiplot.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/NMDSbiplot.png" alt="Img" style="width: 800px;"/> </center>
 
 <a name="section3"></a>
 # 3. Interpretation of the results
@@ -330,7 +330,7 @@ plot(NMDS3,type="t",display="sites")
 plot(ef,p.max=0.05)
 ```
 
-<center> <img src="{{ site.baseurl }}/NMDSenvfit.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/NMDSenvfit.png" alt="Img" style="width: 800px;"/> </center>
 
 It´s easy as that. Next, let`s say that the we have two groups of samples. This could be the result of a classification or just two predefined groups (e.g. old versus young forests or two treatments). Now, we want to see the two groups on the ordination plot. Here is how you do it:
 
@@ -352,7 +352,7 @@ orditorp(NMDS3,display="sites",col=c(rep("red",12),
   rep("blue",12)),air=0.01,cex=1.25)
 ```
 
-<center> <img src="{{ site.baseurl }}/NMDScluster.png" alt="Img" style="width: 800px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/NMDScluster.png" alt="Img" style="width: 800px;"/> </center>
 
 __Congratulations! You´ve made it to the end of the tutorial! Now it is your turn.__
 
