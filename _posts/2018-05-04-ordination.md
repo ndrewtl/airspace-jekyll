@@ -2,7 +2,7 @@
 layout: post
 title: Introduction to ordination
 subtitle: Finding patterns in your data
-date: 2018-03-11 12:15:00
+date: 2018-05-04 12:15:00
 author: Koenraad
 meta: "Tutorials"
 tags: data_manip, datavis
@@ -114,7 +114,7 @@ Computationally, __PCA is an eigenanalysis__. To explain what this is and how it
 
 In most applications of PCA, variables are often measured in different units. For example, PCA of environmental data may include pH, soil moisture content, soil nitrogen, temperature and so on. For such data, the data must be standardized to zero mean and unit variance. For ordination of ecological communities, however, all species are measured in the same units, and data should not be standardized.
 
-Let´s have a look how to do a PCA in R. You can use several packages to perform a PCA: The `rda()` function in the package `vegan`, The `prcomp()` function in the package `stats` and the `pca()` function in the package `labdsv`. We will use the `rda()` function and apply it to our varespec dataset
+LetÂ´s have a look how to do a PCA in R. You can use several packages to perform a PCA: The `rda()` function in the package `vegan`, The `prcomp()` function in the package `stats` and the `pca()` function in the package `labdsv`. We will use the `rda()` function and apply it to our varespec dataset
 
 ```r
 PCA<-rda(varespec, scale = FALSE)
@@ -258,9 +258,9 @@ NMDS.scree(dist)
 
 <center> <img src="{{ site.baseurl }}/NMDSscree.png" alt="Img" style="width: 800px;"/> </center>
 
-On this graph, we don´t see a data point for 1 dimension. Do you know what happened? Tip: Run a NMDS (with the function `metaNMDS()` with one dimension to find out what`s wrong. Then adapt the function above to fix this problem.
+On this graph, we donÂ´t see a data point for 1 dimension. Do you know what happened? Tip: Run a NMDS (with the function `metaNMDS()` with one dimension to find out what`s wrong. Then adapt the function above to fix this problem.
 
-We further see on this graph that the stress decreases with the number of dimensions. This is a normal behavior of a stress plot. This graph doesn´t have a very good inflexion point. So here, you would select a nr of dimensions for which the stress meets the criteria. This would be 3-4 D. To make this tutorial easier, let`s select 2 dimensions. This also an ok solution. Now, we will perform the final analysis with 2 dimensions 
+We further see on this graph that the stress decreases with the number of dimensions. This is a normal behavior of a stress plot. This graph doesnÂ´t have a very good inflexion point. So here, you would select a nr of dimensions for which the stress meets the criteria. This would be 3-4 D. To make this tutorial easier, let`s select 2 dimensions. This also an ok solution. Now, we will perform the final analysis with 2 dimensions 
 
 ```r
 #Because the final result depends on the initial random placement of the points, we`ll set a seed to make the results reproducible
@@ -332,7 +332,7 @@ plot(ef,p.max=0.05)
 
 <center> <img src="{{ site.baseurl }}/NMDSenvfit.png" alt="Img" style="width: 800px;"/> </center>
 
-It´s easy as that. Next, let`s say that the we have two groups of samples. This could be the result of a classification or just two predefined groups (e.g. old versus young forests or two treatments). Now, we want to see the two groups on the ordination plot. Here is how you do it:
+ItÂ´s easy as that. Next, let`s say that the we have two groups of samples. This could be the result of a classification or just two predefined groups (e.g. old versus young forests or two treatments). Now, we want to see the two groups on the ordination plot. Here is how you do it:
 
 ```r
 #Define a group variable (first 12 samples belong to group 1, last 12 samples to group 2)
@@ -354,7 +354,7 @@ orditorp(NMDS3,display="sites",col=c(rep("red",12),
 
 <center> <img src="{{ site.baseurl }}/NMDScluster.png" alt="Img" style="width: 800px;"/> </center>
 
-__Congratulations! You´ve made it to the end of the tutorial! Now it is your turn.__
+__Congratulations! YouÂ´ve made it to the end of the tutorial! Now it is your turn.__
 
 <a name="section4"></a>
 # 4. Your turn
