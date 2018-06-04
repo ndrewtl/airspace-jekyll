@@ -3,7 +3,7 @@ layout: post
 title: Intro to Stan
 subtitle: Getting started with Bayesian modelling in Stan
 date: 2018-04-17 08:00:00
-author: Maxwell Farrell & Isla Myers-Smith
+author: Max Farrell & Isla Myers-Smith
 meta: "Tutorials"
 tags: modelling advanced
 ---
@@ -31,10 +31,11 @@ tags: modelling advanced
 
 #### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Stan-intro" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
-
-### 1. Learn about `Stan`
+__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="https://github.com/maxfarrell/qcbs_stan_workshop/blob/master/QCBS_stan.Rmd" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
 
 <a name="intro"></a>
+
+### 1. Learn about `Stan`
 
 __Bayesian modelling like any statistical modelling can require work to design the appropriate model for your research question and then to develop that model so that it meets the assumptions of your data and runs. You can check out the Coding Club tutorial on <a href="https://ourcodingclub.github.io/2018/04/06/model-design.html" target="_blank"> how to design a model</a>, and <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian Modelling in `MCMCglmm`</a> for key background information on model design and Bayesian statistics.__
 
@@ -90,7 +91,7 @@ __What research question can we ask with these data? How about the following:__
 To explore the answer to that question, first we can make a figure.
 
 ```r
-(extent_north ~ year, pch = 20, data = seaice)
+plot(extent_north ~ year, pch = 20, data = seaice)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/sea_ice1.png" alt="Img" style="width: 600px;"/> </center>
@@ -161,9 +162,6 @@ __You can find detailed instructions <a href="https://github.com/stan-dev/rstan/
 library(rstan)
 library(gdata)
 library(bayesplot)
-library(rstanarm)
-library(shinystan)
-library(loo)
 ```
 
 <a name="stan"></a>
@@ -225,10 +223,10 @@ stanc("stan_model1.stan")
 Now let's save that file path.
 
 ```r
-stan_model1 <- "scripts/users/imyerssmith/CC-Stan-Part-1/stan_model1.stan"
+stan_model1 <- "stan_model1.stan"
 ```
 
-__Here we are implicitly using `uniform(-infinity, +infinity)` priors for our parameters. These are also known as "flat" priors or "non-informative" priors.__
+__Here we are implicitly using `uniform(-infinity, +infinity)` priors for our parameters. These are also known as "flat" priors or "weakly informative" priors.__
 
 <a name="run"></a>
 
@@ -364,7 +362,7 @@ __So what happened to the posterior predictions (your modelled relationship)? Do
 
 ### 6. Convergence Diagnostics
 
-__Before we go on, we should check again the `Rhat` values, the effective sample size (`n_eff`), and the traceplots of our model parameters to make sure the model has converged and is reliable. To find out more about what these model checks are doing, you can check out the tutorial on <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian statistics using `MCMCglmm`</a>.__
+__Before we go on, we should check again the `Rhat` values, the effective sample size (`n_eff`), and the traceplots of our model parameters to make sure the model has converged and is reliable. To find out more about what effective sample sizes and trace plots, you can check out the tutorial on <a href="https://ourcodingclub.github.io/2018/01/22/mcmcglmm.html" target="_blank">Bayesian statistics using `MCMCglmm`</a>.__
 
 `n_eff` is a crude measure of the effective sample size. You usually only need to worry is this number is less than 1/100th or 1/1000th of
 your number of iterations.
@@ -379,7 +377,7 @@ plot(posterior$beta, type = "l")
 plot(posterior$sigma, type = "l")
 ```
 
-<center> <img src="{{ site.baseurl }}/img/sea_ice5.png" alt="Img" style="width: 600px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/alpha_trace.png" alt="Img" style="width: 600px;"/> </center>
 <center>Figure 6. Trace plot for alpha, the intercept.</center>
 
 For simpler models, convergence is usually not a problem unless you have a bug in your code, or run your sampler for too few iterations.
@@ -403,7 +401,7 @@ plot(posterior_bad$beta, type = "l")
 plot(posterior_bad$sigma, type = "l")
 ```
 
-<center> <img src="{{ site.baseurl }}/img/bad_stan_traces.png" alt="Img" style="width: 600px;"/> </center>
+<center> <img src="{{ site.baseurl }}/img/bad_traces2.png" alt="Img" style="width: 600px;"/> </center>
 <center>Figure 7. Bad trace plot for alpha, the intercept.</center>
 
 
@@ -433,13 +431,16 @@ From the posterior we can directly calculate the probability of any parameter be
 
 ```r
 sum(posterior$beta>0)/length(posterior$beta)
+# 0
 ```
 
 **Probablility that beta is >0.2:**
 
 ```r
 sum(posterior$beta>0.2)/length(posterior$beta)
+# 0
 ```
+
 
 #### Diagnostic plots in `rstan`
 
@@ -465,7 +466,7 @@ stan_hist(fit)
 <center> <img src="{{ site.baseurl }}/img/stan_histogram.png" alt="Img" style="width: 900px;"/> </center>
 <center>Figure 10. Density plots and histograms of the posteriors for the intercept, slope and residual variance from the `Stan` model.</center>
 
-And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in. Note that the 95% credible intervals for the `beta` and `sigma` parameters are very small, thus you only see the dots.
+And we can generate plots which indicate the mean parameter estimates and any credible intervals we may be interested in. Note that the 95% credible intervals for the `beta` and `sigma` parameters are very small, thus you only see the dots. Depending on the variance in your own data, when you do your own analyses, you might see smaller or larger credible intervals.
 
 ```r
 plot(fit, show_density = FALSE, ci_level = 0.5, outer_level = 0.95, fill_color = "salmon")
@@ -476,10 +477,7 @@ plot(fit, show_density = FALSE, ci_level = 0.5, outer_level = 0.95, fill_color =
 
 #### Posterior Predictive Checks
 
-For prediction and as another form of model diagnostic, `Stan` can use random number generators to generate predicted values for each data point, at each iteration. For details, you can check out the <a href="https://cran.r-project.org/web/packages/bayesplot/index.html" target="_blank">vignettes</a>.
-
-
-This way we can generate predictions that also represent the uncertainties in our model and our data generation process. We generate these using the Generated Quantities block. This block can be used to get any other information we want about the posterior, or make predictions for new data.
+For prediction and as another form of model diagnostic, `Stan` can use random number generators to generate predicted values for each data point, at each iteration. This way we can generate predictions that also represent the uncertainties in our model and our data generation process. We generate these using the Generated Quantities block. This block can be used to get any other information we want about the posterior, or make predictions for new data.
 
 ```stan
 
@@ -515,7 +513,7 @@ generated quantities {
 stan_model2_GQ <- "scripts/users/imyerssmith/CC-Stan-Part-1/stan_model2_GQ.stan"
 ```
 
-Note that vectorization is not supported in the GQ (generated quantities) block, so we have to put it in a loop. But since this is compiled to `C++`, loops are actually quite fast and Stan only evaluates the GQ block once per iteration, so it won't add too much time to your sampling. Typically, the data generating functions will be the distributions you used in the model block but with an `_rng` suffix. (Double-check in the Stan manual to see which sampling statements have corresponding rng functions already coded up.)
+Note that vectorization is not supported in the GQ (generated quantities) block, so we have to put it in a loop. But since this is compiled to `C++`, loops are actually quite fast and Stan only evaluates the GQ block once per iteration, so it won't add too much time to your sampling. Typically, the data generating functions will be the distributions you used in the model block but with an `_rng` suffix. (Double-check in the Stan manual to see which sampling statements have corresponding `rng` functions already coded up.)
 
 ```r
 fit3 <- stan(stan_model2_GQ, data = stan_data, iter = 1000, chains = 4, cores = 2, thin = 1)
@@ -525,14 +523,14 @@ fit3 <- stan(stan_model2_GQ, data = stan_data, iter = 1000, chains = 4, cores = 
 
 There are many options for dealing with `y_rep` values.
 
-```r posterior
+```r
 y_rep <- as.matrix(fit3, pars = "y_rep")
 dim(y_rep)
 ```
 
 Each row is an iteration (single posterior estimate) from the model.
 
-We can use the `bayesplot` package to make some prettier looking plots. This package is a wrapper for many common `ggplot2` plots, and has a lot of built-in functions to work with posterior predictions.
+We can use the `bayesplot` package to make some prettier looking plots. This package is a wrapper for many common `ggplot2` plots, and has a lot of built-in functions to work with posterior predictions. For details, you can check out the <a href="https://cran.r-project.org/web/packages/bayesplot/index.html" target="_blank">vignettes</a>.
 
 Comparing density of `y` with densities of `y` over 200 posterior draws.
 
@@ -609,13 +607,15 @@ How would you write up these results? What is the key information to report from
 
 #### _Research Question:_ Is sea ice extent declining in the Southern Hemisphere over time?
 
-Is the same pattern happening in the Antarctic as in the Arctic?  Fit a Stan model to find out!  
+Is the same pattern happening in the Antarctic as in the Arctic?  Fit a `Stan` model to find out!  
 
 In the next Stan tutorial, we will build on the concept of a simple linear model in Stan to learn about more complex modelling structures including different distributions and random effects. And in a future tutorial, we will introduce the concept of a mixture model where two different distributions are modelled at the same time - a great way to deal with zero inflation in your proportion or count data!
 
+### Additional ways to run `Stan` models in `R`
 
-### Stan References
+__Check out our <a href="https://ourcodingclub.github.io/2018/04/30/stan-2.html" target="_blank">second `Stan` tutorial</a> to learn how to fit `Stan` models using model syntax similar to the style of other common modelling packages like `lme4` and `MCMCglmm`, as well as how to fit generalised linear models using `Poisson` and negative binomial distributions.__
 
+### `Stan` References
 
 __Stan is a run by a small, but dedicated group of developers. If you are new to Stan, you can join the mailing list. It's a great resource for understanding and diagnosing problems with Stan, and by posting problems you encounter you are helping yourself, and giving back to the community.__
 
@@ -631,7 +631,7 @@ __Stan is a run by a small, but dedicated group of developers. If you are new to
 
 <a href="https://groups.google.com/forum/#!forum/stan-users" target="_blank">Stan mailing list</a>
 
-
+__This tutorial is based on work by <a href="http://farrell.research.mcgill.ca" target="_blank">Max Farrell</a> - you can find Max's original tutorial <a href="https://github.com/maxfarrell/qcbs_stan_workshop/blob/master/QCBS_stan.Rmd" target="_blank">here</a> which includes an explanation about how `Stan` works using simulated data, as well as information about model verification and comparison.__
 
 <hr>
 <hr>
