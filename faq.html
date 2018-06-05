@@ -190,19 +190,19 @@ img {
                 <div class="code-container">
                     <code># Basic scatter plot<br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +<br/>geom_point()</code>
                 </div>
-                <img src="img/faqPlot1.png" style="height: 300px;">
+                <img src="{{ site.baseurl }}/img/faqPlot1.png" style="height: 300px;">
                 <div class="code-container">
                     <code># Grouped scatter plot<br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>geom_point()</code>
                 </div>
-                <img src="img/faqPlot2.png" style="height: 300px;">
+                <img src="{{ site.baseurl }}/img/faqPlot2.png" style="height: 300px;">
                 <div class="code-container">
                     <code># Facetted scatter plot<br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>geom_point() + <br/>facet_wrap(~Species)</code>
                 </div>
-                <img src="img/faqPlot3.png" style="height: 300px;">
+                <img src="{{ site.baseurl }}/img/faqPlot3.png" style="height: 300px;">
                 <div class="code-container">
                     <code># Facetted scatter plot with local regression<br/>ggplot(iris) +<br/>geom_smooth(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>geom_point(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>theme_classic() +<br/>facet_wrap(~Species)</code>
                 </div>
-                <img src="img/faqPlot4.png" style="height: 300px;">
+                <img src="{{ site.baseurl }}/img/faqPlot4.png" style="height: 300px;">
             </div>
         <button class="accordion">Reordering plots</button>
         <div class="panel">
@@ -210,21 +210,21 @@ img {
             <div class="code-container">
                 <code># View dataset<br/>head(mpg)<br/><br/># Aggregate data per class (mean per class)<br/> mpg.class &lt;-    aggregate(cyl ~ class, mpg, mean)<br/><br/># Generate unordered barplot<br/>ggplot(mpg.class, aes(class, cyl)) +<br/>geom_bar(stat="identity")</code>
             </div>
-            <img src="img/faqPlot5.png" style="height: 300px;">
+            <img src="{{ site.baseurl }}/img/faqPlot5.png" style="height: 300px;">
             <p>Now we can check the order of levels in our <code>class</code> column and create a custom order according to our own choosing. We can then plot our custom ordered plot by specifying the ordered inside the <code>scale_x_discrete</code> argument in ggplot.</p>
             <div class="code-container">
                 <code># Checking level order<br/>mpg.class$class<br/><br># Create object with custom levels<br/>classes = c("midsize","suv","minivan")<br/><br/># Plot barchart with custom levels<br/>ggplot(mpg.class, aes(class, cyl)) +<br/>geom_bar(stat = "identity") +<br/>scale_x_discrete(limits = classes)</code>
             </div>
-            <img src=img/faqPlot6.png style="height: 300px;">
+            <img src="{{ site.baseurl }}/img/faqPlot6.png" style="height: 300px;">
             <p>We can also reorder our barplot based on ascending or descending order. To do this we need to reorder our levels which can be achieved with <code>transform</code> and <code>reorder</code>. This is stored in a separate object and subsequently plotted.</p>
             <div class="code-container">
                 <code># Reorder levels in ascending order<br/>mpg.asc &lt;- transform(mpg.class, class = reorder(class, cyl))<br/><br/># Plot levels in ascending order<br/>ggplot(mpg.asc, aes(class, cyl)) +<br/>geom_bar(stat = "identity")</code>
             </div>
-            <img src=img/faqPlot7.png style="height: 300px;">
+            <img src="{{ site.baseurl }}/img/faqPlot7.png" style="height: 300px;">
             <div class="code-container">
                 <code># Reorder levels in descending order<br/>mpg.dsc &lt;- transform(mpg.class, class = reorder(class, -cyl))<br/><br/># Plot levels in descending order<br/>ggplot(mpg.dsc, aes(class, cyl)) +<br/>geom_bar(stat = "identity")</code>
             </div>
-            <img src=img/faqPlot8.png style="height: 300px;">
+            <img src="{{ site.baseurl }}/img/faqPlot8.png" style="height: 300px;">
         </div>
         <button class="accordion">Other tips and resources</button>
         <div class="panel">
