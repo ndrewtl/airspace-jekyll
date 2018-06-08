@@ -24,11 +24,7 @@ tags: data_manip, datavis
 
 __In this tutorial, we will learn to use ordination to explore patterns in multivariate ecological datasets. We will mainly use the `vegan` package to introduce you to three (unconstrained) ordination techniques: Principal Component Analysis (PCA), Principal Coordinate Analysis (PCoA) and Non-metric Multidimensional Scaling (NMDS).__
 
-To get all you need for this session, go to the repository for this <a href="https://github.com/ourcodingclub/XXXX" target="_blank">tutorial</a>, click on `Clone/Download`, select `Download ZIP` and then unzip the files to a folder on your computer. Finally, set the folder as your working directory by running the code `setwd(choose.dir())`, or by clicking `Session/Set Working Directory/Choose Directory` from the `RStudio` menu.
-
-If you are registered on GitHub, you can also clone the repository to your computer and start a version-controlled project in RStudio. For more details on how to start a version-controlled project, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">Intro to Github for version control tutorial</a>.
-
-Make a new script file using `File/ New File/ R Script` and we are all set to explore the world of ordination.
+__Make a new script file using `File/ New File/ R Script` and we are all set to explore the world of ordination. We will use data that are integrated within the packages we are using, so there is no need to download additional files.__
 
 ```r
 # Set the working directory (if you didn`t do this already)
