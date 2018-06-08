@@ -1,79 +1,105 @@
----
-layout: page
-title: FAQ
-permalink: /faq/
----
+--- layout: page title: FAQ permalink: /faq/ ---
+
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- CSS Style -->
-<style>
-.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-}
-.active, .accordion:hover {
-    background-color: #ccc;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS Style -->
+    <style>
+        .accordion {
+            background-color: #eee;
+            color: #444;
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 15px;
+            transition: 0.4s;
+        }
 
-.panel {
-    padding: 0 18px;
-    background-color: white;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.2s ease-out;
-}
-    
-.accordion:after {
-    content: '\02795'; /* Unicode character for "plus" sign (+) */
-    font-size: 13px;
-    color: #777;
-    float: right;
-    margin-left: 5px;
-}
+        .active,
+        .accordion:hover {
+            background-color: #ccc;
+        }
 
-.active:after {
-    content: "\2796"; /* Unicode character for "minus" sign (-) */
-}
-code {
-    color: black;
-}
-.code-container {
-    background-color: #f2f3f4;
-    border: solid;
-    border-radius: 0.25em;
-    border-width: 0.5px;
-    border-color: lightgray;
-    padding: 0.5em;
-    margin-bottom: 1em;
-    }
-a {
-    text-decoration: none;
-    color: blue;
-    }
-ul {
-    list-style-type: none;
-    padding-left: 0pt;
-    }
-img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 75%;
-    max-height: 75%;
-    margin-top: 20px;
-    padding-bottom: 20px;
-    }
-@media only screen and (max-width: 600px) {
-    .code-container {margin-bottom: 2em;}
-</style>
+        .panel {
+            padding: 0 18px;
+            background-color: white;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.2s ease-out;
+        }
+
+        .accordion:after {
+            content: '\02795';
+            /* Unicode character for "plus" sign (+) */
+            font-size: 13px;
+            color: #777;
+            float: right;
+            margin-left: 5px;
+        }
+
+        .active:after {
+            content: "\2796";
+            /* Unicode character for "minus" sign (-) */
+        }
+
+        code {
+            color: black;
+        }
+
+        .code-container {
+            background-color: #f2f3f4;
+            border: solid;
+            border-radius: 0.25em;
+            border-width: 0.5px;
+            border-color: lightgray;
+            padding: 0.5em;
+            margin-bottom: 1em;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0pt;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 75%;
+            max-height: 75%;
+            margin-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .highlight-red {
+            padding: 2px 4px;
+            font-size: 90%;
+            color: #c7254e;
+            background-color: #f9f2f4;
+            border-radius: 4px;
+        }
+
+        .indent {
+            display: inline-block;
+            text-indent: 2em;
+        }
+
+        .comment {
+            color: gray;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .code-container {
+                margin-bottom: 2em;
+            }
+    </style>
 </head>
 
 <!-- Slider -->
@@ -92,67 +118,69 @@ img {
 
 
 <div class="container">
-    
+
     <!-- Basic skills -->
-    <div class="row">      
+    <div class="row">
         <h2>Basic skills</h2>
         <p>Click on the buttons to open the collapsible content.</p>
         <button class="accordion">Setting up your workspace</button>
-            <div class="panel">
-                <p>First of all, what is a working directory? This is the folder that R will look into to find data and save any plots or scripts. To find out where your working directory currently is, and to change it see the below code.<br/></p>
-                <div class="code-container">
-                    <code># Identify your current directory<br/>getwd()<br/><br/># Set your working directory<br/> setwd("insert folder path")</code>
-                </div>
-                <p>Alternatively you can set it from the menu: <em>Session > Set Working Directory > Choose Directory.</em> For <code>setwd()</code>, inside the brackets you should input your file path as follows <code>setwd("C:/Documents/Directory")</code></p>
+        <div class="panel">
+            <p>First of all, what is a working directory? This is the folder that R will look into to find data and save any plots or scripts. To find out where your working directory currently is, and to change it see the below code.<br/></p>
+            <div class="code-container">
+                <code><span class="comment"># Identify your current directory</span><br/>getwd()<br/><br/><span class="comment"># Set your working directory</span><br/>setwd("insert folder path")</code>
             </div>
+            <p>Alternatively you can set it from the menu: <em>Session > Set Working Directory > Choose Directory.</em> For <code class="highlight-red">setwd()</code>, inside the brackets you should input your file path as follows <code class="highlight-red">setwd("C:/Documents/Directory")</code></p>
+        </div>
         <button class="accordion">Loading data and packages</button>
-            <div class="panel">
-                <p><b>Saving and loading your script again</b><br/>You should always be typing your code into a script file in order to produce a reproducible record of your analysis; if you only type in the console, R will not save your work! You should save your script often to avoid any problems. To save, click the icon at the top of your R Script to save as an .Rdata file. Here you will have to choose a file name. Try to avoid spaces and capital letters, as R can get confused by these! Save the file to your working directory so it will be easy to locate whenever you need it next. To load your script again, go to File > Open File and choose your script. It should open on a new script tab in RStudio.<br/><br/><b>Saving CSV files</b><br/>A CSV, or comma-separated values file contains values as a series of rows organised so that each column is separated by a comma. If your data is entered in Excel, you can save it as a CSV file by clicking on Save As and then choosing CSV as your file extension. CSV files are often easier to work with in R.</p>
-                <b>Loading packages</b><br/><p>R contains thousands of different packages which allow you to do many different things, ranging from mapping to machine learning and web scraping. The best way to find out about what packages exist, is to do a google search, and/or search the <a href="https://cran.r-project.org/web/packages/" target="_blank">CRAN</a> website. Once you have found your package you must first install it on your machine and then call it in your script, as shown in the code below.</p>
-                <div class="code-container">
-                    <code># Load RData file<br/>objectname &lt;- load("filepath/file.RData")<br/><br/># Load CSV file<br/> objectname &lt;- read.csv("filepath/file.csv")<br/><br/># Installing dplyr package<br/>install.packages("dplyr")<br/><br/># Load package<br/> library(dplyr)</code>
-                </div>
+        <div class="panel">
+            <p><b>Saving and loading your script again</b><br/>You should always be typing your code into a script file in order to produce a reproducible record of your analysis; if you only type in the console, R will not save your work! You should save your script often to avoid any problems. To save, click the icon at the top of your R Script to save as an .Rdata file. Here you will have to choose a file name. Try to avoid spaces and capital letters, as R can get confused by these! Save the file to your working directory so it will be easy to locate whenever you need it next. To load your script again, go to File > Open File and choose your script. It should open on a new script tab in RStudio.<br/><br/><b>Saving CSV files</b><br/>A CSV, or comma-separated values file contains values as a series of rows organised so that each column is separated by a comma. If your data is entered in Excel, you can save it as a CSV file by clicking on Save As and then choosing CSV as your file extension. CSV files are often easier to work with in R.</p>
+            <b>Loading packages</b><br/>
+            <p>R contains thousands of different packages which allow you to do many different things, ranging from mapping to machine learning and web scraping. The best way to find out about what packages exist, is to do a google search, and/or search the <a href="https://cran.r-project.org/web/packages/" target="_blank">CRAN</a> website. Once you have found your package you must first install it on your machine and then call it in your script, as shown in the code below.</p>
+            <div class="code-container">
+                <code><span class="comment"># Load CSV file</span><br/>objectname &lt;- read.csv("filepath/file.csv")<br/><br/><span class="comment"># Installing dplyr package</span><br/>install.packages("dplyr")<br/><br/><span class="comment"># Load package</span><br/>library(dplyr)</code>
             </div>
+        </div>
         <button class="accordion">Other tips and resources</button>
-            <div class="panel">
-                <p><b>Writing clean code</b><br/>R code should be easy to read, share, and verify. Aim to keep your object naming conventions consistent across your script and make sure to comment your code. For extensive guidelines please consult Google's R style guide <a href="https://google.github.io/styleguide/Rguide.xml" target="_blank">here</a><br/><br/><b>Helpful tutorials</b><br/>     <ul>
-                        <li><a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Introduction to R</a></li>
-                        <li><a href="https://ourcodingclub.github.io/2016/11/15/troubleshooting.html" target="_blank">Troubleshooting R</a></li>
-                        <li><a href="https://ourcodingclub.github.io/2017/04/25/etiquette.html" target="_blank">Coding Etiquette</a></li>
-                    </ul>
-                <p/>
-            </div>
+        <div class="panel">
+            <p><b>Writing clean code</b><br/>R code should be easy to read, share, and verify. Aim to keep your object naming conventions consistent across your script and make sure to comment your code. For extensive guidelines please consult Google's R style guide <a href="https://google.github.io/styleguide/Rguide.xml" target="_blank">here</a><br/><br/><b>Helpful tutorials</b></p>
+            <ul>
+                <li><a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">Introduction to R</a></li>
+                <li><a href="https://ourcodingclub.github.io/2016/11/15/troubleshooting.html" target="_blank">Troubleshooting R</a></li>
+                <li><a href="https://ourcodingclub.github.io/2017/04/25/etiquette.html" target="_blank">Coding Etiquette</a></li>
+            </ul>
+            <p><b>Useful commands for RStudio</b><br/>In order to clean your global environment (all the objects, functions etc. you have created) you can execute the following command in your console <code class="highlight-red">rm(list=ls())</code>. To clear your console, you can execute this command <code class="highlight-red">cat("\014")</code>.
+        </div>
     </div>
-    
+
     <!-- Data manipulation -->
-    <div class="row">      
+    <div class="row">
         <h2>Data manipulation</h2>
         <p>Click on the buttons to open the collapsible content.</p>
         <button class="accordion">Structuring datasets</button>
-            <div class="panel">
-                <p>When working with data, a lot of time can be spent on data preparation and cleaning. To become more effective, it is important to be familiar with the principles of "tidy data", which provide a standard way to organise data values within a dataset.<br/></p>
-                <ol>
-                    <li>Each variable forms a column.</li>
-                    <li>Each observation forms a row.</li>
-                    <li>Each type of observational unit forms a table.</li>
-                </ol>
-                <p>Please see Hadley Wickham's <a href="http://vita.had.co.nz/papers/tidy-data.pdf" target="_blank">academic paper</a> or a condensed <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" target="_blank">article</a> on tidy data and how to implement it. Below you will find some example code on how to convert messy data to tidy data, using functions from the<code> tidyr</code> package.</p>
-                <div class="code-container">
+        <div class="panel">
+            <p>When working with data, a lot of time can be spent on data preparation and cleaning. To become more effective, it is important to be familiar with the principles of "tidy data", which provide a standard way to organise data values within a dataset.<br/></p>
+            <ol>
+                <li>Each variable forms a column.</li>
+                <li>Each observation forms a row.</li>
+                <li>Each type of observational unit forms a table.</li>
+            </ol>
+            <p>Please see Hadley Wickham's <a href="http://vita.had.co.nz/papers/tidy-data.pdf" target="_blank">academic paper</a> or a condensed <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" target="_blank">article</a> on tidy data and how to implement it. Below you will find some example code on how to convert messy data to tidy data, using functions from the<code class="highlight-red">tidyr</code>package.</p>
+            <div class="code-container">
                 <code># Formatting wide dataframe to long format<br/>
                    longdata &lt;- gather(...)<br/>
                     <br/># Formatting long dataframe to wide format<br/>
                     widedata &lt;- spread(...)</code>
-                </div>
             </div>
+        </div>
         <button class="accordion">Selecting &amp; filtering</button>
-            <div class="panel">
-                <p>There are a variety of ways to select columns and rows. This can be done by specifying the column/row name or index. However note that unlike other programming languages R starts counting at 1 instead of at 0 as is the case in Python. Other methods include the use of functions from the <code><a href="https://dplyr.tidyverse.org/articles/dplyr.html" target="_blank">dplyr</a></code> package.<br/></p>
-                <div class="code-container">
-                    <code># Selecting single columns by name or by index<br/>dataframe$columnName or object[,1]<br/><br/># Selecting rows in a column<br/> dataframe$columnName[1:2,]<br/><br/># Selecting multiple rows and columns<br/> dataframe[1:2,4:6]<br/><br/># Selecting columns using the select function<br/>select(dataframe, columnName1, columnName2)</code>
-                </div>
-                <p>You may also want to filter the dataset you are working with according to certain conditions. As an example let's take the built-in iris dataset, which describes the petal width and length of different iris flowers grouped by their class (Iris Setosa, Iris Versicolour, Iris Virginica). If you are interested to see how flower attributes vary in only one of the classes you can easily do so by using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html" target="_blank">filter</a></code> function from the <code><a href="https://dplyr.tidyverse.org/articles/dplyr.html" target="_blank">dplyr</a></code> package. This function will return a dataset that meets the conditions that you define. See the code below for examples:<br/></p>
-                <div class="code-container">
-                    <code># Filtering for a single condition<br/>filter(iris, Species == "virginica")<br/><br/># Filter for multiple conditions<br/>filter(iris, Species %in% c("virginica","setosa"), Sepal.Length > 5)<br/><br/># Other useful filter conditions<br/>
+        <div class="panel">
+            <p>There are a variety of ways to select columns and rows. This can be done by specifying the column/row name or index. However note that unlike other programming languages R starts counting at 1 instead of at 0 as is the case in Python. Other methods include the use of functions from the <code><a href="https://dplyr.tidyverse.org/articles/dplyr.html" target="_blank" class="highlight-red">dplyr</a></code> package.<br/></p>
+            <div class="code-container">
+                <code><span class="comment"># Selecting single columns by name or by index</span><br/>dataframe$columnName or object[,1]<br/><br/><span class="comment"># Selecting rows in a column</span><br/>dataframe$columnName[1:2,]<br/><br/><span class="comment"># Selecting multiple rows and columns</span><br/>dataframe[1:2,4:6]<br/><br/><span class="comment"># Selecting columns using the select function</span><br/>select(dataframe, columnName1, columnName2)</code>
+            </div>
+            <p>You may also want to filter the dataset you are working with according to certain conditions. As an example let's take the built-in iris dataset, which describes the petal width and length of different iris flowers grouped by their class (Iris Setosa, Iris Versicolour, Iris Virginica). If you are interested to see how flower attributes vary in only one of the classes you can easily do so by using the <code><a href="https://dplyr.tidyverse.org/reference/filter.html" target="_blank" class="highlight-red">filter</a></code> function from the <code><a href="https://dplyr.tidyverse.org/articles/dplyr.html" target="_blank" class="highlight-red">dplyr</a></code> package. This function will return a dataset that meets the conditions that you define. See the code below for examples:<br/></p>
+            <div class="code-container">
+                <code><span class="comment"># Loading packages</span><br/>library(dplyr)<br/><br/><span class="comment"># Loading data and defining as an object</span><br/>iris &lt;- as.data.frame(iris)<br/><br/><span class="comment"># Filtering for a single condition</span><br/>filter(iris, Species == "virginica")<br/><br/><span class="comment"># Filter for multiple conditions</span><br/>filter(iris, Species %in% c("virginica","setosa"), Sepal.Length > 5)<br/><br/><span class="comment"># Other useful filter conditions</span>
                         <ul style=text-decoration: none>
                             <li>== (equal to)</li>
                             <li>&lt; (less than)</li>
@@ -164,65 +192,65 @@ img {
                             <li>! (inverse, e.g. != stands for not equal to)</li>
                         </ul>
                     </code>
-                 </div>
-                <p>When dealing with larger datasets, you can use pipes <code>(%&gt;%)</code> from the <code>magrittr</code> package to apply multiple operations to your dataset, without needing to create multiple objects. This is demonstrated in the code below.</p>
-                <div class="code-container">
-                    <code>newDataset &lt;- iris %&gt;%<br/>select("Sepal.Length", "Species") %&gt;%<br/>filter(Species == "setosa") %&gt;%<br/>group_by(Species) %&gt;%<br/>summarise(meanSepalLength = mean(Sepal.Length)</code>
-                </div>
             </div>
+            <p>When dealing with larger datasets, you can use pipes <code class="highlight-red">(%&gt;%)</code> from the <code class="highlight-red">magrittr</code> package to apply multiple operations to your dataset, without needing to create multiple objects. This is demonstrated in the code below.</p>
+            <div class="code-container">
+                <code>newDataset &lt;- iris %&gt;%<br/>select("Sepal.Length", "Species") %&gt;%<br/>filter(Species == "setosa") %&gt;%<br/>group_by(Species) %&gt;%<br/>summarise(meanSepalLength = mean(Sepal.Length)</code>
+            </div>
+        </div>
         <button class="accordion">Other tips and resources</button>
-            <div class="panel">
-                <p><b>Helpful tutorials</b></p>
-                <ul>
-                    <li><a href="https://ourcodingclub.github.io/2017/01/16/piping.html#tidy" target="_blank">Data Manipulation</a></li>
-                    <li><a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Working with big data</a></li>
-                </ul>
-            </div>
+        <div class="panel">
+            <p><b>Helpful tutorials</b></p>
+            <ul>
+                <li><a href="https://ourcodingclub.github.io/2017/01/16/piping.html#tidy" target="_blank">Data Manipulation</a></li>
+                <li><a href="https://ourcodingclub.github.io/2017/03/20/seecc.html" target="_blank">Working with big data</a></li>
+            </ul>
+        </div>
     </div>
-            
+
     <!-- Data visualisation -->
-    <div class="row">      
+    <div class="row">
         <h2>Data visualisation</h2>
         <p>Click on the buttons to open the collapsible content.</p>
         <button class="accordion">Plotting basics</button>
         <div class="panel">
-                <p><b>How to plot your data</b><br/> There are a variety of ways to do this, however here we will focus on the use of the <code>ggplot2</code> data visualisation package. This package presents numerous ways to visualise large and small datasets alike, and we strongly recommend you read the <a href="http://r4ds.had.co.nz/data-visualisation.html" target="_blank">data visualisation</a> chapter of the freely available<a href="http://r4ds.had.co.nz/" target="_blank"> R for Data Science</a> book to find out about the many ways that you can visualise your data. First make sure you have installed and loaded the <code>ggplot2</code> package, then you can build your first plot!<br/><br/><b>Building a ggplot</b><br/>This consists of first calling the <code>ggplot</code> function, whose arguments are the <code>data</code> you are plotting, followed by <code>aes</code>, which stands for aesthetics and encapsulates the x and y data along with any other aesthetic arguments you want to include such as <code>fill, group, shape</code> etc. See the code below for some basic examples and consult the <a href"" target="_blank">data visualisation</a> chapter for detailed information.</p>
-                <div class="code-container">
-                    <code># Basic scatter plot<br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +<br/>geom_point()</code>
-                </div>
-                <img src="{{ site.baseurl }}/img/faqPlot1.png" style="height: 300px;">
-                <div class="code-container">
-                    <code># Grouped scatter plot<br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>geom_point()</code>
-                </div>
-                <img src="{{ site.baseurl }}/img/faqPlot2.png" style="height: 300px;">
-                <div class="code-container">
-                    <code># Facetted scatter plot<br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>geom_point() + <br/>facet_wrap(~Species)</code>
-                </div>
-                <img src="{{ site.baseurl }}/img/faqPlot3.png" style="height: 300px;">
-                <div class="code-container">
-                    <code># Facetted scatter plot with local regression<br/>ggplot(iris) +<br/>geom_smooth(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>geom_point(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/>theme_classic() +<br/>facet_wrap(~Species)</code>
-                </div>
-                <img src="{{ site.baseurl }}/img/faqPlot4.png" style="height: 300px;">
+            <p><b>How to plot your data</b><br/> There are a variety of ways to do this, however here we will focus on the use of the <code class="highlight-red">ggplot2</code> data visualisation package. This package presents numerous ways to visualise large and small datasets alike, and we strongly recommend you read the <a href="http://r4ds.had.co.nz/data-visualisation.html" target="_blank">data visualisation</a> chapter of the freely available<a href="http://r4ds.had.co.nz/" target="_blank"> R for Data Science</a> book to find out about the many ways that you can visualise your data. First make sure you have installed and loaded the <code class="highlight-red">ggplot2</code> package, then you can build your first plot!<br/><br/><b>Building a ggplot</b><br/>This consists of first calling the <code class="highlight-red">ggplot</code> function, whose arguments are the <code class="highlight-red">data</code> you are plotting, followed by <code class="highlight-red">aes</code>, which stands for aesthetics and encapsulates the x and y data along with any other aesthetic arguments you want to include such as <code class="highlight-red">fill, group, shape</code> etc. See the code below for some basic examples and consult the <a href="http://r4ds.had.co.nz/data-visualisation.html" target="_blank">data visualisation</a> chapter for detailed information.</p>
+            <div class="code-container">
+                <code><span class="comment"># Basic scatter plot</span><br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length)) +<br/><span class="indent">geom_point() +</span><br/><span class="indent">theme_classic()</span></code>
             </div>
+            <img src="{{ site.baseurl }}/img/faqPlot1.png" style="height: 300px;">
+            <div class="code-container">
+                <code><span class="comment"># Grouped scatter plot</span><br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/><span class="indent">geom_point() +</span><br/><span class="indent">theme_classic()</span></code>
+            </div>
+            <img src="{{ site.baseurl }}/img/faqPlot2.png" style="height: 300px;">
+            <div class="code-container">
+                <code><span class="comment"># Facetted scatter plot</span><br/>ggplot(iris, aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/><span class="indent">geom_point() + </span><br/><span class="indent">theme_classic() +</span><br/><span class="indent">facet_wrap(~Species)</span></code>
+            </div>
+            <img src="{{ site.baseurl }}/img/faqPlot3.png" style="height: 300px;">
+            <div class="code-container">
+                <code><span class="comment"># Facetted scatter plot with loess regression</span><br/>ggplot(iris) +<br/>geom_smooth(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +<br/><span class="indent">geom_point(aes(x = Sepal.Width, y = Sepal.Length, color = Species)) +</span><br/><span class="indent">theme_classic() +</span><br/><span class="indent">facet_wrap(~Species)</span></code>
+            </div>
+            <img src="{{ site.baseurl }}/img/faqPlot4.png" style="height: 300px;">
+        </div>
         <button class="accordion">Reordering plots</button>
         <div class="panel">
-            <p>When making plots in ggplot, the order is determined alphabetically. To order your plots according to a specific order (decreasing, ascending or custom) you need to explicitly specify the order of levels in the dataset. In this answer we will explore the built-in <code>mpg</code> dataset and will show you how to reorder bar plots.<br/><br/><b>Reordering levels in R</b><br/>Firstly load your dataset and have a look at the data structure using <code>head</code>. In our case we are interested in looking at the relationship between car <code>class</code> and cylinder size (<code>cyl</code>). When looking at the data we see that there are multiple observations for each class, so first we take a mean of the variable we are interested in per car class using the <code>aggregate()</code> function, so that we can make a barplot.</p>
+            <p>When making plots in ggplot, the order is determined alphabetically. To order your plots according to a specific order (decreasing, ascending or custom) you need to explicitly specify the order of levels in the dataset. In this answer we will explore the built-in <code class="highlight-red">mpg</code> dataset and will show you how to reorder bar plots.<br/><br/><b>Reordering levels in R</b><br/>Firstly load your dataset and have a look at the data structure using <code class="highlight-red">head</code>. In our case we are interested in looking at the relationship between car <code class="highlight-red">class</code> and cylinder size <code class="highlight-red">cyl</code>. When looking at the data we see that there are multiple observations for each class, so first we take a mean of the variable we are interested in per car class using the <code class="highlight-red">aggregate()</code> function, so that we can make a barplot.</p>
             <div class="code-container">
-                <code># View dataset<br/>head(mpg)<br/><br/># Aggregate data per class (mean per class)<br/> mpg.class &lt;-    aggregate(cyl ~ class, mpg, mean)<br/><br/># Generate unordered barplot<br/>ggplot(mpg.class, aes(class, cyl)) +<br/>geom_bar(stat="identity")</code>
+                <code><span class="comment"># View dataset</span><br/>head(mpg)<br/><br/># Aggregate data per class (mean per class)<br/> mpg.class &lt;- aggregate(cyl ~ class, mpg, mean)<br/><br/><span class="comment"># Generate unordered barplot</span><br/>ggplot(mpg.class, aes(class, cyl)) +<br/><span class="indent">geom_bar(stat="identity") +</span><br/><span class="indent">theme_classic()</span></code>
             </div>
             <img src="{{ site.baseurl }}/img/faqPlot5.png" style="height: 300px;">
-            <p>Now we can check the order of levels in our <code>class</code> column and create a custom order according to our own choosing. We can then plot our custom ordered plot by specifying the ordered inside the <code>scale_x_discrete</code> argument in ggplot.</p>
+            <p>Now we can check the order of levels in our <code class="highlight-red">class</code> column and create a custom order according to our own choosing. We can then plot our custom ordered plot by specifying the ordered inside the <code class="highlight-red">scale_x_discrete</code> argument in ggplot.</p>
             <div class="code-container">
-                <code># Checking level order<br/>mpg.class$class<br/><br># Create object with custom levels<br/>classes = c("midsize","suv","minivan")<br/><br/># Plot barchart with custom levels<br/>ggplot(mpg.class, aes(class, cyl)) +<br/>geom_bar(stat = "identity") +<br/>scale_x_discrete(limits = classes)</code>
+                <code><span class="comment"># Checking level order</span><br/>mpg.class$class<br/><br><span class="comment"># Create object with custom levels</span><br/>classes = c("midsize","suv","minivan")<br/><br/><span class="comment"># Plot barchart with custom levels</span><br/>ggplot(mpg.class, aes(class, cyl)) +<br/><span class="indent">geom_bar(stat = "identity") +</span><br/><span class="indent">theme_classic()</span><br/><span class="indent">scale_x_discrete(limits = classes)</span></code>
             </div>
             <img src="{{ site.baseurl }}/img/faqPlot6.png" style="height: 300px;">
-            <p>We can also reorder our barplot based on ascending or descending order. To do this we need to reorder our levels which can be achieved with <code>transform</code> and <code>reorder</code>. This is stored in a separate object and subsequently plotted.</p>
+            <p>We can also reorder our barplot based on ascending or descending order. To do this we need to reorder our levels which can be achieved with <code class="highlight-red">transform</code> and <code class="highlight-red">reorder</code>. This is stored in a separate object and subsequently plotted.</p>
             <div class="code-container">
-                <code># Reorder levels in ascending order<br/>mpg.asc &lt;- transform(mpg.class, class = reorder(class, cyl))<br/><br/># Plot levels in ascending order<br/>ggplot(mpg.asc, aes(class, cyl)) +<br/>geom_bar(stat = "identity")</code>
+                <code><span class="comment"># Reorder levels in ascending order</span><br/>mpg.asc &lt;- transform(mpg.class, class = reorder(class, cyl))<br/><br/><span class="comment"># Plot levels in ascending order</span><br/>ggplot(mpg.asc, aes(class, cyl)) +<br/><span class="indent">geom_bar(stat = "identity")</span><br/><span class="indent">theme_classic()</span></code>
             </div>
             <img src="{{ site.baseurl }}/img/faqPlot7.png" style="height: 300px;">
             <div class="code-container">
-                <code># Reorder levels in descending order<br/>mpg.dsc &lt;- transform(mpg.class, class = reorder(class, -cyl))<br/><br/># Plot levels in descending order<br/>ggplot(mpg.dsc, aes(class, cyl)) +<br/>geom_bar(stat = "identity")</code>
+                <code><span class="comment"># Reorder levels in descending order</span><br/>mpg.dsc &lt;- transform(mpg.class, class = reorder(class, -cyl))<br/><br/><span class="comment"># Plot levels in descending order</span><br/>ggplot(mpg.dsc, aes(class, cyl)) +<br/><span class="indent">geom_bar(stat = "identity")</span><br/><span class="indent">theme_classic()</span></code>
             </div>
             <img src="{{ site.baseurl }}/img/faqPlot8.png" style="height: 300px;">
         </div>
@@ -238,58 +266,59 @@ img {
                 <li><a href="https://ourcodingclub.github.io/2017/01/29/datavis.html" target="_blank">Data visualisation 1</a></li>
                 <li><a href="https://ourcodingclub.github.io/2017/03/29/data-vis-2.html" target="_blank">Data visualisation 2</a></li>
                 <li><a href="https://ourcodingclub.github.io/2016/12/11/maps_tutorial.html" target="_blank">Spatial data visualisation 2</a></li>
-                <li><a href="https://ourcodingclub.github.io/2017/03/07/shiny.html" target="_blank">Interactive web-apps</a></li> 
+                <li><a href="https://ourcodingclub.github.io/2017/03/07/shiny.html" target="_blank">Interactive web-apps</a></li>
             </ul>
         </div>
     </div>
-    
+
     <!-- Modelling basics -->
-    <div class="row">      
+    <div class="row">
         <h2>Modelling basics</h2>
         <p>Click on the buttons to open the collapsible content.</p>
         <button class="accordion">xxx</button>
-            <div class="panel">
-                <p>insert text<br/>
-                </p>
-                <div class="code-container">
-                    <code># comment<br/>code<br/><br/># comment<br/> code
+        <div class="panel">
+            <p>insert text<br/>
+            </p>
+            <div class="code-container">
+                <code># comment<br/>code<br/><br/># comment<br/> code
                     </code>
-                </div>
             </div>
+        </div>
         <button class="accordion">xxx</button>
-            <div class="panel">
-                <p><b>sub-title</b><br/>Insert text<br/><br/><b>sub-title</b><br/>insert text.</p>
-                    <div class="code-container">
-                    <code># comment<br/>code<br/><br/># comment<br/> code
+        <div class="panel">
+            <p><b>sub-title</b><br/>Insert text<br/><br/><b>sub-title</b><br/>insert text.</p>
+            <div class="code-container">
+                <code># comment<br/>code<br/><br/># comment<br/> code
                     </code>
-                </div>
             </div>
+        </div>
         <button class="accordion">xxx</button>
-            <div class="panel">
-                <p><b>sub-title</b><br/>insert text<br/><br/><b>sub-title</b><br/><ul>
-                <li><a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">link</a></li>
-                <li><a href="https://ourcodingclub.github.io/2016/11/15/troubleshooting.html" target="_blank">link</a></li>
-                <li><a href="https://ourcodingclub.github.io/2017/04/25/etiquette.html" target="_blank">link</a></li>
-                </ul><p/>
-            </div>
+        <div class="panel">
+            <p><b>sub-title</b><br/>insert text<br/><br/><b>sub-title</b><br/>
+                <ul>
+                    <li><a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">link</a></li>
+                    <li><a href="https://ourcodingclub.github.io/2016/11/15/troubleshooting.html" target="_blank">link</a></li>
+                    <li><a href="https://ourcodingclub.github.io/2017/04/25/etiquette.html" target="_blank">link</a></li>
+                </ul>
+                <p/>
+        </div>
     </div>
-        
-    
+
     <!-- Accordion Script -->
     <script>
         var acc = document.getElementsByClassName("accordion");
         var i;
-            
-            for (i = 0; i < acc.length; i++) {
+
+        for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
-                    this.classList.toggle("active");
-                    var panel = this.nextElementSibling;
-                    if (panel.style.maxHeight){
-                        panel.style.maxHeight = null;
-                    } else {
-                        panel.style.maxHeight = panel.scrollHeight + "px";
-                    } 
-                });
-            }
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.maxHeight) {
+                    panel.style.maxHeight = null;
+                } else {
+                    panel.style.maxHeight = panel.scrollHeight + "px";
+                }
+            });
+        }
     </script>
 </div>
