@@ -1,7 +1,7 @@
 --- 
 layout: page 
 title: FAQ 
-permalink: /faq/ 
+permalink: /qanda/ 
 ---
 
 <head>
@@ -98,6 +98,7 @@ permalink: /faq/
         .comment {
             color: gray;
         }
+
         .credit-footer {
             text-align: center;
             color: gray;
@@ -172,13 +173,29 @@ permalink: /faq/
                 <li>Each observation forms a row.</li>
                 <li>Each type of observational unit forms a table.</li>
             </ol>
-            <p>See Hadley Wickham's <a href="http://vita.had.co.nz/papers/tidy-data.pdf" target="_blank">academic paper</a> or a condensed <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" target="_blank">article</a> on tidy data for more information on how to implement these principles. Below, you will find some example code on how to convert messy data to tidy data by using functions from the<code class="highlight-red">tidyr</code>package.</p>
+            <p>Please see Hadley Wickham's <a href="http://vita.had.co.nz/papers/tidy-data.pdf" target="_blank">academic paper</a> or a condensed <a href="https://cran.r-project.org/web/packages/tidyr/vignettes/tidy-data.html" target="_blank">article</a> on tidy data and how to implement it. Below you will find some example code on how to convert messy data to tidy data, using functions from the <code class="highlight-red">tidyr</code> and <code class="highlight-red">dplyr</code> packages.</p>
             <div class="code-container">
-                <code># Formatting wide dataframe to long format<br/>
-                   longdata &lt;- gather(...)<br/>
-                    <br/># Formatting long dataframe to wide format<br/>
-                    widedata &lt;- spread(...)</code>
+                <code><span class="comment"># Loading required packages</span><br/>library(tidyr)<br/>library(dplyr)<br/>
+                    <br/><span class="comment"># Loading dataframe</span><br/>
+                    iris &lt;- as.data.frame(iris)<br/>
+                </code>
             </div>
+            <img src="{{ site.baseurl }}/img/iris1.png" style="height: 130px;">
+            <div class="code-container">
+                <code><span class="comment"># Converting iris df to wide dataframe (messy data)</span><br/>iris.wide &lt;- iris %&gt;%<br/><span class="indent">select(Species, Petal.Width) %&gt;% <span class="comment"># Selecting only two columns</span></span><br/><span class ="indent">filter(Species == "setosa") %&gt;% <span class="comment"># Filtering column for one species</span></span><br/>
+                </code>
+            </div>
+            <img src="{{ site.baseurl }}/img/iris2.png" style="height: 130px;">
+            <div class="code-container">
+                <code><span class="indent">mutate(sample = row_number()) %&gt;% <span class="comment"># Adding row number identifier</span></span><br/><span class="indent">spread(sample, Petal.Width) <span class="comment"># Spreading data to wide format</span></span>
+                </code>
+            </div>
+            <img src="{{ site.baseurl }}/img/iris3.png" style="width: 500px;">
+            <div class="code-container">
+                <code><span class="comment"># Converting messy iris dataframe to tidy (long) dataframe</span><br/>iris.long &lt;- iris.wide %&gt;%<br/><span class="indent">gather(Species, Petal.Width) %&gt;%<span class="comment"> # Gather wide data to long format</span></span><br/><span class="indent">rename(Setosa.Sample = Species) <span class="comment"> # Rename to correct column name</span></span>
+                </code>
+            </div>
+            <img src="{{ site.baseurl }}/img/iris4.png" style="height:130px;">
         </div>
         <button class="accordion">Selecting &amp; filtering</button>
         <div class="panel">
@@ -312,7 +329,8 @@ permalink: /faq/
         </div>
     </div>
     <div class="credit-footer">
-    <img src="{{ site.baseurl }}/img/spa.jpg"><p>This page was developed by Izzy Rich and Sam Kellerhals and was supported through the Student Partnership Agreement at the University of Edinburgh.</p>
+        <img src="{{ site.baseurl }}/img/spa.jpg">
+        <p>This page was developed by Izzy Rich and Sam Kellerhals and was supported through the Student Partnership Agreement at the University of Edinburgh.</p>
     </div>
     <!-- Accordion Script -->
     <script>
