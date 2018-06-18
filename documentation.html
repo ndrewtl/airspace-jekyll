@@ -1,0 +1,68 @@
+---
+layout: page
+title: Our Work
+permalink: /docs/
+---
+    <!-- Slider Start  -->
+<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
+
+<section id="global-header">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="block">
+                    <h1>Let ORAC work for you</h1>
+                    <p>Simplicity is a form of beauty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="explain">
+  <div class="container">
+    <div class="row">
+      <div class="section-title">
+        <h2>How to integrate ORAC in your system</h2>
+        <p>ORAC produces campaigns based on users' online behavior of visitors and/or their previous purchases.</p>
+      </div>
+      <h3>Online behavior</h3>
+      <p>After you have <a href="{{ site.baseurl }}/contact">contacted us</a>, we will generate the <code>KEY_ID</code> to be used in the JavaScript snippet like the one below.</p>
+<pre class="prettyprint"><code>
+&lt;!-- ORAC --&gt;
+&lt;script type=&#39;text/javascript&#39;&gt;
+  function setupORAC () {
+    window.ORACObject = 'orac';
+
+// check whether the Orac object is defined
+  if (!('orac' in window)){
+
+    // define the Analytics object
+    window.orac = function(){
+
+      // add the tasks to the queue
+      window.orac.q.push(arguments);
+
+    };
+
+    // create the queue
+      window.orac.q = window.orac.q || [
+      ['create', 'ORAC-KEY_ID', 'auto'],
+      ['send', 'surf']
+    ];
+
+    window.orac.l = new Date().getTime();
+  }
+&lt;/script&gt;
+
+&lt;script type=&#39;text/javascript&#39; src=&#39;//www.elegans-orac.io/behavior.js&#39; async&gt;&lt;/script&gt;
+&lt;!-- End ORAC --&gt;
+      </code>
+</pre>
+      <h3>Past purchase</h3>
+      <p>Another way for ORAC to produce newsletter is to receive past purchase. You give us the file in any format you prefer, we take care of feeding ORAC.</p>
+      <h3>Done!</h3>
+      <p>Once ORAC has the list of users who authorized you to send email, it will start testing the conversion of messages with different personalizations and timing.</p>
+      <p>Reports on ORAC performances are produced according to the number and frequency of messages</p>
+    </div>
+  </div>
+</section>  
