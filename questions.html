@@ -20,12 +20,10 @@ permalink: /qanda/
             font-size: 15px;
             transition: 0.4s;
         }
-
         .active,
         .accordion:hover {
             background-color: #ccc;
         }
-
         .panel {
             padding: 0 18px;
             background-color: white;
@@ -33,7 +31,6 @@ permalink: /qanda/
             overflow: hidden;
             transition: max-height 0.2s ease-out;
         }
-
         .accordion:after {
             content: '\02795';
             /* Unicode character for "plus" sign (+) */
@@ -42,16 +39,13 @@ permalink: /qanda/
             float: right;
             margin-left: 5px;
         }
-
         .active:after {
             content: "\2796";
             /* Unicode character for "minus" sign (-) */
         }
-
         code {
             color: black;
         }
-
         .code-container {
             background-color: #f2f3f4;
             border: solid;
@@ -61,17 +55,14 @@ permalink: /qanda/
             padding: 0.5em;
             margin-bottom: 1em;
         }
-
         a {
             text-decoration: none;
             color: blue;
         }
-
         ul {
             list-style-type: none;
             padding-left: 0pt;
         }
-
         img {
             display: block;
             margin-left: auto;
@@ -81,7 +72,6 @@ permalink: /qanda/
             margin-top: 20px;
             padding-bottom: 20px;
         }
-
         .highlight-red {
             padding: 2px 4px;
             font-size: 90%;
@@ -89,28 +79,23 @@ permalink: /qanda/
             background-color: #f9f2f4;
             border-radius: 4px;
         }
-
         .indent {
             display: inline-block;
             text-indent: 2em;
         }
-
         .comment {
             color: gray;
         }
-
         .credit-footer {
             text-align: center;
             color: gray;
         }
-
         @media only screen and (max-width: 600px) {
             .code-container {
                 margin-bottom: 2em;
             }
     </style>
 </head>
-
 <!-- Slider -->
 <section id="global-header">
     <div class="container">
@@ -124,10 +109,7 @@ permalink: /qanda/
         </div>
     </div>
 </section>
-
-
 <div class="container">
-
     <!-- Basic skills -->
     <div class="row">
         <h2>Basic skills</h2>
@@ -160,7 +142,6 @@ permalink: /qanda/
             <p><b>Useful commands for RStudio</b><br/>In order to clean your global environment (all the objects, functions etc. you have created), you can execute the following command in your console <code class="highlight-red">rm(list=ls())</code>. To clear your console, you can execute this command <code class="highlight-red">cat("\014")</code>.
         </div>
     </div>
-
     <!-- Data manipulation -->
     <div class="row">
         <h2>Data manipulation</h2>
@@ -232,7 +213,6 @@ permalink: /qanda/
             </ul>
         </div>
     </div>
-
     <!-- Data visualisation -->
     <div class="row">
         <h2>Data visualisation</h2>
@@ -295,14 +275,13 @@ permalink: /qanda/
             </ul>
         </div>
     </div>
-
     <!-- Modelling basics -->
     <div class="row">
         <h2>Modelling basics</h2>
         <p>Click on the buttons to open the collapsible content.</p>
         <button class="accordion">xxx</button>
         <div class="panel">
-            <p>insert text<br/>
+            <p>Models are a helpful way to understand your data and to determine if there is a statistically significant relationship between your two (or more!) chosen variables. Before you start to create your model, predict what relationship your two variables may have. In this example, we inspect whether leaf area has a statistically significant relationship with stem area. What do you hypothesise? A simple linear model can be set up as follows: <br/>
             </p>
             <div class="code-container">
                 <code># comment<br/>code<br/><br/># comment<br/> code
@@ -336,7 +315,6 @@ permalink: /qanda/
     <script>
         var acc = document.getElementsByClassName("accordion");
         var i;
-
         for (i = 0; i < acc.length; i++) {
             acc[i].addEventListener("click", function() {
                 this.classList.toggle("active");
