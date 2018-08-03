@@ -18,33 +18,41 @@ Here are some projects that have used this Jekyll Theme:
 
 ## Steps for Setup:
 
-  *Make sure you have Ruby
+### Make sure you have Ruby
 
-  First, make sure you have Ruby installed. You can confirm this by running ruby -v on the command line:
+First, make sure you have [Ruby](https://www.ruby-lang.org/en/) installed. You can confirm this by running `ruby -v` on the command line:
 
-  $ ruby -v
-  ruby [version number] (date) [your platform]
+```sh
+$ ruby -v
+ruby [version number] (date) [your platform]
+```
 
-  If you get something like "Error, command not found" visit the link above and install Ruby for your platform.
-  Make sure you have Jekyll
+If you get something like `"Error, command not found"` visit the link above and install Ruby for your platform.
 
-  *Next, make sure you have Jekyll installed. Just like above, run jekyll -v on the command line:
 
-  $ jekyll -v
-  jekyll [version number]
+### Make sure you have Jekyll
 
-  If you get "Error, command not found" run gem install jekyll to install it using RubyGems.
-  Run this repository
+Next, make sure you have [Jekyll](https://jekyllrb.com/) installed. Just like above, run `jekyll -v` on the command line:
 
-  *Clone the repository, and cd into it:
+```sh
+$ jekyll -v
+jekyll [version number]
+```
+If you get `"Error, command not found"` run `gem install jekyll` to install it using RubyGems.
 
-  $ git clone https://github.com/ndrewtl/airspace-jekyll.git
-  $ cd airspace-jekyll
+### Run this repository
+Clone the repository, and `cd` into it:
+```sh
+$ git clone https://github.com/ndrewtl/airspace-jekyll.git
+$ cd airspace-jekyll
+```
 
-  *Install Dependencies
+Install Dependencies:
+```sh
+$ bundle install
+```
 
-  $ bundle install
-
-  *And run the server:
-
-  $ jekyll serve
+And run the server:
+```sh
+$ jekyll serve
+```
