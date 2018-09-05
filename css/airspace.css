@@ -3,7 +3,7 @@
  * In airspace, it is called style.css
  * However, style.css now holds additional styles for this jekyll port. (Not written by ThemeFisher)
  * The original style.css is now called airspace.css
- * 
+ *
  */
 
 @import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600);
@@ -97,7 +97,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	Slider Start
 --*/
 #slider {
-  background: url("../img/slider-bg.jpg") no-repeat;
+  background: url("../img/slider-bg-2.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: 10% 0%;
@@ -150,7 +150,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-top: 20px;
 }
 #intro .block img {
-  padding-left: 40px;
+  /*padding-left: 40px;*/
   width: 100%;
 }
 #intro .section-title {
@@ -168,6 +168,7 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 #service .service-item {
   padding-bottom: 30px;
+  height: 260px;
 }
 #service .service-item i {
   font-size: 60px;
@@ -231,7 +232,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	Feature Start
 --*/
 #feature {
-  background: url("../img/featue-bg.jpg");
+  background: url("../img/featue-bg-2.png");
   background-position: 50% 94px;
   width: 100%;
   display: block;
@@ -358,7 +359,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	Slider-work Start
 --*/
 #global-header {
-  background: url("../img/slider-bg.jpg") no-repeat;
+  background: url("../img/slider-bg-2.jpg") no-repeat;
   background-size: cover;
   padding-top: 150px;
   padding-bottom: 107px;
@@ -607,7 +608,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	slider-contact Start
 --*/
 #slider-contact {
-  background: url("../img/slider-bg.jpg") no-repeat;
+  background: url("../img/slider-bg-2.jpg") no-repeat;
   background-size: cover;
   padding-top: 150px;
   padding-bottom: 107px;
@@ -804,4 +805,24 @@ footer .footer-manu ul li a {
 }
 footer .footer-manu ul li a:hover {
   color: #000;
+}
+
+/* Custom CSS */
+
+a.btn.social {
+  width: 160px;
+}
+
+a.navbar-brand i {
+  position: relative;
+  /* Adjust these values accordingly */
+  top: 5px;
+  left: 5px;
+}
+
+a.navbar-brand span {
+  position: relative;
+  /* Adjust these values accordingly */
+  top: 0px;
+  left: 15px;
 }
