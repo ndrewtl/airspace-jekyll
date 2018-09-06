@@ -820,16 +820,14 @@ a.btn.social {
   width: 160px;
 }
 
-a.navbar-brand i {
+a.navbar-brand img {
   position: relative;
-  /* Adjust these values accordingly */
   top: 5px;
   left: 5px;
 }
 
 a.navbar-brand span {
   position: relative;
-  /* Adjust these values accordingly */
-  top: 0px;
-  left: 15px;
+  top: -25px;
+  left: 55px;
 }
