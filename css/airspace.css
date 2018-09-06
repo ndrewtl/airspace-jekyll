@@ -253,6 +253,13 @@ font header .navbar-default .navbar-nav li a:hover {
   backface-visibility: hidden;
   padding: 100px 0;
 }
+
+@media (max-width: 480px) {
+  #feature {
+    background: none !important;
+  }
+}
+
 #feature h2 {
   font-size: 28px;
   font-weight: 600;
