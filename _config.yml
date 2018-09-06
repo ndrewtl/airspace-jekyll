@@ -26,4 +26,9 @@ logo: "/assets/logo.png"
 markdown: kramdown
 
 # Google analytics
-# ga_tracking_id: "UA-XXXX-1"
+ga_tracking_id: "UA-125350913-1"
+
+# TODO
+# email
+# google analytics
+# cookie button
