@@ -831,3 +831,104 @@ a.navbar-brand span {
   top: -25px;
   left: 55px;
 }
+
+img.gravatar-avatar {
+	border-radius: 50%;
+	-moz-border-radius: 50%;
+	-webkit-border-radius: 50%;
+}
+
+#howitworks {
+  padding: 100px 0;
+}
+#howitworks .block h2 {
+  padding-top: 35px;
+  line-height: 27px;
+  margin: 0;
+}
+#howitworks .block p {
+  color: #7B7B7B;
+  padding-top: 20px;
+}
+#howitworks .block img {
+  /*padding-left: 40px;*/
+  width: 100%;
+}
+#howitworks .section-title {
+  margin-bottom: 0px;
+}
+#howitworks .section-title p {
+  padding-top: 20px;
+}
+
+
+#orga {
+  padding: 100px 0;
+}
+#orga .block h2 {
+  padding-top: 35px;
+  line-height: 27px;
+  margin: 0;
+}
+#orga .block p {
+  color: #7B7B7B;
+  padding-top: 20px;
+}
+/*#orga .block img {
+  /*padding-left: 40px;*/
+  width: 100%;
+}*/
+#orga .section-title {
+  margin-bottom: 0px;
+}
+#orga .section-title p {
+  padding-top: 20px;
+}
+#orga img.profileimg {
+  width: auto;
+}
+
+
+#sponsors {
+  background: url("../img/call-to-action-bg.jpg") no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 70px 0px;
+  position: relative;
+  text-align: center;
+  color: #fff;
+}
+#sponsors:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: #1d192c;
+  opacity: 0.8;
+}
+#sponsors h2 {
+  padding-bottom: 20px;
+  line-height: 33px;
+  margin: 0;
+  font-size: 30px;
+}
+#sponsors p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+#sponsors .btn-call-to-action {
+  padding: 15px 35px;
+  border: none;
+  background-color: #fff;
+  font-size: 15px;
+  color: #333333;
+  margin-top: 30px;
+}
+
+#sponsors a.sponsoring {
+  width: 190px;
+}
