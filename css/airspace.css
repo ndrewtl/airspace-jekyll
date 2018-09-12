@@ -48,8 +48,8 @@ a:focus,
 a:active {
   text-decoration: none !important;
 }
-.section-title {
-  margin-bottom: 70px;
+.tle {
+  /*margin-bottom: 70px;*/
 }
 .section-title h2 {
   text-transform: uppercase;
@@ -138,7 +138,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	wrapper Start
 --*/
 #intro {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 #intro .block h2 {
   padding-top: 35px;
@@ -164,7 +164,7 @@ font header .navbar-default .navbar-nav li a:hover {
 --*/
 #service {
   text-align: center;
-  padding: 90px 0;
+  padding: 50px 0;
 }
 #service .service-item {
   padding-bottom: 30px;
@@ -251,7 +251,7 @@ font header .navbar-default .navbar-nav li a:hover {
   box-sizing: border-box;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  padding: 100px 0;
+  padding: 50px 0;
 }
 
 @media (max-width: 480px) {
@@ -278,12 +278,12 @@ font header .navbar-default .navbar-nav li a:hover {
 	content Start
 --*/
 #testimonial {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 #testimonial .block h2 {
   line-height: 27px;
   color: #5C5C5C;
-  padding-top: 110px;
+  padding-top: 50px;
 }
 #testimonial .block p {
   padding-top: 50px;
@@ -546,7 +546,7 @@ font header .navbar-default .navbar-nav li a:hover {
 --*/
 #wrapper-work {
   overflow: hidden;
-  padding-top: 100px;
+  padding-top: 50px;
 }
 #wrapper-work ul li {
   width: 50%;
@@ -617,7 +617,7 @@ font header .navbar-default .navbar-nav li a:hover {
 #slider-contact {
   background: url("../img/slider-bg-2.jpg") no-repeat;
   background-size: cover;
-  padding-top: 150px;
+  padding-top: 50px;
   padding-bottom: 107px;
   position: relative;
 }
@@ -839,7 +839,7 @@ img.gravatar-avatar {
 }
 
 #howitworks {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 #howitworks .block h2 {
   padding-top: 35px;
@@ -863,7 +863,7 @@ img.gravatar-avatar {
 
 
 #orga {
-  padding: 100px 0;
+  padding: 50px 0;
 }
 #orga .block h2 {
   padding-top: 35px;
@@ -874,10 +874,10 @@ img.gravatar-avatar {
   color: #7B7B7B;
   padding-top: 20px;
 }
-/*#orga .block img {
+#orga .block img {
   /*padding-left: 40px;*/
   width: 100%;
-}*/
+}
 #orga .section-title {
   margin-bottom: 0px;
 }
