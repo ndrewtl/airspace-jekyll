@@ -291,6 +291,9 @@ permalink: /qanda/
         <button class="accordion">Model outputs</button>
         <div class="panel">
             <p>Once you create your model, RStudio outputs a lot of information, which can be very hard to pick through! Here, we breakdown each part for you.
+        
+                <img src="{{ site.baseurl }}/img/faqpicture9.png" style="height: 300px;">
+            <div class="code-container">
            <p><b>Call</b><br/> This outputs the model you are testing. Make sure it’s correct! 
 
             <p><b>Residuals</b><br/> This provides you with a summary of the residuals’ distribution. In general, the median should be close to 0 and the 1st and 3rd quartiles (1Q/3Q) should be similar in magnitude. If this is not the case, you may should double check if you’ve met your model’s assumptions.
@@ -316,9 +319,13 @@ permalink: /qanda/
             </div>
             <br/><br/><b>Using plots</b><br/>Another way to check if your data meet your model’s assumptions is to use the command <code class="highlight-red">plot(your_model)</code>. This brings up four plots: (1) residual versus fitted plot, (2) Q-Q plot, (3) scale-location and (4) residuals versus leverage.
             <p>Residuals versus fitted helps you assess if you have constant variances, helping assess if your data is homoscedastic. It It also helps assess whether or not there is a linear relationship between your variables. R gives the row numbers or names of the biggest outliers.
+                <img src="{{ site.baseurl }}/img/faqpicture10.png" style="height: 300px;">
             <p> The normal Q-Q plot assesses if your residuals are normally distributed. If the points are close to the dashed line, this means that they are likely normally distributed. Here, the tails drift slightly from the line of normal distribution. This is common in small datasets and is nothing to be concerned about, especially if your Shapiro test output says your data is normally distributed! 
+                <img src="{{ site.baseurl }}/img/faqpicture11.png" style="height: 300px;">
             <p> The scale-location plot  aims to identify heteroscedasticity -- what we don’t want! This plot is a bit easier to read tan the first line: if the red line is not horizontal, then the residuals are not homoskedastic. However, the degree to which it has to be horizontal can be debated; a slightly horizontal line is okay!
+                <img src="{{ site.baseurl }}/img/faqpicture12.png" style="height: 300px;">
            <p> The residuals versus leverage plot measures the leverage, or how much each data point influences the fit of the model (think R-squared value). Points that are isolated and farther from zero will have a larger leverage. You can see on the plot that Cook’s distance is also measured - this is how much the model fit would change if the isolated point was deleted. You want to avoid having isolated residuals with a Cook’s distance of over 0.5. This plot has a few points that fit that description which may need to be removed or perhaps the data should be transformed! 
+               <img src="{{ site.baseurl }}/img/faqpicture13.png" style="height: 300px;">
  
                <br/><br/><b>What if your data don’t fit your model’s assumptions?</b><br/>There are many ways to approach the problem of missed assumptions. First, consider if you’ve designed the correct model. Think about the ecological reasoning behind your decisions and make sure it is the most logical. Review some other design options to ensure you’ve created the best model. Second, it’s important to consider how far off your model is from meeting its assumptions. Plus or minus 0.01 is most likely arbitrary!  If you are confident in your model, stick with it. If your data significantly don’t meet your model’s assumptions, it may be time to transform your data. This can be done by through a log or square root transformation of one or both of your variables. For example:
 
