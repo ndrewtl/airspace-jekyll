@@ -653,29 +653,27 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-top: 70px;
   padding-bottom: 35px;
 }
-#contact-form .block form .form-group {
+#contact-form .form-group {
   padding-bottom: 15px;
   margin: 0px;
 }
-#contact-form .block form .form-group .form-control {
+#contact-form .form-group .form-control {
   background: #F6F8FA;
   height: 60px;
   border: 1px solid #EEF2F6;
   box-shadow: none;
   width: 100%;
+  margin: 9px;
 }
-#contact-form .block form .form-group-2 {
-  padding-bottom: 15px;
-  margin: 0px;
-}
-#contact-form .block form .form-group-2 textarea {
+#contact-form textarea {
   background: #F6F8FA;
   height: 135px;
   border: 1px solid #EEF2F6;
   box-shadow: none;
   width: 100%;
+  max-width: 100%;
 }
-#contact-form .block button {
+#contact-form button {
   width: 100%;
   height: 60px;
   background: #47424C;
@@ -683,6 +681,7 @@ font header .navbar-default .navbar-nav li a:hover {
   color: #fff;
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
+  margin: 9px; 
 }
 /*--
 	wrapper-contact Start
