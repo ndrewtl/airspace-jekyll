@@ -23,25 +23,25 @@ tags: datavis data_manip modelling
 
 #### <a href="#analyse"> 4. Statistically analyse qualitative data</a>
 
-This workshop will explore qualitative data, the sort of data you might collect through responses to survey questions, interview transcripts, or observations. The data analysis techniques in this workshop lend themselves well to sociological research, and the examples we will use come from a study on human behaviour related to environmentally friendly actions, but they could easily be applied to observations of any system. For example, you might use an ordinal scale (e.g. 1-5, Disagree-Agree) to describe the perceived health of a plant seedling, with the question being something like "How wilted are the leaves? 1=no sign of damage, 5=leaves abcised". 
+This workshop will explore qualitative data, the sort of data you might collect through responses to survey questions, interview transcripts, or observations. The data analysis techniques in this workshop lend themselves well to sociological research, and the examples we will use come from a study on human behaviour related to environmentally friendly actions, but they could easily be applied to observations of any system. For example, you might use an ordinal scale (e.g. 1-5, Disagree-Agree) to describe the perceived health of a plant seedling, with the question being something like "How wilted are the leaves? 1 = no sign of damage, 5 = leaves abcised". 
 
-Firstly, we will learn how to format data from surveys and interviews effectively so that it can be easily used in analysis later. Then we will explore ways to visualise these data graphically. Finally we will run some simple statistical analyses to answer some hypotheses.
+Firstly, we will learn how to format data from surveys and interviews effectively so that it can be easily used in analysis later. Then we will explore ways to visualise these data graphically. Finally, we will run some simple statistical analyses to answer some hypotheses.
 
-#### Note: all the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">this repository</a>. Please clone and download the repo as a zip file, then unzip it before starting the tutorial.
+### Note: all the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">this repository</a>. Please download the repo as a zip file, then unzip it before starting the tutorial.
 
-Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">the repository</a> to your own Github account and then add it as a new RStudio project by copying the HTTPS/SSH link. For more details on how to register on Github, download Git, sync RStudio and Github and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">previous tutorial.</a>
+Alternatively, you can fork <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">the repository</a> to your own GitHub account and then add it as a new `RStudio` project by copying the `HTTPS/SSH` link. For more details on how to register on GitHub, download `git`, sync `RStudio` and GitHub and use version control, please check out our <a href="https://ourcodingclub.github.io/2017/02/27/git.html" target="_blank">`git` and `RStudio` tutorial.</a>
 
 ## Getting Started
 
-The first thing to do is open `RStudio`. Then make a new script file using `File/ New File/ R Script`, save it with a sensible name inside the folder you just downloaded and unzipped from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>.
+The first thing to do is open `RStudio`. Then make a new script file using `File/ New File/ R Script`, save it with a logical name inside the folder you just downloaded and unzipped from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>.
 
-Next, in your script file you need to set your working directory to the folder you just downloaded from <a href="https://github.com/ourcodingclub/CC-time-series" target="_blank">the github repository</a>. Copy and paste the code below as a guide, but remember that the location of the folder on your computer will be different:
+Next, in your script file you need to set your working directory to the folder you just downloaded from <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">the GitHub repository</a>. Copy and paste the code below as a guide, but remember that the location of the folder on your computer will be different:
 
 ```r
 setwd("~/Downloads/CC-Qualit-master")
 ```
 
-Next, load the packages needed for this tutorial by copying the code below into your script file then running those lines of code using either `Cmd+R` on a Mac, or `Ctrl+R` on Windows. If this is the first time you're using them these packages, you'll need to install them first, for example using `install.packages("ggplot2")`, and afterwards you can use `library()` to load them.
+Next, load the packages needed for this tutorial by copying the code below into your script file then running those lines of code using either `Cmd + R` on a Mac, or `Ctrl + R` on Windows. If this is the first time you're using them these packages, you'll need to install them first, for example using `install.packages("ggplot2")`, and afterwards you can use `library()` to load them.
 
 ```r
 library(ggplot2)
@@ -67,7 +67,7 @@ data(stop_words)
 ```
 These are anonymised data from an online survey designed to investigate whether gender and different cohabitation arrangements influence the likelihood of participants performing environmentally friendly actions around the house, like recycling or buying sustainable household products.
 
-This example dataset is formatted to purposely resemble the sort of thing you might generate from your own survey responses on Google Forms or Survey Monkey. It is not ready for analysis yet! We will spend some time getting the data ready for analysis, so that you can learn the skills needed to format your own data for analysis.
+This example dataset is formatted to purposely resemble the sort of thing you might generate from your own survey responses on Google Forms or Survey Monkey. It is not quite ready for analysis yet. We will spend some time getting the data ready for analysis, so that you can learn the skills needed to format your own data for analysis.
 
 The object `sust_lookup` is a table which connects the name of each column in the dataframe to the corresponding question that was asked in the survey. Replacing the raw questions with shorter column names makes it much easier to write code, and with the lookup table we can add the actual question title back in when we are creating plots. 
 
@@ -75,7 +75,7 @@ The object `sust_lookup` is a table which connects the name of each column in th
 
 <a name="format"></a>
 
-Getting qualitative data into a tidy format for analysis can take some time. Most analytical tools are best suited to numerical datasets, so some coercion is needed to generate numerical values from our qualitative observations. Remember when you are designing a survey to consider how you will analyse the data, this will make it much easier later on.
+Getting qualitative data into a suitable format for analysis is a key pre-requisite for success - you're setting yourself up for the coding fun to follow! Most analytical tools are best suited to numerical datasets, so some coercion is needed to generate numerical values from our qualitative observations. When you are designing a survey, emember to consider how you will analyse the data, draw out how you imagine your graphs will look, etc., this will make it much easier later on.
 
 Some of the questions in this data set were designed on a five point scale, also known as a Likert scale. Each column in the dataframe contains responses to a single question. You can Look at the values contained in the column titled  `sustainability_daily_think` entering this code:
 
@@ -136,12 +136,12 @@ If you look in the `sustainability_daily_think` column, you will see that it con
 sust_data$sustainability_daily_think
 ```
 
-First, we need to make a summary data frame of the responses from this column, which can be done easily using the `dplyr` package. For an introduction to `dplyr`, check out <a href="https://github.com/ourcodingclub/CC-Qualit" target="_blank">our tutorial on data manipulation</a>. Enter the code below to make the summary table: 
+First, we need to make a summary data frame of the responses from this column, which can be done easily using the `dplyr` package. For an introduction to `dplyr`, check out <a href="https://ourcodingclub.github.io/2017/01/16/piping.html" target="_blank">our tutorial on data manipulation and formatting</a>. You can use the code below to make a summary table: 
 
 ```r 
 sust_think_summ_wide <- sust_data %>%
-	group_by(gender, sustainability_daily_think) %>%
-	tally() %>%
+	group_by(gender, sustainability_daily_think) %>%  # grouping by these two variables
+	tally() %>%  # counting the number of responses
 	mutate(perc = n / sum(n) * 100) %>%
 	dplyr::select(-n) %>%
 	group_by(gender) %>%
@@ -224,7 +224,7 @@ In the code above we have created two new columns `midhigh` and `midlow`, which 
 
 Next, we have to split the data frame into two data frames, one containing the negative responses and half of `Sometimes` (i.e. `midlow`) and one containing the positive repsonses and the other half of `Sometimes` (i.e. `midhigh`). We need to do this because there are actually two sets of bars on the graph, one for the left side of the zero line and one for the right of the zero line.
 
-The code below creates two new data frames. `%in%` allows us to search for multiple matches in the `response` column, whereas `==` only allows us to search for one response:
+__The code below creates two new data frames. `%in%` allows us to search for multiple matches in the `response` column, whereas `==` only allows us to search for one response:__
 
 ```r
 sust_think_summ_hi <- sust_think_summ_hi_lo %>%
@@ -252,7 +252,7 @@ legend_pal <- gsub("#F7F7F7", "#9C9C9C", legend_pal)
 names(legend_pal) <- c("All the time", "Often", "midhigh", "midlow", "Rarely", "Never" )
 ```
 
-Now for the actual plot code!
+Now we are ready to make our graph, the exciting part!
 
 ```r
 ggplot() + 
@@ -421,7 +421,7 @@ For more on text mining using `tidytext`, you can check out <a href="https://www
 
 ## 4. Analyse qualitative data
 
-Due to the way survey data are often formatted, with lot of counts and factors, the assumptions of conventional parametric statistical analysis are often violated, necessitating a more complex statistical approach. Below are a few examples of how to test various hypotheses using our survey data. 
+Due to the way survey data are usually formatted, with lot of counts and factors, the assumptions of conventional parametric statistical analysis are often violated, so we can branch out from our usual linear models! Below are a few examples of how to test various hypotheses using our survey data. 
 
 ### Chi-squared
 
@@ -458,7 +458,7 @@ We don't find support for our hypothesis that gender differences increase with a
 
 ### Conclusion
 
-__In this tutorial, we learned how to visualise qualitative data using different types of plots, as well as how to analyse the data to test different hypotheses.__
+__In this tutorial, we learned how to visualise qualitative data using different types of plots, as well as how to analyse the data to test different hypotheses, hopefully getting you one step closer to unwrapping your data presents!__
 
 <hr>
 <hr>
