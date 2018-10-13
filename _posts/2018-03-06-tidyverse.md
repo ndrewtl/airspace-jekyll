@@ -942,7 +942,7 @@ ggsave(deer.panel, filename = "deer_panel2.png", height = 10, width = 15)
 
 <center> <img src="{{ site.baseurl }}/img/deer_panel2.png" alt="Img" style="width: 900px;"/> </center>
 
-#### A challenge for later if you are keen
+## A challenge for later if you are keen
 
 __If that wasn't challenging enough for you, we have a challenge for you to figure out on your own.
 Take what you have learned about pipes and make a map for the five most well-sampled populations in the LPD database (the ones with the most replicate populations). You get extra points for incorporating a handwritten function to make the map and for using purr to implement that function.__
@@ -1165,14 +1165,6 @@ ggplot(df, aes(x = x, y = y) + geom_point()
 ```
 ````
 
-By default, figures are rendered as `.png` files by R Markdown, which can lead to loss of quality if your document is rescaled. You can change that to `.svg`, a vector file format by adding `dev='svg'` to the code chunk instruction section.
-
-````
-```{r, fig.width = 2.5, fig.height = 7.5, dev = 'svg'}
-ggplot(df, aes(x = x, y = y) + geom_point()
-```
-````
-
 ## Inserting Tables
 
 R Markdown can print the contents of a data frame easily by enclosing the name of the data frame in a code chunk:
@@ -1215,81 +1207,159 @@ To learn more about the `tidyverse` in general, check out Charlotte Wickham's sl
 
 
 ### Git in the command line
-Traditionally, Git uses the command line to perform actions on local Git repositories. In this tutorial we ignored the command line but it is necessary if you want more control over Git. There are several great introductory guides on version control using Git, e.g. <a href = "https://swcarpentry.github.io/git-novice/" target="_blank">The Software Carpentry guide</a>, and this <a href = "https://github.com/BES2016Workshop/version-control" target="_blank">guide from the British Ecological Society Version Control workshop </a>. A couple of the commands below require [`hub`](https://github.com/github/hub) a wrapper for Git that increases its functionality, but not having this won't prevent you using the other commands:
+Traditionally, Git uses the command line to perform actions on local Git repositories. In this tutorial we ignored the command line but it is necessary if you want more control over Git. There are several excellent introductory guides on version control using Git, e.g. <a href = "http://simon-m-mudd.github.io/NMDM_book/#_version_control_with_git" target="_blank">Prof Simon Mudd's Numeracy, Modelling and Data management guide</a>, <a href = "https://swcarpentry.github.io/git-novice/" target="_blank">The Software Carpentry guide</a>, and this <a href = "https://github.com/BES2016Workshop/version-control" target="_blank">guide from the British Ecological Society Version Control workshop </a>. For more generic command line tools, look at this <a href="https://www.git-tower.com/blog/command-line-cheat-sheet">general cheat-sheet</a> and this <a href="https://github.com/0nn0/terminal-mac-cheatsheet">cheat-sheet for mac users</a>. We have also created a table and flow diagram with some basic Git commands and how they fit into the Git/Github workflow. Orange lines refer to the core workflow, the blue lines describe extra functions and the green lines deal with branches:
+
+<center><img src="{{ site.baseurl }}/img/git_cli_nmdm.png" alt="Img" style="width: 850px;"/></center>
 
 <style type="text/css">
 .tg  {border-collapse:collapse;border-spacing:0;}
 .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-.tg .tg-baqh{text-align:center;vertical-align:top}
 .tg .tg-yw4l{vertical-align:top}
 </style>
 <table class="tg">
   <tr>
-    <th class="tg-baqh"><b>Command</b></th>
-    <th class="tg-baqh"><b>Is <code>hub</code> required?</b></th>
-    <th class="tg-baqh"><b>Description</b></th>
+    <th class="tg-yw4l"><b>Command</b></th>
+    <th class="tg-yw4l"><b>Origin</b></th>
+    <th class="tg-yw4l"><b>Destination</b></th>
+    <th class="tg-yw4l"><b>Description</b></th>
   </tr>
   <tr>
-    <td class="tg-yw4l"><code>git reset --soft HEAD^</code></td>
-    <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Unstage a local commit.</td>
-  </tr>
-	  <tr>
-    <td class="tg-yw4l"><code>git checkout -- file</code></td>
-    <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Revert an individual file to the online GitHub version.</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l"><code>git fork</code></td>
-    <td class="tg-baqh">Y</td>
-    <td class="tg-yw4l">Create github repo in your personal account from a previously cloned GitHub repo.</td></tr>
-  <tr>
-    <td class="tg-yw4l"><code>git clone git@github.com:user/repo.git</code></td>
-    <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Create a local copy of a GitHub repo called "repo" owned by the user "user". This can be copied from github.com.</td>
+    <td class="tg-yw4l"><code>git clone REPO_URL</code></td>
+    <td class="tg-yw4l">Personal Github</td>
+    <td class="tg-yw4l">Local</td>
+    <td class="tg-yw4l">Creates a local copy of a Github repo. The URL can be copied from Github.com by clicking the `Clone or Download` button.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git add README.md</code></td>
-    <td class="tg-baqh">N</td>
+    <td class="tg-yw4l">Working Dir</td>
+    <td class="tg-yw4l">Staging Area</td>
     <td class="tg-yw4l">Add "README.md" to staging area.</td>
   </tr>
   <tr>
-    <td class="tg-yw4l"><code>git commit -m "Message"</code></td>
-    <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Commit changes to files to the local repo with the commit message "Message".</td>
+    <td class="tg-yw4l"><code>git commit</code></td>
+    <td class="tg-yw4l">Staging Area</td>
+    <td class="tg-yw4l">Local</td>
+    <td class="tg-yw4l">Commits changes to files to the local repo.</td>
   </tr>
   <tr>
-    <td class="tg-yw4l"><code>git commit -a -m "Message"</code></td>
-    <td class="tg-baqh">N</td>
-     <td class="tg-yw4l">Add and commit all file changes to the local repo with the commit message "Message".</td>
+    <td class="tg-yw4l"><code>git commit -a</code></td>
+    <td class="tg-yw4l">Working Dir</td>
+    <td class="tg-yw4l">Local</td>
+    <td class="tg-yw4l">adds and commits all file changes to the local repo.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git pull</code></td>
-    <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Retrieve any changes from the online master branch of a GitHub repo.</td>
+    <td class="tg-yw4l">Personal Github</td>
+    <td class="tg-yw4l">Local</td>
+    <td class="tg-yw4l">Retrieve any changes from a Github repo.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git push</code></td>
-    <td class="tg-baqh">N</td>
-    <td class="tg-yw4l">Send commited file changes to online master branch of GitHub repo.</td>
-  </tr>
-  <tr>
-    <td class="tg-yw4l"><code>git create</code></td>
-    <td class="tg-baqh">Y</td>
-    <td class="tg-yw4l">Create a GitHub repo with the same name as the local repo.</td>
+    <td class="tg-yw4l">Local</td>
+    <td class="tg-yw4l">Personal Github</td>
+    <td class="tg-yw4l">Sends commited file changes to Github repo.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git merge</code></td>
-    <td class="tg-baqh">N</td>
+    <td class="tg-yw4l">Other branch</td>
+    <td class="tg-yw4l">Current branch</td>
     <td class="tg-yw4l">Merge any changes in the named branch with the current branch.</td>
   </tr>
   <tr>
     <td class="tg-yw4l"><code>git checkout -b patch1</code></td>
-    <td class="tg-baqh">N</td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">NA</td>
     <td class="tg-yw4l">Create a branch called "patch1" from the current branch and switch to it.</td>
   </tr>
+  <tr>
+    <td class="tg-yw4l"><code>git init</code></td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">Initialise a directory as a Git repo.</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><code>git log</code></td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">Display the commit history for the current repo</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><code>git status</code></td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">See which files are staged/unstaged/changed</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><code>git diff</code></td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">See the difference between staged uncomitted changes and the most recent commit</td>
+  </tr>
+  <tr>
+    <td class="tg-yw4l"><code>git stash</code></td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">NA</td>
+    <td class="tg-yw4l">Save uncommitted changes in a temporary version and revert to the most recent commit</td>
+  </tr>
 </table>
+
+Below is a quick exercise so you can familiarise yourself with these command line tools. There are a few ways to use interact with Git using the terminal:
+
+1. If you are already in RStudio on a Mac or Linux machine, you can open a terminal within RStudio by going to `Tools -> Terminal -> New Terminal` in the menu. 
+
+<center><img src="{{ site.baseurl }}/img/rstudio_new_terminal.png" alt="Img" style="width: 700px;"/></center>
+
+2. If you are on a Mac or Linux machine you could just open a terminal program and run Git from there. Most Mac and Linux machines will have Git installed by default. On Mac you can go open a terminal by going to: `Applications/Utilities/Terminal.app`.
+3. If you are on a personal Windows machine, you can run Git using Git Bash, which can be installed when you installed Git.
+
+Once you have opened a terminal using one of the above methods, start by creating a folder somewhere on your local system called `git_test`, using the `mkdir` (make directory) command by typing the following into the terminal and hitting "Enter":
+
+```shell
+mkdir git_test
+```
+
+Then enter that folder using `cd` (change directory):
+
+```shell
+cd git_test
+```
+
+Then, make the folder into a Git repository:
+
+```shell
+git init
+```
+
+Now the folder has been made into a Git repository, allowing you to track changes to files. Now, lets create a `README.md` file inside the repository and put some text in it, using whatever text editor you are comfortable with. Make sure to place this `README.md` file into the repository folder on your device so it can be found! 
+
+Now, to add the file to be tracked by the Git repository:
+
+```shell
+git add README.md
+```
+
+The file has now been added to the staging area, but has not yet been committed to a version of the repository. To commit a version:
+
+```shell
+git commit
+```
+
+You then have to enter a commit message using the text editor which appears, If you have selected Vim as the default text editor, you will need to press `i` before you can type, then `Esc` when you are finished typing. To save and exit, type `:wq`.
+
+Currently, the Git repository is still only on our local computer. Versions are being committed, but they are not being backed up to a remote version of the repository on Github. Go to Github and create a repository called `git_test`, like you did earlier on in the workshop, but this time don't create a `README.md` because we have just made one on the local computer. Now, copy the HTTPS link for that repository. In the terminal, link the local Git repository with the remote repository using the following code, replacing `<HTTPS_LINK>` with the link you copied:
+
+```shell
+git remote add origin <HTTPS_LINK>
+```
+
+Then make the first push to that newly linked remote repository:
+
+```shell
+git push -u origin master
+```
+
+Now you can continue editing files, adding changes (`git add <FILE>`), committing changes (`git commit`), pulling (`git pull`) and pushing (`git push`) changes, similar to the process you did with clicking buttons in RStudio.
 
 <hr>
 <hr>
