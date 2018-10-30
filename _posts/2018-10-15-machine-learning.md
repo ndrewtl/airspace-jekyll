@@ -24,7 +24,7 @@ tags: modelling intermediate intro
 
 <a name="intro"></a>
 
-## What is Machine Learning?<br><br>
+## What is Machine Learning?
 
 __Today machine learning is everywhere. From the content delivered to you on your Facebook newsfeed to the spam emails being filtered out of your emails, we live in an increasingly data driven society.__
 
@@ -58,15 +58,7 @@ Diagram source: <a href="https://cambridgecoding.wordpress.com" target = "_blank
 You can see that the selection of **k** is quite important, as is the selection of your training data, because this is all your predictive model will be based on.
 Regarding **k**, generally in binary cases it is best to pick an odd K value to avoid ties between neigbours. Slightly higher **k** values can also act to reduce noise in datasets. However it is best to experiment with different **k** values and use [cross validation techniques](https://genomicsclass.github.io/book/pages/crossvalidation.html) to find the best value for your specific case.
 
-## Getting started<br><br>
-
-Navigate to the repository for this tutorial at https://github.com/ourcodingclub/CC-knn-algorithm, and clone the repository to your local machine. To do so, either download the repository contents or alternatively if you have installed [git](https://git-scm.com/) already, you can use the following command in your terminal or command-prompt:
-
-```{}
-git clone 'repository name'
-```
-
-Now that you have the neccesary files for this tutorial you can go ahead and open up RStudio. If you are new to R then feel free to check out [getting started with R](https://ourcodingclub.github.io/2016/11/13/intro-to-r.html).
+## Getting started
 
 Today we will use the following packages, go ahead and install them if you haven't aready, then load them.
 
@@ -128,6 +120,7 @@ ggplot(iris.data, aes(x = Species, y = Petal.Width, fill = Species)) +
 From the above plots we see a visual correlation between plant traits. We can also see that there is some clustering within species with traits varying greatly between the three iris species. Now that we know that there is a clear difference in structural traits between species we could ask the following question:
 
 <a name="train"></a>
+## Train your algorithm
 
 ### Could we predict what species iris plants belong to based on structural trait data alone?
 
@@ -197,6 +190,7 @@ iris.knn <- knn(train = iris.training, test = iris.test, cl = irisTraining.label
 ```
 
 <a name="test"></a>
+## Assess your model
 
 Next, we need to evaluate the performance of our model. To do this we want to find out if the classes our algorithm predicts based on the training data accurately predict the species classes in our original iris dataset. For this we compare the original class labels to the predictions made by our algorithm.
 
