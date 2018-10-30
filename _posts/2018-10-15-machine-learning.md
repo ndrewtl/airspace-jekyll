@@ -53,7 +53,7 @@ __In this tutorial you will be introduced to a simple and well-established super
 `K-nn` is a non-parametric technique that stores all available cases and classifies new cases based on a similiarty measure (distance function). Therefore when classifying an unseen dataset using a trained `K-nn` algorithm, it looks through the training data and finds the **k** training examples that are closest to the new example. It then assigns a class label to the new example based on a majority vote between those **k** training examples. This means if **k** is equal to 1, the class label will be assigned based on the nearest neighbour. However if K is equal to 3, the algorithm will select the three closest data points to each case and classify it based on a majority vote based on the classes that those three adjacent points hold. 
 
 <center> <img src="https://cambridgecoding.files.wordpress.com/2016/01/knn2.jpg" alt="Img" style="width: 800px;"/></center>
-Diagram source: <a href="https://cambridgecoding.wordpress.com" target = "_blank">Cambridge Coding</a>
+<center>Diagram source: <a href="https://cambridgecoding.wordpress.com" target = "_blank">Cambridge Coding</a></center>
 
 You can see that the selection of **k** is quite important, as is the selection of your training data, because this is all your predictive model will be based on.
 Regarding **k**, generally in binary cases it is best to pick an odd K value to avoid ties between neigbours. Slightly higher **k** values can also act to reduce noise in datasets. However it is best to experiment with different **k** values and use [cross validation techniques](https://genomicsclass.github.io/book/pages/crossvalidation.html) to find the best value for your specific case.
@@ -249,11 +249,8 @@ We can see that our algorithm was able to almost predict all species classes cor
 We have now covered:
 
 - the very basics of machine learning in `R`
-
 - implementing k-nearest neighbour classification
-
 - building our own training and test datasets
-
 - testing and evaluating our knn algorithm
 
 However there is still a whole world to explore. For those interested in learning more have a look at this [freely available book](https://daviddalpiaz.github.io/r4sl/index.html) on machine learning in R.
