@@ -176,7 +176,7 @@ __A `Stan` program has three required "blocks":__
 
 2. **"parameters"** block: This is where you indicate the parameters you want to model, their dimensions, restrictions, and name. For a linear regression, we will want to model the intercept, any slopes, and the standard deviation of the errors around the regression line.
 
-3. **"model"** block: This is where you include any sampling statements, including the "likelihood" (model) you are using. The model block is where you indicate any prior distributions you want to include for your parameters. If no prior is defined, `Stan` uses default priors of `uniform(-infinity, +infinity)`. You can restrict priors using upper or lower when declaring the parameters (i.e. `lower = 0`> to make sure a parameter is positive).
+3. **"model"** block: This is where you include any sampling statements, including the "likelihood" (model) you are using. The model block is where you indicate any prior distributions you want to include for your parameters. If no prior is defined, `Stan` uses default priors with the specifications `uniform(-infinity, +infinity)`. You can restrict priors using upper or lower when declaring the parameters (i.e. `lower = 0`> to make sure a parameter is positive).
 
 __Sampling is indicated by the `~` symbol, and `Stan` already includes many common distributions as vectorized functions. You can check out <a href="http://mc-stan.org/users/documentation/" target="_blank">the manual</a> for a comprehensive list and more information on the optional blocks you could include in your `Stan` model.__
 
@@ -226,7 +226,7 @@ Now let's save that file path.
 stan_model1 <- "stan_model1.stan"
 ```
 
-__Here we are implicitly using `uniform(-infinity, +infinity)` priors for our parameters. These are also known as "flat" priors or "weakly informative" priors.__
+__Here we are implicitly using `uniform(-infinity, +infinity)` priors for our parameters. These are also known as "flat" priors. Weakly informative priors (e.g. `normal(0, 10)` are more restricted than flat priors. You can find more information about prior specification <a href="https://github.com/stan-dev/stan/wiki/Prior-Choice-Recommendations" target="_blank">here</a>.__
 
 <a name="run"></a>
 
