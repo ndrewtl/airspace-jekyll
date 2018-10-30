@@ -26,13 +26,13 @@ tags: modelling intermediate intro
 
 ## What is Machine Learning?<br><br>
 
-Today machine learning is everywhere. From the content delivered to you on your Facebook newsfeed to the spam emails being filtered out of your emails, we live in an increasingly data driven society.   
+__Today machine learning is everywhere. From the content delivered to you on your Facebook newsfeed to the spam emails being filtered out of your emails, we live in an increasingly data driven society.__
 
 A widely quoted, more formal definition of machine learning is:
 
-#### "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E."
+### "A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P if its performance at tasks in T, as measured by P, improves with experience E."
 
-In simple terms, machine Learning is the science of developing and making use of specialised statistical learning algorithms that produce a predictive model based on information gathered from input data. This is closely related to computational statistics and therefore is far from any wizardry, rather it is based on established methodologies that also come with their flaws. It is therefore important to understand the implications of using off-the-shelf machine learning algorithms when building predictive models to aid knowledge discovery and decision making.<br><br>
+__In simple terms, machine Learning is the science of developing and making use of specialised statistical learning algorithms that produce a predictive model based on information gathered from input data.__ This is closely related to computational statistics and therefore is far from any wizardry, rather it is based on established methodologies that also come with their flaws. It is therefore important to understand the implications of using off-the-shelf machine learning algorithms when building predictive models to aid knowledge discovery and decision making.
 
 ### The k-nearest neighbours algorithm (`K-nn`)
 
@@ -52,7 +52,7 @@ __In this tutorial you will be introduced to a simple and well-established super
 
 `K-nn` is a non-parametric technique that stores all available cases and classifies new cases based on a similiarty measure (distance function). Therefore when classifying an unseen dataset using a trained `K-nn` algorithm, it looks through the training data and finds the **k** training examples that are closest to the new example. It then assigns a class label to the new example based on a majority vote between those **k** training examples. This means if **k** is equal to 1, the class label will be assigned based on the nearest neighbour. However if K is equal to 3, the algorithm will select the three closest data points to each case and classify it based on a majority vote based on the classes that those three adjacent points hold. 
 
-![](https://cambridgecoding.files.wordpress.com/2016/01/knn2.jpg)
+<center> <img src="https://cambridgecoding.files.wordpress.com/2016/01/knn2.jpg" alt="Img" style="width: 800px;"/></center>
 Diagram source: <a href="https://cambridgecoding.wordpress.com" target = "_blank">Cambridge Coding</a>
 
 You can see that the selection of **k** is quite important, as is the selection of your training data, because this is all your predictive model will be based on.
@@ -224,6 +224,7 @@ Finally, we can also evaluate the model using a cross-tabulation table.
 CrossTable(x = irisTest.labels, y = iris.knn, prop.chisq = FALSE)
 ```
 
+```
                 | iris.knn 
 irisTest.labels |     setosa | versicolor |  virginica |  Row Total | 
 ----------------|------------|------------|------------|------------|
@@ -245,6 +246,7 @@ irisTest.labels |     setosa | versicolor |  virginica |  Row Total |
    Column Total |         12 |         14 |         14 |         40 | 
                 |      0.300 |      0.350 |      0.350 |            | 
 ----------------|------------|------------|------------|------------|
+```
 
 We can see that our algorithm was able to almost predict all species classes correctly, except for two cases where virginica was falsely classified by our algorithm as versicolor. However all in all this is already a good result! 
 
