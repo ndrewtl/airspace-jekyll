@@ -5,7 +5,7 @@ subtitle: Getting started with machine learning in R
 date: 2018-10-15 08:00:00
 author: Samuel Kellerhals
 meta: "Tutorials"
-tags: modelling intermediate
+tags: modelling intermediate intro
 ---
 
 <div class="block">
@@ -53,6 +53,7 @@ __In this tutorial you will be introduced to a simple and well-established super
 `K-nn` is a non-parametric technique that stores all available cases and classifies new cases based on a similiarty measure (distance function). Therefore when classifying an unseen dataset using a trained `K-nn` algorithm, it looks through the training data and finds the **k** training examples that are closest to the new example. It then assigns a class label to the new example based on a majority vote between those **k** training examples. This means if **k** is equal to 1, the class label will be assigned based on the nearest neighbour. However if K is equal to 3, the algorithm will select the three closest data points to each case and classify it based on a majority vote based on the classes that those three adjacent points hold. 
 
 ![](https://cambridgecoding.files.wordpress.com/2016/01/knn2.jpg)
+Diagram source: <a href="https://cambridgecoding.wordpress.com" target = "_blank">Cambridge Coding</a>
 
 You can see that the selection of **k** is quite important, as is the selection of your training data, because this is all your predictive model will be based on.
 Regarding **k**, generally in binary cases it is best to pick an odd K value to avoid ties between neigbours. Slightly higher **k** values can also act to reduce noise in datasets. However it is best to experiment with different **k** values and use [cross validation techniques](https://genomicsclass.github.io/book/pages/crossvalidation.html) to find the best value for your specific case.
@@ -217,11 +218,33 @@ Let's have a look at how our model did by inspecting the `class.comparison` tabl
 class.comparison
 ```
 
-Finally we can also evaluate the model using a cross-tabulation table.
+Finally, we can also evaluate the model using a cross-tabulation table.
 
 ```r
 CrossTable(x = irisTest.labels, y = iris.knn, prop.chisq = FALSE)
 ```
+
+                | iris.knn 
+irisTest.labels |     setosa | versicolor |  virginica |  Row Total | 
+----------------|------------|------------|------------|------------|
+         setosa |         12 |          0 |          0 |         12 | 
+                |      1.000 |      0.000 |      0.000 |      0.300 | 
+                |      1.000 |      0.000 |      0.000 |            | 
+                |      0.300 |      0.000 |      0.000 |            | 
+----------------|------------|------------|------------|------------|
+     versicolor |          0 |         12 |          0 |         12 | 
+                |      0.000 |      1.000 |      0.000 |      0.300 | 
+                |      0.000 |      0.857 |      0.000 |            | 
+                |      0.000 |      0.300 |      0.000 |            | 
+----------------|------------|------------|------------|------------|
+      virginica |          0 |          2 |         14 |         16 | 
+                |      0.000 |      0.125 |      0.875 |      0.400 | 
+                |      0.000 |      0.143 |      1.000 |            | 
+                |      0.000 |      0.050 |      0.350 |            | 
+----------------|------------|------------|------------|------------|
+   Column Total |         12 |         14 |         14 |         40 | 
+                |      0.300 |      0.350 |      0.350 |            | 
+----------------|------------|------------|------------|------------|
 
 We can see that our algorithm was able to almost predict all species classes correctly, except for two cases where virginica was falsely classified by our algorithm as versicolor. However all in all this is already a good result! 
 
