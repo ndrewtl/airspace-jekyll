@@ -473,6 +473,10 @@ font header .navbar-default .navbar-nav li a:hover {
   margin: 6px;
   position: relative;
 }
+#portfolio-work .block .portfolio-contant ul li:nth-child(3n+4) {
+  clear:left;
+  float:left;
+}
 #portfolio-work .block .portfolio-contant ul li:hover .overly {
   opacity: 1;
 }
