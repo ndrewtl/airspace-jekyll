@@ -37,6 +37,14 @@ If you need any of the above features and you find that you are **regularly writ
 
 ## What is Iris?
 
+Iris was developed originally by the Met Office (UK) out of a need for dealing with the many file formats used in the weather, climate, and ocean sciences scientific community. Many users of Iris had previously had to write their own code from scratch to handle and manipulate these file-formats, such as NetCDF, GRIB, and other common (and not-so-common) formats, alternatively they had to use one of the many separately available packages for each type of file format. (Such as `python-netcdf4` for python, etc.). This resulted in a lot of duplicated effort from researchers re-writing what was effectively the same or very similar code. In addition, many operations on weather and climate data are essentially very similar, such as converting between different units, extracting subsets of the data, merging datasets, interpolating data, and so on. Iris was developed to bring together these operations and provide a file-format agnostic package to deal with these commonly used operations. 
+
+Iris operates around a central data structure used to store multi-dimiensional data when you are working on it called a `cube`. This typically represents gridded data that has many levels as well as x and y dimensions (Though Iris is still useful for 2 dimesnional data as well.)
+
+The third dimension in an Iris could be model levels, different heights in the atmosphere, or depths in the ocean. It could also be used to represent different time-slices in a model run. In short, the Iris cube data structure is very flexible and can be used to represent a large variety of different datasets.
+
+We are going to have a look at how the Iris `cube` data structure works now.
+
 <a name="cube"></a>
 
 **Learning outcome**: by the end of this section, you will be able to explain the capabilities and functionality of Iris cubes and coordinates.
@@ -52,5 +60,7 @@ Each cube has:
 ##### - Auxilliary coordinates can be of any type, including discrete values such as strings, and may represent more than one data dimension.
 
 A fuller explanation is available in the <a href="http://scitools.org.uk/iris/docs/latest/userguide/iris_cubes.html">Iris User Guide</a>.
+
+
 
 
