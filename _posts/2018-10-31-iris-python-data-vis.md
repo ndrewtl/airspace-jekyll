@@ -43,7 +43,20 @@ Iris operates around a central data structure used to store multi-dimiensional d
 
 The third dimension in an Iris could be model levels, different heights in the atmosphere, or depths in the ocean. It could also be used to represent different time-slices in a model run. In short, the Iris cube data structure is very flexible and can be used to represent a large variety of different datasets.
 
-We are going to have a look at how the Iris `cube` data structure works now.
+We are going to have a look at how the Iris `cube` data structure works now, but first, let's test that we have iris installed:
+
+```python
+import iris
+import numpy as np
+
+print(iris.__version__)
+print(np.__version__)
+```
+
+This should print out the version numbers of `iris` and `numpy`, the two main requirements for this tutorial.
+
+If you do not have these two packages installed, see this guide on <a href="https://scitools.org.uk/iris/docs/latest/installing.html">installing iris</a>. (We assume you already have Python installed in your computing environmnet. 
+
 
 <a name="cube"></a>
 
@@ -56,11 +69,36 @@ Each cube has:
 ##### - A data array (typically a NumPy array).
 ##### - A "name", preferably a CF "standard name" to describe the phenomenon that the cube represents.
 ##### - A collection of coordinates to describe each of the dimensions of the data array. These coordinates are split into two types:
-##### - Dimensioned coordinates are numeric, monotonic and represent a single dimension of the data array. There may be only one dimensioned coordinate per data dimension.
-##### - Auxilliary coordinates can be of any type, including discrete values such as strings, and may represent more than one data dimension.
+###### - Dimensioned coordinates are numeric, monotonic and represent a single dimension of the data array. There may be only one dimensioned coordinate per data dimension.
+###### - Auxilliary coordinates can be of any type, including discrete values such as strings, and may represent more than one data dimension.
 
 A fuller explanation is available in the <a href="http://scitools.org.uk/iris/docs/latest/userguide/iris_cubes.html">Iris User Guide</a>.
 
 
+Let's take a simple example to demonstrate the cube concept.
 
+Suppose we have a ``(3, 2, 4)`` NumPy array:
 
+<center> <img src="{{ site.baseurl }}/img/multi_array.png" alt="Img" style="width: 800px;"/> </center>
+
+Where dimensions 0, 1, and 2 have lengths 3, 2 and 4 respectively.
+
+The Iris cube to represent this data may consist of:
+
+##### - a standard name of "air_temperature" and units of "kelvin"
+
+##### - a data array of shape ``(3, 2, 4)``
+
+##### - a coordinate, mapping to dimension 0, consisting of:
+###### - a standard name of "height" and units of "meters"
+###### - an array of length 3 representing the 3 height points
+     
+##### - a coordinate, mapping to dimension 1, consisting of:
+###### - a standard name of "latitude" and units of "degrees"
+###### - an array of length 2 representing the 2 latitude points
+###### - a coordinate system such that the latitude points could be fully located on the globe
+     
+##### - a coordinate, mapping to dimension 2, consisting of:
+###### - a standard name of "longitude" and units of "degrees"
+###### - an array of length 4 representing the 4 longitude points
+###### - a coordinate system such that the longitude points could be fully located on the globe
