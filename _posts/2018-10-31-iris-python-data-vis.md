@@ -262,6 +262,113 @@ As we've seen, cubes need coordinate information to help us describe the underly
 For example, to access the time coordinate, and print the first 4 times:
 
 
+```python
+time = cube.coord('time')
+print(time[:4])
+```
+
+Will display a representation of the time coordinate, as well as the metadata associated with it. This will be formatted according to the time units specified, if there are any present:
+
+```
+DimCoord([1860-06-01 00:00:00, 1861-06-01 00:00:00, 1862-06-01 00:00:00,
+       1863-06-01 00:00:00], bounds=[[1859-12-01 00:00:00, 1860-12-01 00:00:00],
+       [1860-12-01 00:00:00, 1861-12-01 00:00:00],
+       [1861-12-01 00:00:00, 1862-12-01 00:00:00],
+       [1862-12-01 00:00:00, 1863-12-01 00:00:00]], standard_name='time', calendar='360_day', var_name='time')
+```
+
+The coordinate interface is very similar to that of a cube. The attributes that exist on both cubes and coordinates are: ``standard_name``, ``long_name``, ``var_name``, ``units``, ``attributes`` and ``shape``. Similarly, the ``name()``, ``rename()`` and ``convert_units()`` methods also exist on a coordinate.
+
+A coordinate does not have ``data``, instead it has ``points`` and ``bounds`` (``bounds`` may be ``None``). In Iris, time coordinates are currently represented as "a number since an epoch". So for example:
+
+```python
+print(repr(time.units))
+print(time.points[:4])
+print(time.bounds[:4])
+```
+
+Will show the time values as whole numbers, rather than formatting them as a more human readable time-date value:
+
+```
+Unit('hours since 1970-01-01 00:00:00', calendar='360_day')
+[-946800. -938160. -929520. -920880.]
+[[-951120. -942480.]
+ [-942480. -933840.]
+ [-933840. -925200.]
+ [-925200. -916560.]]
+```
+
+These numbers can be converted to datetime objects with the unit's ``num2date`` method. Dates can be converted back again with the ``date2num`` method:
+
+```python
+import datetime
+
+print(time.units.num2date(time.points[:4]))
+print(time.units.date2num(datetime.datetime(1970, 2, 1)))
+```
+
+Giving:
+
+```
+[cftime.Datetime360Day(1860, 6, 1, 0, 0, 0, 0, 4, 151)
+ cftime.Datetime360Day(1861, 6, 1, 0, 0, 0, 0, 0, 151)
+ cftime.Datetime360Day(1862, 6, 1, 0, 0, 0, 0, 3, 151)
+ cftime.Datetime360Day(1863, 6, 1, 0, 0, 0, 0, 6, 151)]
+720.0
+```
+
+Another important attribute on a coordinate is its coordinate system. Coordinate systems may be ``None`` for trivial coordinates, but particularly for spatial coordinates, they may be complex definitions of things such as the projection, ellipse and/or datum.
+
+We can retrieve information about our coordinate system for example, by examining the latitude variable. The coordinate system is an attribute that can be printed, like so:
+
+```python
+lat = cube.coord('latitude')
+print(lat.coord_system)
+```
+
+Showing:
+
+```
+GeogCS(6371229.0)
+
+```
+
+<a name="loading"></a>
+
+## Loading and saving data
+
+**Learning outcome**: by the end of this section, you will be able to use Iris to load datasets from disk as Iris cubes and save Iris cubes back to disk.
+
+Loading and savingdata is one aspect where Iris really shines over standard numpy or pandas methods of loading climate data. Notice that in the above examples we didn't have to specify anything about the file formats of the netCDF files that we used.
+
+### Iris load functions
+
+There are three main load functions in Iris: ``load``, ``load_cube`` and ``load_cubes``.
+
+1. **load** is a general purpose loading function. Typically this is where all data analysis will start, before more loading is refined with the more controlled loading from the other two functions.
+2. **load_cube** returns a single cube from the given source(s) and constraint. There will be exactly one cube, or an exception will be raised.
+3. **load_cubes** returns a list of cubes from the given sources(s) and constraint(s). There will be exactly one cube per constraint, or an exception will be raised.
+
+
+Note: ``load_cube`` is a special case of ``load``, which can be seen with:
+
+
+```python
+fname = iris.sample_data_path('air_temp.pp')
+c1, = iris.load(fname)
+c2 = iris.load_cube(fname)
+c1 == c2    # True
+```
+
+In other words, `iris.load()` has figured out that our sample dataset contains a single variable, and so returns a single cube, just like `load_cube` would do as well.
+
+
+
+
+
+
+
+
 
 
 
