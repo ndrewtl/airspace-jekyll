@@ -60,6 +60,8 @@ If you do not have these two packages installed, see this guide on <a href="http
 
 <a name="cube"></a>
 
+## The Iris Cube
+
 **Learning outcome**: by the end of this section, you will be able to explain the capabilities and functionality of Iris cubes and coordinates.
 
 The top level object in Iris is called a cube. A cube contains data and metadata about a single phenomenon and is an implementation of the data model interpreted from the *Climate and Forecast (CF) Metadata Conventions*.
@@ -102,3 +104,168 @@ The Iris cube to represent this data may consist of:
 ###### - a standard name of "longitude" and units of "degrees"
 ###### - an array of length 4 representing the 4 longitude points
 ###### - a coordinate system such that the longitude points could be fully located on the globe
+
+Pictorially the cube has taken on more information than a simple array:
+
+<center> <img src="{{ site.baseurl }}/img/multi_array_to_cube.png" alt="Img" style="width: 800px;"/> </center>
+
+### Working with a cube
+
+Whilst it is possible to construct a cube by hand, a far more common approach to getting hold of a cube is to use the Iris load function to access data that already exists in a file.
+
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+cubes = iris.load(fname)
+print(cubes)
+```
+
+We can see that we've loaded two cubes, one representing the "surface_altitude" and the other representing "air_potential_temperature". We can infer even more detail from this printout; for example, what are the dimensions and shape of the "air_potential_temperature" cube?
+
+Above we've printed the ``iris.cube.CubeList`` instance representing all of the cubes found in the given filename. However, we can see more detail by printing individual cubes:
+
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+cubes = iris.load(fname)
+
+air_pot_temp = cubes[0]
+print(air_pot_temp)
+```
+
+#### Cube attributes
+
+We can create a single cube from the `load_cube` command. Iris also provides some sample data that we can work with in the `iris.sample_data_path` function. Printing a cube object in Python will give you an overview of the data it contains and the layout of that data:
+
+```python
+cube = iris.load_cube(iris.sample_data_path('A1B_north_america.nc'))
+print(cube)
+```
+Which should print:
+```
+air_temperature / (K)               (time: 240; latitude: 37; longitude: 49)
+     Dimension coordinates:
+          time                           x              -              -
+          latitude                       -              x              -
+          longitude                      -              -              x
+     Auxiliary coordinates:
+          forecast_period                x              -              -
+     Scalar coordinates:
+          forecast_reference_time: 1859-09-01 06:00:00
+          height: 1.5 m
+     Attributes:
+          Conventions: CF-1.5
+          Model scenario: A1B
+          STASH: m01s03i236
+          source: Data from Met Office Unified Model 6.05
+     Cell methods:
+          mean: time (6 hour)
+```
+
+To access a cube's data array the ``data`` property exists. This is either a NumPy array or in some cases a NumPy masked array. It is very important to note that for most of the supported filetypes in Iris, the cube's data isn't actually loaded until you request it via this property (either directly or indirectly). After you've accessed the data once, it is stored on the cube and thus won't be loaded from disk again.
+
+To find the shape of a cube's data it is possible to call ``cube.data.shape`` or ``cube.data.ndim``, but this will trigger any unloaded data to be loaded. Therefore ``shape`` and ``ndim`` are properties available directly on the cube that do not unnecessarily load data.
+
+```python
+cube = iris.load_cube(iris.sample_data_path('A1B_north_america.nc'))
+print(cube.shape)
+print(cube.ndim)
+print(type(cube.data))
+```
+
+Which should display:
+```
+(240, 37, 49)
+3
+<class 'numpy.ma.core.MaskedArray'>
+```
+
+
+The ``standard_name``, ``long_name`` and to an extent ``var_name`` are all attributes to describe the phenomenon that the cube represents. The ``name()`` method is a convenience that looks at the name attributes in the order they are listed above, returning the first non-empty string. To rename a cube, it is possible to set the attributes manually, but it is generally easier to use the ``rename()`` method.
+
+*From now on, we are not going to re-type the `cube = iris.load_cube(...)` line, it is assumed you will just change or append the lines below to your existing Python code. This is done to avoid having to reload the data into memory in each example!*
+
+```python
+print(cube.standard_name)
+print(cube.long_name)
+print(cube.var_name)
+print(cube.name())
+
+```
+
+Check that you get the output:
+
+```
+air_temperature
+None
+air_temperature
+air_temperature
+```
+
+There are a set of conventions used in climate data files called the "CF-conventions". These are standard names and units that are used to make interchanging and sharing data more consistent and straightforward. More about the CF-conventions can be read here: XXXX
+
+Iris can deal with CF-convention formatted data, but it also supports non-CF named data too. To illustrate this, we can change the name of our cube (in other words, rename our dataset) and see how Iris deals with this:
+
+```python
+cube.rename("A name that isn't a valid CF standard name")
+print(cube.standard_name)
+print(cube.long_name)
+print(cube.var_name)
+print(cube.name())
+```
+
+Should print:
+
+```
+None
+A name that isn't a valid CF standard name
+None
+A name that isn't a valid CF standard name
+```
+
+The ``units`` attribute on a cube tells us the units of the numbers held in the data array. We can manually change the units, or better, we can convert the cube to another unit using the ``convert_units`` method, which will automatically update the data array.
+
+```python
+print(cube.units)
+print(cube.data.max())
+cube.convert_units('Celsius')
+print(cube.units)
+print(cube.data.max())
+```
+
+Should give you:
+
+```
+K
+306.0733
+Celsius
+32.9233
+```
+
+A cube has a dictionary for extra general purpose attributes, which can be accessed with the ``cube.attributes`` attribute:
+
+
+```python
+print(cube.attributes)
+print(cube.attributes['STASH'])
+```
+
+Prints:
+
+```
+{'Conventions': 'CF-1.5', 'STASH': STASH(model=1, section=3, item=236), 'Model scenario': 'A1B', 'source': 'Data from Met Office Unified Model 6.05'}
+m01s03i236
+```
+
+### Coordinates
+
+As we've seen, cubes need coordinate information to help us describe the underlying phenomenon. Typically a cube's coordinates are accessed with the ``coords`` or ``coord`` methods. The latter *must* return exactly one coordinate for the given parameter filters, where the former returns a list of matching coordinates, possibly of length 0.
+
+For example, to access the time coordinate, and print the first 4 times:
+
+
+
+
+
+
+
+
+
