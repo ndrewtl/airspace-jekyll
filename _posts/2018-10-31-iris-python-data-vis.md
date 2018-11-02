@@ -363,13 +363,70 @@ c1 == c2    # True
 In other words, `iris.load()` has figured out that our sample dataset contains a single variable, and so returns a single cube, just like `load_cube` would do as well.
 
 
+### Saving cubes
+
+The ``iris.save`` function provides a convenient interface to save Cube and CubeList instances.
+
+To save some cubes to a NetCDF file:
 
 
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+cubes = iris.load(fname)
+iris.save(cubes, 'saved_cubes.nc')
+```
 
+We are just loading the netcdf file, converting it to the general purpose Iris cube data structure, and then saving it back to dsik. Iris takes care of converting the format, and the format is automatically taken care of. 
 
+*You can skip this section if you are less familiar with the command line netCDF tools*
 
+To inspect our new netcdf file, we can check it with `ncdump` - the utility installed for inspecting netcdf files. (This should already be installed if you are on one of the Edinburgh linux servers. Type the following at the linux command line:
 
+```
+ncdump -h saved_cubes.nc | head -n 20
+```
+Which should output something like:
 
+```
+netcdf saved_cubes {
+dimensions:
+	time = 3 ;
+	model_level_number = 7 ;
+	grid_latitude = 204 ;
+	grid_longitude = 187 ;
+	bnds = 2 ;
+variables:
+	float air_potential_temperature(time, model_level_number, grid_latitude, grid_longitude) ;
+		air_potential_temperature:standard_name = "air_potential_temperature" ;
+		air_potential_temperature:units = "K" ;
+		air_potential_temperature:um_stash_source = "m01s00i004" ;
+		air_potential_temperature:grid_mapping = "rotated_latitude_longitude" ;
+		air_potential_temperature:coordinates = "forecast_period forecast_reference_time level_height sigma surface_altitude" ;
+	int rotated_latitude_longitude ;
+		rotated_latitude_longitude:grid_mapping_name = "rotated_latitude_longitude" ;
+		rotated_latitude_longitude:longitude_of_prime_meridian = 0. ;
+		rotated_latitude_longitude:earth_radius = 6371229. ;
+		rotated_latitude_longitude:grid_north_pole_latitude = 37.5 ;
+		rotated_latitude_longitude:grid_north_pole_longitude = 177.5 ;
+```
+
+### Out-of-core Processing
+
+<a href="https://en.wikipedia.org/wiki/External_memory_algorithm">Out-of-core processing</a> is a technical term that describes being able to process datasets that are too large to fit in memory at once. In Iris, this functionality is referred to as **lazy data**. It means that you can use Iris to load, process and save datasets that are too large to fit in memory without running out of memory. This is achieved by loading only the dataset's metadata and not the data array, unless this is specifically requested.
+
+To determine whether your cube has lazy data:
+
+```python
+fname = iris.sample_data_path('air_temp.pp')
+cube = iris.load_cube(fname)
+print(cube.has_lazy_data())
+```
+
+Iris tries to maintain lazy data as much as possible. We refer to the operation of loading a cube's lazy data as 'realising' the cube's data. A cube's lazy data will only be loaded in a limited number of cases, including:
+
+##### - When the user directly requests the cube's data using `cube.data`,
+##### - When there is no lazy data processing algorithm available to perform the requested data processing, such as for peak finding, and
+##### - Where actual data values are necessary, such as for cube plotting.
 
 
 
