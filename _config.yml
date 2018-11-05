@@ -24,6 +24,7 @@ logo: "/assets/logo.png"
 
 # Build settings
 markdown: kramdown
+remote_theme: ezlifebio/ezlifebio.github.io
 
 # Google analytics
 # ga_tracking_id: "UA-XXXX-1"
