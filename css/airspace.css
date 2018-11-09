@@ -416,7 +416,6 @@ font header .navbar-default .navbar-nav li a:hover {
 #portfolio-work .block .portfolio-menu ul li {
   display: inline-block;
   padding: 0px 25px;
-  cursor: pointer;
   font-size: 15px;
   line-height: 40px;
   font-weight: 600;
@@ -472,6 +471,10 @@ font header .navbar-default .navbar-nav li a:hover {
   overflow: hidden;
   margin: 6px;
   position: relative;
+}
+#portfolio-work .block .portfolio-contant ul li:nth-child(3n+4) {
+  clear:left;
+  float:left;
 }
 #portfolio-work .block .portfolio-contant ul li:hover .overly {
   opacity: 1;
