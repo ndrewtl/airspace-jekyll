@@ -10,7 +10,7 @@ tags: intro_to_python
 
 <div class="block">
   <center>
-  <img src="{{ site.baseurl }}/img/tutheader-python_crash_course.png" alt="Img">
+  <img src="{{ site.baseurl }}/img/tutheader_python_crash.png" alt="Img">
 </center>
 </div>
 
