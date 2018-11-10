@@ -75,7 +75,7 @@ For this tutorial we will be working with Spyder within the Anaconda distributio
 
 Here is a great video to show you how to install Anaconda if you have not got it already.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Vt6loGK9Adc?rel=0&amp;start=49&end=140" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<center><iframe width="560" height="315" src="https://www.youtube.com/embed/Vt6loGK9Adc?rel=0&amp;start=49&end=140" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></center>
 
 <br />Congratulations! You have just installed Python! Lets make sure that everything is working now.
 
@@ -87,7 +87,7 @@ Open up a Command Prompt (terminal) and type `conda --version`. If everything ha
 
 Now we have Python installed it is time to launch Spyder. You can do this by launching the Anaconda Navigator from the start menu. When this starts up click on the Spyder application to open it up.
 
-<center><img src="{{ site.baseurl }}/img/python_crash_course-spyder_demo.gif" alt="img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/python_crash_course-spyder_demo.gif" alt="img" style="width: 900px;"/></center>
 
 <br />Once you have launched Spyder you will see three main panels by default. You can edit the layout of these panels if you want but for this tutorial I will assume that you don't want to mess with that yet. On the left, the large panel is where you can write scripts. At the top of this panel you can see that there has been a script started for you called `temp.py`. If you wanted to you could write code into this script (similar to writing a MS Word document) and then save it to run later.
 
@@ -97,7 +97,7 @@ So when you write commands into the python script on the left, it is just like w
 
 In the bottom right of the window you will see the console, and this is what we are going to focus on for this part of the tutorial. This is different to the script panel. **In the console**, whenever you **type a command and then press enter**, that command will be **run right away**, not stored for later like in the script. You can think of using the console as **similar to using a calculator**. Whenever you type something in it is run right away. You can see this in the demo below. First we tell the console what the variable `x` is; then we tell it to print `x` so that we can see it again. After this we tell it to print other products of `x`. Try typing these same lines of code into your own editor and see what happens.
 
-<center><img src="{{ site.baseurl }}/img/python_crash_course-console_demo.gif" alt="img" style="width: 700px;"/></center>
+<center><img src="{{ site.baseurl }}/img/python_crash_course-console_demo.gif" alt="img" style="width: 900px;"/></center>
 
 <br />Note that whilst writing lines of code into the console I made a mistake and the console showed me an error message. In this case all I needed to do is fix the error and run the correct line.
 
@@ -413,7 +413,7 @@ I could write a loop to do this for me and it would be good practice for my Pyth
 
 <br />
 <center>
-<img src="{{ site.baseurl }}/img/python_crash_course-list_sort.gif" alt="img" style="width: 700px;"/>
+<img src="{{ site.baseurl }}/img/python_crash_course-list_sort.gif" alt="img" style="width: 900px;"/>
 </center>
 
 <br />The link to the answer I found is <a href="https://stackoverflow.com/questions/25374190/how-to-sort-integer-list-in-python-descending-order">here</a>.
