@@ -345,11 +345,11 @@ __This final model answers our question about how plant species richness has cha
 
 ```r
 # offset refers to the alignment of the labels
-# visualises random effects by default
-sjp.lmer(plant_m_plot3, y.offset = .4)
+# visualises random effects 
+plot_model(plant_m_plot3, type = "re", show.values = TRUE)
 
-# To see the estimate for our fixed effect, Year
-sjp.lmer(plant_m_plot3, type = "fe", axis.lim = c(-2, 2))
+# To see the estimate for our fixed effect (default), Year
+plot_model(plant_m_plot3, show.values = TRUE)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/effects1.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects3.png" alt="Img" style="width: 500px;"/></center>
@@ -366,10 +366,10 @@ Let's see the model outputs again:
 
 ```
 # visualise the random effect terms
-sjp.lmer(plant_m_temp, y.offset = .4)
+plot_model(plant_m_temp, type = "re", show.values = TRUE)
 
 # visualise the fixed effect
-sjp.lmer(plant_m_temp, type = "fe")
+plot_model(plant_m_temp, show.values = TRUE)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/effects2.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects4.png" alt="Img" style="width: 500px;"/></center>
@@ -424,8 +424,8 @@ summary(plant_m_rs)
 We can visualise the results:
 
 ```r
-sjp.lmer(plant_m_rs, y.offset = .4)
-sjp.lmer(plant_m_rs, type = "fe")
+plot_model(plant_m_rs, type = "re", show.values = TRUE)
+plot_model(plant_m_rs, show.values = TRUE)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/effects5.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects6.png" alt="Img" style="width: 500px;"/></center>
