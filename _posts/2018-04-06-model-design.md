@@ -374,15 +374,6 @@ sjp.lmer(plant_m_temp, type = "fe")
 
 <center> <img src="{{ site.baseurl }}/img/effects2.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects4.png" alt="Img" style="width: 500px;"/></center>
 
-To get a better idea of what the random slopes and intercepts are doing, we can visualise those as well using this code:
-
-```r
-sjp.lmer(plant_m_rs, type = "ri.slope")
-sjp.lmer(plant_m_rs, type = "rs.ri")
-```
-
-<center> <img src="{{ site.baseurl }}/img/random_intercepts.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/random_slopes.png" alt="Img" style="width: 500px;"/></center>
-
 #### Assumptions made:
 
 1. The data are normally distributed.
@@ -429,6 +420,15 @@ sjp.lmer(plant_m_rs, type = "fe")
 ```
 
 <center> <img src="{{ site.baseurl }}/img/effects5.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects6.png" alt="Img" style="width: 500px;"/></center>
+
+To get a better idea of what the random slopes and intercepts are doing, we can visualise those as well using this code:
+
+```r
+sjp.lmer(plant_m_rs, type = "ri.slope")
+sjp.lmer(plant_m_rs, type = "rs.ri")
+```
+
+<center> <img src="{{ site.baseurl }}/img/random_intercepts.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/random_slopes.png" alt="Img" style="width: 500px;"/></center>
 
 #### <a href="#MCMCglmm"> 9. Hierarchical models using `MCMCglmm` </a>
 
