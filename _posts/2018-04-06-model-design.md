@@ -255,7 +255,7 @@ What is our dependent and independent variable here?  We could write out our bas
 
 __Richness is a function of time.__
 
-__In R this turns into the code: `richness ~ time`.__
+__In `R` this turns into the code: `richness ~ time`.__
 
 __Richness is our dependent (predictor) variable and time is our independent variable <a href="https://en.wikipedia.org/wiki/Dependent_and_independent_variables" target="_blank"> see here for more details</a>). This is our base model. But what other things do we need to account for? What would happen if we just modelled richness as a function of time without dealing with the other structure in our data?  Let's find out in the rest of the tutorial.__
 
@@ -347,15 +347,17 @@ summary(plant_m_plot3)
 __This final model answers our question about how plant species richness has changed over time, whilst also accounting for the hierarchical structure of the data. Let's visualise the results using the `sjPlot` package!__
 
 ```r
-# offset refers to the alignment of the labels
-# visualises random effects 
+# Set a clean theme for the graphs
+set_theme(base = theme_bw())
+
+# Visualises random effects 
 plot_model(plant_m_plot3, type = "re", show.values = TRUE)
 
 # To see the estimate for our fixed effect (default), Year
 plot_model(plant_m_plot3, show.values = TRUE)
 ```
 
-<center> <img src="{{ site.baseurl }}/img/effects1.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects3.png" alt="Img" style="width: 500px;"/></center>
+<center> <img src="{{ site.baseurl }}/img/model_re.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_fe.png" alt="Img" style="width: 500px;"/></center>
 
 __For our second question, how does temperature influence species richness, we can design a similar model with one important difference - we will include `Year` as a random effect to account for temporal autocorrelation.__
 
@@ -375,7 +377,7 @@ plot_model(plant_m_temp, type = "re", show.values = TRUE)
 plot_model(plant_m_temp, show.values = TRUE)
 ```
 
-<center> <img src="{{ site.baseurl }}/img/effects2.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects4.png" alt="Img" style="width: 500px;"/></center>
+<center> <img src="{{ site.baseurl }}/img/model_temp_re.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_temp_fe.png" alt="Img" style="width: 500px;"/></center>
 
 #### Assumptions made:
 
@@ -424,7 +426,7 @@ plot_model(plant_m_rs, type = "re", show.values = TRUE)
 plot_model(plant_m_rs, show.values = TRUE)
 ```
 
-<center> <img src="{{ site.baseurl }}/img/effects5.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/effects6.png" alt="Img" style="width: 500px;"/></center>
+<center> <img src="{{ site.baseurl }}/img/model_plant_re.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_plant_fe.png" alt="Img" style="width: 500px;"/></center>
 
 To get a better idea of what the random slopes and intercepts are doing, we can visualise those as well using this code:
 
