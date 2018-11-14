@@ -364,7 +364,9 @@ save_plot(filename = "model_fe.png",
 
 <center> <img src="{{ site.baseurl }}/img/model_re.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_fe.png" alt="Img" style="width: 500px;"/></center>
 
-__For our second question, how does temperature influence species richness, we can design a similar model with one important difference - we will include `Year` as a random effect to account for temporal autocorrelation.__
+__The left plot with the random effect coefficients shows the *deviation* for each category in the __
+
+### For our second question, how does temperature influence species richness, we can design a similar model with one important difference - we will include `Year` as a random effect to account for temporal autocorrelation.__
 
 ```r
 plant_m_temp <- lmer(Richness ~ Mean.Temp + (1|Site/Block/Plot) + (1|Year),
@@ -470,7 +472,7 @@ predictions <- ggpredict(plant_m_rs, terms = c("Mean.Temp"))
   geom_line() +
   geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .1) +
   scale_y_continuous(limits = c(0, 22)) +
-  labs(x = "Predicted species richness\n", y = "\nMean annual temperature"))
+  labs(x = "\nMean annual temperature", y = "Predicted species richness\n"))
 
 ggsave(pred_plot1, filename = "overall_predictions.png",
        height = 5, width = 5)
@@ -488,7 +490,7 @@ predictions_rs_ri <- ggpredict(plant_m_rs, terms = c("Mean.Temp", "Plot"), type 
 (pred_plot2 <- ggplot(predictions_rs_ri, aes(x = x, y = predicted, colour = group)) +
   stat_smooth(method = "lm", se = FALSE)  +
   scale_y_continuous(limits = c(0, 22)) +
-  labs(x = "Predicted species richness\n", y = "\nMean annual temperature"))
+  labs(x = "\nMean annual temperature", y = "Predicted species richness\n"))
 
 ggsave(pred_plot2, filename = "ri_rs_predictions.png",
        height = 5, width = 5)
@@ -502,7 +504,7 @@ __Just for the sake of really seeing the random intercepts and random slopes, he
 ```r
 (pred_plot3 <- ggplot(predictions_rs_ri, aes(x = x, y = predicted, colour = group)) +
     stat_smooth(method = "lm", se = FALSE)  +
-    labs(x = "Predicted species richness\n", y = "\nMean annual temperature"))
+    labs(x = "\nMean annual temperature", y = "Predicted species richness\n"))
 
 ggsave(pred_plot3, filename = "ri_rs_predictions_zoom.png",
        height = 5, width = 5)
@@ -596,7 +598,7 @@ MCMCplot(treatment_mcmc$Sol)
 MCMCplot(treatment_mcmc$VCV)
 ```
 
-`Sol` refers to the fixed effects and `VCV` to the random effects, so we can see the effects sizes of the different variables we have added to our models. If the credible intervals overlap zero, then those effects are not significant. So we can see here that _Betula nana_ cover hasn't changed.
+`Sol` refers to the fixed effects and `VCV` to the random effects, so we can see the effects sizes of the different variables we have added to our models. If the credible intervals overlap zero, then those effects are not significant. So we can see here that _Betula nana_ cover hasn't changed. `units` refers to the residual variance.
 
 <center> <img src="{{ site.baseurl }}/img/mcmc_vis1.png" alt="Img" style="width: 400px;"/>  <img src="{{ site.baseurl }}/img/mcmc_vis2.png" alt="Img" style="width: 500px;"/></center>
 
