@@ -88,6 +88,7 @@ library(dplyr)  # for data manipulation
 library(ggplot2)  # for data visualisation
 library(lme4)  # for models
 library(sjPlot)  # to visualise model outputs
+library(ggeffects)  # to visualise model predictions
 library(MCMCglmm)  # for models
 library(MCMCvis)  # to visualise model outputs
 library(brms)  # for models
@@ -351,10 +352,14 @@ __This final model answers our question about how plant species richness has cha
 set_theme(base = theme_bw())
 
 # Visualises random effects 
-plot_model(plant_m_plot3, type = "re", show.values = TRUE)
+(re.effects <- plot_model(plant_m_plot3, type = "re", show.values = TRUE))
+save_plot(filename = "model_re.png",
+          height = 11, width = 9)  # Save the graph if you wish
 
 # To see the estimate for our fixed effect (default), Year
-plot_model(plant_m_plot3, show.values = TRUE)
+(fe.effects <- plot_model(plant_m_plot3, show.values = TRUE))
+save_plot(filename = "model_fe.png",
+          height = 11, width = 9)  # Save the graph if you wish
 ```
 
 <center> <img src="{{ site.baseurl }}/img/model_re.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_fe.png" alt="Img" style="width: 500px;"/></center>
@@ -370,11 +375,15 @@ summary(plant_m_temp)
 Let's see the model outputs again:
 
 ```
-# visualise the random effect terms
-plot_model(plant_m_temp, type = "re", show.values = TRUE)
+# Visualise the random effect terms
+(temp.re.effects <- plot_model(plant_m_temp, type = "re", show.values = TRUE))
+save_plot(filename = "model_temp_re.png",
+          height = 11, width = 9)
 
-# visualise the fixed effect
-plot_model(plant_m_temp, show.values = TRUE)
+# Visualise the fixed effect
+(temp.fe.effects <- plot_model(plant_m_temp, show.values = TRUE))
+save_plot(filename = "model_temp_fe.png",
+          height = 11, width = 9)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/model_temp_re.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_temp_fe.png" alt="Img" style="width: 500px;"/></center>
@@ -422,20 +431,84 @@ summary(plant_m_rs)
 We can visualise the results:
 
 ```r
-plot_model(plant_m_rs, type = "re", show.values = TRUE)
-plot_model(plant_m_rs, show.values = TRUE)
+(plant.re.effects <- plot_model(plant_m_rs, type = "re", show.values = TRUE))
+save_plot(filename = "model_plant_re.png",
+          height = 17, width = 15)
+
+(plant.fe.effects <- plot_model(plant_m_rs, show.values = TRUE))
+save_plot(filename = "model_plant_fe.png",
+          height = 14, width = 9)
 ```
 
 <center> <img src="{{ site.baseurl }}/img/model_plant_re.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_plant_fe.png" alt="Img" style="width: 500px;"/></center>
 
-To get a better idea of what the random slopes and intercepts are doing, we can visualise those as well using this code:
+To get a better idea of what the random slopes and intercepts are doing, we can visualise your model predictions. We will use the `ggeffects` package to calculate model predictions and plot them. First, we calculate the overall predictions for the relationship between species richness and temperature. Then, we calculate the predictions for each plot, thus visualising the among-plot variation. Note that the second graph has both freely varying slopes and intercepts (i.e., they're different for each plot).
 
 ```r
-sjp.lmer(plant_m_rs, type = "ri.slope")
-sjp.lmer(plant_m_rs, type = "rs.ri")
+ggpredict(plant_m_rs, terms = c("Mean.Temp")) %>% plot()
+save_plot(filename = "model_temp_richness.png",
+          height = 9, width = 9)
+
+ggpredict(plant_m_rs, terms = c("Mean.Temp", "Plot"), type = "re") %>% plot()
+save_plot(filename = "model_temp_richness_rs_ri.png",
+          height = 9, width = 9)
 ```
 
-<center> <img src="{{ site.baseurl }}/img/random_intercepts.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/random_slopes.png" alt="Img" style="width: 500px;"/></center>
+<center> <img src="{{ site.baseurl }}/img/model_temp_richness.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/model_temp_richness_rs_ri.png" alt="Img" style="width: 500px;"/></center>
+
+#### An important note about honest graphs!
+
+Interestingly, the default options from the `ggpredict()` function set the scale differently for the y axes on the two plots. If you just see the first plot, at a first glance you'd think that species richness is increasing a lot as temperature increases! But take note of the y axis, it doesn't actually start at zero, thus the relationship is shown to be way stronger than it actually is.
+
+__We can manually plot the predictions to overcome this problem.__
+
+```r
+# Overall predictions - note that we have specified just mean temperature as a term
+predictions <- ggpredict(plant_m_rs, terms = c("Mean.Temp"))
+
+(pred_plot1 <- ggplot(predictions, aes(x, predicted)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = conf.low, ymax = conf.high), alpha = .1) +
+  scale_y_continuous(limits = c(0, 22)) +
+  labs(x = "Predicted species richness\n", y = "\nMean annual temperature"))
+
+ggsave(pred_plot1, filename = "overall_predictions.png",
+       height = 5, width = 5)
+```
+
+__The relationship between temperature and species richness doesn't look that strong anymore! In fact, we see pretty small increases in species richness as temperature increases. What does that tell you about our hypothesis?__
+
+Now we can do the same, but this time taking into account the random effect.
+
+```r
+# Predictions for each grouping level (here plot which is a random effect)
+# re stands for random effect
+predictions_rs_ri <- ggpredict(plant_m_rs, terms = c("Mean.Temp", "Plot"), type = "re")
+
+(pred_plot2 <- ggplot(predictions_rs_ri, aes(x = x, y = predicted, colour = group)) +
+  stat_smooth(method = "lm", se = FALSE)  +
+  scale_y_continuous(limits = c(0, 22)) +
+  labs(x = "Predicted species richness\n", y = "\nMean annual temperature"))
+
+ggsave(pred_plot2, filename = "ri_rs_predictions.png",
+       height = 5, width = 5)
+
+```
+
+<center> <img src="{{ site.baseurl }}/img/overall_predictions.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/ri_rs_predictions.png" alt="Img" style="width: 500px;"/></center>
+
+__Just for the sake of really seeing the random intercepts and random slopes, here is a zoomed in version) - but note that when preparing graphs for reports or publications, your axes should start at zero to properly visualise the magnitude of the shown relationship.__
+
+```r
+(pred_plot3 <- ggplot(predictions_rs_ri, aes(x = x, y = predicted, colour = group)) +
+    stat_smooth(method = "lm", se = FALSE)  +
+    labs(x = "Predicted species richness\n", y = "\nMean annual temperature"))
+
+ggsave(pred_plot3, filename = "ri_rs_predictions_zoom.png",
+       height = 5, width = 5)
+```
+
+<center> <img src="{{ site.baseurl }}/img/ri_rs_predictions_zoom.png" alt="Img" style="width: 500px;"/></center>
 
 <a name="MCMCglmm"></a>
 
