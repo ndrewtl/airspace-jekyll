@@ -533,7 +533,9 @@ So, today we have learned that in order to design a statistical model we first n
 
 #### Extras
 
-If you are keen, you can now try out the `brms` package and generate the Stan code for this model.  This will help us to start to thing about how we can implement hierarchical models using the statistical programming language Stan, which we will cover in a future workshop.
+If you are keen, you can now try out the `brms` package and generate the Stan code for this model.  This will help us to start to thing about how we can implement hierarchical models using the statistical programming language Stan.
+
+__You can check out <a href="https://ourcodingclub.github.io/2018/04/30/stan-2.html" arget="_blank">the Stan hierarchical modelling tutorial here!</a>__
 
 <p></p>
 
