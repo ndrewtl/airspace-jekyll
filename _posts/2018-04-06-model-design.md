@@ -594,8 +594,8 @@ The trace plots for this model are a bit better than the privious one, and we ha
 We can use the package `MCMCvis` by <a href="https://github.com/caseyyoungflesh/MCMCvis" target="_blank">Casey Youngflesh</a> to plot the results of our _Betula nana_ model.
 
 ```r
-MCMCplot(treatment_mcmc$Sol)
-MCMCplot(treatment_mcmc$VCV)
+MCMCplot(betula_m$Sol)
+MCMCplot(betula_m$VCV)
 ```
 
 `Sol` refers to the fixed effects and `VCV` to the random effects, so we can see the effects sizes of the different variables we have added to our models. If the credible intervals overlap zero, then those effects are not significant. So we can see here that _Betula nana_ cover hasn't changed. `units` refers to the residual variance.
