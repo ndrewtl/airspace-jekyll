@@ -22,7 +22,9 @@ tags: modelling data_manip data_vis
 #### <a href="#types"> 5. Turn a question in to a model </a>
 #### <a href="#models"> 6. Learn about the different types of models </a>
 #### <a href="#linear"> 7. General linear models </a>
-#### <a href="#lme4"> 7. Hierarchical models using `lme4` </a>
+#### <a href="#lme4"> 8. Hierarchical models using `lme4` </a>
+#### <a href="#lme4b"> 9. Random slopes versus random intercepts `lme4` </a>
+#### <a href="#MCMCglmm"> 10. Hierarchical models using `MCMCglmm` </a>
 
 ### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-model-design" target="_blank">this repository</a>. Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.
 
@@ -314,6 +316,7 @@ __For now let's check the residual versus predicted plot for our linear model. B
 plot(plant_m)
 ```
 
+<a name="lme4"></a>
 
 ## 8. Hierarchical models using `lme4`
 
@@ -386,6 +389,8 @@ plot_model(plant_m_temp, show.values = TRUE)
 1. We have not accounted for spatial autocorrelation in the data - whether more closely located plots are more likely to show similar responses than farther away plots.
 2. We have not accounted for temporal autocorrelation in the data - whether the influence of prior years of data are influencing the data in a given year.
 
+<a name="lme4b"></a>
+
 ## 9. Random slopes versus random intercepts `lme4`
 
 __We can now think about having random slopes and random intercepts. For our question, how does temperature influence species richness, we can allow each plot to have it's own relationship with temperature.__
@@ -430,7 +435,9 @@ sjp.lmer(plant_m_rs, type = "rs.ri")
 
 <center> <img src="{{ site.baseurl }}/img/random_intercepts.png" alt="Img" style="width: 500px;"/> <img src="{{ site.baseurl }}/img/random_slopes.png" alt="Img" style="width: 500px;"/></center>
 
-#### <a href="#MCMCglmm"> 9. Hierarchical models using `MCMCglmm` </a>
+<a name="MCMCglmm"></a>
+
+## 10. Hierarchical models using `MCMCglmm`
 
 __Let's take our `lme4` model and explore what that model structure looks like in `MCMCglmm`. `MCMCglmm` fits Generalised Linear Mixed-effects Models using a Markov chain Monte Carlo approach under a Bayesian statistical framework.__
 
