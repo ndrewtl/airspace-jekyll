@@ -556,7 +556,7 @@ summary(plant_mcmc)
 
 The posterior mean (i.e., the slope) for the `Year` term is `-0.07` (remember that this is on the logarithmic scale, because we have used a Poisson distribution). So in general, based on this model, species richness has declined over time.
 
-__Now we should check if the model has converged - in `MCMCglmm` we assess that using trace plots - you want them to look like a fuzzy caterpillar. Ours really don't give off that fuzzy caterpillar vibe! So in this case, even though the model ran and we got our estimates, we wouldn't really trust this model - this model is not really the best model to answer our research question, because in in, we are not accounting for the site effects, or for the fact that the plots are within blocks within sites.__
+__Now we should check if the model has converged - in `MCMCglmm` we assess that using trace plots - you want them to look like a fuzzy caterpillar. `Sol` refers to the fixed effects and `VCV` to the random effects. Ours really don't give off that fuzzy caterpillar vibe! So in this case, even though the model ran and we got our estimates, we wouldn't really trust this model - this model is not really the best model to answer our research question, because in in, we are not accounting for the site effects, or for the fact that the plots are within blocks within sites.__
 
 ```r
 plot(plant_mcmc$VCV)
