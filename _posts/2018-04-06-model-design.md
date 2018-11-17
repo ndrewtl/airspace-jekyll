@@ -323,7 +323,9 @@ plot(plant_m)
 
 Now that we have explored the idea of a hierarchical model, let's see how our analysis changes if we do or do not incorporate elements of the experimental design to the hierarchy of our model.
 
-First let's model with only site as a random effect.  This model does not incorporate the temporal replication in the data or the fact that there are plots within blocks within those sites:
+First let's model with only site as a random effect.  This model does not incorporate the temporal replication in the data or the fact that there are plots within blocks within those sites. 
+
+Notice how we have transformed the `Year` column - `I(Year - 2007)` means that the year `2008` will become `Year 1` - then your model is estimating richness across the first, second, etc., year from your survey period. Otherwise, if we had kept the years just as `2008`, `2009`,..., the model would have estimated richness really far back into the past, starting from `Year 1`, `Year 2`... `Year 1550` up until `2012`. This would make the magnitude of the estimates we get wrong - you can experiment to see what happens if we just add in `Year` - suddenly the slope of species change does in the hundreds!
 
 ```r
 plant_m_plot <- lmer(Richness ~ I(Year-2007) + (1|Site), data = toolik_plants)
@@ -524,7 +526,7 @@ For now, we can proceed knowing that just like in `lme4`, in `MCMCglmm` we can a
 
 __`MCMCglmm` models are also suitable when you are working with zero-inflated data - e.g., when you are modelling population abundance through time, often the data either have lots of zeros (meaning that you didn't see your target species) or they are skewed towards the left (there are more low numbers, like one skylark, two skylarks, than there are high numbers, 40 skylarks). If a model won't converge (i.e. you get error messages about convergence or the model outputs are very questionable), first of course revisit your question, your explanatory and response variables, fixed and random effects, and once you're sure all of those are sound, you can explore fitting the model using `MCMCglmm`. Because of the behind the scenes action (the thousands MCMC iterations that the model runs) and the statistics behind `MCMCglmm`, these types of models might be able to handle data that models using `lme4` can't.__
 
-__Let's explore how to answer our questions using models in `MCMCglmm`! We can gradually build a more complex model, starting with a `Site` random effect. Notice how we have transformed the `Year` column - `I(Year - 2007)` means that the year `2008` will become `Year 1` - then your model is estimating richness across the first, second, etc., year from your survey period. Otherwise, if we had kept the years just as `2008`, `2009`,..., the model would have estimated richness really far back into the past, starting from `Year 1`, `Year 2`... `Year 1550` up until `2012`. This would make the magnitude of the estimates we get wrong - you can experiment to see what happens if we just add in `Year` - suddenly the slope of species change does in the hundreds!__
+__Let's explore how to answer our questions using models in `MCMCglmm`! We can gradually build a more complex model, starting with a `Site` random effect.__
 
 ```r
 plant_mcmc <- MCMCglmm(Richness ~ I(Year - 2007), random = ~Site,
