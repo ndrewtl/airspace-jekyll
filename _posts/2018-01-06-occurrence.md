@@ -277,9 +277,13 @@ __Now that we have our colours, we can make a map. A map is really like any othe
    
  # Putting brackets around the whole ggplot code means that you will
  # create and display the beluga.map object
+
  
  # If don't have brackets, you have to run this line of code to see your map
  # beluga.map
+ # To view the map in a new window, run the following
+ # dev.new()
+ # beluga.map 
 ```
 
 __`ggplot2` works with aesthetics. That is the `aes` argument which "maps" your variables to the `x` and `y` axises.__
@@ -402,6 +406,8 @@ __The `ggplot2` package offers many different ways you can customise your graphs
 print(beluga.slopes$Location.of.population)
 
 # Make site names consistent
+# Make sure the original names are the same as shown on your computer - sometimes R will read 
+# in the variables differently i.e. Quebec may be "Qu<ed><a9>bec"
 beluga.slopes$Location.of.population <- recode(beluga.slopes$Location.of.population,
                                                "Cook Inlet stock, Alaska" = "Cook Inlet stock")
 beluga.slopes$Location.of.population <- recode(beluga.slopes$Location.of.population,
