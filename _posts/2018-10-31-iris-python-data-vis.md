@@ -428,8 +428,459 @@ Iris tries to maintain lazy data as much as possible. We refer to the operation 
 ##### - When there is no lazy data processing algorithm available to perform the requested data processing, such as for peak finding, and
 ##### - Where actual data values are necessary, such as for cube plotting.
 
+## Cube control and subsetting
+
+**Learning outcome**: by the end of this section, you will be able to apply Iris functionality to take a useful subset of an Iris cube and to combine multiple Iris cubes into a new larger cube.
+
+### Constraints and Extract
+
+We've already seen the basic ``load`` function, but we can also control which cubes are actually loaded with *constraints*. The simplest constraint is just a string, which filters cubes based on their name:
+
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+print(iris.load(fname, 'air_potential_temperature'))
+```
+
+```
+0: air_potential_temperature / (K)     (time: 3; model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
+```
+
+Iris's constraints mechanism provides a powerful way to filter a subset of data from a larger collection. We've already seen that constraints can be used at load time to return data of interest from a file, but we can also apply constraints to a single cube, or a list of cubes, using their respective ``extract`` methods:
+
+```python
+cubes = iris.load(fname)
+print(cubes.extract('air_potential_temperature'))
+```
+
+Which will give us the same output as the previous output:
+
+```
+0: air_potential_temperature / (K)     (time: 3; model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
+```
+
+The simplest constraint, namely a string that matches a cube's name, is conveniently converted into an actual ``iris.Constraint`` instance wherever needed. However, we could construct this constraint manually and compare with the previous result:
+
+```python
+pot_temperature_constraint = iris.Constraint('air_potential_temperature')
+print(cubes.extract(pot_temperature_constraint))
+```
+
+```
+0: air_potential_temperature / (K)     (time: 3; model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
+```
+
+The Constraint constructor also takes arbitrary keywords to constrain coordinate values. For example, to extract model level number 10 from the air potential temperature cube:
+
+```python
+pot_temperature_constraint = iris.Constraint('air_potential_temperature',
+                                             model_level_number=10)
+print(cubes.extract(pot_temperature_constraint))
+```
+
+```
+0: air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+```
+
+We can pass a list of possible values, and even combine two constraints with ``&``:
+
+```python
+print(cubes.extract('air_potential_temperature' & 
+                    iris.Constraint(model_level_number=[4, 10])))
+```
+
+```
+0: air_potential_temperature / (K)     (time: 3; model_level_number: 2; grid_latitude: 204; grid_longitude: 187)
+```
+
+We can define arbitrary functions that operate on each cell of a coordinate. This is a common thing to do for floating point coordinates, where exact equality is non-trivial.
+
+```python
+def less_than_10(cell):
+    """Return True for values that are less than 10."""
+    return cell < 10
+
+print(cubes.extract(iris.Constraint('air_potential_temperature',
+                                    model_level_number=less_than_10)))
+```
+
+```
+0: air_potential_temperature / (K)     (time: 3; model_level_number: 3; grid_latitude: 204; grid_longitude: 187)
+```
+
+### Time Constraints
+
+It is common to want to build a constraint for time. This can be achieved by comparing cells containing datetimes.There are a few different approaches for producing time constraints in Iris. We will focus here on one approach for constraining on time in Iris. 
+
+This approach allows us to access individual components of cell datetime objects and run comparisons on those:
+
+```python
+time_constraint = iris.Constraint(time=lambda cell: cell.point.hour == 11)
+print(air_pot_temp.extract(time_constraint).summary(True))
+```
+
+```
+air_potential_temperature / (K)     (model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
+```
+
+### Indexing
+
+Cubes can be indexed in a familiar manner to that of NumPy arrays:
+
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+cube = iris.load_cube(fname, 'air_potential_temperature')
+print(cube.summary(shorten=True))
+```
+
+```
+air_potential_temperature / (K)     (time: 3; model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
+```
+
+We can define a constraint on our cube by creating a list of indices to be used, similarly to NumPy:
+
+```python
+subcube = cube[..., ::2, 15:35, :10]
+subcube.summary(shorten=True)
+```
+
+```
+'air_potential_temperature / (K)     (time: 3; model_level_number: 4; grid_latitude: 20; grid_longitude: 10)'
+```
+
+__Note: the result of indexing a cube is *always* a copy and never a *view* on the original data.__
 
 
 
+### Iteration
+
+We can loop through all desired subcubes in a larger cube using the cube methods ``slices`` and ``slices_over``.
+
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+cube = iris.load_cube(fname,
+                      iris.Constraint('air_potential_temperature',
+                                      model_level_number=1))
+print(cube.summary(True))
+```
+
+```
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+```
+
+The **``slices``** method returns all the slices of a cube on the dimensions specified by the coordinates passed to the slices method.
+
+So in this example, each `grid_latitude` / `grid_longitude` slice of the cube is returned:
+
+```python
+for subcube in cube.slices(['grid_latitude', 'grid_longitude']):
+    print(subcube.summary(shorten=True))
+```
+
+```
+air_potential_temperature / (K)     (grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (grid_latitude: 204; grid_longitude: 187)
+```
+
+We can use **``slices_over``** to return one subcube for each coordinate value in a specified coordinate. This helps us when trying to retrieve all the slices along a given cube dimension.
+
+For example, let's consider retrieving all the slices over the time dimension (i.e. each time step in its own cube with a scalar time coordinate) using ``slices``. As per the above example, to achieve this using ``slices`` we would have to specify all the cube's dimensions _except_ the time dimension.
+
+Let's take a look at ``slices_over`` providing this functionality:
+
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+cube = iris.load_cube(fname, 'air_potential_temperature')
+for subcube in cube.slices_over('model_level_number'):
+    print(subcube.summary(shorten=True))
+```
+
+```
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+```
+
+### Discussion: Indexing and slicing
+
+##### - What are the similarities between indexing and slicing?
+##### - What are the differences?
+##### - Which cube slicing method would be easiest to use to return all subcubes along the realization dimension?
+##### - Which cube slicing method would be easiest to use to return all horizontal 2D slices in a 4D cube?
+##### - In what situations would indexing be the best way to subset a cube? What about slicing?
+
+## Data Processing
+
+**Learning outcome**: by the end of this section, you will be able to use Iris to analyse and visualise weather and climate datasets.
+
+### Plotting
+
+Iris comes with two plotting modules called ``iris.plot`` and ``iris.quickplot`` that wrap some of the common matplotlib plotting functions such that cubes can be passed as input rather than the usual NumPy arrays. The two modules are very similar, with the primary difference being that ``quickplot`` will add extra information to the axes, such as:
+
+##### - a colorbar,
+##### - labels for the x and y axes, and
+##### - a title where possible.
+
+
+```python
+import iris.plot as iplt
+import iris.quickplot as qplt
+import matplotlib.pyplot as plt
+
+cube = iris.load_cube(iris.sample_data_path('A1B_north_america.nc'))
+ts = cube[-1, 20, ...]
+print(ts)
+```
+
+Will print out the following summary of the sliced cube:
+
+```
+air_temperature / (K)               (longitude: 49)
+     Dimension coordinates:
+          longitude                           x
+     Scalar coordinates:
+          forecast_period: 2075754 hours
+          forecast_reference_time: 1859-09-01 06:00:00
+          height: 1.5 m
+          latitude: 40.0 degrees
+          time: 2099-06-01 00:00:00, bound=(2098-12-01 00:00:00, 2099-12-01 00:00:00)
+     Attributes:
+          Conventions: CF-1.5
+          Model scenario: A1B
+          STASH: m01s03i236
+          source: Data from Met Office Unified Model 6.05
+     Cell methods:
+          mean: time (6 hour)
+```
+
+Now we can do some plotting! Adding to the above script, we can write:
+
+```python
+iplt.plot(ts)
+plt.show()
+```
+
+For comparison, lets plot the result of ``iplt.plot`` next to ``qplt.plot``:
+
+```python
+plt.subplot(2, 1, 1)
+iplt.plot(ts)
+
+plt.subplot(2, 1, 2)
+qplt.plot(ts)
+
+plt.subplots_adjust(hspace=0.5)
+plt.show()
+```
+
+Notice how the result of qplt has axis labels and a title; everything else about the axes is identical.
+
+The plotting functions in Iris have strict rules on the dimensionality of the inputted cubes. For example, a 2d cube is needed in order to create a contour plot:
+
+```python
+qplt.contourf(cube[:, 0, :])
+plt.show()
+```
+
+### Maps with cartopy
+
+When the result of a plot operation is a map, Iris will automatically create an appropriate cartopy axes if one doesn't already exist.
+
+We can use matplotlib's `gca()` function to get hold of the automatically created cartopy axes:
+
+
+```python
+import cartopy.crs as ccrs
+
+plt.figure(figsize=(12, 8))
+
+plt.subplot(1, 2, 1)
+qplt.contourf(cube[0, ...], 25)
+ax = plt.gca()
+ax.coastlines()
+
+ax = plt.subplot(1, 2, 2, projection=ccrs.RotatedPole(100, 37))
+qplt.contourf(cube[0, ...], 25)
+ax.coastlines()
+
+plt.show()
+```
+
+### Cube maths
+
+Basic mathematical operators exist on the cube to allow one to add, subtract, divide, multiply and perform other mathematical operations on cubes of a similar shape to one another:
+
+```python
+a1b = iris.load_cube(iris.sample_data_path('A1B_north_america.nc'))
+e1 = iris.load_cube(iris.sample_data_path('E1_north_america.nc'))
+
+print(e1.summary(True))
+print(a1b)
+```
+
+Should show us the summary:
+
+```
+air_temperature / (K)               (time: 240; latitude: 37; longitude: 49)
+air_temperature / (K)               (time: 240; latitude: 37; longitude: 49)
+     Dimension coordinates:
+          time                           x              -              -
+          latitude                       -              x              -
+          longitude                      -              -              x
+     Auxiliary coordinates:
+          forecast_period                x              -              -
+     Scalar coordinates:
+          forecast_reference_time: 1859-09-01 06:00:00
+          height: 1.5 m
+     Attributes:
+          Conventions: CF-1.5
+          Model scenario: A1B
+          STASH: m01s03i236
+          source: Data from Met Office Unified Model 6.05
+     Cell methods:
+          mean: time (6 hour)
+```
+
+To find the difference between these two cubes we have created, we can do this by adding the following lines of code:
+
+```python
+scenario_difference = a1b - e1
+print(scenario_difference)
+```
+
+Giving us:
+
+```
+unknown / (K)                       (time: 240; latitude: 37; longitude: 49)
+     Dimension coordinates:
+          time                           x              -              -
+          latitude                       -              x              -
+          longitude                      -              -              x
+     Auxiliary coordinates:
+          forecast_period                x              -              -
+     Scalar coordinates:
+          forecast_reference_time: 1859-09-01 06:00:00
+          height: 1.5 m
+```
+
+Notice that the resultant cube's name is now `unknown` and that resultant cube's `attributes` and `cell_methods` have disappeared; this is because these all differed between the two input cubes.
+
+It is also possible to operate on cubes with numeric scalars, NumPy arrays and even cube coordinates:
+
+```python
+print(e1 * e1.coord('latitude'))
+```
+
+```
+unknown / (0.0174532925199433 K.rad) (time: 240; latitude: 37; longitude: 49)
+     Dimension coordinates:
+          time                            x              -              -
+          latitude                        -              x              -
+          longitude                       -              -              x
+     Auxiliary coordinates:
+          forecast_period                 x              -              -
+     Scalar coordinates:
+          forecast_reference_time: 1859-09-01 06:00:00
+          height: 1.5 m
+```
+
+Cube broadcasting is also taking place, meaning that the two inputs (cube, coordinate, array, or even constant value) don't need to have the same shape:
+
+```python
+print(e1 + 5.0)
+```
+
+```
+unknown / (K)                       (time: 240; latitude: 37; longitude: 49)
+     Dimension coordinates:
+          time                           x              -              -
+          latitude                       -              x              -
+          longitude                      -              -              x
+     Auxiliary coordinates:
+          forecast_period                x              -              -
+     Scalar coordinates:
+          forecast_reference_time: 1859-09-01 06:00:00
+          height: 1.5 m
+```
+
+As we've just seen, we have the ability to update the cube's data directly. Whenever we do this though, we should be mindful of updating appropriate metadata on the cube:
+
+```python
+e1_hot = e1.copy()
+
+e1_hot.data = np.ma.masked_less_equal(e1_hot.data, 280)
+e1_hot.rename('air temperatures greater than 280K')
+print(e1_hot)
+```
+
+```
+air temperatures greater than 280K / (K) (time: 240; latitude: 37; longitude: 49)
+     Dimension coordinates:
+          time                                x              -              -
+          latitude                            -              x              -
+          longitude                           -              -              x
+     Auxiliary coordinates:
+          forecast_period                     x              -              -
+     Scalar coordinates:
+          forecast_reference_time: 1859-09-01 06:00:00
+          height: 1.5 m
+     Attributes:
+          Conventions: CF-1.5
+          Model scenario: E1
+          STASH: m01s03i236
+          source: Data from Met Office Unified Model 6.05
+     Cell methods:
+          mean: time (6 hour)
+```
+
+### Cube aggregation and statistics
+
+Many standard univariate aggregations exist in Iris. Aggregations allow one or more dimensions of a cube to be statistically collapsed for the purposes of statistical analysis of the cube's data. Iris uses the term 'aggregators' to refer to the statistical operations that can be used for aggregation.
+
+A list of aggregators is available at http://scitools.org.uk/iris/docs/latest/iris/iris/analysis.html.
+
+```python
+fname = iris.sample_data_path('uk_hires.pp')
+cube = iris.load_cube(fname, 'air_potential_temperature')
+print(cube.summary(True))
+```
+
+```
+air_potential_temperature / (K)     (time: 3; model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
+```
+
+To take the vertical mean of this cube:
+
+```python
+print(cube.collapsed('model_level_number', iris.analysis.MEAN))
+```
+
+```
+air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
+     Dimension coordinates:
+          time                           x                 -                    -
+          grid_latitude                  -                 x                    -
+          grid_longitude                 -                 -                    x
+     Auxiliary coordinates:
+          forecast_period                x                 -                    -
+          surface_altitude               -                 x                    x
+     Derived coordinates:
+          altitude                       -                 x                    x
+     Scalar coordinates:
+          forecast_reference_time: 2009-11-19 04:00:00
+          level_height: 696.6666 m, bound=(0.0, 1393.3333) m
+          model_level_number: 10, bound=(1, 19)
+          sigma: 0.92292976, bound=(0.8458596, 1.0)
+     Attributes:
+          STASH: m01s00i004
+          source: Data from Met Office Unified Model
+          um_version: 7.3
+     Cell methods:
+          mean: model_level_number
+```
 
 
