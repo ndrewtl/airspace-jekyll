@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Analysing Earth science and climate data with iris
-subtitle: Manipulate multi-dimensional climate data from common file formats
+title: Analysing Earth science and climate data with Iris
+subtitle: Manipulate multi-dimensional climate data from common file formats in Python
 date: 2018-10-31 00:00:00
 author: Declan Valters
 meta: "PythonIris"
@@ -32,6 +32,10 @@ If you need any of the above features and you find that you are **regularly writ
 
 #### <a href="#cube">2. Learn about the core Iris data structure: the Iris cube</a>
 
+#### <a href="#loading">3. Learn how to load data selectively from large datasets</a>
+
+#### <a href="#plotting">4. Learn how to manipulate and plot data with iris</a>
+
 
 <a name="understanding"></a>
 
@@ -43,7 +47,7 @@ Iris operates around a central data structure used to store multi-dimiensional d
 
 The third dimension in an Iris could be model levels, different heights in the atmosphere, or depths in the ocean. It could also be used to represent different time-slices in a model run. In short, the Iris cube data structure is very flexible and can be used to represent a large variety of different datasets.
 
-We are going to have a look at how the Iris `cube` data structure works now, but first, let`s test that we have iris installed:
+We are going to have a look at how the Iris `cube` data structure works now, but first, let's test that we have iris installed:
 
 ```python
 import iris
@@ -77,9 +81,9 @@ Each cube has:
 A fuller explanation is available in the <a href="http://scitools.org.uk/iris/docs/latest/userguide/iris_cubes.html">Iris User Guide</a>.
 
 
-Let`s take a simple example to demonstrate the cube concept.
+Let's take a simple example to demonstrate the cube concept.
 
-Suppose we have a ``(3, 2, 4)`` NumPy array:
+Suppose we have a `(3, 2, 4)` NumPy array:
 
 <center> <img src="{{ site.baseurl }}/img/multi_array.png" alt="Img" style="width: 800px;"/> </center>
 
@@ -89,7 +93,7 @@ The Iris cube to represent this data may consist of:
 
 ##### - a standard name of "air_temperature" and units of "kelvin"
 
-##### - a data array of shape ``(3, 2, 4)``
+##### - a data array of shape `(3, 2, 4)`
 
 ##### - a coordinate, mapping to dimension 0, consisting of:
 ###### - a standard name of "height" and units of "meters"
@@ -109,6 +113,7 @@ Pictorially the cube has taken on more information than a simple array:
 
 <center> <img src="{{ site.baseurl }}/img/multi_array_to_cube.png" alt="Img" style="width: 800px;"/> </center>
 
+
 ### Working with a cube
 
 Whilst it is possible to construct a cube by hand, a far more common approach to getting hold of a cube is to use the Iris load function to access data that already exists in a file.
@@ -119,9 +124,9 @@ cubes = iris.load(fname)
 print(cubes)
 ```
 
-We can see that we`ve loaded two cubes, one representing the "surface_altitude" and the other representing "air_potential_temperature". We can infer even more detail from this printout; for example, what are the dimensions and shape of the "air_potential_temperature" cube?
+We can see that we've loaded two cubes, one representing the "surface_altitude" and the other representing "air_potential_temperature". We can infer even more detail from this printout; for example, what are the dimensions and shape of the "air_potential_temperature" cube?
 
-Above we`ve printed the ``iris.cube.CubeList`` instance representing all of the cubes found in the given filename. However, we can see more detail by printing individual cubes:
+Above we've printed the `iris.cube.CubeList` instance representing all of the cubes found in the given filename. However, we can see more detail by printing individual cubes:
 
 ```python
 fname = iris.sample_data_path('uk_hires.pp')
@@ -131,7 +136,7 @@ air_pot_temp = cubes[0]
 print(air_pot_temp)
 ```
 
-#### Cube attributes
+### Cube attributes
 
 We can create a single cube from the `load_cube` command. Iris also provides some sample data that we can work with in the `iris.sample_data_path` function. Printing a cube object in Python will give you an overview of the data it contains and the layout of that data:
 
@@ -160,9 +165,9 @@ air_temperature / (K)               (time: 240; latitude: 37; longitude: 49)
           mean: time (6 hour)
 ```
 
-To access a cube`s data array the ``data`` property exists. This is either a NumPy array or in some cases a NumPy masked array. It is very important to note that for most of the supported filetypes in Iris, the cube`s data isn`t actually loaded until you request it via this property (either directly or indirectly). After you`ve accessed the data once, it is stored on the cube and thus won`t be loaded from disk again.
+To access a cube's data array the `data` property exists. This is either a NumPy array or in some cases a NumPy masked array. It is very important to note that for most of the supported filetypes in Iris, the cube's data isn't actually loaded until you request it via this property (either directly or indirectly). After you`ve accessed the data once, it is stored on the cube and thus won`t be loaded from disk again.
 
-To find the shape of a cube`s data it is possible to call ``cube.data.shape`` or ``cube.data.ndim``, but this will trigger any unloaded data to be loaded. Therefore ``shape`` and ``ndim`` are properties available directly on the cube that do not unnecessarily load data.
+To find the shape of a cube's data it is possible to call `cube.data.shape` or `cube.data.ndim`, but this will trigger any unloaded data to be loaded. Therefore `shape` and `ndim` are properties available directly on the cube that do not unnecessarily load data.
 
 ```python
 cube = iris.load_cube(iris.sample_data_path('A1B_north_america.nc'))
@@ -179,7 +184,7 @@ Which should display:
 ```
 
 
-The ``standard_name``, ``long_name`` and to an extent ``var_name`` are all attributes to describe the phenomenon that the cube represents. The ``name()`` method is a convenience that looks at the name attributes in the order they are listed above, returning the first non-empty string. To rename a cube, it is possible to set the attributes manually, but it is generally easier to use the ``rename()`` method.
+The `standard_name`, `long_name` and to an extent `var_name` are all attributes to describe the phenomenon that the cube represents. The `name()` method is a convenience that looks at the name attributes in the order they are listed above, returning the first non-empty string. To rename a cube, it is possible to set the attributes manually, but it is generally easier to use the `rename()` method.
 
 *From now on, we are not going to re-type the `cube = iris.load_cube(...)` line, it is assumed you will just change or append the lines below to your existing Python code. This is done to avoid having to reload the data into memory in each example!*
 
@@ -221,7 +226,7 @@ None
 A name that isn't a valid CF standard name
 ```
 
-The ``units`` attribute on a cube tells us the units of the numbers held in the data array. We can manually change the units, or better, we can convert the cube to another unit using the ``convert_units`` method, which will automatically update the data array.
+The `units` attribute on a cube tells us the units of the numbers held in the data array. We can manually change the units, or better, we can convert the cube to another unit using the `convert_units` method, which will automatically update the data array.
 
 ```python
 print(cube.units)
@@ -240,7 +245,7 @@ Celsius
 32.9233
 ```
 
-A cube has a dictionary for extra general purpose attributes, which can be accessed with the ``cube.attributes`` attribute:
+A cube has a dictionary for extra general purpose attributes, which can be accessed with the `cube.attributes` attribute:
 
 
 ```python
@@ -257,7 +262,7 @@ m01s03i236
 
 ### Coordinates
 
-As we`ve seen, cubes need coordinate information to help us describe the underlying phenomenon. Typically a cube`s coordinates are accessed with the ``coords`` or ``coord`` methods. The latter *must* return exactly one coordinate for the given parameter filters, where the former returns a list of matching coordinates, possibly of length 0.
+As we've seen, cubes need coordinate information to help us describe the underlying phenomenon. Typically a cube's coordinates are accessed with the `coords` or `coord` methods. The latter *must* return exactly one coordinate for the given parameter filters, where the former returns a list of matching coordinates, possibly of length 0.
 
 For example, to access the time coordinate, and print the first 4 times:
 
@@ -277,9 +282,9 @@ DimCoord([1860-06-01 00:00:00, 1861-06-01 00:00:00, 1862-06-01 00:00:00,
        [1862-12-01 00:00:00, 1863-12-01 00:00:00]], standard_name='time', calendar='360_day', var_name='time')
 ```
 
-The coordinate interface is very similar to that of a cube. The attributes that exist on both cubes and coordinates are: ``standard_name``, ``long_name``, ``var_name``, ``units``, ``attributes`` and ``shape``. Similarly, the ``name()``, ``rename()`` and ``convert_units()`` methods also exist on a coordinate.
+The coordinate interface is very similar to that of a cube. The attributes that exist on both cubes and coordinates are: `standard_name`, `long_name`, `var_name`, `units`,`attributes` and `shape`. Similarly, the `name()`, `rename()` and `convert_units()` methods also exist on a coordinate.
 
-A coordinate does not have ``data``, instead it has ``points`` and ``bounds`` (``bounds`` may be ``None``). In Iris, time coordinates are currently represented as "a number since an epoch". So for example:
+A coordinate does not have `data`, instead it has `points` and `bounds` (`bounds` may be `None`). In Iris, time coordinates are currently represented as "a number since an epoch". So for example:
 
 ```python
 print(repr(time.units))
@@ -298,7 +303,7 @@ Unit('hours since 1970-01-01 00:00:00', calendar='360_day')
  [-925200. -916560.]]
 ```
 
-These numbers can be converted to datetime objects with the unit`s ``num2date`` method. Dates can be converted back again with the ``date2num`` method:
+These numbers can be converted to datetime objects with the unit's `num2date` method. Dates can be converted back again with the `date2num` method:
 
 ```python
 import datetime
@@ -317,7 +322,7 @@ Giving:
 720.0
 ```
 
-Another important attribute on a coordinate is its coordinate system. Coordinate systems may be ``None`` for trivial coordinates, but particularly for spatial coordinates, they may be complex definitions of things such as the projection, ellipse and/or datum.
+Another important attribute on a coordinate is its coordinate system. Coordinate systems may be `None` for trivial coordinates, but particularly for spatial coordinates, they may be complex definitions of things such as the projection, ellipse and/or datum.
 
 We can retrieve information about our coordinate system for example, by examining the latitude variable. The coordinate system is an attribute that can be printed, like so:
 
@@ -339,18 +344,18 @@ GeogCS(6371229.0)
 
 **Learning outcome**: by the end of this section, you will be able to use Iris to load datasets from disk as Iris cubes and save Iris cubes back to disk.
 
-Loading and savingdata is one aspect where Iris really shines over standard numpy or pandas methods of loading climate data. Notice that in the above examples we didn`t have to specify anything about the file formats of the netCDF files that we used.
+Loading and savingdata is one aspect where Iris really shines over standard numpy or pandas methods of loading climate data. Notice that in the above examples we didn't have to specify anything about the file formats of the netCDF files that we used.
 
 ### Iris load functions
 
-There are three main load functions in Iris: ``load``, ``load_cube`` and ``load_cubes``.
+There are three main load functions in Iris: `load`, `load_cube` and `load_cubes`.
 
 1. **load** is a general purpose loading function. Typically this is where all data analysis will start, before more loading is refined with the more controlled loading from the other two functions.
 2. **load_cube** returns a single cube from the given source(s) and constraint. There will be exactly one cube, or an exception will be raised.
 3. **load_cubes** returns a list of cubes from the given sources(s) and constraint(s). There will be exactly one cube per constraint, or an exception will be raised.
 
 
-Note: ``load_cube`` is a special case of ``load``, which can be seen with:
+Note: `load_cube` is a special case of `load`, which can be seen with:
 
 
 ```python
@@ -365,7 +370,7 @@ In other words, `iris.load()` has figured out that our sample dataset contains a
 
 ### Saving cubes
 
-The ``iris.save`` function provides a convenient interface to save Cube and CubeList instances.
+The `iris.save` function provides a convenient interface to save Cube and CubeList instances.
 
 To save some cubes to a NetCDF file:
 
@@ -425,9 +430,9 @@ cube = iris.load_cube(fname)
 print(cube.has_lazy_data())
 ```
 
-Iris tries to maintain lazy data as much as possible. We refer to the operation of loading a cube`s lazy data as 'realising' the cube`s data. A cube`s lazy data will only be loaded in a limited number of cases, including:
+Iris tries to maintain lazy data as much as possible. We refer to the operation of loading a cube`s lazy data as 'realising' the cube's data. A cube's lazy data will only be loaded in a limited number of cases, including:
 
-##### - When the user directly requests the cube`s data using ``cube.data``,
+##### - When the user directly requests the cube's data using `cube.data`,
 ##### - When there is no lazy data processing algorithm available to perform the requested data processing, such as for peak finding, and
 ##### - Where actual data values are necessary, such as for cube plotting.
 
@@ -437,7 +442,7 @@ Iris tries to maintain lazy data as much as possible. We refer to the operation 
 
 ### Constraints and Extract
 
-We`ve already seen the basic ``load`` function, but we can also control which cubes are actually loaded with *constraints*. The simplest constraint is just a string, which filters cubes based on their name:
+We've already seen the basic `load` function, but we can also control which cubes are actually loaded with *constraints*. The simplest constraint is just a string, which filters cubes based on their name:
 
 ```python
 fname = iris.sample_data_path('uk_hires.pp')
@@ -448,7 +453,7 @@ print(iris.load(fname, 'air_potential_temperature'))
 0: air_potential_temperature / (K)     (time: 3; model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
 ```
 
-Iris's constraints mechanism provides a powerful way to filter a subset of data from a larger collection. We've already seen that constraints can be used at load time to return data of interest from a file, but we can also apply constraints to a single cube, or a list of cubes, using their respective ``extract`` methods:
+Iris's constraints mechanism provides a powerful way to filter a subset of data from a larger collection. We've already seen that constraints can be used at load time to return data of interest from a file, but we can also apply constraints to a single cube, or a list of cubes, using their respective `extract` methods:
 
 ```python
 cubes = iris.load(fname)
@@ -461,7 +466,7 @@ Which will give us the same output as the previous output:
 0: air_potential_temperature / (K)     (time: 3; model_level_number: 7; grid_latitude: 204; grid_longitude: 187)
 ```
 
-The simplest constraint, namely a string that matches a cube`s name, is conveniently converted into an actual ``iris.Constraint`` instance wherever needed. However, we could construct this constraint manually and compare with the previous result:
+The simplest constraint, namely a string that matches a cube's name, is conveniently converted into an actual `iris.Constraint` instance wherever needed. However, we could construct this constraint manually and compare with the previous result:
 
 ```python
 pot_temperature_constraint = iris.Constraint('air_potential_temperature')
@@ -484,7 +489,7 @@ print(cubes.extract(pot_temperature_constraint))
 0: air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
 ```
 
-We can pass a list of possible values, and even combine two constraints with ``&``:
+We can pass a list of possible values, and even combine two constraints with `&`:
 
 ```python
 print(cubes.extract('air_potential_temperature' & 
@@ -556,7 +561,7 @@ __Note: the result of indexing a cube is *always* a copy and never a *view* on t
 
 ### Iteration
 
-We can loop through all desired subcubes in a larger cube using the cube methods ``slices`` and ``slices_over``.
+We can loop through all desired subcubes in a larger cube using the cube methods `slices` and `slices_over`.
 
 ```python
 fname = iris.sample_data_path('uk_hires.pp')
@@ -570,7 +575,7 @@ print(cube.summary(True))
 air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude: 187)
 ```
 
-The **``slices``** method returns all the slices of a cube on the dimensions specified by the coordinates passed to the slices method.
+The **`slices`** method returns all the slices of a cube on the dimensions specified by the coordinates passed to the slices method.
 
 So in this example, each `grid_latitude` / `grid_longitude` slice of the cube is returned:
 
@@ -585,11 +590,11 @@ air_potential_temperature / (K)     (grid_latitude: 204; grid_longitude: 187)
 air_potential_temperature / (K)     (grid_latitude: 204; grid_longitude: 187)
 ```
 
-We can use **``slices_over``** to return one subcube for each coordinate value in a specified coordinate. This helps us when trying to retrieve all the slices along a given cube dimension.
+We can use **`slices_over`** to return one subcube for each coordinate value in a specified coordinate. This helps us when trying to retrieve all the slices along a given cube dimension.
 
-For example, let`s consider retrieving all the slices over the time dimension (i.e. each time step in its own cube with a scalar time coordinate) using ``slices``. As per the above example, to achieve this using ``slices`` we would have to specify all the cube`s dimensions _except_ the time dimension.
+For example, let's consider retrieving all the slices over the time dimension (i.e. each time step in its own cube with a scalar time coordinate) using ``slices`. As per the above example, to achieve this using `slices` we would have to specify all the cube's dimensions _except_ the time dimension.
 
-Let`s take a look at ``slices_over`` providing this functionality:
+Let's take a look at `slices_over` providing this functionality:
 
 ```python
 fname = iris.sample_data_path('uk_hires.pp')
@@ -616,13 +621,15 @@ air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude
 ##### - Which cube slicing method would be easiest to use to return all horizontal 2D slices in a 4D cube?
 ##### - In what situations would indexing be the best way to subset a cube? What about slicing?
 
-## Data Processing
+<a name="plotting"></a>
+
+## Data Processing and Visualisation
 
 **Learning outcome**: by the end of this section, you will be able to use Iris to analyse and visualise weather and climate datasets.
 
 ### Plotting
 
-Iris comes with two plotting modules called ``iris.plot`` and ``iris.quickplot`` that wrap some of the common matplotlib plotting functions such that cubes can be passed as input rather than the usual NumPy arrays. The two modules are very similar, with the primary difference being that ``quickplot`` will add extra information to the axes, such as:
+Iris comes with two plotting modules called `iris.plot` and `iris.quickplot` that wrap some of the common matplotlib plotting functions such that cubes can be passed as input rather than the usual NumPy arrays. The two modules are very similar, with the primary difference being that `quickplot` will add extra information to the axes, such as:
 
 ##### - a colorbar,
 ##### - labels for the x and y axes, and
@@ -667,7 +674,7 @@ iplt.plot(ts)
 plt.show()
 ```
 
-For comparison, lets plot the result of ``iplt.plot`` next to ``qplt.plot``:
+For comparison, lets plot the result of `iplt.plot` next to `qplt.plot`:
 
 ```python
 plt.subplot(2, 1, 1)
@@ -691,9 +698,9 @@ plt.show()
 
 ### Maps with cartopy
 
-When the result of a plot operation is a map, Iris will automatically create an appropriate cartopy axes if one doesn`t already exist.
+When the result of a plot operation is a map, Iris will automatically create an appropriate cartopy axes if one doesn't already exist.
 
-We can use matplotlib`s ``gca()`` function to get hold of the automatically created cartopy axes:
+We can use matplotlib's `gca()` function to get hold of the automatically created cartopy axes:
 
 
 ```python
@@ -770,7 +777,7 @@ unknown / (K)                       (time: 240; latitude: 37; longitude: 49)
           height: 1.5 m
 ```
 
-Notice that the resultant cube`s name is now ``unknown`` and that resultant cube`s ``attributes`` and ``cell_methods`` have disappeared; this is because these all differed between the two input cubes.
+Notice that the resultant cube's name is now `unknown` and that resultant cube's `attributes` and `cell_methods` have disappeared; this is because these all differed between the two input cubes.
 
 It is also possible to operate on cubes with numeric scalars, NumPy arrays and even cube coordinates:
 
@@ -791,7 +798,7 @@ unknown / (0.0174532925199433 K.rad) (time: 240; latitude: 37; longitude: 49)
           height: 1.5 m
 ```
 
-Cube broadcasting is also taking place, meaning that the two inputs (cube, coordinate, array, or even constant value) don`t need to have the same shape:
+Cube broadcasting is also taking place, meaning that the two inputs (cube, coordinate, array, or even constant value) don't need to have the same shape:
 
 ```python
 print(e1 + 5.0)
@@ -810,7 +817,7 @@ unknown / (K)                       (time: 240; latitude: 37; longitude: 49)
           height: 1.5 m
 ```
 
-As we`ve just seen, we have the ability to update the cube`s data directly. Whenever we do this though, we should be mindful of updating appropriate metadata on the cube:
+As we`ve just seen, we have the ability to update the cube's data directly. Whenever we do this though, we should be mindful of updating appropriate metadata on the cube:
 
 ```python
 e1_hot = e1.copy()
@@ -842,7 +849,7 @@ air temperatures greater than 280K / (K) (time: 240; latitude: 37; longitude: 49
 
 ### Cube aggregation and statistics
 
-Many standard univariate aggregations exist in Iris. Aggregations allow one or more dimensions of a cube to be statistically collapsed for the purposes of statistical analysis of the cube`s data. Iris uses the term "aggregators" to refer to the statistical operations that can be used for aggregation.
+Many standard univariate aggregations exist in Iris. Aggregations allow one or more dimensions of a cube to be statistically collapsed for the purposes of statistical analysis of the cube's data. Iris uses the term "aggregators" to refer to the statistical operations that can be used for aggregation.
 
 A list of aggregators is available at http://scitools.org.uk/iris/docs/latest/iris/iris/analysis.html.
 
@@ -888,14 +895,21 @@ air_potential_temperature / (K)     (time: 3; grid_latitude: 204; grid_longitude
 
 ## Summary
 
-In this tutorial we have looked at how to use the Python package ``iris``: an extension of the Python language for loading common types of Earth and climate science data foramts, such as NetCDF. Iris also is a powerful software package for manipulating, analysing. and plotting the data once loaded, making it an integrated tool for Earth and Climate data scientists.  
+In this tutorial we have looked at how to use the Python package `iris`: an extension of the Python language for loading common types of Earth and climate science data foramts, such as NetCDF. Iris also is a powerful software package for manipulating, analysing. and plotting the data once loaded, making it an integrated tool for Earth and climate data scientists.  
 
 ### Tutorial outcomes:
 
-#### 1. 
+#### 1. You understand why Iris is a useful tool in the Python community for dealing with climate data.
 
-#### 2. You can run a simple test Python program on your computer
+#### 2. You know how to use the basic load functions for Iris
 
+#### 3. You can create an Iris "cube" and understand the basics of the data structure
+
+#### 4. You can apply more complex constraints to loading data from cubes, such as time and variable constraints.
+
+#### 5. You understand the basics of cube slicing.
+
+#### 6. You can create simple plots using the iris plotting interface. (Which is an extension of the `matplotlib` library.)
 
 
 
