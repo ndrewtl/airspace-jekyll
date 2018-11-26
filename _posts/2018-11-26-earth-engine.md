@@ -2,7 +2,7 @@
 layout: post
 title: Intro to the Google Earth Engine
 subtitle: Quantifying forest cover change & harnessing the power of the Earth Engine to answer research questions
-date: 2018-11-27 10:00:00
+date: 2018-11-26 10:00:00
 author: Gergana and Isla
 meta: "Tutorials"
 tags: modelling data_manip data_vis
@@ -36,6 +36,8 @@ __Say what you'll be using the GEE for - for research, education, etc. It might 
 
 The Google Earth Engine, as its developers have described it, is "_the most advanced cloud-based geospatial processing platform in the world!_" What this means is that through the Google Earth Engine, you can access and efficiently analyse numerous open-source spatial databases (like Landsat and MODIS remote sensing imagery, the Global Forest Change dataset, roads, protected areas, etc.). When doing these analyses, you are using the Google servers, so you can do analyses that would take weeks, if not months, on your computer or even a fancy computer.
 
+__From the Google Earth Engine, you can export `.csv` files of any values you've calculated, `geoTIFF` files (georeferenced images) to your Google Drive account.__
+
 <a name="analyses"></a>
 
 ## 2. Find out what types of analyses you can do using the GEE
@@ -61,6 +63,18 @@ _Take a moment to familiarise yourself with the layout of the Earth Engine edito
 ## 4. Learn the basic principles of JavaScript
 
 __The Google Earth Engine uses the programming language <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript.</a>__
+
+We'll introduce you to more about `JavaScript` syntax and functions as we go along with the tutorial, but for now, here a few notes: 
+
+Lines of code in `JavaScript` finish with a `;` - note that code for e.g. defining a variable can be spread over multiple lines, but you only need to put a `;` at the end of the last line of the code chunk.
+
+To define new variables, you use:
+
+```javascript
+var new_variable = ...
+```
+
+You'll see variants of this code at multiple places throughout the script we will create later. Essentially, when you import datasets, create new layers, calculate new values, all those need to be stored as varibles so that you can map them, export them, etc.
 
 To add comments in your script, use `//`, for example at the start of your blank new script (if you created any polygons or points while you were exploring, you can make a new script now to start "clean". Like when coding in other programming languages, it's great to leave comments to make sure your script outlines who you are, what the aim of the script is and why you are following the specific workflow. Here are a few example comments, you can write up something similar in your script:
 
