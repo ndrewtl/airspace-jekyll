@@ -26,32 +26,49 @@ tags: modelling data_manip data_vis
 #### <a href="#R"> 9. Further analysis and visualisation in R - the best of both world! </a>
 
 ### All the files you need to complete this tutorial will be generated and exported from the GEE during the course of the tutorial.
-## Introduction
 
-__Ecological data can throw up complex challenges for statistical models and designing the appropriate model to answer your research question can be one of the trickiest parts of ecological research (and research in other fields). Learning how to design statistical models can take time, but developing rigorous statistical approaches as early as possible will help you in your future research career. If you put the time in, soon you will realise that statistics aren't a total pain and continuous frustration, but something pretty fun that really engages your brain in diverse ways. So to start off, I like to put the computer coding aside, to make my self a hot drink or get a fancy latte at a coffee shop, get out my pen or pencil and paper and put on my thinking cap.__
+### <a href="https://signup.earthengine.google.com/" target="_blank">Follow this link</a> to register for the Google Earth Engine - it is free. 
+__Say what you'll be using the GEE for - for research, education, etc. It might take a few hours or a day or so for your registration to be approved.__
 
 <a name="intro"></a>
 
 ## 1. Learn what is the Google Earth Engine
 
-- Register
+The Google Earth Engine, as its developers have described it, is "_the most advanced cloud-based geospatial processing platform in the world!_" What this means is that through the Google Earth Engine, you can access and efficiently analyse numerous open-source spatial databases (like Landsat and MODIS remote sensing imagery, the Global Forest Change dataset, roads, protected areas, etc.). When doing these analyses, you are using the Google servers, so you can do analyses that would take weeks, if not months, on your computer or even a fancy computer.
 
 <a name="analyses"></a>
 
 ## 2. Find out what types of analyses you can do using the GEE
 
+__With the GEE, you can answer large-scale research questions in an efficient way that really was just not possible before, so quite exciting! You can use large geospatial datasets to address a plethora of questions and challenges facing humanity in the modern world. We will see later on how to explore what datasets are available to work with in the GEE, and it's also possible to import your own georeferenced imagery (like photos from drone missions).__ You can find out how to import your own raster data from <a href="https://developers.google.com/earth-engine/image_upload" target="_blank">this page</a> on the GEE developers website.
+
+For example, you can classify different land cover types, you can calculate and extract values for landscape features such as <a href="https://en.wikipedia.org/wiki/Normalized_difference_vegetation_index" target="_blank">NDVI</a> (Normalised Difference Vegetation Index) - for the world, a particular region of interest, or many different areas around the world. Really, the possibilities are enormous, and here we are only scratching the surface by giving you an example of how you can use the GEE to calculate changes in forest cover over time.
+
+### You can check out the tutorials on the <a href="https://developers.google.com/earth-engine/" target="_blank">Google Earth Engine Developers website</a> if you are keen to learn more and to practice your GEE skills!
 
 <a name="layout"></a>
 
 ## 3. Get familiar with the GEE layout
 
+### <a href="https://code.earthengine.google.com" target="_blank">Go to the Earth Engine to start your GEE journey!</a>
 
-<center> <img src="{{ site.baseurl }}/img/graph.png" alt="Img" style="width: 400px;"/> </center>
+_Take a moment to familiarise yourself with the layout of the Earth Engine editor - like when first starting to learn a new language, it can seem like a lot to take in at once! With your blank script, have a go at exploring the different tabs. Notice how if you draw polygons or drop points, they will appear in your script. You can go to the `Inspector` tab, click on a place in the map, and see what information is available for it. Here is an outline of what most of the tabs do:_
+
+<center> <img src="{{ site.baseurl }}/img/gee_layout.png" alt="Img" style="width: 900px;"/> </center>
 
 <a name="javascript"></a>
 
 ## 4. Learn the basic principles of JavaScript
 
+__The Google Earth Engine uses the programming language <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript.</a>__
+
+To add comments in your script, use `//`, for example at the start of your blank new script (if you created any polygons or points while you were exploring, you can make a new script now to start "clean". Like when coding in other programming languages, it's great to leave comments to make sure your script outlines who you are, what the aim of the script is and why you are following the specific workflow. Here are a few example comments, you can write up something similar in your script:
+
+```javascript
+// Calculating forest cover change in protected areas around the world
+// Gergana Daskalova
+// 26th Nov 2018
+```
 
 <a name="import"></a>
 
