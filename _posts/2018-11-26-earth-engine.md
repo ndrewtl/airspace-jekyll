@@ -107,7 +107,22 @@ Your imported dataset appears at the top of the script - it's currently called `
 
 <center> <img src="{{ site.baseurl }}/img/new_script.png" alt="Img" style="width: 800px;"/> </center>
 
-__Go to the `Inspector` tab, click on a point somewhere on the map and check out the `features` of that point - the name of the protected area, its area, when it was established, etc.
+__Remember to save your script, and to save it often! Once you've saved it, you'll see the file appear on the left under your scripts tab.__
+
+### Visualise protected areas around the world
+
+Next up, we'll use the `Map` function to map the dataset and we will add a layer - you can then turn that layer on and off from the layer tab in the top right corner of the map window. You can also change the opacity.
+
+```javascript
+// If you want to visualise the PAs around the world, you can use:
+Map.addLayer(parks);
+// Takes a while to load!
+```
+
+__Go to the `Inspector` tab, click on a point somewhere on the map and check out the `features` of that point - the name of the protected area, its area, when it was established, etc.__
+
+<center> <img src="{{ site.baseurl }}/img/map_inspect.png" alt="Img" style="width: 800px;"/> </center>
+
 
 <a name="visualise"></a>
 
@@ -121,12 +136,12 @@ __Go to the `Inspector` tab, click on a point somewhere on the map and check out
 
 <a name="export"></a>
 
-## 8. Export results - summary tables and geoTIFFs
+## 8. Export results - summary tables
 
 
 <a name="R"></a>
 
-## 9. Further analysis and visualisation in R - the best of both world!
+## 9. Further analysis and visualisation in R - the best of both worlds!
 
 
 
