@@ -86,8 +86,28 @@ To add comments in your script, use `//`, for example at the start of your blank
 
 <a name="import"></a>
 
-## 5. Import and explore data - forest cover change as a case study
+## 5. Import and explore data - protected areas and forest cover change as a case study
 
+Like with any analysis, it's not so much about the data as it is about your research question - so as you start exploring the GEE, remember to keep your research questions (or science communication goals, since the GEE is pretty great for that, too) in mind!
+
+### Research question
+__How has forest cover changed in different national parks around the world?__
+
+### Import and explore a dataset in the GEE - protected areas
+
+To import the protected area dataset (polygons of the protected areas around the world from the World Database of Protected Areas), type `protected area` in the search tab and select the polygon version of the database (the other one is just points, i.e. the coordinates of one point within the protected areas, not their outline).
+
+<center> <img src="{{ site.baseurl }}/img/gee_import.png" alt="Img" style="width: 800px;"/> </center>
+
+First, you'll see a pop window with some information about the dataset - the different types of information represented, the year it was created, etc. You can also practice searching for other types of data that come to your mind to see if they are available from the GEE.
+
+__Select `Import`.__
+
+Your imported dataset appears at the top of the script - it's currently called `table` which is not particularly informative, so you can rename that something else, e.g., `parks`.
+
+<center> <img src="{{ site.baseurl }}/img/new_script.png" alt="Img" style="width: 800px;"/> </center>
+
+__Go to the `Inspector` tab, click on a point somewhere on the map and check out the `features` of that point - the name of the protected area, its area, when it was established, etc.
 
 <a name="visualise"></a>
 
