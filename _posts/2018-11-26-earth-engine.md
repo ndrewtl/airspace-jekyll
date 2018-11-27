@@ -121,8 +121,28 @@ Map.addLayer(parks);
 
 __Go to the `Inspector` tab, click on a point somewhere on the map and check out the `features` of that point - the name of the protected area, its area, when it was established, etc.__
 
+#### Move around the world, find a national park and "inspect" it - can you find the name, area, etc. - all this information is under the `Inspector` tab.
+
 <center> <img src="{{ site.baseurl }}/img/map_inspect.png" alt="Img" style="width: 800px;"/> </center>
 
+### Import and explore a dataset in the GEE - forest cover change
+
+Similarly to how you imported the protected area dataset, go to the search tab, type in `global forest change` and select the <a href="http://science.sciencemag.org/content/342/6160/850" target="_blank">Hansen et al. dataset</a>. 
+
+Take a look at the different types of information held within this dataset - that will help you familiarise yourself with what to expect from our analyses later on.
+
+<center> <img src="{{ site.baseurl }}/img/hansen_data.png" alt="Img" style="width: 800px;"/> </center>
+
+__Call the object `gfc`, or whatever else you wish, but remember that if you call it something else, you have to change `gfc` to your new name in all the code coming up! Next up, we will again map our dataset.__
+
+```javascript
+// Add the Global Forest Change dataset
+Map.addLayer(gfc);
+```
+
+<center> <img src="{{ site.baseurl }}/img/map_hansen.png" alt="Img" style="width: 800px;"/> </center>
+
+__Go to the `Inspector` tab again, click on a point somewhere on the map and check out the `features` of the forest cover change layer. If it says `loss: 0`, `gain: 0`, that means that in this specific pixel, no forest loss or gain has occurred.__
 
 <a name="visualise"></a>
 
@@ -131,7 +151,7 @@ __Go to the `Inspector` tab, click on a point somewhere on the map and check out
 
 <a name="calculate"></a>
 
-## 7. Calculate forest cover change over time in specific locations
+## 7. Calculate total forest cover gain and loss in specific locations
 
 
 <a name="export"></a>
