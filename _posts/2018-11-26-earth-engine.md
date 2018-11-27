@@ -84,6 +84,8 @@ To add comments in your script, use `//`, for example at the start of your blank
 // 26th Nov 2018
 ```
 
+__In JavaScript you have to run your entire script at once - that is, you can't for example select two lines of your script and run just those, you have to run the whole thing. You "run" a script by pressing the `Run` button. This means that throughout your tutorial, as you add more lines to your script, you have to keep pressing `Run` to see the results of the new code you've added.
+
 <a name="import"></a>
 
 ## 5. Import and explore data - protected areas and forest cover change as a case study
@@ -116,7 +118,7 @@ Next up, we'll use the `Map` function to map the dataset and we will add a layer
 ```javascript
 // If you want to visualise the PAs around the world, you can use:
 Map.addLayer(parks);
-// Takes a while to load!
+// Takes a while to load! Remember you need to press "Run" to see the results.
 ```
 
 __Go to the `Inspector` tab, click on a point somewhere on the map and check out the `features` of that point - the name of the protected area, its area, when it was established, etc.__
@@ -142,17 +144,108 @@ Map.addLayer(gfc);
 
 <center> <img src="{{ site.baseurl }}/img/map_hansen.png" alt="Img" style="width: 800px;"/> </center>
 
-__Go to the `Inspector` tab again, click on a point somewhere on the map and check out the `features` of the forest cover change layer. If it says `loss: 0`, `gain: 0`, that means that in this specific pixel, no forest loss or gain has occurred.__
+Currently we just have a black and red map - black for the places where there are no forests, and red from the places that do have forest cover. This is not terribly informative and over the course of the tutorial we will work on making this map better!
 
+__Go to the `Inspector` tab again, click on a point somewhere on the red parts map and check out the `features` of the forest cover change layer. If it says `loss: 0`, `gain: 0`, that means that in this specific pixel, no forest loss or gain has occurred.__
+
+You can also turn layers on and off, and you can "comment out" certain parts of the code, if you don't want that action to be performed every single time you rerun the script. For example, mapping the protected area dataset takes quite a while - so if you didn't want to do that multiple times, you can add `//` in front of that line of code, and you can always remove the `//` when you do wish to map those data again. Like this:
+
+```javascript
+// If you want to visualise the PAs around the world, you can use:
+// Map.addLayer(parks);
+```
+
+__If you want to turn lots of code lines into comments or turn lots of comments back into code, you can use a keyboard shortcut `Cmd + /` on a `Mac` and `Ctrl + /` on a `Windows` computer.__
+
+We are now ready to improve our map and derive quantitative values for forest loss and gain!
 <a name="visualise"></a>
 
 ## 6. Visualise forest cover change
 
+First, it's good practice to define the scale of your analyses - in our case, it's 30 m, the resolution of the Global Forest Change dataset. If a given pixel has experienced forest loss, this means that somewhere in that 30 m x 30 m square, there were decreases in forest cover.
+
+You can also set the scale to automatically detect the resolution of the dataset and use that as your scale.
+
+Type up the following code in your script:
+
+```javascript
+// Set the scale for our calculations to the scale of the Hansen dataset
+// which is 30m
+var scale = gfc.projection().nominalScale();
+```
+
+__The next step is to create variables for the tree cover in 2000 (when the database starts), for the loss up until 2016 and the gain in forest cover, again up until 2016. In raster data, images usually have different "bands" (e.g., red, green, UV), and we can select which bands we want to work with. In this case, the different bands of the `gfc` object represent the forest cover, forest loss and forest gain, so we will make a variable for each.__
+
+__To do this, we will use the `select()` function. Note that unlike other programming languages like `R`, in `JavaScript` you put the object you want to apply the function to first, and then the actual functin comes second.__
+
+```javascript
+// Create a variable for the original tree cover in 2000
+var treeCover = gfc.select(['treecover2000']);
+
+// Convert the tree cover layer because the treeCover by default is in
+// hundreds of hectares, but the loss and gain layers are just in hectares!
+treeCover = treeCover.divide(100);
+
+// Create a variable for forest loss
+var loss = gfc.select(['loss']);
+
+// Create a variable for forest gain
+var gain = gfc.select(['gain']);
+```
+
+### Make a global map of forest cover, forest loss and forest gain
+
+Now that we have our three variables, we can create a layer for each of them and we can plot them using colours of our choice. We will use the same `Map.addLayer` function as before, but in addition to adding the object name, we will specify the colours and what we want to call the specific layers.
+
+_Note that we are also introducing a new function `updateMask()` - what this does is mark the areas there was no forest cover in the year 2000 - they become transparent, so instead of just blackness, we can see the seas, rivers, continent outlines, etc._
+
+```javascript
+// Add the tree cover layer in light grey
+Map.addLayer(treeCover.updateMask(treeCover),
+    {palette: ['D0D0D0', '00FF00'], max: 100}, 'Forest Cover');
+
+// Add the loss layer in pink
+Map.addLayer(loss.updateMask(loss),
+            {palette: ['#BF619D']}, 'Loss');
+
+// Add the gain layer in yellow
+Map.addLayer(gain.updateMask(gain),
+            {palette: ['#CE9E5D']}, 'Gain');
+```
+
+Remember to click on `Run` so that you see your newly plotted maps. The forest layers might be easier to see if you either turn off the first two layers you plotted (the protected areas and the generic GFC layer). Or you can keep the protected area layer on, but reduce the opacity by dragging the bar below that layer.
+
+<center> <img src="{{ site.baseurl }}/img/hansen_trio.png" alt="Img" style="width: 800px;"/> </center>
+
+You can specify colour using hex codes, those are the number and letter combinations in the code above, e.g. `#CE9E5D` is yellwow. You can find examples of those online, for example <a href="https://htmlcolorcodes.com" target="_blank">this website</a>.
+
+<center> <img src="{{ site.baseurl }}/img/colours_hex.png" alt="Img" style="width: 500px;"/> </center>
+
+_You can also switch between map view and satellite view. If you zoom in enough and go to satellite view, you can actually start spotting some patterns, like forest loss along roads in the Amazon._
+
+<center> <img src="{{ site.baseurl }}/img/amazon_forest.png" alt="Img" style="width: 800px;"/> </center>
 
 <a name="calculate"></a>
 
 ## 7. Calculate total forest cover gain and loss in specific locations
 
+__So far we can see where forest loss and gain have occurred, so we know about the _extent_ of forest change, but we don't know about the _magnitude_ of forest change, so our next step is to convert the number of pixels that have experienced gain or loss (remember that they are just 0 or 1 values, 0 for no, 1 for yes) into areas, e.g. square kilometers.__
+
+For each of the 
+
+```javascript
+// The units of the variables are numbers of pixels
+// Here we are converting the pixels into actual area
+// Dividing by 10 000 so that the final result is in km2
+var areaCover = treeCover.multiply(ee.Image.pixelArea())
+                .divide(10000).select([0],["areacover"]);
+
+var areaLoss = loss.gt(0).multiply(ee.Image.pixelArea()).multiply(treeCover)
+              .divide(10000).select([0],["arealoss"]);
+
+var areaGain = gain.gt(0).multiply(ee.Image.pixelArea()).multiply(treeCover)
+              .divide(10000).select([0],["areagain"]);
+```
 
 <a name="export"></a>
 
