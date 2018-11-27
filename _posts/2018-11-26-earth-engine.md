@@ -9,7 +9,7 @@ tags: modelling data_manip data_vis
 ---
 <div class="block">
 	<center>
-		<img src="{{ site.baseurl }}/img/tutheaderdesign_to_be_added.png" alt="Img">
+		<img src="{{ site.baseurl }}/img/tutheader_gee.png" alt="Img">
 	</center>
 </div>
 
