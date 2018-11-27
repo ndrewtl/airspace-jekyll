@@ -249,17 +249,68 @@ var areaGain = gain.gt(0).multiply(ee.Image.pixelArea()).multiply(treeCover)
               .divide(10000).select([0],["areagain"]);
 ```
 
+### Calculate forest loss and gain in specific areas
+
+Often we are interested in extracting values from geospatial data for specific places around the world. Here, our question was about changes in forest cover in national parks, so to answer that, we need to calculate how much forest cover change has occurred in just our chosen national parks, not the whole world.
+
+The first step is to create a filtered variable that contains our areas of interest - here we will filter our original `parks` variable that includes all the protected areas in the world, down to just four protected areas. We will use `ee.Filter.or()` to add multiple filtering conditions.
+
+```javascript
+// Create a variable that has the polygons for just a few
+// national parks and nature reserves
+var parks = parks.filter(ee.Filter.or(
+    ee.Filter.eq("NAME", "Yellowstone"),
+    ee.Filter.eq("NAME", "Sankuru"),
+    ee.Filter.eq("NAME", "Cairngorms"),
+    ee.Filter.eq("NAME", "Redwood")));
+```
+
+Now we are ready to calculate the areas of forest loss and gain, exciting times! We will use what in GEE lingo is called a "reducer", a summarising function. We will apply that to our `parks` variable, and we will use the scale we defined earlier (30m, the resolution of the dataset). The results will be stored in two new variables, `statsLoss` and `statsGain`.
+
+```javascript
+// Sum the values of loss pixels.
+var statsLoss = areaLoss.reduceRegions({
+  reducer: ee.Reducer.sum(),
+  collection: parks,
+  scale: scale
+});
+
+// Sum the values of gain pixels.
+var statsGain = areaGain.reduceRegions({
+  reducer: ee.Reducer.sum(),
+  collection: parks,
+  scale: scale
+});
+```
+
 <a name="export"></a>
 
 ## 8. Export results - summary tables
+At this stage, we have calculated the areas of forest loss and gain in our chosen protected areas, but we haven't actually seen or visualised those numbers.
 
+We can export `.csv` files of our results, in this case they will go to your Google Drive account. Add the code below to your script and press `Run` again - you will see that the `Task` tab lights up, go check it out - you will have two tasks, and you have to press the `Run` button next to them (otherwise the tasks are ready for you, but you haven't actually initiated their completion), then you'll start seeing a timer - that reflects how much time has passed since you started the task, depending on your task it can take seconds to hours. Should be seconds in our case!
+
+__We use the curly brackets to specify which object we want to export and what we want to call the file, e.g. `NP_forest_loss`.__
+
+```javascript
+Export.table.toDrive({
+  collection: statsLoss,
+  description: 'NP_forest_loss'});
+  
+Export.table.toDrive({
+  collection: statsGain,
+  description: 'NP_forest_gain'});
+```
+
+_Go check out your files in your Google Drive - scroll all the way right to see the `sum` column - that shows the area, in square kilometers, of forest loss or gain (depending on which file you are looking at).
 
 <a name="R"></a>
 
-## 9. Further analysis and visualisation in R - the best of both worlds!
+## 9. Further visualisation in R - the best of both worlds!
 
+_We are keen to incorporate different platforms and languages in our analyses, playing to the strengths of each. `R` and `R` packages like `ggplot2` offer more flexibility to how you visualise your findings, so we will now switch over to `R` to make a barplot of forest loss and gain in the four protected areas we studied._
 
-
+Note: You can also make graphs in the Earth Engine, so this comes down to personal preferences and what works best for your own workflow - you can find tutorials on how to create graphs in the Earth Engine on <a href="https://developers.google.com/earth-engine/charts" target="_blank">the Developers website</a>.
 
 <hr>
 <hr>
