@@ -302,7 +302,7 @@ Export.table.toDrive({
   description: 'NP_forest_gain'});
 ```
 
-_Go check out your files in your Google Drive - scroll all the way right to see the `sum` column - that shows the area, in square kilometers, of forest loss or gain (depending on which file you are looking at).
+_Go check out your files in your Google Drive - scroll all the way right to see the `sum` column - that shows the area, in square kilometers, of forest loss or gain (depending on which file you are looking at)._
 
 <a name="R"></a>
 
