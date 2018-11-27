@@ -64,6 +64,8 @@ _Take a moment to familiarise yourself with the layout of the Earth Engine edito
 
 __The Google Earth Engine uses the programming language <a href="https://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript.</a>__
 
+Similarly to other programming languages, there is support online, you can google `JavaScript` and Earth Engine tutorials, it will all seem unfamiliar at first, but thanks to the online programming community, you very rarely start completely from scratch - i.e., don't feel bad about yourself because you can't just think of the correct `JavaScript` code from the top of your head straight away.
+
 We'll introduce you to more about `JavaScript` syntax and functions as we go along with the tutorial, but for now, here a few notes: 
 
 Lines of code in `JavaScript` finish with a `;` - note that code for e.g. defining a variable can be spread over multiple lines, but you only need to put a `;` at the end of the last line of the code chunk.
@@ -231,7 +233,7 @@ _You can also switch between map view and satellite view. If you zoom in enough 
 
 __So far we can see where forest loss and gain have occurred, so we know about the _extent_ of forest change, but we don't know about the _magnitude_ of forest change, so our next step is to convert the number of pixels that have experienced gain or loss (remember that they are just 0 or 1 values, 0 for no, 1 for yes) into areas, e.g. square kilometers.__
 
-For each of the 
+For each of the variables we created earlier (forest cover, forest loss and forest gain), we will now create new variables representing the _areas_ of forest cover, loss and gain. To achieve this, we will use the `ee.Image.pixelArea()` function, and we have to `multiply` our original variables (e.g., `treeCover`), similar to when you convert from meters to centimeters, you would miltiply by 100. Here we want the area to be in square kilometers, so to go from hectares to square kilometers, we will also divide by 10000. Finally, we select the first band from our new variables - the areas of forest cover, loss and gain, respectively.
 
 ```javascript
 // The units of the variables are numbers of pixels
