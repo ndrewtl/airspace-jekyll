@@ -22,8 +22,8 @@ tags: modelling data_manip data_vis
 #### <a href="#import"> 5. Import and explore data - forest cover change as a case study </a>
 #### <a href="#visualise"> 6. Visualise forest cover change </a>
 #### <a href="#calculate"> 7. Calculate forest cover change over time in specific locations</a>
-#### <a href="#export"> 8. Export results - summary tables and geoTIFFs </a>
-#### <a href="#R"> 9. Further analysis and visualisation in R - the best of both world! </a>
+#### <a href="#export"> 8. Export results - summary tables </a>
+#### <a href="#R"> 9. Further analysis and visualisation in R - the best of both worlds! </a>
 
 ### All the files you need to complete this tutorial will be generated and exported from the GEE during the course of the tutorial.
 
