@@ -302,6 +302,8 @@ Export.table.toDrive({
   description: 'NP_forest_gain'});
 ```
 
+<center> <img src="{{ site.baseurl }}/img/drive.png" alt="Img" style="width: 800px;"/> </center>
+
 _Go check out your files in your Google Drive - scroll all the way right to see the `sum` column - that shows the area, in square kilometers, of forest loss or gain (depending on which file you are looking at)._
 
 <a name="R"></a>
@@ -311,6 +313,80 @@ _Go check out your files in your Google Drive - scroll all the way right to see 
 _We are keen to incorporate different platforms and languages in our analyses, playing to the strengths of each. `R` and `R` packages like `ggplot2` offer more flexibility to how you visualise your findings, so we will now switch over to `R` to make a barplot of forest loss and gain in the four protected areas we studied._
 
 Note: You can also make graphs in the Earth Engine, so this comes down to personal preferences and what works best for your own workflow - you can find tutorials on how to create graphs in the Earth Engine on <a href="https://developers.google.com/earth-engine/charts" target="_blank">the Developers website</a>.
+
+_Open up `RStudio` (or just `R` depending on your preferences) and start a new script by going to `File / New file / R Script`._ If you've never used `R` before, you can find our <a href="https://ourcodingclub.github.io/2016/11/13/intro-to-r.html" target="_blank">intro to `R`</a> tutorial here.
+
+```r
+# Load libraries ----
+library(ggplot2)
+library(ggthemr)  # to set a custom theme
+library(forcats)  # to reorder categorical variables
+```
+
+We can set a theme (changes the colours and background) for our plot using the `ggthemr` package - you can explore the different colour options <a href="https://github.com/cttobin/ggthemr" target="_blank">here</a>.
+
+```r
+# Set theme for the plot
+ggthemr('dust', type = "outer", layout = "minimal")
+
+# This theme will now be applied to all plots you make, if you wanted to
+# get rid of it, use:
+# ggthemr_reset()
+
+```
+
+Next up, set your working directory to wherever you saved the data we exported to Google Drive, and read in the files.
+
+```r
+# Read in the data ----
+NP_forest_gain <- read.csv("NP_forest_gain.csv")
+NP_forest_loss <- read.csv("NP_forest_loss.csv")
+```
+
+We will combine the two objects (the one for forest loss and the one for forest gain) so that we can visualise them in the same plot. We can create an "identifier" column so that we know which values refer to gain, and which ones to loss in forest cover.
+
+```r
+# Create identifier column for gain vs loss
+NP_forest_gain$type <- "Gain"
+NP_forest_loss$type <- "Loss"
+
+# Bind the objects together
+forest_change <- rbind(NP_forest_gain, NP_forest_loss)
+```
+
+We can make a barplot to visualise the amount of forest cover lost and gained between 2000 and 2016 at our four study sites. Because a larger national park can loose more forest simply because it's larger (i.e., there is more of it to loose), we can visualise the forest change as % of the total park area. We do this in the code below by specifying `y = sum/GIS_AREA` (or you can make a new column in your data frame that has those percentages calculated in it if you wish).
+
+The `ggthemr` theme we chose earlier gives the graph more of an infographic feel, if you need more standard formatting, you can add `+ theme_bw` or `+ theme_classic()` to your barplot code.
+
+```r
+(forest_barplot <- ggplot(forest_change, aes(x = NAME, y = sum/GIS_AREA, 
+                                             colour = fct_rev(type), 
+                                             fill = fct_rev(type))) +
+    geom_bar(stat = "identity", position = "dodge") +
+    labs(x = NULL, y = "Forest change (% of park area)\n") +
+    # Expanding the scale removes the emtpy space below the bars
+    scale_y_continuous(expand = c(0, 0)) +
+    theme(text = element_text(size = 16),  # makes font size larger
+          legend.position = c(0.1, 0.85),  # changes the placement of the legend
+          legend.title = element_blank(),  # gets rid of the legend title
+          legend.background = element_rect(color = "black", 
+                                           fill = "transparent",   # removes the white background behind the legend
+                                           linetype = "blank")))
+```
+
+We can use the `ggsave` function to save our graph. The file will be saved to wherever your working directory is, which you can check by running `getwd()` in the console.
+
+```r
+ggsave(forest_barplot, filename = "forest_barplot.png",
+       height = 5, width = 7)
+```
+
+<center> <img src="{{ site.baseurl }}/img/forest_barplot.png" alt="Img" style="width: 600px;"/> </center>
+
+__Now that we can see how much forest has been gained and lost in our protected areas of interest, we can go back to our original research question, how does forest change vary across protected areas, and we can see if we can spot any patterns - are there any types of protected areas that are more likely to loose forest?__
+
+### We hope you've enjoyed your introduction to the Google Earth Engine! It's a very exciting tool and if you want to learn more, go check out the tutorials on the <a href="https://developers.google.com/earth-engine/tutorials" target="_blank">Google Earth Engine Developers website</a>!
+
 
 <hr>
 <hr>
