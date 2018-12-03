@@ -150,9 +150,9 @@ plot(dataframe)
 
 Sometimes, you might want to create an object, but not include both the code and its output in the final `.html` file. To do this you can use, `include = FALSE`. Be aware though, when making reproducible research it's often not a good idea to completely hide some part of your analysis:
 
-__REMEMBER: R Markdown doesn't pay attention to anything you have loaded in other R scripts, you have to load all objects and packages in the R Markdown script.__
+__REMEMBER: `R Markdown` doesn't pay attention to anything you have loaded in other R scripts, you have to load all objects and packages in the R Markdown script.__
 
-__Now you can start copying across the code from your tidyverse script and insert it into a code chunk in your `.Rmd` document. Better not to do it all at once, you can start with the first parts of the tidyverse script and gradually add on more after you've seen what the `.Rmd` output looks like.__
+__If you are keen, you can complete the rest of the workshop using an `R Markdown` document - essentially depends on your workflow - sometimes you might make a `Markdown` report, other times having your code and comments is enough.__
 
 You can run an individual chunk of code at any time by placing your cursor inside the code chunk and selecting `Run -> Run Current Chunk`:
 
