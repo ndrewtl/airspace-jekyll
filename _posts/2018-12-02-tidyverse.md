@@ -243,14 +243,6 @@ ggplot(df, aes(x = x, y = y) + geom_point()
 ```
 ````
 
-By default, figures are rendered as `.png` files by R Markdown, which can lead to loss of quality if your document is rescaled. You can change that to `.svg`, a vector file format by adding `dev='svg'` to the code chunk instruction section.
-
-````
-```{r, fig.width = 2.5, fig.height = 7.5, dev = 'svg'}
-ggplot(df, aes(x = x, y = y) + geom_point()
-```
-````
-
 ## Inserting Tables
 
 R Markdown can print the contents of a data frame easily by enclosing the name of the data frame in a code chunk:
