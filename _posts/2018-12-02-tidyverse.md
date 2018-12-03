@@ -2,8 +2,8 @@
 layout: post
 title: Advanced data manipulation and visualisation
 subtitle: A BES QE SIG training event
-date: 2016-03-06 10:00:00
-author: Gergana + ....
+date: 2018-12-02 10:00:00
+author: Gergana
 meta: "Tutorials"
 tags: data_manip data_vis github
 ---
@@ -18,7 +18,8 @@ tags: data_manip data_vis github
 
 <p></p>
 
-** General bit about this being a BES QE SIG event**
+## This tutorial was developed for the British Ecological Society Quantitative Ecology Special Interest Group Advanced R workshop. <a href="https://bes-qsig.github.io" target="_blank">Check out the QE SIG website for more info!</a>
+You can follow the BES QE SIG on <a href="https://twitter.com/BES_QE_SIG" target="_blank">Twitter</a>, too.	
 
 ### All the files you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-Ghent" target="_blank">this repository</a>. __Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.__
 
