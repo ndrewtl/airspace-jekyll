@@ -398,7 +398,7 @@ __Pipes (`%>%`) are a way of streamlining data manipulation - imagine all of you
 LPD_long2 <- LPD_long %>%
   # Remove duplicate rows
   # *** distinct() function from dplyr
-  distinct(LPD_long) %>%
+  distinct() %>%
   # remove NAs in the population column
   # *** filter() function from dplyr
   filter(is.finite(pop)) %>%
