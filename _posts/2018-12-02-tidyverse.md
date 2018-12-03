@@ -633,6 +633,8 @@ We can apply the `mean` function using `purrr::map()`:
 
 ```r
 taxa.mean <- purrr::map(taxa.slopes, ~mean(., na.rm = TRUE))
+# Note that we have to specify "."
+# so that the function knows to use our taxa.slopes object
 # This plots the mean population change per taxa
 taxa.mean
 ```
