@@ -474,7 +474,9 @@ We will see our custom theme `theme_LPD()` in action as well!
               colour = "darkred", linetype = "dashed", size = 1) +
    scale_fill_manual(values = c("#66CD00", "#53868B")) +
    theme_LPD() +
-   labs(title = "a) Data distribution\n") +
+   labs(title = "a) Data distribution\n", x = "\nScaled population size",
+        y = "Count\n") +
+   # \n adds a blank line
    guides(fill = F)) # Hiding the legend - this will be a two plot panel
 # thus we don't need the same legend twice
 ```
@@ -509,8 +511,11 @@ __One specific thing to note is that when you add the `lm()` function in a pipe,
 # 1785 models in one go!
 # Using a pipe
 forest.slopes <- LPD.forest %>%
-  # Group by the key variables that we want to interate over
-  group_by(decimal.latitude, decimal.longitude, class, species.name, id, duration, location.of.population) %>%
+  # Group by the key variables that we want to iterate over
+  # note that if we only include e.g. id (the population id), then we only get the
+  # id column in the model summary, not e.g. duration, latitude, class...
+  group_by(decimal.latitude, decimal.longitude, class, 
+           species.name, id, duration, location.of.population) %>%
   # Create a linear model for each group
   do(mod = lm(scalepop ~ year, data = .)) %>%
   # Extract model coefficients using tidy() from the
