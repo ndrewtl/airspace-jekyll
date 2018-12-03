@@ -571,7 +571,7 @@ How to print plots of population change for multiple taxa
 11. How to use a pipe to plot many plots by taxa
 12. How to use the purrr package and functional programming
 
-__In the next part of the tutorial, we will focus on automating iterative actions, for example when we want to create the same type of graph for different subsets of our data. In our case, we will make histograms of the population change experienced by different vertebrate taxa in forests. When making multiple graphs at once, we have to specify the folder where they will be saved first:__
+__In the next part of the tutorial, we will focus on automating iterative actions, for example when we want to create the same type of graph for different subsets of our data. In our case, we will make histograms of the population change experienced by different vertebrate taxa in forests. When making multiple graphs at once, we have to specify the folder where they will be saved first. And you have to make the folder before you can use its filepath.__
 
 ```r
 # PART 2: Using pipes to make figures with large datasets ----
