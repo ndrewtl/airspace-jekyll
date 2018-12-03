@@ -17,6 +17,7 @@ tags: data_manip data_vis github
 #### <a href="#mapping"> 4. Download and map data from large datasets </a>
 
 <p></p>
+<center> <img src="{{ site.baseurl }}/img/bes_qe.png" alt="Img" style="width: 700px;"/> </center>
 
 ## This tutorial was developed for the British Ecological Society Quantitative Ecology Special Interest Group Advanced R workshop. <a href="https://bes-qsig.github.io" target="_blank">Check out the QE SIG website for more info!</a>
 You can follow the BES QE SIG on <a href="https://twitter.com/BES_QE_SIG" target="_blank">Twitter</a>, too.	
