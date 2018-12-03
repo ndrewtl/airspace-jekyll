@@ -46,6 +46,8 @@ library(rmarkdown)
 
 ## The different parts of an R Markdown file
 
+## To make your Markdown file - go to `File/New File/RMarkdown`.
+
 ### The YAML Header
 
 At the top of any R Markdown script is a `YAML` header section enclosed by `` --- ``. By default this includes a title, author, date and the file type you want to output to. Many other options are available for different functions and formatting, see <a href="http://rmarkdown.rstudio.com/html_document_format.html" target="_blank">here for `.html` options</a> and <a href="http://rmarkdown.rstudio.com/pdf_document_format.html" target="_blank">here for `.pdf` options</a>. Rules in the header section will alter the whole document.
@@ -297,7 +299,7 @@ We will be working with population data from the <a href="http://www.livingplane
 
 __First, we will model population change for vertebrate forest species to see whether greater population change is found for longer duration studies.__
 
-__Because we have created a version-controlled `R` project using the repository for the workshop, we are already in the right working directory, i.e. the folder that contains all the data and other files, thus there is no need for us to set a working directory at the start of the script, unless we explicitly want to change it for some reason.__
+__Make sure you have set the working directory to where you saved your files.__
 
 Here are the packages we need. Note that not all `tidyverse` packages load automatically with `library(tidyverse)` -  only the core ones do, so you need to load `broom` separately. If you don't have some of the packages installed, you can install them using `ìnstall.packages("package-name")`.
 
