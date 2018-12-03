@@ -121,6 +121,7 @@ Or if you are loading a dataframe from a `.csv` file, you must include the code 
 ````
 ```{r}
 dataframe <- read.csv("~/Desktop/Code/dataframe.csv")
+# Note that the file path should be whatever the file path to your own file is
 ```
 ````
 
