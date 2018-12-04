@@ -351,7 +351,12 @@ __This final model answers our question about how plant species richness has cha
 
 ```r
 # Set a clean theme for the graphs
-set_theme(base = theme_bw())
+set_theme(base = theme_bw() + 
+            theme(panel.grid.major.x = element_blank(),
+                  panel.grid.minor.x = element_blank(),
+                  panel.grid.minor.y = element_blank(),
+                  panel.grid.major.y = element_blank(),
+                  plot.margin = unit(c(0.5, 0.5, 0.5, 0.5), units = , "cm")))
 
 # Visualises random effects 
 (re.effects <- plot_model(plant_m_plot3, type = "re", show.values = TRUE))
