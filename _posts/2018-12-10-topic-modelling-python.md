@@ -13,27 +13,31 @@ tags: python
 
 ### Tutorial aims:
 
-#### <a href="introduction"> 1. What is NumPy?</a>
+#### <a href="introduction"> 1. Introduction and getting started</a>
 
-#### <a href="basic"> 2. Basic manipulation NumPy arrays</a>
+#### <a href="eda"> 2. Exploring Text Datasets</a>
 
-#### <a href="mask"> 3. Masked arrays</a>
+#### <a href="who_what"> 3.Extracting substrings with regular expressions</a>
 
-#### <a href="io"> 4. Reading and writing data</a>
+#### <a href="text_corr"> 4. Finding keyword correlations in text data</a>
 
-#### <a href="cautions"> 5. Cautions when using NumPy arrays</a>
+#### <a href="top_mod"> 5. Introduction to topic modelling</a>
 
+#### <a href="clean"> 6. Cleaning Text Data</a>
+
+#### <a href="apply"> 6. Applying Topic Modelling</a>
 
 <a name="introduction"></a>
+# Introduction
 **In this tutorial we are going to be performing topic modelling on twitter data to find what people are talking about in relation to climate change. From a sample dataset we will clean the text data and explore what topular hashtags are being used, who is being tweeted at and retweeted and finally we will use two unsupervised machine learning algorithms, specifically latent dirichlet allocation and non-negative matrix factorisation, to explore the topics of the tweets in full.**
 
 **Prerequisits**
 - In order to do this tutorial, you should be comfortable with basic Python and the `pandas` and `numpy` packages
 - You will need to have the following packages installed : `numpy`, `pandas`, `seaborn`, `matplotlib`, `sklearn`, `nltk`
 
-Twitter is a fantastic source of data for a social scientist, with over 8,000 tweets sent per second. The tweets that millions of users send can be downloaded and analysed to try and investigate mass opinion on particular issues. This can be as basic as looking for key words and phrases like _'marmite is bad'_ or _'marmite is good'_ or can be more advanced, aiming to discover general topics (not just marmite related ones) contained in a dataset.
+Twitter is a fantastic source of data for a social scientist, with over 8,000 tweets sent per second. The tweets that millions of users send can be downloaded and analysed to try and investigate mass opinion on particular issues. This can be as basic as looking for keywords and phrases like _'marmite is bad'_ or _'marmite is good'_ or can be more advanced, aiming to discover general topics (not just marmite related ones) contained in a dataset.
 
-# Getting Started
+### Getting Started
 
 The first thing we will do is to get you set up with the data.
 
@@ -61,7 +65,9 @@ Next we will read in this dataset and have a look at it. You should use the `rea
 ```python
 df = pd.read_csv('climate_tweets.csv')
 ```
-## EDA - time to start having a look at our dataset
+
+<a name="eda"></a>
+# EDA - time to start having a look at our dataset
 
 Find out the shape of your dataset to find out how many tweets we have. You can use `df.shape` where `df` is your dataframe.
 
@@ -134,8 +140,8 @@ plt.xlabel('copies of each tweet')
 plt.ylabel('frequency')
 plt.show()
 ```
-
-### @who? #what? - Who are the popular people and hashtags?
+<a name="who_what"></a>
+# @who? #what? - Who are the popular people and hashtags?
 
 Next lets find who people are tweeting at the most, retweeting the most and what are the most common hashtags.
 
@@ -182,7 +188,8 @@ df['hashtags'] = df.tweet.apply(find_hashtags)
 ```
 Print the dataframe again to have a look at the new columns
 
-## Analysis
+<a name="text_corr"></a>
+# Correlations in text
 
 So far we have extracted who was retweeted, who was mentioned and the hashtags into their own separate columns
 
@@ -298,7 +305,8 @@ From the plot above we can see that there are fairly strong correlations between
 We can also see a fairly strong negative correlation between
 - **#tcot** and **#climate**
 
-## Moving on to topic modelling
+<a name="top_mod"></a>
+# Introduction to Topic Modelling
 
 What we have done so far with the hashtags has given us a bit more of an insight into the kind of things that people are tweeting about. We used our correlations to better understand the hashtag topics in the dataset (a kind of dimensionality reduction by looking only at the highly correlated ones). The correlation between **#FoxNews** and **#GlobalWarming** gives us more information as a pair than they do seperately.
 
@@ -330,7 +338,8 @@ We can see that this seems to be a general topic about starfish, but the importa
 
 This has been a rapid introduction to topic modelling, in order to help our topic modelling algorithms along we will first need to clean up our data.
 
-#### Cleaning
+<a name="clean"></a>
+# Cleaning text data
 
 The most important thing we need to do to help our topic modelling algorithm is to pre-clean up the tweets. If you look back at the tweets you may notice that they are very untidy, with non-statndard english, capitalisation, links, hashtags, @users and punctuation and emoticons everywhere. If we are going to be able to apply topic modelling we need to remove most of this and massage our data into a more standard form before finally turning it into vectors.
 
@@ -408,7 +417,9 @@ Use the cleaning function above to make a new column of cleaned tweets. Set `big
 ```Python
 df['clean_tweet'] = df.tweet.apply(clean_tweet)
 ```
-## Applying Topic Modelling
+
+<a name="apply"></a>
+# Applying Topic Modelling
 
 The good news is that we have done most of the hard work already. Now that we have clean text we can use some standard Python tools to turn the text tweets into vectors and then build a model.
 
@@ -468,6 +479,7 @@ Now we have some topics, which are just clusters of words, we can try to figure 
 
 I will leave this complicated task to you.
 
+<a name="bonus"></a>
 **Bonus**
 
 If you want to try out a different model you could use non-negative matrix factorisation (NMF). The work flow for this model will be almost exactly the same as with the LDA model we have just used, and the functions which we developed to plot the results will be the same as well. You can import the NMF model class by using `from sklearn.decomposition import NMF`.
@@ -482,19 +494,17 @@ If you want to try out a different model you could use non-negative matrix facto
 
 # Summary
 
-As a scientific computing tool, Python is a powerful tool, with NumPy at its heart. This tutorial hopefully would have helped people starting in their quest of using numerical analysis with Python.
+Topic modelling is a really useful tool to explore text data and find the latent topics contained within it. We have seen how we can apply topic modelling to untidy tweets by cleaning them first.
 
 ### Tutorial outcomes:
 
-#### 1. You know what NumPy is used for.
+- You have learned how to explore text datasets by extracting keywords and doing Correlations
 
-#### 2. You manipulate and explore NumPy arrays using slicing
+- You have been introduced to the `re` package and seen how it can be used to manipulate and clean text data
 
-#### 3. You can create simple masks on data to ignore some of the entries
+- You have been introduced to topic modelling and the LDA algorithm
 
-#### 4. You can read data to and write data in NumPy array format
-
-#### 5. You know that variables copied from NumPy objects might be different from other Python objects
+- You have built you first topic model and visualised the results
 
 <hr>
 <hr>
