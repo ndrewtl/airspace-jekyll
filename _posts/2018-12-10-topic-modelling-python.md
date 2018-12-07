@@ -31,7 +31,7 @@ tags: mix Python Advanced Modelling
 
 <a name="introduction"></a>
 # Introduction
-In this tutorial we are going to be performing topic modelling on twitter data to find what people are talking about in relation to climate change. From a sample dataset we will clean the text data and explore what topular hashtags are being used, who is being tweeted at and retweeted and finally we will use two unsupervised machine learning algorithms, specifically latent dirichlet allocation (LDA) and non-negative matrix factorisation (NMF), to explore the topics of the tweets in full.
+In this tutorial we are going to be performing topic modelling on twitter data to find what people are tweeting about in relation to climate change. From a sample dataset we will clean the text data and explore what popular hashtags are being used, who is being tweeted at and retweeted, and finally we will use two unsupervised machine learning algorithms, specifically latent dirichlet allocation (LDA) and non-negative matrix factorisation (NMF), to explore the topics of the tweets in full.
 
 ---
 
@@ -40,17 +40,17 @@ In this tutorial we are going to be performing topic modelling on twitter data t
 - You will need to have the following packages installed : `numpy`, `pandas`, `seaborn`, `matplotlib`, `sklearn`, `nltk`
 
 
-Twitter is a fantastic source of data for a social scientist, with over 8,000 tweets sent per second. The tweets that millions of users send can be downloaded and analysed to try and investigate mass opinion on particular issues. This can be as basic as looking for keywords and phrases like _'marmite is bad'_ or _'marmite is good'_ or can be more advanced, aiming to discover general topics (not just marmite related ones) contained in a dataset.
-
 ### Getting Started
+
+Twitter is a fantastic source of data for a social scientist, with over 8,000 tweets sent per second. The tweets that millions of users send can be downloaded and analysed to try and investigate mass opinion on particular issues. This can be as basic as looking for keywords and phrases like _'marmite is bad'_ or _'marmite is good'_ or can be more advanced, aiming to discover general topics (not just marmite related ones) contained in a dataset. We are going to do a bit of both.
 
 The first thing we will do is to get you set up with the data.
 
 ### The data\* you need to complete this tutorial can be downloaded from <a href="https://github.com/ourcodingclub/CC-topic-modelling-python" target="_blank">this repository</a>. __Click on `Clone/Download/Download ZIP` and unzip the folder, or clone the repository to your own GitHub account.__
 
-\* The original dataset was taken from https://data.world/crowdflower/sentiment-of-climate-change but we have modified it slightly, so for this tutorial you should use the version on our github.
+\* The original dataset was taken from https://data.world/crowdflower/sentiment-of-climate-change but we have modified it slightly, so for this tutorial you should use the version on our Github.
 
-Import these packages next. You aren't going to be able to complete this tutorial without them. You are also going to need `nltk` but there is more to be said about that package, so you can import it later.
+Import these packages next. You aren't going to be able to complete this tutorial without them. You are also going to need the `nltk` package, which we will talk a little more about later in the tutorial.
 ```python
 # packages to store and manipulate data
 import pandas as pd
@@ -66,12 +66,12 @@ import sklearn
 # package to clean text
 import re
 ```
-Next we will read in this dataset and have a look at it. You should use the `read_csv` function from `pandas` to read it in. Make sure that you have change the file name to whatever you saved the file as.
+Next we will read in this dataset and have a look at it. You should use the `read_csv` function from `pandas` to read it in.
 ```python
 df = pd.read_csv('climate_tweets.csv')
 ```
 
-Have a quick look at this DataFrame, it should look like This
+Have a quick look at your dataframe, it should look like this:
 
 <center>
 <table border="1" class="dataframe">
@@ -114,57 +114,63 @@ Find out the shape of your dataset to find out how many tweets we have. You can 
 One thing we should think about is how many of our tweets are actually unique because people retweet each other and so there could be multiple copies of the same tweet. You can do this using the `df.tweet.unique().shape`.
 
 
-We saw when we looked at the data that there were tweets that started with the letters 'RT'. Unsurpisingly this is a retweet. In the line below we will find how many of the of the tweets start with 'RT' and hence how many of them are retweets. We will be doing this with the pandas series `.apply` method. You can use the `.apply` method to apply a function to the values in each cell.
+You may have seen when looking at the dataframe that there were tweets that started with the letters 'RT'. Unsurprisingly this is a ReTweet. In the line below we will find how many of the of the tweets start with 'RT' and hence how many of them are retweets. We will be doing this with the pandas series `.apply` method. You can use the `.apply` method to apply a function to the values in each cell of a column.
 
-We are going to be using lambda functions and string comparisons to do this. If you don't know what these are then the basics are
+We are going to be using **lambda functions** and **string comparisons** to find the retweets. If you don't know what these two methods then read on for the basics.
 
 ### String Comparisons
 
 String comparisons in Python are pretty simple. Like any comparison we use the `==` operator in order to see if two strings are the same. For example if
 
 ```python
+# two string variables for comparison
 string1 = 'climate'
 string2 = 'climb'
 ```
 
 `string1 == string2` will evaluate to `False`.
 
-We can also slice strings to compare their parts, for example `string1[:4] == string2[:4]` will evalute to `True`.
+We can also slice strings to compare their parts, for example `string1[:4] == string2[:4]` will evaluate to `True`.
 
 We are going to use this kind of comparison to see if each tweet beings with 'RT'. If this evaluates to `True` then we will know it is a retweet.
 
 ### Lambda Functions
 
-lambda functions in Python are a quick (and rather dirty) way of writing functions. The format of writing these functions is
+Lambda functions are a quick (and rather dirty) way of writing functions. The format of writing these functions is
 `my_lambda_function = lambda x: f(x)` where we would replace `f(x)` with any function like `x**2` or `x[:2] + ' are the first to characters'`.
 
 Here is an example of the same function written in the more formal method and with a lambda function
 ```python
+# normal function example
 def my_normal_function(x):
     return x**2 + 10
-
+# lambda function example
 my_lambda_function = lambda x: x**2 + 10
 ```
 
-Try copying the functions above and seeing that they give the same results for the same inputs
+Try copying the functions above and seeing that they give the same results for the same inputs.
 
 ### Finding Retweets
 
 Now that we have briefly covered string comparisons and lambda functions we will use these to find the number of retweets. Use the lines below to find out how many retweets there are in the dataset.
 
 ```python
-df['is_retweet'] = df['tweet'].apply(lambda x: x[:2]=='RT') # make a new columns to highlight retweets
-df['is_retweet'].sum()  # calculate the number of retweets
+# make a new column to highlight retweets
+df['is_retweet'] = df['tweet'].apply(lambda x: x[:2]=='RT')
+df['is_retweet'].sum()  # number of retweets
 ```
 
 You can also use the line below to find out the number of unique retweets
 
 ```Python
-df.loc[df['is_retweet']].tweet.unique().size # number of unique retweets
+ # number of unique retweets
+df.loc[df['is_retweet']].tweet.unique().size
 ```
 Next we would like to see the popular tweets. We will count the number of times that each tweet is repeated in our dataframe, and sort by the number of times that each tweet appears. Then we will look at the top 10 tweets. You can do this by printing the following manipulation of our dataframe:
 ```Python
-df.groupby(['tweet']).size().reset_index(name='counts').sort_values('counts', ascending=False).head(10)
+# 10 most repeated tweets
+df.groupby(['tweet']).size().reset_index(name='counts')\
+  .sort_values('counts', ascending=False).head(10)
 ```
 One of the top tweets will be this one
 
@@ -187,10 +193,15 @@ One of the top tweets will be this one
 
 It is informative to see the top 10 tweets, but it may also be informative to see how the number-of-copies of each tweet are distributed. We do that with the following code block.
 ```Python
-counts = df.groupby(['tweet']).size().reset_index(name='counts').counts
+# number of times each tweet appears
+counts = df.groupby(['tweet']).size()\
+           .reset_index(name='counts')\
+           .counts
 
+# define bins for histogram
 my_bins = np.arange(0,counts.max()+2, 1)-0.5
 
+# plot histogram of tweet counts
 plt.figure()
 plt.hist(counts, bins = my_bins)
 plt.xlabels = np.arange(1,counts.max()+1, 1)
@@ -206,20 +217,20 @@ plt.show()
 <a name="who_what"></a>
 # @who? #what? - Extracting substrings with regular expressions
 
-Next lets find who people are tweeting at the most, retweeting the most and what are the most common hashtags.
+Next lets find who is being tweeting at the most, retweeted the most, and what are the most common hashtags.
 
-In the following section I am going to be using the python `re` package (which stands for Regular Expression), which is important and  enough to be the subject of it's own tutorial. I am going to skim over the details of this package and just leave you with some working code.
+In the following section I am going to be using the python `re` package (which stands for Regular Expression), which an important package for text manipulation and complex enough to be the subject of its own tutorial. I am therefore going to skim over the details of this package and just leave you with some working code.
 
 If you would like to know more about the `re` package and regular expressions you can find a good tutorial <a href="https://www.datacamp.com/community/tutorials/python-regular-expression-tutorial">here on datacamp</a>.
 
-As a quick overview the `re` package can be used to extract or replace certain patterns in string data in Python. You can use this package for anything from hashing out personal details like dates of birth and account numbers, to extracting all sentences that end in a :) to see what is making people happy.
+As a quick overview the `re` package can be used to extract or replace certain patterns in string data in Python. You can use this package for anything from removing sensitive information like dates of birth and account numbers, to extracting all sentences that end in a :), to see what is making people happy.
 
 In this tutorial we are going to be using this package to extract from each tweet:
 - who is being retweeted (if any)
 - who is being tweeted at/mentioned (if any)
 - what hashtags are being used (if any)
 
-Functions to do each of these three things are below.
+Functions to extract each of these three things are below.
 
 ```Python
 def find_retweeted(tweet):
@@ -235,21 +246,23 @@ def find_hashtags(tweet):
     return re.findall('(#[A-Za-z]+[A-Za-z0-9-_]+)', tweet)   
 ```
 Try using each of the functions above on the following tweets
-`my_tweet = 'RT @our_codingclub: Can @you find #all the #hashtags?'`
-`my_other_tweet = 'Not a retweet. All views @my own'`
+```python
+# two sample tweets
+my_tweet = 'RT @our_codingclub: Can @you find #all the #hashtags?'`
+my_other_tweet = 'Not a retweet. All views @my own'
+```
 
-We are now going to make one column in the dataframe which contains all of the retweet handles\*, one column for all the handles of people mentioned\* and one columns for all the hashtags\*. We will do this by using the `.apply` method three times.
-
-\* if there are any
+We are now going to make one column in the dataframe which contains the retweet handles, one column for the handles of people mentioned and one columns for the hashtags. We will do this by using the `.apply` method three times.
 
 Note that each entry in these new columns will contain a list rather than a single value
 
 ```Python
+# make new columns for retweeted usernames, mentioned usernames and hashtags
 df['retweeted'] = df.tweet.apply(find_retweeted)
 df['mentioned'] = df.tweet.apply(find_mentioned)
 df['hashtags'] = df.tweet.apply(find_hashtags)
 ```
-Print the dataframe again to have a look at the new columns. Your dataframe should now look like this.
+Print the dataframe again to have a look at the new columns. Your dataframe should now look like this:
 
 <center>
 <table border="1" class="dataframe">
@@ -298,20 +311,22 @@ Print the dataframe again to have a look at the new columns. Your dataframe shou
 <a name="text_corr"></a>
 # Keyword Correlations in Text
 
-So far we have extracted who was retweeted, who was mentioned and the hashtags into their own separate columns
-
-Now lets look at these further. We want to know who is highly retweeted, who is highly mentioned and what popular hashtags are going round.
+So far we have extracted who was retweeted, who was mentioned and the hashtags into their own separate columns. Now lets look at these further. We want to know who is highly retweeted, who is highly mentioned and what popular hashtags are going round.
 
 In the following section we will perform an analysis on the hashtags only. We will leave it up to you to come back and repeat a similar analysis on the mentioned and retweeted columns.
 
-First we will select from the dataframe the column of hashtags and take only the rows where there actually is a hashtag
+First we will select the column of hashtags from the dataframe, and take only the rows where there actually is a hashtag
 
 ```Python
-# take the rows from the hashtag columns where there are actually hashtags, not empty lists
-hashtags_list_df = df.loc[df.hashtags.apply(lambda hashtags_list: hashtags_list !=[]), ['hashtags']]
+# take the rows from the hashtag columns where there are actually hashtags
+hashtags_list_df = df.loc[
+                       df.hashtags.apply(
+                           lambda hashtags_list: hashtags_list !=[]
+                       ),['hashtags']]
 ```
-`hashtags_list_df` should look like this
+
 <center>
+The first few rows of `hashtags_list_df` should look like this
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -344,12 +359,16 @@ hashtags_list_df = df.loc[df.hashtags.apply(lambda hashtags_list: hashtags_list 
 </table>
 </center>
 
-To see which hashtags were popular we will need to flatten out this dataframe. Currently each row contains a list of multiple values. The next block of code will make a new dataframe which has all the hashtags in `hashtags_list_df` but each appearance of a hashtag gets its own row.
+To see which hashtags were popular we will need to flatten out this dataframe. Currently each row contains a list of multiple values. The next block of code will make a new dataframe where we take all the hashtags in `hashtags_list_df` but give each its own row.
 
 We do this using a <a href="https://www.pythonforbeginners.com/basics/list-comprehensions-in-python">list comprehension</a>.
 
 ```Python
-flattened_hashtags_df = pd.DataFrame([hashtag for hashtags_list in hashtags_list_df.hashtags for hashtag in hashtags_list], columns=['hashtag'])
+# create dataframe where each use of hashtag gets its own row
+flattened_hashtags_df = pd.DataFrame(
+    [hashtag for hashtags_list in hashtags_list_df.hashtags
+    for hashtag in hashtags_list],
+    columns=['hashtag'])
 ```
 <center>
 This new dataframe will look like this
@@ -380,26 +399,33 @@ This new dataframe will look like this
 Now, as we did with the full tweets before, you should find the number of unique rows in this dataframe. Before this was the unique number of tweets, now the unique number of hashtags.
 
 ```Python
-flattened_hashtags_df['hashtag'].unique().size # this many unique hashtags
+# number of unique hashtags
+flattened_hashtags_df['hashtag'].unique().size
 ```
 Like before lets look at the top hashtags by their frequency of appearance. You can do this using
 ```Python
+# count of appearances of each hashtag
 popular_hashtags = flattened_hashtags_df.groupby('hashtag').size()\
                                         .reset_index(name='counts')\
                                         .sort_values('counts', ascending=False)\
                                         .reset_index(drop=True)
 ```
 
-A big part of data science is in interpretting our results. Therefore domain knowledge needs to be incorporated to get the best out of the analysis we do. Sometimes this can be as simple as a google seach and that is what we do here.
+A big part of data science is in interpreting our results. Therefore domain knowledge needs to be incorporated to get the best out of the analysis we do. Sometimes this can be as simple as a Google search so lets do that here.
 
 If you do not know what the top hashtag means, try googling it. Does it make sense for this to be the top hashtag in the context of tweets about climate change? Was this top hashtag big at a particular point in time and do you think it would still be the top hashtag today?
 
-Like before we will plot the distribution in how often these hashtags appear
+Once you have done that,  plot the distribution in how often these hashtags appear
 ```Python
-counts = flattened_hashtags_df.groupby(['hashtag']).size().reset_index(name='counts').counts
+# number of times each hashtag appears
+counts = flattened_hashtags_df.groupby(['hashtag']).size()\
+                              .reset_index(name='counts')\
+                              .counts
 
+# define bins for histogram                              
 my_bins = np.arange(0,counts.max()+2, 5)-0.5
 
+# plot histogram of tweet counts
 plt.figure()
 plt.hist(counts, bins = my_bins)
 plt.xlabels = np.arange(1,counts.max()+1, 1)
@@ -412,59 +438,101 @@ plt.show()
 
 ### From Text to Vector
 
-Now lets say that we want to find which of our hashtags are correlated with other hashtags.
+Now lets say that we want to find which of our hashtags are correlated with each other. To do this we will need to turn the text into numeric form. It is possible to do this by transforming from a list of hashtags to a vector representing which hashtags appeared in which rows. For example if our available hashtags were the set `[#photography, #pets, #funny, #day]`, then the tweet '#funny #pets' would be `[0,1,1,0]` in vector form.
 
-To do this we will need to turn the text into numeric form. It is possible to do this by transforming from a list of hashtags to a vector representing which hashtags appeared in which rows. For example if our hashtags were the ordered set
+We will now apply this method to our hashtags column of `df`. Before we do this we will want to limit to hashtags that appear enough times to be correlated with other hashtags. We can't correlate hashtags which only appear once, and we don't want hashtags that appear a low number of times since this could lead to spurious correlations.
 
-{#photography, #pets, #funny, #day}
-
-Then the tweet '#funny #pets' would be \[0,1,1,0\] in vector form.
-
-We will now apply this method to our hashtags column of `df`.
-
-To do this well we will want to limit to hashtags that appear enough times to be correlated with other hashtags.
-
-In the following code block we are going to find what hashtags meet a minimum appearnace threshold. These are going to be the hahstags we will look for correlations between.
+In the following code block we are going to find what hashtags meet a minimum appearance threshold. These are going to be the hashtags we will look for correlations between.
 
 ```Python
+# take hashtags which appear at least this amount of times
 min_appearance = 10
-popular_hashtags_set = set(popular_hashtags[popular_hashtags.counts>min_appearance]['hashtag'])
+# find popular hashtags - make into python set for efficiency
+popular_hashtags_set = set(popular_hashtags[
+                           popular_hashtags.counts>=min_appearance
+                           ]['hashtag'])
 ```
-Next we are going to create a new column in hashtags_df which filters the hashtags to only the popular hashtags. We will also drop the rows where no popular hashtags appear.
+Next we are going to create a new column in `hashtags_df` which filters the hashtags to only the popular hashtags. We will also drop the rows where no popular hashtags appear.
 
 ```Python
 # make a new column with only the popular hashtags
 hashtags_list_df['popular_hashtags'] = hashtags_list_df.hashtags.apply(
-            lambda hashtag_list: [hashtag for hashtag in hashtag_list if hashtag in popular_hashtags_set])
+            lambda hashtag_list: [hashtag for hashtag in hashtag_list
+                                  if hashtag in popular_hashtags_set])
 # drop rows without popular hashtag
 popular_hashtags_list_df = hashtags_list_df.loc[
             hashtags_list_df.popular_hashtags.apply(lambda hashtag_list: hashtag_list !=[])]
 
 ```
-Next we want to vectorise our lists of hashtags from each tweet like mentioned above. We do this using the following block of code to create a dataframe where the hashtags contained in each row are in vector form
+Next we want to vectorise our the hashtags in each tweet like mentioned above. We do this using the following block of code to create a dataframe where the hashtags contained in each row are in vector form.
 
 ```python
+# make new dataframe
 hashtag_vector_df = popular_hashtags_list_df.loc[:, ['popular_hashtags']]
+
 for hashtag in popular_hashtags_set:
+    # make columns to encode presence of hashtags
     hashtag_vector_df['{}'.format(hashtag)] = hashtag_vector_df.popular_hashtags.apply(
         lambda hashtag_list: int(hashtag in hashtag_list))
 ```
 Print the `hashtag_vector_df` to see that the vectorisation has gone as expected. For each hashtag in the `popular_hashtags` column there should be a 1 in the corresponding `#hashtag` column. It should look something like this:
 
-
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>popular_hashtags</th>
+      <th>#environment</th>
+      <th>#EarthDay</th>
+      <th>#gop</th>
+      <th>#snowpocalypse</th>
+      <th>#Climate</th>
+      <th>...</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>12</th>
+      <td>[#Climate]</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>1</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>[#EarthDay]</td>
+      <td>0</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>...</td>
+    </tr>
+  </tbody>
+</table>
 
 Now satisfied we will drop the `popular_hashtags` column from the dataframe. We don't need it.
 
 `hashtag_matrix = hashtag_vector_df.drop('popular_hashtags', axis=1)``
 
-In the next code block we will use the `pandas.DataFrame` inbuilt method to fine the correlation between each column of the dataframe and thus the correlation between the different hashtags appearing in the same tweets.
+In the next code block we will use the `pandas.DataFrame` inbuilt method to find the correlation between each column of the dataframe and thus the correlation between the different hashtags appearing in the same tweets.
 
 We will use the `seaborn` package that we imported earlier to plot the correlation matrix as a heatmap
 ```Python
-corrleations = hashtag_matrix.corr()
+# calculate the correlation matrix
+correlations = hashtag_matrix.corr()
 
+# plot the correlation matrix
 plt.figure(figsize=(10,10))
-sns.heatmap(corrleations, cmap='RdBu', vmin=-1, vmax=1, square = True, cbar_kws={'label':'correlation'})
+sns.heatmap(corrleations,
+    cmap='RdBu',
+    vmin=-1,
+    vmax=1,
+    square = True,
+    cbar_kws={'label':'correlation'})
 plt.show()
 ```
 <center><img src="{{ site.baseurl }}/img/topic-modelling-python-hashtag_correlation.png" alt="img" style="width: 900px;"/></center>
@@ -478,26 +546,22 @@ From the plot above we can see that there are fairly strong correlations between
 We can also see a fairly strong negative correlation between
 - **#tcot** and **#climate**
 
+What these really mean is up for interpretation and it won't be the focus of this tutorial.
+
 <a name="top_mod"></a>
 # Introduction to Topic Modelling
 
-What we have done so far with the hashtags has given us a bit more of an insight into the kind of things that people are tweeting about. We used our correlations to better understand the hashtag topics in the dataset (a kind of dimensionality reduction by looking only at the highly correlated ones). The correlation between **#FoxNews** and **#GlobalWarming** gives us more information as a pair than they do seperately.
+What we have done so far with the hashtags has given us a bit more of an insight into the kind of things that people are tweeting about. We used our correlations to better understand the hashtag topics in the dataset (a kind of dimensionality reduction by looking only at the highly correlated ones). The correlation between **#FoxNews** and **#GlobalWarming** gives us more information as a pair than they do separately.
 
 But what about all the other text in the tweet besides the #hashtags and @users? Surely there is lots of useful and meaningful information in there as well? Yes! Absolutely, but we can't just do correlations like we have done here. There are far too many different words for that! We need a new technique!
 
 ...enter topic modelling
 
-Topic modelling is an unsupervised machine learning algorithm for discovering 'topics' in a collection of documents. In this case our collection of documents is actually a collection of tweets. I don't want to get too much into the details of the algorithms that we are going to look at since they are complex and beyond the scope of this tutorial. However, if you want to know know more, I enjoyed this <a href = "https://www.youtube.com/watch?v=3mHy4OSyRf0&t=319s"> LDA youtube video</a>.
+Topic modelling is an unsupervised machine learning algorithm for discovering 'topics' in a collection of documents. In this case our collection of documents is actually a collection of tweets. We won't get too much into the details of the algorithms that we are going to look at since they are complex and beyond the scope of this tutorial. We will be using latent dirichlet allocation (LDA) and at the end of this tutorial we will leave you to implement non-negative matric factorisation (NMF) by yourself.
 
-The important information to know is that these techniques take a matrix which is similar to the `hashtag_vector_df` dataframe that we created above. Every row represents a tweet and every column represents a word. The entry at each row-column position is the number of times that a given word appears in the tweet for the row.
+The important information to know is that these techniques each take a matrix which is similar to the `hashtag_vector_df` dataframe that we created above. Every row represents a tweet and every column represents a word. The entry at each row-column position is the number of times that a given word appears in the tweet for the row, this is called the bag-of-words format. For the word-set `[#photography, #pets, #funny, #day]`, the tweet '#funny #funny #photography #pets' would be `[1,1,2,0]` in vector form.
 
-ie in the example we saw before
-
-{#photography, #pets, #funny, #day}
-
-Then the tweet '#funny #funny #photography #pets' would be \[1,1,2,0\] in vector form.
-
-Using this matrix they will form topics from the words. Each of the algorithms does this in a different way, but the basics are that the algorithms look at the co-occurence of words in the tweets and if words are often appearing in the same tweets together, then these words are likely to form a topic. The algorithm will form topics which group commonly co-occuring words. A topic in this sense, is just list of words that often appear together and also scores associated with each of these words in the topic. The higher the score of a word in a topic, the higher that word's importance in the topic. Each topic will have a score for every word found in tweets, in order to make sense of the topics we usually only look at the top words - the words with low scores are irrelevant.
+Using this matrix the topic modelling algorithms will form topics from the words. Each of the algorithms does this in a different way, but the basics are that the algorithms look at the co-occurrence of words in the tweets and if words often appearing in the same tweets together, then these words are likely to form a topic together. The algorithm will form topics which group commonly co-occurring words. A topic in this sense, is just list of words that often appear together and also scores associated with each of these words in the topic. The higher the score of a word in a topic, the higher that word's importance in the topic. Each topic will have a score for every word found in tweets, in order to make sense of the topics we usually only look at the top words - the words with low scores are irrelevant.
 
 For example, from a topic model built on a collection on marine research articles might find the topic
 
@@ -507,18 +571,18 @@ and the accompanying scores for each word in this topic could be
 
 - 900, 666, 523, 503, 392, 299, 127, ...
 
-We can see that this seems to be a general topic about starfish, but the important part is that **we have to decide what these topics mean** by interpereting the top words. The model will find us as many topics as we tell it to, this is an important choice to make. To large and we will likely only find very general topics which don't tell us anything new, to few and the algorithm way pick up on noise in the data and not return meaningful topics. So this is an important parameter to think about.
+We can see that this seems to be a general topic about starfish, but the important part is that **we have to decide what these topics mean** by interpreting the top words. The model will find us as many topics as we tell it to, this is an important choice to make. Too large and we will likely only find very general topics which don't tell us anything new, too few and the algorithm way pick up on noise in the data and not return meaningful topics. So this is an important parameter to think about.
 
 This has been a rapid introduction to topic modelling, in order to help our topic modelling algorithms along we will first need to clean up our data.
 
 <a name="clean"></a>
 # Cleaning Unstructured Text Data
 
-The most important thing we need to do to help our topic modelling algorithm is to pre-clean up the tweets. If you look back at the tweets you may notice that they are very untidy, with non-statndard english, capitalisation, links, hashtags, @users and punctuation and emoticons everywhere. If we are going to be able to apply topic modelling we need to remove most of this and massage our data into a more standard form before finally turning it into vectors.
+The most important thing we need to do to help our topic modelling algorithm is to pre-clean up the tweets. If you look back at the tweets you may notice that they are very untidy, with non-standard English, capitalisation, links, hashtags, @users and punctuation and emoticons everywhere. If we are going to be able to apply topic modelling we need to remove most of this and massage our data into a more standard form before finally turning it into vectors.
 
-In this section I will provide some functions for cleaning the tweets as well as the reasons for each step in cleaning. I won't cover the specifics of the packages we are going to use. The use of the Python `nltk` package and how to properly and efficiently clean text data could be a full tutorial itself so I hope that this is enough just to get you started.
+In this section I will provide some functions for cleaning the tweets as well as the reasons for each step in cleaning. I won't cover the specifics of the package we are going to use. The use of the Python `nltk` package and how to properly and efficiently clean text data could be another full tutorial itself so I hope that this is enough just to get you started.
 
-First we will start with imports for this specific cleaning task
+First we will start with imports for this specific cleaning task.
 
 ```python
 import nltk
@@ -526,27 +590,31 @@ from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 ```
 
-You will need to use `nltk.download('stopwords')` commmand to download the stopwords if you have not used NLTK before.
+You will need to use `nltk.download('stopwords')` command to download the stopwords if you have not used `nltk` before.
 
-In the cell below I have provided you some functions to remove web-links from the tweets. I don't think specific web links will be important information, although if you wanted to could replace all web links with a token (a word) like web_link, so we will remove these. We will also remove retweets and mentions. We remove these because it is unlikely that they will help us form meaningful topics.
+In the cell below I have provided you some functions to remove web-links from the tweets. I don't think specific web links will be important information, although if you wanted to could replace all web links with a token (a word) like web_link, so you preserve the information that there was a web link there without preserving the link itself. In this case however, we will remove links. We will also remove retweets and mentions. We remove these because it is unlikely that they will help us form meaningful topics.
 
-We would like to know the general things which people are talking about, not who they are talking about or to and not the web links they are sharing.
+**We would like to know the general things which people are talking about, not who they are talking about or to and not the web links they are sharing.**
 
-**Extra challenge:** modify and use the `remove_links` function below in order to extract the links from each tweet to a seperate column, then repeat the analysis we did on the hashtags. Are there any common links that people are sharing?
+**Extra challenge:** modify and use the `remove_links` function below in order to extract the links from each tweet to a separate column, then repeat the analysis we did on the hashtags. Are there any common links that people are sharing?
 
 ```python
 def remove_links(tweet):
+    '''Takes a string and removes web links from it'''
     tweet = re.sub(r'http\S+', '', tweet) # remove http links
     tweet = re.sub(r'bit.ly/\S+', '', tweet) # rempve bitly links
     tweet = tweet.strip('[link]') # remove [links]
     return tweet
 
 def remove_users(tweet):
+    '''Takes a string and removes retweet and @user information'''
     tweet = re.sub('(RT\s@[A-Za-z]+[A-Za-z0-9-_]+)', '', tweet) # remove retweet
     tweet = re.sub('(@[A-Za-z]+[A-Za-z0-9-_]+)', '', tweet) # remove tweeted at
     return tweet
 ```
-Below we make a master function which uses the two functions we created above as sub functions. This is a common way of working in Python and makes your code tidier and more reusable. It will also do some more cleaning of the data. This following section of bullet points describes what the `clean_tweet` master function is doing at each step. If you want you can skip reading this section and just use the function for now. You will likely notice some strange words in your topics so when you finally generate them you should come back to second last bullet point about **stem**ming.
+Below we make a master function which uses the two functions we created above as sub functions. This is a common way of working in Python and makes your code tidier and more reusable. The master function will also do some more cleaning of the data.
+
+This following section of bullet points describes what the `clean_tweet` master function is doing at each step. If you want you can skip reading this section and just use the function for now. You will likely notice some strange words in your topics later, so when you finally generate them you should come back to second last bullet point about **stem**ming.
 
 In the master function we apply these steps in order:
 - Strip out the users and links from the tweets but we leave the hashtags as I believe those can still tell us what people are talking about in a more general way.
@@ -560,14 +628,14 @@ In the master function we apply these steps in order:
 *By now the data is a lot tidier and we have only lowercase letters which are space separated. The only punctuation is the '#' in the hashtags.*
 - Next we change the form of our tweet from a string to a list of words. We also remove stopwords in this step. Stopwords are simple words that don't tell us very much. Print the `my_stopwords` variable to see what words we are removing and think whether you can still get the gist of any sentence if you were to take out these words.
 
-- In the next step we **stem** the words in the list. This is essentially where we knock the end off the words. We do this so that similar words will be recognised as the same word by the algorithm. For example in the starfish example we would like it so that the algorithm knows that when it sees 'regenerate', 'regenerated', 'regenerates', 'regeneration' or 'regenerating' that it will know these are really the same word whilst it is building up topics. It can't do this itself, so we knock off the word endings so that each of these words will become the same stem - 'regener'. Once you have defined `word_rooter`, use this line of code to see that these words all become the same thing `[word_rooter(w) for w in ['regenerate', 'regenerated', 'regenerates', 'regeneration', 'regenerating', 'regerative']]`. Note that the word_rooter function, which is a Porter Stemming function, only uses rules of thumb to know where to cut off words, and so for the word 'regerative' it will actually give it a different root to the other words.
+- In the next step we **stem** the words in the list. This is essentially where we knock the end off the words. We do this so that similar words will be recognised as the same word by the algorithm. For example in the starfish example we would like it so that the algorithm knows that when it sees 'regenerate', 'regenerated', 'regenerates', 'regeneration' or 'regenerating' that it will know these are really the same word whilst it is building up topics. It can't do this itself, so we knock off the word endings so that each of these words will become the same stem - 'regener'. Once you have copied the `word_rooter` function, use this line of code to see that these words all become the same thing `[word_rooter(w) for w in ['regenerate', 'regenerated', 'regenerates', 'regeneration', 'regenerating', 'regenerative']]`. Note that the `word_rooter` function, which is a Porter Stemming function, only uses rules of thumb to know where to cut off words, and so for the word 'regenerative' it will actually give it a different root to the other words.
 
-- If we decide to use it the next step will contstruct bigrams from our tweet. This part of the function will group every pair of words and put them at the end. So the sentence `'i scream for ice cream'` becomes `'i scream for ice cream i_scream scream_for for_ice ice_cream'`. A bigram is a word pair like i_scream or ice_cream. The reason for doing this is that when we go from sentence to vector form of the tweets, we will lose the information about word ordering. Therefore we could lose 'ice cream' amongst tweets about putting ice and antiseptic cream on a wound (for example). Later we will filter by appearance frequency and so unnatural bigrams like 'for_ice' will be thrown out as they won't appear enough to make it into the most popular tokens\*.
+- If we decide to use it the next step will construct bigrams from our tweet. This part of the function will group every pair of words and put them at the end. So the sentence `'i scream for ice cream'` becomes `'i scream for ice cream i_scream scream_for for_ice ice_cream'`. A bigram is a word pair like i_scream or ice_cream. The reason for doing this is that when we go from sentence to vector form of the tweets, we will lose the information about word ordering. Therefore we could lose 'ice cream' amongst tweets about putting ice and antiseptic cream on a wound (for example). Later we will filter by appearance frequency and so unnatural bigrams like 'for_ice' will be thrown out as they won't appear enough to make it into the most popular tokens\*.
 
 \* In natural language processing people talk about tokens instead of words but they basically mean the same thing. Here we have 3 kinds of tokens which make it through our cleaning process. We have words, bigrams and #hashtags.
 
+In the next code block we make a function to clean the tweets.
 ```python
-my_tokenizer = RegexpTokenizer(r'\w+')
 my_stopwords = nltk.corpus.stopwords.words('english')
 word_rooter = nltk.stem.snowball.PorterStemmer(ignore_stopwords=False).stem
 my_punctuation = '!"$%&\'()*+,-./:;<=>?[\\]^_`{|}~•@'
@@ -598,9 +666,8 @@ Use the cleaning function above to make a new column of cleaned tweets. Set `big
 df['clean_tweet'] = df.tweet.apply(clean_tweet)
 ```
 
-Your new dataframe should look something like This
-
-<center><table border="1" class="dataframe">
+<center>Your new dataframe should look something like this
+<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -669,9 +736,9 @@ Check out the shape of `tf` (we chose tf as a variable name to stand for 'term f
 
 Whilst you are here, you should also print `tf_feature_names` to see what tokens made it through filtering.
 
-Note that the `tf` matrix is exactly like the `hashtag_vector_df` dataframe. Each row is a tweet and each column is a word. The numbers in each position tell us how mnay time this word appears in this tweet.
+Note that the `tf` matrix is exactly like the `hashtag_vector_df` dataframe. Each row is a tweet and each column is a word. The numbers in each position tell us how many times this word appears in this tweet.
 
-Next we actually create the model object. Lets start by arbitrarily choosing 10 topics. We also define the random state so that this model is reproducable.
+Next we actually create the model object. Lets start by arbitrarily choosing 10 topics. We also define the random state so that this model is reproducible.
 
 ```Python
 from sklearn.decomposition import LatentDirichletAllocation
@@ -680,7 +747,7 @@ number_of_topics = 10
 
 model = LatentDirichletAllocation(n_components=number_of_topics, random_state=0)
 ```
-`model` is our LDA algorithm model object. I expect that if you are here then you should be comfortable with Python's object orrientation. If not then all you need to know is that the model object hold everything we need. It holds parameters like the number of topics that we gave it when we created it; it also holds methods like the fitting method. We will apply this next and feed it our `tf` matrix
+`model` is our LDA algorithm model object. I expect that if you are here then you should be comfortable with Python's object orientation. If not then all you need to know is that the model object hold everything we need. It holds parameters like the number of topics that we gave it when we created it; it also holds methods like the fitting method; once we fit it, it will hold fitted parameters which tell us how important different words are in different topics. We will apply this next and feed it our `tf` matrix
 ```Python
 model.fit(tf)
 ```
@@ -688,7 +755,7 @@ model.fit(tf)
 
 Next we will want to inspect our topics that we generated and try to extract meaningful information from them.
 
-Below I have written a function which takes in our model object `model`, the order of the words in our matrix `tf_feature_names` and the number of words we would like to show. Use this function, which returns a pandas DataFrame, to show you the topics we created. Remember that each topic is a list of words/tokens and weights
+Below I have written a function which takes in our model object `model`, the order of the words in our matrix `tf_feature_names` and the number of words we would like to show. Use this function, which returns a dataframe, to show you the topics we created. Remember that each topic is a list of words/tokens and weights
 
 ```Python
 def display_topics(model, feature_names, no_top_words):
@@ -706,11 +773,11 @@ no_top_words = 10
 display_topics(model, tf_feature_names, no_top_words)
 ```
 
-Now we have some topics, which are just clusters of words, we can try to figure out what they really mean. However I will leave this task to you.
+Now we have some topics, which are just clusters of words, we can try to figure out what they really mean. Once again, this is a task of interpretation, and so I will leave this task to you.
 
-Here is an example of a few topics I got from my model
 
-<center><table border="1" class="dataframe">
+
+<center>Here is an example of a few topics I got from my model. <br>Note that your topics will not necessarily include these three.<table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -771,13 +838,13 @@ Here is an example of a few topics I got from my model
   </tbody>
 </table></center>
 
-note that your topics will not necessarily include these three.
+
 
 #### Comment
 
 I found that my topics almost all had global warming or climate change at the top of the list. This could indicate that we should add these words to our stopwords like since they don't tell us anything we didn't already know. We already knew that the dataset was tweets about climate change.
 
-This may also come from the fact that tweets are very short and this particular method, LDA (which works very well for longer text documents), does not work well on shorter text documents like tweets. In the bonus section to follow I suggest replacing the LDA model with an NMF model and try creating a new set of topics. In my own experiments I found that NMF generated better topics from the tweets than LDA did, even without removing 'climate change' and 'global warming from the tweets'
+This result also may have come from the fact that tweets are very short and this particular method, LDA (which works very well for longer text documents), does not work well on shorter text documents like tweets. In the bonus section to follow I suggest replacing the LDA model with an NMF model and try creating a new set of topics. In my own experiments I found that NMF generated better topics from the tweets than LDA did, even without removing 'climate change' and 'global warming' from the tweets.
 
 <a name="bonus"></a>
 # Bonus
@@ -788,7 +855,7 @@ If you want to try out a different model you could use non-negative matrix facto
 
 - Try to build an NMF model on the same data and see if the topics are the same? Different models have different strengths and so you may find NMF to be better. You can use `model = NMF(n_components=no_topics, random_state=0, alpha=.1, l1_ratio=.5)` and continue from there in your original script.
 
-### Further Extension**
+### Further Extension
 
 - If you would like to do more topic modelling on tweets I would recommend the `tweepy` package. This is a Python package that allows you to download tweets from twitter. You have many options of which tweets to download including filtering to a particular area and to a particular time.
 
