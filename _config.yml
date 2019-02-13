@@ -12,15 +12,17 @@ keep_files:
   - ".git"
   - ".gitignore"
 
+include: ['en']
+
 
 # Site settings
-title: Airspace
-subtitle: "A free HTML5 agency template"
+title: JRED
+subtitle: "PhD Job Fair in Saclay"
 url: "http://ndrewtl.github.io" # the base hostname & protocol for your site
 # baseurl: "/the/subpath/of/your/site" # Set this value to "" if you want your site to be root
-baseurl: "/airspace-jekyll"
+baseurl: "/jred-new-web"
 cover: "/assets/cover.png"
-logo: "/assets/logo.png"
+logo: "/assets/logo_jred_no_bkgd.png"
 
 # Build settings
 markdown: kramdown

@@ -1,13 +1,13 @@
 # coding: utf-8
 
 Gem::Specification.new do |spec|
-  spec.name          = "airspace-jekyll"
+  spec.name          = "jred-web"
   spec.version       = "0.1.0"
-  spec.authors       = ["ndrewtl"]
-  spec.email         = ["ndrewtl@users.noreply.github.com"]
+  spec.authors       = ["Arnaud Gallant"]
+  spec.email         = ["arnaud.gallant@centralesupelec.fr"]
 
-  spec.summary       = %q{A port of ThemeFisher's Airspace theme. https://github.com/themefisher/airspace-free-html5-agency-template}
-  spec.homepage      = "http://example.com"
+  spec.summary       = %q{PhD Job Fair in Saclay.}
+  spec.homepage      = "http://www.jred.fr"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").select { |f| f.match(%r{^(_layouts|_includes|_sass|LICENSE|README)/i}) }
