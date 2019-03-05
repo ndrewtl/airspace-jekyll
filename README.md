@@ -27,32 +27,39 @@ $ ruby -v
 ruby [version number] (date) [your platform]
 ```
 
-If you get something like `"Error, command not found"` visit the link above and install Ruby for your platform.
+If you get something like `"Error, command not found"` visit the link above and
+install Ruby for your platform.
 
 
-### Make sure you have Jekyll
+### Make sure you have Bundler
 
-Next, make sure you have [Jekyll](https://jekyllrb.com/) installed. Just like above, run `jekyll -v` on the command line:
+Next, make sure you have [Bundler](https://bundler.io) installed. Just like
+above, run `bundle -v` on the command line:
 
 ```sh
-$ jekyll -v
-jekyll [version number]
+$ bundle -v
+bundle [version number]
 ```
-If you get `"Error, command not found"` run `gem install jekyll` to install it using RubyGems.
+
+If you get `"Error, command not found"` run `gem install bundler` to install it
+using RubyGems.
 
 ### Run this repository
+
 Clone the repository, and `cd` into it:
 ```sh
 $ git clone https://github.com/ndrewtl/airspace-jekyll.git
 $ cd airspace-jekyll
 ```
 
-Install Dependencies:
+Install dependencies locally:
 ```sh
-$ bundle install
+$ bundle install --path vendor/bundle
 ```
 
-And run the server:
+This should install a local copy of jekyll.
+
+Now run the server:
 ```sh
-$ jekyll serve
+$ ./vendor/bundle/ruby/#{YOUR_RUBY_VERSION}/bin/jekyll server
 ```
