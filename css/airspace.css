@@ -197,6 +197,7 @@ font header .navbar-default .navbar-nav li a:hover {
   text-align: center;
   color: #fff;
 }
+
 #call-to-action:before {
   content: '';
   position: absolute;
@@ -393,15 +394,15 @@ font header .navbar-default .navbar-nav li a:hover {
 #global-header .block {
   color: #e3e3e4;
   margin: 0 auto;
-  padding-left: 90px;
+  padding-left: 80px;
   text-align: center;
 }
 #global-header .block h1 {
   font-weight: 100;
   font-size: 45px;
   letter-spacing: 6px;
-  padding-bottom: 15px;
-  margin-top: 0;
+  padding-bottom: 50px;
+  margin-top: 0 auto;
   text-transform: capitalize;
 }
 #global-header .block p {
