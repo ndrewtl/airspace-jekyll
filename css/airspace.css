@@ -6,8 +6,8 @@
  * 
  */
 
-@import url(//fonts.googleapis.com/css?family=Open+Sans:400,300,600);
-@import url(//fonts.googleapis.com/css?family=Roboto:400,100,300,500,700);
+@import url(//fonts.googleapis.com/css?family=Open+Sans:400, 300, 600);
+@import url(//fonts.googleapis.com/css?family=Roboto:400, 100, 300, 500, 700);
 @import url(//fonts.googleapis.com/css?family=Volkhov:400italic);
 /* var text-decoration */
 /*--
@@ -97,7 +97,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	Slider Start
 --*/
 #slider {
-  background: url("../img/holding-hands.jpg") no-repeat;
+  background: url('../img/holding-hands.jpg') no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: 10% 0%;
@@ -105,7 +105,7 @@ font header .navbar-default .navbar-nav li a:hover {
   position: relative;
 }
 #slider:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -117,7 +117,7 @@ font header .navbar-default .navbar-nav li a:hover {
   opacity: 0.8;
 }
 #slider .block {
-  color: #E3E3E4;
+  color: #e3e3e4;
 }
 #slider .block h1 {
   font-family: 'Roboto', sans-serif;
@@ -146,7 +146,7 @@ font header .navbar-default .navbar-nav li a:hover {
   margin: 0;
 }
 #intro .block p {
-  color: #7B7B7B;
+  color: #7b7b7b;
   padding-top: 20px;
 }
 #intro .block img {
@@ -171,7 +171,7 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 #service .service-item i {
   font-size: 60px;
-  color: #4A4656;
+  color: #4a4656;
 }
 #service .service-item h4 {
   padding-top: 20px;
@@ -189,7 +189,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	call-to-action Start
 --*/
 #call-to-action {
-  background: url("../img/call-to-action-bg.jpg") no-repeat;
+  background: url('../img/call-to-action-bg.jpg') no-repeat;
   background-size: cover;
   background-attachment: fixed;
   padding: 70px 0px;
@@ -198,7 +198,7 @@ font header .navbar-default .navbar-nav li a:hover {
   color: #fff;
 }
 #call-to-action:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   right: 0;
@@ -231,7 +231,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	Feature Start
 --*/
 #feature {
-  background: url("../img/featue-bg.jpg");
+  background: url('../img/hold-hands.jpg');
   background-position: 50% 94px;
   width: 100%;
   display: block;
@@ -252,17 +252,30 @@ font header .navbar-default .navbar-nav li a:hover {
   backface-visibility: hidden;
   padding: 100px 0;
 }
+
+#feature:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to left, #8b86a3, #403b50);
+  opacity: 0.8;
+}
 #feature h2 {
   font-size: 28px;
   font-weight: 600;
   margin-bottom: 30px;
 }
 #feature p {
-  color: #8d8f92;
+  color: #fff;
   margin-bottom: 20px;
 }
 #feature .btn-view-works {
-  background: #655E7A;
+  background: #655e7a;
   color: #fff;
   padding: 10px 20px;
 }
@@ -274,12 +287,12 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 #testimonial .block h2 {
   line-height: 27px;
-  color: #5C5C5C;
+  color: #5c5c5c;
   padding-top: 110px;
 }
 #testimonial .block p {
   padding-top: 50px;
-  color: #7B7B7B;
+  color: #7b7b7b;
 }
 #testimonial .counter-box li {
   width: 50%;
@@ -300,7 +313,7 @@ font header .navbar-default .navbar-nav li a:hover {
 #testimonial .testimonial-carousel {
   text-align: center;
   width: 75%;
-  border: 1px solid #DEDEDE;
+  border: 1px solid #dedede;
   padding: 24px;
   margin: 0 auto;
 }
@@ -328,7 +341,7 @@ font header .navbar-default .navbar-nav li a:hover {
   font-weight: 600;
 }
 #testimonial .testimonial-carousel .owl-carousel .owl-pagination div {
-  border: 1px solid #1D1D1D;
+  border: 1px solid #1d1d1d;
   border-radius: 500px;
   display: inline-block;
   height: 10px;
@@ -336,7 +349,7 @@ font header .navbar-default .navbar-nav li a:hover {
   width: 10px;
 }
 #testimonial .testimonial-carousel .owl-carousel .owl-pagination div.active {
-  background: #5C5C5C;
+  background: #5c5c5c;
   font-size: 30px;
   display: inline-block;
   border: 0px;
@@ -358,7 +371,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	Slider-work Start
 --*/
 #global-header {
-  background: url("../img/corner-hands.jpg") no-repeat;
+  background: url('../img/corner-hands.jpg') no-repeat;
   background-size: cover;
   padding-top: 150px;
   padding-bottom: 107px;
@@ -366,7 +379,7 @@ font header .navbar-default .navbar-nav li a:hover {
   background-attachment: fixed;
 }
 #global-header:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -378,7 +391,7 @@ font header .navbar-default .navbar-nav li a:hover {
   opacity: 0.8;
 }
 #global-header .block {
-  color: #E3E3E4;
+  color: #e3e3e4;
   margin: 0 auto;
   padding-left: 90px;
   text-align: center;
@@ -425,11 +438,11 @@ font header .navbar-default .navbar-nav li a:hover {
   position: relative;
 }
 #portfolio-work .block .portfolio-menu ul .active {
-  color: #655E7A;
+  color: #655e7a;
   position: relative;
 }
 #portfolio-work .block .portfolio-menu ul .active:before {
-  content: "\f0d7";
+  content: '\f0d7';
   position: absolute;
   font-family: 'FontAwesome';
   bottom: -18px;
@@ -448,7 +461,7 @@ font header .navbar-default .navbar-nav li a:hover {
   transition: all 0.4s ease-in-out;
 }
 #portfolio-work .block .portfolio-menu ul li:hover:before {
-  content: "\f0d7";
+  content: '\f0d7';
   position: absolute;
   font-family: 'FontAwesome';
   bottom: -18px;
@@ -499,7 +512,7 @@ font header .navbar-default .navbar-nav li a:hover {
 #portfolio-work .block .portfolio-contant ul li a span {
   font-style: italic;
   font-size: 13px;
-  color: #655E7A;
+  color: #655e7a;
 }
 #portfolio-work .block .portfolio-contant ul img {
   width: 100%;
@@ -513,9 +526,9 @@ font header .navbar-default .navbar-nav li a:hover {
   left: 0;
   background: rgba(0, 0, 0, 0.9);
   opacity: 0;
-  -webkit-transition: .3s all;
-  -o-transition: .3s all;
-  transition: .3s all;
+  -webkit-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  transition: 0.3s all;
   text-align: center;
 }
 #portfolio-work .block .portfolio-contant .position-center {
@@ -526,9 +539,9 @@ font header .navbar-default .navbar-nav li a:hover {
   -moz-transform: translate(0%, 50%);
   -ms-transform: translate(0%, 50%);
   transform: translate(0%, 50%);
-  -webkit-transition: .5s all;
-  -o-transition: .5s all;
-  transition: .5s all;
+  -webkit-transition: 0.5s all;
+  -o-transition: 0.5s all;
+  transition: 0.5s all;
 }
 #portfolio-work .block .mix {
   display: none;
@@ -568,7 +581,7 @@ font header .navbar-default .navbar-nav li a:hover {
   position: relative;
 }
 #wrapper-work ul li .items-text h2:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   bottom: 0;
@@ -607,14 +620,14 @@ font header .navbar-default .navbar-nav li a:hover {
 	slider-contact Start
 --*/
 #slider-contact {
-  background: url("../img/corner-hands.jpg") no-repeat;
+  background: url('../img/corner-hands.jpg') no-repeat;
   background-size: cover;
   padding-top: 150px;
   padding-bottom: 107px;
   position: relative;
 }
 #slider-contact:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 0;
@@ -626,7 +639,7 @@ font header .navbar-default .navbar-nav li a:hover {
   opacity: 0.8;
 }
 #slider-contact .block {
-  color: #E3E3E4;
+  color: #e3e3e4;
   margin: 0 auto;
   padding-left: 90px;
 }
@@ -658,9 +671,9 @@ font header .navbar-default .navbar-nav li a:hover {
   margin: 0px;
 }
 #contact-form .block form .form-group .form-control {
-  background: #F6F8FA;
+  background: #f6f8fa;
   height: 60px;
-  border: 1px solid #EEF2F6;
+  border: 1px solid #eef2f6;
   box-shadow: none;
   width: 100%;
 }
@@ -669,16 +682,16 @@ font header .navbar-default .navbar-nav li a:hover {
   margin: 0px;
 }
 #contact-form .block form .form-group-2 textarea {
-  background: #F6F8FA;
+  background: #f6f8fa;
   height: 135px;
-  border: 1px solid #EEF2F6;
+  border: 1px solid #eef2f6;
   box-shadow: none;
   width: 100%;
 }
 #contact-form .block button {
   width: 100%;
   height: 60px;
-  background: #47424C;
+  background: #47424c;
   border: none;
   color: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -706,7 +719,7 @@ font header .navbar-default .navbar-nav li a:hover {
   display: inline-block;
 }
 .social-icons i {
-  color: #2C2C2C;
+  color: #2c2c2c;
   margin-right: 25px;
   font-size: 25px;
 }
@@ -733,7 +746,7 @@ font header .navbar-default .navbar-nav li a:hover {
   padding-bottom: 30px;
 }
 #contact-box .block p {
-  color: #5C5C5C;
+  color: #5c5c5c;
   display: block;
 }
 /*--
@@ -774,7 +787,7 @@ font header .navbar-default .navbar-nav li a:hover {
 	footer Start
 --*/
 footer {
-  background: #F5F5F5;
+  background: #f5f5f5;
   text-align: center;
   padding-top: 48px;
   padding-bottom: 55px;
