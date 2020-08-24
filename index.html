@@ -2,7 +2,15 @@
 layout: page
 title: Airspace
 permalink: /
+projects:
+  - title: Dyslexia Detection
+    url: https://github.com/algoasylum/Dyslexia_detection
+    imgUrl: https://www.ligaturejournal.com/wp-content/uploads/2017/03/dyslexia-v7-copy.png
+  - title: Pollution Monitoring
+    url: https://github.com/algoasylum/PollutionMonitoring
+    imgUrl: https://e2c4a8m6.stackpathcdn.com/wp-content/uploads/2013/03/smoke-air-pollution-industry.jpg   
 ---
+
 
 <!-- Slider Start -->
 <section id="slider">
@@ -31,7 +39,7 @@ permalink: /
       <div class="col-sm-6 col-md-3">
         <div class="book-example">
           <a href="{{ book.url }}">
-            <img src="https://res.cloudinary.com/dev-empathy-book-club/image/upload/f_auto,q_auto/site/book-covers/{{ book.imgUrl }}.jpg" alt="{{ book.title }}">
+            <img src="{{ book.imgUrl }}" alt="{{ book.title }}">
             <h4>{{ book.title }}</h4>
             {% if book.current %}
               <p><em>(Currently in progress!)</em></p>
