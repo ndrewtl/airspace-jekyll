@@ -166,42 +166,13 @@ permalink: /
         <p>See what our interns are saying- about their projects and research, the technologies they explore and of course, our Friday discussions. </p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-md-6">
-        {% if site.data.funfacts.size > 0 %}
-        <div class="block">
-          {% for ff in site.data.funfacts %}
-          <ul class="counter-box clearfix">
-            <li>
-              <div class="block">
-                <i class="{{ ff.icon }}"></i>
-                <h4 class="counter">{{ ff.counter }}</h4>
-                <span>{{ ff.text }}</span>
-              </div>
-            </li>
-            {% endfor %}
-          </ul>
-        </div>
-        {% endif %}
-      </div>
-      <div class="col-md-6">
-        {% if site.data.testimonials.size > 0 %}
-        <div class="testimonial-carousel">
-          <div id="testimonial-slider" class="owl-carousel">
-            {% for tm in site.data.testimonials %}
-            <div>
-                <img src="img/cotation.png" alt="IMG">
-                <p>{{ tm.testimonial }}</p>
-                <div class="user">
-                  <img src="{{ tm.image }}" alt="Pepole">
-                  <p><span>{{ tm.name }}</span> {{ tm.title }}</p>
-                </div>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-        {% endif %}
-      </div>
+    <div id="retainable-rss-embed" data-rss="https://medium.com/algoasylum"
+         data-maxcols="3" 
+         data-layout="grid" 
+         data-poststyle="inline" 
+         data-readmore="Read the rest" 
+         data-buttonclass="btn btn-primary" 
+         data-offset="-100">
     </div>
   </div>
 </section>
