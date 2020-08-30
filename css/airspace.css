@@ -266,6 +266,24 @@ font header .navbar-default .navbar-nav li a:hover {
   color: #fff;
   padding: 10px 20px;
 }
+
+/*--
+	people  Start
+--*/
+#people {
+  margin-top: 75px;
+  padding-bottom: 75px;
+}
+#people .people-img {
+  padding: 0px 50px;
+  border-radius: 50%;
+}
+#people h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 60px;
+}
+
 /*--
 	content Start
 --*/
@@ -341,21 +359,7 @@ font header .navbar-default .navbar-nav li a:hover {
   display: inline-block;
   border: 0px;
 }
-/*--
-	features Start
---*/
-#people {
-  margin-top: 75px;
-  padding-bottom: 75px;
-}
-#people .people-img {
-  padding: 0px 50px;
-}
-#people h2 {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 30px;
-}
+
 /*---------------------------------------------
 					Work Start
 -----------------------------------------------*/
