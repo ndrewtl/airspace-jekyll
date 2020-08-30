@@ -344,11 +344,11 @@ font header .navbar-default .navbar-nav li a:hover {
 /*--
 	features Start
 --*/
-#clients-logo-section {
+#people {
   padding-top: 30px;
   padding-bottom: 75px;
 }
-#clients-logo-section .clients-logo-img {
+#people .people-img {
   padding: 0px 50px;
 }
 /*---------------------------------------------
