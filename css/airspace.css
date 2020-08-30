@@ -351,7 +351,11 @@ font header .navbar-default .navbar-nav li a:hover {
 #people .people-img {
   padding: 0px 50px;
 }
-#people .h2
+#people h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
 /*---------------------------------------------
 					Work Start
 -----------------------------------------------*/
