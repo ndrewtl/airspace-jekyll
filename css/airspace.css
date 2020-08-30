@@ -284,6 +284,13 @@ font header .navbar-default .navbar-nav li a:hover {
   margin-bottom: 60px;
 }
 
+#people  .btn-view-works {
+  background: #655E7A;
+  color: #fff;
+  padding: 10px 20px;
+  align-self: center;
+}
+
 /*--
 	content Start
 --*/
