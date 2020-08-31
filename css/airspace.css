@@ -825,3 +825,21 @@ footer .footer-manu ul li a {
 footer .footer-manu ul li a:hover {
   color: #000;
 }
+
+/*---------------------------------------------
+					 People Start
+-----------------------------------------------*/
+/*--
+	team Start
+--*/
+
+#team {
+  text-align: center;
+}
+#team img{
+  border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    justify-content: center;
+    margin-left: 100px;
+}
