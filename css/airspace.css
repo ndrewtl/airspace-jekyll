@@ -288,7 +288,8 @@ font header .navbar-default .navbar-nav li a:hover {
   background: #655E7A;
   color: #fff;
   padding: 10px 20px;
-  align-self: center;
+  text-align: center;
+  margin-top: 20px;
 }
 
 /*--
