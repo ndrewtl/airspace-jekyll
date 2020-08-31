@@ -276,6 +276,9 @@ font header .navbar-default .navbar-nav li a:hover {
 }
 #people .people-img {
   padding: 0px 50px;
+}
+
+#people .img{
   border-radius: 50%;
 }
 #people h2 {
