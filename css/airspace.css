@@ -838,10 +838,10 @@ footer .footer-manu ul li a:hover {
 }
 #team img{
   border-radius: 50%;
-    /* width: 150px;
-    height: 150px; */
-    justify-content: center;
-    margin-left: 100px;
+  width: 150px;
+  height: 150px;
+  justify-content: center;
+    
 }
 
 #team .person{
