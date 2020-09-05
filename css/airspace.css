@@ -836,6 +836,7 @@ footer .footer-manu ul li a:hover {
 #team {
   text-align: center;
   margin-top: 100px;
+  margin-bottom: 50px;
 }
 #team img{
   border-radius: 50%;
@@ -847,4 +848,5 @@ footer .footer-manu ul li a:hover {
 
 #team .person{
   text-align: center;
+  margin-bottom: 50px;
 }
