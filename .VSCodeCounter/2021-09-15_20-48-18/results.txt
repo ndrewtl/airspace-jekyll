@@ -1,0 +1,77 @@
+Date : 2021-09-15 20:48:18
+Directory : /Users/scotteinsidler/Documents/GitHub/airspace-jekyll
+Total : 39 files,  7508 codes, 350 comments, 700 blanks, all 8558 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| CSS        |          9 |      3,806 |        261 |        519 |      4,586 |
+| XML        |          2 |      2,747 |          3 |          1 |      2,751 |
+| HTML       |         10 |        593 |         32 |         48 |        673 |
+| JavaScript |          8 |        151 |         47 |         45 |        243 |
+| Markdown   |          6 |        147 |          0 |         71 |        218 |
+| YAML       |          3 |         51 |          6 |         11 |         68 |
+| Ruby       |          1 |         13 |          1 |          5 |         19 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                                      |         39 |      7,508 |        350 |        700 |      8,558 |
+| _data                                                                                                                  |          2 |         28 |          0 |          2 |         30 |
+| _includes                                                                                                              |          3 |         72 |         18 |          8 |         98 |
+| _layouts                                                                                                               |          3 |         39 |          1 |         20 |         60 |
+| _posts                                                                                                                 |          4 |         89 |          0 |         50 |        139 |
+| css                                                                                                                    |          9 |      3,806 |        261 |        519 |      4,586 |
+| fonts                                                                                                                  |          2 |      2,747 |          3 |          1 |      2,751 |
+| js                                                                                                                     |          8 |        151 |         47 |         45 |        243 |
+| js/min                                                                                                                 |          3 |          3 |          7 |          0 |         10 |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                                                               | language   | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/LICENSE.md                                                      | Markdown   |         11 |          0 |          2 |         13 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/README.md                                                       | Markdown   |         47 |          0 |         19 |         66 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_config.yml                                                     | YAML       |         23 |          6 |          9 |         38 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_data/funfacts.yml                                              | YAML       |         12 |          0 |          1 |         13 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_data/testimonials.yml                                          | YAML       |         16 |          0 |          1 |         17 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_includes/footer.html                                           | HTML       |         18 |          1 |          1 |         20 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_includes/head.html                                             | HTML       |         22 |         13 |          6 |         41 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_includes/header.html                                           | HTML       |         32 |          4 |          1 |         37 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_layouts/default.html                                           | HTML       |         11 |          0 |         17 |         28 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_layouts/page.html                                              | HTML       |          4 |          0 |          1 |          5 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_layouts/post.html                                              | HTML       |         24 |          1 |          2 |         27 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_posts/2016-05-20-my-example-post.md                            | Markdown   |          9 |          0 |          4 |         13 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_posts/2016-05-20-super-long-article.md                         | Markdown   |          7 |          0 |          4 |         11 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_posts/2016-05-20-this-post-demonstrates-post-content-styles.md | Markdown   |         52 |          0 |         36 |         88 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/_posts/2016-05-20-welcome-to-jekyll.md                          | Markdown   |         21 |          0 |          6 |         27 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/airspace-jekyll.gemspec                                         | Ruby       |         13 |          1 |          5 |         19 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/blog.html                                                       | HTML       |         26 |          1 |          1 |         28 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/contact.html                                                    | HTML       |        110 |          3 |          3 |        116 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/airspace.css                                                | CSS        |        726 |         80 |          2 |        808 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/animate.css                                                 | CSS        |      2,671 |         10 |        500 |      3,181 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/bootstrap.min.css                                           | CSS        |          1 |          4 |          0 |          5 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/font-awesome.min.css                                        | CSS        |          1 |          3 |          0 |          4 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/ionicons.min.css                                            | CSS        |          2 |          9 |          1 |         12 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/owl.carousel.css                                            | CSS        |         58 |          8 |          6 |         72 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/responsive.css                                              | CSS        |        264 |        136 |          1 |        401 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/style.css                                                   | CSS        |         23 |          5 |          7 |         35 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/css/syntax.css                                                  | CSS        |         60 |          6 |          2 |         68 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/fonts/fontawesome-webfont.svg                                   | XML        |        520 |          0 |          0 |        520 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/fonts/ionicons.svg                                              | XML        |      2,227 |          3 |          1 |      2,231 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/index.html                                                      | HTML       |        178 |          5 |          4 |        187 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/bootstrap.min.js                                             | JavaScript |          1 |          5 |          0 |          6 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/jquery.counterup.js                                          | JavaScript |         50 |         17 |         16 |         83 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/main.js                                                      | JavaScript |         31 |          2 |         21 |         54 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/min/main.min.js                                              | JavaScript |          1 |          0 |          0 |          1 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/min/plugins.min.js                                           | JavaScript |          1 |          0 |          0 |          1 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/min/waypoints.min.js                                         | JavaScript |          1 |          7 |          0 |          8 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/owl.carousel.min.js                                          | JavaScript |         47 |          0 |          0 |         47 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/js/plugins.js                                                   | JavaScript |         19 |         16 |          8 |         43 |
+| /Users/scotteinsidler/Documents/GitHub/airspace-jekyll/work.html                                                       | HTML       |        168 |          4 |         12 |        184 |
+| Total                                                                                                                  |            |      7,508 |        350 |        700 |      8,558 |
++------------------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
