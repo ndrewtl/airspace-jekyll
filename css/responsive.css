@@ -66,44 +66,44 @@ px      68    160    252    344    436    528    620    712    */
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
-					Work Start 
+					Dashboard Start 
 -----------------------------------------------*/
   /*--
-	slider-work Start 
+	slider-dashboard Start 
 --*/
-  #slider-work .block h1 {
+  #slider-dashboard .block h1 {
     font-size: 28px;
   }
-  #slider-work .block p {
+  #slider-dashboard .block p {
     font-size: 15px;
   }
   /*--
 	portfolio Start 
 --*/
-  #portfolio-work .block .portfolio-manu {
+  #portfolio-dashboard .block .portfolio-manu {
     padding-left: 0px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .img-heading {
+  #portfolio-dashboard .block .portfolio-contant ul li a .img-heading {
     padding: 5px 0 5px 13px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .img-heading h2 {
+  #portfolio-dashboard .block .portfolio-contant ul li a .img-heading h2 {
     font-size: 20px;
     line-height: 25px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .img-heading p {
+  #portfolio-dashboard .block .portfolio-contant ul li a .img-heading p {
     font-size: 11px;
     line-height: 20px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .overlay {
+  #portfolio-dashboard .block .portfolio-contant ul li a .overlay {
     padding-left: 15px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .overlay h2 {
+  #portfolio-dashboard .block .portfolio-contant ul li a .overlay h2 {
     padding-top: 30px;
     padding-bottom: 15px;
     font-size: 20px;
     line-height: 25px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .overlay p {
+  #portfolio-dashboard .block .portfolio-contant ul li a .overlay p {
     font-size: 11px;
     line-height: 20px;
     padding-top: 15px;
@@ -111,15 +111,15 @@ px      68    160    252    344    436    528    620    712    */
   /*--
 	wrapper Start 
 --*/
-  #wrapper-work ul li .items-text {
+  #wrapper-dashboard ul li .items-text {
     padding-top: 0;
     padding-left: 25px;
   }
-  #wrapper-work ul li .items-text h2 {
+  #wrapper-dashboard ul li .items-text h2 {
     padding-bottom: 10px;
     padding-top: 40px;
   }
-  #wrapper-work ul li .items-text p {
+  #wrapper-dashboard ul li .items-text p {
     font-size: 14px;
     line-height: 20px;
     padding-right: 30px;
@@ -127,11 +127,11 @@ px      68    160    252    344    436    528    620    712    */
   /*--
 	features Start 
 --*/
-  #features-work .block ul li {
+  #features-dashboard .block ul li {
     width: 49%;
   }
   /*---------------------------------------------
-					Work close 
+					Dashboard close 
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
@@ -250,56 +250,56 @@ px      68    160    252    */
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
-					Work Start 
+					Dashboard Start 
 -----------------------------------------------*/
-  #slider-work {
+  #slider-dashboard {
     padding-top: 100px;
     padding-bottom: 100px;
   }
-  #slider-work .block {
+  #slider-dashboard .block {
     padding-left: 0px;
   }
-  #slider-work .block h1 {
+  #slider-dashboard .block h1 {
     font-size: 20px;
   }
-  #slider-work .block p {
+  #slider-dashboard .block p {
     font-size: 11px;
     line-height: 25px;
   }
   /*--
 	portfolio Start 
 --*/
-  #portfolio-work .block .portfolio-manu {
+  #portfolio-dashboard .block .portfolio-manu {
     padding-left: 0px;
     text-align: center;
   }
-  #portfolio-work .block .portfolio-manu ul li {
+  #portfolio-dashboard .block .portfolio-manu ul li {
     padding: 0 8px;
   }
-  #portfolio-work .block .portfolio-contant ul li {
+  #portfolio-dashboard .block .portfolio-contant ul li {
     width: 100%;
   }
-  #portfolio-work .block .portfolio-contant ul li a .img-heading {
+  #portfolio-dashboard .block .portfolio-contant ul li a .img-heading {
     padding: 5px 0 5px 13px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .img-heading h2 {
+  #portfolio-dashboard .block .portfolio-contant ul li a .img-heading h2 {
     font-size: 20px;
     line-height: 25px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .img-heading p {
+  #portfolio-dashboard .block .portfolio-contant ul li a .img-heading p {
     font-size: 11px;
     line-height: 20px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .overlay {
+  #portfolio-dashboard .block .portfolio-contant ul li a .overlay {
     padding-left: 15px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .overlay h2 {
+  #portfolio-dashboard .block .portfolio-contant ul li a .overlay h2 {
     padding-top: 65px;
     padding-bottom: 15px;
     font-size: 20px;
     line-height: 25px;
   }
-  #portfolio-work .block .portfolio-contant ul li a .overlay p {
+  #portfolio-dashboard .block .portfolio-contant ul li a .overlay p {
     font-size: 11px;
     line-height: 20px;
     padding-top: 15px;
@@ -308,21 +308,21 @@ px      68    160    252    */
   /*--
 	wrapper Start 
 --*/
-  #wrapper-work ul li {
+  #wrapper-dashboard ul li {
     float: none;
     width: 100%;
   }
-  #wrapper-work ul li .items-text {
+  #wrapper-dashboard ul li .items-text {
     padding-left: 15px;
     padding-top: 30px;
   }
-  #wrapper-work ul li .items-text h2 {
+  #wrapper-dashboard ul li .items-text h2 {
     padding-top: 10px;
     padding-bottom: 15px;
     font-size: 20px;
     line-height: 25px;
   }
-  #wrapper-work ul li .items-text p {
+  #wrapper-dashboard ul li .items-text p {
     font-size: 11px;
     line-height: 20px;
     padding-top: 15px;
@@ -330,12 +330,12 @@ px      68    160    252    */
   /*--
 	features Start 
 --*/
-  #features-work .block ul li {
+  #features-dashboard .block ul li {
     display: block;
     width: 100%;
   }
   /*---------------------------------------------
-					Work close 
+					Dashboard close 
 -----------------------------------------------*/
   /*=============================================*/
   /*---------------------------------------------
