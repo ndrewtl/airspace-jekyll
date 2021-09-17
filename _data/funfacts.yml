@@ -1,12 +1,12 @@
-- counter: 20000
+- counter: 5
   icon: ion-ios-chatboxes-outline
-  text: Cups of Coffee
-- counter: 1500
+  text: Private Patnerships formed
+- counter: 6
   icon: ion-ios-glasses-outline
-  text: Gallons of Soft Drink
-- counter: 1200
+  text: Data Feeds Integrated
+- counter: 4
   icon: ion-ios-compose-outline
-  text: Whiteboard Markers
-- counter: 300
+  text: Currencies Tracked
+- counter: 4
   icon: ion-ios-timer-outline
-  text: Websites built
+  text: Countries Represented
