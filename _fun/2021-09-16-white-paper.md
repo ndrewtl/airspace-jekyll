@@ -1,7 +1,7 @@
 ---
 layout: fun
 title: Building a Blockchain for Fun (Pt. 1)
-date: date: 2021-10-16 21:11:27
+date: 2021-10-16 21:11:27
 author: Rising Tide Research Group
 ---
 
