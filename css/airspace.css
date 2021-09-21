@@ -97,7 +97,6 @@ font header .navbar-default .navbar-nav li a:hover {
 	Slider Start
 --*/
 #slider {
-  /* background: url("../img/slider-bg.jpg") no-repeat; */
   background: url("../img/abstract-internet-globe.jpg") no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -359,7 +358,6 @@ font header .navbar-default .navbar-nav li a:hover {
 	Slider-work Start
 --*/
 #global-header {
-  /* background: url("../img/slider-bg.jpg") no-repeat; */
   background: url("../img/abstract-internet-globe.jpg") no-repeat;
   background-size: cover;
   padding-top: 150px;
@@ -609,7 +607,6 @@ font header .navbar-default .navbar-nav li a:hover {
 	slider-contact Start
 --*/
 #slider-contact {
-  /* background: url("../img/slider-bg.jpg") no-repeat; */
   background: url("../img/abstract-internet-globe.jpg") no-repeat;
   background-size: cover;
   padding-top: 150px;
