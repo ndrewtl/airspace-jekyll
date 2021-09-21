@@ -21,7 +21,9 @@ url: "http://ndrewtl.github.io" # the base hostname & protocol for your site
 baseurl: ""
 cover: "/assets/cover.png"
 logo: "/assets/rtrg.png"
-
+collections:
+  fun:
+    output: true
 # Build settings
 markdown: kramdown
 
